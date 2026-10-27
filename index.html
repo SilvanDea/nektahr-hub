@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nek'tahr — Portfolio, Commissions, Adopts & YCH</title>
+  <title>Nek'tahr | Artist Portfolio, Commissions, Adopts & YCH</title>
+  <meta name="description" content="Explore Nek'tahr's SFW art portfolio, commission pricing, adoptable designs, YCH options, terms, and official contact links." />
+  <meta name="theme-color" content="#0B0A0E" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nek'tahr | Artist Portfolio & Commissions" />
+  <meta property="og:description" content="Art portfolio, commission pricing, adoptables, YCH options, and contact links." />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -75,16 +80,27 @@
       color: #F2ECE4;
       border-color: #E2B478;
     }
-    input[type=range]::-webkit-slider-thumb {
-      pointer-events: all;
-      width: 36px;
-      height: 36px;
-      -webkit-appearance: none;
-    }
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: #0B0A0E; }
     ::-webkit-scrollbar-thumb { background: #3A3633; }
     ::-webkit-scrollbar-thumb:hover { background: #E2B478; }
+    :focus-visible { outline: 2px solid #E2B478; outline-offset: 3px; }
+    img { max-width: 100%; }
+    @media (max-width: 767px) {
+      header.sticky { height: auto; min-height: 4rem; flex-wrap: wrap; padding-top: .65rem; padding-bottom: .45rem; }
+      header.sticky > button:first-child { order: 1; }
+      header.sticky > div:last-child { order: 2; margin-left: auto; }
+      #nav-links { order: 3; flex: 0 0 100%; width: 100%; max-width: 100%; overflow-x: auto; justify-content: flex-start; padding: .35rem 0 .15rem; scrollbar-width: thin; }
+      #nav-links .nav-link { flex: 0 0 auto; white-space: nowrap; }
+      .ptab-btn { white-space: normal; line-height: 1.25; }
+    }
+    @media (max-width: 360px) {
+      header.sticky { gap: .25rem; }
+      #nav-links { gap: .25rem; }
+      #nav-links .nav-link { padding-left: .35rem; padding-right: .35rem; font-size: .68rem; }
+    }
+    /* Tailwind CDN is still required for the original utility classes; these small fallbacks keep basic readability if it fails. */
+    .hidden { display: none !important; }
   </style>
 </head>
 <body class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
@@ -94,54 +110,62 @@
   ====================================================================== -->
   <script>
     // Easy-to-edit Queue / Slots list (No Trello needed)
-    const QUEUE_SLOTS = [
-      { id: "SLOT 01", client: "Alex_D", category: "Custom Commission", details: "Full Render · Half-Body + Detailed BG", stage: "Rendering", progress: 80, eta: "Oct 2026" },
-      { id: "SLOT 02", client: "Moonlight", category: "YCH Slot #12", details: "Flat Color · Night Window Pose", stage: "Flat Colors", progress: 45, eta: "Nov 2026" },
-      { id: "SLOT 03", client: "S. Hunter", category: "Adoptable AB Bonus", details: "Full Reference Sheet + Alt Outfit", stage: "Sketching", progress: 20, eta: "Nov 2026" },
-      { id: "SLOT 04", client: "OPEN SLOT", category: "Available for Claim", details: "Custom / YCH / Design", stage: "Open", progress: 0, eta: "—" },
-      { id: "SLOT 05", client: "OPEN SLOT", category: "Available for Claim", details: "Custom / YCH / Design", stage: "Open", progress: 0, eta: "—" }
-    ];
+    // Do not publish private client names or unverified live progress.
+    const QUEUE_SLOTS = []; 
+    const QUEUE_CONTACT_LABEL = {
+      en: "Contact on Telegram ↗",
+      es: "Contactar por Telegram ↗",
+      ru: "Написать в Telegram ↗"
+    };
+    const QUEUE_PUBLIC_NOTICE = {
+      en: "For current availability and progress updates, please contact me directly. This page does not publish client names or live queue data.",
+      es: "Para consultar disponibilidad y avances actuales, escríbeme directamente. Esta página no publica nombres de clientes ni datos de cola en vivo.",
+      ru: "Чтобы узнать текущую доступность и статус заказа, напишите мне напрямую. Здесь не публикуются имена клиентов и неподтверждённые данные очереди."
+    };
 
     // Primary Contacts & Platforms
     const CONTACTS_PRIMARY = [
-      { id: "discord", type: "copy", value: "drintrav", label: "Discord", handle: "drintrav", sub: { en: "Primary Contact · Click to Copy", es: "Contacto Principal · Copiar", ru: "Основной контакт · Скопировать" } },
-      { id: "tg1", type: "link", url: "https://t.me/nektahr", label: "Telegram DM #1", handle: "@nektahr", sub: { en: "Direct Message (Main)", es: "Mensaje Directo #1", ru: "Личные сообщения #1" } },
-      { id: "tg2", type: "link", url: "https://t.me/drintrav", label: "Telegram DM #2", handle: "@drintrav", sub: { en: "Direct Message (Backup)", es: "Mensaje Directo #2", ru: "Личные сообщения #2" } },
-      { id: "email", type: "link", url: "mailto:gapkuro@gmail.com", label: "Email", handle: "gapkuro@gmail.com", sub: { en: "Mail & Commercial Inquiries", es: "Correo y Propuestas", ru: "Почта для заказов и предложений" } }
+      { id: "discord", type: "copy", value: "drintrava", label: "Discord", handle: "drintrava", sub: { en: "Primary Contact · Click to Copy", es: "Contacto principal · Copiar", ru: "Основной контакт · Скопировать" } },
+      { id: "tg1", type: "link", url: "https://t.me/nek_tahr", label: "Telegram", handle: "@nek_tahr", sub: { en: "Direct Messages", es: "Mensajes directos", ru: "Личные сообщения" } },
+      { id: "email", type: "link", url: "mailto:gapkuro@gmail.com", label: "Email", handle: "gapkuro@gmail.com", sub: { en: "Commercial inquiries · Verify address", es: "Consultas comerciales · Verificar correo", ru: "По коммерческим вопросам · Адрес требует проверки" } }
     ];
 
     const PLATFORMS = [
-      { name: "DeviantArt", handle: "@nektahr", url: "https://www.deviantart.com/nektahr", soon: false, note: { en: "Adopts & Gallery", es: "Adopts y Galería", ru: "Адопты и Галерея" } },
-      { name: "FurAffinity", handle: "nektahr", url: "https://www.furaffinity.net/user/nektahr", soon: false, note: { en: "Main Archive & Auctions", es: "Archivo y Subastas", ru: "Архив и Аукционы" } },
-      { name: "YCH.Commishes", handle: "nektahr", url: "https://ych.commishes.com/user/nektahr", soon: false, note: { en: "Live YCH & Adopt Auctions", es: "Subastas YCH en vivo", ru: "Живые аукционы YCH и адоптов" } },
-      { name: "Pixiv", handle: "nektahr", url: "https://www.pixiv.net/", soon: false, note: { en: "Illustrations & Works", es: "Ilustraciones", ru: "Иллюстрации и работы" } },
-      { name: "X (Twitter)", handle: "@Nektahr_", url: "https://x.com/Nektahr_", soon: false, note: { en: "Sketches & WIPs", es: "Bocetos y WIPs", ru: "Скетчи, процессы и анонсы" } },
-      { name: "Patreon", handle: "Coming Soon", url: "#", soon: true, note: { en: "Exclusive tiers & PSDs", es: "Recompensas y PSDs", ru: "Эксклюзивы и процессы" } },
-      { name: "TikTok", handle: "Coming Soon", url: "#", soon: true, note: { en: "Process reels & timelapses", es: "Videos de proceso", ru: "Спидпейнты и рилсы" } }
+      { name: "DeviantArt", handle: "@nektahr", url: "https://www.deviantart.com/nektahr", soon: false, note: { en: "SFW samples, adopts & gallery", es: "Muestras SFW, adopts y galería", ru: "SFW-примеры, адопты и галерея" } },
+      { name: "FurAffinity", handle: "nektahr", url: "https://www.furaffinity.net/user/nektahr", soon: false, note: { en: "Main archive", es: "Archivo principal", ru: "Основной архив" } },
+      { name: "YCH.Commishes", handle: "nektahr", url: "https://ych.commishes.com/user/nektahr/", soon: false, note: { en: "YCH & adopt auctions", es: "Subastas de YCH y adopts", ru: "Аукционы YCH и адоптов" } },
+      { name: "YCH.art", handle: "Ned'hal", url: "https://ych.art/user/nedhal", soon: false, note: { en: "Current YCH profile & availability", es: "Perfil YCH y disponibilidad actual", ru: "Профиль YCH и актуальная доступность" } },
+      { name: "Pixiv", handle: "User 44242225", url: "https://www.pixiv.net/en/users/44242225", soon: false, note: { en: "Illustrations & works", es: "Ilustraciones y trabajos", ru: "Иллюстрации и работы" } },
+      { name: "X (Twitter)", handle: "@Nektahr_", url: "https://x.com/Nektahr_", soon: false, note: { en: "Sketches & WIPs", es: "Bocetos y procesos", ru: "Скетчи и процесс работы" } },
+      { name: "Ko-fi", handle: "nektahr", url: "https://ko-fi.com/nektahr", soon: false, note: { en: "Support & payments", es: "Apoyo y pagos", ru: "Поддержка и оплата" } }
     ];
 
     // Gallery Works
     const GALLERY_ITEMS = [
-      { id: 1, title: "Nocturne in Rain", cat: "ill", stage: "Full Render", price: "$120", nsfw: false, img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=900&q=80", desc: "Atmospheric rain illustration" },
-      { id: 2, title: "Crimson Dusk", cat: "comm", stage: "Full Render", price: "$160", nsfw: false, img: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=900&q=80", desc: "Full-body character commission" },
-      { id: 3, title: "Miray — Dark Concept", cat: "adopt", stage: "Reference Sheet", price: "$200", nsfw: false, img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80", desc: "Original adoptable character design" },
-      { id: 4, title: "Velvet Throne YCH", cat: "ych", stage: "Full Render (18+)", price: "$160", nsfw: true, img: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=900&q=80", desc: "Mature / spicy YCH slot sample" },
-      { id: 5, title: "Monochrome Study #07", cat: "other", stage: "Clean Sketch", price: "$45", nsfw: false, img: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=900&q=80", desc: "Sketch & lighting exploration" },
-      { id: 6, title: "Obsidian Guard", cat: "comm", stage: "Flat Color", price: "$85", nsfw: false, img: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=900&q=80", desc: "Lineart + flat color full-body" },
-      { id: 7, title: "Lunar Silhouette", cat: "other", stage: "Concept Study", price: "$90", nsfw: false, img: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=900&q=80", desc: "Experimental composition & mood" },
-      { id: 8, title: "After Hours (Spicy Alt)", cat: "ill", stage: "Full Render (18+)", price: "$150", nsfw: true, img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80", desc: "Mature alternative lighting version" }
+      { id: 1, title: "Portfolio Sample 01", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/83524f34.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 2, title: "Portfolio Sample 02", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 3, title: "Portfolio Sample 03", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 4, title: "Portfolio Sample 04", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/e7055f07.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 5, title: "Portfolio Sample 05", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/035b86ab.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 6, title: "Portfolio Sample 06", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/8aff8bc5.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 7, title: "Portfolio Sample 07", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/83fa427a.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 8, title: "Portfolio Sample 08", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/a748db6a.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 9, title: "Portfolio Sample 09", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/d29f0f1f.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 10, title: "Portfolio Sample 10", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7638b7cd.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 11, title: "Portfolio Sample 11", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7b5b1c4e.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 12, title: "Portfolio Sample 12", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." }
     ];
 
     // Translations (EN main · ES · RU)
     const I18N = {
       en: {
         nav: { board: "Board", pricing: "Pricing", gallery: "Gallery", queue: "Queue", tos: "ToS", faq: "FAQ" },
-        statusBadge: "2 Slots Open",
+        statusBadge: "Check Current Availability",
         hero: {
           eyebrow: "PORTFOLIO · COMMISSIONS · ADOPTS · YCH",
           title: "Dark Minimalism & Expressive Character Art.",
-          desc: "Welcome to the official hub of Nek'tahr. Explore my social networks, curated gallery, stage-by-stage commission pricing, adoptable bid tiers, and current work queue.",
-          pathA: { tag: "OPTION A · EXPLORE", title: "Art Gallery & Archives", sub: "Browse SFW / 18+ works & external galleries (DA, FA, Pixiv, X)" },
+          desc: "Welcome to Nek'tahr's art hub. Explore public SFW portfolio samples, commission and adoptable pricing, YCH options, terms, and contact links.",
+          pathA: { tag: "OPTION A · EXPLORE", title: "Art Gallery & Archives", sub: "Browse public SFW samples and external galleries (DA, FA, Pixiv, X). DM for additional / NSFW examples." },
           pathB: { tag: "OPTION B · ORDER INFO", title: "Pricing, Stages & Adopts", sub: "Compare render stages, bid tiers & build a quote" }
         },
         contacts: {
@@ -158,19 +182,19 @@
         pricing: {
           eyebrow: "PRICING · STAGES · ADOPTS · YCH",
           title: "What You're Paying For",
-          sub: "Three distinct categories: Custom Commissions built from your idea, Adoptable character auctions with bonus bid tiers, and pre-posed YCH slots. Each tab below has its own tailored calculator on the right.",
-          tabs: { custom: "Customs & Stages", adopt: "Adopts & Bid Tiers", ych: "YCH Slots" },
-          stageSectionTitle: "Stage-by-Stage Render Breakdown",
-          stageSectionHint: "Click any stage card or price cell to load it directly into the calculator",
+          sub: "Compare custom commission packages, cumulative adoptable tiers, and the published YCH price guide. The quote builder gives a starting estimate; confirm the final quote and availability directly.",
+          tabs: { custom: "Custom Commissions", adopt: "Adopts & Bid Tiers", ych: "YCH Price Guide" },
+          stageSectionTitle: "Custom Commission Packages",
+          stageSectionHint: "Select a package to load it into the quote builder",
           stages: [
-            { key: "sketch", name: "Clean Sketch", range: "$35 – $50", time: "3–7 days", desc: "Clean structural sketch linework with clear anatomy, pose, and expression.", img: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80", gray: true },
-            { key: "color", name: "Colored Sketch / Flat Color", range: "$50 – $85", time: "7–14 days", desc: "Refined linework with accurate flat colors, palette harmony, and simple cel-shaded lighting.", img: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80", gray: false },
-            { key: "render", name: "Full Atmospheric Render", range: "$90 – $160", time: "14–30 days", desc: "Complete painterly rendering: dramatic rim lighting, skin & fabric textures, and atmospheric depth.", img: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80", gray: false }
+            { key: "single", name: "One character + simple background", range: "From $200", time: "14–30 business days", desc: "One character with a white or simple background. Final quote depends on the brief and complexity." },
+            { key: "duo", name: "Two characters + simple background", range: "From $350", time: "14–30 business days", desc: "Two characters with a white or simple background." },
+            { key: "extras", name: "Optional extras", range: "From $50", time: "Quoted separately", desc: "Extra outfit +$50. Additional character from $100. Rush delivery (3–5 business days) +$50–$100." }
           ],
           matrix: {
             eyebrow: "CUSTOM PRICE TABLE (USD)",
             title: "Custom / Commission Price Matrix",
-            hint: "Click any price button in the table to load it into the calculator.",
+            hint: "See the package cards above for current base prices.",
             format: "Framing", s1: "Sketch", s2: "Flat Color", s3: "Full Render",
             bust: "Portrait / Bust", bustSub: "Head & shoulders",
             half: "Half-Body / Waist", halfSub: "Waist or mid-thigh up",
@@ -183,11 +207,11 @@
           },
           breakdown: {
             eyebrow: "CHARACTER DESIGN FOCUS",
-            title: "Character Sheet & Detail Breakdown",
+            title: "Character Art: Details & Focus Areas",
             items: [
-              { tag: "SILHOUETTE & WARDROBE", title: "Full Silhouette & Outfit", desc: "Readable posture, dark minimal or fantasy tailoring, and clean palette separation.", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" },
-              { tag: "PORTRAIT & GAZE", title: "Face & Micro-Expressions", desc: "Expressive eye rendering, hair flow, piercings, makeup, and emotional mood.", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=80" },
-              { tag: "PROPS & GESTURES", title: "Hands, Weapons & Callouts", desc: "Anatomical hand gestures, rings, weapons, and close-up material details.", img: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=700&q=80" }
+              { tag: "SILHOUETTE & WARDROBE", title: "Full Silhouette & Outfit", desc: "Readable posture, dark minimal or fantasy tailoring, and clean palette separation.", img: "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c" },
+              { tag: "PORTRAIT & GAZE", title: "Face & Micro-Expressions", desc: "Expressive eye rendering, hair flow, piercings, makeup, and emotional mood.", img: "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c" },
+              { tag: "PROPS & GESTURES", title: "Hands, Weapons & Callouts", desc: "Anatomical hand gestures, rings, weapons, and close-up material details.", img: "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c" }
             ]
           },
           adoptSection: {
@@ -197,20 +221,21 @@
             blueprintTitle: "STRETCH GOAL BLUEPRINT",
             blueprintSub: "Custom-drawn specifically for the winning bidder",
             tiers: [
-              { val: 100, badge: "SB · STARTING BID", price: "$100", title: "SB — Base Character Design", desc: "High-res JPG + transparent PNG without watermark + color palette + personal ownership rights.", perks: ["Full-res transparent PNG", "Color palette strip", "Immediate file delivery"], hasSample: true, img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" },
-              { val: 200, badge: "TIER II UNLOCK", price: "$200", title: "+ Alternate Outfit / NSFW Version", desc: "Everything in SB + an extra custom outfit toggle or NSFW/lingerie version drawn on the base pose.", perks: ["Everything in SB ($100)", "Custom alt outfit or NSFW layer", "Turnaround: 7–14 days"], hasSample: false },
-              { val: 350, badge: "TIER III UNLOCK", price: "$350", title: "+ Standalone Bonus Artwork", desc: "Everything above + a brand-new standalone half-body illustration featuring this character from your prompt.", perks: ["Everything in Tier II ($200)", "Bonus rendered half-body art", "Turnaround: 14–21 days"], hasSample: false },
-              { val: 500, badge: "AB · AUTO-BUY", price: "$500", title: "+ Full Reference Sheet & Commercial Use", desc: "Complete collector sheet: back view, 3 expression headshots, close-up prop callouts, and full commercial license.", perks: ["Back view + 3 expression busts", "Weapon / accessory close-ups", "Full Commercial Rights included"], hasSample: false }
+              { val: 100, badge: "SB · STARTING BID", price: "$100", title: "SB — Base Adoptable Design", desc: "Base design with a public SFW image / PNG without watermark and personal-use rights.", perks: ["SFW image / PNG without watermark", "Personal-use rights", "Base tier delivered after payment"], hasSample: false },
+              { val: 200, badge: "TIER II", price: "$200+", title: "+ Full Render & Alternative Version", desc: "At bids of $200 or more, the bundle includes a full render and one agreed alternative version, such as an outfit or species variant.", perks: ["Everything in SB", "Full rendered artwork", "One agreed alternative version"], hasSample: false },
+              { val: 350, badge: "TIER III", price: "$350+", title: "+ Bonus Character Artwork", desc: "At bids of $350 or more, the bundle also includes bonus artwork featuring the character.", perks: ["Everything in Tier II", "Additional character artwork", "Details confirmed with the winning bidder"], hasSample: false },
+              { val: 500, badge: "AB · AUTO-BUY", price: "$500+", title: "+ Reference Sheet & Close-ups", desc: "At bids of $500 or more, the bundle includes a reference sheet and close-up details. Commercial use is not included automatically.", perks: ["Everything in Tier III", "Reference sheet", "Close-ups of selected details"], hasSample: false }
             ]
           },
           ychSection: {
             eyebrow: "PRE-POSED TEMPLATES",
-            title: "Available YCH Slots",
-            desc: "Your Character Here: fixed compositions where your character is painted into the pose. Click any slot to load it into the YCH calculator.",
+            title: "YCH Price Guide",
+            desc: "Published base prices for YCH artwork. These are price-guide options, not a statement that a specific slot is currently available.",
             slots: [
-              { val: 50, code: "YCH #12 · NIGHT WINDOW", title: "Nocturne Window Pose", stage: "Clean Sketch / Flat Color", price: "$50 – $75", status: "2 Slots Open", img: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=800&q=80" },
-              { val: 120, code: "YCH #13 · CRIMSON RAIN", title: "Rain & Neon Silhouette", stage: "Full Atmospheric Render", price: "$120", status: "1 Slot Open", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" },
-              { val: 160, code: "YCH #14 · VELVET THRONE", title: "Velvet Throne (SFW / 18+ Alt)", stage: "Full Render + Spicy Toggle", price: "$160", status: "Waitlist", img: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80" }
+              { val: 30, code: "YCH · SKETCH", title: "Clean Sketch", stage: "Sketch", price: "$30", status: "Price guide", desc: "Estimated turnaround: up to 14 business days." },
+              { val: 65, code: "YCH · COLOR SKETCH", title: "Color Sketch", stage: "Color sketch", price: "$65", status: "Price guide", desc: "Estimated turnaround: up to 14 business days." },
+              { val: 120, code: "YCH · FULL RENDER", title: "Full Render", stage: "Full render", price: "$120", status: "Price guide", desc: "Estimated turnaround: up to 14 business days." },
+              { val: 160, code: "YCH · FULL RENDER + NSFW", title: "Full Render + NSFW Alt", stage: "Discuss NSFW in advance", price: "$160", status: "Price guide", desc: "NSFW content must be discussed and agreed in advance." }
             ]
           }
         },
@@ -218,13 +243,13 @@
           title: "Quote Builder",
           reset: "Reset",
           modes: { custom: "Custom Commission", adopt: "Adoptable Tier", ych: "YCH Slot" },
-          stageCustom: "Stage / Render Level",
-          stageAdopt: "Select Auction Bid Tier",
-          stageYch: "Select YCH Slot & Finish",
+          stageCustom: "Select commission package",
+          stageAdopt: "Select adoptable tier",
+          stageYch: "Select YCH finish",
           crop: "Framing / Crop",
-          addonsCustom: "Commission Add-ons (Multi-select)",
+          addonsCustom: "Optional Extras",
           addonsAdopt: "Adoptable Upgrades & Extras",
-          addonsYch: "YCH Customizations",
+          addonsYch: "Optional extras",
           notesPlaceholder: "Optional: character reference links, pose idea, SFW/NSFW...",
           totalLabel: "Estimated Total",
           copyBtn: "Copy Ready DM Request",
@@ -234,24 +259,16 @@
         gallery: {
           eyebrow: "CURATED ARCHIVE",
           title: "Art Gallery",
-          sub: "Filter by category or toggle 18+ mature content verification.",
-          filters: { all: "All Works", ill: "Illustrations", comm: "Commissions", adopt: "Adopts", ych: "YCH", other: "Other works" },
-          nsfwToggle: "Show 18+ Content",
+          sub: "Public SFW samples only. Message me for additional works or NSFW examples.",
+          filters: { all: "All Samples", samples: "Portfolio Samples" },
           extTitle: "Full Archives & External Galleries",
-          extSub: "Want to see more works, full-res uploads, or live auctions? Visit my official profiles:",
-          modal: {
-            eyebrow: "MATURE CONTENT WARNING",
-            title: "Age Verification (18+)",
-            desc: "Enabling this filter reveals mature / NSFW artwork intended strictly for adults. Are you 18 years of age or older?",
-            yes: "Yes, I am 18+",
-            no: "No, keep blurred"
-          }
+          extSub: "For more works and current auction listings, visit my linked profiles:",
         },
         queue: {
-          eyebrow: "LIVE WORK TRACKER",
-          title: "Current Commission Queue",
-          sub: "Updated directly on this page — no external Trello required. Check your slot status and progress percentage below.",
-          cols: { slot: "Slot", client: "Client", details: "Order Details", stage: "Stage", progress: "Progress" }
+          eyebrow: "QUEUE & AVAILABILITY",
+          title: "Queue & Availability",
+          sub: "For current availability and progress, please contact me directly. This page does not publish live queue data.",
+          cols: { slot: "Status", client: "Availability", details: "Contact", stage: "", progress: "" }
         },
         tos: {
           eyebrow: "TERMS OF SERVICE",
@@ -259,35 +276,35 @@
           sub: "By commissioning me or bidding on an adoptable/YCH, you agree to the terms below.",
           summaryTitle: "Quick Summary (At a Glance)",
           cards: [
-            { num: "01", title: "100% Upfront Payment", desc: "Full payment within 48h after sketch approval via Boosty / PayPal / Hipolink (USD/EUR)." },
-            { num: "02", title: "Refund Policy", desc: "No refunds once work has started. If I ever cannot finish your piece, you receive a 100% refund." },
-            { num: "03", title: "Revisions & Edits", desc: "Up to 3–5 free tweaks during the sketch stage. Major pose changes on finished art cost extra." },
+            { num: "01", title: "100% Upfront Payment", desc: "Full prepayment within 48 hours after commission confirmation via PayPal, Ko-fi or Stripe (USD/EUR)." },
+            { num: "02", title: "Refund Policy", desc: "Refunds are normally unavailable after payment. If I cannot complete the commission, I refund the amount minus non-refundable platform fees." },
+            { num: "03", title: "Revisions & Edits", desc: "Up to 5 minor edits are included during the sketch stage. Changes after approval may cost extra; my own mistakes are fixed for free." },
             { num: "04", title: "Personal Use Default", desc: "All art is for personal use by default. Credit @Nektahr_ when reposting." },
             { num: "05", title: "Adoptable Resale", desc: "Adopts may be resold for the same price or lower (higher only if commissioned art is added)." },
             { num: "06", title: "Strict No AI / No NFT", desc: "Zero tolerance for AI training, machine learning datasets, or crypto/NFT minting." }
           ],
-          agreeCheck: "I have read and agree to the Terms of Service (attach confirmation to Quote Builder)",
+          agreeCheck: "I have read and agree to the Terms of Service (include the checkbox confirmation in the quote request)",
           fullTitle: "Detailed Terms & Conditions",
           sections: [
             {
               tag: "SECTION 01 · PAYMENT & REFUNDS",
               title: "Payment Methods, Holds & Refund Policy",
               bullets: [
-                "All prices are listed in USD. Payment is accepted via Boosty, Hipolink, or PayPal (depending on current availability).",
-                "For Custom Commissions: 100% payment is required after the rough composition sketch is approved (or upfront if you prefer).",
+                "Prices are listed in USD; EUR is also accepted. Payment methods: PayPal, Ko-fi or Stripe, subject to availability.",
+                "For custom commissions, full prepayment is due within 48 hours after the commission is confirmed.",
                 "For Adoptables & YCH Auctions: Full payment must be sent within 48 hours after winning the auction. Failure to pay without warning may result in the slot going to the previous bidder and a blacklist.",
-                "Payment Plans: Orders or Auto-Buys (AB) over $150 can be split 50/50 over 2–3 weeks. The first 50% is a non-refundable deposit.",
-                "Refunds: Once work has begun, payments are non-refundable. If I am ever unable to complete your commission due to personal or technical reasons, a full 100% refund will be issued."
+                "Payment plans may be available for orders over $200 by prior agreement, for example 50/50. Confirm the exact schedule before payment.",
+                "Refunds: after payment, refunds are not normally available. If I cannot complete the commission, I will refund the payment minus any non-refundable platform fees. No refund is due if the client seriously violates the ToS or behaves abusively."
               ]
             },
             {
               tag: "SECTION 02 · WORKFLOW & DEADLINES",
               title: "Process Stages, WIPs & Turnaround Time",
               bullets: [
-                "Estimated turnaround time is 3–7 days for sketches, 1–2 weeks for flat color, and 2–4 weeks for full atmospheric renders.",
+                "Estimated turnaround: YCH up to 14 business days; custom commissions 14–30 business days; adoptable base tier delivered immediately, higher tiers 14–40 business days.",
                 "You will receive WIP (Work in Progress) screenshots at key milestones: 1) Rough Sketch, 2) Clean Lineart & Flat Colors, and 3) Final Rendering.",
-                "Queue progress is always publicly visible in the 'Queue' tab on this website.",
-                "If you have a strict deadline (e.g., a birthday or stream debut), please mention it upfront. Rush orders (3–5 days) carry a +$60 priority fee."
+                "This website does not publish live queue details. Contact me directly for current availability and progress.",
+                "If you have a strict deadline (e.g., a birthday or stream debut), please mention it upfront. Rush orders (3–5 business days) may cost an additional $50–$100, depending on the deadline and scope."
               ]
             },
             {
@@ -307,7 +324,7 @@
                 "I retain authorship and portfolio rights to all artwork I create (posting low-res watermarked versions on DeviantArt, FurAffinity, Pixiv, or X).",
                 "Personal Use (Included): You may use the art for personal avatars, banners, character profiles (Toyhouse), and printing for yourself. Please credit @Nektahr_ when sharing.",
                 "Private / NDA Orders (+35%): If you wish the artwork to remain completely private and never be posted to my public galleries, a +35% NDA fee applies.",
-                "Commercial License (+100% / x2): Required if the artwork will be used for monetization, merchandise, book covers, monetized Twitch/YouTube streams, or VTuber assets (note: Commercial Rights are already included in Adoptable AB $500)."
+                "Commercial use requires a separate agreement and additional fee. It is not included automatically in any adoptable tier, including the $500 tier."
               ]
             },
             {
@@ -331,8 +348,8 @@
           ],
           willTitle: "✓ Will Draw",
           willList: ["Original Characters (OCs), Fantasy, DnD", "Anime / Semi-realism / Dark aesthetic", "Complex outfits, weapons, accessories", "Kemonomimi (ears, tails, horns, wings)", "Couples, romance & tasteful NSFW (18+)"],
-          wontTitle: "✕ Won't Draw",
-          wontList: ["Heavy mecha & complex military vehicles", "Hyper-realistic elderly portraits", "Extreme gore or non-consensual themes", "Political or hateful imagery"]
+          wontTitle: "! Special Requests — Ask First",
+          wontList: ["Mecha, full anthro, and extreme proportions may be difficult or cost extra", "Discuss NSFW requests before payment", "Please confirm unusual or complex requests before ordering"]
         },
         faq: {
           eyebrow: "KNOWLEDGE BASE",
@@ -340,29 +357,28 @@
           sub: "Everything you need to know about ordering commissions, bidding on adopts, payment plans, and file delivery.",
           cats: { all: "All Questions", order: "Ordering", payment: "Payment & Plans", adopts: "Adopts & YCH", process: "Process & Files" },
           items: [
-            { cat: "order", q: "How do I place an order?", a: "Use the Quote Builder on the Pricing page to estimate your price and copy the ready request text. Then send it to me via Discord (drintrav), Telegram DM (@nektahr or @drintrav), or Email (gapkuro@gmail.com) along with your character references." },
+            { cat: "order", q: "How do I place an order?", a: "Use the Quote Builder on the Pricing page to estimate your price and copy the ready request text. Then send it to me via Discord (drintrava), Telegram DM (@nek_tahr), or Email (gapkuro@gmail.com) along with your character references." },
             { cat: "order", q: "Can I order if I don't have a visual reference sheet?", a: "Yes! I can work from moodboards, outfit photos, Dollmaker/Picrew screenshots, and clear written descriptions. If we are designing a complex character completely from scratch without visual references, a small custom design fee may apply." },
-            { cat: "payment", q: "What payment methods and currencies do you accept?", a: "All prices are in USD (EUR is also accepted at the current exchange rate). Payments are processed via Boosty, Hipolink, or PayPal depending on your preferred method. I will send you a direct payment link and step-by-step instructions once we confirm your slot." },
-            { cat: "payment", q: "Do you offer payment plans (installments) for higher tiers or AB?", a: "Yes! For orders or Adoptable Auto-Buys (AB) over $150, a 50/50 split payment plan over 2–3 weeks is available. The first 50% is required upfront to hold your slot or claim the adopt, and final high-res files are delivered once the remaining 50% is paid." },
-            { cat: "adopts", q: "How do Adoptable Stretch Goal Tiers work if there is no sample image yet?", a: "When your bid reaches Tier II ($200), Tier III ($350), or AB ($500), I custom-draw those bonus items (alternate outfit, NSFW toggle, standalone half-body illustration, or back view + expressions) specifically for you and your prompts within 7–21 days after the auction closes. You get the base files immediately after payment!" },
-            { cat: "adopts", q: "Where do Adoptable & YCH auctions take place, and when do they end?", a: "Live auctions are hosted on DeviantArt, FurAffinity, and YCH.Commishes (you can also place a bid directly via DM). Auctions typically end 24–48 hours after the last bid, or immediately if someone claims Auto-Buy (AB)." },
+            { cat: "payment", q: "What payment methods and currencies do you accept?", a: "Prices are in USD; EUR is also accepted. Payment methods are PayPal, Ko-fi or Stripe, subject to availability. I will confirm the exact method and link before payment." },
+            { cat: "payment", q: "Do you offer payment plans (installments) for higher tiers or AB?", a: "A payment plan may be available for orders over $200 by prior agreement, for example 50/50. Confirm the schedule with me before payment." },
+            { cat: "adopts", q: "How do Adoptable Stretch Goal Tiers work if there is no sample image yet?", a: "Adoptable tiers are cumulative: from $200 the bundle adds a full render and an agreed alternative version; from $350 it adds bonus character artwork; from $500 it adds a reference sheet and close-up details. Higher-tier extras are custom-drawn after the auction." },
+            { cat: "adopts", q: "Where do Adoptable & YCH auctions take place, and when do they end?", a: "Auctions are announced on the relevant platform. Check my current profile or message me to confirm whether a specific auction is active and when it ends." },
             { cat: "adopts", q: "Can I change the gender, body type, or species on a YCH slot?", a: "Minor adjustments to body type, ears/tails (kemonomimi), horns, wings, and expressions are always welcome on YCH slots! If a YCH requires a complete anatomical rebuild, I will let you know in DMs if a small adjustment fee applies." },
-            { cat: "process", q: "How do I track my commission progress and turnaround time?", a: "You can check the 'Queue' tab in the top navigation anytime to see your slot stage and completion percentage. Additionally, I always send WIP screenshots in DMs at the sketch, flat color, and final rendering stages." },
-            { cat: "process", q: "What file formats and resolution will I receive?", a: "All finished artworks are delivered in high resolution (typically 3000–4500px on the longest side, 300 DPI) via a permanent cloud link (Google Drive) or uncompressed files in Discord/Telegram. You receive full-res JPG and PNG files (plus transparent background PNGs for character sheets and adopts)." },
-            { cat: "process", q: "Can I keep my commission private (NDA) or use it for streaming / VTubing?", a: "Yes! If you don't want me to publish your commission anywhere, select the 'Private / NDA (+35%)' option in the Quote Builder. If you plan to use the art for monetized streams, merch, or commercial projects, select 'Commercial Use (x2)'." },
-            { cat: "order", q: "What if all commission slots are currently full?", a: "Even if all active slots are taken, you can message me to join the Waitlist or pre-book a slot for the next batch!" }
+            { cat: "process", q: "How do I track my commission progress and turnaround time?", a: "The website does not publish live queue data. Contact me directly to check availability and progress; WIP updates are shared during the agreed workflow." },
+            { cat: "process", q: "What file formats and resolution will I receive?", a: "File formats, resolution, and delivery method are agreed before work starts. Please confirm specific export requirements with me when ordering." },
+            { cat: "process", q: "Can I keep my commission private (NDA) or use it for streaming / VTubing?", a: "Yes. A private / NDA request adds 35%. Commercial use requires a separate agreement and a separately quoted fee." },
+            { cat: "order", q: "How do I check current availability?", a: "Please contact me directly to check availability or ask about a waitlist. The website does not publish live slot counts." }
           ]
         }
       },
-
       es: {
         nav: { board: "Inicio", pricing: "Precios", gallery: "Galería", queue: "Cola", tos: "Términos", faq: "FAQ" },
-        statusBadge: "2 Cupos Abiertos",
+        statusBadge: "Consultar disponibilidad",
         hero: {
           eyebrow: "PORTAFOLIO · COMISIONES · ADOPTS · YCH",
           title: "Minimalismo Oscuro y Arte Expresivo de Personajes.",
-          desc: "Bienvenido al hub oficial de Nek'tahr. Explora mis redes, galería curada, precios por etapa de render, niveles de subasta para adopts y la cola de trabajo en vivo.",
-          pathA: { tag: "OPCIÓN A · EXPLORAR", title: "Galería y Archivos", sub: "Obras SFW / 18+ y galerías en DA, FA, Pixiv y X" },
+          desc: "Bienvenido al espacio artístico de Nek'tahr. Explora muestras públicas SFW, precios de comisiones y adopts, opciones YCH, términos y formas de contacto.",
+          pathA: { tag: "OPCIÓN A · EXPLORAR", title: "Galería y Archivos", sub: "Muestras públicas SFW y galerías en DA, FA, Pixiv y X. Para ejemplos adicionales o NSFW, escríbeme." },
           pathB: { tag: "OPCIÓN B · COMISIONES", title: "Precios, Etapas y Adopts", sub: "Compara etapas, niveles de subasta y calcula tu orden" }
         },
         contacts: {
@@ -379,19 +395,19 @@
         pricing: {
           eyebrow: "PRECIOS · ETAPAS · ADOPTS · YCH",
           title: "Lo Que Estás Pagando",
-          sub: "Tres categorías claras: Comisiones personalizadas desde cero, Adopts con niveles de bonificación y slots YCH. Cada pestaña adapta la calculadora de la derecha.",
-          tabs: { custom: "Comisiones y Etapas", adopt: "Adopts y Niveles", ych: "YCH Slots" },
-          stageSectionTitle: "Desglose por Etapa de Render",
-          stageSectionHint: "Haz clic en cualquier etapa o precio para cargarlo en la calculadora",
+          sub: "Compara paquetes de comisiones, niveles acumulativos de adopts y precios orientativos de YCH. La calculadora da un presupuesto inicial; confirma el precio final y la disponibilidad directamente.",
+          tabs: { custom: "Comisiones personalizadas", adopt: "Adopts y Niveles", ych: "Precios de YCH" },
+          stageSectionTitle: "Paquetes de Comisiones Personalizadas",
+          stageSectionHint: "Selecciona un paquete para cargarlo en la calculadora",
           stages: [
-            { key: "sketch", name: "Boceto Limpio (Sketch)", range: "$35 – $50", time: "3–7 días", desc: "Línea estructural limpia con anatomía clara, pose definida y expresión.", img: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80", gray: true },
-            { key: "color", name: "Color Base (Flat Color)", range: "$50 – $85", time: "7–14 días", desc: "Lineart limpio con colores base precisos, armonía de paleta y sombreado cel simple.", img: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80", gray: false },
-            { key: "render", name: "Render Atmosférico Completo", range: "$90 – $160", time: "14–30 días", desc: "Renderizado pictórico completo: iluminación dramática, texturas de piel/tela y atmósfera.", img: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80", gray: false }
+            { key: "single", name: "Un personaje + fondo sencillo", range: "Desde $200", time: "14–30 días laborables", desc: "Un personaje con fondo blanco o sencillo. El precio final depende de la complejidad y la descripción." },
+            { key: "duo", name: "Dos personajes + fondo sencillo", range: "Desde $350", time: "14–30 días laborables", desc: "Dos personajes con fondo blanco o sencillo." },
+            { key: "extras", name: "Extras opcionales", range: "Desde $50", time: "Precio por confirmar", desc: "Atuendo extra +$50. Personaje adicional desde $100. Urgente (3–5 días laborables): +$50–$100." }
           ],
           matrix: {
             eyebrow: "TABLA DE PRECIOS (USD)",
             title: "Matriz de Precios de Comisiones",
-            hint: "Haz clic en cualquier precio para enviarlo a la calculadora.",
+            hint: "Consulta los paquetes actuales en las tarjetas de arriba.",
             format: "Encuadre", s1: "Boceto", s2: "Color Base", s3: "Render Total",
             bust: "Retrato / Busto", bustSub: "Cabeza y hombros",
             half: "Medio Cuerpo", halfSub: "Hasta cintura o muslos",
@@ -404,11 +420,11 @@
           },
           breakdown: {
             eyebrow: "ENFOQUE DE DISEÑO",
-            title: "Anatomía de Referencia y Detalles",
+            title: "Detalles y Enfoques del Arte de Personajes",
             items: [
-              { tag: "SILUETA Y ATUENDO", title: "Silueta Completa y Moda", desc: "Postura legible, sastrería oscura o fantasía y paleta de colores limpia.", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" },
-              { tag: "RETRATO Y MIRADA", title: "Rostro y Microexpresiones", desc: "Renderizado expresivo de ojos, cabello, piercings y maquillaje.", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=80" },
-              { tag: "MANOS Y ACCESORIOS", title: "Manos, Armas y Detalles", desc: "Gestos anatómicos de manos, anillos, armas y zoom de materiales.", img: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=700&q=80" }
+              { tag: "SILUETA Y ATUENDO", title: "Silueta Completa y Moda", desc: "Postura legible, sastrería oscura o fantasía y paleta de colores limpia.", img: "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c" },
+              { tag: "RETRATO Y MIRADA", title: "Rostro y Microexpresiones", desc: "Renderizado expresivo de ojos, cabello, piercings y maquillaje.", img: "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c" },
+              { tag: "MANOS Y ACCESORIOS", title: "Manos, Armas y Detalles", desc: "Gestos anatómicos de manos, anillos, armas y zoom de materiales.", img: "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c" }
             ]
           },
           adoptSection: {
@@ -418,20 +434,21 @@
             blueprintTitle: "ESQUEMA DE BONIFICACIÓN",
             blueprintSub: "Dibujado a medida para el ganador de la subasta",
             tiers: [
-              { val: 100, badge: "SB · OFERTA INICIAL", price: "$100", title: "SB — Diseño Base del Personaje", desc: "JPG de alta resolución + PNG transparente sin marca de agua + paleta + derechos personales.", perks: ["PNG transparente en alta resolución", "Paleta de colores", "Entrega inmediata tras el pago"], hasSample: true, img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" },
-              { val: 200, badge: "NIVEL II", price: "$200", title: "+ Atuendo Alternativo / Versión NSFW", desc: "Todo lo de SB + un atuendo adicional o versión NSFW/lencería sobre la pose base.", perks: ["Todo lo incluido en SB ($100)", "Atuendo extra o capa NSFW", "Entrega: 7–14 días"], hasSample: false },
-              { val: 350, badge: "NIVEL III", price: "$350", title: "+ Ilustración Bonus Independiente", desc: "Todo lo anterior + una ilustración independiente de medio cuerpo del personaje.", perks: ["Todo lo incluido en Nivel II ($200)", "Arte extra de medio cuerpo", "Entrega: 14–21 días"], hasSample: false },
-              { val: 500, badge: "AB · COMPRA AUTOMÁTICA", price: "$500", title: "+ Hoja de Referencia Completa y Uso Comercial", desc: "Vista trasera, 3 expresiones faciales, detalles de accesorios y licencia comercial completa.", perks: ["Vista trasera + 3 expresiones", "Zoom de armas/accesorios", "Derechos Comerciales incluidos"], hasSample: false }
+              { val: 100, badge: "SB · OFERTA INICIAL", price: "$100", title: "SB — Diseño Base del Adopt", desc: "Diseño base con imagen SFW / PNG sin marca de agua y derechos de uso personal.", perks: ["Imagen SFW / PNG sin marca de agua", "Derechos de uso personal", "Entrega del nivel base tras el pago"], hasSample: false },
+              { val: 200, badge: "NIVEL II", price: "$200+", title: "+ Render Completo y Versión Alternativa", desc: "Con ofertas de $200 o más, el paquete incluye un render completo y una versión alternativa acordada, por ejemplo, otro atuendo o variante de especie.", perks: ["Todo lo del nivel SB", "Ilustración renderizada", "Una versión alternativa acordada"], hasSample: false },
+              { val: 350, badge: "NIVEL III", price: "$350+", title: "+ Ilustración Extra del Personaje", desc: "Con ofertas de $350 o más, se añade una ilustración extra con el personaje.", perks: ["Todo lo del nivel II", "Ilustración adicional", "Detalles acordados con la persona ganadora"], hasSample: false },
+              { val: 500, badge: "AB · COMPRA AUTOMÁTICA", price: "$500+", title: "+ Hoja de Referencia y Detalles", desc: "Con ofertas de $500 o más, se incluye una hoja de referencia y primeros planos. El uso comercial no está incluido automáticamente.", perks: ["Todo lo del nivel III", "Hoja de referencia", "Primeros planos de detalles elegidos"], hasSample: false }
             ]
           },
           ychSection: {
             eyebrow: "POSES PREDISEÑADAS",
-            title: "Slots YCH Disponibles",
-            desc: "Tu personaje pintado dentro de una composición lista. Haz clic en cualquier tarjeta para calcular.",
+            title: "Guía de precios YCH",
+            desc: "Precios base publicados para YCH. Estas opciones son una guía de precios, no una confirmación de disponibilidad actual.",
             slots: [
-              { val: 50, code: "YCH #12 · VENTANA NOCTURNA", title: "Pose en Ventana Nocturna", stage: "Boceto / Color Base", price: "$50 – $75", status: "2 Cupos", img: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=800&q=80" },
-              { val: 120, code: "YCH #13 · LLUVIA CARMESÍ", title: "Silueta bajo la Lluvia", stage: "Render Completo", price: "$120", status: "1 Cupo", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" },
-              { val: 160, code: "YCH #14 · TRONO DE TERCIOPELO", title: "Trono Oscuro (SFW / 18+)", stage: "Render + Versión 18+", price: "$160", status: "Lista de espera", img: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80" }
+              { val: 30, code: "YCH · BOCETO", title: "Boceto limpio", stage: "Boceto", price: "$30", status: "Guía de precios", desc: "Plazo estimado: hasta 14 días laborables." },
+              { val: 65, code: "YCH · BOCETO A COLOR", title: "Boceto a color", stage: "Boceto a color", price: "$65", status: "Guía de precios", desc: "Plazo estimado: hasta 14 días laborables." },
+              { val: 120, code: "YCH · RENDER COMPLETO", title: "Render completo", stage: "Render completo", price: "$120", status: "Guía de precios", desc: "Plazo estimado: hasta 14 días laborables." },
+              { val: 160, code: "YCH · RENDER + NSFW", title: "Render completo + versión NSFW", stage: "Hablar sobre NSFW antes", price: "$160", status: "Guía de precios", desc: "El contenido NSFW debe hablarse y acordarse de antemano." }
             ]
           }
         },
@@ -439,13 +456,13 @@
           title: "Calculadora",
           reset: "Reiniciar",
           modes: { custom: "Comisión Custom", adopt: "Subasta Adopt", ych: "Slot YCH" },
-          stageCustom: "Etapa de Render",
-          stageAdopt: "Nivel de Oferta (Tier)",
-          stageYch: "Slot YCH y Acabado",
+          stageCustom: "Selecciona un paquete",
+          stageAdopt: "Selecciona el nivel del adopt",
+          stageYch: "Selecciona el acabado YCH",
           crop: "Encuadre",
-          addonsCustom: "Extras de Comisión",
+          addonsCustom: "Extras opcionales",
           addonsAdopt: "Extras de Adoptable",
-          addonsYch: "Personalización YCH",
+          addonsYch: "Extras opcionales",
           notesPlaceholder: "Opcional: enlaces a referencias, idea de pose, SFW/NSFW...",
           totalLabel: "Total Estimado",
           copyBtn: "Copiar Solicitud para MD",
@@ -455,24 +472,16 @@
         gallery: {
           eyebrow: "ARCHIVO VISUAL",
           title: "Galería de Arte",
-          sub: "Filtra por categoría o activa la verificación para contenido +18.",
-          filters: { all: "Todo", ill: "Ilustraciones", comm: "Comisiones", adopt: "Adopts", ych: "YCH", other: "Otros trabajos" },
-          nsfwToggle: "Mostrar +18",
+          sub: "Solo muestras públicas SFW. Escríbeme para ver más trabajos o ejemplos NSFW.",
+          filters: { all: "Todas las muestras", samples: "Muestras de portafolio" },
           extTitle: "Archivos Completos y Galerías Externas",
-          extSub: "¿Quieres ver más obras o subastas activas? Visita mis perfiles oficiales:",
-          modal: {
-            eyebrow: "ADVERTENCIA DE CONTENIDO ADULTO",
-            title: "Verificación de Edad (+18)",
-            desc: "Esta opción muestra arte NSFW para mayores de edad. ¿Confirmas que tienes 18 años o más?",
-            yes: "Sí, tengo +18",
-            no: "No, volver"
-          }
+          extSub: "Para ver más obras y subastas actuales, visita mis perfiles enlazados:",
         },
         queue: {
-          eyebrow: "ESTADO EN VIVO",
-          title: "Cola de Trabajo Actual",
-          sub: "Seguimiento en tiempo real de comisiones, adopts y YCH activos.",
-          cols: { slot: "Cupo", client: "Cliente", details: "Detalles", stage: "Etapa", progress: "Progreso" }
+          eyebrow: "COLA Y DISPONIBILIDAD",
+          title: "Cola y disponibilidad",
+          sub: "Para consultar disponibilidad y avances, escríbeme directamente. Esta página no publica datos de cola en vivo.",
+          cols: { slot: "Estado", client: "Disponibilidad", details: "Contacto", stage: "", progress: "" }
         },
         tos: {
           eyebrow: "TÉRMINOS DE SERVICIO",
@@ -480,35 +489,35 @@
           sub: "Al comisionarme o pujar por un adopt/YCH, aceptas los siguientes términos.",
           summaryTitle: "Resumen Rápido",
           cards: [
-            { num: "01", title: "Pago 100% Anticipado", desc: "Pago completo dentro de 48h tras aprobar el boceto (USD/EUR)." },
-            { num: "02", title: "Reembolsos", desc: "Sin reembolsos tras iniciar el trabajo, salvo que yo no pueda completarlo (100% reembolso)." },
-            { num: "03", title: "Revisiones", desc: "Hasta 3–5 ajustes gratis en el boceto. Cambios grandes luego tienen costo." },
+            { num: "01", title: "Pago 100% Anticipado", desc: "El pago completo vence dentro de las 48 horas posteriores a la confirmación del encargo (USD/EUR)." },
+            { num: "02", title: "Reembolsos", desc: "Normalmente no hay reembolsos después del pago. Si no puedo completar el encargo, devolveré el importe menos las comisiones no reembolsables de la plataforma." },
+            { num: "03", title: "Revisiones", desc: "Se incluyen hasta 5 cambios menores durante la etapa de boceto. Los cambios posteriores pueden tener coste; mis propios errores se corrigen gratis." },
             { num: "04", title: "Uso Personal", desc: "Uso personal por defecto. Acreditar a @Nektahr_ al publicar." },
             { num: "05", title: "Reventa de Adopts", desc: "Se pueden revender al mismo precio o menor (mayor solo con arte extra)." },
             { num: "06", title: "Prohibido IA y NFT", desc: "Prohibido usar mi arte para entrenar IA o crear NFTs/cripto." }
           ],
-          agreeCheck: "He leído y acepto los Términos de Servicio (añadir confirmación a la calculadora)",
+          agreeCheck: "He leído y acepto los Términos de Servicio (incluir la confirmación de la casilla en el mensaje de solicitud)",
           fullTitle: "Términos Detallados",
           sections: [
             {
               tag: "SECCIÓN 01 · PAGOS Y REEMBOLSOS",
               title: "Métodos de Pago, Reservas y Reembolsos",
               bullets: [
-                "Todos los precios están en USD. Pagos mediante Boosty, Hipolink o PayPal.",
-                "Para Comisiones Custom: pago del 100% tras aprobar el boceto inicial.",
+                "Los precios están en USD; también se acepta EUR. Métodos de pago: PayPal, Ko-fi o Stripe, según disponibilidad.",
+                "Para comisiones personalizadas, el pago completo vence dentro de las 48 horas posteriores a la confirmación del encargo.",
                 "Para Adopts y YCH: el pago debe realizarse dentro de las 48 horas posteriores a ganar la subasta.",
-                "Planes de Pago: pedidos o AB superiores a $150 pueden dividirse 50/50 en 2–3 semanas (el primer 50% no es reembolsable).",
-                "Reembolsos: no hay reembolsos una vez iniciado el arte. Si por algún motivo no puedo terminar tu pedido, recibirás el 100% de reembolso."
+                "Puede acordarse un plan de pago para pedidos superiores a $200, por ejemplo 50/50. Confirma el calendario antes de pagar.",
+                "Reembolsos: normalmente no hay reembolsos después del pago. Si no puedo completar el encargo, devolveré el importe menos las comisiones no reembolsables de la plataforma. No se reembolsa si el cliente incumple gravemente estos términos o tiene un comportamiento abusivo."
               ]
             },
             {
               tag: "SECCIÓN 02 · PROCESO Y PLAZOS",
               title: "Etapas WIP y Tiempo de Entrega",
               bullets: [
-                "Tiempo estimado: 3–7 días para bocetos, 1–2 semanas para color base y 2–4 semanas para render completo.",
+                "Plazos estimados: YCH hasta 14 días laborables; comisiones personalizadas 14–30 días laborables; adopt base inmediata y niveles superiores 14–40 días laborables.",
                 "Recibirás avances (WIPs) en boceto, color base y render final.",
-                "El progreso siempre está disponible en la pestaña 'Cola' (Queue) de esta web.",
-                "Pedidos urgentes (3–5 días) tienen un recargo de prioridad de +$60."
+                "Esta web no publica datos de cola en tiempo real. Escríbeme para consultar disponibilidad y avances.",
+                "Los pedidos urgentes (3–5 días laborables) pueden añadir $50–$100 según la fecha límite y el alcance."
               ]
             },
             {
@@ -527,7 +536,7 @@
                 "Conservo los derechos de autor para mostrar la obra con marca de agua en mi portafolio.",
                 "Uso Personal (Incluido): avatares, banners y perfiles personales acreditando a @Nektahr_.",
                 "Pedidos Privados / NDA (+35%): si deseas que la obra sea totalmente privada y no se publique.",
-                "Uso Comercial (+100% / x2): requerido para merchandising, monetización o VTubers (ya incluido en el AB $500 de Adopts)."
+                "Uso comercial: requiere un acuerdo separado y una tarifa adicional; no está incluido automáticamente en el nivel de $500."
               ]
             },
             {
@@ -550,8 +559,8 @@
           ],
           willTitle: "✓ Sí Dibujo",
           willList: ["Personajes originales (OCs), fantasía, DnD", "Anime / Semi-realismo / Estética oscura", "Ropa compleja, armas, accesorios", "Kemonomimi (orejas, colas, cuernos, alas)", "Parejas, romance y NSFW estético (+18)"],
-          wontTitle: "✕ No Dibujo",
-          wontList: ["Mecha pesado y vehículos militares", "Retratos hiperrealistas de ancianos", "Gore extremo o fetiches extremos", "Temas políticos u ofensivos"]
+          wontTitle: "! Encargos especiales — Consultar antes",
+          wontList: ["Mecha, anthro completo y proporciones extremas pueden ser difíciles o costar más", "Habla sobre solicitudes NSFW antes de pagar", "Confirma los encargos complejos antes de pedir"]
         },
         faq: {
           eyebrow: "PREGUNTAS FRECUENTES",
@@ -559,29 +568,28 @@
           sub: "Todo sobre pedidos, subastas de adopts, pagos fraccionados y entrega de archivos.",
           cats: { all: "Todas", order: "Pedidos", payment: "Pagos", adopts: "Adopts y YCH", process: "Proceso y Archivos" },
           items: [
-            { cat: "order", q: "¿Cómo hago un pedido?", a: "Usa la calculadora en la página de Precios, copia el mensaje generado y envíamelo por Discord (drintrav), Telegram DM (@nektahr / @drintrav) o Email junto con tus referencias." },
+            { cat: "order", q: "¿Cómo hago un pedido?", a: "Usa la calculadora en la página de Precios, copia el mensaje generado y envíamelo por Discord (drintrava), Telegram DM (@nek_tahr) o Email junto con tus referencias." },
             { cat: "order", q: "¿Puedo pedir sin hoja de referencia?", a: "¡Sí! Puedo trabajar con moodboards, fotos de ropa, capturas de Picrew y descripciones claras." },
-            { cat: "payment", q: "¿Qué métodos de pago y monedas aceptas?", a: "Todos los precios están en USD (también acepto EUR). El pago se realiza vía Boosty, Hipolink o PayPal con instrucciones paso a paso." },
-            { cat: "payment", q: "¿Aceptas planes de pago (en cuotas)?", a: "Sí, para montos superiores a $150 (incluyendo AB de adopts) puedo dividir el pago 50/50 en 2–3 semanas." },
-            { cat: "adopts", q: "¿Cómo funcionan los niveles de Adopts sin imagen de ejemplo?", a: "Si tu oferta alcanza el Nivel II ($200), Nivel III ($350) o AB ($500), dibujo esos extras (atuendo extra, versión NSFW, ilustración de medio cuerpo o vista trasera) específicamente para ti en 7–21 días tras cerrar la subasta." },
-            { cat: "adopts", q: "¿Dónde se realizan las subastas de Adopts y YCH?", a: "En DeviantArt, FurAffinity y YCH.Commishes (también puedes ofertar por MD). Suelen cerrar 24–48h después de la última oferta o al instante con AB." },
+            { cat: "payment", q: "¿Qué métodos de pago y monedas aceptas?", a: "Los precios están en USD (también acepto EUR). Los métodos de pago son PayPal, Ko-fi o Stripe, según disponibilidad." },
+            { cat: "payment", q: "¿Aceptas planes de pago (en cuotas)?", a: "Se puede acordar un plan de pago para pedidos superiores a $200, por ejemplo 50/50. Confirma el calendario antes de pagar." },
+            { cat: "adopts", q: "¿Cómo funcionan los niveles de Adopts sin imagen de ejemplo?", a: "Los extras de los niveles desbloqueados se dibujan a medida. El plazo estimado para los niveles superiores de adopt es de 14–40 días laborables, según el alcance acordado." },
+            { cat: "adopts", q: "¿Dónde se realizan las subastas de Adopts y YCH?", a: "Las subastas activas y su hora de cierre se anuncian en la plataforma correspondiente. Consulta mi perfil o escríbeme para confirmar la disponibilidad actual." },
             { cat: "adopts", q: "¿Se puede cambiar el cuerpo o detalles en un YCH?", a: "Ajustes de expresión, orejas, colas, cuernos o alas siempre son posibles. Si requiere redibujar toda la anatomía, te avisaré por MD." },
-            { cat: "process", q: "¿Dónde veo el avance de mi pedido?", a: "En la pestaña 'Cola' (Queue) de este sitio en cualquier momento, además de las capturas WIP que envío por mensaje directo." },
-            { cat: "process", q: "¿En qué formato y resolución entregas los archivos?", a: "En alta resolución (3000–4500px, 300 DPI) en formatos JPG y PNG (con versión transparente para diseños y adopts) mediante enlace en la nube o archivo sin compresión." },
-            { cat: "process", q: "¿Puedo pedir privacidad (NDA) o licencia comercial?", a: "¡Sí! Puedes marcar 'Privado / NDA (+35%)' o 'Uso Comercial (x2)' directamente en la calculadora." },
+            { cat: "process", q: "¿Cómo consulto el avance de mi pedido?", a: "Escríbeme directamente para consultar disponibilidad y avances; esta web no publica una cola en tiempo real." },
+            { cat: "process", q: "¿En qué formato y resolución entregas los archivos?", a: "Los formatos, la resolución y el método de entrega se acuerdan antes de empezar. Confirma cualquier requisito específico al hacer el pedido." },
+            { cat: "process", q: "¿Puedo pedir privacidad (NDA) o licencia comercial?", a: "La privacidad / NDA añade un 35%. El uso comercial requiere un acuerdo y una tarifa aparte, que deben confirmarse antes del pago." },
             { cat: "order", q: "¿Qué pasa si todos los cupos están llenos?", a: "Puedes escribirme para entrar en la Lista de Espera (Waitlist) y reservar lugar en la siguiente tanda." }
           ]
         }
       },
-
       ru: {
         nav: { board: "Главная", pricing: "Прайс", gallery: "Галерея", queue: "Очередь", tos: "Правила", faq: "FAQ" },
-        statusBadge: "Открыто 2 слота",
+        statusBadge: "Уточнить наличие",
         hero: {
           eyebrow: "ПОРТФОЛИО · КОМИШКИ · АДОПТЫ · YCH",
           title: "Тёмный минимализм и выразительные персонажи.",
-          desc: "Добро пожаловать на официальный сайт-хаб Nek'tahr. Здесь собраны все мои прямые контакты и соцсети, галерея с фильтром 18+, наглядная поэтапка с ценами, уровни ставок для адоптов и живая очередь заказов.",
-          pathA: { tag: "ВАРИАНТ А · АРТЫ И АРХИВЫ", title: "Галерея и Площадки", sub: "Портфолио SFW / 18+ и переходы на DA, FA, Pixiv, X" },
+          desc: "Добро пожаловать в арт-хаб Nek'tahr. Здесь собраны SFW-примеры работ, цены на коммишки и адопты, варианты YCH, правила и контакты.",
+          pathA: { tag: "ВАРИАНТ А · АРТЫ И АРХИВЫ", title: "Галерея и Площадки", sub: "Публичные SFW-примеры и галереи на DA, FA, Pixiv, X. За дополнительными или NSFW-примерами напишите мне." },
           pathB: { tag: "ВАРИАНТ Б · ЗАКАЗАТЬ АРТ", title: "Цены, Поэтапка и Адопты", sub: "Сравнение этапов, тиры адоптов и калькулятор" }
         },
         contacts: {
@@ -598,19 +606,19 @@
         pricing: {
           eyebrow: "ПРАЙС · ПОЭТАПКА · АДОПТЫ · ЮЧИ",
           title: "Цены и комплектация заказов",
-          sub: "Три направления: индивидуальные Комишки с нуля, аукционы Адоптов с бонусными уровнями ставок и готовые позы YCH. У каждой вкладки справа свой собственный калькулятор.",
-          tabs: { custom: "Комишки и Этапы", adopt: "Адопты и Уровни", ych: "Слоты YCH" },
-          stageSectionTitle: "Поэтапка: как выглядит и сколько стоит каждый уровень",
-          stageSectionHint: "Нажми на любую карточку этапа или цену в таблице, чтобы загрузить её в калькулятор",
+          sub: "Сравни пакеты индивидуальных заказов, накопительные уровни адоптов и ориентиры цен YCH. Калькулятор показывает начальную оценку, окончательную цену и наличие слота нужно подтвердить напрямую.",
+          tabs: { custom: "Индивидуальные заказы", adopt: "Адопты и Уровни", ych: "Цены YCH" },
+          stageSectionTitle: "Пакеты индивидуальных заказов",
+          stageSectionHint: "Выбери пакет, чтобы загрузить его в калькулятор",
           stages: [
-            { key: "sketch", name: "Чистый скетч (Clean Sketch)", range: "$35 – $50", time: "3–7 дней", desc: "Аккуратный структурный скетч с читаемой анатомией, позой, характером и лёгким тоном.", img: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=800&q=80", gray: true },
-            { key: "color", name: "Лайн и базовый цвет (Flat Color)", range: "$50 – $85", time: "7–14 дней", desc: "Чистый лайн, выверенная палитра персонажа и базовые тени/градиенты без сложного рендера.", img: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80", gray: false },
-            { key: "render", name: "Полноценный рендер (Full Render)", range: "$90 – $160", time: "14–30 дней", desc: "Полная живописная проработка объёма, сложного света, фактур кожи, ткани, металла и атмосферы.", img: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80", gray: false }
+            { key: "single", name: "Один персонаж + простой фон", range: "От $200", time: "14–30 рабочих дней", desc: "Один персонаж на белом или простом фоне. Итоговая цена зависит от задачи и сложности." },
+            { key: "duo", name: "Два персонажа + простой фон", range: "От $350", time: "14–30 рабочих дней", desc: "Два персонажа на белом или простом фоне." },
+            { key: "extras", name: "Дополнительные опции", range: "От $50", time: "Цена уточняется", desc: "Дополнительный наряд +$50. Каждый следующий персонаж от $100. Срочность 3–5 рабочих дней: +$50–$100." }
           ],
           matrix: {
             eyebrow: "ТАБЛИЦА ЦЕН (USD)",
             title: "Матрица цен по формату и этапу",
-            hint: "Кликни на любую кнопку с ценой, чтобы сразу подставить её в калькулятор справа.",
+            hint: "Актуальные стартовые цены указаны в карточках выше.",
             format: "Формат", s1: "Скетч", s2: "Базовый цвет", s3: "Полный рендер",
             bust: "Портрет / По грудь", bustSub: "Голова и плечи (Bust)",
             half: "По пояс / бёдра", halfSub: "Half-Body",
@@ -623,11 +631,11 @@
           },
           breakdown: {
             eyebrow: "ПРОРАБОТКА ДИЗАЙНА",
-            title: "Анатомия референса и деталей",
+            title: "Детали и акценты в арте персонажей",
             items: [
-              { tag: "СИЛУЭТ И КОСТЮМ", title: "Полный рост и крой одежды", desc: "Читаемый силуэт, тёмный минимализм или фэнтези-гардероб и гармония палитры.", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=80" },
-              { tag: "ПОРТРЕТ И ЭМОЦИИ", title: "Лицо, взгляд и мимика", desc: "Детальная проработка глаз, прядей волос, пирсинга, макияжа и эмоций.", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=700&q=80" },
-              { tag: "РУКИ И АКСЕССУАРЫ", title: "Пластика рук, оружие и детали", desc: "Выразительные жесты кистей, кольца, оружие и крупные планы материалов.", img: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=700&q=80" }
+              { tag: "СИЛУЭТ И КОСТЮМ", title: "Полный рост и крой одежды", desc: "Читаемый силуэт, тёмный минимализм или фэнтези-гардероб и гармония палитры.", img: "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c" },
+              { tag: "ПОРТРЕТ И ЭМОЦИИ", title: "Лицо, взгляд и мимика", desc: "Детальная проработка глаз, прядей волос, пирсинга, макияжа и эмоций.", img: "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c" },
+              { tag: "РУКИ И АКСЕССУАРЫ", title: "Пластика рук, оружие и детали", desc: "Выразительные жесты кистей, кольца, оружие и крупные планы материалов.", img: "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c" }
             ]
           },
           adoptSection: {
@@ -637,20 +645,21 @@
             blueprintTitle: "ЭСКИЗ-СХЕМА УРОВНЯ",
             blueprintSub: "Отрисовывается индивидуально под победителя аукциона",
             tiers: [
-              { val: 100, badge: "SB · НАЧАЛЬНАЯ СТАВКА", price: "$100", title: "SB — Базовый референс персонажа", desc: "JPG в высоком разрешении + прозрачный PNG без вотермарки + палитра + личные права на персонажа.", perks: ["Прозрачный PNG в полном качестве", "Полоска цветовой палитры", "Мгновенная выдача файлов после оплаты"], hasSample: true, img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80" },
-              { val: 200, badge: "УРОВЕНЬ II", price: "$200", title: "+ Дополнительный наряд / NSFW-версия", desc: "Всё из SB + дополнительный сменный аутфит или версия 18+ на той же базовой позе по вашим пожеланиям.", perks: ["Всё из базового уровня SB ($100)", "Кастомный доп. наряд или NSFW-слой", "Срок отрисовки бонуса: 7–14 дней"], hasSample: false },
-              { val: 350, badge: "УРОВЕНЬ III", price: "$350", title: "+ Отдельный бонусный арт (Half-Body)", desc: "Всё вышеперечисленное + отдельная самостоятельная иллюстрация по пояс с этим персонажем.", perks: ["Всё из Уровня II ($200)", "Отдельный рендер-арт по пояс", "Срок отрисовки бонуса: 14–21 день"], hasSample: false },
-              { val: 500, badge: "AB · АВТОВЫКУП", price: "$500", title: "+ Полный референс-лист и Коммерческие права", desc: "Максимальный комплект: вид со спины, 3 портретные эмоции, разбор оружия/деталей и полная коммерческая лицензия.", perks: ["Вид сзади + 3 эмоции лица", "Крупные планы оружия и аксессуаров", "Полные коммерческие права (Мерч / VTuber)"], hasSample: false }
+              { val: 100, badge: "SB · НАЧАЛЬНАЯ СТАВКА", price: "$100", title: "SB — Базовый дизайн адопта", desc: "Базовый дизайн, SFW-изображение / PNG без водяного знака и права на личное использование.", perks: ["SFW-изображение / PNG без водяного знака", "Личное использование", "Базовые файлы после оплаты"], hasSample: false },
+              { val: 200, badge: "УРОВЕНЬ II", price: "$200+", title: "+ Полный рендер и альтернативная версия", desc: "При ставке от $200 комплект включает полный рендер и одну согласованную альтернативную версию, например другой наряд или вариант вида персонажа.", perks: ["Всё из уровня SB", "Полноценный рендер", "Одна согласованная альтернативная версия"], hasSample: false },
+              { val: 350, badge: "УРОВЕНЬ III", price: "$350+", title: "+ Дополнительный арт персонажа", desc: "При ставке от $350 в комплект также входит дополнительная иллюстрация с персонажем.", perks: ["Всё из уровня II", "Дополнительная иллюстрация", "Детали согласуются с победителем"], hasSample: false },
+              { val: 500, badge: "AB · АВТОВЫКУП", price: "$500+", title: "+ Референс-лист и крупные планы", desc: "При ставке от $500 добавляются референс-лист и крупные планы деталей. Коммерческое использование автоматически не включено.", perks: ["Всё из уровня III", "Референс-лист", "Крупные планы выбранных деталей"], hasSample: false }
             ]
           },
           ychSection: {
             eyebrow: "ГОТОВЫЕ КОМПОЗИЦИИ",
-            title: "Доступные слоты YCH (Ючи)",
-            desc: "Готовые позы и атмосферные сцены, в которые я вписываю вашего персонажа. Нажми на любой слот для расчёта.",
+            title: "Ориентиры цен YCH",
+            desc: "Опубликованные базовые цены YCH. Карточки показывают ориентиры, но не подтверждают, что конкретный слот сейчас свободен.",
             slots: [
-              { val: 50, code: "YCH #12 · НОЧНОЕ ОКНО", title: "Силуэт у ночного окна", stage: "Скетч / Базовый цвет", price: "$50 – $75", status: "Открыто 2 слота", img: "https://images.unsplash.com/photo-1541701494587-cb58502866ab?auto=format&fit=crop&w=800&q=80" },
-              { val: 120, code: "YCH #13 · ДОЖДЬ И НЕОН", title: "Атмосферный дождь", stage: "Полный рендер", price: "$120", status: "Открыт 1 слот", img: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" },
-              { val: 160, code: "YCH #14 · БАРХАТНЫЙ ТРОН", title: "Трон (SFW / 18+ версия)", stage: "Полный рендер + 18+ слой", price: "$160", status: "Лист ожидания", img: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=800&q=80" }
+              { val: 30, code: "YCH · СКЕТЧ", title: "Чистый скетч", stage: "Скетч", price: "$30", status: "Ориентир по цене", desc: "Ориентировочный срок: до 14 рабочих дней." },
+              { val: 65, code: "YCH · ЦВЕТНОЙ СКЕТЧ", title: "Цветной скетч", stage: "Цветной скетч", price: "$65", status: "Ориентир по цене", desc: "Ориентировочный срок: до 14 рабочих дней." },
+              { val: 120, code: "YCH · ПОЛНЫЙ РЕНДЕР", title: "Полный рендер", stage: "Полный рендер", price: "$120", status: "Ориентир по цене", desc: "Ориентировочный срок: до 14 рабочих дней." },
+              { val: 160, code: "YCH · РЕНДЕР + NSFW", title: "Полный рендер + NSFW-версия", stage: "NSFW обсудить заранее", price: "$160", status: "Ориентир по цене", desc: "NSFW-контент нужно обсудить и согласовать заранее." }
             ]
           }
         },
@@ -674,24 +683,16 @@
         gallery: {
           eyebrow: "АРХИВ РАБОТ",
           title: "Галерея",
-          sub: "Сортировка по категориям и фильтр взрослого контента 18+.",
-          filters: { all: "Все работы", ill: "Иллюстрации", comm: "Комишки", adopt: "Адопты", ych: "YCH", other: "Другие работы" },
-          nsfwToggle: "Показать 18+",
+          sub: "В галерее показаны публичные SFW-примеры. За дополнительными работами или NSFW-примерами напишите мне.",
+          filters: { all: "Все примеры", samples: "Примеры портфолио" },
           extTitle: "Полные архивы и внешние галереи",
           extSub: "Хочешь посмотреть больше работ в полном разрешении или поучаствовать в аукционах? Мои профили:",
-          modal: {
-            eyebrow: "ВОЗРАСТНОЕ ОГРАНИЧЕНИЕ",
-            title: "Подтверждение возраста (18+)",
-            desc: "Этот переключатель открывает работы категории 18+ (NSFW). Вам уже исполнилось 18 лет?",
-            yes: "Да, мне есть 18 лет",
-            no: "Нет, оставить скрытым"
-          }
         },
         queue: {
           eyebrow: "СТАТУС ЗАКАЗОВ",
           title: "Текущая очередь (Queue)",
-          sub: "Живая таблица слотов прямо на сайте без стороннего Trello. Легко редактируется прямо в начале файла.",
-          cols: { slot: "Слот", client: "Клиент", details: "Тип и детали заказа", stage: "Этап", progress: "Готовность" }
+          sub: "Чтобы узнать текущую доступность и прогресс, напишите мне напрямую. Живая очередь и данные клиентов на сайте не публикуются.",
+          cols: { slot: "Статус", client: "Доступность", details: "Контакт", stage: "", progress: "" }
         },
         tos: {
           eyebrow: "TERMS OF SERVICE",
@@ -699,35 +700,35 @@
           sub: "Заказывая комишку или покупая адопта/YCH, вы соглашаетесь с этими простыми правилами.",
           summaryTitle: "Коротко о главном (Сводка по карточкам)",
           cards: [
-            { num: "01", title: "100% Предоплата", desc: "Полная оплата в течение 48 часов после утверждения скетча (USD / EUR)." },
-            { num: "02", title: "Возврат средств", desc: "После начала работы оплаты не возвращаются. Если я не могу закончить арт — 100% возврат." },
-            { num: "03", title: "Правки на скетче", desc: "До 3–5 мелких правок бесплатны на этапе скетча. Забытая мной деталь с рефа — всегда бесплатно." },
+            { num: "01", title: "100% Предоплата", desc: "Полная предоплата в течение 48 часов после подтверждения заказа (USD / EUR)." },
+            { num: "02", title: "Возврат средств", desc: "После оплаты возврат обычно не предусмотрен. Если я не смогу завершить заказ, верну сумму за вычетом невозвратных комиссий платёжной платформы." },
+            { num: "03", title: "Правки на скетче", desc: "На этапе скетча включено до 5 мелких правок. После утверждения скетча изменения могут оплачиваться отдельно; мои собственные ошибки исправляю бесплатно." },
             { num: "04", title: "Личное использование", desc: "По умолчанию арт для личного пользования. При публикации указывайте @Nektahr_." },
             { num: "05", title: "Перепродажа адоптов", desc: "Разрешена по цене не выше покупки (дороже — только если есть новые заказанные арты)." },
             { num: "06", title: "Запрет ИИ и NFT", desc: "Строго запрещено использовать мои работы для обучения нейросетей (AI) и создания NFT." }
           ],
-          agreeCheck: "Я прочитал(а) и согласен(на) с правилами ToS (добавить отметку в калькулятор)",
+          agreeCheck: "Я прочитал(а) и согласен(на) с правилами ToS (включить отметку о согласии в текст заявки)",
           fullTitle: "Полные условия работы (Detailed T.O.S.)",
           sections: [
             {
               tag: "РАЗДЕЛ 01 · ОПЛАТА, БРОНЬ И ВОЗВРАТЫ",
               title: "Способы оплаты, рассрочка и политика возврата",
               bullets: [
-                "Все цены указаны в USD (также возможна оплата в EUR по курсу). Оплата принимается через Boosty, Hipolink или PayPal.",
-                "Для индивидуальных Комишек: 100% предоплата вносится после утверждения чернового скетча (или сразу при бронировании слота).",
+                "Цены указаны в USD, также принимаю EUR. Способы оплаты: PayPal, Ko-fi или Stripe, в зависимости от доступности.",
+                "Для индивидуальных заказов полная предоплата вносится в течение 48 часов после подтверждения заказа.",
                 "Для Адоптов и аукционов YCH: оплата должна быть произведена в течение 48 часов после победы в аукционе. При неоплате без предупреждения слот переходит предыдущему участнику.",
-                "Рассрочка (Payment Plan): для заказов и автовыкупов (AB) от $150 возможна разбивка 50/50 на 2–3 недели. Первые 50% являются невозвратным задатком.",
-                "Возвраты: после начала работы над артом средства не возвращаются. Если я не смогу закончить работу по своим причинам — гарантирую 100% возврат."
+                "Рассрочку можно согласовать для заказов дороже $200, например 50/50. Условия и график нужно подтвердить до оплаты.",
+                "Возвраты: после оплаты возврат обычно не предусмотрен. Если я не смогу завершить заказ, верну сумму за вычетом невозвратных комиссий платёжной платформы. При серьёзном нарушении правил или токсичном поведении клиента возврат не производится."
               ]
             },
             {
               tag: "РАЗДЕЛ 02 · ПРОЦЕСС, WIP-ЭТАПЫ И СРОКИ",
               title: "Как строится работа и сколько времени занимает арт",
               bullets: [
-                "Ориентировочные сроки: 3–7 дней для скетча, 7–14 дней для базового покраса (Flat Color), 14–30 дней для полноценного атмосферного рендера.",
+                "Сроки: YCH до 14 рабочих дней; индивидуальные заказы 14–30 рабочих дней; базовый уровень адопта сразу, расширенные уровни 14–40 рабочих дней.",
                 "Я присылаю WIP-скриншоты в ЛС на каждом ключевом этапе: 1) композиционный скетч, 2) чистый лайн и базовые цвета, 3) финальный рендер.",
-                "Актуальный статус и процент готовности вашего слота всегда можно проверить во вкладке «Очередь» (Queue) на этом сайте.",
-                "Если работа нужна к конкретной дате, предупредите заранее. Срочный заказ (Rush 3–5 дней) — +$60."
+                "На сайте не публикуются данные живой очереди. Напишите мне напрямую, чтобы узнать доступность и прогресс.",
+                "Срочный заказ на 3–5 рабочих дней может стоить дополнительно $50–$100 в зависимости от дедлайна и объёма."
               ]
             },
             {
@@ -746,7 +747,7 @@
                 "Авторское право остаётся за мной: я могу публиковать уменьшенную версию с вотермаркой в своём портфолио (DA, FA, Pixiv, X).",
                 "Личное использование (по умолчанию): вы можете ставить арт на аватарку, баннер, оформлять профиль (Toyhouse) и печатать для себя с указанием автора @Nektahr_.",
                 "Приватный заказ / NDA (+35%): если вы хотите, чтобы работа нигде не публиковалась и осталась полностью закрытой.",
-                "Коммерческая лицензия (+100% / x2): необходима для мерча, продажи товаров, монетизируемых стримов и VTuber-моделей (в автовыкуп адопта AB $500 коммерция уже включена)."
+                "Коммерческое использование требует отдельного соглашения и дополнительной оплаты. Оно автоматически не включено ни в один уровень адопта, в том числе $500."
               ]
             },
             {
@@ -770,8 +771,8 @@
           ],
           willTitle: "✓ Что я рисую",
           willList: ["Оригинальных персонажей (OC), фэнтези, DnD", "Аниме / Семи-реализм / Тёмную эстетику", "Сложные костюмы, броню, оружие, украшения", "Кемономими (ушки, хвосты, рога, крылья)", "Пары, романтику и эстетичный NSFW (18+)"],
-          wontTitle: "✕ Что я не рисую",
-          wontList: ["Тяжёлую меху и сложную военную технику", "Гиперреалистичные портреты пожилых людей", "Экстремальный гор и табу-фетиши", "Политику и оскорбительные темы"]
+          wontTitle: "! Сложные запросы: сначала обсудить",
+          wontList: ["Меха, полный антро и экстремальные пропорции могут быть сложнее или дороже", "NSFW-заказы нужно обсудить до оплаты", "Сложные и нестандартные задачи согласуйте заранее"]
         },
         faq: {
           eyebrow: "ЧАСТЫЕ ВОПРОСЫ",
@@ -779,84 +780,133 @@
           sub: "Подробные ответы про оформление заказа, рассрочку, бонусные тиры адоптов, форматы файлов и очередь.",
           cats: { all: "Все вопросы", order: "Заказ и Рефы", payment: "Оплата и Рассрочка", adopts: "Адопты и YCH", process: "Процесс и Файлы" },
           items: [
-            { cat: "order", q: "Как оформить заказ?", a: "Собери ориентировочную заявку в калькуляторе на вкладке «Прайс», нажми «Скопировать готовый запрос» и пришли его мне в Discord (drintrav), в любой из двух Telegram DM (@nektahr или @drintrav) или на почту (gapkuro@gmail.com) вместе с референсами." },
+            { cat: "order", q: "Как оформить заказ?", a: "Собери ориентировочную заявку в калькуляторе на вкладке «Прайс», нажми «Скопировать готовый запрос» и пришли его мне в Discord (drintrava), в Telegram (@nek_tahr) или на почту (gapkuro@gmail.com) вместе с референсами." },
             { cat: "order", q: "Можно ли заказать арт без готового референс-листа?", a: "Да! Я спокойно работаю по мудбордам, фотографиям одежды, скриншотам из игр/Picrew и понятному текстовому описанию. Если мы разрабатываем сложный дизайн с нуля чисто по тексту, может добавиться небольшая доплата за концепт." },
-            { cat: "payment", q: "Какие способы оплаты и валюты ты принимаешь?", a: "Цены указаны в USD (также можно в EUR). Оплата проходит через Boosty, Hipolink или PayPal. После согласования заявки я пришлю прямую ссылку и простую инструкцию по оплате." },
-            { cat: "payment", q: "Есть ли рассрочка (Payment Plan) на крупные заказы и AB адоптов?", a: "Да, для заказов и автовыкупов (AB) от $150 возможна рассрочка 50/50 на 2–3 недели. Первые 50% вносятся сразу для бронирования, а финальные файлы в высоком разрешении передаются после второй половины оплаты." },
-            { cat: "adopts", q: "Как работают бонусные уровни адоптов, если для них пока нет примера?", a: "Если ставка на аукционе достигает Уровня II ($200), Уровня III ($350) или AB ($500), базовые файлы персонажа ты получаешь сразу после оплаты, а все разблокированные бонусы (доп. наряд, NSFW-версию, отдельный арт по пояс или полный референс со спиной и эмоциями) я отрисовываю индивидуально по твоим пожеланиям в течение 7–21 дня." },
-            { cat: "adopts", q: "Где проходят аукционы на Адоптов и YCH и когда они заканчиваются?", a: "Аукционы проводятся на DeviantArt, FurAffinity и YCH.Commishes (также сделать ставку можно напрямую мне в ЛС, и я внесу её в ветку). Обычно аукцион завершается через 24–48 часов после последней ставки или мгновенно при AB." },
+            { cat: "payment", q: "Какие способы оплаты и валюты ты принимаешь?", a: "Цены указаны в USD, также принимаю EUR. Способы оплаты: PayPal, Ko-fi или Stripe, в зависимости от доступности. После согласования заявки я пришлю прямую ссылку и простую инструкцию по оплате." },
+            { cat: "payment", q: "Есть ли рассрочка (Payment Plan) на крупные заказы и AB адоптов?", a: "Да, рассрочку можно согласовать для заказов дороже $200, например 50/50. Первые 50% вносятся сразу для бронирования, а финальные файлы в высоком разрешении передаются после второй половины оплаты." },
+            { cat: "adopts", q: "Как работают бонусные уровни адоптов, если для них пока нет примера?", a: "Разблокированные бонусы отрисовываются индивидуально. Ориентировочный срок для расширенных уровней адопта — 14–40 рабочих дней в зависимости от согласованного объёма." },
+            { cat: "adopts", q: "Где проходят аукционы на Адоптов и YCH и когда они заканчиваются?", a: "Активные аукционы и время завершения указываются на соответствующей площадке. Проверьте мой профиль или напишите мне, чтобы уточнить актуальную доступность." },
             { cat: "adopts", q: "Можно ли изменить телосложение, эмоции или добавить ушки/рога/крылья в YCH?", a: "Небольшие изменения мимики, кемономими-детали (ушки, хвосты, рожки) и подгонка под пропорции твоего персонажа делаются без проблем. Для крупных крыльев или сложного костюма в калькуляторе YCH есть удобные опции." },
-            { cat: "process", q: "Как следить за очередью и процессом работы?", a: "На вкладке «Очередь» (Queue) в верхнем меню всегда виден твой слот, текущий этап и процент готовности. Кроме того, я обязательно присылаю WIP-скриншоты в ЛС на этапе скетча, базового цвета и рендера." },
-            { cat: "process", q: "В каком разрешении и формате я получу готовую работу?", a: "Финальная работа отдаётся в высоком разрешении (обычно 3000–4500px по длинной стороне, 300 DPI) в форматах JPG и PNG (для референсов и адоптов — также PNG на прозрачном фоне) через постоянную ссылку на Google Диск или документом без сжатия в Discord/Telegram." },
-            { cat: "process", q: "Можно ли заказать приватный арт (NDA) или коммерцию для мерча / VTuber?", a: "Да, в калькуляторе можно сразу отметить опцию «Приват / NDA (+35%)», чтобы арт нигде не публиковался, или «Коммерция (x2)» для использования в коммерческих проектах, мерче и на стримах." },
-            { cat: "order", q: "Что делать, если сейчас все слоты заняты?", a: "Ты всегда можешь написать мне в Discord или Telegram DM, чтобы записаться в лист ожидания (Waitlist) — я напишу тебе в первую очередь, как только освободится окно." }
+            { cat: "process", q: "Как следить за очередью и процессом работы?", a: "Чтобы узнать текущую доступность и прогресс, напиши мне напрямую. На сайте не публикуются данные живой очереди." },
+            { cat: "process", q: "В каком разрешении и формате я получу готовую работу?", a: "Форматы, разрешение и способ передачи файлов согласуются до начала работы. Уточните требования к экспорту при оформлении заказа." },
+            { cat: "process", q: "Можно ли заказать приватный арт (NDA) или коммерцию для мерча / VTuber?", a: "Да. Приватность / NDA добавляет 35%. Коммерческое использование требует отдельного соглашения и отдельно согласованной доплаты." },
+            { cat: "order", q: "Что делать, если сейчас все слоты заняты?", a: "Напиши мне в Telegram или Discord, чтобы уточнить текущую доступность и возможность попасть в лист ожидания." }
           ]
         }
       }
     };
 
+    const UI_TEXT = {
+      en: {
+        copy: "Copy", copied: "Copied", copyFailed: "Copy failed. Please select and copy the text manually.",
+        copyPermissionFailed: "Copy failed. Please select and copy the text manually.",
+        agreementAttached: "ToS agreement attached to Quote Builder", loadedOne: "Loaded: 1 character", loadedTwo: "Loaded: 2 characters",
+        loadedTier: "Loaded into Quote Builder ($VALUE)", noSamples: "No portfolio samples in this category yet.", confirmAvailability: "Confirm availability",
+        headerTagline: "Art & Design", quoteGreeting: "Hi Nek'tahr! I'd like to request:", quoteCategory: "Category", quoteAddons: "Add-ons", quoteNone: "None",
+        quoteTotal: "Estimated starting total", quoteReferences: "References / Notes", quotePlaceholder: "[Will attach references in DM]", quoteTos: "ToS",
+        quoteAccepted: "Accepted (confirmed by checkbox)", quoteNotConfirmed: "Not confirmed", closePreview: "Close artwork preview", pricingLink: "Pricing →", footerRights: "NEK'TAHR © 2026 · ALL RIGHTS RESERVED · NO AI / NO NFT", footerTelegram: "Telegram DM"
+      },
+      es: {
+        copy: "Copiar", copied: "Copiado", copyFailed: "No se pudo copiar. Selecciona y copia el texto manualmente.",
+        copyPermissionFailed: "No se pudo copiar. Selecciona y copia el texto manualmente.",
+        agreementAttached: "Aceptación de ToS añadida a la solicitud", loadedOne: "Cargado: 1 personaje", loadedTwo: "Cargado: 2 personajes",
+        loadedTier: "Cargado en la solicitud ($VALUE)", noSamples: "Todavía no hay muestras de portafolio en esta categoría.", confirmAvailability: "Confirma disponibilidad",
+        headerTagline: "Arte y diseño", quoteGreeting: "¡Hola, Nek'tahr! Me gustaría solicitar:", quoteCategory: "Categoría", quoteAddons: "Extras", quoteNone: "Ninguno",
+        quoteTotal: "Precio inicial estimado", quoteReferences: "Referencias / notas", quotePlaceholder: "[Adjuntaré las referencias por mensaje]", quoteTos: "Términos (ToS)",
+        quoteAccepted: "Aceptado (confirmado con la casilla)", quoteNotConfirmed: "Sin confirmar", closePreview: "Cerrar vista previa de la obra", pricingLink: "Precios →", footerRights: "NEK'TAHR © 2026 · TODOS LOS DERECHOS RESERVADOS · SIN IA / SIN NFT", footerTelegram: "Mensaje por Telegram"
+      },
+      ru: {
+        copy: "Скопировать", copied: "Скопировано", copyFailed: "Не удалось скопировать. Выделите и скопируйте текст вручную.",
+        copyPermissionFailed: "Не удалось скопировать. Выделите и скопируйте текст вручную.",
+        agreementAttached: "Отметка о согласии с ToS добавлена в заявку", loadedOne: "Выбрано: 1 персонаж", loadedTwo: "Выбрано: 2 персонажа",
+        loadedTier: "Добавлено в заявку ($VALUE)", noSamples: "В этой категории пока нет примеров портфолио.", confirmAvailability: "Уточнить доступность",
+        headerTagline: "Арт и дизайн", quoteGreeting: "Привет, Nek'tahr! Хочу заказать:", quoteCategory: "Категория", quoteAddons: "Дополнения", quoteNone: "Нет",
+        quoteTotal: "Ориентировочная стартовая цена", quoteReferences: "Референсы / примечания", quotePlaceholder: "[Пришлю референсы в личные сообщения]", quoteTos: "Правила (ToS)",
+        quoteAccepted: "Согласие подтверждено галочкой", quoteNotConfirmed: "Не подтверждено", closePreview: "Закрыть предпросмотр работы", pricingLink: "Прайс →", footerRights: "NEK'TAHR © 2026 · ВСЕ ПРАВА ЗАЩИЩЕНЫ · ЗАПРЕТ ИИ / NFT", footerTelegram: "Написать в Telegram"
+      }
+    };
+    function uiText(key) {
+      return (UI_TEXT[currentLang] && UI_TEXT[currentLang][key]) || UI_TEXT.en[key] || key;
+    }
+
     // Individual Calculator Data per Category
     const CALC_CONFIG = {
       custom: {
-        matrix: {
-          sketch: { bust: 35, half: 45, full: 50, label: "Clean Sketch" },
-          color: { bust: 50, half: 65, full: 85, label: "Flat Color" },
-          render: { bust: 90, half: 120, full: 160, label: "Full Render" }
-        },
-        crops: [
-          { key: "bust", label: "Bust" },
-          { key: "half", label: "Half-Body" },
-          { key: "full", label: "Full-Body" }
+        options: [
+          { value: "single", price: 200, label: { en: "1 character + simple background — from $200", es: "1 personaje + fondo sencillo — desde $200", ru: "1 персонаж + простой фон — от $200" } },
+          { value: "duo", price: 350, label: { en: "2 characters + simple background — from $350", es: "2 personajes + fondo sencillo — desde $350", ru: "2 персонажа + простой фон — от $350" } }
         ],
         addons: [
-          { id: "outfit", price: 50, label: { en: "Extra Outfit", es: "Atuendo Extra", ru: "Доп. наряд" } },
-          { id: "weapon", price: 35, label: { en: "Weapon / Prop", es: "Arma / Objeto", ru: "Оружие / реквизит" } },
-          { id: "char2", price: 100, label: { en: "2nd Character", es: "2º Personaje", ru: "2-й персонаж" } },
-          { id: "bg", price: 45, label: { en: "Detailed BG", es: "Fondo Detallado", ru: "Детальный фон" } },
-          { id: "nsfw", price: 40, label: { en: "NSFW / Alt Layer", es: "Versión NSFW", ru: "NSFW / доп. слой" } },
-          { id: "rush", price: 60, label: { en: "Rush (3–5 days)", es: "Urgente (3–5d)", ru: "Срочность 3–5 дн." } }
+          { id: "outfit", price: 50, label: { en: "Extra outfit (+$50)", es: "Atuendo extra (+$50)", ru: "Дополнительный наряд (+$50)" } },
+          { id: "extra_character", price: 100, label: { en: "Additional character (from +$100)", es: "Personaje adicional (desde +$100)", ru: "Дополнительный персонаж (от +$100)" } },
+          { id: "rush", price: 50, label: { en: "Rush order (minimum +$50; may be +$100)", es: "Pedido urgente (mínimo +$50; puede ser +$100)", ru: "Срочный заказ (от +$50, может быть +$100)" } }
         ],
         mults: [
-          { id: "nda", mult: 1.35, badge: "+35%", label: { en: "Private / NDA", es: "Privado (NDA)", ru: "Приват (NDA)" } },
-          { id: "comm", mult: 2.0, badge: "x2", label: { en: "Commercial Use", es: "Uso Comercial", ru: "Коммерция" } }
-        ]
+          { id: "nda", mult: 1.35, badge: "+35%", label: { en: "Private / NDA", es: "Privado / NDA", ru: "Приватность / NDA" } }
+        ],
+        note: {
+          en: "Additional character: from $100. Commercial use requires a separate agreement and quote. Rush pricing depends on the deadline. All totals are estimates; confirm the final quote directly.",
+          es: "Personaje adicional: desde $100. El uso comercial requiere un acuerdo y presupuesto separados. El precio urgente depende de la fecha límite. El total es orientativo; confirma el precio final directamente.",
+          ru: "Дополнительный персонаж: от $100. Коммерческое использование требует отдельного соглашения и расчёта. Цена срочности зависит от дедлайна. Сумма ориентировочная, окончательную цену нужно подтвердить напрямую."
+        }
       },
       adopt: {
-        tiers: [
-          { val: 100, label: "SB — Base Character Design ($100)" },
-          { val: 200, label: "Tier II — + Alt Outfit / NSFW ($200)" },
-          { val: 350, label: "Tier III — + Bonus Half-Body Art ($350)" },
-          { val: 500, label: "AB — Full Reference + Commercial ($500)" }
+        options: [
+          { value: "100", price: 100, label: { en: "SB — Base design ($100)", es: "SB — Diseño base ($100)", ru: "SB — Базовый дизайн ($100)" } },
+          { value: "200", price: 200, label: { en: "Tier II — Full render + alternative version ($200+)", es: "Nivel II — Render + versión alternativa ($200+)", ru: "Уровень II — Рендер + альтернативная версия ($200+)" } },
+          { value: "350", price: 350, label: { en: "Tier III — Bonus character artwork ($350+)", es: "Nivel III — Ilustración extra ($350+)", ru: "Уровень III — Дополнительный арт ($350+)" } },
+          { value: "500", price: 500, label: { en: "AB — Reference sheet + close-ups ($500+)", es: "AB — Hoja de referencia + detalles ($500+)", ru: "AB — Референс-лист + детали ($500+)" } }
         ],
         addons: [
-          { id: "chibi", price: 45, label: { en: "Bonus Icon / Chibi", es: "Icono / Chibi", ru: "Бонус иконка / чиби" } },
-          { id: "prop", price: 35, label: { en: "Weapon Callout", es: "Zoom de Arma", ru: "Разбор оружия" } },
-          { id: "palette", price: 30, label: { en: "Custom Palette Edit", es: "Cambio de Paleta", ru: "Смена палитры" } },
-          { id: "back", price: 55, label: { en: "Back View (for <AB)", es: "Vista Trasera", ru: "Вид со спины (<AB)" } }
+          { id: "feature", price: 50, label: { en: "Extra feature / variant (from +$50)", es: "Detalle o variante extra (desde +$50)", ru: "Дополнительная деталь / вариант (от +$50)" } }
         ],
         mults: [
-          { id: "nda_a", mult: 1.35, badge: "+35%", label: { en: "Private Ownership", es: "Privado (NDA)", ru: "Приват (NDA)" } }
-        ]
+          { id: "nda_a", mult: 1.35, badge: "+35%", label: { en: "Private / NDA", es: "Privado / NDA", ru: "Приватность / NDA" } }
+        ],
+        note: {
+          en: "Tier inclusions are cumulative. Commercial use is not included automatically and requires a separate agreement and quote.",
+          es: "Los niveles incluyen lo anterior. El uso comercial no está incluido automáticamente y requiere un acuerdo y presupuesto separados.",
+          ru: "Каждый уровень включает предыдущие бонусы. Коммерческое использование автоматически не включено и требует отдельного соглашения и расчёта."
+        }
       },
       ych: {
-        slots: [
-          { val: 50, label: "YCH #12 'Window' — Clean Sketch ($50)" },
-          { val: 75, label: "YCH #12 'Window' — Flat Color ($75)" },
-          { val: 120, label: "YCH #13 'Crimson Rain' — Full Render ($120)" },
-          { val: 160, label: "YCH #14 'Velvet Throne' — Full + 18+ ($160)" }
+        options: [
+          { value: "30", price: 30, label: { en: "Clean Sketch ($30)", es: "Boceto limpio ($30)", ru: "Чистый скетч ($30)" } },
+          { value: "65", price: 65, label: { en: "Color Sketch ($65)", es: "Boceto a color ($65)", ru: "Цветной скетч ($65)" } },
+          { value: "120", price: 120, label: { en: "Full Render ($120)", es: "Render completo ($120)", ru: "Полный рендер ($120)" } },
+          { value: "160", price: 160, label: { en: "Full Render + NSFW alternative ($160)", es: "Render + versión NSFW ($160)", ru: "Полный рендер + NSFW-версия ($160)" } }
         ],
         addons: [
-          { id: "outfit_y", price: 35, label: { en: "Complex Outfit", es: "Ropa Compleja", ru: "Сложный наряд" } },
-          { id: "wings_y", price: 30, label: { en: "Wings / Horns / Tail", es: "Alas / Cuernos", ru: "Крылья / рога / хвост" } },
-          { id: "expr_y", price: 25, label: { en: "Expression Pack", es: "Expresiones Extra", ru: "Сменные эмоции" } },
-          { id: "nsfw_y", price: 40, label: { en: "Spicy / NSFW Alt", es: "Capa NSFW +18", ru: "18+ / NSFW версия" } }
+          { id: "outfit_y", price: 50, label: { en: "Extra outfit (+$50)", es: "Atuendo extra (+$50)", ru: "Дополнительный наряд (+$50)" } }
         ],
         mults: [
-          { id: "nda_y", mult: 1.35, badge: "+35%", label: { en: "Private / NDA", es: "Privado (NDA)", ru: "Приват (NDA)" } },
-          { id: "comm_y", mult: 2.0, badge: "x2", label: { en: "Commercial Use", es: "Uso Comercial", ru: "Коммерция" } }
-        ]
+          { id: "nda_y", mult: 1.35, badge: "+35%", label: { en: "Private / NDA", es: "Privado / NDA", ru: "Приватность / NDA" } }
+        ],
+        note: {
+          en: "YCH turnaround: up to 14 business days. NSFW must be discussed and agreed in advance. Commercial use requires a separate agreement and quote.",
+          es: "Plazo de YCH: hasta 14 días laborables. El contenido NSFW debe acordarse de antemano. El uso comercial requiere un acuerdo y presupuesto separados.",
+          ru: "Срок YCH: до 14 рабочих дней. NSFW нужно согласовать заранее. Коммерческое использование требует отдельного соглашения и расчёта."
+        }
       }
     };
+
+    function getGalleryTitle(item) {
+      const prefix = { en: "Portfolio Sample", es: "Muestra de portafolio", ru: "Пример портфолио" };
+      return `${prefix[currentLang] || prefix.en} ${String(item.id).padStart(2, '0')}`;
+    }
+    function getGalleryDescription() {
+      return ({
+        en: "Public SFW portfolio sample. Open to view; ask me for details.",
+        es: "Muestra pública SFW del portafolio. Ábrela para verla; escríbeme si quieres más detalles.",
+        ru: "Публичный SFW-пример из портфолио. Откройте для просмотра, а за подробностями напишите мне."
+      })[currentLang] || "Public SFW portfolio sample.";
+    }
+    function getGalleryStage() {
+      return ({ en: "SFW Sample", es: "Muestra SFW", ru: "SFW-пример" })[currentLang] || "SFW Sample";
+    }
+    function getGalleryPriceLabel() {
+      return ({ en: "Portfolio", es: "Portafolio", ru: "Портфолио" })[currentLang] || "Portfolio";
+    }
 
     // Global State
     let currentLang = 'en'; // EN is main by default
@@ -864,15 +914,8 @@
     let currentPricingTab = 'custom';
     let currentGalCat = 'all';
     let currentFaqCat = 'all';
-    let isAdultVerified = false;
-    let showNsfwGallery = false;
     let tosAgreed = false;
 
-    const CMP_IMAGES = {
-      sketch: "https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1000&q=80",
-      color: "https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=1000&q=80",
-      render: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=1000&q=80"
-    };
   </script>
 
   <!-- =====================================================================
@@ -881,10 +924,10 @@
   <header class="sticky top-0 z-40 h-16 bg-[#0B0A0E]/90 backdrop-blur-md border-b hairline px-4 sm:px-8 flex items-center justify-between gap-4">
     <button onclick="switchPage('board')" class="text-left group cursor-pointer flex items-baseline gap-2.5">
       <span class="serif text-2xl sm:text-3xl tracking-wide text-textMain group-hover:text-accent transition">Nek'tahr</span>
-      <span class="hidden sm:inline-block mono text-[10px] uppercase text-textDim">Art & Design</span>
+      <span id="header-tagline" class="hidden sm:inline-block mono text-[10px] uppercase text-textDim">Art & Design</span>
     </button>
 
-    <nav class="flex items-center gap-1 sm:gap-5 text-xs sm:text-sm">
+    <nav id="nav-links" aria-label="Main navigation" class="flex items-center gap-1 sm:gap-5 text-xs sm:text-sm">
       <button onclick="switchPage('board')" data-p="board" id="nav-board" class="nav-link px-2 py-1 text-accent border-b border-accent transition cursor-pointer">Board</button>
       <button onclick="switchPage('pricing')" data-p="pricing" id="nav-pricing" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Pricing</button>
       <button onclick="switchPage('gallery')" data-p="gallery" id="nav-gallery" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Gallery</button>
@@ -903,7 +946,7 @@
 
       <button onclick="switchPage('queue')" class="hidden lg:flex items-center gap-2 px-3 py-1 border border-accent/30 bg-accent/10 text-accent mono text-[10px] uppercase cursor-pointer hover:border-accent transition">
         <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-        <span id="header-status-badge">2 Slots Open</span>
+        <span id="header-status-badge">Check Current Availability</span>
       </button>
     </div>
   </header>
@@ -950,16 +993,16 @@
 
         <!-- Featured Cover Artwork -->
         <div class="lg:col-span-5">
-          <div onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group">
+          <button type="button" onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group text-left w-full">
             <div class="aspect-[4/5] overflow-hidden relative bg-bg">
-              <img src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=900&q=85" alt="Featured Art" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+              <img src="https://nektahr.carrd.co/assets/images/gallery01/83524f34.jpg?v=299f438c" alt="Public SFW portfolio sample" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#0B0A0E] via-transparent to-transparent"></div>
               <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                 <div>
-                  <span class="mono text-[10px] uppercase px-2 py-0.5 bg-bg/85 border hairline text-accent">Featured Piece</span>
-                  <h3 class="serif text-2xl text-textMain mt-1.5">Nocturne Character Concept</h3>
+                  <span id="hero-featured-label" class="mono text-[10px] uppercase px-2 py-0.5 bg-bg/85 border hairline text-accent">Selected Works</span>
+                  <h3 id="hero-featured-title" class="serif text-2xl text-textMain mt-1.5">Recent Highlights</h3>
                 </div>
-                <span class="mono text-xs text-accent">Gallery →</span>
+                <span id="hero-featured-link" class="mono text-xs text-accent">Open Full Gallery →</span>
               </div>
             </div>
           </div>
@@ -973,13 +1016,13 @@
           <h2 id="contacts-title" class="serif text-3xl sm:text-4xl mt-1">Where to Find & Message Me</h2>
         </div>
 
-        <!-- Primary Direct Contacts: Discord (drintrav), Telegram DM 1, Telegram DM 2, Email -->
+        <!-- Primary Direct Contacts: Discord (drintrava), Telegram DM 1, Telegram DM 2, Email -->
         <div>
           <h3 id="primary-contacts-label" class="mono text-[11px] uppercase text-textDim mb-3">Primary Direct Contacts (Fastest Response)</h3>
           <div id="primary-contacts-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3.5"></div>
         </div>
 
-        <!-- Platforms + Coming Soon Placeholders (Patreon, TikTok) -->
+        <!-- Verified art platforms and contact destinations -->
         <div>
           <h3 id="platforms-label" class="mono text-[11px] uppercase text-textDim mb-3">Art Platforms & Galleries</h3>
           <div id="platforms-grid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5"></div>
@@ -1042,92 +1085,6 @@
               </div>
               <div id="custom-stages-grid" class="grid sm:grid-cols-3 gap-4"></div>
             </div>
-
-            <!-- Full-Width Price Matrix (Redesigned & Clean) -->
-            <div class="card p-6 sm:p-8 space-y-5">
-              <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b hairline pb-4">
-                <div>
-                  <div id="matrix-eyebrow" class="mono text-[10px] uppercase text-accent">CUSTOM PRICE TABLE (USD)</div>
-                  <h3 id="matrix-title" class="serif text-3xl mt-0.5">Custom / Commission Price Matrix</h3>
-                </div>
-                <p id="matrix-hint" class="text-xs text-textDim"></p>
-              </div>
-
-              <div class="overflow-x-auto">
-                <table class="w-full text-left border-collapse">
-                  <thead>
-                    <tr class="border-b hairline mono text-xs text-textDim uppercase">
-                      <th id="mtx-col-fmt" class="pb-3 pr-4 font-normal">Framing</th>
-                      <th id="mtx-col-s1" class="pb-3 px-4 font-normal">Sketch</th>
-                      <th id="mtx-col-s2" class="pb-3 px-4 font-normal">Flat Color</th>
-                      <th id="mtx-col-s3" class="pb-3 pl-4 font-normal text-accent">Full Render</th>
-                    </tr>
-                  </thead>
-                  <tbody class="divide-y hairline text-sm">
-                    <tr>
-                      <td class="py-4 pr-4">
-                        <div id="mtx-row-bust" class="text-textMain font-medium">Portrait / Bust</div>
-                        <div id="mtx-row-bust-sub" class="text-xs text-textDim">Head & shoulders</div>
-                      </td>
-                      <td class="py-4 px-4"><button onclick="quickPickCustom('sketch','bust')" class="px-3.5 py-1.5 border hairline hover:border-accent text-textMain mono text-xs transition cursor-pointer">$35</button></td>
-                      <td class="py-4 px-4"><button onclick="quickPickCustom('color','bust')" class="px-3.5 py-1.5 border hairline hover:border-accent text-textMain mono text-xs transition cursor-pointer">$50</button></td>
-                      <td class="py-4 pl-4"><button onclick="quickPickCustom('render','bust')" class="px-3.5 py-1.5 border border-accent/50 bg-accent/10 hover:bg-accent hover:text-bg text-accent mono text-xs transition cursor-pointer">$90</button></td>
-                    </tr>
-                    <tr>
-                      <td class="py-4 pr-4">
-                        <div id="mtx-row-half" class="text-textMain font-medium">Half-Body / Waist</div>
-                        <div id="mtx-row-half-sub" class="text-xs text-textDim">Waist or mid-thigh up</div>
-                      </td>
-                      <td class="py-4 px-4"><button onclick="quickPickCustom('sketch','half')" class="px-3.5 py-1.5 border hairline hover:border-accent text-textMain mono text-xs transition cursor-pointer">$45</button></td>
-                      <td class="py-4 px-4"><button onclick="quickPickCustom('color','half')" class="px-3.5 py-1.5 border hairline hover:border-accent text-textMain mono text-xs transition cursor-pointer">$65</button></td>
-                      <td class="py-4 pl-4"><button onclick="quickPickCustom('render','half')" class="px-3.5 py-1.5 border border-accent/50 bg-accent/10 hover:bg-accent hover:text-bg text-accent mono text-xs transition cursor-pointer">$120</button></td>
-                    </tr>
-                    <tr>
-                      <td class="py-4 pr-4">
-                        <div id="mtx-row-full" class="text-textMain font-medium">Full-Body</div>
-                        <div id="mtx-row-full-sub" class="text-xs text-textDim">Head to toe pose</div>
-                      </td>
-                      <td class="py-4 px-4"><button onclick="quickPickCustom('sketch','full')" class="px-3.5 py-1.5 border hairline hover:border-accent text-textMain mono text-xs transition cursor-pointer">$50</button></td>
-                      <td class="py-4 px-4"><button onclick="quickPickCustom('color','full')" class="px-3.5 py-1.5 border hairline hover:border-accent text-textMain mono text-xs transition cursor-pointer">$85</button></td>
-                      <td class="py-4 pl-4"><button onclick="quickPickCustom('render','full')" class="px-3.5 py-1.5 border border-accent/50 bg-accent/10 hover:bg-accent hover:text-bg text-accent mono text-xs transition cursor-pointer">$160</button></td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            <!-- Wide Interactive Stage Comparison Slider -->
-            <div class="card p-6 sm:p-8 space-y-4">
-              <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
-                <div>
-                  <div id="cmp-eyebrow" class="mono text-[10px] uppercase text-accent">BEFORE / AFTER SLIDER</div>
-                  <h3 id="cmp-title" class="serif text-3xl mt-0.5">Interactive Stage Comparison</h3>
-                </div>
-                <div class="flex gap-1.5 mono text-xs">
-                  <button onclick="setComparatorPair('sc')" data-pair="sc" class="cmp-pair-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Sketch ↔ Color</button>
-                  <button onclick="setComparatorPair('sr')" data-pair="sr" class="cmp-pair-btn px-3 py-1.5 border border-accent bg-accent text-bg font-medium transition cursor-pointer">Sketch ↔ Render</button>
-                  <button onclick="setComparatorPair('cr')" data-pair="cr" class="cmp-pair-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Color ↔ Render</button>
-                </div>
-              </div>
-
-              <div class="relative w-full aspect-[16/10] bg-bg border hairline overflow-hidden select-none">
-                <img id="cmp-img-left" src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?auto=format&fit=crop&w=1000&q=80" alt="Before stage" class="absolute inset-0 w-full h-full object-cover" style="filter: grayscale(100%) contrast(115%);" />
-                <img id="cmp-img-right" src="https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=1000&q=80" alt="After stage" class="absolute inset-0 w-full h-full object-cover" style="clip-path: inset(0 0 0 50%);" />
-
-                <span id="cmp-tag-left" class="absolute bottom-3 left-3 px-2.5 py-1 bg-bg/85 border hairline mono text-[10px] uppercase text-textMain">SKETCH</span>
-                <span id="cmp-tag-right" class="absolute bottom-3 right-3 px-2.5 py-1 bg-bg/85 border hairline mono text-[10px] uppercase text-accent">FULL RENDER</span>
-
-                <div id="cmp-divider" class="absolute inset-y-0 left-1/2 -ml-[1px] w-[2px] bg-accent pointer-events-none">
-                  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-surface border-2 border-accent flex items-center justify-center text-accent mono text-xs shadow-lg">
-                    ↔
-                  </div>
-                </div>
-
-                <input type="range" min="4" max="96" value="50" oninput="moveComparator(this.value)" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-10" />
-              </div>
-              <p id="cmp-hint" class="text-xs text-textDim text-center"></p>
-            </div>
-
             <!-- Character Sheet & Detail Breakdown -->
             <div class="space-y-4">
               <div>
@@ -1222,20 +1179,11 @@
 
         <div class="flex flex-wrap items-center gap-3">
           <!-- Category Filter Buttons -->
-          <div class="flex flex-wrap gap-1.5 mono text-xs">
-            <button onclick="setGalleryCat('all')" data-c="all" id="gf-all" class="gal-filter-btn px-3 py-1.5 bg-accent text-bg font-medium transition cursor-pointer">All Works</button>
-            <button onclick="setGalleryCat('ill')" data-c="ill" id="gf-ill" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Illustrations</button>
-            <button onclick="setGalleryCat('comm')" data-c="comm" id="gf-comm" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Commissions</button>
-            <button onclick="setGalleryCat('adopt')" data-c="adopt" id="gf-adopt" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Adopts</button>
-            <button onclick="setGalleryCat('ych')" data-c="ych" id="gf-ych" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">YCH</button>
-            <button onclick="setGalleryCat('other')" data-c="other" id="gf-other" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Other works</button>
+          <div class="flex flex-wrap gap-1.5 mono text-xs" role="group" aria-label="Gallery filters">
+            <button type="button" onclick="setGalleryCat('all')" data-c="all" id="gf-all" aria-pressed="true" class="gal-filter-btn px-3 py-1.5 bg-accent text-bg font-medium transition cursor-pointer">All Samples</button>
+            <button type="button" onclick="setGalleryCat('samples')" data-c="samples" id="gf-samples" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Portfolio Samples</button>
           </div>
 
-          <!-- 18+ Switch with Age Verification Trigger -->
-          <label class="flex items-center gap-2 px-3 py-1.5 border border-error/40 bg-error/5 mono text-xs text-error cursor-pointer select-none">
-            <input type="checkbox" id="nsfw-switch" onchange="handleNsfwToggle(this)" class="accent-[#D48A94] w-3.5 h-3.5">
-            <span id="gal-nsfw-label">Show 18+ Content</span>
-          </label>
         </div>
       </div>
 
@@ -1339,32 +1287,13 @@
   </main>
 
   <!-- =====================================================================
-       18+ AGE VERIFICATION MODAL
-  ====================================================================== -->
-  <div id="nsfw-modal" class="hidden fixed inset-0 z-50 bg-bg/90 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="card max-w-md w-full p-8 text-center space-y-5 border-error/40">
-      <div id="mod-eyebrow" class="mono text-[10px] uppercase text-error">MATURE CONTENT WARNING</div>
-      <h2 id="mod-title" class="serif text-3xl text-textMain">Age Verification (18+)</h2>
-      <p id="mod-desc" class="text-sm text-textMuted leading-relaxed"></p>
-      <div class="flex gap-3 pt-2">
-        <button onclick="confirmAgeModal(false)" id="mod-btn-no" class="flex-1 py-2.5 border hairline mono text-xs uppercase text-textMuted hover:text-textMain transition cursor-pointer">
-          No, keep blurred
-        </button>
-        <button onclick="confirmAgeModal(true)" id="mod-btn-yes" class="flex-1 py-2.5 bg-error text-bg mono text-xs uppercase font-medium hover:opacity-90 transition cursor-pointer">
-          Yes, I am 18+
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- =====================================================================
        GALLERY LIGHTBOX MODAL
   ====================================================================== -->
-  <div id="lightbox-modal" onclick="closeLightbox()" class="hidden fixed inset-0 z-50 bg-bg/95 backdrop-blur-md flex items-center justify-center p-4">
+  <div id="lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="lb-title" onclick="closeLightbox()" class="hidden fixed inset-0 z-50 bg-bg/95 backdrop-blur-md flex items-center justify-center p-4">
     <div onclick="event.stopPropagation()" class="card max-w-2xl w-full overflow-hidden">
       <div class="relative bg-bg max-h-[70vh] flex items-center justify-center overflow-hidden border-b hairline">
         <img id="lb-image" src="" alt="Artwork" class="max-h-[70vh] w-auto object-contain" />
-        <button onclick="closeLightbox()" class="absolute top-3 right-3 px-3 py-1 bg-bg/85 border hairline mono text-xs text-textMuted hover:text-textMain cursor-pointer">
+        <button type="button" id="lb-close" onclick="closeLightbox()" aria-label="Close artwork preview" class="absolute top-3 right-3 px-3 py-1 bg-bg/85 border hairline mono text-xs text-textMuted hover:text-textMain cursor-pointer">
           ✕
         </button>
       </div>
@@ -1374,7 +1303,7 @@
           <h3 id="lb-title" class="serif text-2xl text-textMain"></h3>
           <p id="lb-desc" class="text-xs text-textDim mt-0.5"></p>
         </div>
-        <button onclick="closeLightbox(); switchPage('pricing');" class="px-4 py-2 bg-accent text-bg mono text-xs uppercase font-medium hover:bg-textMain transition cursor-pointer shrink-0">
+        <button type="button" id="lb-pricing-link" onclick="closeLightbox(); switchPage('pricing');" class="px-4 py-2 bg-accent text-bg mono text-xs uppercase font-medium hover:bg-textMain transition cursor-pointer shrink-0">
           Pricing →
         </button>
       </div>
@@ -1386,16 +1315,16 @@
   ====================================================================== -->
   <footer class="border-t hairline mt-20 py-8 px-4 sm:px-8 text-center mono text-xs text-textDim">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>NEK'TAHR © 2026 · ALL RIGHTS RESERVED · NO AI / NO NFT</div>
+      <div id="footer-rights">NEK'TAHR © 2026 · ALL RIGHTS RESERVED · NO AI / NO NFT</div>
       <div class="flex gap-4">
-        <button onclick="copyToClipboard('drintrav', 'Discord (drintrav)')" class="hover:text-accent transition cursor-pointer">Discord: drintrav</button>
-        <a href="https://t.me/nektahr" target="_blank" rel="noopener" class="hover:text-accent transition">Telegram DM</a>
+        <button onclick="copyToClipboard('drintrava', 'Discord (drintrava)')" class="hover:text-accent transition cursor-pointer">Discord: drintrava</button>
+        <a id="footer-telegram" href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition">Telegram DM</a>
         <a href="mailto:gapkuro@gmail.com" class="hover:text-accent transition">gapkuro@gmail.com</a>
       </div>
     </div>
   </footer>
 
-  <div id="toast" class="fixed bottom-6 right-6 z-50 card border-accent px-4 py-2.5 mono text-xs text-accent opacity-0 pointer-events-none transition-opacity duration-300">
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 card border-accent px-4 py-2.5 mono text-xs text-accent opacity-0 pointer-events-none transition-opacity duration-300">
     Copied
   </div>
 
@@ -1410,16 +1339,28 @@
       setTimeout(() => el.classList.add('opacity-0'), 2200);
     }
 
-    function copyToClipboard(val, label) {
-      const ta = document.createElement('textarea');
-      ta.value = val;
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
-      try { document.execCommand('copy'); } catch (e) {}
-      document.body.removeChild(ta);
-      showToast(`Copied: ${label}`);
+    async function copyToClipboard(val, label) {
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(val);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = val;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          const copied = document.execCommand('copy');
+          document.body.removeChild(ta);
+          if (!copied) throw new Error('Clipboard permission unavailable');
+        }
+        showToast(`${uiText('copied')}: ${label}`);
+        return true;
+      } catch (error) {
+        showToast(uiText('copyFailed'));
+        return false;
+      }
     }
 
     // Page Navigation
@@ -1439,7 +1380,19 @@
 
     // Language Switching (EN main, ES, RU)
     function setLang(lang) {
+      if (!I18N[lang]) lang = 'en';
       currentLang = lang;
+      document.documentElement.lang = lang;
+      const localizedTitles = { en: "Nek'tahr | Artist Portfolio, Commissions, Adopts & YCH", es: "Nek'tahr | Portafolio y comisiones", ru: "Nek'tahr | Портфолио и коммишки" };
+      const localizedDescriptions = {
+        en: "Explore Nek'tahr's SFW portfolio, commission pricing, adoptables, YCH options, terms, and contact links.",
+        es: "Explora el portafolio SFW de Nek'tahr, precios de comisiones y adopts, opciones YCH, términos y contactos.",
+        ru: "Публичное SFW-портфолио Nek'tahr, цены на коммишки и адоптов, варианты YCH, правила и контакты."
+      };
+      document.title = localizedTitles[lang] || localizedTitles.en;
+      document.querySelector('meta[name="description"]').content = localizedDescriptions[lang] || localizedDescriptions.en;
+      document.querySelector('meta[property="og:title"]').content = localizedTitles[lang] || localizedTitles.en;
+      document.querySelector('meta[property="og:description"]').content = localizedDescriptions[lang] || localizedDescriptions.en;
       document.querySelectorAll('.lang-btn').forEach(btn => {
         const active = btn.dataset.l === lang;
         btn.className = active
@@ -1464,135 +1417,45 @@
       buildIndividualCalculator();
     }
 
-    // Stage Comparator Logic
-    function setComparatorPair(pair) {
-      document.querySelectorAll('.cmp-pair-btn').forEach(btn => {
-        const active = btn.dataset.pair === pair;
-        btn.className = active
-          ? "cmp-pair-btn px-3 py-1.5 border border-accent bg-accent text-bg font-medium transition cursor-pointer"
-          : "cmp-pair-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer";
-      });
-
-      const leftImg = document.getElementById('cmp-img-left');
-      const rightImg = document.getElementById('cmp-img-right');
-      const leftTag = document.getElementById('cmp-tag-left');
-      const rightTag = document.getElementById('cmp-tag-right');
-
-      if (pair === 'sc') {
-        leftImg.src = CMP_IMAGES.sketch;
-        leftImg.style.filter = 'grayscale(100%) contrast(115%)';
-        rightImg.src = CMP_IMAGES.color;
-        leftTag.textContent = 'SKETCH';
-        rightTag.textContent = 'FLAT COLOR';
-      } else if (pair === 'sr') {
-        leftImg.src = CMP_IMAGES.sketch;
-        leftImg.style.filter = 'grayscale(100%) contrast(115%)';
-        rightImg.src = CMP_IMAGES.render;
-        leftTag.textContent = 'SKETCH';
-        rightTag.textContent = 'FULL RENDER';
-      } else {
-        leftImg.src = CMP_IMAGES.color;
-        leftImg.style.filter = 'none';
-        rightImg.src = CMP_IMAGES.render;
-        leftTag.textContent = 'FLAT COLOR';
-        rightTag.textContent = 'FULL RENDER';
-      }
-    }
-
-    function moveComparator(val) {
-      document.getElementById('cmp-img-right').style.clipPath = `inset(0 0 0 ${val}%)`;
-      document.getElementById('cmp-divider').style.left = `${val}%`;
-    }
-
     // Individual Calculator Builder per Category
     function buildIndividualCalculator() {
       const t = I18N[currentLang].calc;
       const mode = currentPricingTab;
       const cfg = CALC_CONFIG[mode];
-
       document.getElementById('calc-category-pill').textContent = t.modes[mode];
       document.getElementById('calc-notes').placeholder = t.notesPlaceholder;
 
-      let html = '';
-
-      if (mode === 'custom') {
-        html += `
-          <div>
-            <label class="block mono text-[10px] uppercase text-textDim mb-1.5">${t.stageCustom}</label>
-            <select id="calc-stage-sel" onchange="recalcTotal()" class="w-full bg-bg border hairline p-2.5 text-xs text-textMain focus:outline-none focus:border-accent">
-              <option value="sketch">Clean Sketch ($35 – $50)</option>
-              <option value="color">Flat Color ($50 – $85)</option>
-              <option value="render" selected>Full Render ($90 – $160)</option>
-            </select>
+      let html = `
+        <div>
+          <label for="calc-stage-sel" class="block mono text-[10px] uppercase text-textDim mb-1.5">${mode === 'custom' ? t.stageCustom : mode === 'adopt' ? t.stageAdopt : t.stageYch}</label>
+          <select id="calc-stage-sel" onchange="recalcTotal()" class="w-full bg-bg border hairline p-2.5 text-xs text-textMain focus:outline-none focus:border-accent">
+            ${cfg.options.map((opt, index) => `<option value="${opt.value}" ${index === 0 ? 'selected' : ''}>${opt.label[currentLang] || opt.label.en}</option>`).join('')}
+          </select>
+        </div>
+        <div>
+          <div class="block mono text-[10px] uppercase text-textDim mb-1.5">${mode === 'custom' ? t.addonsCustom : mode === 'adopt' ? t.addonsAdopt : t.addonsYch}</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+            ${cfg.addons.map(a => {
+              const label = a.label[currentLang] || a.label.en;
+              return `<label class="addon-pill cursor-pointer">
+                <input type="checkbox" value="${a.price}" data-label="${label}" onchange="recalcTotal()" class="calc-addon-check sr-only">
+                <div class="px-2.5 py-2 border hairline text-[11px] text-textMuted flex items-center justify-between gap-1 transition">
+                  <span>${label}</span><span class="mono text-accent shrink-0">+$${a.price}</span>
+                </div>
+              </label>`;
+            }).join('')}
+            ${cfg.mults.map(m => {
+              const label = m.label[currentLang] || m.label.en;
+              return `<label class="addon-pill cursor-pointer">
+                <input type="checkbox" value="${m.mult}" data-label="${label} (${m.badge})" onchange="recalcTotal()" class="calc-mult-check sr-only">
+                <div class="px-2.5 py-2 border hairline text-[11px] text-textMuted flex items-center justify-between gap-1 transition">
+                  <span>${label}</span><span class="mono text-accent shrink-0">${m.badge}</span>
+                </div>
+              </label>`;
+            }).join('')}
           </div>
-          <div>
-            <label class="block mono text-[10px] uppercase text-textDim mb-1.5">${t.crop}</label>
-            <div class="grid grid-cols-3 gap-1.5">
-              ${cfg.crops.map((c, idx) => `
-                <label class="addon-pill cursor-pointer text-center">
-                  <input type="radio" name="calc-crop" value="${c.key}" onchange="recalcTotal()" class="hidden" ${idx === 1 ? 'checked' : ''}>
-                  <div class="py-2 border hairline text-xs text-textMuted transition">${c.label}</div>
-                </label>
-              `).join('')}
-            </div>
-          </div>
-          <div>
-            <label class="block mono text-[10px] uppercase text-textDim mb-1.5">${t.addonsCustom}</label>
-            <div class="grid grid-cols-2 gap-1.5">
-        `;
-      } else if (mode === 'adopt') {
-        html += `
-          <div>
-            <label class="block mono text-[10px] uppercase text-textDim mb-1.5">${t.stageAdopt}</label>
-            <select id="calc-stage-sel" onchange="recalcTotal()" class="w-full bg-bg border hairline p-2.5 text-xs text-textMain focus:outline-none focus:border-accent">
-              ${cfg.tiers.map((tr, i) => `<option value="${tr.val}" ${i === 0 ? 'selected' : ''}>${tr.label}</option>`).join('')}
-            </select>
-          </div>
-          <div>
-            <label class="block mono text-[10px] uppercase text-textDim mb-1.5">${t.addonsAdopt}</label>
-            <div class="grid grid-cols-2 gap-1.5">
-        `;
-      } else if (mode === 'ych') {
-        html += `
-          <div>
-            <label class="block mono text-[10px] uppercase text-textDim mb-1.5">${t.stageYch}</label>
-            <select id="calc-stage-sel" onchange="recalcTotal()" class="w-full bg-bg border hairline p-2.5 text-xs text-textMain focus:outline-none focus:border-accent">
-              ${cfg.slots.map((sl, i) => `<option value="${sl.val}" ${i === 2 ? 'selected' : ''}>${sl.label}</option>`).join('')}
-            </select>
-          </div>
-          <div>
-            <label class="block mono text-[10px] uppercase text-textDim mb-1.5">${t.addonsYch}</label>
-            <div class="grid grid-cols-2 gap-1.5">
-        `;
-      }
-
-      cfg.addons.forEach(a => {
-        const lbl = a.label[currentLang] || a.label.en;
-        html += `
-          <label class="addon-pill cursor-pointer">
-            <input type="checkbox" value="${a.price}" data-label="${lbl}" onchange="recalcTotal()" class="hidden calc-addon-check">
-            <div class="px-2.5 py-2 border hairline text-[11px] text-textMuted flex items-center justify-between gap-1 transition">
-              <span class="truncate">${lbl}</span>
-              <span class="mono text-accent shrink-0">+$${a.price}</span>
-            </div>
-          </label>
-        `;
-      });
-
-      cfg.mults.forEach(m => {
-        const lbl = m.label[currentLang] || m.label.en;
-        html += `
-          <label class="addon-pill cursor-pointer">
-            <input type="checkbox" value="${m.mult}" data-label="${lbl} (${m.badge})" onchange="recalcTotal()" class="hidden calc-mult-check">
-            <div class="px-2.5 py-2 border hairline text-[11px] text-textMuted flex items-center justify-between gap-1 transition">
-              <span class="truncate">${lbl}</span>
-              <span class="mono text-accent shrink-0">${m.badge}</span>
-            </div>
-          </label>
-        `;
-      });
-
-      html += `</div></div>`;
+          <p class="text-[11px] text-textDim leading-relaxed mt-2">${cfg.note[currentLang] || cfg.note.en}</p>
+        </div>`;
       document.getElementById('calc-dynamic-body').innerHTML = html;
       recalcTotal();
     }
@@ -1600,45 +1463,36 @@
     function recalcTotal() {
       const mode = currentPricingTab;
       const cfg = CALC_CONFIG[mode];
-      let base = 0;
-      let itemSummary = '';
-
       const sel = document.getElementById('calc-stage-sel');
       if (!sel) return;
-
-      if (mode === 'custom') {
-        const stKey = sel.value;
-        const cropRad = document.querySelector('input[name="calc-crop"]:checked');
-        const cropKey = cropRad ? cropRad.value : 'half';
-        base = cfg.matrix[stKey][cropKey];
-        itemSummary = `Custom Commission — ${cfg.matrix[stKey].label} (${cropKey.toUpperCase()})`;
-      } else {
-        base = parseFloat(sel.value) || 0;
-        itemSummary = sel.options[sel.selectedIndex].text;
-      }
+      const selected = cfg.options.find(opt => String(opt.value) === String(sel.value)) || cfg.options[0];
+      const base = selected ? selected.price : 0;
+      const itemSummary = selected ? (selected.label[currentLang] || selected.label.en) : 'Unselected';
 
       let extras = 0;
       const pickedNames = [];
       document.querySelectorAll('.calc-addon-check:checked').forEach(chk => {
-        extras += parseFloat(chk.value) || 0;
+        extras += Number.parseFloat(chk.value) || 0;
         pickedNames.push(chk.dataset.label);
       });
-
       let mult = 1;
       document.querySelectorAll('.calc-mult-check:checked').forEach(chk => {
-        mult *= parseFloat(chk.value) || 1;
+        mult *= Number.parseFloat(chk.value) || 1;
         pickedNames.push(chk.dataset.label);
       });
 
       const total = Math.round((base + extras) * mult);
-      document.getElementById('calc-total-value').textContent = `$${total}`;
-      document.getElementById('calc-formula').textContent =
-        `Base $${base}` + (extras > 0 ? ` + Extras $${extras}` : '') + (mult > 1 ? ` × ${mult.toFixed(2)}` : '');
+      document.getElementById('calc-total-value').textContent = `$${total}${mode === 'custom' || mode === 'adopt' ? '+' : ''}`;
+      document.getElementById('calc-formula').textContent = `Base $${base}` + (extras > 0 ? ` + Extras $${extras}` : '') + (mult > 1 ? ` × ${mult.toFixed(2)}` : '');
 
-      const notes = document.getElementById('calc-notes').value.trim() || '[Will attach references in DM]';
-      const tosStatus = tosAgreed ? 'Read & Agreed (Confirmed)' : 'Read & Agreed';
-
-      const msg = `Hi Nek'tahr! I'd like to request:\n• Category: ${itemSummary}\n• Add-ons: ${pickedNames.length ? pickedNames.join(', ') : 'None'}\n• Estimated Total: ~$${total} USD\n• References / Notes: ${notes}\n• ToS: ${tosStatus}`;
+      const notes = document.getElementById('calc-notes').value.trim() || uiText('quotePlaceholder');
+      const tosStatus = tosAgreed ? uiText('quoteAccepted') : uiText('quoteNotConfirmed');
+      const msg = `${uiText('quoteGreeting')}
+• ${uiText('quoteCategory')}: ${itemSummary}
+• ${uiText('quoteAddons')}: ${pickedNames.length ? pickedNames.join(', ') : uiText('quoteNone')}
+• ${uiText('quoteTotal')}: ~$${total} USD
+• ${uiText('quoteReferences')}: ${notes}
+• ${uiText('quoteTos')}: ${tosStatus}`;
       document.getElementById('calc-preview-text').textContent = msg;
     }
 
@@ -1647,39 +1501,43 @@
       buildIndividualCalculator();
     }
 
-    function quickPickCustom(stageKey, cropKey) {
+    function quickPickCustom(packageKey) {
       if (currentPricingTab !== 'custom') switchPricingTab('custom');
       const sel = document.getElementById('calc-stage-sel');
-      if (sel) sel.value = stageKey;
-      const rad = document.querySelector(`input[name="calc-crop"][value="${cropKey}"]`);
-      if (rad) rad.checked = true;
+      if (sel && ['single', 'duo'].includes(packageKey)) sel.value = packageKey;
       recalcTotal();
-      showToast(`Loaded: ${stageKey.toUpperCase()} · ${cropKey.toUpperCase()}`);
+      if (['single', 'duo'].includes(packageKey)) showToast(uiText(packageKey === 'single' ? 'loadedOne' : 'loadedTwo'));
     }
 
     function quickPickTier(mode, amount) {
       if (currentPricingTab !== mode) switchPricingTab(mode);
       const sel = document.getElementById('calc-stage-sel');
-      if (sel) sel.value = String(amount);
+      if (sel) {
+        const value = String(amount);
+        if ([...sel.options].some(opt => opt.value === value)) sel.value = value;
+      }
       recalcTotal();
-      showToast(`Loaded into Quote Builder ($${amount})`);
+      showToast(uiText('loadedTier').replace('$VALUE', `$${amount}`));
     }
 
-    function copyCalcRequest() {
+    async function copyCalcRequest() {
       recalcTotal();
       const txt = document.getElementById('calc-preview-text').textContent;
-      copyToClipboard(txt, 'DM Order Request');
-      const btn = document.getElementById('calc-copy-btn');
-      const t = I18N[currentLang].calc;
-      btn.textContent = t.copiedBtn;
-      setTimeout(() => { btn.textContent = t.copyBtn; }, 2000);
+      const copied = await copyToClipboard(txt, 'DM Order Request');
+      if (copied) {
+        const btn = document.getElementById('calc-copy-btn');
+        const t = I18N[currentLang].calc;
+        btn.textContent = t.copiedBtn;
+        setTimeout(() => { btn.textContent = t.copyBtn; }, 2000);
+      }
     }
 
-    // Gallery & 18+ Verification Modal
+    // Gallery: public SFW samples only. Open cards with mouse or keyboard.
     function setGalleryCat(cat) {
       currentGalCat = cat;
       document.querySelectorAll('.gal-filter-btn').forEach(btn => {
         const active = btn.dataset.c === cat;
+        btn.setAttribute('aria-pressed', String(active));
         btn.className = active
           ? "gal-filter-btn px-3 py-1.5 bg-accent text-bg font-medium transition cursor-pointer"
           : "gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer";
@@ -1687,77 +1545,59 @@
       renderGalleryGrid();
     }
 
-    function handleNsfwToggle(checkbox) {
-      if (checkbox.checked && !isAdultVerified) {
-        checkbox.checked = false;
-        document.getElementById('nsfw-modal').classList.remove('hidden');
-      } else {
-        showNsfwGallery = checkbox.checked;
-        renderGalleryGrid();
-      }
-    }
-
-    function confirmAgeModal(confirmed) {
-      document.getElementById('nsfw-modal').classList.add('hidden');
-      if (confirmed) {
-        isAdultVerified = true;
-        showNsfwGallery = true;
-        document.getElementById('nsfw-switch').checked = true;
-        renderGalleryGrid();
-      }
-    }
-
     function renderGalleryGrid() {
       const grid = document.getElementById('gallery-cards-grid');
-      const filtered = GALLERY_ITEMS.filter(it => currentGalCat === 'all' || it.cat === currentGalCat);
-
-      grid.innerHTML = filtered.map(item => {
-        const blurred = item.nsfw && !showNsfwGallery;
-        return `
-          <div onclick="${blurred ? "document.getElementById('nsfw-modal').classList.remove('hidden')" : `openLightbox(${item.id})`}" class="card card-interactive overflow-hidden group cursor-pointer">
-            <div class="aspect-[4/5] bg-bg relative overflow-hidden border-b hairline">
-              <img src="${item.img}" alt="${item.title}" class="w-full h-full object-cover transition duration-500 ${blurred ? 'blur-2xl scale-110' : 'group-hover:scale-105'}" />
-              <div class="absolute top-2.5 left-2.5 flex gap-1.5">
-                <span class="px-2 py-0.5 bg-bg/85 border hairline mono text-[10px] text-textMuted">${item.stage}</span>
-                ${item.nsfw ? `<span class="px-2 py-0.5 bg-bg/90 border border-error/50 mono text-[10px] text-error">18+</span>` : ''}
-              </div>
-              ${blurred ? `
-                <div class="absolute inset-0 bg-bg/60 flex flex-col items-center justify-center p-4 text-center">
-                  <span class="mono text-[10px] uppercase text-error border border-error/50 px-2.5 py-1 mb-1.5">18+ MATURE</span>
-                  <span class="text-xs text-textMain">Click to verify age</span>
-                </div>
-              ` : ''}
-            </div>
-            <div class="p-4 flex items-baseline justify-between">
-              <div>
-                <h3 class="serif text-xl text-textMain">${item.title}</h3>
-                <p class="text-xs text-textDim">${item.desc}</p>
-              </div>
-              <span class="mono text-xs text-accent">${item.price}</span>
+      const filtered = GALLERY_ITEMS.filter(item => currentGalCat === 'all' || item.cat === currentGalCat);
+      if (!filtered.length) {
+        grid.innerHTML = `<p class="text-sm text-textMuted py-8" role="status">${uiText('noSamples')}</p>`;
+        return;
+      }
+      grid.innerHTML = filtered.map(item => `
+        <button type="button" onclick="openLightbox(${Number(item.id)})" class="card card-interactive overflow-hidden group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-label="Open ${getGalleryTitle(item)}">
+          <div class="aspect-[4/5] bg-bg relative overflow-hidden border-b hairline">
+            <img src="${item.img}" alt="${getGalleryTitle(item)}" loading="lazy" decoding="async" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
+            <div class="absolute top-2.5 left-2.5 flex gap-1.5">
+              <span class="px-2 py-0.5 bg-bg/85 border hairline mono text-[10px] text-textMuted">${getGalleryStage()}</span>
             </div>
           </div>
-        `;
-      }).join('');
+          <div class="p-4 flex items-baseline justify-between gap-3">
+            <div class="min-w-0">
+              <h3 class="serif text-xl text-textMain">${getGalleryTitle(item)}</h3>
+              <p class="text-xs text-textDim">${getGalleryDescription()}</p>
+            </div>
+            <span class="mono text-xs text-accent shrink-0">${getGalleryPriceLabel()}</span>
+          </div>
+        </button>
+      `).join('');
     }
 
     function openLightbox(id) {
       const item = GALLERY_ITEMS.find(x => x.id === id);
       if (!item) return;
+      lastGalleryTrigger = document.activeElement;
       document.getElementById('lb-image').src = item.img;
-      document.getElementById('lb-title').textContent = item.title;
-      document.getElementById('lb-stage').textContent = `${item.stage} · ${item.price}`;
-      document.getElementById('lb-desc').textContent = item.desc;
+      document.getElementById('lb-image').alt = getGalleryTitle(item);
+      document.getElementById('lb-title').textContent = getGalleryTitle(item);
+      document.getElementById('lb-stage').textContent = `${getGalleryStage()} · ${getGalleryPriceLabel()}`;
+      document.getElementById('lb-desc').textContent = getGalleryDescription();
       document.getElementById('lightbox-modal').classList.remove('hidden');
+      document.getElementById('lb-close').setAttribute('aria-label', uiText('closePreview'));
+      document.getElementById('lb-close').focus();
     }
 
+    let lastGalleryTrigger = null;
     function closeLightbox() {
       document.getElementById('lightbox-modal').classList.add('hidden');
+      if (lastGalleryTrigger && typeof lastGalleryTrigger.focus === 'function') lastGalleryTrigger.focus();
     }
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && !document.getElementById('lightbox-modal').classList.contains('hidden')) closeLightbox();
+    });
 
     function toggleTosConfirmation(checked) {
       tosAgreed = checked;
       recalcTotal();
-      if (checked) showToast('ToS agreement attached to Quote Builder');
+      if (checked) showToast(uiText('agreementAttached'));
     }
 
     function setFaqCat(cat) {
@@ -1805,6 +1645,11 @@
       document.getElementById('nav-tos').textContent = t.nav.tos;
       document.getElementById('nav-faq').textContent = t.nav.faq;
       document.getElementById('header-status-badge').textContent = t.statusBadge;
+      document.getElementById('header-tagline').textContent = uiText('headerTagline');
+      document.getElementById('footer-rights').textContent = uiText('footerRights');
+      document.getElementById('footer-telegram').textContent = uiText('footerTelegram');
+      document.getElementById('lb-pricing-link').textContent = uiText('pricingLink');
+      document.getElementById('toast').textContent = uiText('copied');
 
       // Board / Hero
       document.getElementById('hero-eyebrow').textContent = t.hero.eyebrow;
@@ -1830,7 +1675,7 @@
             <button onclick="copyToClipboard('${c.value}', '${c.label} (${c.handle})')" class="card card-interactive p-4 border-accent/40 bg-accent/5 text-left flex flex-col justify-between gap-2 cursor-pointer">
               <div class="flex items-center justify-between w-full">
                 <span class="mono text-[10px] uppercase text-accent">${subText}</span>
-                <span class="mono text-xs text-accent">Copy</span>
+                <span class="mono text-xs text-accent">${uiText('copy')}</span>
               </div>
               <div>
                 <div class="serif text-2xl text-textMain">${c.label}</div>
@@ -1840,7 +1685,7 @@
           `;
         }
         return `
-          <a href="${c.url}" target="_blank" rel="noopener" class="card card-interactive p-4 border-accent/40 bg-accent/5 flex flex-col justify-between gap-2">
+          <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="card card-interactive p-4 border-accent/40 bg-accent/5 flex flex-col justify-between gap-2">
             <div class="flex items-center justify-between w-full">
               <span class="mono text-[10px] uppercase text-accent">${subText}</span>
               <span class="mono text-xs text-accent">↗</span>
@@ -1867,7 +1712,7 @@
           `;
         }
         return `
-          <a href="${p.url}" target="_blank" rel="noopener" class="card card-interactive p-4 flex flex-col justify-between gap-2 group">
+          <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="card card-interactive p-4 flex flex-col justify-between gap-2 group">
             <div class="flex items-center justify-between">
               <span class="serif text-xl text-textMain group-hover:text-accent transition">${p.name}</span>
               <span class="mono text-xs text-textDim group-hover:text-accent transition">↗</span>
@@ -1881,16 +1726,19 @@
       document.getElementById('feat-eyebrow').textContent = t.featured.eyebrow;
       document.getElementById('feat-title').textContent = t.featured.title;
       document.getElementById('feat-view-all').textContent = t.featured.viewAll;
+      document.getElementById('hero-featured-label').textContent = t.featured.eyebrow;
+      document.getElementById('hero-featured-title').textContent = t.featured.title;
+      document.getElementById('hero-featured-link').textContent = t.featured.viewAll;
       document.getElementById('board-highlights-grid').innerHTML = GALLERY_ITEMS.filter(x => !x.nsfw).slice(0, 4).map(it => `
-        <div onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group">
+        <button type="button" onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group text-left w-full">
           <div class="aspect-[4/5] bg-bg overflow-hidden border-b hairline">
-            <img src="${it.img}" alt="${it.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+            <img src="${it.img}" alt="${getGalleryTitle(it)}" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
           </div>
-          <div class="p-3.5 flex items-baseline justify-between">
-            <span class="serif text-lg text-textMain">${it.title}</span>
-            <span class="mono text-[11px] text-accent">${it.stage}</span>
+          <div class="p-3.5 flex items-baseline justify-between gap-2">
+            <span class="serif text-lg text-textMain">${getGalleryTitle(it)}</span>
+            <span class="mono text-[11px] text-accent">${getGalleryStage()}</span>
           </div>
-        </div>
+        </button>
       `).join('');
 
       // Pricing Page
@@ -1904,60 +1752,25 @@
       document.getElementById('stage-sec-title').textContent = t.pricing.stageSectionTitle;
       document.getElementById('stage-sec-hint').textContent = t.pricing.stageSectionHint;
 
-      document.getElementById('custom-stages-grid').innerHTML = t.pricing.stages.map(st => `
-        <div onclick="quickPickCustom('${st.key}', 'half')" class="card card-interactive overflow-hidden flex flex-col justify-between cursor-pointer group">
-          <div>
-            <div class="aspect-[4/5] bg-bg overflow-hidden border-b hairline">
-              <img src="${st.img}" alt="${st.name}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" style="${st.gray ? 'filter: grayscale(100%) contrast(115%);' : ''}" />
-            </div>
-            <div class="p-5 space-y-2">
-              <div class="flex items-baseline justify-between gap-2">
-                <h3 class="serif text-2xl text-textMain">${st.name}</h3>
-                <span class="mono text-xs text-accent shrink-0">${st.range}</span>
-              </div>
-              <p class="text-xs text-textMuted leading-relaxed">${st.desc}</p>
-            </div>
-          </div>
-          <div class="px-5 py-3 border-t hairline flex items-center justify-between mono text-[10px] text-textDim">
-            <span>${st.time}</span>
-            <span class="text-accent">Select →</span>
-          </div>
-        </div>
-      `).join('');
-
-      // Matrix
-      document.getElementById('matrix-eyebrow').textContent = t.pricing.matrix.eyebrow;
-      document.getElementById('matrix-title').textContent = t.pricing.matrix.title;
-      document.getElementById('matrix-hint').textContent = t.pricing.matrix.hint;
-      document.getElementById('mtx-col-fmt').textContent = t.pricing.matrix.format;
-      document.getElementById('mtx-col-s1').textContent = t.pricing.matrix.s1;
-      document.getElementById('mtx-col-s2').textContent = t.pricing.matrix.s2;
-      document.getElementById('mtx-col-s3').textContent = t.pricing.matrix.s3;
-      document.getElementById('mtx-row-bust').textContent = t.pricing.matrix.bust;
-      document.getElementById('mtx-row-bust-sub').textContent = t.pricing.matrix.bustSub;
-      document.getElementById('mtx-row-half').textContent = t.pricing.matrix.half;
-      document.getElementById('mtx-row-half-sub').textContent = t.pricing.matrix.halfSub;
-      document.getElementById('mtx-row-full').textContent = t.pricing.matrix.full;
-      document.getElementById('mtx-row-full-sub').textContent = t.pricing.matrix.fullSub;
-
-      // Comparator
-      document.getElementById('cmp-eyebrow').textContent = t.pricing.compare.eyebrow;
-      document.getElementById('cmp-title').textContent = t.pricing.compare.title;
-      document.getElementById('cmp-hint').textContent = t.pricing.compare.hint;
+      document.getElementById('custom-stages-grid').innerHTML = t.pricing.stages.map(st => {
+        const selectable = ['single', 'duo'].includes(st.key);
+        return `
+          <div ${selectable ? `role="button" tabindex="0" onclick="quickPickCustom('${st.key}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();quickPickCustom('${st.key}');}"` : ''} class="card ${selectable ? 'card-interactive cursor-pointer' : ''} p-5 flex flex-col gap-3">
+            <div class="mono text-[10px] uppercase text-accent">${st.time}</div>
+            <h3 class="serif text-2xl text-textMain">${st.name}</h3>
+            <div class="serif text-3xl text-accent">${st.range}</div>
+            <p class="text-xs text-textMuted leading-relaxed">${st.desc}</p>
+          </div>`;
+      }).join('');
 
       // Breakdown
       document.getElementById('brk-eyebrow').textContent = t.pricing.breakdown.eyebrow;
       document.getElementById('brk-title').textContent = t.pricing.breakdown.title;
       document.getElementById('breakdown-grid').innerHTML = t.pricing.breakdown.items.map(b => `
-        <div class="card overflow-hidden">
-          <div class="h-48 bg-bg overflow-hidden border-b hairline">
-            <img src="${b.img}" alt="${b.title}" class="w-full h-full object-cover" />
-          </div>
-          <div class="p-4 space-y-1">
-            <div class="mono text-[10px] uppercase text-accent">${b.tag}</div>
-            <h4 class="serif text-xl text-textMain">${b.title}</h4>
-            <p class="text-xs text-textMuted leading-relaxed">${b.desc}</p>
-          </div>
+        <div class="card p-5 space-y-3">
+          <div class="mono text-[10px] uppercase text-accent">${b.tag}</div>
+          <h4 class="serif text-xl text-textMain">${b.title}</h4>
+          <p class="text-xs text-textMuted leading-relaxed">${b.desc}</p>
         </div>
       `).join('');
 
@@ -1966,7 +1779,7 @@
       document.getElementById('adopt-title').textContent = t.pricing.adoptSection.title;
       document.getElementById('adopt-desc').textContent = t.pricing.adoptSection.desc;
       document.getElementById('adopt-tiers-grid').innerHTML = t.pricing.adoptSection.tiers.map(tr => `
-        <div onclick="quickPickTier('adopt', ${tr.val})" class="card card-interactive overflow-hidden flex flex-col justify-between cursor-pointer">
+        <button type="button" onclick="quickPickTier('adopt', ${tr.val})" class="card card-interactive overflow-hidden flex flex-col justify-between cursor-pointer text-left w-full">
           <div>
             ${tr.hasSample ? `
               <div class="h-48 bg-bg overflow-hidden relative border-b hairline">
@@ -1992,7 +1805,7 @@
               </ul>
             </div>
           </div>
-        </div>
+        </button>
       `).join('');
 
       // YCH Section
@@ -2000,23 +1813,16 @@
       document.getElementById('ych-title').textContent = t.pricing.ychSection.title;
       document.getElementById('ych-desc').textContent = t.pricing.ychSection.desc;
       document.getElementById('ych-slots-grid').innerHTML = t.pricing.ychSection.slots.map(sl => `
-        <div onclick="quickPickTier('ych', ${sl.val})" class="card card-interactive overflow-hidden flex flex-col justify-between cursor-pointer group">
-          <div>
-            <div class="aspect-square bg-bg overflow-hidden relative border-b hairline">
-              <img src="${sl.img}" alt="${sl.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
-              <span class="absolute top-3 left-3 px-2 py-0.5 bg-bg/85 border hairline mono text-[10px] text-accent">${sl.status}</span>
-            </div>
-            <div class="p-4 space-y-1.5">
-              <div class="mono text-[10px] text-textDim">${sl.code}</div>
-              <h3 class="serif text-2xl text-textMain">${sl.title}</h3>
-              <div class="flex items-center justify-between pt-2 border-t hairline text-xs">
-                <span class="text-textMuted">${sl.stage}</span>
-                <span class="mono text-accent">${sl.price}</span>
-              </div>
-            </div>
+        <div role="button" tabindex="0" onclick="quickPickTier('ych', ${sl.val})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();quickPickTier('ych', ${sl.val});}" class="card card-interactive p-5 flex flex-col gap-3 cursor-pointer">
+          <div class="mono text-[10px] text-textDim">${sl.code}</div>
+          <h3 class="serif text-2xl text-textMain">${sl.title}</h3>
+          <div class="flex flex-wrap items-center justify-between gap-2 border-t hairline pt-3">
+            <span class="text-xs text-textMuted">${sl.stage}</span>
+            <span class="mono text-lg text-accent">${sl.price}</span>
           </div>
-        </div>
-      `).join('');
+          <p class="text-xs text-textMuted leading-relaxed">${sl.desc}</p>
+          <span class="mono text-[10px] uppercase text-textDim">${sl.status} · ${uiText('confirmAvailability')}</span>
+        </div>`).join('');
 
       // Calculator Labels
       document.getElementById('calc-title').textContent = t.calc.title;
@@ -2031,24 +1837,14 @@
       document.getElementById('gal-title').textContent = t.gallery.title;
       document.getElementById('gal-sub').textContent = t.gallery.sub;
       document.getElementById('gf-all').textContent = t.gallery.filters.all;
-      document.getElementById('gf-ill').textContent = t.gallery.filters.ill;
-      document.getElementById('gf-comm').textContent = t.gallery.filters.comm;
-      document.getElementById('gf-adopt').textContent = t.gallery.filters.adopt;
-      document.getElementById('gf-ych').textContent = t.gallery.filters.ych;
-      document.getElementById('gf-other').textContent = t.gallery.filters.other;
-      document.getElementById('gal-nsfw-label').textContent = t.gallery.nsfwToggle;
-
-      document.getElementById('mod-eyebrow').textContent = t.gallery.modal.eyebrow;
-      document.getElementById('mod-title').textContent = t.gallery.modal.title;
-      document.getElementById('mod-desc').textContent = t.gallery.modal.desc;
-      document.getElementById('mod-btn-yes').textContent = t.gallery.modal.yes;
-      document.getElementById('mod-btn-no').textContent = t.gallery.modal.no;
+      document.getElementById('gf-samples').textContent = t.gallery.filters.samples;
+      // Public gallery is SFW-only; age-gated gallery controls are intentionally not shown.
       document.getElementById('gal-ext-title').textContent = t.gallery.extTitle;
       document.getElementById('gal-ext-sub').textContent = t.gallery.extSub;
       document.getElementById('gal-ext-platforms').innerHTML = PLATFORMS.filter(p => !p.soon).map(p => {
         const note = p.note[currentLang] || p.note.en;
         return `
-          <a href="${p.url}" target="_blank" rel="noopener" class="card card-interactive p-4 flex flex-col justify-between gap-1.5 group">
+          <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="card card-interactive p-4 flex flex-col justify-between gap-1.5 group">
             <div class="flex items-center justify-between">
               <span class="serif text-xl text-textMain group-hover:text-accent transition">${p.name}</span>
               <span class="mono text-xs text-accent">↗</span>
@@ -2070,25 +1866,10 @@
       document.getElementById('q-col-stage').textContent = t.queue.cols.stage;
       document.getElementById('q-col-progress').textContent = t.queue.cols.progress;
 
-      document.getElementById('queue-table-body').innerHTML = QUEUE_SLOTS.map(s => `
-        <tr>
-          <td class="py-4 pr-4 mono text-xs text-accent">${s.id}</td>
-          <td class="py-4 px-4 text-textMain font-medium">${s.client}</td>
-          <td class="py-4 px-4">
-            <div class="text-textMain">${s.category}</div>
-            <div class="text-xs text-textDim">${s.details}</div>
-          </td>
-          <td class="py-4 px-4 mono text-xs ${s.progress === 0 ? 'text-ok' : 'text-accent'}">${s.stage}</td>
-          <td class="py-4 pl-4">
-            <div class="flex items-center justify-end gap-3">
-              <div class="w-28 h-1.5 bg-bg border hairline overflow-hidden">
-                <div class="h-full bg-accent" style="width: ${s.progress}%"></div>
-              </div>
-              <span class="mono text-xs text-textMuted w-9 text-right">${s.progress}%</span>
-            </div>
-          </td>
-        </tr>
-      `).join('');
+      document.getElementById('queue-table-body').innerHTML = `
+        <tr><td colspan="5" class="py-8 px-4 text-sm text-textMuted leading-relaxed">${QUEUE_PUBLIC_NOTICE[currentLang] || QUEUE_PUBLIC_NOTICE.en}
+          <div class="mt-4"><a href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2 bg-accent text-bg mono text-xs uppercase">${QUEUE_CONTACT_LABEL[currentLang] || QUEUE_CONTACT_LABEL.en}</a></div>
+        </td></tr>`;
 
       // ToS Page
       document.getElementById('tos-eyebrow').textContent = t.tos.eyebrow;
