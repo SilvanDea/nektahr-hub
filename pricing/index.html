@@ -23,11 +23,11 @@
   <meta property="og:title" content="Nek'tahr | Artist Portfolio & Commissions" />
   <meta property="og:description" content="Art portfolio, commission pricing, adoptables, YCH options, and contact links." />
   <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
-  <script src="/assets/queue-manager.js" defer></script>
+  <script src="/assets/queue-manager.js?v=20261028-review2" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
@@ -117,15 +117,15 @@
     /* Tailwind CDN is still required for the original utility classes; these small fallbacks keep basic readability if it fails. */
     .hidden { display: none !important; }
   </style>
-<link rel="stylesheet" href="/assets/process-viewer.css">
+<link rel="stylesheet" href="/assets/process-viewer.css?v=20261028-review2">
 <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/assets/favicon-32.png" sizes="32x32">
   <style>img{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none}</style>
-<link rel="stylesheet" href="/assets/pricing-layout.css">
-<link rel="stylesheet" href="/assets/site-polish.css">
-<link rel="stylesheet" href="/assets/quote-controls.css">
-<link rel="stylesheet" href="/assets/catalog-queue.css">
-<link rel="stylesheet" href="/assets/readability.css">
+<link rel="stylesheet" href="/assets/pricing-layout.css?v=20261028-review2">
+<link rel="stylesheet" href="/assets/site-polish.css?v=20261028-review2">
+<link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-review2">
+<link rel="stylesheet" href="/assets/catalog-queue.css?v=20261028-review2">
+<link rel="stylesheet" href="/assets/readability.css?v=20261028-review2">
 </head>
 <body data-page="pricing" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
@@ -309,679 +309,1417 @@
 
     // Translations (EN main · ES · RU)
     const I18N = {
-      en: {
-        nav: { board: "Board", pricing: "Pricing", gallery: "Gallery", queue: "Queue", tos: "ToS", faq: "FAQ" },
-        statusBadge: "Check Current Availability",
-        hero: {
-          eyebrow: "Character Art & Commissions",
-          title: "Hey, welcome to my little corner of the internet!",
-          desc1: "You’ve already found me somewhere else. This is where everything comes together: my art, other links, commission prices, YCHs, and adopts.",
-          desc2: "I draw cute characters, fanart, and experimental pieces, from anime and fantasy humanoids to kemonomimi and humanoid furries. Got an idea in mind? Take a look around and let’s see what we can make.",
-          pathA: { tag: "OPTION A · EXPLORE", title: "Art Gallery & Archives", sub: "Browse public SFW samples and external galleries (DA, FA, Pixiv, X). DM for additional / NSFW examples." },
-          pathB: { tag: "OPTION B · ORDER INFO", title: "Pricing, Stages & Adopts", sub: "Compare render stages, bid tiers & build a quote" }
-        },
-        contacts: {
-          eyebrow: "DIRECT MESSAGING & NETWORKS",
-          title: "Where to Find & Message Me",
-          primaryTitle: "Primary Direct Contacts (Fastest Response)",
-          platformsTitle: "Art Platforms & Galleries"
-        },
-        featured: {
-          eyebrow: "SELECTED WORKS",
-          title: "Recent Highlights",
-          viewAll: "Open Full Gallery →"
-        },
-        pricing: {
-          eyebrow: "PRICING · STAGES · ADOPTS · YCH",
-          title: "What You're Paying For",
-          sub: "Compare custom commission packages, cumulative adoptable tiers, and the published YCH price guide. The quote builder gives a starting estimate; confirm the final quote and availability directly.",
-          tabs: { custom: "Custom Commissions", adopt: "Adopts & Bid Tiers", ych: "YCH Price Guide" },
-          stageSectionTitle: "Custom Commission Packages",
-          stageSectionHint: "Select a package to load it into the quote builder",
-          stages: [
-            { key: "single", name: "One character + simple background", range: "From $200", time: "14–30 business days", desc: "One character with a white or simple background. Final quote depends on the brief and complexity." },
-            { key: "duo", name: "Two characters + simple background", range: "From $300", time: "14–30 business days", desc: "Second character +$100; each subsequent character +$80." },
-            { key: "extras", name: "Optional extras", range: "From $50", time: "Quoted separately", desc: "Extra outfit +$50. Second character +$100; each further character +$80. Rush delivery (3–5 business days) +$50–$100." }
-          ],
-          matrix: {
-            eyebrow: "CUSTOM PRICE TABLE (USD)",
-            title: "Custom / Commission Price Matrix",
-            hint: "See the package cards above for current base prices.",
-            format: "Framing", s1: "Sketch", s2: "Flat Color", s3: "Full Render",
-            bust: "Portrait / Bust", bustSub: "Head & shoulders",
-            half: "Half-Body / Waist", halfSub: "Waist or mid-thigh up",
-            full: "Full-Body", fullSub: "Head to toe pose"
-          },
-          compare: {
-            eyebrow: "BEFORE / AFTER SLIDER",
-            title: "Interactive Stage Comparison",
-            hint: "Drag the slider handle left or right to compare detail levels"
-          },
-          breakdown: {
-            eyebrow: "CHARACTER DESIGN FOCUS",
-            title: "Character Art: Details & Focus Areas",
-            items: [
-              { tag: "SILHOUETTE & WARDROBE", title: "Full Silhouette & Outfit", desc: "Readable posture, dark minimal or fantasy tailoring, and clean palette separation.", img: "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c" },
-              { tag: "PORTRAIT & GAZE", title: "Face & Micro-Expressions", desc: "Expressive eye rendering, hair flow, piercings, makeup, and emotional mood.", img: "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c" },
-              { tag: "PROPS & GESTURES", title: "Hands, Weapons & Callouts", desc: "Anatomical hand gestures, rings, weapons, and close-up material details.", img: "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c" }
-            ]
-          },
-          adoptSection: {
-            eyebrow: "ADOPTABLE TIERS · $100 – $500",
-            title: "Adoptables: Ready Designs & Stretch Goal Tiers",
-            desc: "A finished base character design that expands into a full collector bundle at higher auction bids. Where finished samples aren't shown yet, a blueprint schematic explains what I custom-draw for the winner.",
-            blueprintTitle: "STRETCH GOAL BLUEPRINT",
-            blueprintSub: "Custom-drawn specifically for the winning bidder",
-            tiers: [
-              { val: 100, badge: "SB · STARTING BID", price: "$100", title: "SB — Base Adoptable Design", desc: "Base design with a public SFW image / PNG without watermark and personal-use rights.", perks: ["SFW image / PNG without watermark", "Personal-use rights", "Base tier delivered after payment"], hasSample: false },
-              { val: 200, badge: "TIER II", price: "$200+", title: "+ Full Render & Alternative Version", desc: "At bids of $200 or more, the bundle includes a full render and one agreed alternative version, such as an outfit or species variant.", perks: ["Everything in SB", "Full rendered artwork", "One agreed alternative version"], hasSample: false },
-              { val: 350, badge: "TIER III", price: "$350+", title: "+ Bonus Character Artwork", desc: "At bids of $350 or more, the bundle also includes bonus artwork featuring the character.", perks: ["Everything in Tier II", "Additional character artwork", "Details confirmed with the winning bidder"], hasSample: false },
-              { val: 500, badge: "AB · AUTO-BUY", price: "$500+", title: "+ Reference Sheet & Close-ups", desc: "At bids of $500 or more, the bundle includes a reference sheet and close-up details. Commercial use is not included automatically.", perks: ["Everything in Tier III", "Reference sheet", "Close-ups of selected details"], hasSample: false }
-            ]
-          },
-          ychSection: {
-            eyebrow: "PRE-POSED TEMPLATES",
-            title: "YCH Price Guide",
-            desc: "Published base prices for YCH artwork. These are price-guide options, not a statement that a specific slot is currently available.",
-            slots: [
-              { val: 30, code: "YCH · SKETCH", title: "Clean Sketch", stage: "Sketch", price: "$30", status: "Price guide", desc: "Estimated turnaround: up to 14 business days." },
-              { val: 65, code: "YCH · COLOR SKETCH", title: "Color Sketch", stage: "Color sketch", price: "$65", status: "Price guide", desc: "Estimated turnaround: up to 14 business days." },
-              { val: 120, code: "YCH · FULL RENDER", title: "Full Render", stage: "Full render", price: "$120", status: "Price guide", desc: "Estimated turnaround: up to 14 business days." },
-              { val: 170, code: "YCH · FULL RENDER + NSFW", title: "Full Render + NSFW Alt", stage: "Discuss NSFW in advance", price: "$170", status: "Price guide", desc: "NSFW content must be discussed and agreed in advance." }
-            ]
-          }
-        },
-        calc: {
-          title: "Quote Builder",
-          reset: "Reset",
-          modes: { custom: "Custom Commission", adopt: "Adoptable Tier", ych: "YCH Slot" },
-          stageCustom: "Select commission package",
-          stageAdopt: "Select adoptable tier",
-          stageYch: "Select YCH finish",
-          crop: "Framing / Crop",
-          addonsCustom: "Optional Extras",
-          addonsAdopt: "Adoptable Upgrades & Extras",
-          addonsYch: "Optional extras",
-          notesPlaceholder: "Optional: character reference links, pose idea, SFW/NSFW...",
-          totalLabel: "Estimated Total",
-          copyBtn: "Copy Ready DM Request",
-          copiedBtn: "Copied to Clipboard!",
-          previewLabel: "Preview DM Message Text"
-        },
-        gallery: {
-          eyebrow: "CURATED ARCHIVE",
-          title: "Art Gallery",
-          sub: "Browse the gallery by category. 18+ artwork stays blurred until you confirm your age.",
-          filters: { all: "All Works", comm: "Commissions", adopt: "Adopts", ych: "YCH", other: "Other works" },
-          nsfwToggle: "Show 18+ Content",
-          modal: { eyebrow: "MATURE CONTENT WARNING", title: "Age Verification (18+)", desc: "Enabling this filter reveals mature / NSFW artwork intended strictly for adults. Are you 18 years of age or older?", yes: "Yes, I am 18+", no: "No, keep blurred" },
-          extTitle: "Full Archives & External Galleries",
-          extSub: "For more works and current auction listings, visit my linked profiles:",
-        },
-        queue: {
-          eyebrow: "QUEUE & AVAILABILITY",
-          title: "Queue & Availability",
-          sub: "Only active orders appear here. Finished commissions have left the stage.",
-          cols: { slot: "Order", client: "Type", details: "Details", stage: "Status", progress: "Progress" },
-          loading: "Loading the latest queue…",
-          emptyTitle: "All caught up!",
-          empty: "The studio is suspiciously quiet… No active commissions right now. The artist may be found drawing, refilling tea, or staring dramatically at a blank canvas.",
-          error: "The live queue could not be loaded. Please try again later or contact me directly.",
-          noProgress: "Progress update pending",
-          queuedProgress: "Not started yet",
-          started: "Started",
-          eta: "Est. completion"
-        },
-        tos: {
-          eyebrow: "TERMS OF SERVICE",
-          title: "Commissions, Adopts & YCH — Rules",
-          sub: "By commissioning me or bidding on an adoptable/YCH, you agree to the terms below.",
-          summaryTitle: "Quick Summary (At a Glance)",
-          cards: [
-            { num: "01", title: "100% Upfront Payment", desc: "Full prepayment within 48 hours after commission confirmation via PayPal, Ko-fi or Stripe (USD/EUR)." },
-            { num: "02", title: "Refund Policy", desc: "Refunds are normally unavailable after payment. If I cannot complete the commission, I refund the amount minus non-refundable platform fees." },
-            { num: "03", title: "Revisions & Edits", desc: "Up to 5 minor edits are included during the sketch stage. Changes after approval may cost extra; my own mistakes are fixed for free." },
-            { num: "04", title: "Personal Use Default", desc: "All art is for personal use by default. Credit @Nektahr_ when reposting." },
-            { num: "05", title: "Adoptable Resale", desc: "Adopts may be resold for the same price or lower (higher only if commissioned art is added)." },
-            { num: "06", title: "Strict No AI / No NFT", desc: "Zero tolerance for AI training, machine learning datasets, or crypto/NFT minting." }
-          ],
-          agreeCheck: "I have read and agree to the Terms of Service (include the checkbox confirmation in the quote request)",
-          fullTitle: "Detailed Terms & Conditions",
-          sections: [
-            {
-              tag: "SECTION 01 · PAYMENT & REFUNDS",
-              title: "Payment Methods, Holds & Refund Policy",
-              bullets: [
-                "Prices are listed in USD; EUR is also accepted. Payment methods: PayPal, Ko-fi or Stripe, subject to availability.",
-                "For custom commissions, full prepayment is due within 48 hours after the commission is confirmed.",
-                "For Adoptables & YCH Auctions: Full payment must be sent within 48 hours after winning the auction. Failure to pay without warning may result in the slot going to the previous bidder and a blacklist.",
-                "Payment plans may be available for orders over $200 by prior agreement, for example 50/50. Confirm the exact schedule before payment.",
-                "Refunds: after payment, refunds are not normally available. If I cannot complete the commission, I will refund the payment minus any non-refundable platform fees. No refund is due if the client seriously violates the ToS or behaves abusively."
-              ]
-            },
-            {
-              tag: "SECTION 02 · WORKFLOW & DEADLINES",
-              title: "Process Stages, WIPs & Turnaround Time",
-              bullets: [
-                "Estimated turnaround: YCH up to 14 business days; custom commissions 14–30 business days; adoptable base tier delivered immediately, higher tiers 14–40 business days.",
-                "You will receive WIP (Work in Progress) screenshots at key milestones: 1) Rough Sketch, 2) Clean Lineart & Flat Colors, and 3) Final Rendering.",
-                "This website does not publish live queue details. Contact me directly for current availability and progress.",
-                "If you have a strict deadline (e.g., a birthday or stream debut), please mention it upfront. Rush orders (3–5 business days) may cost an additional $50–$100, depending on the deadline and scope."
-              ]
-            },
-            {
-              tag: "SECTION 03 · REVISIONS & EDITS",
-              title: "Corrections During Each Stage",
-              bullets: [
-                "Sketch Stage: Up to 3–5 minor revisions or pose adjustments are included for free. Please request all structural changes here.",
-                "Flat Color Stage: Color palette tweaks and small markings adjustments are free.",
-                "Render Stage: Major structural changes (changing the pose, outfit, or camera angle) after lineart approval require an extra fee depending on complexity.",
-                "Artist Mistakes: If I miss a clear detail that was present on your reference sheet, I will always fix it for free at any stage."
-              ]
-            },
-            {
-              tag: "SECTION 04 · COPYRIGHT, USAGE & NDA",
-              title: "Personal Rights, Commercial License & Privacy",
-              bullets: [
-                "I retain authorship and portfolio rights to all artwork I create (posting low-res watermarked versions on DeviantArt, FurAffinity, Pixiv, or X).",
-                "Personal Use (Included): You may use the art for personal avatars, banners, character profiles (Toyhouse), and printing for yourself. Please credit @Nektahr_ when sharing.",
-                "Private / NDA Orders (+35%): If you wish the artwork to remain completely private and never be posted to my public galleries, a +35% NDA fee applies.",
-                "Commercial use requires a separate agreement and additional fee. It is not included automatically in any adoptable tier, including the $500 tier."
-              ]
-            },
-            {
-              tag: "SECTION 05 · ADOPTABLE & DESIGN RULES",
-              title: "Ownership, Redesigns & Resale Policy",
-              bullets: [
-                "Upon full payment, you receive full ownership of the character design, unwatermarked high-res PNG/JPG files, and transparent versions.",
-                "You are free to choose the character's name, lore, gender, and make minor/moderate outfit or hairstyle tweaks.",
-                "Reselling, Trading & Gifting: You may gift or trade the character at any time. You may resell the adoptable for no more than the original price paid, unless additional commissioned artwork has been added to their gallery.",
-                "Design credit must always remain with Nek'tahr (@nektahr)."
-              ]
-            },
-            {
-              tag: "SECTION 06 · STRICT AI & NFT PROHIBITION",
-              title: "Zero Tolerance for AI Training & Crypto",
-              bullets: [
-                "You may NOT under any circumstances feed my sketches, lineart, adoptables, or finished illustrations into AI image generators, LoRA training, or machine learning datasets.",
-                "You may NOT mint any of my artworks or character designs as NFTs or use them in blockchain/crypto projects."
-              ]
-            }
-          ],
-          willTitle: "✓ Will Draw",
-          willList: ["Original Characters (OCs), Fantasy, DnD", "Anime / Semi-realism / Dark aesthetic", "Complex outfits, weapons, accessories", "Kemonomimi (ears, tails, horns, wings)", "Couples, romance & tasteful NSFW (18+)"],
-          wontTitle: "! Special Requests — Ask First",
-          wontList: ["Mecha, full anthro, and extreme proportions may be difficult or cost extra", "Discuss NSFW requests before payment", "Please confirm unusual or complex requests before ordering"]
-        },
-        faq: {
-          eyebrow: "KNOWLEDGE BASE",
-          title: "Frequently Asked Questions",
-          sub: "Everything you need to know about ordering commissions, bidding on adopts, payment plans, and file delivery.",
-          cats: { all: "All Questions", order: "Ordering", payment: "Payment & Plans", adopts: "Adopts & YCH", process: "Process & Files" },
-          items: [
-            { cat: "order", q: "How do I place an order?", a: "Use the Quote Builder on the Pricing page to estimate your price and copy the ready request text. Then send it to me via Discord (drintrava), Telegram DM (@nek_tahr), or Email (gapkuro@gmail.com) along with your character references." },
-            { cat: "order", q: "Can I order if I don't have a visual reference sheet?", a: "Yes! I can work from moodboards, outfit photos, Dollmaker/Picrew screenshots, and clear written descriptions. If we are designing a complex character completely from scratch without visual references, a small custom design fee may apply." },
-            { cat: "payment", q: "What payment methods and currencies do you accept?", a: "Prices are in USD; EUR is also accepted. Payment methods are PayPal, Ko-fi or Stripe, subject to availability. I will confirm the exact method and link before payment." },
-            { cat: "payment", q: "Do you offer payment plans (installments) for higher tiers or AB?", a: "A payment plan may be available for orders over $200 by prior agreement, for example 50/50. Confirm the schedule with me before payment." },
-            { cat: "adopts", q: "How do Adoptable Stretch Goal Tiers work if there is no sample image yet?", a: "Adoptable tiers are cumulative: from $200 the bundle adds a full render and an agreed alternative version; from $350 it adds bonus character artwork; from $500 it adds a reference sheet and close-up details. Higher-tier extras are custom-drawn after the auction." },
-            { cat: "adopts", q: "Where do Adoptable & YCH auctions take place, and when do they end?", a: "Auctions are announced on the relevant platform. Check my current profile or message me to confirm whether a specific auction is active and when it ends." },
-            { cat: "adopts", q: "Can I change the gender, body type, or species on a YCH slot?", a: "Minor adjustments to body type, ears/tails (kemonomimi), horns, wings, and expressions are always welcome on YCH slots! If a YCH requires a complete anatomical rebuild, I will let you know in DMs if a small adjustment fee applies." },
-            { cat: "process", q: "How do I track my commission progress and turnaround time?", a: "The website does not publish live queue data. Contact me directly to check availability and progress; WIP updates are shared during the agreed workflow." },
-            { cat: "process", q: "What file formats and resolution will I receive?", a: "File formats, resolution, and delivery method are agreed before work starts. Please confirm specific export requirements with me when ordering." },
-            { cat: "process", q: "Can I keep my commission private (NDA) or use it for streaming / VTubing?", a: "Yes. A private / NDA request adds 35%. Commercial use requires a separate agreement and a separately quoted fee." },
-            { cat: "order", q: "How do I check current availability?", a: "Please contact me directly to check availability or ask about a waitlist. The website does not publish live slot counts." }
-          ]
-        }
+  "en": {
+    "nav": {
+      "board": "Board",
+      "pricing": "Pricing",
+      "gallery": "Gallery",
+      "queue": "Queue",
+      "tos": "ToS",
+      "faq": "FAQ"
+    },
+    "statusBadge": "Check Current Availability",
+    "hero": {
+      "eyebrow": "Character Art & Commissions",
+      "title": "Hey, welcome to my little corner of the internet!",
+      "desc1": "You’ve already found me somewhere else. This is where everything comes together: my art, other links, commission prices, YCHs, and adopts.",
+      "desc2": "I draw cute characters, fanart, and experimental pieces, from anime and fantasy humanoids to kemonomimi and humanoid furries. Got an idea in mind? Take a look around and let’s see what we can make.",
+      "pathA": {
+        "tag": "OPTION A · EXPLORE",
+        "title": "Art Gallery & Archives",
+        "sub": "Browse public SFW samples and external galleries (DA, FA, Pixiv, X). DM for additional / NSFW examples."
       },
-      es: {
-        nav: { board: "Inicio", pricing: "Precios", gallery: "Galería", queue: "Cola", tos: "Términos", faq: "FAQ" },
-        statusBadge: "Consultar disponibilidad",
-        hero: {
-          eyebrow: "Arte de personajes y comisiones",
-          title: "¡Bienvenido a mi pequeño rincón de internet!",
-          desc1: "Ya me has encontrado en otro sitio. Aquí está todo junto: mi arte, otros enlaces, precios de comisiones, YCHs y adopts.",
-          desc2: "Dibujo personajes adorables, fanart y piezas experimentales, desde anime y humanoides fantásticos hasta kemonomimi y furries humanoides. ¿Tienes alguna idea? Echa un vistazo y veamos qué podemos crear.",
-          pathA: { tag: "OPCIÓN A · EXPLORAR", title: "Galería y Archivos", sub: "Muestras públicas SFW y galerías en DA, FA, Pixiv y X. Para ejemplos adicionales o NSFW, escríbeme." },
-          pathB: { tag: "OPCIÓN B · COMISIONES", title: "Precios, Etapas y Adopts", sub: "Compara etapas, niveles de subasta y calcula tu orden" }
-        },
-        contacts: {
-          eyebrow: "CONTACTO DIRECTO Y PLATAFORMAS",
-          title: "Dónde Encontrarme y Escribirme",
-          primaryTitle: "Contacto Directo Principal (Respuesta Rápida)",
-          platformsTitle: "Plataformas de Arte y Subastas"
-        },
-        featured: {
-          eyebrow: "OBRAS DESTACADAS",
-          title: "Trabajos Recientes",
-          viewAll: "Ver Galería Completa →"
-        },
-        pricing: {
-          eyebrow: "PRECIOS · ETAPAS · ADOPTS · YCH",
-          title: "Lo Que Estás Pagando",
-          sub: "Compara paquetes de comisiones, niveles acumulativos de adopts y precios orientativos de YCH. La calculadora da un presupuesto inicial; confirma el precio final y la disponibilidad directamente.",
-          tabs: { custom: "Comisiones personalizadas", adopt: "Adopts y Niveles", ych: "Precios de YCH" },
-          stageSectionTitle: "Paquetes de Comisiones Personalizadas",
-          stageSectionHint: "Selecciona un paquete para cargarlo en la calculadora",
-          stages: [
-            { key: "single", name: "Un personaje + fondo sencillo", range: "Desde $200", time: "14–30 días laborables", desc: "Un personaje con fondo blanco o sencillo. El precio final depende de la complejidad y la descripción." },
-            { key: "duo", name: "Dos personajes + fondo sencillo", range: "Desde $300", time: "14–30 días laborables", desc: "Segundo personaje +$100; cada personaje posterior +$80." },
-            { key: "extras", name: "Extras opcionales", range: "Desde $50", time: "Precio por confirmar", desc: "Atuendo extra +$50. Personaje adicional desde $100. Urgente (3–5 días laborables): +$50–$100." }
-          ],
-          matrix: {
-            eyebrow: "TABLA DE PRECIOS (USD)",
-            title: "Matriz de Precios de Comisiones",
-            hint: "Consulta los paquetes actuales en las tarjetas de arriba.",
-            format: "Encuadre", s1: "Boceto", s2: "Color Base", s3: "Render Total",
-            bust: "Retrato / Busto", bustSub: "Cabeza y hombros",
-            half: "Medio Cuerpo", halfSub: "Hasta cintura o muslos",
-            full: "Cuerpo Completo", fullSub: "Pose de pies a cabeza"
-          },
-          compare: {
-            eyebrow: "COMPARADOR ANTES / DESPUÉS",
-            title: "Comparación Interactiva de Etapas",
-            hint: "Arrastra el control deslizante para comparar el nivel de detalle"
-          },
-          breakdown: {
-            eyebrow: "ENFOQUE DE DISEÑO",
-            title: "Detalles y Enfoques del Arte de Personajes",
-            items: [
-              { tag: "SILUETA Y ATUENDO", title: "Silueta Completa y Moda", desc: "Postura legible, sastrería oscura o fantasía y paleta de colores limpia.", img: "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c" },
-              { tag: "RETRATO Y MIRADA", title: "Rostro y Microexpresiones", desc: "Renderizado expresivo de ojos, cabello, piercings y maquillaje.", img: "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c" },
-              { tag: "MANOS Y ACCESORIOS", title: "Manos, Armas y Detalles", desc: "Gestos anatómicos de manos, anillos, armas y zoom de materiales.", img: "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c" }
-            ]
-          },
-          adoptSection: {
-            eyebrow: "NIVELES DE ADOPTS · $100 – $500",
-            title: "Adoptables: Diseños y Niveles de Oferta (Tiers)",
-            desc: "Un diseño base que desbloquea extras a medida que sube la oferta. Donde aún no hay ejemplo gráfico, el esquema indica lo que dibujo a medida para el ganador.",
-            blueprintTitle: "ESQUEMA DE BONIFICACIÓN",
-            blueprintSub: "Dibujado a medida para el ganador de la subasta",
-            tiers: [
-              { val: 100, badge: "SB · OFERTA INICIAL", price: "$100", title: "SB — Diseño Base del Adopt", desc: "Diseño base con imagen SFW / PNG sin marca de agua y derechos de uso personal.", perks: ["Imagen SFW / PNG sin marca de agua", "Derechos de uso personal", "Entrega del nivel base tras el pago"], hasSample: false },
-              { val: 200, badge: "NIVEL II", price: "$200+", title: "+ Render Completo y Versión Alternativa", desc: "Con ofertas de $200 o más, el paquete incluye un render completo y una versión alternativa acordada, por ejemplo, otro atuendo o variante de especie.", perks: ["Todo lo del nivel SB", "Ilustración renderizada", "Una versión alternativa acordada"], hasSample: false },
-              { val: 350, badge: "NIVEL III", price: "$350+", title: "+ Ilustración Extra del Personaje", desc: "Con ofertas de $350 o más, se añade una ilustración extra con el personaje.", perks: ["Todo lo del nivel II", "Ilustración adicional", "Detalles acordados con la persona ganadora"], hasSample: false },
-              { val: 500, badge: "AB · COMPRA AUTOMÁTICA", price: "$500+", title: "+ Hoja de Referencia y Detalles", desc: "Con ofertas de $500 o más, se incluye una hoja de referencia y primeros planos. El uso comercial no está incluido automáticamente.", perks: ["Todo lo del nivel III", "Hoja de referencia", "Primeros planos de detalles elegidos"], hasSample: false }
-            ]
-          },
-          ychSection: {
-            eyebrow: "POSES PREDISEÑADAS",
-            title: "Guía de precios YCH",
-            desc: "Precios base publicados para YCH. Estas opciones son una guía de precios, no una confirmación de disponibilidad actual.",
-            slots: [
-              { val: 30, code: "YCH · BOCETO", title: "Boceto limpio", stage: "Boceto", price: "$30", status: "Guía de precios", desc: "Plazo estimado: hasta 14 días laborables." },
-              { val: 65, code: "YCH · BOCETO A COLOR", title: "Boceto a color", stage: "Boceto a color", price: "$65", status: "Guía de precios", desc: "Plazo estimado: hasta 14 días laborables." },
-              { val: 120, code: "YCH · RENDER COMPLETO", title: "Render completo", stage: "Render completo", price: "$120", status: "Guía de precios", desc: "Plazo estimado: hasta 14 días laborables." },
-              { val: 170, code: "YCH · RENDER + NSFW", title: "Render completo + versión NSFW", stage: "Hablar sobre NSFW antes", price: "$170", status: "Guía de precios", desc: "El contenido NSFW debe hablarse y acordarse de antemano." }
-            ]
-          }
-        },
-        calc: {
-          title: "Calculadora",
-          reset: "Reiniciar",
-          modes: { custom: "Comisión Custom", adopt: "Subasta Adopt", ych: "Slot YCH" },
-          stageCustom: "Selecciona un paquete",
-          stageAdopt: "Selecciona el nivel del adopt",
-          stageYch: "Selecciona el acabado YCH",
-          crop: "Encuadre",
-          addonsCustom: "Extras opcionales",
-          addonsAdopt: "Extras de Adoptable",
-          addonsYch: "Extras opcionales",
-          notesPlaceholder: "Opcional: enlaces a referencias, idea de pose, SFW/NSFW...",
-          totalLabel: "Total Estimado",
-          copyBtn: "Copiar Solicitud para MD",
-          copiedBtn: "¡Copiado al Portapapeles!",
-          previewLabel: "Vista Previa del Mensaje"
-        },
-        gallery: {
-          eyebrow: "ARCHIVO VISUAL",
-          title: "Galería de Arte",
-          sub: "Explora la galería por categoría. Las obras 18+ permanecerán difuminadas hasta que confirmes tu edad.",
-          filters: { all: "Todas las obras", comm: "Comisiones", adopt: "Adopts", ych: "YCH", other: "Otros trabajos" },
-          nsfwToggle: "Mostrar contenido 18+",
-          modal: { eyebrow: "AVISO DE CONTENIDO PARA ADULTOS", title: "Verificación de edad (18+)", desc: "Este filtro muestra obras maduras / NSFW destinadas exclusivamente a adultos. ¿Tienes 18 años o más?", yes: "Sí, tengo 18+", no: "No, mantener difuminado" },
-          extTitle: "Archivos Completos y Galerías Externas",
-          extSub: "Para ver más obras y subastas actuales, visita mis perfiles enlazados:",
-        },
-        queue: {
-          eyebrow: "COLA Y DISPONIBILIDAD",
-          title: "Cola y disponibilidad",
-          sub: "Aquí solo aparecen los pedidos activos. Los trabajos terminados ya han salido del escenario.",
-          cols: { slot: "Pedido", client: "Tipo", details: "Detalles", stage: "Estado", progress: "Progreso" },
-          loading: "Cargando la cola actual…",
-          emptyTitle: "¡Todo al día!",
-          empty: "El estudio está sospechosamente tranquilo… No hay encargos activos por ahora. Puede que el artista esté dibujando, rellenando el té o mirando dramáticamente un lienzo en blanco.",
-          error: "No se pudo cargar la cola. Inténtalo más tarde o escríbeme directamente.",
-          noProgress: "Actualización de progreso pendiente",
-          queuedProgress: "Aún no ha comenzado",
-          started: "Inicio",
-          eta: "Finalización estimada"
-        },
-        tos: {
-          eyebrow: "TÉRMINOS DE SERVICIO",
-          title: "Comisiones, Adopts y YCH — Reglas",
-          sub: "Al comisionarme o pujar por un adopt/YCH, aceptas los siguientes términos.",
-          summaryTitle: "Resumen Rápido",
-          cards: [
-            { num: "01", title: "Pago 100% Anticipado", desc: "El pago completo vence dentro de las 48 horas posteriores a la confirmación del encargo (USD/EUR)." },
-            { num: "02", title: "Reembolsos", desc: "Normalmente no hay reembolsos después del pago. Si no puedo completar el encargo, devolveré el importe menos las comisiones no reembolsables de la plataforma." },
-            { num: "03", title: "Revisiones", desc: "Se incluyen hasta 5 cambios menores durante la etapa de boceto. Los cambios posteriores pueden tener coste; mis propios errores se corrigen gratis." },
-            { num: "04", title: "Uso Personal", desc: "Uso personal por defecto. Acreditar a @Nektahr_ al publicar." },
-            { num: "05", title: "Reventa de Adopts", desc: "Se pueden revender al mismo precio o menor (mayor solo con arte extra)." },
-            { num: "06", title: "Prohibido IA y NFT", desc: "Prohibido usar mi arte para entrenar IA o crear NFTs/cripto." }
-          ],
-          agreeCheck: "He leído y acepto los Términos de Servicio (incluir la confirmación de la casilla en el mensaje de solicitud)",
-          fullTitle: "Términos Detallados",
-          sections: [
-            {
-              tag: "SECCIÓN 01 · PAGOS Y REEMBOLSOS",
-              title: "Métodos de Pago, Reservas y Reembolsos",
-              bullets: [
-                "Los precios están en USD; también se acepta EUR. Métodos de pago: PayPal, Ko-fi o Stripe, según disponibilidad.",
-                "Para comisiones personalizadas, el pago completo vence dentro de las 48 horas posteriores a la confirmación del encargo.",
-                "Para Adopts y YCH: el pago debe realizarse dentro de las 48 horas posteriores a ganar la subasta.",
-                "Puede acordarse un plan de pago para pedidos superiores a $200, por ejemplo 50/50. Confirma el calendario antes de pagar.",
-                "Reembolsos: normalmente no hay reembolsos después del pago. Si no puedo completar el encargo, devolveré el importe menos las comisiones no reembolsables de la plataforma. No se reembolsa si el cliente incumple gravemente estos términos o tiene un comportamiento abusivo."
-              ]
-            },
-            {
-              tag: "SECCIÓN 02 · PROCESO Y PLAZOS",
-              title: "Etapas WIP y Tiempo de Entrega",
-              bullets: [
-                "Plazos estimados: YCH hasta 14 días laborables; comisiones personalizadas 14–30 días laborables; adopt base inmediata y niveles superiores 14–40 días laborables.",
-                "Recibirás avances (WIPs) en boceto, color base y render final.",
-                "Esta web no publica datos de cola en tiempo real. Escríbeme para consultar disponibilidad y avances.",
-                "Los pedidos urgentes (3–5 días laborables) pueden añadir $50–$100 según la fecha límite y el alcance."
-              ]
-            },
-            {
-              tag: "SECCIÓN 03 · REVISIONES Y CAMBIOS",
-              title: "Correcciones Durante el Proceso",
-              bullets: [
-                "Etapa de boceto: incluye hasta 3–5 ajustes menores o de pose sin coste. Solicita todos los cambios estructurales en esta etapa.",
-                "Etapa de color base: los ajustes de paleta y pequeños cambios en las marcas del personaje son gratuitos.",
-                "Etapa de render: los cambios estructurales importantes de pose, atuendo o ángulo de cámara tras aprobar el lineart tienen un coste adicional según su complejidad.",
-                "Mis errores: si omití un detalle claro que aparecía en tu referencia, lo corregiré gratis en cualquier etapa."
-              ]
-            },
-            {
-              tag: "SECCIÓN 04 · DERECHOS, PRIVACIDAD Y USO COMERCIAL",
-              title: "Uso Personal, NDA y Licencia Comercial",
-              bullets: [
-                "Conservo los derechos de autor para mostrar la obra con marca de agua en mi portafolio.",
-                "Uso Personal (Incluido): avatares, banners y perfiles personales acreditando a @Nektahr_.",
-                "Pedidos Privados / NDA (+35%): si deseas que la obra sea totalmente privada y no se publique.",
-                "Uso comercial: requiere un acuerdo separado y una tarifa adicional; no está incluido automáticamente en el nivel de $500."
-              ]
-            },
-            {
-              tag: "SECCIÓN 05 · REGLAS DE ADOPTABLES",
-              title: "Propiedad, Rediseño y Reventa",
-              bullets: [
-                "Tras completar el pago, recibes la propiedad del diseño del personaje, archivos PNG/JPG en alta resolución sin marca de agua y versiones transparentes.",
-                "Puedes elegir el nombre, la historia y el género del personaje, y hacer ajustes menores o moderados en su ropa o peinado.",
-                "Puedes regalar o intercambiar el personaje en cualquier momento. Puedes revenderlo por un precio igual o menor al pagado; solo puede ser mayor si se han añadido nuevas ilustraciones encargadas.",
-                "El crédito del diseño debe mantenerse siempre a nombre de Nek'tahr (@nektahr)."
-              ]
-            },
-            {
-              tag: "SECCIÓN 06 · PROHIBICIÓN DE IA Y NFT",
-              title: "Tolerancia Cero con IA y Cripto",
-              bullets: [
-                "Queda estrictamente prohibido usar mis obras para entrenar modelos de Inteligencia Artificial (IA) o datasets.",
-                "Queda prohibido acuñar o vender mis diseños o ilustraciones como NFTs."
-              ]
-            }
-          ],
-          willTitle: "✓ Sí Dibujo",
-          willList: ["Personajes originales (OCs), fantasía, DnD", "Anime / Semi-realismo / Estética oscura", "Ropa compleja, armas, accesorios", "Kemonomimi (orejas, colas, cuernos, alas)", "Parejas, romance y NSFW estético (+18)"],
-          wontTitle: "! Encargos especiales — Consultar antes",
-          wontList: ["Mecha, anthro completo y proporciones extremas pueden ser difíciles o costar más", "Habla sobre solicitudes NSFW antes de pagar", "Confirma los encargos complejos antes de pedir"]
-        },
-        faq: {
-          eyebrow: "PREGUNTAS FRECUENTES",
-          title: "Respuestas Rápidas (FAQ)",
-          sub: "Todo sobre pedidos, subastas de adopts, pagos fraccionados y entrega de archivos.",
-          cats: { all: "Todas", order: "Pedidos", payment: "Pagos", adopts: "Adopts y YCH", process: "Proceso y Archivos" },
-          items: [
-            { cat: "order", q: "¿Cómo hago un pedido?", a: "Usa la calculadora en la página de Precios, copia el mensaje generado y envíamelo por Discord (drintrava), Telegram DM (@nek_tahr) o Email junto con tus referencias." },
-            { cat: "order", q: "¿Puedo pedir sin hoja de referencia?", a: "¡Sí! Puedo trabajar con moodboards, fotos de ropa, capturas de Picrew y descripciones claras." },
-            { cat: "payment", q: "¿Qué métodos de pago y monedas aceptas?", a: "Los precios están en USD (también acepto EUR). Los métodos de pago son PayPal, Ko-fi o Stripe, según disponibilidad." },
-            { cat: "payment", q: "¿Aceptas planes de pago (en cuotas)?", a: "Se puede acordar un plan de pago para pedidos superiores a $200, por ejemplo 50/50. Confirma el calendario antes de pagar." },
-            { cat: "adopts", q: "¿Cómo funcionan los niveles de Adopts sin imagen de ejemplo?", a: "Los extras de los niveles desbloqueados se dibujan a medida. El plazo estimado para los niveles superiores de adopt es de 14–40 días laborables, según el alcance acordado." },
-            { cat: "adopts", q: "¿Dónde se realizan las subastas de Adopts y YCH?", a: "Las subastas activas y su hora de cierre se anuncian en la plataforma correspondiente. Consulta mi perfil o escríbeme para confirmar la disponibilidad actual." },
-            { cat: "adopts", q: "¿Se puede cambiar el cuerpo o detalles en un YCH?", a: "Ajustes de expresión, orejas, colas, cuernos o alas siempre son posibles. Si requiere redibujar toda la anatomía, te avisaré por MD." },
-            { cat: "process", q: "¿Cómo consulto el avance de mi pedido?", a: "Escríbeme directamente para consultar disponibilidad y avances; esta web no publica una cola en tiempo real." },
-            { cat: "process", q: "¿En qué formato y resolución entregas los archivos?", a: "Los formatos, la resolución y el método de entrega se acuerdan antes de empezar. Confirma cualquier requisito específico al hacer el pedido." },
-            { cat: "process", q: "¿Puedo pedir privacidad (NDA) o licencia comercial?", a: "La privacidad / NDA añade un 35%. El uso comercial requiere un acuerdo y una tarifa aparte, que deben confirmarse antes del pago." },
-            { cat: "order", q: "¿Qué pasa si todos los cupos están llenos?", a: "Puedes escribirme para entrar en la Lista de Espera (Waitlist) y reservar lugar en la siguiente tanda." }
-          ]
-        }
-      },
-      ru: {
-        nav: { board: "Главная", pricing: "Прайс", gallery: "Галерея", queue: "Очередь", tos: "Правила", faq: "FAQ" },
-        statusBadge: "Уточнить наличие",
-        hero: {
-          eyebrow: "Арт персонажей и заказы",
-          title: "Добро пожаловать в мой маленький уголок интернета!",
-          desc1: "Ты уже нашёл меня где-то ещё. Здесь собрано всё остальное: мои арты, другие ссылки, цены на заказы, YCH и адопты.",
-          desc2: "Я рисую милых персонажей, фанарт и экспериментальные работы: от аниме и фэнтезийных гуманоидов до кемономими и гуманоидных фурри. Есть идея? Осмотрись, и давай посмотрим, что из неё можно сделать.",
-          pathA: { tag: "ВАРИАНТ А · АРТЫ И АРХИВЫ", title: "Галерея и Площадки", sub: "Публичные SFW-примеры и галереи на DA, FA, Pixiv, X. За дополнительными или NSFW-примерами напишите мне." },
-          pathB: { tag: "ВАРИАНТ Б · ЗАКАЗАТЬ АРТ", title: "Цены, Поэтапка и Адопты", sub: "Сравнение этапов, тиры адоптов и калькулятор" }
-        },
-        contacts: {
-          eyebrow: "ПРЯМАЯ СВЯЗЬ И СОЦСЕТИ",
-          title: "Где меня найти и куда писать",
-          primaryTitle: "Основная связь (Личные сообщения и Почта)",
-          platformsTitle: "Галереи, Аукционы и Площадки"
-        },
-        featured: {
-          eyebrow: "ИЗБРАННЫЕ РАБОТЫ",
-          title: "Примеры работ",
-          viewAll: "Открыть всю галерею →"
-        },
-        pricing: {
-          eyebrow: "ПРАЙС · ПОЭТАПКА · АДОПТЫ · ЮЧИ",
-          title: "Цены и комплектация заказов",
-          sub: "Сравни пакеты индивидуальных заказов, накопительные уровни адоптов и ориентиры цен YCH. Калькулятор показывает начальную оценку, окончательную цену и наличие слота нужно подтвердить напрямую.",
-          tabs: { custom: "Индивидуальные заказы", adopt: "Адопты и Уровни", ych: "Цены YCH" },
-          stageSectionTitle: "Пакеты индивидуальных заказов",
-          stageSectionHint: "Выбери пакет, чтобы загрузить его в калькулятор",
-          stages: [
-            { key: "single", name: "Один персонаж + простой фон", range: "От $200", time: "14–30 рабочих дней", desc: "Один персонаж на белом или простом фоне. Итоговая цена зависит от задачи и сложности." },
-            { key: "duo", name: "Два персонажа + простой фон", range: "От $300", time: "14–30 рабочих дней", desc: "Второй персонаж +$100, каждый следующий после него +$80." },
-            { key: "extras", name: "Дополнительные опции", range: "От $50", time: "Цена уточняется", desc: "Дополнительный наряд +$50. Второй персонаж +$100, следующие по +$80. Срочность 3–5 рабочих дней: +$50–$100." }
-          ],
-          matrix: {
-            eyebrow: "ТАБЛИЦА ЦЕН (USD)",
-            title: "Матрица цен по формату и этапу",
-            hint: "Актуальные стартовые цены указаны в карточках выше.",
-            format: "Формат", s1: "Скетч", s2: "Базовый цвет", s3: "Полный рендер",
-            bust: "Портрет / По грудь", bustSub: "Голова и плечи (Bust)",
-            half: "По пояс / бёдра", halfSub: "Half-Body",
-            full: "В полный рост", fullSub: "Full-Body"
-          },
-          compare: {
-            eyebrow: "ИНТЕРАКТИВНАЯ ШТОРКА",
-            title: "Сравнение этапов До / После",
-            hint: "Потяни ползунок на арте влево или вправо для сравнения детализации"
-          },
-          breakdown: {
-            eyebrow: "ПРОРАБОТКА ДИЗАЙНА",
-            title: "Детали и акценты в арте персонажей",
-            items: [
-              { tag: "СИЛУЭТ И КОСТЮМ", title: "Полный рост и крой одежды", desc: "Читаемый силуэт, тёмный минимализм или фэнтези-гардероб и гармония палитры.", img: "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c" },
-              { tag: "ПОРТРЕТ И ЭМОЦИИ", title: "Лицо, взгляд и мимика", desc: "Детальная проработка глаз, прядей волос, пирсинга, макияжа и эмоций.", img: "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c" },
-              { tag: "РУКИ И АКСЕССУАРЫ", title: "Пластика рук, оружие и детали", desc: "Выразительные жесты кистей, кольца, оружие и крупные планы материалов.", img: "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c" }
-            ]
-          },
-          adoptSection: {
-            eyebrow: "УРОВНИ АДОПТОВ · $100 – $500",
-            title: "Адопты: базовый дизайн и бонусные уровни ставок",
-            desc: "При росте ставки на аукционе к базовому дизайну добавляются новые бонусы. Там, где у меня пока нет отдельных примеров, стоит эскиз-схема комплектации — эти бонусы я дорисовываю специально под победителя.",
-            blueprintTitle: "ЭСКИЗ-СХЕМА УРОВНЯ",
-            blueprintSub: "Отрисовывается индивидуально под победителя аукциона",
-            tiers: [
-              { val: 100, badge: "SB · НАЧАЛЬНАЯ СТАВКА", price: "$100", title: "SB — Базовый дизайн адопта", desc: "Базовый дизайн, SFW-изображение / PNG без водяного знака и права на личное использование.", perks: ["SFW-изображение / PNG без водяного знака", "Личное использование", "Базовые файлы после оплаты"], hasSample: false },
-              { val: 200, badge: "УРОВЕНЬ II", price: "$200+", title: "+ Полный рендер и альтернативная версия", desc: "При ставке от $200 комплект включает полный рендер и одну согласованную альтернативную версию, например другой наряд или вариант вида персонажа.", perks: ["Всё из уровня SB", "Полноценный рендер", "Одна согласованная альтернативная версия"], hasSample: false },
-              { val: 350, badge: "УРОВЕНЬ III", price: "$350+", title: "+ Дополнительный арт персонажа", desc: "При ставке от $350 в комплект также входит дополнительная иллюстрация с персонажем.", perks: ["Всё из уровня II", "Дополнительная иллюстрация", "Детали согласуются с победителем"], hasSample: false },
-              { val: 500, badge: "AB · АВТОВЫКУП", price: "$500+", title: "+ Референс-лист и крупные планы", desc: "При ставке от $500 добавляются референс-лист и крупные планы деталей. Коммерческое использование автоматически не включено.", perks: ["Всё из уровня III", "Референс-лист", "Крупные планы выбранных деталей"], hasSample: false }
-            ]
-          },
-          ychSection: {
-            eyebrow: "ГОТОВЫЕ КОМПОЗИЦИИ",
-            title: "Ориентиры цен YCH",
-            desc: "Опубликованные базовые цены YCH. Карточки показывают ориентиры, но не подтверждают, что конкретный слот сейчас свободен.",
-            slots: [
-              { val: 30, code: "YCH · СКЕТЧ", title: "Чистый скетч", stage: "Скетч", price: "$30", status: "Ориентир по цене", desc: "Ориентировочный срок: до 14 рабочих дней." },
-              { val: 65, code: "YCH · ЦВЕТНОЙ СКЕТЧ", title: "Цветной скетч", stage: "Цветной скетч", price: "$65", status: "Ориентир по цене", desc: "Ориентировочный срок: до 14 рабочих дней." },
-              { val: 120, code: "YCH · ПОЛНЫЙ РЕНДЕР", title: "Полный рендер", stage: "Полный рендер", price: "$120", status: "Ориентир по цене", desc: "Ориентировочный срок: до 14 рабочих дней." },
-              { val: 170, code: "YCH · РЕНДЕР + NSFW", title: "Полный рендер + NSFW-версия", stage: "NSFW обсудить заранее", price: "$170", status: "Ориентир по цене", desc: "NSFW-контент нужно обсудить и согласовать заранее." }
-            ]
-          }
-        },
-        calc: {
-          title: "Калькулятор заявки",
-          reset: "Сброс",
-          modes: { custom: "Индивидуальная Комишка", adopt: "Адопт и Уровни", ych: "Слот YCH" },
-          stageCustom: "Этап проработки",
-          stageAdopt: "Уровень ставки (Bid Tier)",
-          stageYch: "Выбор слота и рендера YCH",
-          crop: "Формат (Кадрирование)",
-          addonsCustom: "Дополнения к комишке",
-          addonsAdopt: "Дополнения к адопту",
-          addonsYch: "Опции для YCH",
-          notesPlaceholder: "Необязательно: ссылки на рефы, идея позы, SFW/NSFW...",
-          totalLabel: "Ориентировочно",
-          copyBtn: "Скопировать готовый запрос для ЛС",
-          copiedBtn: "Скопировано в буфер обмена!",
-          previewLabel: "Предпросмотр текста заявки"
-        },
-        gallery: {
-          eyebrow: "АРХИВ РАБОТ",
-          title: "Галерея",
-          sub: "Смотри работы по категориям. Контент 18+ останется размытым, пока ты не подтвердишь возраст.",
-          filters: { all: "Все работы", comm: "Коммишки", adopt: "Адопты", ych: "YCH", other: "Другие работы" },
-          nsfwToggle: "Показывать контент 18+",
-          modal: { eyebrow: "ПРЕДУПРЕЖДЕНИЕ 18+", title: "Подтверждение возраста (18+)", desc: "Этот фильтр открывает взрослые / NSFW-работы, предназначенные только для совершеннолетних. Тебе уже есть 18 лет?", yes: "Да, мне есть 18", no: "Нет, оставить размытым" },
-          extTitle: "Полные архивы и внешние галереи",
-          extSub: "Хочешь посмотреть больше работ в полном разрешении или поучаствовать в аукционах? Мои профили:",
-        },
-        queue: {
-          eyebrow: "СТАТУС ЗАКАЗОВ",
-          title: "Текущая очередь (Queue)",
-          sub: "Здесь отображаются только активные заказы. Завершённые уже покинули сцену.",
-          cols: { slot: "Заказ", client: "Тип", details: "Детали", stage: "Статус", progress: "Прогресс" },
-          loading: "Загружаем актуальную очередь…",
-          emptyTitle: "Все заказы разобраны!",
-          empty: "В студии подозрительно тихо… Сейчас активных заказов нет. Возможно, художник рисует, доливает чай или драматично смотрит на пустой холст.",
-          error: "Не удалось загрузить очередь. Попробуйте позже или напишите мне напрямую.",
-          noProgress: "Ожидается обновление прогресса",
-          queuedProgress: "Ещё не начат",
-          started: "Начат",
-          eta: "Ожидаемое завершение"
-        },
-        tos: {
-          eyebrow: "TERMS OF SERVICE",
-          title: "Правила заказов, адоптов и YCH (T.O.S.)",
-          sub: "Заказывая комишку или покупая адопта/YCH, вы соглашаетесь с этими простыми правилами.",
-          summaryTitle: "Коротко о главном (Сводка по карточкам)",
-          cards: [
-            { num: "01", title: "100% Предоплата", desc: "Полная предоплата в течение 48 часов после подтверждения заказа (USD / EUR)." },
-            { num: "02", title: "Возврат средств", desc: "После оплаты возврат обычно не предусмотрен. Если я не смогу завершить заказ, верну сумму за вычетом невозвратных комиссий платёжной платформы." },
-            { num: "03", title: "Правки на скетче", desc: "На этапе скетча включено до 5 мелких правок. После утверждения скетча изменения могут оплачиваться отдельно; мои собственные ошибки исправляю бесплатно." },
-            { num: "04", title: "Личное использование", desc: "По умолчанию арт для личного пользования. При публикации указывайте @Nektahr_." },
-            { num: "05", title: "Перепродажа адоптов", desc: "Разрешена по цене не выше покупки (дороже — только если есть новые заказанные арты)." },
-            { num: "06", title: "Запрет ИИ и NFT", desc: "Строго запрещено использовать мои работы для обучения нейросетей (AI) и создания NFT." }
-          ],
-          agreeCheck: "Я прочитал(а) и согласен(на) с правилами ToS (включить отметку о согласии в текст заявки)",
-          fullTitle: "Полные условия работы (Detailed T.O.S.)",
-          sections: [
-            {
-              tag: "РАЗДЕЛ 01 · ОПЛАТА, БРОНЬ И ВОЗВРАТЫ",
-              title: "Способы оплаты, рассрочка и политика возврата",
-              bullets: [
-                "Цены указаны в USD, также принимаю EUR. Способы оплаты: PayPal, Ko-fi или Stripe, в зависимости от доступности.",
-                "Для индивидуальных заказов полная предоплата вносится в течение 48 часов после подтверждения заказа.",
-                "Для Адоптов и аукционов YCH: оплата должна быть произведена в течение 48 часов после победы в аукционе. При неоплате без предупреждения слот переходит предыдущему участнику.",
-                "Рассрочку можно согласовать для заказов дороже $200, например 50/50. Условия и график нужно подтвердить до оплаты.",
-                "Возвраты: после оплаты возврат обычно не предусмотрен. Если я не смогу завершить заказ, верну сумму за вычетом невозвратных комиссий платёжной платформы. При серьёзном нарушении правил или токсичном поведении клиента возврат не производится."
-              ]
-            },
-            {
-              tag: "РАЗДЕЛ 02 · ПРОЦЕСС, WIP-ЭТАПЫ И СРОКИ",
-              title: "Как строится работа и сколько времени занимает арт",
-              bullets: [
-                "Сроки: YCH до 14 рабочих дней; индивидуальные заказы 14–30 рабочих дней; базовый уровень адопта сразу, расширенные уровни 14–40 рабочих дней.",
-                "Я присылаю WIP-скриншоты в ЛС на каждом ключевом этапе: 1) композиционный скетч, 2) чистый лайн и базовые цвета, 3) финальный рендер.",
-                "На сайте не публикуются данные живой очереди. Напишите мне напрямую, чтобы узнать доступность и прогресс.",
-                "Срочный заказ на 3–5 рабочих дней может стоить дополнительно $50–$100 в зависимости от дедлайна и объёма."
-              ]
-            },
-            {
-              tag: "РАЗДЕЛ 03 · ПРАВКИ И ИЗМЕНЕНИЯ",
-              title: "Что можно поправить бесплатно, а что за доплату",
-              bullets: [
-                "На этапе скетча: включено до 3–5 бесплатных правок по позе, анатомии, эмоциям и деталям костюма.",
-                "На этапе базового цвета: бесплатно корректируются оттенки и палитра.",
-                "На этапе рендера: значительные изменения утверждённой позы, одежды или ракурса после согласования лайна оплачиваются отдельно в зависимости от сложности.",
-                "Мои ошибки: если я упустил чётко указанную деталь с вашего референса, исправлю её бесплатно на любом этапе."
-              ]
-            },
-            {
-              tag: "РАЗДЕЛ 04 · АВТОРСКИЕ ПРАВА, ПРИВАТНОСТЬ И КОММЕРЦИЯ",
-              title: "Личное использование, NDA и коммерческая лицензия",
-              bullets: [
-                "Авторское право остаётся за мной: я могу публиковать уменьшенную версию с вотермаркой в своём портфолио (DA, FA, Pixiv, X).",
-                "Личное использование (по умолчанию): вы можете ставить арт на аватарку, баннер, оформлять профиль (Toyhouse) и печатать для себя с указанием автора @Nektahr_.",
-                "Приватный заказ / NDA (+35%): если вы хотите, чтобы работа нигде не публиковалась и осталась полностью закрытой.",
-                "Коммерческое использование требует отдельного соглашения и дополнительной оплаты. Оно автоматически не включено ни в один уровень адопта, в том числе $500."
-              ]
-            },
-            {
-              tag: "РАЗДЕЛ 05 · ПРАВИЛА ВЛАДЕНИЯ АДОПТАМИ И ДИЗАЙНАМИ",
-              title: "Права покупателя, редизайн и перепродажа",
-              bullets: [
-                "После полной оплаты вы получаете все файлы в высоком разрешении (JPG и прозрачный PNG без вотермарок) и права на персонажа.",
-                "Вы можете давать персонажу любое имя, биографию, менять детали одежды или причёски.",
-                "Перепродажа, обмен и подарок: дарить и обменивать можно свободно. Перепродавать адопта разрешается по цене не выше суммы покупки (дороже — только если у персонажа появились новые заказанные платные арты).",
-                "Авторство базового дизайна всегда остаётся за Nek'tahr (@nektahr)."
-              ]
-            },
-            {
-              tag: "РАЗДЕЛ 06 · СТРОГИЙ ЗАПРЕТ НА ИИ (AI) И NFT",
-              title: "Никаких нейросетей и блокчейна",
-              bullets: [
-                "Категорически запрещено загружать мои скетчи, адоптов или готовые работы в генераторы ИИ, использовать для обучения LoRA или датасетов машинного обучения.",
-                "Запрещено выпускать мои работы или дизайнов в виде NFT и использовать в крипто-проектах."
-              ]
-            }
-          ],
-          willTitle: "✓ Что я рисую",
-          willList: ["Оригинальных персонажей (OC), фэнтези, DnD", "Аниме / Семи-реализм / Тёмную эстетику", "Сложные костюмы, броню, оружие, украшения", "Кемономими (ушки, хвосты, рога, крылья)", "Пары, романтику и эстетичный NSFW (18+)"],
-          wontTitle: "! Сложные запросы: сначала обсудить",
-          wontList: ["Меха, полный антро и экстремальные пропорции могут быть сложнее или дороже", "NSFW-заказы нужно обсудить до оплаты", "Сложные и нестандартные задачи согласуйте заранее"]
-        },
-        faq: {
-          eyebrow: "ЧАСТЫЕ ВОПРОСЫ",
-          title: "Ответы на вопросы по заказам (FAQ)",
-          sub: "Подробные ответы про оформление заказа, рассрочку, бонусные тиры адоптов, форматы файлов и очередь.",
-          cats: { all: "Все вопросы", order: "Заказ и Рефы", payment: "Оплата и Рассрочка", adopts: "Адопты и YCH", process: "Процесс и Файлы" },
-          items: [
-            { cat: "order", q: "Как оформить заказ?", a: "Собери ориентировочную заявку в калькуляторе на вкладке «Прайс», нажми «Скопировать готовый запрос» и пришли его мне в Discord (drintrava), в Telegram (@nek_tahr) или на почту (gapkuro@gmail.com) вместе с референсами." },
-            { cat: "order", q: "Можно ли заказать арт без готового референс-листа?", a: "Да! Я спокойно работаю по мудбордам, фотографиям одежды, скриншотам из игр/Picrew и понятному текстовому описанию. Если мы разрабатываем сложный дизайн с нуля чисто по тексту, может добавиться небольшая доплата за концепт." },
-            { cat: "payment", q: "Какие способы оплаты и валюты ты принимаешь?", a: "Цены указаны в USD, также принимаю EUR. Способы оплаты: PayPal, Ko-fi или Stripe, в зависимости от доступности. После согласования заявки я пришлю прямую ссылку и простую инструкцию по оплате." },
-            { cat: "payment", q: "Есть ли рассрочка (Payment Plan) на крупные заказы и AB адоптов?", a: "Да, рассрочку можно согласовать для заказов дороже $200, например 50/50. Первые 50% вносятся сразу для бронирования, а финальные файлы в высоком разрешении передаются после второй половины оплаты." },
-            { cat: "adopts", q: "Как работают бонусные уровни адоптов, если для них пока нет примера?", a: "Разблокированные бонусы отрисовываются индивидуально. Ориентировочный срок для расширенных уровней адопта — 14–40 рабочих дней в зависимости от согласованного объёма." },
-            { cat: "adopts", q: "Где проходят аукционы на Адоптов и YCH и когда они заканчиваются?", a: "Активные аукционы и время завершения указываются на соответствующей площадке. Проверьте мой профиль или напишите мне, чтобы уточнить актуальную доступность." },
-            { cat: "adopts", q: "Можно ли изменить телосложение, эмоции или добавить ушки/рога/крылья в YCH?", a: "Небольшие изменения мимики, кемономими-детали (ушки, хвосты, рожки) и подгонка под пропорции твоего персонажа делаются без проблем. Для крупных крыльев или сложного костюма в калькуляторе YCH есть удобные опции." },
-            { cat: "process", q: "Как следить за очередью и процессом работы?", a: "Чтобы узнать текущую доступность и прогресс, напиши мне напрямую. На сайте не публикуются данные живой очереди." },
-            { cat: "process", q: "В каком разрешении и формате я получу готовую работу?", a: "Форматы, разрешение и способ передачи файлов согласуются до начала работы. Уточните требования к экспорту при оформлении заказа." },
-            { cat: "process", q: "Можно ли заказать приватный арт (NDA) или коммерцию для мерча / VTuber?", a: "Да. Приватность / NDA добавляет 35%. Коммерческое использование требует отдельного соглашения и отдельно согласованной доплаты." },
-            { cat: "order", q: "Что делать, если сейчас все слоты заняты?", a: "Напиши мне в Telegram или Discord, чтобы уточнить текущую доступность и возможность попасть в лист ожидания." }
-          ]
-        }
+      "pathB": {
+        "tag": "OPTION B · ORDER INFO",
+        "title": "Pricing, Stages & Adopts",
+        "sub": "Compare render stages, bid tiers & build a quote"
       }
-    };
+    },
+    "contacts": {
+      "eyebrow": "DIRECT MESSAGING & NETWORKS",
+      "title": "Where to Find & Message Me",
+      "primaryTitle": "Primary Direct Contacts (Fastest Response)",
+      "platformsTitle": "Art Platforms & Galleries"
+    },
+    "featured": {
+      "eyebrow": "SELECTED WORKS",
+      "title": "Recent Highlights",
+      "viewAll": "Open Full Gallery →"
+    },
+    "pricing": {
+      "eyebrow": "PRICING · STAGES · ADOPTS · YCH",
+      "title": "What You're Paying For",
+      "sub": "Compare custom commission packages, cumulative adoptable tiers, and the published YCH price guide. The quote builder gives a starting estimate; confirm the final quote and availability directly.",
+      "tabs": {
+        "custom": "Custom Commissions",
+        "adopt": "Adopts & Bid Tiers",
+        "ych": "YCH Price Guide"
+      },
+      "stageSectionTitle": "Custom Commission Packages",
+      "stageSectionHint": "Select a package to load it into the quote builder",
+      "stages": [
+        {
+          "key": "single",
+          "name": "One character + simple background",
+          "range": "From $200",
+          "time": "14–30 business days",
+          "desc": "One character with a white or simple background. Final quote depends on the brief and complexity."
+        },
+        {
+          "key": "duo",
+          "name": "Two characters + simple background",
+          "range": "From $300",
+          "time": "14–30 business days",
+          "desc": "Second character +$100; each subsequent character +$80."
+        },
+        {
+          "key": "extras",
+          "name": "Optional extras",
+          "range": "From $50",
+          "time": "Quoted separately",
+          "desc": "Extra outfits +$50. Second character +$100; each further character +$80. Standard weapon / prop +$35; complex weapon from +$70; complex armour from +$60. Backgrounds are quoted individually."
+        }
+      ],
+      "matrix": {
+        "eyebrow": "CUSTOM PRICE TABLE (USD)",
+        "title": "Custom / Commission Price Matrix",
+        "hint": "See the package cards above for current base prices.",
+        "format": "Framing",
+        "s1": "Sketch",
+        "s2": "Flat Color",
+        "s3": "Full Render",
+        "bust": "Portrait / Bust",
+        "bustSub": "Head & shoulders",
+        "half": "Half-Body / Waist",
+        "halfSub": "Waist or mid-thigh up",
+        "full": "Full-Body",
+        "fullSub": "Head to toe pose"
+      },
+      "compare": {
+        "eyebrow": "BEFORE / AFTER SLIDER",
+        "title": "Interactive Stage Comparison",
+        "hint": "Drag the slider handle left or right to compare detail levels"
+      },
+      "breakdown": {
+        "eyebrow": "CHARACTER DESIGN FOCUS",
+        "title": "Character Art: Details & Focus Areas",
+        "items": [
+          {
+            "tag": "SILHOUETTE & WARDROBE",
+            "title": "Full Silhouette & Outfit",
+            "desc": "Readable posture, dark minimal or fantasy tailoring, and clean palette separation.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c"
+          },
+          {
+            "tag": "PORTRAIT & GAZE",
+            "title": "Face & Micro-Expressions",
+            "desc": "Expressive eye rendering, hair flow, piercings, makeup, and emotional mood.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c"
+          },
+          {
+            "tag": "PROPS & GESTURES",
+            "title": "Hands, Weapons & Callouts",
+            "desc": "Anatomical hand gestures, rings, weapons, and close-up material details.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c"
+          }
+        ]
+      },
+      "adoptSection": {
+        "eyebrow": "ADOPTABLE TIERS · $100 – $500",
+        "title": "Adoptables: Ready Designs & Stretch Goal Tiers",
+        "desc": "A finished base character design that expands into a full collector bundle at higher auction bids. Where finished samples aren't shown yet, a blueprint schematic explains what I custom-draw for the winner.",
+        "blueprintTitle": "STRETCH GOAL BLUEPRINT",
+        "blueprintSub": "Custom-drawn specifically for the winning bidder",
+        "tiers": [
+          {
+            "val": 100,
+            "badge": "SB · STARTING BID",
+            "price": "$100",
+            "title": "SB — Base Adoptable Design",
+            "desc": "Base design with a public SFW image / PNG without watermark and personal-use rights.",
+            "perks": [
+              "SFW image / PNG without watermark",
+              "Personal-use rights",
+              "Base tier delivered after payment"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 200,
+            "badge": "TIER II",
+            "price": "$200+",
+            "title": "+ Full Render & Alternative Version",
+            "desc": "At bids of $200 or more, the bundle includes a full render and one agreed alternative version, such as an outfit or species variant.",
+            "perks": [
+              "Everything in SB",
+              "Full rendered artwork",
+              "One agreed alternative version"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 350,
+            "badge": "TIER III",
+            "price": "$350+",
+            "title": "+ Bonus Character Artwork",
+            "desc": "At bids of $350 or more, the bundle also includes bonus artwork featuring the character.",
+            "perks": [
+              "Everything in Tier II",
+              "Additional character artwork",
+              "Details confirmed with the winning bidder"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 500,
+            "badge": "AB · AUTO-BUY",
+            "price": "$500+",
+            "title": "+ Reference Sheet & Close-ups",
+            "desc": "At bids of $500 or more, the bundle includes a reference sheet and close-up details. Commercial use is not included automatically.",
+            "perks": [
+              "Everything in Tier III",
+              "Reference sheet",
+              "Close-ups of selected details"
+            ],
+            "hasSample": false
+          }
+        ]
+      },
+      "ychSection": {
+        "eyebrow": "PRE-POSED TEMPLATES",
+        "title": "YCH Price Guide",
+        "desc": "Published base prices for YCH artwork. These are price-guide options, not a statement that a specific slot is currently available.",
+        "slots": [
+          {
+            "val": 30,
+            "code": "YCH · SKETCH",
+            "title": "Clean Sketch",
+            "stage": "Sketch",
+            "price": "$30",
+            "status": "Price guide",
+            "desc": "Estimated turnaround: up to 14 business days."
+          },
+          {
+            "val": 65,
+            "code": "YCH · COLOR SKETCH",
+            "title": "Color Sketch",
+            "stage": "Color sketch",
+            "price": "$65",
+            "status": "Price guide",
+            "desc": "Estimated turnaround: up to 14 business days."
+          },
+          {
+            "val": 120,
+            "code": "YCH · FULL RENDER",
+            "title": "Full Render",
+            "stage": "Full render",
+            "price": "$120",
+            "status": "Price guide",
+            "desc": "Estimated turnaround: up to 14 business days."
+          },
+          {
+            "val": 170,
+            "code": "YCH · FULL RENDER + NSFW",
+            "title": "Full Render + NSFW Alt",
+            "stage": "Discuss NSFW in advance",
+            "price": "$170",
+            "status": "Price guide",
+            "desc": "NSFW content must be discussed and agreed in advance."
+          }
+        ]
+      }
+    },
+    "calc": {
+      "title": "Quote Builder",
+      "reset": "Reset",
+      "modes": {
+        "custom": "Custom Commission",
+        "adopt": "Adoptable Tier",
+        "ych": "YCH Slot"
+      },
+      "stageCustom": "Select commission package",
+      "stageAdopt": "Select adoptable tier",
+      "stageYch": "Select YCH finish",
+      "crop": "Framing / Crop",
+      "addonsCustom": "Optional Extras",
+      "addonsAdopt": "Adoptable Upgrades & Extras",
+      "addonsYch": "Optional extras",
+      "notesPlaceholder": "Optional: character reference links, pose idea, SFW/NSFW...",
+      "totalLabel": "Estimated Total",
+      "copyBtn": "Copy Ready DM Request",
+      "copiedBtn": "Copied to Clipboard!",
+      "previewLabel": "Preview DM Message Text"
+    },
+    "gallery": {
+      "eyebrow": "CURATED ARCHIVE",
+      "title": "Art Gallery",
+      "sub": "Browse the gallery by category. 18+ artwork stays blurred until you confirm your age.",
+      "filters": {
+        "all": "All Works",
+        "comm": "Commissions",
+        "adopt": "Adopts",
+        "ych": "YCH",
+        "other": "Other works"
+      },
+      "nsfwToggle": "Show 18+ Content",
+      "modal": {
+        "eyebrow": "MATURE CONTENT WARNING",
+        "title": "Age Verification (18+)",
+        "desc": "Enabling this filter reveals mature / NSFW artwork intended strictly for adults. Are you 18 years of age or older?",
+        "yes": "Yes, I am 18+",
+        "no": "No, keep blurred"
+      },
+      "extTitle": "Full Archives & External Galleries",
+      "extSub": "For more works and current auction listings, visit my linked profiles:"
+    },
+    "queue": {
+      "eyebrow": "QUEUE & AVAILABILITY",
+      "title": "Queue & Availability",
+      "sub": "Only active orders appear here. Finished commissions have left the stage.",
+      "cols": {
+        "slot": "Order",
+        "client": "Type",
+        "details": "Details",
+        "stage": "Status",
+        "progress": "Progress"
+      },
+      "loading": "Loading the latest queue…",
+      "emptyTitle": "All caught up!",
+      "empty": "The studio is suspiciously quiet… No active commissions right now. The artist may be found drawing, refilling tea, or staring dramatically at a blank canvas.",
+      "error": "The live queue could not be loaded. Please try again later or contact me directly.",
+      "noProgress": "Progress update pending",
+      "queuedProgress": "Not started yet",
+      "started": "Started",
+      "eta": "Est. completion"
+    },
+    "tos": {
+      "eyebrow": "TERMS OF SERVICE",
+      "title": "Commissions, Adopts & YCH — Rules",
+      "sub": "By commissioning me or bidding on an adoptable/YCH, you agree to the terms below.",
+      "summaryTitle": "Quick Summary (At a Glance)",
+      "cards": [
+        {
+          "num": "01",
+          "title": "100% Upfront Payment",
+          "desc": "Full prepayment within 48 hours after commission confirmation via PayPal, Ko-fi or Stripe (USD/EUR)."
+        },
+        {
+          "num": "02",
+          "title": "Refund Policy",
+          "desc": "Refunds are normally unavailable after payment. If I cannot complete the commission, I refund the amount minus non-refundable platform fees."
+        },
+        {
+          "num": "03",
+          "title": "Revisions & Edits",
+          "desc": "Up to 5 minor edits are included during the sketch stage. Changes after approval may cost extra; my own mistakes are fixed for free."
+        },
+        {
+          "num": "04",
+          "title": "Personal Use Default",
+          "desc": "All art is for personal use by default. Credit @Nektahr_ when reposting."
+        },
+        {
+          "num": "05",
+          "title": "Adoptable Resale",
+          "desc": "Adopts may be resold for the same price or lower (higher only if commissioned art is added)."
+        },
+        {
+          "num": "06",
+          "title": "Strict No AI / No NFT",
+          "desc": "Zero tolerance for AI training, machine learning datasets, or crypto/NFT minting."
+        }
+      ],
+      "agreeCheck": "I have read and agree to the Terms of Service (include the checkbox confirmation in the quote request)",
+      "fullTitle": "Detailed Terms & Conditions",
+      "sections": [
+        {
+          "tag": "SECTION 01 · PAYMENT & REFUNDS",
+          "title": "Payment Methods, Holds & Refund Policy",
+          "bullets": [
+            "Prices are listed in USD; EUR is also accepted. Payment methods: PayPal, Ko-fi or Stripe, subject to availability.",
+            "For custom commissions, full prepayment is due within 48 hours after the commission is confirmed.",
+            "For Adoptables & YCH Auctions: Full payment must be sent within 48 hours after winning the auction. Failure to pay without warning may result in the slot going to the previous bidder and a blacklist.",
+            "Payment plans may be available for orders over $200 by prior agreement, for example 50/50. Confirm the exact schedule before payment.",
+            "Refunds: after payment, refunds are not normally available. If I cannot complete the commission, I will refund the payment minus any non-refundable platform fees. No refund is due if the client seriously violates the ToS or behaves abusively."
+          ]
+        },
+        {
+          "tag": "SECTION 02 · WORKFLOW & DEADLINES",
+          "title": "Process Stages, WIPs & Turnaround Time",
+          "bullets": [
+            "Estimated turnaround: YCH up to 14 business days; custom commissions 14–30 business days; adoptable base tier delivered immediately, higher tiers 14–40 business days. Turnaround starts once payment and all references have been received. For an agreed payment plan, it starts after the first instalment and references.",
+            "You will receive WIP (Work in Progress) screenshots at key milestones: 1) Rough Sketch, 2) Clean Lineart & Flat Colors, and 3) Final Rendering.",
+            "The public Queue page shows order numbers, estimated deadlines and work status. Private details stay off the site.",
+            "If you have a strict deadline (e.g., a birthday or stream debut), please mention it upfront. Rush orders (3–5 business days) may cost an additional $50–$100, depending on the deadline and scope."
+          ]
+        },
+        {
+          "tag": "SECTION 03 · REVISIONS & EDITS",
+          "title": "Corrections During Each Stage",
+          "bullets": [
+            "Sketch Stage: Up to 3–5 minor revisions or pose adjustments are included for free. Please request all structural changes here.",
+            "Flat Color Stage: Color palette tweaks and small markings adjustments are free.",
+            "Render Stage: Major structural changes (changing the pose, outfit, or camera angle) after lineart approval require an extra fee depending on complexity.",
+            "Artist Mistakes: If I miss a clear detail that was present on your reference sheet, I will always fix it for free at any stage.",
+            "Additional minor edits beyond the included revisions cost $10 each. Medium changes and major redraws are quoted before work begins. Fixing my mistakes remains free."
+          ]
+        },
+        {
+          "tag": "SECTION 04 · COPYRIGHT, USAGE & NDA",
+          "title": "Personal Rights, Commercial License & Privacy",
+          "bullets": [
+            "I retain authorship and portfolio rights to all artwork I create (posting low-res watermarked versions on DeviantArt, FurAffinity, Pixiv, or X).",
+            "Personal Use (Included): You may use the art for personal avatars, banners, character profiles (Toyhouse), and printing for yourself. Please credit @Nektahr_ when sharing.",
+            "Private / NDA Orders (+35%): If you wish the artwork to remain completely private and never be posted to my public galleries, a +35% NDA fee applies.",
+            "Personal avatars, profile posts and prints for yourself are personal use. Selling prints or merchandise, advertising, and using artwork in a paid product require a separate commercial agreement; the price is agreed individually."
+          ]
+        },
+        {
+          "tag": "SECTION 05 · ADOPTABLE & DESIGN RULES",
+          "title": "Ownership, Redesigns & Resale Policy",
+          "bullets": [
+            "Upon full payment, you receive full ownership of the character design, unwatermarked high-res PNG/JPG files, and transparent versions.",
+            "You are free to choose the character's name, lore, gender, and make minor/moderate outfit or hairstyle tweaks.",
+            "Reselling, Trading & Gifting: You may gift or trade the character at any time. You may resell the adoptable for no more than the original price paid, unless additional commissioned artwork has been added to their gallery.",
+            "Design credit must always remain with Nek'tahr (@nektahr).",
+            "PSD files are available on request only for adoptables at AB or above. PSD files are not offered separately for commissions or YCH."
+          ]
+        },
+        {
+          "tag": "SECTION 06 · STRICT AI & NFT PROHIBITION",
+          "title": "Zero Tolerance for AI Training & Crypto",
+          "bullets": [
+            "You may NOT under any circumstances feed my sketches, lineart, adoptables, or finished illustrations into AI image generators, LoRA training, or machine learning datasets.",
+            "You may NOT mint any of my artworks or character designs as NFTs or use them in blockchain/crypto projects."
+          ]
+        }
+      ],
+      "willTitle": "✓ Will Draw",
+      "willList": [
+        "Original Characters (OCs), Fantasy, DnD",
+        "Anime / Semi-realism / Dark aesthetic",
+        "Complex outfits, weapons, accessories",
+        "Kemonomimi (ears, tails, horns, wings)",
+        "Couples, romance & tasteful NSFW (18+)"
+      ],
+      "wontTitle": "! Special Requests — Ask First",
+      "wontList": [
+        "Mecha, full anthro, and extreme proportions may be difficult or cost extra",
+        "Discuss NSFW requests before payment",
+        "Please confirm unusual or complex requests before ordering"
+      ]
+    },
+    "faq": {
+      "eyebrow": "KNOWLEDGE BASE",
+      "title": "Frequently Asked Questions",
+      "sub": "Everything you need to know about ordering commissions, bidding on adopts, payment plans, and file delivery.",
+      "cats": {
+        "all": "All Questions",
+        "order": "Ordering",
+        "payment": "Payment & Plans",
+        "adopts": "Adopts & YCH",
+        "process": "Process & Files"
+      },
+      "items": [
+        {
+          "cat": "order",
+          "q": "How do I place an order?",
+          "a": "Use the Quote Builder on the Pricing page to estimate your price and copy the ready request text. Then send it to me via Discord (drintrava), Telegram DM (@nek_tahr), or Email (gapkuro@gmail.com) along with your character references."
+        },
+        {
+          "cat": "order",
+          "q": "Can I order if I don't have a visual reference sheet?",
+          "a": "Yes! I can work from moodboards, outfit photos, Dollmaker/Picrew screenshots, and clear written descriptions. If we are designing a complex character completely from scratch without visual references, a small custom design fee may apply."
+        },
+        {
+          "cat": "payment",
+          "q": "What payment methods and currencies do you accept?",
+          "a": "Prices are in USD; EUR is also accepted. Payment methods are PayPal, Ko-fi or Stripe, subject to availability. I will confirm the exact method and link before payment."
+        },
+        {
+          "cat": "payment",
+          "q": "Do you offer payment plans (installments) for higher tiers or AB?",
+          "a": "A payment plan may be available for orders over $200 by prior agreement, for example 50/50. Confirm the schedule with me before payment."
+        },
+        {
+          "cat": "adopts",
+          "q": "How do Adoptable Stretch Goal Tiers work if there is no sample image yet?",
+          "a": "Adoptable tiers are cumulative: from $200 the bundle adds a full render and an agreed alternative version; from $350 it adds bonus character artwork; from $500 it adds a reference sheet and close-up details. Higher-tier extras are custom-drawn after the auction."
+        },
+        {
+          "cat": "adopts",
+          "q": "Where do Adoptable & YCH auctions take place, and when do they end?",
+          "a": "Auctions are announced on the relevant platform. Check my current profile or message me to confirm whether a specific auction is active and when it ends."
+        },
+        {
+          "cat": "adopts",
+          "q": "Can I change the gender, body type, or species on a YCH slot?",
+          "a": "Minor adjustments to body type, ears/tails (kemonomimi), horns, wings, and expressions are always welcome on YCH slots! If a YCH requires a complete anatomical rebuild, I will let you know in DMs if a small adjustment fee applies."
+        },
+        {
+          "cat": "process",
+          "q": "How do I track my commission progress and turnaround time?",
+          "a": "The website does not publish live queue data. Contact me directly to check availability and progress; WIP updates are shared during the agreed workflow."
+        },
+        {
+          "cat": "process",
+          "q": "What file formats and resolution will I receive?",
+          "a": "File formats, resolution, and delivery method are agreed before work starts. Please confirm specific export requirements with me when ordering. PSD files are available on request only for adoptables at AB or above. PSD files are not offered separately for commissions or YCH. Turnaround starts once payment and all references have been received. For an agreed payment plan, it starts after the first instalment and references."
+        },
+        {
+          "cat": "process",
+          "q": "Can I keep my commission private (NDA) or use it for streaming / VTubing?",
+          "a": "Yes. A private / NDA request adds 35%. Commercial use requires a separate agreement and a separately quoted fee."
+        },
+        {
+          "cat": "order",
+          "q": "How do I check current availability?",
+          "a": "Please contact me directly to check availability or ask about a waitlist. The website does not publish live slot counts."
+        }
+      ]
+    }
+  },
+  "es": {
+    "nav": {
+      "board": "Inicio",
+      "pricing": "Precios",
+      "gallery": "Galería",
+      "queue": "Cola",
+      "tos": "Términos",
+      "faq": "FAQ"
+    },
+    "statusBadge": "Consultar disponibilidad",
+    "hero": {
+      "eyebrow": "Arte de personajes y comisiones",
+      "title": "¡Bienvenido a mi pequeño rincón de internet!",
+      "desc1": "Ya me has encontrado en otro sitio. Aquí está todo junto: mi arte, otros enlaces, precios de comisiones, YCHs y adopts.",
+      "desc2": "Dibujo personajes adorables, fanart y piezas experimentales, desde anime y humanoides fantásticos hasta kemonomimi y furries humanoides. ¿Tienes alguna idea? Echa un vistazo y veamos qué podemos crear.",
+      "pathA": {
+        "tag": "OPCIÓN A · EXPLORAR",
+        "title": "Galería y Archivos",
+        "sub": "Muestras públicas SFW y galerías en DA, FA, Pixiv y X. Para ejemplos adicionales o NSFW, escríbeme."
+      },
+      "pathB": {
+        "tag": "OPCIÓN B · COMISIONES",
+        "title": "Precios, Etapas y Adopts",
+        "sub": "Compara etapas, niveles de subasta y calcula tu orden"
+      }
+    },
+    "contacts": {
+      "eyebrow": "CONTACTO DIRECTO Y PLATAFORMAS",
+      "title": "Dónde Encontrarme y Escribirme",
+      "primaryTitle": "Contacto Directo Principal (Respuesta Rápida)",
+      "platformsTitle": "Plataformas de Arte y Subastas"
+    },
+    "featured": {
+      "eyebrow": "OBRAS DESTACADAS",
+      "title": "Trabajos Recientes",
+      "viewAll": "Ver Galería Completa →"
+    },
+    "pricing": {
+      "eyebrow": "PRECIOS · ETAPAS · ADOPTS · YCH",
+      "title": "Lo Que Estás Pagando",
+      "sub": "Compara paquetes de comisiones, niveles acumulativos de adopts y precios orientativos de YCH. La calculadora da un presupuesto inicial; confirma el precio final y la disponibilidad directamente.",
+      "tabs": {
+        "custom": "Comisiones personalizadas",
+        "adopt": "Adopts y Niveles",
+        "ych": "Precios de YCH"
+      },
+      "stageSectionTitle": "Paquetes de Comisiones Personalizadas",
+      "stageSectionHint": "Selecciona un paquete para cargarlo en la calculadora",
+      "stages": [
+        {
+          "key": "single",
+          "name": "Un personaje + fondo sencillo",
+          "range": "Desde $200",
+          "time": "14–30 días laborables",
+          "desc": "Un personaje con fondo blanco o sencillo. El precio final depende de la complejidad y la descripción."
+        },
+        {
+          "key": "duo",
+          "name": "Dos personajes + fondo sencillo",
+          "range": "Desde $300",
+          "time": "14–30 días laborables",
+          "desc": "Segundo personaje +$100; cada personaje posterior +$80."
+        },
+        {
+          "key": "extras",
+          "name": "Extras opcionales",
+          "range": "Desde $50",
+          "time": "Precio por confirmar",
+          "desc": "Atuendo extra +$50. Segundo personaje +$100; cada posterior +$80. Arma / objeto estándar +$35; arma compleja desde +$70; armadura compleja desde +$60. Fondos: presupuesto individual."
+        }
+      ],
+      "matrix": {
+        "eyebrow": "TABLA DE PRECIOS (USD)",
+        "title": "Matriz de Precios de Comisiones",
+        "hint": "Consulta los paquetes actuales en las tarjetas de arriba.",
+        "format": "Encuadre",
+        "s1": "Boceto",
+        "s2": "Color Base",
+        "s3": "Render Total",
+        "bust": "Retrato / Busto",
+        "bustSub": "Cabeza y hombros",
+        "half": "Medio Cuerpo",
+        "halfSub": "Hasta cintura o muslos",
+        "full": "Cuerpo Completo",
+        "fullSub": "Pose de pies a cabeza"
+      },
+      "compare": {
+        "eyebrow": "COMPARADOR ANTES / DESPUÉS",
+        "title": "Comparación Interactiva de Etapas",
+        "hint": "Arrastra el control deslizante para comparar el nivel de detalle"
+      },
+      "breakdown": {
+        "eyebrow": "ENFOQUE DE DISEÑO",
+        "title": "Detalles y Enfoques del Arte de Personajes",
+        "items": [
+          {
+            "tag": "SILUETA Y ATUENDO",
+            "title": "Silueta Completa y Moda",
+            "desc": "Postura legible, sastrería oscura o fantasía y paleta de colores limpia.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c"
+          },
+          {
+            "tag": "RETRATO Y MIRADA",
+            "title": "Rostro y Microexpresiones",
+            "desc": "Renderizado expresivo de ojos, cabello, piercings y maquillaje.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c"
+          },
+          {
+            "tag": "MANOS Y ACCESORIOS",
+            "title": "Manos, Armas y Detalles",
+            "desc": "Gestos anatómicos de manos, anillos, armas y zoom de materiales.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c"
+          }
+        ]
+      },
+      "adoptSection": {
+        "eyebrow": "NIVELES DE ADOPTS · $100 – $500",
+        "title": "Adoptables: Diseños y Niveles de Oferta (Tiers)",
+        "desc": "Un diseño base que desbloquea extras a medida que sube la oferta. Donde aún no hay ejemplo gráfico, el esquema indica lo que dibujo a medida para el ganador.",
+        "blueprintTitle": "ESQUEMA DE BONIFICACIÓN",
+        "blueprintSub": "Dibujado a medida para el ganador de la subasta",
+        "tiers": [
+          {
+            "val": 100,
+            "badge": "SB · OFERTA INICIAL",
+            "price": "$100",
+            "title": "SB — Diseño Base del Adopt",
+            "desc": "Diseño base con imagen SFW / PNG sin marca de agua y derechos de uso personal.",
+            "perks": [
+              "Imagen SFW / PNG sin marca de agua",
+              "Derechos de uso personal",
+              "Entrega del nivel base tras el pago"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 200,
+            "badge": "NIVEL II",
+            "price": "$200+",
+            "title": "+ Render Completo y Versión Alternativa",
+            "desc": "Con ofertas de $200 o más, el paquete incluye un render completo y una versión alternativa acordada, por ejemplo, otro atuendo o variante de especie.",
+            "perks": [
+              "Todo lo del nivel SB",
+              "Ilustración renderizada",
+              "Una versión alternativa acordada"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 350,
+            "badge": "NIVEL III",
+            "price": "$350+",
+            "title": "+ Ilustración Extra del Personaje",
+            "desc": "Con ofertas de $350 o más, se añade una ilustración extra con el personaje.",
+            "perks": [
+              "Todo lo del nivel II",
+              "Ilustración adicional",
+              "Detalles acordados con la persona ganadora"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 500,
+            "badge": "AB · COMPRA AUTOMÁTICA",
+            "price": "$500+",
+            "title": "+ Hoja de Referencia y Detalles",
+            "desc": "Con ofertas de $500 o más, se incluye una hoja de referencia y primeros planos. El uso comercial no está incluido automáticamente.",
+            "perks": [
+              "Todo lo del nivel III",
+              "Hoja de referencia",
+              "Primeros planos de detalles elegidos"
+            ],
+            "hasSample": false
+          }
+        ]
+      },
+      "ychSection": {
+        "eyebrow": "POSES PREDISEÑADAS",
+        "title": "Guía de precios YCH",
+        "desc": "Precios base publicados para YCH. Estas opciones son una guía de precios, no una confirmación de disponibilidad actual.",
+        "slots": [
+          {
+            "val": 30,
+            "code": "YCH · BOCETO",
+            "title": "Boceto limpio",
+            "stage": "Boceto",
+            "price": "$30",
+            "status": "Guía de precios",
+            "desc": "Plazo estimado: hasta 14 días laborables."
+          },
+          {
+            "val": 65,
+            "code": "YCH · BOCETO A COLOR",
+            "title": "Boceto a color",
+            "stage": "Boceto a color",
+            "price": "$65",
+            "status": "Guía de precios",
+            "desc": "Plazo estimado: hasta 14 días laborables."
+          },
+          {
+            "val": 120,
+            "code": "YCH · RENDER COMPLETO",
+            "title": "Render completo",
+            "stage": "Render completo",
+            "price": "$120",
+            "status": "Guía de precios",
+            "desc": "Plazo estimado: hasta 14 días laborables."
+          },
+          {
+            "val": 170,
+            "code": "YCH · RENDER + NSFW",
+            "title": "Render completo + versión NSFW",
+            "stage": "Hablar sobre NSFW antes",
+            "price": "$170",
+            "status": "Guía de precios",
+            "desc": "El contenido NSFW debe hablarse y acordarse de antemano."
+          }
+        ]
+      }
+    },
+    "calc": {
+      "title": "Calculadora",
+      "reset": "Reiniciar",
+      "modes": {
+        "custom": "Comisión Custom",
+        "adopt": "Subasta Adopt",
+        "ych": "Slot YCH"
+      },
+      "stageCustom": "Selecciona un paquete",
+      "stageAdopt": "Selecciona el nivel del adopt",
+      "stageYch": "Selecciona el acabado YCH",
+      "crop": "Encuadre",
+      "addonsCustom": "Extras opcionales",
+      "addonsAdopt": "Extras de Adoptable",
+      "addonsYch": "Extras opcionales",
+      "notesPlaceholder": "Opcional: enlaces a referencias, idea de pose, SFW/NSFW...",
+      "totalLabel": "Total Estimado",
+      "copyBtn": "Copiar Solicitud para MD",
+      "copiedBtn": "¡Copiado al Portapapeles!",
+      "previewLabel": "Vista Previa del Mensaje"
+    },
+    "gallery": {
+      "eyebrow": "ARCHIVO VISUAL",
+      "title": "Galería de Arte",
+      "sub": "Explora la galería por categoría. Las obras 18+ permanecerán difuminadas hasta que confirmes tu edad.",
+      "filters": {
+        "all": "Todas las obras",
+        "comm": "Comisiones",
+        "adopt": "Adopts",
+        "ych": "YCH",
+        "other": "Otros trabajos"
+      },
+      "nsfwToggle": "Mostrar contenido 18+",
+      "modal": {
+        "eyebrow": "AVISO DE CONTENIDO PARA ADULTOS",
+        "title": "Verificación de edad (18+)",
+        "desc": "Este filtro muestra obras maduras / NSFW destinadas exclusivamente a adultos. ¿Tienes 18 años o más?",
+        "yes": "Sí, tengo 18+",
+        "no": "No, mantener difuminado"
+      },
+      "extTitle": "Archivos Completos y Galerías Externas",
+      "extSub": "Para ver más obras y subastas actuales, visita mis perfiles enlazados:"
+    },
+    "queue": {
+      "eyebrow": "COLA Y DISPONIBILIDAD",
+      "title": "Cola y disponibilidad",
+      "sub": "Aquí solo aparecen los pedidos activos. Los trabajos terminados ya han salido del escenario.",
+      "cols": {
+        "slot": "Pedido",
+        "client": "Tipo",
+        "details": "Detalles",
+        "stage": "Estado",
+        "progress": "Progreso"
+      },
+      "loading": "Cargando la cola actual…",
+      "emptyTitle": "¡Todo al día!",
+      "empty": "El estudio está sospechosamente tranquilo… No hay encargos activos por ahora. Puede que el artista esté dibujando, rellenando el té o mirando dramáticamente un lienzo en blanco.",
+      "error": "No se pudo cargar la cola. Inténtalo más tarde o escríbeme directamente.",
+      "noProgress": "Actualización de progreso pendiente",
+      "queuedProgress": "Aún no ha comenzado",
+      "started": "Inicio",
+      "eta": "Finalización estimada"
+    },
+    "tos": {
+      "eyebrow": "TÉRMINOS DE SERVICIO",
+      "title": "Comisiones, Adopts y YCH — Reglas",
+      "sub": "Al comisionarme o pujar por un adopt/YCH, aceptas los siguientes términos.",
+      "summaryTitle": "Resumen Rápido",
+      "cards": [
+        {
+          "num": "01",
+          "title": "Pago 100% Anticipado",
+          "desc": "El pago completo vence dentro de las 48 horas posteriores a la confirmación del encargo (USD/EUR)."
+        },
+        {
+          "num": "02",
+          "title": "Reembolsos",
+          "desc": "Normalmente no hay reembolsos después del pago. Si no puedo completar el encargo, devolveré el importe menos las comisiones no reembolsables de la plataforma."
+        },
+        {
+          "num": "03",
+          "title": "Revisiones",
+          "desc": "Se incluyen hasta 5 cambios menores durante la etapa de boceto. Los cambios posteriores pueden tener coste; mis propios errores se corrigen gratis."
+        },
+        {
+          "num": "04",
+          "title": "Uso Personal",
+          "desc": "Uso personal por defecto. Acreditar a @Nektahr_ al publicar."
+        },
+        {
+          "num": "05",
+          "title": "Reventa de Adopts",
+          "desc": "Se pueden revender al mismo precio o menor (mayor solo con arte extra)."
+        },
+        {
+          "num": "06",
+          "title": "Prohibido IA y NFT",
+          "desc": "Prohibido usar mi arte para entrenar IA o crear NFTs/cripto."
+        }
+      ],
+      "agreeCheck": "He leído y acepto los Términos de Servicio (incluir la confirmación de la casilla en el mensaje de solicitud)",
+      "fullTitle": "Términos Detallados",
+      "sections": [
+        {
+          "tag": "SECCIÓN 01 · PAGOS Y REEMBOLSOS",
+          "title": "Métodos de Pago, Reservas y Reembolsos",
+          "bullets": [
+            "Los precios están en USD; también se acepta EUR. Métodos de pago: PayPal, Ko-fi o Stripe, según disponibilidad.",
+            "Para comisiones personalizadas, el pago completo vence dentro de las 48 horas posteriores a la confirmación del encargo.",
+            "Para Adopts y YCH: el pago debe realizarse dentro de las 48 horas posteriores a ganar la subasta.",
+            "Puede acordarse un plan de pago para pedidos superiores a $200, por ejemplo 50/50. Confirma el calendario antes de pagar.",
+            "Reembolsos: normalmente no hay reembolsos después del pago. Si no puedo completar el encargo, devolveré el importe menos las comisiones no reembolsables de la plataforma. No se reembolsa si el cliente incumple gravemente estos términos o tiene un comportamiento abusivo."
+          ]
+        },
+        {
+          "tag": "SECCIÓN 02 · PROCESO Y PLAZOS",
+          "title": "Etapas WIP y Tiempo de Entrega",
+          "bullets": [
+            "Plazos estimados: YCH hasta 14 días laborables; comisiones personalizadas 14–30 días laborables; adopt base inmediata y niveles superiores 14–40 días laborables. El plazo empieza tras recibir el pago y todas las referencias. Con un plan de pagos acordado, empieza tras la primera cuota y las referencias.",
+            "Recibirás avances (WIPs) en boceto, color base y render final.",
+            "La página Cola muestra números públicos de pedido, fechas estimadas y estado del trabajo. Los datos privados no se publican.",
+            "Los pedidos urgentes (3–5 días laborables) pueden añadir $50–$100 según la fecha límite y el alcance."
+          ]
+        },
+        {
+          "tag": "SECCIÓN 03 · REVISIONES Y CAMBIOS",
+          "title": "Correcciones Durante el Proceso",
+          "bullets": [
+            "Etapa de boceto: incluye hasta 3–5 ajustes menores o de pose sin coste. Solicita todos los cambios estructurales en esta etapa.",
+            "Etapa de color base: los ajustes de paleta y pequeños cambios en las marcas del personaje son gratuitos.",
+            "Etapa de render: los cambios estructurales importantes de pose, atuendo o ángulo de cámara tras aprobar el lineart tienen un coste adicional según su complejidad.",
+            "Mis errores: si omití un detalle claro que aparecía en tu referencia, lo corregiré gratis en cualquier etapa.",
+            "Los pequeños ajustes adicionales, fuera de las revisiones incluidas, cuestan $10 cada uno. Los cambios medianos y grandes se presupuestan antes. Corregir mis errores sigue siendo gratis."
+          ]
+        },
+        {
+          "tag": "SECCIÓN 04 · DERECHOS, PRIVACIDAD Y USO COMERCIAL",
+          "title": "Uso Personal, NDA y Licencia Comercial",
+          "bullets": [
+            "Conservo los derechos de autor para mostrar la obra con marca de agua en mi portafolio.",
+            "Uso Personal (Incluido): avatares, banners y perfiles personales acreditando a @Nektahr_.",
+            "Pedidos Privados / NDA (+35%): si deseas que la obra sea totalmente privada y no se publique.",
+            "Avatares personales, publicar la compra en tu perfil e imprimir para ti son usos personales. Vender impresiones o productos, publicidad y usar la obra en un producto de pago requieren un acuerdo comercial aparte; el precio se acuerda individualmente."
+          ]
+        },
+        {
+          "tag": "SECCIÓN 05 · REGLAS DE ADOPTABLES",
+          "title": "Propiedad, Rediseño y Reventa",
+          "bullets": [
+            "Tras completar el pago, recibes la propiedad del diseño del personaje, archivos PNG/JPG en alta resolución sin marca de agua y versiones transparentes.",
+            "Puedes elegir el nombre, la historia y el género del personaje, y hacer ajustes menores o moderados en su ropa o peinado.",
+            "Puedes regalar o intercambiar el personaje en cualquier momento. Puedes revenderlo por un precio igual o menor al pagado; solo puede ser mayor si se han añadido nuevas ilustraciones encargadas.",
+            "El crédito del diseño debe mantenerse siempre a nombre de Nek'tahr (@nektahr).",
+            "Los archivos PSD solo están disponibles bajo petición para adopts de nivel AB o superior. No se ofrecen por separado para encargos o YCH."
+          ]
+        },
+        {
+          "tag": "SECCIÓN 06 · PROHIBICIÓN DE IA Y NFT",
+          "title": "Tolerancia Cero con IA y Cripto",
+          "bullets": [
+            "Queda estrictamente prohibido usar mis obras para entrenar modelos de Inteligencia Artificial (IA) o datasets.",
+            "Queda prohibido acuñar o vender mis diseños o ilustraciones como NFTs."
+          ]
+        }
+      ],
+      "willTitle": "✓ Sí Dibujo",
+      "willList": [
+        "Personajes originales (OCs), fantasía, DnD",
+        "Anime / Semi-realismo / Estética oscura",
+        "Ropa compleja, armas, accesorios",
+        "Kemonomimi (orejas, colas, cuernos, alas)",
+        "Parejas, romance y NSFW estético (+18)"
+      ],
+      "wontTitle": "! Encargos especiales — Consultar antes",
+      "wontList": [
+        "Mecha, anthro completo y proporciones extremas pueden ser difíciles o costar más",
+        "Habla sobre solicitudes NSFW antes de pagar",
+        "Confirma los encargos complejos antes de pedir"
+      ]
+    },
+    "faq": {
+      "eyebrow": "PREGUNTAS FRECUENTES",
+      "title": "Respuestas Rápidas (FAQ)",
+      "sub": "Todo sobre pedidos, subastas de adopts, pagos fraccionados y entrega de archivos.",
+      "cats": {
+        "all": "Todas",
+        "order": "Pedidos",
+        "payment": "Pagos",
+        "adopts": "Adopts y YCH",
+        "process": "Proceso y Archivos"
+      },
+      "items": [
+        {
+          "cat": "order",
+          "q": "¿Cómo hago un pedido?",
+          "a": "Usa la calculadora en la página de Precios, copia el mensaje generado y envíamelo por Discord (drintrava), Telegram DM (@nek_tahr) o Email junto con tus referencias."
+        },
+        {
+          "cat": "order",
+          "q": "¿Puedo pedir sin hoja de referencia?",
+          "a": "¡Sí! Puedo trabajar con moodboards, fotos de ropa, capturas de Picrew y descripciones claras."
+        },
+        {
+          "cat": "payment",
+          "q": "¿Qué métodos de pago y monedas aceptas?",
+          "a": "Los precios están en USD (también acepto EUR). Los métodos de pago son PayPal, Ko-fi o Stripe, según disponibilidad."
+        },
+        {
+          "cat": "payment",
+          "q": "¿Aceptas planes de pago (en cuotas)?",
+          "a": "Se puede acordar un plan de pago para pedidos superiores a $200, por ejemplo 50/50. Confirma el calendario antes de pagar."
+        },
+        {
+          "cat": "adopts",
+          "q": "¿Cómo funcionan los niveles de Adopts sin imagen de ejemplo?",
+          "a": "Los extras de los niveles desbloqueados se dibujan a medida. El plazo estimado para los niveles superiores de adopt es de 14–40 días laborables, según el alcance acordado."
+        },
+        {
+          "cat": "adopts",
+          "q": "¿Dónde se realizan las subastas de Adopts y YCH?",
+          "a": "Las subastas activas y su hora de cierre se anuncian en la plataforma correspondiente. Consulta mi perfil o escríbeme para confirmar la disponibilidad actual."
+        },
+        {
+          "cat": "adopts",
+          "q": "¿Se puede cambiar el cuerpo o detalles en un YCH?",
+          "a": "Ajustes de expresión, orejas, colas, cuernos o alas siempre son posibles. Si requiere redibujar toda la anatomía, te avisaré por MD."
+        },
+        {
+          "cat": "process",
+          "q": "¿Cómo consulto el avance de mi pedido?",
+          "a": "Escríbeme directamente para consultar disponibilidad y avances; esta web no publica una cola en tiempo real."
+        },
+        {
+          "cat": "process",
+          "q": "¿En qué formato y resolución entregas los archivos?",
+          "a": "Los formatos, la resolución y el método de entrega se acuerdan antes de empezar. Confirma cualquier requisito específico al hacer el pedido. Los archivos PSD solo están disponibles bajo petición para adopts de nivel AB o superior. No se ofrecen por separado para encargos o YCH. El plazo empieza tras recibir el pago y todas las referencias. Con un plan de pagos acordado, empieza tras la primera cuota y las referencias."
+        },
+        {
+          "cat": "process",
+          "q": "¿Puedo pedir privacidad (NDA) o licencia comercial?",
+          "a": "La privacidad / NDA añade un 35%. El uso comercial requiere un acuerdo y una tarifa aparte, que deben confirmarse antes del pago."
+        },
+        {
+          "cat": "order",
+          "q": "¿Qué pasa si todos los cupos están llenos?",
+          "a": "Puedes escribirme para entrar en la Lista de Espera (Waitlist) y reservar lugar en la siguiente tanda."
+        }
+      ]
+    }
+  },
+  "ru": {
+    "nav": {
+      "board": "Главная",
+      "pricing": "Прайс",
+      "gallery": "Галерея",
+      "queue": "Очередь",
+      "tos": "Правила",
+      "faq": "FAQ"
+    },
+    "statusBadge": "Уточнить наличие",
+    "hero": {
+      "eyebrow": "Арт персонажей и заказы",
+      "title": "Добро пожаловать в мой маленький уголок интернета!",
+      "desc1": "Ты уже нашёл меня где-то ещё. Здесь собрано всё остальное: мои арты, другие ссылки, цены на заказы, YCH и адопты.",
+      "desc2": "Я рисую милых персонажей, фанарт и экспериментальные работы: от аниме и фэнтезийных гуманоидов до кемономими и гуманоидных фурри. Есть идея? Осмотрись, и давай посмотрим, что из неё можно сделать.",
+      "pathA": {
+        "tag": "ВАРИАНТ А · АРТЫ И АРХИВЫ",
+        "title": "Галерея и Площадки",
+        "sub": "Публичные SFW-примеры и галереи на DA, FA, Pixiv, X. За дополнительными или NSFW-примерами напишите мне."
+      },
+      "pathB": {
+        "tag": "ВАРИАНТ Б · ЗАКАЗАТЬ АРТ",
+        "title": "Цены, Поэтапка и Адопты",
+        "sub": "Сравнение этапов, тиры адоптов и калькулятор"
+      }
+    },
+    "contacts": {
+      "eyebrow": "ПРЯМАЯ СВЯЗЬ И СОЦСЕТИ",
+      "title": "Где меня найти и куда писать",
+      "primaryTitle": "Основная связь (Личные сообщения и Почта)",
+      "platformsTitle": "Галереи, Аукционы и Площадки"
+    },
+    "featured": {
+      "eyebrow": "ИЗБРАННЫЕ РАБОТЫ",
+      "title": "Примеры работ",
+      "viewAll": "Открыть всю галерею →"
+    },
+    "pricing": {
+      "eyebrow": "ПРАЙС · ПОЭТАПКА · АДОПТЫ · ЮЧИ",
+      "title": "Цены и комплектация заказов",
+      "sub": "Сравни пакеты индивидуальных заказов, накопительные уровни адоптов и ориентиры цен YCH. Калькулятор показывает начальную оценку, окончательную цену и наличие слота нужно подтвердить напрямую.",
+      "tabs": {
+        "custom": "Индивидуальные заказы",
+        "adopt": "Адопты и Уровни",
+        "ych": "Цены YCH"
+      },
+      "stageSectionTitle": "Пакеты индивидуальных заказов",
+      "stageSectionHint": "Выбери пакет, чтобы загрузить его в калькулятор",
+      "stages": [
+        {
+          "key": "single",
+          "name": "Один персонаж + простой фон",
+          "range": "От $200",
+          "time": "14–30 рабочих дней",
+          "desc": "Один персонаж на белом или простом фоне. Итоговая цена зависит от задачи и сложности."
+        },
+        {
+          "key": "duo",
+          "name": "Два персонажа + простой фон",
+          "range": "От $300",
+          "time": "14–30 рабочих дней",
+          "desc": "Второй персонаж +$100, каждый следующий после него +$80."
+        },
+        {
+          "key": "extras",
+          "name": "Дополнительные опции",
+          "range": "От $50",
+          "time": "Цена уточняется",
+          "desc": "Дополнительный наряд +$50. Второй персонаж +$100, каждый следующий +$80. Обычное оружие / предмет +$35; сложное оружие от +$70; сложная броня от +$60. Фон — цена по договорённости."
+        }
+      ],
+      "matrix": {
+        "eyebrow": "ТАБЛИЦА ЦЕН (USD)",
+        "title": "Матрица цен по формату и этапу",
+        "hint": "Актуальные стартовые цены указаны в карточках выше.",
+        "format": "Формат",
+        "s1": "Скетч",
+        "s2": "Базовый цвет",
+        "s3": "Полный рендер",
+        "bust": "Портрет / По грудь",
+        "bustSub": "Голова и плечи (Bust)",
+        "half": "По пояс / бёдра",
+        "halfSub": "Half-Body",
+        "full": "В полный рост",
+        "fullSub": "Full-Body"
+      },
+      "compare": {
+        "eyebrow": "ИНТЕРАКТИВНАЯ ШТОРКА",
+        "title": "Сравнение этапов До / После",
+        "hint": "Потяни ползунок на арте влево или вправо для сравнения детализации"
+      },
+      "breakdown": {
+        "eyebrow": "ПРОРАБОТКА ДИЗАЙНА",
+        "title": "Детали и акценты в арте персонажей",
+        "items": [
+          {
+            "tag": "СИЛУЭТ И КОСТЮМ",
+            "title": "Полный рост и крой одежды",
+            "desc": "Читаемый силуэт, тёмный минимализм или фэнтези-гардероб и гармония палитры.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c"
+          },
+          {
+            "tag": "ПОРТРЕТ И ЭМОЦИИ",
+            "title": "Лицо, взгляд и мимика",
+            "desc": "Детальная проработка глаз, прядей волос, пирсинга, макияжа и эмоций.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c"
+          },
+          {
+            "tag": "РУКИ И АКСЕССУАРЫ",
+            "title": "Пластика рук, оружие и детали",
+            "desc": "Выразительные жесты кистей, кольца, оружие и крупные планы материалов.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c"
+          }
+        ]
+      },
+      "adoptSection": {
+        "eyebrow": "УРОВНИ АДОПТОВ · $100 – $500",
+        "title": "Адопты: базовый дизайн и бонусные уровни ставок",
+        "desc": "При росте ставки на аукционе к базовому дизайну добавляются новые бонусы. Там, где у меня пока нет отдельных примеров, стоит эскиз-схема комплектации — эти бонусы я дорисовываю специально под победителя.",
+        "blueprintTitle": "ЭСКИЗ-СХЕМА УРОВНЯ",
+        "blueprintSub": "Отрисовывается индивидуально под победителя аукциона",
+        "tiers": [
+          {
+            "val": 100,
+            "badge": "SB · НАЧАЛЬНАЯ СТАВКА",
+            "price": "$100",
+            "title": "SB — Базовый дизайн адопта",
+            "desc": "Базовый дизайн, SFW-изображение / PNG без водяного знака и права на личное использование.",
+            "perks": [
+              "SFW-изображение / PNG без водяного знака",
+              "Личное использование",
+              "Базовые файлы после оплаты"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 200,
+            "badge": "УРОВЕНЬ II",
+            "price": "$200+",
+            "title": "+ Полный рендер и альтернативная версия",
+            "desc": "При ставке от $200 комплект включает полный рендер и одну согласованную альтернативную версию, например другой наряд или вариант вида персонажа.",
+            "perks": [
+              "Всё из уровня SB",
+              "Полноценный рендер",
+              "Одна согласованная альтернативная версия"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 350,
+            "badge": "УРОВЕНЬ III",
+            "price": "$350+",
+            "title": "+ Дополнительный арт персонажа",
+            "desc": "При ставке от $350 в комплект также входит дополнительная иллюстрация с персонажем.",
+            "perks": [
+              "Всё из уровня II",
+              "Дополнительная иллюстрация",
+              "Детали согласуются с победителем"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 500,
+            "badge": "AB · АВТОВЫКУП",
+            "price": "$500+",
+            "title": "+ Референс-лист и крупные планы",
+            "desc": "При ставке от $500 добавляются референс-лист и крупные планы деталей. Коммерческое использование автоматически не включено.",
+            "perks": [
+              "Всё из уровня III",
+              "Референс-лист",
+              "Крупные планы выбранных деталей"
+            ],
+            "hasSample": false
+          }
+        ]
+      },
+      "ychSection": {
+        "eyebrow": "ГОТОВЫЕ КОМПОЗИЦИИ",
+        "title": "Ориентиры цен YCH",
+        "desc": "Опубликованные базовые цены YCH. Карточки показывают ориентиры, но не подтверждают, что конкретный слот сейчас свободен.",
+        "slots": [
+          {
+            "val": 30,
+            "code": "YCH · СКЕТЧ",
+            "title": "Чистый скетч",
+            "stage": "Скетч",
+            "price": "$30",
+            "status": "Ориентир по цене",
+            "desc": "Ориентировочный срок: до 14 рабочих дней."
+          },
+          {
+            "val": 65,
+            "code": "YCH · ЦВЕТНОЙ СКЕТЧ",
+            "title": "Цветной скетч",
+            "stage": "Цветной скетч",
+            "price": "$65",
+            "status": "Ориентир по цене",
+            "desc": "Ориентировочный срок: до 14 рабочих дней."
+          },
+          {
+            "val": 120,
+            "code": "YCH · ПОЛНЫЙ РЕНДЕР",
+            "title": "Полный рендер",
+            "stage": "Полный рендер",
+            "price": "$120",
+            "status": "Ориентир по цене",
+            "desc": "Ориентировочный срок: до 14 рабочих дней."
+          },
+          {
+            "val": 170,
+            "code": "YCH · РЕНДЕР + NSFW",
+            "title": "Полный рендер + NSFW-версия",
+            "stage": "NSFW обсудить заранее",
+            "price": "$170",
+            "status": "Ориентир по цене",
+            "desc": "NSFW-контент нужно обсудить и согласовать заранее."
+          }
+        ]
+      }
+    },
+    "calc": {
+      "title": "Калькулятор заявки",
+      "reset": "Сброс",
+      "modes": {
+        "custom": "Индивидуальная Комишка",
+        "adopt": "Адопт и Уровни",
+        "ych": "Слот YCH"
+      },
+      "stageCustom": "Этап проработки",
+      "stageAdopt": "Уровень ставки (Bid Tier)",
+      "stageYch": "Выбор слота и рендера YCH",
+      "crop": "Формат (Кадрирование)",
+      "addonsCustom": "Дополнения к комишке",
+      "addonsAdopt": "Дополнения к адопту",
+      "addonsYch": "Опции для YCH",
+      "notesPlaceholder": "Необязательно: ссылки на рефы, идея позы, SFW/NSFW...",
+      "totalLabel": "Ориентировочно",
+      "copyBtn": "Скопировать готовый запрос для ЛС",
+      "copiedBtn": "Скопировано в буфер обмена!",
+      "previewLabel": "Предпросмотр текста заявки"
+    },
+    "gallery": {
+      "eyebrow": "АРХИВ РАБОТ",
+      "title": "Галерея",
+      "sub": "Смотри работы по категориям. Контент 18+ останется размытым, пока ты не подтвердишь возраст.",
+      "filters": {
+        "all": "Все работы",
+        "comm": "Коммишки",
+        "adopt": "Адопты",
+        "ych": "YCH",
+        "other": "Другие работы"
+      },
+      "nsfwToggle": "Показывать контент 18+",
+      "modal": {
+        "eyebrow": "ПРЕДУПРЕЖДЕНИЕ 18+",
+        "title": "Подтверждение возраста (18+)",
+        "desc": "Этот фильтр открывает взрослые / NSFW-работы, предназначенные только для совершеннолетних. Тебе уже есть 18 лет?",
+        "yes": "Да, мне есть 18",
+        "no": "Нет, оставить размытым"
+      },
+      "extTitle": "Полные архивы и внешние галереи",
+      "extSub": "Хочешь посмотреть больше работ в полном разрешении или поучаствовать в аукционах? Мои профили:"
+    },
+    "queue": {
+      "eyebrow": "СТАТУС ЗАКАЗОВ",
+      "title": "Текущая очередь (Queue)",
+      "sub": "Здесь отображаются только активные заказы. Завершённые уже покинули сцену.",
+      "cols": {
+        "slot": "Заказ",
+        "client": "Тип",
+        "details": "Детали",
+        "stage": "Статус",
+        "progress": "Прогресс"
+      },
+      "loading": "Загружаем актуальную очередь…",
+      "emptyTitle": "Все заказы разобраны!",
+      "empty": "В студии подозрительно тихо… Сейчас активных заказов нет. Возможно, художник рисует, доливает чай или драматично смотрит на пустой холст.",
+      "error": "Не удалось загрузить очередь. Попробуйте позже или напишите мне напрямую.",
+      "noProgress": "Ожидается обновление прогресса",
+      "queuedProgress": "Ещё не начат",
+      "started": "Начат",
+      "eta": "Ожидаемое завершение"
+    },
+    "tos": {
+      "eyebrow": "TERMS OF SERVICE",
+      "title": "Правила заказов, адоптов и YCH (T.O.S.)",
+      "sub": "Заказывая комишку или покупая адопта/YCH, вы соглашаетесь с этими простыми правилами.",
+      "summaryTitle": "Коротко о главном (Сводка по карточкам)",
+      "cards": [
+        {
+          "num": "01",
+          "title": "100% Предоплата",
+          "desc": "Полная предоплата в течение 48 часов после подтверждения заказа (USD / EUR)."
+        },
+        {
+          "num": "02",
+          "title": "Возврат средств",
+          "desc": "После оплаты возврат обычно не предусмотрен. Если я не смогу завершить заказ, верну сумму за вычетом невозвратных комиссий платёжной платформы."
+        },
+        {
+          "num": "03",
+          "title": "Правки на скетче",
+          "desc": "На этапе скетча включено до 5 мелких правок. После утверждения скетча изменения могут оплачиваться отдельно; мои собственные ошибки исправляю бесплатно."
+        },
+        {
+          "num": "04",
+          "title": "Личное использование",
+          "desc": "По умолчанию арт для личного пользования. При публикации указывайте @Nektahr_."
+        },
+        {
+          "num": "05",
+          "title": "Перепродажа адоптов",
+          "desc": "Разрешена по цене не выше покупки (дороже — только если есть новые заказанные арты)."
+        },
+        {
+          "num": "06",
+          "title": "Запрет ИИ и NFT",
+          "desc": "Строго запрещено использовать мои работы для обучения нейросетей (AI) и создания NFT."
+        }
+      ],
+      "agreeCheck": "Я прочитал(а) и согласен(на) с правилами ToS (включить отметку о согласии в текст заявки)",
+      "fullTitle": "Полные условия работы (Detailed T.O.S.)",
+      "sections": [
+        {
+          "tag": "РАЗДЕЛ 01 · ОПЛАТА, БРОНЬ И ВОЗВРАТЫ",
+          "title": "Способы оплаты, рассрочка и политика возврата",
+          "bullets": [
+            "Цены указаны в USD, также принимаю EUR. Способы оплаты: PayPal, Ko-fi или Stripe, в зависимости от доступности.",
+            "Для индивидуальных заказов полная предоплата вносится в течение 48 часов после подтверждения заказа.",
+            "Для Адоптов и аукционов YCH: оплата должна быть произведена в течение 48 часов после победы в аукционе. При неоплате без предупреждения слот переходит предыдущему участнику.",
+            "Рассрочку можно согласовать для заказов дороже $200, например 50/50. Условия и график нужно подтвердить до оплаты.",
+            "Возвраты: после оплаты возврат обычно не предусмотрен. Если я не смогу завершить заказ, верну сумму за вычетом невозвратных комиссий платёжной платформы. При серьёзном нарушении правил или токсичном поведении клиента возврат не производится."
+          ]
+        },
+        {
+          "tag": "РАЗДЕЛ 02 · ПРОЦЕСС, WIP-ЭТАПЫ И СРОКИ",
+          "title": "Как строится работа и сколько времени занимает арт",
+          "bullets": [
+            "Сроки: YCH до 14 рабочих дней; индивидуальные заказы 14–30 рабочих дней; базовый уровень адопта сразу, расширенные уровни 14–40 рабочих дней. Срок отсчитывается после получения оплаты и всех референсов. При согласованной рассрочке — после первого платежа и референсов.",
+            "Я присылаю WIP-скриншоты в ЛС на каждом ключевом этапе: 1) композиционный скетч, 2) чистый лайн и базовые цвета, 3) финальный рендер.",
+            "В разделе «Очередь» отображаются публичные номера заказов, ориентировочные сроки и статус работы. Личные данные не публикуются.",
+            "Срочный заказ на 3–5 рабочих дней может стоить дополнительно $50–$100 в зависимости от дедлайна и объёма."
+          ]
+        },
+        {
+          "tag": "РАЗДЕЛ 03 · ПРАВКИ И ИЗМЕНЕНИЯ",
+          "title": "Что можно поправить бесплатно, а что за доплату",
+          "bullets": [
+            "На этапе скетча: включено до 3–5 бесплатных правок по позе, анатомии, эмоциям и деталям костюма.",
+            "На этапе базового цвета: бесплатно корректируются оттенки и палитра.",
+            "На этапе рендера: значительные изменения утверждённой позы, одежды или ракурса после согласования лайна оплачиваются отдельно в зависимости от сложности.",
+            "Мои ошибки: если я упустил чётко указанную деталь с вашего референса, исправлю её бесплатно на любом этапе.",
+            "Дополнительные мелкие правки сверх включённых — $10 за каждую. Средние изменения и большие переделки оцениваются до начала правок. Исправление моих ошибок остаётся бесплатным."
+          ]
+        },
+        {
+          "tag": "РАЗДЕЛ 04 · АВТОРСКИЕ ПРАВА, ПРИВАТНОСТЬ И КОММЕРЦИЯ",
+          "title": "Личное использование, NDA и коммерческая лицензия",
+          "bullets": [
+            "Авторское право остаётся за мной: я могу публиковать уменьшенную версию с вотермаркой в своём портфолио (DA, FA, Pixiv, X).",
+            "Личное использование (по умолчанию): вы можете ставить арт на аватарку, баннер, оформлять профиль (Toyhouse) и печатать для себя с указанием автора @Nektahr_.",
+            "Приватный заказ / NDA (+35%): если вы хотите, чтобы работа нигде не публиковалась и осталась полностью закрытой.",
+            "Аватарка, публикация покупки в своём профиле и печать для себя — личное использование. Продажа принтов или мерча, реклама и использование арта в платном продукте требуют отдельного коммерческого соглашения; цена по договорённости."
+          ]
+        },
+        {
+          "tag": "РАЗДЕЛ 05 · ПРАВИЛА ВЛАДЕНИЯ АДОПТАМИ И ДИЗАЙНАМИ",
+          "title": "Права покупателя, редизайн и перепродажа",
+          "bullets": [
+            "После полной оплаты вы получаете все файлы в высоком разрешении (JPG и прозрачный PNG без вотермарок) и права на персонажа.",
+            "Вы можете давать персонажу любое имя, биографию, менять детали одежды или причёски.",
+            "Перепродажа, обмен и подарок: дарить и обменивать можно свободно. Перепродавать адопта разрешается по цене не выше суммы покупки (дороже — только если у персонажа появились новые заказанные платные арты).",
+            "Авторство базового дизайна всегда остаётся за Nek'tahr (@nektahr).",
+            "PSD доступен по запросу только для адоптов на уровне AB и выше. Отдельно для коммишек и YCH PSD не предлагается."
+          ]
+        },
+        {
+          "tag": "РАЗДЕЛ 06 · СТРОГИЙ ЗАПРЕТ НА ИИ (AI) И NFT",
+          "title": "Никаких нейросетей и блокчейна",
+          "bullets": [
+            "Категорически запрещено загружать мои скетчи, адоптов или готовые работы в генераторы ИИ, использовать для обучения LoRA или датасетов машинного обучения.",
+            "Запрещено выпускать мои работы или дизайнов в виде NFT и использовать в крипто-проектах."
+          ]
+        }
+      ],
+      "willTitle": "✓ Что я рисую",
+      "willList": [
+        "Оригинальных персонажей (OC), фэнтези, DnD",
+        "Аниме / Семи-реализм / Тёмную эстетику",
+        "Сложные костюмы, броню, оружие, украшения",
+        "Кемономими (ушки, хвосты, рога, крылья)",
+        "Пары, романтику и эстетичный NSFW (18+)"
+      ],
+      "wontTitle": "! Сложные запросы: сначала обсудить",
+      "wontList": [
+        "Меха, полный антро и экстремальные пропорции могут быть сложнее или дороже",
+        "NSFW-заказы нужно обсудить до оплаты",
+        "Сложные и нестандартные задачи согласуйте заранее"
+      ]
+    },
+    "faq": {
+      "eyebrow": "ЧАСТЫЕ ВОПРОСЫ",
+      "title": "Ответы на вопросы по заказам (FAQ)",
+      "sub": "Подробные ответы про оформление заказа, рассрочку, бонусные тиры адоптов, форматы файлов и очередь.",
+      "cats": {
+        "all": "Все вопросы",
+        "order": "Заказ и Рефы",
+        "payment": "Оплата и Рассрочка",
+        "adopts": "Адопты и YCH",
+        "process": "Процесс и Файлы"
+      },
+      "items": [
+        {
+          "cat": "order",
+          "q": "Как оформить заказ?",
+          "a": "Собери ориентировочную заявку в калькуляторе на вкладке «Прайс», нажми «Скопировать готовый запрос» и пришли его мне в Discord (drintrava), в Telegram (@nek_tahr) или на почту (gapkuro@gmail.com) вместе с референсами."
+        },
+        {
+          "cat": "order",
+          "q": "Можно ли заказать арт без готового референс-листа?",
+          "a": "Да! Я спокойно работаю по мудбордам, фотографиям одежды, скриншотам из игр/Picrew и понятному текстовому описанию. Если мы разрабатываем сложный дизайн с нуля чисто по тексту, может добавиться небольшая доплата за концепт."
+        },
+        {
+          "cat": "payment",
+          "q": "Какие способы оплаты и валюты ты принимаешь?",
+          "a": "Цены указаны в USD, также принимаю EUR. Способы оплаты: PayPal, Ko-fi или Stripe, в зависимости от доступности. После согласования заявки я пришлю прямую ссылку и простую инструкцию по оплате."
+        },
+        {
+          "cat": "payment",
+          "q": "Есть ли рассрочка (Payment Plan) на крупные заказы и AB адоптов?",
+          "a": "Да, рассрочку можно согласовать для заказов дороже $200, например 50/50. Первые 50% вносятся сразу для бронирования, а финальные файлы в высоком разрешении передаются после второй половины оплаты."
+        },
+        {
+          "cat": "adopts",
+          "q": "Как работают бонусные уровни адоптов, если для них пока нет примера?",
+          "a": "Разблокированные бонусы отрисовываются индивидуально. Ориентировочный срок для расширенных уровней адопта — 14–40 рабочих дней в зависимости от согласованного объёма."
+        },
+        {
+          "cat": "adopts",
+          "q": "Где проходят аукционы на Адоптов и YCH и когда они заканчиваются?",
+          "a": "Активные аукционы и время завершения указываются на соответствующей площадке. Проверьте мой профиль или напишите мне, чтобы уточнить актуальную доступность."
+        },
+        {
+          "cat": "adopts",
+          "q": "Можно ли изменить телосложение, эмоции или добавить ушки/рога/крылья в YCH?",
+          "a": "Небольшие изменения мимики, кемономими-детали (ушки, хвосты, рожки) и подгонка под пропорции твоего персонажа делаются без проблем. Для крупных крыльев или сложного костюма в калькуляторе YCH есть удобные опции."
+        },
+        {
+          "cat": "process",
+          "q": "Как следить за очередью и процессом работы?",
+          "a": "Чтобы узнать текущую доступность и прогресс, напиши мне напрямую. На сайте не публикуются данные живой очереди."
+        },
+        {
+          "cat": "process",
+          "q": "В каком разрешении и формате я получу готовую работу?",
+          "a": "Форматы, разрешение и способ передачи файлов согласуются до начала работы. Уточните требования к экспорту при оформлении заказа. PSD доступен по запросу только для адоптов на уровне AB и выше. Отдельно для коммишек и YCH PSD не предлагается. Срок отсчитывается после получения оплаты и всех референсов. При согласованной рассрочке — после первого платежа и референсов."
+        },
+        {
+          "cat": "process",
+          "q": "Можно ли заказать приватный арт (NDA) или коммерцию для мерча / VTuber?",
+          "a": "Да. Приватность / NDA добавляет 35%. Коммерческое использование требует отдельного соглашения и отдельно согласованной доплаты."
+        },
+        {
+          "cat": "order",
+          "q": "Что делать, если сейчас все слоты заняты?",
+          "a": "Напиши мне в Telegram или Discord, чтобы уточнить текущую доступность и возможность попасть в лист ожидания."
+        }
+      ]
+    }
+  }
+};
 
     const UI_TEXT = {
       en: {
@@ -1035,9 +1773,9 @@
           { id: "nda", mult: 1.35, badge: "+35%", label: { en: "Private / NDA", es: "Privado / NDA", ru: "Приватность / NDA" } }
         ],
         note: {
-          en: "Additional character: from $100. Commercial use requires a separate agreement and quote. Rush pricing depends on the deadline. All totals are estimates; confirm the final quote directly.",
-          es: "Personaje adicional: desde $100. El uso comercial requiere un acuerdo y presupuesto separados. El precio urgente depende de la fecha límite. El total es orientativo; confirma el precio final directamente.",
-          ru: "Дополнительный персонаж: от $100. Коммерческое использование требует отдельного соглашения и расчёта. Цена срочности зависит от дедлайна. Сумма ориентировочная, окончательную цену нужно подтвердить напрямую."
+          en: "Additional character: from $100. Commercial use requires a separate agreement and quote. Rush pricing depends on the deadline. All totals are estimates; confirm the final quote directly. Turnaround starts once payment and all references have been received. For an agreed payment plan, it starts after the first instalment and references.",
+          es: "Personaje adicional: desde $100. El uso comercial requiere un acuerdo y presupuesto separados. El precio urgente depende de la fecha límite. El total es orientativo; confirma el precio final directamente. El plazo empieza tras recibir el pago y todas las referencias. Con un plan de pagos acordado, empieza tras la primera cuota y las referencias.",
+          ru: "Дополнительный персонаж: от $100. Коммерческое использование требует отдельного соглашения и расчёта. Цена срочности зависит от дедлайна. Сумма ориентировочная, окончательную цену нужно подтвердить напрямую. Срок отсчитывается после получения оплаты и всех референсов. При согласованной рассрочке — после первого платежа и референсов."
         }
       },
       adopt: {
@@ -1054,7 +1792,7 @@
           { id: "nda_a", mult: 1.35, badge: "+35%", label: { en: "Private / NDA", es: "Privado / NDA", ru: "Приватность / NDA" } }
         ],
         note: {
-          en: "Tier inclusions are cumulative. Commercial use is not included automatically and requires a separate agreement and quote.",
+          en: "PSD files are available on request only for adoptables at AB or above. PSD files are not offered separately for commissions or YCH. Tier inclusions are cumulative. Commercial use is not included automatically and requires a separate agreement and quote.",
           es: "Los niveles incluyen lo anterior. El uso comercial no está incluido automáticamente y requiere un acuerdo y presupuesto separados.",
           ru: "Каждый уровень включает предыдущие бонусы. Коммерческое использование автоматически не включено и требует отдельного соглашения и расчёта."
         }
@@ -1230,7 +1968,7 @@
         <!-- Primary Direct Contacts: Discord (drintrava), Telegram DM 1, Telegram DM 2, Email -->
         <div>
           <h3 id="primary-contacts-label" class="mono text-[11px] uppercase text-textDim mb-3">Primary Direct Contacts (Fastest Response)</h3>
-          <div id="primary-contacts-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3.5"></div>
+          <div id="primary-contacts-grid" class="grid md:grid-cols-3 gap-3.5"></div>
         </div>
 
         <!-- Verified art platforms and contact destinations -->
@@ -1297,7 +2035,7 @@
               </div>
               <div id="custom-stages-grid" class="grid sm:grid-cols-3 gap-4"></div>
             </div>
-            <div id="process-dock-custom"><section id="pricing-examples" class="examples-panel"><h3 id="pricing-examples-label" class="examples-heading">Artwork examples & stages</h3><div id="pricing-samples-grid" class="pricing-samples-grid"></div></section></div>
+            
             <!-- Character Sheet & Detail Breakdown -->
             <div class="space-y-4">
               <div>
@@ -1306,6 +2044,7 @@
               </div>
               <div id="breakdown-grid" class="grid sm:grid-cols-3 gap-4"></div>
             </div>
+            <div id="process-dock-custom"><section id="pricing-examples" class="examples-panel"><h3 id="pricing-examples-label" class="examples-heading">Artwork examples & stages</h3><div id="pricing-samples-grid" class="pricing-samples-grid"></div></section></div>
           </div>
 
           <!-- SUB-VIEW B: ADOPTS & BID TIERS -->
@@ -2325,12 +3064,12 @@
       if(!window.queueManagerReady)loadLiveQueue();
     };
   </script>
-<script src="/assets/process-viewer.js"></script>
-<script src="/assets/artwork-interactions.js"></script>
-<dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
-<script src="/assets/gallery-viewer.js"></script>
-<script src="/assets/pricing-samples.js"></script>
-<script src="/assets/quote-builder.js"></script>
-<script src="/assets/catalog.js"></script>
+<script src="/assets/process-viewer.js?v=20261028-review2"></script>
+<script src="/assets/artwork-interactions.js?v=20261028-review2"></script>
+<dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
+<script src="/assets/gallery-viewer.js?v=20261028-review2"></script>
+<script src="/assets/pricing-samples.js?v=20261028-review2"></script>
+<script src="/assets/quote-builder.js?v=20261028-review2"></script>
+<script src="/assets/catalog.js?v=20261028-review2"></script>
 </body>
 </html>

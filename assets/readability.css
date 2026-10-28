@@ -38,3 +38,44 @@ body .font-sans{font-family:var(--ui-font)}
 
 /* Keep all five queue fields readable without a sideways table on phones. */
 @media(max-width:600px){#page-queue .overflow-x-auto{border:0;padding:0;overflow:visible}#page-queue table{display:block;min-width:0!important;width:100%}#page-queue thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}#queue-table-body{display:grid;gap:14px}#queue-table-body tr{display:grid;grid-template-columns:1fr 1fr;gap:15px 18px;border:1px solid #e2b47833;border-radius:12px;background:#141017;padding:18px}#queue-table-body td{display:block;padding:0!important;font-size:13px;min-width:0;white-space:normal}#queue-table-body td:nth-child(2),#queue-table-body td:nth-child(5),#queue-table-body .queue-message{grid-column:1/-1}#queue-table-body td:before{content:attr(data-label);display:block;font-family:var(--ui-font);font-size:11px;letter-spacing:.02em;color:#b7ae9f;margin-bottom:6px}#queue-table-body td.queue-message:before{display:none}#queue-table-body strong{font-size:15px}#queue-table-body small{font-size:12px}.queue-status{font-size:13px}}
+/* Desktop review: calmer typography, contained images and deliberate controls. */
+:root{--ui-font:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif}
+body,body .font-sans{font-family:var(--ui-font)}
+h1,h2,h3,h4,.serif{font-family:var(--ui-font);font-weight:500;letter-spacing:-.025em}
+body>header>button:first-child{font-family:'Cormorant Garamond',Georgia,serif;font-size:32px;letter-spacing:-.02em}
+.mono{font-family:var(--ui-font);letter-spacing:.055em;font-weight:500}
+.page-section h1{font-size:clamp(32px,3.3vw,46px);line-height:1.18!important;max-width:28ch}
+.page-section h2{font-size:28px;line-height:1.3}.page-section h3{font-size:22px;line-height:1.35}.page-section h4{font-size:19px}
+.page-section p{font-size:14px;line-height:1.8}.artwork-modal-header h2{font-family:var(--ui-font);font-size:22px}
+.catalog-card-price strong,#catalog-dialog-includes,.queue-overview strong{font-family:var(--ui-font);font-size:28px;font-weight:500;letter-spacing:-.03em}
+#primary-contacts-grid{grid-template-columns:repeat(3,minmax(0,1fr));width:100%}#primary-contacts-grid>*{min-width:0;padding:20px}
+#page-queue .overflow-x-auto{padding:0}#page-queue thead th{padding:18px 24px;font-size:11px;background:#1b1720;letter-spacing:.055em;line-height:1.6}
+#page-queue #queue-table-body td{padding:22px 24px;font-family:var(--ui-font)}#page-queue #queue-table-body td:first-child{padding-left:24px;font-size:17px;font-weight:500}#page-queue #queue-table-body td:last-child{padding-right:24px}
+#catalog-dialog{width:min(980px,calc(100vw - 40px));max-width:980px;isolation:isolate}
+#catalog-dialog[open]{grid-template-columns:minmax(0,46%) minmax(0,54%);align-items:stretch}
+#catalog-dialog-image{min-width:0;overflow:hidden;position:relative;background:#201724}
+#catalog-dialog-image .catalog-art{width:100%;min-width:0;min-height:0;height:100%;aspect-ratio:auto}
+#catalog-dialog-image .catalog-art img{width:100%;max-width:100%;height:100%;max-height:78dvh;object-fit:contain;position:relative}
+#catalog-dialog .catalog-dialog-content{min-width:0;padding:42px 32px 30px;position:relative;background:#100c15;overflow-wrap:anywhere}
+#catalog-dialog .catalog-dialog-content h2{font-size:29px;line-height:1.3;margin:16px 0}
+#catalog-dialog .catalog-dialog-content p{font-size:14px;line-height:1.8}
+#catalog-dialog .catalog-dialog-actions{margin-top:24px;gap:12px}
+#catalog-dialog .catalog-close{z-index:3}
+/* Whole-row selections replace detached checkboxes and tiny switches. */
+#page-pricing .addon-pill,#page-pricing .quote-existing-label,#page-pricing .quote-package{position:relative;display:flex;align-items:center;gap:14px;justify-content:space-between;width:100%;padding:13px 14px;border:1px solid #75627366;border-radius:10px;background:#100d15;cursor:pointer;font-size:13px;line-height:1.65;transition:background .15s,border-color .15s}
+#page-pricing .addon-pill input,#page-pricing .quote-existing-label input,#page-pricing .quote-package input{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;opacity:0;margin:0!important;z-index:1;cursor:pointer}
+#page-pricing .addon-pill>div{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:1;min-width:0;padding:0;border:0;border-radius:0;background:transparent;font-size:13px;line-height:1.65}
+#page-pricing .addon-pill>div span:last-child{font-family:var(--ui-font);font-size:12px;white-space:nowrap}
+#page-pricing .addon-pill:after,#page-pricing .quote-existing-label:after,#page-pricing .quote-package:after{content:'+';display:grid;place-items:center;flex:0 0 24px;width:24px;height:24px;border:1px solid #80697b;border-radius:7px;font:16px var(--ui-font);color:#b7ae9f;background:#211824}
+#page-pricing .addon-pill:has(input:checked),#page-pricing .quote-existing-label:has(input:checked),#page-pricing .quote-package:has(input:checked){border-color:#e2b478;background:#e2b47812;color:#f2ece4}
+#page-pricing .addon-pill:has(input:checked):after,#page-pricing .quote-existing-label:has(input:checked):after,#page-pricing .quote-package:has(input:checked):after{content:'✓';background:#e2b478;color:#100b15;border-color:#e2b478}
+#page-pricing .addon-pill input:checked+div{background:transparent;border:0}
+#page-pricing .addon-pill:has(input:focus-visible),#page-pricing .quote-existing-label:has(input:focus-visible),#page-pricing .quote-package:has(input:focus-visible){outline:2px solid #e2b478;outline-offset:3px}
+#page-pricing .quote-version-chips button{padding:10px 12px;font-size:13px;line-height:1.5}
+#page-pricing .quote-existing-label span{flex:1}
+#page-pricing .pricing-examples{margin-top:26px}
+.artwork-work-strip{display:flex;gap:10px;overflow-x:auto;padding:18px 22px;border-top:1px solid #e2b47829;background:#131017}
+.artwork-work-strip button{flex:1 0 120px;max-width:210px;display:flex;align-items:center;gap:10px;position:relative;border:1px solid #e2b47833;border-radius:9px;padding:8px;background:#19121e;color:#cfc3d0;text-align:left;font-size:12px;cursor:pointer}
+.artwork-work-strip button[aria-pressed=true]{border-color:#e2b478;color:#e2b478;background:#e2b47813}
+.artwork-work-strip img{width:42px;height:52px;object-fit:contain;border-radius:5px;background:#29202d}.artwork-work-strip .strip-adult img{filter:blur(7px)}
+@media(max-width:700px){#primary-contacts-grid{grid-template-columns:1fr}#catalog-dialog[open]{display:block}#catalog-dialog-image .catalog-art{height:260px}#catalog-dialog .catalog-dialog-content{padding:30px 22px}.page-section h1{font-size:32px}.page-section h2{font-size:26px}}
