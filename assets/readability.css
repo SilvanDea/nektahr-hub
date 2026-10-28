@@ -122,3 +122,13 @@ body>header>button:first-child{font-family:'Cormorant Garamond',Georgia,serif;fo
 #art-process #stage1,#art-process #stage2{display:none!important}
 #art-process .phases button{white-space:normal;line-height:1.45;min-height:42px}
 #page-pricing .pricing-samples-grid[data-count="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+/* Clear category / title / version hierarchy across gallery cards. */
+.gallery-card-caption{padding:16px 16px 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;min-height:154px;align-items:flex-start}
+.gallery-kind{display:block;font-family:Inter,sans-serif;font-size:10px;line-height:1.4;font-weight:650;letter-spacing:.1em;text-transform:uppercase;color:#e2b478;margin-bottom:7px}
+.gallery-kind[data-kind="fanart"]{color:#cab6e9}.gallery-kind[data-kind="ych"]{color:#accdc2}.gallery-kind[data-kind="comm"]{color:#e8c492}
+.gallery-card-caption h3{font-size:17px;line-height:1.4;margin:0 0 5px;font-weight:600;overflow-wrap:anywhere}
+.gallery-card-caption p{line-height:1.5;font-size:11px}.gallery-card-caption .gallery-series{font-size:11px;color:#c3b6c7;margin:0 0 4px}
+.highlight-caption{padding:15px;display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-height:113px}.highlight-caption .gallery-kind{margin-bottom:2px}.highlight-caption>.serif{font-size:16px;line-height:1.4;font-weight:600}.highlight-detail{font-size:11px;line-height:1.5;color:#b6a8bd}
+
+.gallery-card-caption>span:last-child{align-self:flex-end}

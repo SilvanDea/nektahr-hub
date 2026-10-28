@@ -187,3 +187,7 @@ Apps Script очереди по-прежнему не развёрнут авт�
 - Verified variable-length viewers (including six versions), comparison, pricing-scoped navigation, adult warning, catalog reference filters in EN/RU/ES, and NSFW pricing below/at AB.
 - Seven routes, 36 JavaScript syntax checks, 119 local HTML asset references, translation structures, and all new image decodes pass. Three empty image exports were regenerated from originals before packaging.
 - Adult confirmation was not accepted during QA; positive adult-unlock path was not retested. Two unique legacy portfolio images remain remote because original files were not supplied.
+
+## Gallery labeling — 2026-10-28
+
+Added category/title/series hierarchy on gallery and home cards, and category/series in the viewer. Ten identified character groups plus the existing unnamed fan art are available in a dedicated Fan art filter (11 cards). Existing commission, YCH and adopt labels are preserved. Removed duplicate stage overlay captions. Verified RU/EN/ES filter labels and names, scoped viewer counter (Holo: 3/11), and card layout. Unidentified works keep neutral descriptive titles; names/statuses require artist confirmation. Static checks pass on all seven routes.

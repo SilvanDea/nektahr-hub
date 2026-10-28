@@ -23,8 +23,8 @@
   <meta property="og:title" content="Nek'tahr | Artist Portfolio & Commissions" />
   <meta property="og:description" content="Art portfolio, commission pricing, adoptables, YCH options, and contact links." />
   <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
-  <script src="/assets/portfolio-data.js?v=20261028-gallery5"></script>
-  <script src="/assets/queue-manager.js?v=20261028-gallery5" defer></script>
+  <script src="/assets/portfolio-data.js?v=20261028-labels6"></script>
+  <script src="/assets/queue-manager.js?v=20261028-labels6" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -118,15 +118,15 @@
     /* Tailwind CDN is still required for the original utility classes; these small fallbacks keep basic readability if it fails. */
     .hidden { display: none !important; }
   </style>
-<link rel="stylesheet" href="/assets/process-viewer.css?v=20261028-gallery5">
+<link rel="stylesheet" href="/assets/process-viewer.css?v=20261028-labels6">
 <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/assets/favicon-32.png" sizes="32x32">
   <style>img{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none}</style>
-<link rel="stylesheet" href="/assets/pricing-layout.css?v=20261028-gallery5">
-<link rel="stylesheet" href="/assets/site-polish.css?v=20261028-gallery5">
-<link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-gallery5">
-<link rel="stylesheet" href="/assets/catalog-queue.css?v=20261028-gallery5">
-<link rel="stylesheet" href="/assets/readability.css?v=20261028-gallery5">
+<link rel="stylesheet" href="/assets/pricing-layout.css?v=20261028-labels6">
+<link rel="stylesheet" href="/assets/site-polish.css?v=20261028-labels6">
+<link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-labels6">
+<link rel="stylesheet" href="/assets/catalog-queue.css?v=20261028-labels6">
+<link rel="stylesheet" href="/assets/readability.css?v=20261028-labels6">
 </head>
 <body data-page="queue" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
@@ -293,7 +293,7 @@
 
     // Gallery Works
     const GALLERY_ITEMS = [
-{"id": 101, "title": "Illustration 1", "cat": "comm", "nsfw": false, "img": "/assets/gallery/ofordet-bg.webp", "processWork": 1},{"id": 102, "title": "Illustration 2", "cat": "comm", "nsfw": true, "img": "/assets/process/art-2-2.webp", "processWork": 2},{"id": 103, "title": "SFW / NSFW fan art", "cat": "other", "nsfw": false, "img": "/assets/process/art-3-0.webp", "processWork": 3},{"id": 104, "title": "YCH example", "cat": "ych", "nsfw": false, "img": "/assets/process/art-4-1.webp", "processWork": 4},
+{"id": 101, "title": "Illustration 1", "cat": "comm", "nsfw": false, "img": "/assets/gallery/ofordet-bg.webp", "processWork": 1},{"id": 102, "title": "Illustration 2", "cat": "comm", "nsfw": true, "img": "/assets/process/art-2-2.webp", "processWork": 2},{"id": 103, "title": "SFW / NSFW fan art", "cat": "fanart", "nsfw": false, "img": "/assets/process/art-3-0.webp", "processWork": 3},{"id": 104, "title": "YCH example", "cat": "ych", "nsfw": false, "img": "/assets/process/art-4-1.webp", "processWork": 4},
 {"id": 105, "title": "YCH \u00b7 TH", "cat": "ych", "nsfw": true, "img": "/assets/process/art-5-1.webp", "processWork": 5},{"id": 106, "title": "YCH \u00b7 All Plain to See", "cat": "ych", "nsfw": true, "img": "/assets/process/art-6-1.webp", "processWork": 6},
       { id: 1, gallery: false, title: "Portfolio Sample 01", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "/assets/gallery/gal-adopt-cdg-v1bg.webp", desc: "Public SFW portfolio sample. See the source profile for context." },
       { id: 2, gallery: false, title: "Portfolio Sample 02", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
@@ -564,6 +564,7 @@
         "comm": "Commissions",
         "adopt": "Adopts",
         "ych": "YCH",
+        "fanart": "Fan art",
         "other": "Other works"
       },
       "nsfwToggle": "Show 18+ Content",
@@ -1036,6 +1037,7 @@
         "comm": "Comisiones",
         "adopt": "Adopts",
         "ych": "YCH",
+        "fanart": "Fan art",
         "other": "Otros trabajos"
       },
       "nsfwToggle": "Mostrar contenido 18+",
@@ -1508,6 +1510,7 @@
         "comm": "Коммишки",
         "adopt": "Адопты",
         "ych": "YCH",
+        "fanart": "Фан-арт",
         "other": "Другие работы"
       },
       "nsfwToggle": "Показывать контент 18+",
@@ -1833,12 +1836,21 @@
       const labels={en:['Art process','SFW / NSFW','Template → Result + Alt'],es:['Proceso','SFW / NSFW','Plantilla → Resultado + Alt'],ru:['Процесс работы','SFW / NSFW','Шаблон → Результат + Альт']};
       if(item.processWork===4)return ({en:'Template → Color Sketch + Alt',ru:'Шаблон → Цветной скетч + Альт',es:'Plantilla → Boceto a color + Alt'})[currentLang];if(item.processWork>=5)return ({en:'Template → Finished example',ru:'Шаблон → Готовый пример',es:'Plantilla → Ejemplo terminado'})[currentLang];return labels[currentLang][item.processWork===3?1:0];
     }
+    function getGalleryKind(item) {
+      const labels={en:{comm:'Commission',fanart:'Fan art',ych:'YCH',adopt:'Adopt',other:'Illustration'},ru:{comm:'Коммишен',fanart:'Фан-арт',ych:'YCH',adopt:'Адопт',other:'Иллюстрация'},es:{comm:'Encargo',fanart:'Fan art',ych:'YCH',adopt:'Adoptable',other:'Ilustración'}};
+      return (labels[currentLang]||labels.en)[item.cat]||labels.en.other;
+    }
+    function getGallerySeries(item) {
+      return (window.PORTFOLIO_WORKS||[]).find(w=>w.id===item.processWork)?.series||'';
+    }
     function getGalleryTitle(item) {
       if(item.localizedTitles)return item.localizedTitles[currentLang]||item.localizedTitles.en;
       if (item.processWork) {
-        const names={en:['Illustration 1','Illustration 2','Fan art · SFW / NSFW','YCH · Happy Bun','YCH · TH','YCH · All Plain to See'],es:['Ilustración 1','Ilustración 2','Fan art · SFW / NSFW','YCH · Happy Bun','YCH · TH','YCH · All Plain to See'],ru:['Иллюстрация 1','Иллюстрация 2','Фан-арт · SFW / NSFW','YCH · Happy Bun','YCH · TH','YCH · All Plain to See']};
+        const names={en:['Illustration 1','Illustration 2','Feline look','Happy Bun','TH','All Plain to See'],es:['Ilustración 1','Ilustración 2','Estilo felino','Happy Bun','TH','All Plain to See'],ru:['Иллюстрация 1','Иллюстрация 2','Кошачий образ','Happy Bun','TH','All Plain to See']};
         return names[currentLang][item.processWork-1];
       }
+      if(item.id===3)return ({en:'Character portrait',ru:'Портрет персонажа',es:'Retrato de personaje'})[currentLang];
+      if(item.id===6)return ({en:'White dress',ru:'Белое платье',es:'Vestido blanco'})[currentLang];
       const prefix = { en: "Portfolio Sample", es: "Muestra de portafolio", ru: "Пример портфолио" };
       return `${prefix[currentLang] || prefix.en} ${String(item.id).padStart(2, '0')}`;
     }
@@ -2155,6 +2167,7 @@
               <button type="button" onclick="setGalleryCat('comm')" data-c="comm" id="gf-comm" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Commissions</button>
               <button type="button" onclick="setGalleryCat('adopt')" data-c="adopt" id="gf-adopt" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Adopts</button>
               <button type="button" onclick="setGalleryCat('ych')" data-c="ych" id="gf-ych" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">YCH</button>
+              <button type="button" onclick="setGalleryCat('fanart')" data-c="fanart" id="gf-fanart" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Fan art</button>
               <button type="button" onclick="setGalleryCat('other')" data-c="other" id="gf-other" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Other works</button>
             </div>
             <label class="flex items-center gap-2 px-3 py-1.5 border border-error/40 bg-error/5 mono text-xs text-error cursor-pointer select-none whitespace-nowrap">
@@ -2682,14 +2695,15 @@
             <div class="aspect-[4/5] bg-surfaceAlt relative overflow-hidden border-b hairline">
               <img src="${item.img}" alt="${blurred ? ({en:'Blurred 18+ artwork preview',ru:'Размытое превью работы 18+',es:'Vista difuminada de una obra 18+'})[currentLang] : getGalleryTitle(item)}" loading="lazy" decoding="async" class="w-full h-full object-contain transition duration-500 ${blurred ? 'blur-2xl scale-110' : 'group-hover:scale-105'}" />
               <div class="absolute top-2.5 left-2.5 flex gap-1.5">
-                <span class="px-2 py-0.5 bg-bg/85 border hairline mono text-[10px] text-textMuted">${item.processWork ? getProcessLabel(item) : getGalleryStage()}</span>
                 ${item.nsfw ? '<span class="px-2 py-0.5 bg-bg/90 border border-error/50 mono text-[10px] text-error">18+</span>' : ''}
               </div>
               ${blurred ? `<div class="absolute inset-0 bg-bg/60 flex flex-col items-center justify-center p-4 text-center"><span class="flex items-center justify-center w-10 h-10 border border-error/50 rounded-full text-error mb-2" aria-hidden="true">🔒</span><span class="mono text-[10px] uppercase text-error">NSFW · 18+</span></div>` : ''}
             </div>
-            <div class="p-4 flex items-baseline justify-between gap-3">
+            <div class="gallery-card-caption">
               <div class="min-w-0">
+                <span class="gallery-kind" data-kind="${item.cat}">${getGalleryKind(item)}</span>
                 <h3 class="serif text-xl text-textMain">${getGalleryTitle(item)}</h3>
+                ${getGallerySeries(item)?`<p class="gallery-series">${getGallerySeries(item)}</p>`:''}
                 <p class="text-xs text-textDim">${item.processWork?getProcessLabel(item):getGalleryStage()}</p>
               </div>
               <span class="mono text-xs text-accent shrink-0">${item.processWork?'↗':getGalleryPriceLabel()}</span>
@@ -2883,9 +2897,9 @@
           <div class="aspect-[4/5] bg-bg overflow-hidden border-b hairline">
             <img src="${it.img}" alt="${getGalleryTitle(it)}" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
           </div>
-          <div class="p-3.5 flex items-baseline justify-between gap-2">
+          <div class="highlight-caption"><span class="gallery-kind" data-kind="${it.cat}">${getGalleryKind(it)}</span>
             <span class="serif text-lg text-textMain">${getGalleryTitle(it)}</span>
-            <span class="mono text-[11px] text-accent">${getGalleryStage()}</span>
+            <span class="highlight-detail">${it.processWork?getProcessLabel(it):getGalleryStage()}</span>
           </div>
         </button>
       `).join('');
@@ -3076,12 +3090,12 @@
       if(!window.queueManagerReady)loadLiveQueue();
     };
   </script>
-<script src="/assets/process-viewer.js?v=20261028-gallery5"></script>
-<script src="/assets/artwork-interactions.js?v=20261028-gallery5"></script>
+<script src="/assets/process-viewer.js?v=20261028-labels6"></script>
+<script src="/assets/artwork-interactions.js?v=20261028-labels6"></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
-<script src="/assets/gallery-viewer.js?v=20261028-gallery5"></script>
-<script src="/assets/pricing-samples.js?v=20261028-gallery5"></script>
-<script src="/assets/quote-builder.js?v=20261028-gallery5"></script>
-<script src="/assets/catalog.js?v=20261028-gallery5"></script>
+<script src="/assets/gallery-viewer.js?v=20261028-labels6"></script>
+<script src="/assets/pricing-samples.js?v=20261028-labels6"></script>
+<script src="/assets/quote-builder.js?v=20261028-labels6"></script>
+<script src="/assets/catalog.js?v=20261028-labels6"></script>
 </body>
 </html>

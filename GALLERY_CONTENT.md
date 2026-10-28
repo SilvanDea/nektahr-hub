@@ -31,3 +31,9 @@ YCH 24: две готовые версии. Watermelon: шаблон и пять
 | Sketch study | other | sketch.png |
 
 CDG и BCDG обновлены в уже существующих проданных карточках. Исторические уровни в калькулятор не добавлены.
+
+## Gallery labels
+
+Category is rendered separately from the work title on gallery and home cards, and in the viewer header. A dedicated Fan art filter groups identified fan artwork. Character names have EN/RU/ES variants; the series is a separate secondary line.
+
+Identifications by visual review: Furina (works 7, 85, 90), Holo (74), Frieren (78), Venti (79, 86, 91), Nahida (80), Diona (92). Existing work 3 remains explicitly fan art, with a descriptive title pending confirmation of the character. Unknown portraits, studies and duos retain neutral Illustration labels; their commission status and characters are not inferred. Commission status follows existing records and explicitly named commission source files. YCH/adopt categories retain their existing provenance.
