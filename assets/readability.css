@@ -132,3 +132,14 @@ body>header>button:first-child{font-family:'Cormorant Garamond',Georgia,serif;fo
 .highlight-caption{padding:15px;display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-height:113px}.highlight-caption .gallery-kind{margin-bottom:2px}.highlight-caption>.serif{font-size:16px;line-height:1.4;font-weight:600}.highlight-detail{font-size:11px;line-height:1.5;color:#b6a8bd}
 
 .gallery-card-caption>span:last-child{align-self:flex-end}
+
+/* Current finish levels and binary alternative-version choices. */
+#page-pricing .quote-custom-base #calc-stage-sel{display:block;font-size:13px;line-height:1.5;padding:10px 12px;min-height:44px;background:#100d15}
+#page-pricing .quote-custom-base .quote-packages{display:none}
+#page-pricing .quote-version-toggles{display:grid;gap:7px}
+#page-pricing .quote-version-line{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid #e2b47829;padding:10px 12px;border-radius:8px;font-size:12px;color:#c9bfce}
+#page-pricing .quote-version-line>span:last-child{font-size:11px;color:#e2b478;text-align:right}
+#page-pricing .quote-version-toggles .is-included{opacity:.85;cursor:default}
+#page-pricing .pricing-sample .sample-thumb{aspect-ratio:1/1}
+#page-pricing .pricing-sample .sample-thumb img{object-fit:contain;object-position:center}
+#page-pricing .pricing-samples-grid[data-count="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}

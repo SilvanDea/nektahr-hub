@@ -197,3 +197,13 @@ Added category/title/series hierarchy on gallery and home cards, and category/se
 Set current starting prices to YCH $30, adopt $100 / $110 with an included weapon. Historic auction price data are retained as source history and no longer used as the current card price. Explicit saleMode records repeatable YCH / single-sale adopts. Four SFW weapon designs were flagged by visual review (Fawn Sorceress, Starry Mage, Sweet Caster, Velvet Ripper); other designs retain the general $100 base plus the stated weapon rule. No special pricing category for sexualized childlike characters was added.
 
 Verified sold archive prices and similar/twin-only enquiry wording in Russian, current catalog rule translations, calculator base $100 and weapon-base $110, seven route syntax/translation checks and all catalog source links. No automated payment, inventory decrement or transactional ownership transfer is implemented; catalog enquiries and artist-managed statuses remain the workflow.
+
+## Calculator finish levels and historical YCH examples
+
+Current custom tiers: clean sketch $80, color sketch $120, full render $200 (one character, simple background). Existing second-character $100 / further-character $80 rule is unchanged. Finish selection is reflected in cards, calculator and copied request.
+
+NSFW/furry/futa alternatives are binary styled options beside urgency/privacy; expression/outfit remain quantities. State is normalized to 0/1 for version options. Included NSFW is checked and disabled in YCH AB $160 and adopt AB $500; switching away does not silently add a previously unrequested version. Futa is $25 when NSFW exists, is selected or included; otherwise $50.
+
+YCH AB is $160 (render $120 + NSFW $50 minus $10 bundle discount); other levels charge $50 for NSFW. Historical YCH 72/73 are marked AB 2024; YCH 71 is archived line/color level. Watermelon order is template, both blonde outfits, both blue outfits, blue NSFW. Pricing thumbnails use contain and square framing, preserving the full original image. Furina and Wriothesley are a separate two-item pricing fan-art pool; custom commission examples contain only works 1/2.
+
+Browser checks passed: custom sketch 80, +futa=130, +NSFW changes futa to25 =>155, +two expressions=205; color card120 and EN language persistence; YCH AB160 with NSFW disabled/included, +futa185, leaving AB restores120, +NSFW170; adoptAB500 +futa525. Confirmed six-phase order, golden-haired result image loaded with contain, fan-art pool1/2→2/2. Seven-route syntax and translation checks pass; 40 source files remain accounted for. No new images exported.

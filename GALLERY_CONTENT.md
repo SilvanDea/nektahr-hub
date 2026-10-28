@@ -37,3 +37,11 @@ CDG и BCDG обновлены в уже существующих проданн
 Category is rendered separately from the work title on gallery and home cards, and in the viewer header. A dedicated Fan art filter groups identified fan artwork. Character names have EN/RU/ES variants; the series is a separate secondary line.
 
 Identifications by visual review: Furina (works 7, 85, 90), Holo (74), Frieren (78), Venti (79, 86, 91), Nahida (80), Diona (92). Existing work 3 remains explicitly fan art, with a descriptive title pending confirmation of the character. Unknown portraits, studies and duos retain neutral Illustration labels; their commission status and characters are not inferred. Commission status follows existing records and explicitly named commission source files. YCH/adopt categories retain their existing provenance.
+
+## Artist corrections to examples
+
+- Work 3: Wriothesley (Ризли), Genshin Impact, confirmed by the artist.
+- Works 72 and 73: AB examples from 2024; these are historical samples rather than a promise that the old package equals the current AB bundle.
+- Work 71: line + color, archived level that is no longer offered.
+- Watermelon versions are grouped by character (blonde, then blue-haired); pricing thumbnails preserve full framing.
+- Pricing links to a separate Wriothesley/Furina fan-art set, outside commission examples.
