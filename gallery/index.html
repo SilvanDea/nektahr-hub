@@ -1568,7 +1568,7 @@
 
     function switchPage(pageId) {
       const targetPath = PAGE_PATHS[pageId] || PAGE_PATHS.board;
-      const normalizePath = path => path.replace(/\\/+$/, "") || "/";
+      const normalizePath = path => path.replace(/\/+$/, "") || "/";
       if (normalizePath(window.location.pathname) !== normalizePath(targetPath)) {
         window.location.href = targetPath;
         return;
