@@ -262,7 +262,8 @@
         hero: {
           eyebrow: "Character Art & Commissions",
           title: "Hey, welcome to my little corner of the internet!",
-          desc: "You’ve already found me somewhere else. This is where everything comes together: my art, other links, commission prices, YCHs, and adopts. I draw cute characters, fanart, and experimental pieces, from anime and fantasy humanoids to kemonomimi and humanoid furries. Got an idea in mind? Take a look around and let’s see what we can make.",
+          desc1: "You’ve already found me somewhere else. This is where everything comes together: my art, other links, commission prices, YCHs, and adopts.",
+          desc2: "I draw cute characters, fanart, and experimental pieces, from anime and fantasy humanoids to kemonomimi and humanoid furries. Got an idea in mind? Take a look around and let’s see what we can make.",
           pathA: { tag: "OPTION A · EXPLORE", title: "Art Gallery & Archives", sub: "Browse public SFW samples and external galleries (DA, FA, Pixiv, X). DM for additional / NSFW examples." },
           pathB: { tag: "OPTION B · ORDER INFO", title: "Pricing, Stages & Adopts", sub: "Compare render stages, bid tiers & build a quote" }
         },
@@ -480,7 +481,8 @@
         hero: {
           eyebrow: "Arte de personajes y comisiones",
           title: "¡Bienvenido a mi pequeño rincón de internet!",
-          desc: "Ya me has encontrado en otro sitio. Aquí está todo junto: mi arte, otros enlaces, precios de comisiones, YCHs y adopts. Dibujo personajes adorables, fanart y piezas experimentales, desde anime y humanoides fantásticos hasta kemonomimi y furries humanoides. ¿Tienes alguna idea? Echa un vistazo y veamos qué podemos crear.",
+          desc1: "Ya me has encontrado en otro sitio. Aquí está todo junto: mi arte, otros enlaces, precios de comisiones, YCHs y adopts.",
+          desc2: "Dibujo personajes adorables, fanart y piezas experimentales, desde anime y humanoides fantásticos hasta kemonomimi y furries humanoides. ¿Tienes alguna idea? Echa un vistazo y veamos qué podemos crear.",
           pathA: { tag: "OPCIÓN A · EXPLORAR", title: "Galería y Archivos", sub: "Muestras públicas SFW y galerías en DA, FA, Pixiv y X. Para ejemplos adicionales o NSFW, escríbeme." },
           pathB: { tag: "OPCIÓN B · COMISIONES", title: "Precios, Etapas y Adopts", sub: "Compara etapas, niveles de subasta y calcula tu orden" }
         },
@@ -696,7 +698,8 @@
         hero: {
           eyebrow: "Арт персонажей и заказы",
           title: "Добро пожаловать в мой маленький уголок интернета!",
-          desc: "Ты уже нашёл меня где-то ещё. Здесь собрано всё остальное: мои арты, другие ссылки, цены на заказы, YCH и адопты. Я рисую милых персонажей, фанарт и экспериментальные работы: от аниме и фэнтезийных гуманоидов до кемономими и гуманоидных фурри. Есть идея? Осмотрись, и давай посмотрим, что из неё можно сделать.",
+          desc1: "Ты уже нашёл меня где-то ещё. Здесь собрано всё остальное: мои арты, другие ссылки, цены на заказы, YCH и адопты.",
+          desc2: "Я рисую милых персонажей, фанарт и экспериментальные работы: от аниме и фэнтезийных гуманоидов до кемономими и гуманоидных фурри. Есть идея? Осмотрись, и давай посмотрим, что из неё можно сделать.",
           pathA: { tag: "ВАРИАНТ А · АРТЫ И АРХИВЫ", title: "Галерея и Площадки", sub: "Публичные SFW-примеры и галереи на DA, FA, Pixiv, X. За дополнительными или NSFW-примерами напишите мне." },
           pathB: { tag: "ВАРИАНТ Б · ЗАКАЗАТЬ АРТ", title: "Цены, Поэтапка и Адопты", sub: "Сравнение этапов, тиры адоптов и калькулятор" }
         },
@@ -1080,7 +1083,10 @@
           <h1 id="hero-title" class="serif text-4xl sm:text-6xl leading-[1.06] text-textMain">
             Hey, welcome to my little corner of the internet!
           </h1>
-          <p id="hero-desc" class="text-sm sm:text-base text-textMuted leading-relaxed max-w-2xl"></p>
+          <div class="max-w-2xl space-y-3 text-sm sm:text-base text-textMuted leading-relaxed">
+            <p id="hero-desc"></p>
+            <p id="hero-desc-2"></p>
+          </div>
 
           <!-- Two Clear Entry Paths (Option A & Option B) -->
           <div class="grid sm:grid-cols-2 gap-4 pt-2">
@@ -1767,7 +1773,8 @@
       // Board / Hero
       document.getElementById('hero-eyebrow').textContent = t.hero.eyebrow;
       document.getElementById('hero-title').textContent = t.hero.title;
-      document.getElementById('hero-desc').textContent = t.hero.desc;
+      document.getElementById('hero-desc').textContent = t.hero.desc1;
+      document.getElementById('hero-desc-2').textContent = t.hero.desc2;
       document.getElementById('path-a-tag').textContent = t.hero.pathA.tag;
       document.getElementById('path-a-title').textContent = t.hero.pathA.title;
       document.getElementById('path-a-sub').textContent = t.hero.pathA.sub;
