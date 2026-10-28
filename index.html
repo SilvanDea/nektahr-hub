@@ -103,7 +103,7 @@
     .hidden { display: none !important; }
   </style>
 </head>
-<body class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
+<body data-page="board" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
   <!-- =====================================================================
        CENTRAL CONFIGURATION & LOCALIZATION (EN main · ES · RU)
@@ -1069,7 +1069,7 @@
 
     // Global State
     let currentLang = 'en'; // EN is main by default
-    let currentPage = 'board';
+    let currentPage = document.body.dataset.page || 'board';
     let currentPricingTab = 'custom';
     let currentGalCat = 'all';
     let currentFaqCat = 'all';
@@ -1556,8 +1556,24 @@
       }
     }
 
-    // Page Navigation
+    // Page Navigation: each destination is a real static HTML route.
+    const PAGE_PATHS = {
+      board: "/",
+      pricing: "/pricing/",
+      gallery: "/gallery/",
+      queue: "/queue/",
+      tos: "/terms/",
+      faq: "/faq/"
+    };
+
     function switchPage(pageId) {
+      const targetPath = PAGE_PATHS[pageId] || PAGE_PATHS.board;
+      const normalizePath = path => path.replace(/\\/+$/, "") || "/";
+      if (normalizePath(window.location.pathname) !== normalizePath(targetPath)) {
+        window.location.href = targetPath;
+        return;
+      }
+
       currentPage = pageId;
       document.querySelectorAll('.page-section').forEach(sec => {
         sec.classList.toggle('hidden', sec.id !== `page-${pageId}`);
@@ -1568,24 +1584,57 @@
           ? "nav-link px-2 py-1 text-accent border-b border-accent transition cursor-pointer"
           : "nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer";
       });
-      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     // Language Switching (EN main, ES, RU)
     function setLang(lang) {
       if (!I18N[lang]) lang = 'en';
       currentLang = lang;
+      try { localStorage.setItem('nektahr-hub-language', lang); } catch (_) {}
       document.documentElement.lang = lang;
+      const pageMeta = {
+        board: {
+          en: ["Nek'tahr | Artist Portfolio, Commissions, Adopts & YCH", "Explore Nek'tahr's art portfolio, commission pricing, adoptables, YCH options, and contact links."],
+          es: ["Nek'tahr | Portafolio y comisiones", "Explora el portafolio de Nek'tahr, precios, adopts, opciones YCH y contactos."],
+          ru: ["Nek'tahr | Портфолио и коммишки", "Портфолио Nek'tahr, цены, адопты, YCH и контакты."]
+        },
+        pricing: {
+          en: ["Pricing | Nek'tahr Hub", "Commission pricing, adoptable tiers, YCH slots, and a quote calculator."],
+          es: ["Precios | Nek'tahr Hub", "Precios de comisiones, adopts, plazas YCH y calculadora de presupuesto."],
+          ru: ["Цены | Nek'tahr Hub", "Цены на коммишки, адопты, YCH и калькулятор стоимости."]
+        },
+        gallery: {
+          en: ["Gallery | Nek'tahr Hub", "Browse Nek'tahr's art gallery, filter works, and view artwork details."],
+          es: ["Galería | Nek'tahr Hub", "Explora la galería de Nek'tahr, filtra obras y consulta sus detalles."],
+          ru: ["Галерея | Nek'tahr Hub", "Галерея Nek'tahr: фильтры работ и просмотр изображений."]
+        },
+        queue: {
+          en: ["Commission Queue | Nek'tahr Hub", "View the current public commission queue and progress."],
+          es: ["Cola de comisiones | Nek'tahr Hub", "Consulta la cola pública de comisiones y su progreso."],
+          ru: ["Очередь заказов | Nek'tahr Hub", "Текущая публичная очередь заказов и прогресс."]
+        },
+        tos: {
+          en: ["Terms of Service | Nek'tahr Hub", "Read the terms for commissions, adopts, and YCH."],
+          es: ["Términos | Nek'tahr Hub", "Lee las condiciones de comisiones, adopts y YCH."],
+          ru: ["Правила | Nek'tahr Hub", "Условия коммишек, адоптов и YCH."]
+        },
+        faq: {
+          en: ["FAQ | Nek'tahr Hub", "Answers to common questions about commissions, payments, and artwork."],
+          es: ["Preguntas frecuentes | Nek'tahr Hub", "Respuestas sobre comisiones, pagos y arte."],
+          ru: ["FAQ | Nek'tahr Hub", "Ответы на частые вопросы о заказах, оплате и арте."]
+        }
+      };
       const localizedTitles = { en: "Nek'tahr | Artist Portfolio, Commissions, Adopts & YCH", es: "Nek'tahr | Portafolio y comisiones", ru: "Nek'tahr | Портфолио и коммишки" };
       const localizedDescriptions = {
         en: "Explore Nek'tahr's SFW portfolio, commission pricing, adoptables, YCH options, terms, and contact links.",
         es: "Explora el portafolio SFW de Nek'tahr, precios de comisiones y adopts, opciones YCH, términos y contactos.",
         ru: "Публичное SFW-портфолио Nek'tahr, цены на коммишки и адоптов, варианты YCH, правила и контакты."
       };
-      document.title = localizedTitles[lang] || localizedTitles.en;
-      document.querySelector('meta[name="description"]').content = localizedDescriptions[lang] || localizedDescriptions.en;
-      document.querySelector('meta[property="og:title"]').content = localizedTitles[lang] || localizedTitles.en;
-      document.querySelector('meta[property="og:description"]').content = localizedDescriptions[lang] || localizedDescriptions.en;
+      const activeMeta = (pageMeta[currentPage] || pageMeta.board)[lang] || pageMeta.board.en;
+      document.title = activeMeta[0];
+      document.querySelector('meta[name="description"]').content = activeMeta[1];
+      document.querySelector('meta[property="og:title"]').content = activeMeta[0];
+      document.querySelector('meta[property="og:description"]').content = activeMeta[1];
       document.querySelectorAll('.lang-btn').forEach(btn => {
         const active = btn.dataset.l === lang;
         btn.className = active
@@ -2137,8 +2186,13 @@
     }
 
     window.onload = function() {
-      setLang('en');
-      switchPage('board');
+      let savedLang = 'en';
+      try {
+        const storedLang = localStorage.getItem('nektahr-hub-language');
+        if (storedLang && I18N[storedLang]) savedLang = storedLang;
+      } catch (_) {}
+      setLang(savedLang);
+      switchPage(document.body.dataset.page || 'board');
       switchPricingTab('custom');
       loadLiveQueue();
     };
