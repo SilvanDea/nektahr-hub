@@ -121,6 +121,7 @@
   <style>img{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none}</style>
 <link rel="stylesheet" href="/assets/pricing-layout.css">
 <link rel="stylesheet" href="/assets/site-polish.css">
+<link rel="stylesheet" href="/assets/quote-controls.css">
 </head>
 <body data-page="tos" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
@@ -287,7 +288,7 @@
 
     // Gallery Works
     const GALLERY_ITEMS = [
-{"id": 101, "title": "Illustration 1", "cat": "comm", "nsfw": false, "img": "/assets/process/art-1-2.webp", "processWork": 1},{"id": 102, "title": "Illustration 2", "cat": "comm", "nsfw": true, "img": "/assets/process/art-2-2.webp", "processWork": 2},{"id": 103, "title": "Illustration 3", "cat": "comm", "nsfw": false, "img": "/assets/process/art-3-0.webp", "processWork": 3},{"id": 104, "title": "YCH example", "cat": "ych", "nsfw": false, "img": "/assets/process/art-4-1.webp", "processWork": 4},
+{"id": 101, "title": "Illustration 1", "cat": "comm", "nsfw": false, "img": "/assets/process/art-1-2.webp", "processWork": 1},{"id": 102, "title": "Illustration 2", "cat": "comm", "nsfw": true, "img": "/assets/process/art-2-2.webp", "processWork": 2},{"id": 103, "title": "SFW / NSFW fan art", "cat": "other", "nsfw": false, "img": "/assets/process/art-3-0.webp", "processWork": 3},{"id": 104, "title": "YCH example", "cat": "ych", "nsfw": false, "img": "/assets/process/art-4-1.webp", "processWork": 4},
       { id: 1, title: "Portfolio Sample 01", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/83524f34.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
       { id: 2, title: "Portfolio Sample 02", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
       { id: 3, title: "Portfolio Sample 03", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
@@ -335,8 +336,8 @@
           stageSectionHint: "Select a package to load it into the quote builder",
           stages: [
             { key: "single", name: "One character + simple background", range: "From $200", time: "14–30 business days", desc: "One character with a white or simple background. Final quote depends on the brief and complexity." },
-            { key: "duo", name: "Two characters + simple background", range: "From $350", time: "14–30 business days", desc: "Two characters with a white or simple background." },
-            { key: "extras", name: "Optional extras", range: "From $50", time: "Quoted separately", desc: "Extra outfit +$50. Additional character from $100. Rush delivery (3–5 business days) +$50–$100." }
+            { key: "duo", name: "Two characters + simple background", range: "From $300", time: "14–30 business days", desc: "Second character +$100; each subsequent character +$80." },
+            { key: "extras", name: "Optional extras", range: "From $50", time: "Quoted separately", desc: "Extra outfit +$50. Second character +$100; each further character +$80. Rush delivery (3–5 business days) +$50–$100." }
           ],
           matrix: {
             eyebrow: "CUSTOM PRICE TABLE (USD)",
@@ -382,7 +383,7 @@
               { val: 30, code: "YCH · SKETCH", title: "Clean Sketch", stage: "Sketch", price: "$30", status: "Price guide", desc: "Estimated turnaround: up to 14 business days." },
               { val: 65, code: "YCH · COLOR SKETCH", title: "Color Sketch", stage: "Color sketch", price: "$65", status: "Price guide", desc: "Estimated turnaround: up to 14 business days." },
               { val: 120, code: "YCH · FULL RENDER", title: "Full Render", stage: "Full render", price: "$120", status: "Price guide", desc: "Estimated turnaround: up to 14 business days." },
-              { val: 160, code: "YCH · FULL RENDER + NSFW", title: "Full Render + NSFW Alt", stage: "Discuss NSFW in advance", price: "$160", status: "Price guide", desc: "NSFW content must be discussed and agreed in advance." }
+              { val: 170, code: "YCH · FULL RENDER + NSFW", title: "Full Render + NSFW Alt", stage: "Discuss NSFW in advance", price: "$170", status: "Price guide", desc: "NSFW content must be discussed and agreed in advance." }
             ]
           }
         },
@@ -559,7 +560,7 @@
           stageSectionHint: "Selecciona un paquete para cargarlo en la calculadora",
           stages: [
             { key: "single", name: "Un personaje + fondo sencillo", range: "Desde $200", time: "14–30 días laborables", desc: "Un personaje con fondo blanco o sencillo. El precio final depende de la complejidad y la descripción." },
-            { key: "duo", name: "Dos personajes + fondo sencillo", range: "Desde $350", time: "14–30 días laborables", desc: "Dos personajes con fondo blanco o sencillo." },
+            { key: "duo", name: "Dos personajes + fondo sencillo", range: "Desde $300", time: "14–30 días laborables", desc: "Segundo personaje +$100; cada personaje posterior +$80." },
             { key: "extras", name: "Extras opcionales", range: "Desde $50", time: "Precio por confirmar", desc: "Atuendo extra +$50. Personaje adicional desde $100. Urgente (3–5 días laborables): +$50–$100." }
           ],
           matrix: {
@@ -606,7 +607,7 @@
               { val: 30, code: "YCH · BOCETO", title: "Boceto limpio", stage: "Boceto", price: "$30", status: "Guía de precios", desc: "Plazo estimado: hasta 14 días laborables." },
               { val: 65, code: "YCH · BOCETO A COLOR", title: "Boceto a color", stage: "Boceto a color", price: "$65", status: "Guía de precios", desc: "Plazo estimado: hasta 14 días laborables." },
               { val: 120, code: "YCH · RENDER COMPLETO", title: "Render completo", stage: "Render completo", price: "$120", status: "Guía de precios", desc: "Plazo estimado: hasta 14 días laborables." },
-              { val: 160, code: "YCH · RENDER + NSFW", title: "Render completo + versión NSFW", stage: "Hablar sobre NSFW antes", price: "$160", status: "Guía de precios", desc: "El contenido NSFW debe hablarse y acordarse de antemano." }
+              { val: 170, code: "YCH · RENDER + NSFW", title: "Render completo + versión NSFW", stage: "Hablar sobre NSFW antes", price: "$170", status: "Guía de precios", desc: "El contenido NSFW debe hablarse y acordarse de antemano." }
             ]
           }
         },
@@ -781,8 +782,8 @@
           stageSectionHint: "Выбери пакет, чтобы загрузить его в калькулятор",
           stages: [
             { key: "single", name: "Один персонаж + простой фон", range: "От $200", time: "14–30 рабочих дней", desc: "Один персонаж на белом или простом фоне. Итоговая цена зависит от задачи и сложности." },
-            { key: "duo", name: "Два персонажа + простой фон", range: "От $350", time: "14–30 рабочих дней", desc: "Два персонажа на белом или простом фоне." },
-            { key: "extras", name: "Дополнительные опции", range: "От $50", time: "Цена уточняется", desc: "Дополнительный наряд +$50. Каждый следующий персонаж от $100. Срочность 3–5 рабочих дней: +$50–$100." }
+            { key: "duo", name: "Два персонажа + простой фон", range: "От $300", time: "14–30 рабочих дней", desc: "Второй персонаж +$100, каждый следующий после него +$80." },
+            { key: "extras", name: "Дополнительные опции", range: "От $50", time: "Цена уточняется", desc: "Дополнительный наряд +$50. Второй персонаж +$100, следующие по +$80. Срочность 3–5 рабочих дней: +$50–$100." }
           ],
           matrix: {
             eyebrow: "ТАБЛИЦА ЦЕН (USD)",
@@ -828,7 +829,7 @@
               { val: 30, code: "YCH · СКЕТЧ", title: "Чистый скетч", stage: "Скетч", price: "$30", status: "Ориентир по цене", desc: "Ориентировочный срок: до 14 рабочих дней." },
               { val: 65, code: "YCH · ЦВЕТНОЙ СКЕТЧ", title: "Цветной скетч", stage: "Цветной скетч", price: "$65", status: "Ориентир по цене", desc: "Ориентировочный срок: до 14 рабочих дней." },
               { val: 120, code: "YCH · ПОЛНЫЙ РЕНДЕР", title: "Полный рендер", stage: "Полный рендер", price: "$120", status: "Ориентир по цене", desc: "Ориентировочный срок: до 14 рабочих дней." },
-              { val: 160, code: "YCH · РЕНДЕР + NSFW", title: "Полный рендер + NSFW-версия", stage: "NSFW обсудить заранее", price: "$160", status: "Ориентир по цене", desc: "NSFW-контент нужно обсудить и согласовать заранее." }
+              { val: 170, code: "YCH · РЕНДЕР + NSFW", title: "Полный рендер + NSFW-версия", stage: "NSFW обсудить заранее", price: "$170", status: "Ориентир по цене", desc: "NSFW-контент нужно обсудить и согласовать заранее." }
             ]
           }
         },
@@ -1016,7 +1017,7 @@
       custom: {
         options: [
           { value: "single", price: 200, label: { en: "1 character + simple background — from $200", es: "1 personaje + fondo sencillo — desde $200", ru: "1 персонаж + простой фон — от $200" } },
-          { value: "duo", price: 350, label: { en: "2 characters + simple background — from $350", es: "2 personajes + fondo sencillo — desde $350", ru: "2 персонажа + простой фон — от $350" } }
+          { value: "duo", price: 300, label: { en: "2 characters + simple background — from $300", es: "2 personajes + fondo sencillo — desde $300", ru: "2 персонажа + простой фон — от $300" } }
         ],
         addons: [
           { id: "outfit", price: 50, label: { en: "Extra outfit (+$50)", es: "Atuendo extra (+$50)", ru: "Дополнительный наряд (+$50)" } },
@@ -1056,7 +1057,7 @@
           { value: "30", price: 30, label: { en: "Clean Sketch ($30)", es: "Boceto limpio ($30)", ru: "Чистый скетч ($30)" } },
           { value: "65", price: 65, label: { en: "Color Sketch ($65)", es: "Boceto a color ($65)", ru: "Цветной скетч ($65)" } },
           { value: "120", price: 120, label: { en: "Full Render ($120)", es: "Render completo ($120)", ru: "Полный рендер ($120)" } },
-          { value: "160", price: 160, label: { en: "Full Render + NSFW alternative ($160)", es: "Render + versión NSFW ($160)", ru: "Полный рендер + NSFW-версия ($160)" } }
+          { value: "170", price: 170, label: { en: "Full Render + NSFW alternative ($170)", es: "Render + versión NSFW ($170)", ru: "Полный рендер + NSFW-версия ($170)" } }
         ],
         addons: [
           { id: "outfit_y", price: 50, label: { en: "Extra outfit (+$50)", es: "Atuendo extra (+$50)", ru: "Дополнительный наряд (+$50)" } }
@@ -1078,7 +1079,7 @@
     }
     function getGalleryTitle(item) {
       if (item.processWork) {
-        const names={en:['Illustration 1','Illustration 2','Illustration 3','YCH example'],es:['Ilustración 1','Ilustración 2','Ilustración 3','Ejemplo YCH'],ru:['Иллюстрация 1','Иллюстрация 2','Иллюстрация 3','Пример YCH']};
+        const names={en:['Illustration 1','Illustration 2','Fan art · SFW / NSFW','YCH example'],es:['Ilustración 1','Ilustración 2','Fan art · SFW / NSFW','Ejemplo YCH'],ru:['Иллюстрация 1','Иллюстрация 2','Фан-арт · SFW / NSFW','Пример YCH']};
         return names[currentLang][item.processWork-1];
       }
       const prefix = { en: "Portfolio Sample", es: "Muestra de portafolio", ru: "Пример портфолио" };
@@ -1271,6 +1272,7 @@
         </div>
       </div>
 
+      <button type="button" class="version-example-link" id="fanart-version-link" onclick="openLightbox(103)"></button>
       <!-- Main 2-Column Layout: Left (Content per Tab) + Right (Individual Sticky Calculator) -->
       <div class="pricing-workspace" id="pricing-workspace">
 
@@ -1287,7 +1289,7 @@
               </div>
               <div id="custom-stages-grid" class="grid sm:grid-cols-3 gap-4"></div>
             </div>
-            <div id="process-dock-custom"><section id="pricing-examples" class="examples-panel"><h3 id="pricing-examples-label" class="examples-heading">Artwork examples & stages</h3><section id="art-process" aria-label="Artwork process and versions"></section></section></div>
+            <div id="process-dock-custom"><section id="pricing-examples" class="examples-panel"><h3 id="pricing-examples-label" class="examples-heading">Artwork examples & stages</h3><div id="pricing-samples-grid" class="pricing-samples-grid"></div></section></div>
             <!-- Character Sheet & Detail Breakdown -->
             <div class="space-y-4">
               <div>
@@ -1371,6 +1373,7 @@
         </div>
 
       </div>
+      <div id="pricing-process-storage" hidden><section id="art-process" aria-label="Artwork process and versions"></section></div>
     </section>
 
 
@@ -1856,10 +1859,9 @@
       renderGalleryGrid();
     };
     function openArtworkProcess(id) {
-      try{sessionStorage.setItem('nektahr-open-process-work',String(id))}catch{}
-      if(document.body.dataset.page!=='pricing'){switchPage('pricing');return;}
-      switchPage('pricing'); switchPricingTab(id===4?'ych':'custom');
-      window.openProcessWork?.(id);
+      const mode=id===4?'ych':'custom';
+      if(document.body.dataset.page!=='pricing'){try{sessionStorage.setItem('nektahr-pricing-tab',mode)}catch{};switchPage('pricing');return;}
+      switchPricingTab(mode);document.getElementById('pricing-workspace').scrollIntoView({behavior:'smooth',block:'start'});
     }
 
     // Gallery categories and age-gated mature artwork.
@@ -2307,7 +2309,8 @@
     }
 
     window.onload = function() {
-      switchPricingTab('custom');
+      let initialPricingTab='custom';try{const saved=sessionStorage.getItem('nektahr-pricing-tab');if(['custom','adopt','ych'].includes(saved))initialPricingTab=saved;sessionStorage.removeItem('nektahr-pricing-tab')}catch{}
+      switchPricingTab(initialPricingTab);
       loadLiveQueue();
     };
   </script>
@@ -2315,5 +2318,7 @@
 <script src="/assets/artwork-interactions.js"></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
 <script src="/assets/gallery-viewer.js"></script>
+<script src="/assets/pricing-samples.js"></script>
+<script src="/assets/quote-builder.js"></script>
 </body>
 </html>
