@@ -143,3 +143,5 @@ body>header>button:first-child{font-family:'Cormorant Garamond',Georgia,serif;fo
 #page-pricing .pricing-sample .sample-thumb{aspect-ratio:1/1}
 #page-pricing .pricing-sample .sample-thumb img{object-fit:contain;object-position:center}
 #page-pricing .pricing-samples-grid[data-count="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+.quote-included-group{padding:12px;border:1px solid #e2b47855;border-radius:9px;background:#e2b47808}.quote-included-group[hidden]{display:none}.quote-included-group label{display:block;font-size:11px;color:#e2b478;margin-bottom:8px}.quote-included-group select{width:100%;background:#100d15;border:1px solid #e2b47833;border-radius:6px;padding:9px;font-size:12px;color:#f5f0e8}.quote-included-group p{font-size:10px;line-height:1.6;color:#b7adbf;margin-top:8px}.catalog-sales-terms{font-size:12px;color:#bfb0bb;line-height:1.7;border-top:1px solid #e2b47822;padding-top:12px;margin-top:14px}.catalog-sales-terms summary{cursor:pointer;color:#e2b478}.catalog-sales-terms p{margin:10px 0}.catalog-sales-terms a{color:#e2b478}
