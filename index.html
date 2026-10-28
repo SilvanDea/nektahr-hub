@@ -264,19 +264,19 @@
     // Primary Contacts & Platforms
     const CONTACTS_PRIMARY = [
       { id: "discord", type: "copy", value: "drintrava", label: "Discord", handle: "drintrava", sub: { en: "Primary Contact · Click to Copy", es: "Contacto principal · Copiar", ru: "Основной контакт · Скопировать" } },
-      { id: "tg1", type: "link", url: "https://t.me/nek_tahr", label: "Telegram", handle: "@nek_tahr", sub: { en: "Direct Messages", es: "Mensajes directos", ru: "Личные сообщения" } },
+      { id: "tg1", type: "link", url: "https://t.me/nek_tahr", label: "Telegram", handle: "@nek_tahr", sub: { en: "Direct Messages · Click to Message", es: "Mensajes directos · Clic para escribir", ru: "Личные сообщения · Нажмите, чтобы написать" } },
       { id: "email", type: "link", url: "mailto:gapkuro@gmail.com", label: "Email", handle: "gapkuro@gmail.com", sub: { en: "Commercial inquiries · Verify address", es: "Consultas comerciales · Verificar correo", ru: "По коммерческим вопросам · Адрес требует проверки" } }
     ];
 
     const PLATFORMS = [
-      { name: "DeviantArt", handle: "@nektahr", url: "https://www.deviantart.com/nektahr", soon: false, note: { en: "SFW samples, adopts & gallery", es: "Muestras SFW, adopts y galería", ru: "SFW-примеры, адопты и галерея" } },
-      { name: "X (Twitter)", handle: "@Nektahr_", url: "https://x.com/Nektahr_", soon: false, note: { en: "Sketches & WIPs", es: "Bocetos y procesos", ru: "Скетчи и процесс работы" } },
-      { name: "YCH.Commishes", handle: "nektahr", url: "https://ych.commishes.com/user/nektahr/", soon: false, note: { en: "YCH & adopt auctions", es: "Subastas de YCH y adopts", ru: "Аукционы YCH и адоптов" } },
-      { name: "YCH.art", handle: "Ned'hal", url: "https://ych.art/user/nedhal", soon: false, note: { en: "Current YCH profile & availability", es: "Perfil YCH y disponibilidad actual", ru: "Профиль YCH и актуальная доступность" } },
-      { name: "FurAffinity", handle: "nektahr", url: "https://www.furaffinity.net/user/nektahr", soon: false, note: { en: "Main archive", es: "Archivo principal", ru: "Основной архив" } },
-      { name: "Pixiv", handle: "User 44242225", url: "https://www.pixiv.net/en/users/44242225", soon: false, note: { en: "Illustrations & works", es: "Ilustraciones y trabajos", ru: "Иллюстрации и работы" } },
-      { name: "Ko-fi", handle: "nektahr", url: "https://ko-fi.com/nektahr", soon: false, note: { en: "Support & payments", es: "Apoyo y pagos", ru: "Поддержка и оплата" } },
-      { name: "Patreon", handle: "Coming Soon", url: "", soon: true, note: { en: "Memberships and extra content are on the way.", es: "Las membresías y el contenido extra llegarán pronto.", ru: "Подписки и дополнительный контент скоро появятся." } }
+      { name: "DeviantArt", handle: "@nektahr", url: "https://www.deviantart.com/nektahr", soon: false, note: { en: "Portfolio, adopts & commission samples", es: "Portafolio, adopts y ejemplos de comisiones", ru: "Портфолио, адопты и примеры комиссий" } },
+      { name: "X (Twitter)", handle: "@Nektahr_", url: "https://x.com/Nektahr_", soon: false, note: { en: "New art, sketches & works in progress", es: "Arte nuevo, bocetos y trabajos en proceso", ru: "Новые работы, скетчи и процесс рисования" } },
+      { name: "YCH.Commishes", handle: "nektahr", url: "https://ych.commishes.com/user/nektahr/", soon: false, note: { en: "YCH auctions & adoptable designs", es: "Subastas YCH y diseños adoptables", ru: "Аукционы YCH и адопты" } },
+      { name: "YCH.art", handle: "Ned'hal", url: "https://ych.art/user/nedhal", soon: false, note: { en: "YCH listings & current availability", es: "Anuncios YCH y disponibilidad actual", ru: "Лоты YCH и актуальная доступность" } },
+      { name: "FurAffinity", handle: "nektahr", url: "https://www.furaffinity.net/user/nektahr", soon: false, note: { en: "Furry art archive & updates", es: "Archivo de arte furry y novedades", ru: "Архив furry-арта и обновления" } },
+      { name: "Pixiv", handle: "User 44242225", url: "https://www.pixiv.net/en/users/44242225", soon: false, note: { en: "Illustrations, fanart & character art", es: "Ilustraciones, fanart y arte de personajes", ru: "Иллюстрации, фанарт и персонажи" } },
+      { name: "Ko-fi", handle: "nektahr", url: "https://ko-fi.com/nektahr", soon: false, note: { en: "Support my work & commission payments", es: "Apoya mi trabajo y paga comisiones", ru: "Поддержка творчества и оплата комиссий" } },
+      { name: "Patreon", handle: "Coming Soon", url: "", soon: true, note: { en: "Memberships, extras & behind-the-scenes art coming soon", es: "Próximamente: membresías, extras y contenido del proceso", ru: "Скоро: подписки, бонусы и закулисье творчества" } }
     ];
 
     // Gallery Works
@@ -1153,21 +1153,19 @@
 
           <!-- Two Clear Entry Paths (Option A & Option B) -->
           <div class="grid sm:grid-cols-2 gap-4 pt-2">
-            <button onclick="switchPage('gallery')" class="card card-interactive p-5 text-left group cursor-pointer flex flex-col h-full">
-              <div class="flex h-4 items-center justify-between mono text-[10px] uppercase text-textDim mb-2">
-                <span id="path-a-tag" class="whitespace-nowrap">OPTION A · EXPLORE</span>
-                <span class="shrink-0 text-accent group-hover:translate-x-1 transition">→</span>
+            <button onclick="switchPage('gallery')" class="card card-interactive p-4 text-left group cursor-pointer flex flex-col h-full">
+              <div class="flex items-start justify-between gap-3 mb-2">
+                <div id="path-a-title" class="serif text-2xl leading-tight text-textMain min-h-[3.5rem]">Art Gallery & Archives</div>
+                <span class="shrink-0 text-accent group-hover:translate-x-1 transition mt-1">→</span>
               </div>
-              <div id="path-a-title" class="serif text-2xl leading-tight text-textMain mb-1 min-h-[3.5rem]">Links & Art Gallery</div>
               <p id="path-a-sub" class="text-xs text-textMuted"></p>
             </button>
 
-            <button onclick="switchPage('pricing')" class="card card-interactive p-5 text-left border-accent/40 bg-accent/5 group cursor-pointer flex flex-col h-full">
-              <div class="flex h-4 items-center justify-between mono text-[10px] uppercase text-accent mb-2">
-                <span id="path-b-tag" class="whitespace-nowrap">OPTION B · ORDER INFO</span>
-                <span class="shrink-0 text-accent group-hover:translate-x-1 transition">→</span>
+            <button onclick="switchPage('pricing')" class="card card-interactive p-4 text-left border-accent/40 bg-accent/5 group cursor-pointer flex flex-col h-full">
+              <div class="flex items-start justify-between gap-3 mb-2">
+                <div id="path-b-title" class="serif text-2xl leading-tight text-textMain min-h-[3.5rem]">Pricing, Stages & Adopts</div>
+                <span class="shrink-0 text-accent group-hover:translate-x-1 transition mt-1">→</span>
               </div>
-              <div id="path-b-title" class="serif text-2xl leading-tight text-textMain mb-1 min-h-[3.5rem]">Pricing, Stages & Adopts</div>
               <p id="path-b-sub" class="text-xs text-textMuted"></p>
             </button>
           </div>
