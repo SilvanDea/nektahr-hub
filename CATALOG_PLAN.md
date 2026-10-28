@@ -11,3 +11,7 @@ Twin — отдельная пометка и связанный дизайн, �
 Стартовые ставки и AB перенесены только с явно читаемых изображений, остальное по договорённости. Наличие/условия подтверждаются лично. Постраничный вывод — 12 карточек с поиском и фильтрами.
 
 Точная сверка названий и файлов — CATALOG_CONTENT.md. При изменении статуса обновлять JSON, при замене изображения или переключателя — соответствующую запись portfolio-data.js. Автоматической оплаты и автоматического резервирования нет.
+
+## Confirmed base pricing and sale model
+
+YCH starts at $30 and permits repeat orders of the same template. Adopt designs start at $100, or $110 when a weapon is already included. An exact adopt is sold once; sold designs only offer an enquiry for a separate similar/twin design. Existing reservations and archived-example status remain unchanged. These are enquiry listings; status changes remain artist-managed.

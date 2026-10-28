@@ -18,3 +18,5 @@
 .artwork-work-strip:empty{display:none}
 @media(max-width:600px){.catalog-pagination{flex-wrap:wrap}.catalog-pagination span{order:-1;width:100%;text-align:center}}
 #catalog-grid .catalog-card h2{font-size:21px;line-height:1.35}#catalog-grid .catalog-card-price strong{font-size:16px;line-height:1.5;letter-spacing:0;font-family:var(--ui-font)}
+
+.catalog-sale-rule{display:block;color:#bdcbbc;font-size:10px;line-height:1.5;margin:3px 0 9px}.catalog-base-note{display:block;font-size:10px;color:#b6a8bd;line-height:1.5;margin-top:6px}

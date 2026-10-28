@@ -24,7 +24,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "ADOPT-VAELYN",
@@ -51,7 +52,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "ADOPT-ARLIA",
@@ -78,7 +80,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "ADOPT-TAVVY",
@@ -105,7 +108,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "ADOPT-SOLIS",
@@ -132,7 +136,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "ADOPT-MARINUS",
@@ -159,7 +164,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "ADOPT-KAITO",
@@ -187,7 +193,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "ADOPT-KNOX",
@@ -214,7 +221,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "ADOPT-RIVZ",
@@ -241,7 +249,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "ADOPT-LUVI",
@@ -268,7 +277,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "ADOPT-CHINESE-DRAGON-GIRL-TWIN",
@@ -299,7 +309,8 @@
     "price": {
       "kind": "quote"
     },
-    "relatedId": "ADOPT-CHINESE-DRAGON-GIRL"
+    "relatedId": "ADOPT-CHINESE-DRAGON-GIRL",
+    "saleMode": "single"
   },
   {
     "id": "ADOPT-CHINESE-DRAGON-GIRL",
@@ -330,7 +341,8 @@
     "price": {
       "kind": "quote"
     },
-    "relatedId": "ADOPT-CHINESE-DRAGON-GIRL-TWIN"
+    "relatedId": "ADOPT-CHINESE-DRAGON-GIRL-TWIN",
+    "saleMode": "single"
   },
   {
     "id": "ADOPT-ALISTAIR",
@@ -358,7 +370,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "YCH-ALL-PLAIN-TO-SEE",
@@ -385,7 +398,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-BAD-BOY",
@@ -413,7 +427,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-BLUSHING-BEASTIE",
@@ -441,7 +456,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-BOUND-TO-OBEY",
@@ -468,7 +484,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-BRATTY-WITCH",
@@ -495,7 +512,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "ADOPT-CRIMSON-CLAW",
@@ -522,7 +540,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "ADOPT-CRIMSON-MERCENARY",
@@ -549,7 +568,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "YCH-CUTE-PONY",
@@ -576,7 +596,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-DON-T-STARE",
@@ -604,7 +625,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-EMBARRASSED-MAID",
@@ -632,7 +654,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "ADOPT-FAWN-SORCERESS",
@@ -659,7 +682,9 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single",
+    "includesWeapon": true
   },
   {
     "id": "YCH-FLUSTERED-MAID",
@@ -687,7 +712,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-GRUMPY-BUT-CUTE",
@@ -714,7 +740,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-GYM-BREAK",
@@ -742,7 +769,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-HAPPY-BUN",
@@ -771,7 +799,8 @@
       "kind": "auction",
       "startingBid": 30,
       "buyout": 160
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "ADOPT-HEAVENLY-LAMB",
@@ -798,7 +827,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "YCH-IS-THIS-WHAT-YOU-WANTED",
@@ -826,7 +856,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "ADOPT-KITTY-STREET-BOY",
@@ -853,7 +884,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "ADOPT-LITTLE-HELLFIRE",
@@ -880,7 +912,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "YCH-LOOKING-DOWN-AT-YOU",
@@ -908,7 +941,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "ADOPT-MIDNIGHT-WHISPER",
@@ -935,7 +969,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "ADOPT-MOONLIT-ROSE-TWIN",
@@ -963,7 +998,8 @@
     "price": {
       "kind": "quote"
     },
-    "relatedId": "ADOPT-MOONLIT-ROSE"
+    "relatedId": "ADOPT-MOONLIT-ROSE",
+    "saleMode": "single"
   },
   {
     "id": "ADOPT-MOONLIT-ROSE",
@@ -991,7 +1027,8 @@
     "price": {
       "kind": "quote"
     },
-    "relatedId": "ADOPT-MOONLIT-ROSE-TWIN"
+    "relatedId": "ADOPT-MOONLIT-ROSE-TWIN",
+    "saleMode": "single"
   },
   {
     "id": "YCH-YCH-02",
@@ -1019,7 +1056,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-YCH-03",
@@ -1047,7 +1085,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-YCH-01",
@@ -1075,7 +1114,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-ONE-MORE-DRINK",
@@ -1103,7 +1143,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "ADOPT-PASTEL-ROSE",
@@ -1130,7 +1171,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "YCH-PHOTO-FOR-YOU",
@@ -1157,7 +1199,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-PLAYFUL-GYARU",
@@ -1184,7 +1227,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-PLAYFUL-KITTY",
@@ -1211,7 +1255,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-PROUD-SCOUT-PONY",
@@ -1239,7 +1284,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "ADOPT-QUEEN-OF-THE-ABYSS",
@@ -1266,7 +1312,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "YCH-RAWR-CHINESE-OUTFIT",
@@ -1295,7 +1342,8 @@
       "kind": "auction",
       "startingBid": 30,
       "buyout": 160
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "ADOPT-SHY-MAID-COMMANDER",
@@ -1322,7 +1370,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "YCH-SMUG-KITSUNE",
@@ -1349,7 +1398,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-SOFT-BRAT",
@@ -1376,7 +1426,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-SPORTY-VIBE",
@@ -1404,7 +1455,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-SPORTY-FEMBOY",
@@ -1432,7 +1484,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "ADOPT-STARLIGHT-GAMER",
@@ -1459,7 +1512,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "ADOPT-STARRY-MAGE",
@@ -1486,7 +1540,9 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single",
+    "includesWeapon": true
   },
   {
     "id": "ADOPT-STREET-DEMON",
@@ -1513,7 +1569,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "YCH-SUBMISSIVE-PET",
@@ -1540,7 +1597,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "ADOPT-SWEET-CASTER",
@@ -1567,7 +1625,9 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single",
+    "includesWeapon": true
   },
   {
     "id": "ADOPT-SWEET-IMP",
@@ -1594,7 +1654,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single"
   },
   {
     "id": "YCH-SWEET-KITTY",
@@ -1622,7 +1683,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-SWING-JOY-PONY",
@@ -1649,7 +1711,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-THE-HOLE",
@@ -1676,7 +1739,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-THINKING-OF-YOU",
@@ -1704,7 +1768,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-UNDER-MY-HOOD",
@@ -1732,7 +1797,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "ADOPT-VELVET-RIPPER",
@@ -1759,7 +1825,9 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "single",
+    "includesWeapon": true
   },
   {
     "id": "YCH-YOUR-LITTLE-TROUBLE",
@@ -1786,7 +1854,8 @@
     ],
     "price": {
       "kind": "quote"
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-YOUR-TEASE",
@@ -1814,7 +1883,8 @@
     "price": {
       "kind": "auction",
       "startingBid": 30
-    }
+    },
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-WATERMELON-EXAMPLE",
@@ -1847,7 +1917,8 @@
     "price": {
       "kind": "quote"
     },
-    "isExample": true
+    "isExample": true,
+    "saleMode": "repeatable"
   },
   {
     "id": "YCH-85-EXAMPLE",
@@ -1877,6 +1948,7 @@
     "price": {
       "kind": "quote"
     },
-    "isExample": true
+    "isExample": true,
+    "saleMode": "repeatable"
   }
 ]

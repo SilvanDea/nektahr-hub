@@ -23,8 +23,8 @@
   <meta property="og:title" content="Nek'tahr | Artist Portfolio & Commissions" />
   <meta property="og:description" content="Art portfolio, commission pricing, adoptables, YCH options, and contact links." />
   <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
-  <script src="/assets/portfolio-data.js?v=20261028-labels6"></script>
-  <script src="/assets/queue-manager.js?v=20261028-labels6" defer></script>
+  <script src="/assets/portfolio-data.js?v=20261028-catalog7"></script>
+  <script src="/assets/queue-manager.js?v=20261028-catalog7" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -118,15 +118,15 @@
     /* Tailwind CDN is still required for the original utility classes; these small fallbacks keep basic readability if it fails. */
     .hidden { display: none !important; }
   </style>
-<link rel="stylesheet" href="/assets/process-viewer.css?v=20261028-labels6">
+<link rel="stylesheet" href="/assets/process-viewer.css?v=20261028-catalog7">
 <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/assets/favicon-32.png" sizes="32x32">
   <style>img{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none}</style>
-<link rel="stylesheet" href="/assets/pricing-layout.css?v=20261028-labels6">
-<link rel="stylesheet" href="/assets/site-polish.css?v=20261028-labels6">
-<link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-labels6">
-<link rel="stylesheet" href="/assets/catalog-queue.css?v=20261028-labels6">
-<link rel="stylesheet" href="/assets/readability.css?v=20261028-labels6">
+<link rel="stylesheet" href="/assets/pricing-layout.css?v=20261028-catalog7">
+<link rel="stylesheet" href="/assets/site-polish.css?v=20261028-catalog7">
+<link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-catalog7">
+<link rel="stylesheet" href="/assets/catalog-queue.css?v=20261028-catalog7">
+<link rel="stylesheet" href="/assets/readability.css?v=20261028-catalog7">
 </head>
 <body data-page="catalog" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
@@ -440,7 +440,7 @@
             "badge": "SB · STARTING BID",
             "price": "$100",
             "title": "SB — Base Adoptable Design",
-            "desc": "Base design with a public SFW image / PNG without watermark and personal-use rights.",
+            "desc": "Base design from $100, or $110 with a weapon already included. Sold once; a later similar/twin design is a separate order. Includes an unwatermarked SFW image / PNG and personal-use rights.",
             "perks": [
               "SFW image / PNG without watermark",
               "Personal-use rights",
@@ -913,7 +913,7 @@
             "badge": "SB · OFERTA INICIAL",
             "price": "$100",
             "title": "SB — Diseño Base del Adopt",
-            "desc": "Diseño base con imagen SFW / PNG sin marca de agua y derechos de uso personal.",
+            "desc": "Diseño base desde $100, o $110 con arma incluida. Se vende una sola vez; un diseño similar/twin posterior es un pedido aparte. Incluye imagen SFW / PNG sin marca de agua y uso personal.",
             "perks": [
               "Imagen SFW / PNG sin marca de agua",
               "Derechos de uso personal",
@@ -1386,7 +1386,7 @@
             "badge": "SB · НАЧАЛЬНАЯ СТАВКА",
             "price": "$100",
             "title": "SB — Базовый дизайн адопта",
-            "desc": "Базовый дизайн, SFW-изображение / PNG без водяного знака и права на личное использование.",
+            "desc": "Базовый дизайн от $100, с оружием — от $110. Продаётся один раз; похожий/twin-дизайн после продажи — отдельный заказ. SFW-изображение / PNG без водяного знака и личное использование включены.",
             "perks": [
               "SFW-изображение / PNG без водяного знака",
               "Личное использование",
@@ -1794,6 +1794,7 @@
       adopt: {
         options: [
           { value: "100", price: 100, label: { en: "SB — Base design ($100)", es: "SB — Diseño base ($100)", ru: "SB — Базовый дизайн ($100)" } },
+          { value: "110", price: 110, label: { en: "SB — Base design with weapon ($110)", es: "SB — Diseño base con arma ($110)", ru: "SB — Базовый дизайн с оружием ($110)" } },
           { value: "200", price: 200, label: { en: "Tier II — Full render + alternative version ($200+)", es: "Nivel II — Render + versión alternativa ($200+)", ru: "Уровень II — Рендер + альтернативная версия ($200+)" } },
           { value: "350", price: 350, label: { en: "Tier III — Bonus character artwork ($350+)", es: "Nivel III — Ilustración extra ($350+)", ru: "Уровень III — Дополнительный арт ($350+)" } },
           { value: "500", price: 500, label: { en: "AB — Reference sheet + close-ups ($500+)", es: "AB — Hoja de referencia + detalles ($500+)", ru: "AB — Референс-лист + детали ($500+)" } }
@@ -3090,12 +3091,12 @@
       if(!window.queueManagerReady)loadLiveQueue();
     };
   </script>
-<script src="/assets/process-viewer.js?v=20261028-labels6"></script>
-<script src="/assets/artwork-interactions.js?v=20261028-labels6"></script>
+<script src="/assets/process-viewer.js?v=20261028-catalog7"></script>
+<script src="/assets/artwork-interactions.js?v=20261028-catalog7"></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
-<script src="/assets/gallery-viewer.js?v=20261028-labels6"></script>
-<script src="/assets/pricing-samples.js?v=20261028-labels6"></script>
-<script src="/assets/quote-builder.js?v=20261028-labels6"></script>
-<script src="/assets/catalog.js?v=20261028-labels6"></script>
+<script src="/assets/gallery-viewer.js?v=20261028-catalog7"></script>
+<script src="/assets/pricing-samples.js?v=20261028-catalog7"></script>
+<script src="/assets/quote-builder.js?v=20261028-catalog7"></script>
+<script src="/assets/catalog.js?v=20261028-catalog7"></script>
 </body>
 </html>

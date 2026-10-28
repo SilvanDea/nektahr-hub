@@ -191,3 +191,9 @@ Apps Script очереди по-прежнему не развёрнут авт�
 ## Gallery labeling — 2026-10-28
 
 Added category/title/series hierarchy on gallery and home cards, and category/series in the viewer. Ten identified character groups plus the existing unnamed fan art are available in a dedicated Fan art filter (11 cards). Existing commission, YCH and adopt labels are preserved. Removed duplicate stage overlay captions. Verified RU/EN/ES filter labels and names, scoped viewer counter (Holo: 3/11), and card layout. Unidentified works keep neutral descriptive titles; names/statuses require artist confirmation. Static checks pass on all seven routes.
+
+## Catalog pricing and sale rules
+
+Set current starting prices to YCH $30, adopt $100 / $110 with an included weapon. Historic auction price data are retained as source history and no longer used as the current card price. Explicit saleMode records repeatable YCH / single-sale adopts. Four SFW weapon designs were flagged by visual review (Fawn Sorceress, Starry Mage, Sweet Caster, Velvet Ripper); other designs retain the general $100 base plus the stated weapon rule. No special pricing category for sexualized childlike characters was added.
+
+Verified sold archive prices and similar/twin-only enquiry wording in Russian, current catalog rule translations, calculator base $100 and weapon-base $110, seven route syntax/translation checks and all catalog source links. No automated payment, inventory decrement or transactional ownership transfer is implemented; catalog enquiries and artist-managed statuses remain the workflow.
