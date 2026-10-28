@@ -1,0 +1,3111 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <style>html.language-loading body { visibility: hidden; }</style>
+  <script>
+    (function () {
+      let lang = 'en';
+      try {
+        const storedLang = localStorage.getItem('nektahr-hub-language');
+        if (storedLang === 'en' || storedLang === 'es' || storedLang === 'ru') lang = storedLang;
+      } catch (_) {}
+      document.documentElement.lang = lang;
+      document.documentElement.dataset.initialLang = lang;
+      document.documentElement.classList.add('language-loading');
+    })();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nek'tahr | Artist Portfolio, Commissions, Adopts & YCH</title>
+  <meta name="description" content="Explore Nek'tahr's SFW art portfolio, commission pricing, adoptable designs, YCH options, terms, and official contact links." />
+  <meta name="theme-color" content="#0B0A0E" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nek'tahr | Artist Portfolio & Commissions" />
+  <meta property="og:description" content="Art portfolio, commission pricing, adoptables, YCH options, and contact links." />
+  <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
+  <script src="/assets/portfolio-data.js?v=20261028-audit11"></script>
+  <script src="/assets/queue-manager.js?v=20261028-audit11" defer></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            sans: ['"Noto Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            bg: '#0B0A0E',
+            surface: '#121118',
+            surfaceAlt: '#171520',
+            textMain: '#F2ECE4',
+            textMuted: '#B7AE9F',
+            textDim: '#766F66',
+            accent: '#E2B478',
+            error: '#D48A94',
+            ok: '#8AB89B'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #0B0A0E;
+      color: #B7AE9F;
+      font-family: 'Noto Sans', system-ui, sans-serif;
+      overflow-x: hidden;
+      background-image: radial-gradient(circle at 50% 0%, rgba(226, 180, 120, 0.05), transparent 55%);
+    }
+    h1, h2, h3, h4, .serif {
+      font-family: 'Cormorant Garamond', serif;
+      color: #F2ECE4;
+      font-weight: 500;
+    }
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.06em;
+    }
+    .hairline {
+      border-color: rgba(226, 180, 120, 0.16);
+    }
+    .card {
+      background: #121118;
+      border: 1px solid rgba(226, 180, 120, 0.16);
+    }
+    .card-interactive {
+      transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+    }
+    .card-interactive:hover {
+      border-color: rgba(226, 180, 120, 0.5);
+      background-color: #16151E;
+    }
+    .blueprint-box {
+      background-color: #0E0D13;
+      background-image:
+        linear-gradient(rgba(226, 180, 120, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(226, 180, 120, 0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .addon-pill input:checked + div {
+      background-color: rgba(226, 180, 120, 0.16);
+      color: #F2ECE4;
+      border-color: #E2B478;
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0B0A0E; }
+    ::-webkit-scrollbar-thumb { background: #3A3633; }
+    ::-webkit-scrollbar-thumb:hover { background: #E2B478; }
+    :focus-visible { outline: 2px solid #E2B478; outline-offset: 3px; }
+    img { max-width: 100%; }
+    @media (max-width: 767px) {
+      header.sticky { height: auto; min-height: 4rem; flex-wrap: wrap; padding-top: .65rem; padding-bottom: .45rem; }
+      header.sticky > button:first-child { order: 1; }
+      header.sticky > div:last-child { order: 2; margin-left: auto; }
+      #nav-links { order: 3; flex: 0 0 100%; width: 100%; max-width: 100%; overflow-x: auto; justify-content: flex-start; padding: .35rem 0 .15rem; scrollbar-width: thin; }
+      #nav-links .nav-link { flex: 0 0 auto; white-space: nowrap; }
+      .ptab-btn { white-space: normal; line-height: 1.25; }
+    }
+    @media (max-width: 360px) {
+      header.sticky { gap: .25rem; }
+      #nav-links { gap: .25rem; }
+      #nav-links .nav-link { padding-left: .35rem; padding-right: .35rem; font-size: .68rem; }
+    }
+    /* Tailwind CDN is still required for the original utility classes; these small fallbacks keep basic readability if it fails. */
+    .hidden { display: none !important; }
+  </style>
+<link rel="stylesheet" href="/assets/process-viewer.css?v=20261028-audit11">
+<link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/assets/favicon-32.png" sizes="32x32">
+  <style>img{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none}</style>
+<link rel="stylesheet" href="/assets/pricing-layout.css?v=20261028-audit11">
+<link rel="stylesheet" href="/assets/site-polish.css?v=20261028-audit11">
+<link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-audit11">
+<link rel="stylesheet" href="/assets/catalog-queue.css?v=20261028-audit11">
+<link rel="stylesheet" href="/assets/readability.css?v=20261028-audit11">
+</head>
+<body data-page="faq" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
+
+  <!-- =====================================================================
+       CENTRAL CONFIGURATION & LOCALIZATION (EN main · ES · RU)
+  ====================================================================== -->
+  <script>
+    // Public queue data is served by Google Apps Script. Only rows marked Public=TRUE are returned.
+    const QUEUE_API_URL = "https://script.google.com/macros/s/AKfycbwUoTP0HxWx6icBz-KV_WVqm89uAIDUxvaNumq7hdmpOcqtuVl9tILkWvSiOPqj0ysO/exec";
+    let LIVE_QUEUE_DATA = null;
+    let LIVE_QUEUE_ERROR = false;
+    let LIVE_QUEUE_REQUESTED = false;
+
+    const QUEUE_CONTACT_LABEL = {
+      en: "Contact on Telegram ↗",
+      es: "Contactar por Telegram ↗",
+      ru: "Написать в Telegram ↗"
+    };
+
+    function escapeQueueHTML(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      }[char]));
+    }
+
+    function loadLiveQueue() {
+      if (LIVE_QUEUE_REQUESTED) return;
+      LIVE_QUEUE_REQUESTED = true;
+      const callbackName = "nektahrQueueCallback";
+      const script = document.createElement("script");
+      let settled = false;
+      const finish = () => {
+        script.remove();
+        try { delete window[callbackName]; } catch (_) { window[callbackName] = undefined; }
+      };
+
+      window[callbackName] = payload => {
+        if (settled) return;
+        settled = true;
+        if (payload && Array.isArray(payload.orders)) {
+          LIVE_QUEUE_DATA = payload.orders;
+          LIVE_QUEUE_ERROR = false;
+          updateHeaderQueueCounter();
+        } else {
+          LIVE_QUEUE_DATA = [];
+          LIVE_QUEUE_ERROR = true;
+        }
+        window.clearTimeout(timeout);
+        finish();
+        renderLiveQueue();
+      };
+
+      script.onerror = () => {
+        if (settled) return;
+        settled = true;
+        LIVE_QUEUE_ERROR = true;
+        updateHeaderQueueCounter();
+        window.clearTimeout(timeout);
+        finish();
+        renderLiveQueue();
+      };
+
+      const timeout = window.setTimeout(() => {
+        if (settled) return;
+        settled = true;
+        LIVE_QUEUE_ERROR = true;
+        updateHeaderQueueCounter();
+        finish();
+        renderLiveQueue();
+      }, 12000);
+
+      script.src = QUEUE_API_URL + "?callback=" + callbackName + "&_=" + Date.now();
+      document.head.appendChild(script);
+    }
+
+    function updateHeaderQueueCounter() {
+      const counter = document.getElementById("header-queue-counter");
+      if (!counter) return;
+      if (LIVE_QUEUE_DATA === null || LIVE_QUEUE_ERROR) {
+        counter.textContent = "QUEUE · —";
+        counter.title = "Active commission count unavailable";
+        return;
+      }
+      const count = LIVE_QUEUE_DATA.filter(order => String(order.status || "").trim().toLowerCase() !== "completed").length;
+      counter.textContent = `QUEUE · ${count}`;
+      counter.title = count === 1 ? "1 active commission" : `${count} active commissions`;
+      counter.setAttribute("aria-label", counter.title);
+    }
+
+    function renderLiveQueue() {
+      const body = document.getElementById("queue-table-body");
+      if (!body || typeof currentLang === "undefined" || !I18N[currentLang]) return;
+      const t = I18N[currentLang].queue;
+      const contact = QUEUE_CONTACT_LABEL[currentLang] || QUEUE_CONTACT_LABEL.en;
+      const contactLink = `<div class="mt-4"><a href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2 bg-accent text-bg mono text-xs uppercase">${contact}</a></div>`;
+
+      if (LIVE_QUEUE_ERROR) {
+        body.innerHTML = `<tr><td colspan="5" class="py-8 px-4 text-sm text-textMuted">${t.error}${contactLink}</td></tr>`;
+        return;
+      }
+      if (LIVE_QUEUE_DATA === null) {
+        body.innerHTML = `<tr><td colspan="5" class="py-8 px-4 text-sm text-textMuted">${t.loading}</td></tr>`;
+        return;
+      }
+      // Completed commissions belong in the portfolio, not the active queue.
+      const activeOrders = LIVE_QUEUE_DATA.filter(order => String(order.status || "").trim().toLowerCase() !== "completed");
+      if (!activeOrders.length) {
+        body.innerHTML = `<tr><td colspan="5" class="py-8 px-4"><div class="mx-auto max-w-xl py-7 text-center border border-accent/20 bg-accent/5 px-5">
+          <div class="text-3xl mb-3" aria-hidden="true">☕ 🎨</div>
+          <p class="serif text-2xl text-textMain mb-2">${t.emptyTitle}</p>
+          <p class="text-sm leading-relaxed text-textMuted">${t.empty}</p>
+          ${contactLink}
+        </div></td></tr>`;
+        return;
+      }
+
+      const statusLabels = {
+        en: { "Queued": "Queued", "In Progress": "In Progress", "Waiting for Client": "Waiting for Client", "On Hold": "On Hold", "Completed": "Completed" },
+        es: { "Queued": "En cola", "In Progress": "En curso", "Waiting for Client": "Esperando al cliente", "On Hold": "En pausa", "Completed": "Completado" },
+        ru: { "Queued": "В очереди", "In Progress": "В работе", "Waiting for Client": "Жду ответа", "On Hold": "На паузе", "Completed": "Завершён" }
+      };
+      const rows = activeOrders.map(order => {
+        const rawProgress = order.progress === "" || order.progress === null || typeof order.progress === "undefined" ? NaN : Number(order.progress);
+        const hasProgress = Number.isFinite(rawProgress) && rawProgress > 0;
+        const progress = hasProgress ? Math.max(0, Math.min(100, rawProgress)) : 0;
+        const progressLabel = hasProgress ? `${progress}%` : (String(order.status || "") === "Queued" ? t.queuedProgress : t.noProgress);
+        const status = String(order.status || "");
+        const statusText = (statusLabels[currentLang] && statusLabels[currentLang][status]) || status;
+        const dates = [];
+        if (order.startedAt) dates.push(`${t.started}: ${escapeQueueHTML(order.startedAt)}`);
+        if (order.estimatedCompletion) dates.push(`${t.eta}: ${escapeQueueHTML(order.estimatedCompletion)}`);
+        return `
+          <tr class="align-top">
+            <td class="py-4 pr-4 text-textMain">${escapeQueueHTML(order.displayName || "Commission")}</td>
+            <td class="py-4 px-4 text-textMuted">${escapeQueueHTML(order.orderType || "")}</td>
+            <td class="py-4 px-4"><div class="text-textMain">${escapeQueueHTML(order.title || "")}</div>${dates.length ? `<div class="mt-1 text-xs text-textDim">${dates.join(" · ")}</div>` : ""}</td>
+            <td class="py-4 px-4"><span class="inline-block border border-accent/30 bg-accent/10 px-2 py-1 text-xs text-accent">${escapeQueueHTML(statusText)}</span></td>
+            <td class="py-4 pl-4 text-right min-w-[120px]">
+              <div class="mono text-xs text-textMain mb-2">${escapeQueueHTML(progressLabel)}</div>
+              <div class="h-1.5 w-full bg-white/10"><div class="h-1.5 bg-accent transition-all" style="width:${progress}%"></div></div>
+            </td>
+          </tr>`;
+      }).join("");
+      body.innerHTML = rows;
+    }
+
+    // Primary Contacts & Platforms
+    const CONTACTS_PRIMARY = [
+      { id: "discord", type: "copy", value: "drintrava", label: "Discord", handle: "drintrava", sub: { en: "Primary Contact · Click to Copy", es: "Contacto principal · Copiar", ru: "Основной контакт · Скопировать" } },
+      { id: "tg1", type: "link", url: "https://t.me/nek_tahr", label: "Telegram", handle: "@nek_tahr", sub: { en: "Direct Messages", es: "Mensajes directos", ru: "Личные сообщения" } },
+      { id: "email", type: "link", url: "mailto:nektahr@gmail.com", label: "Email", handle: "nektahr@gmail.com", sub: { en: "Commercial inquiries · Send an email", es: "Consultas comerciales · Enviar correo", ru: "Коммерческие вопросы · Написать письмо" } }
+    ];
+
+    const PLATFORMS = [
+      { name: "DeviantArt", handle: "@nektahr", url: "https://www.deviantart.com/nektahr", soon: false, note: { en: "SFW samples, adopts & gallery", es: "Muestras SFW, adopts y galería", ru: "SFW-примеры, адопты и галерея" } },
+      { name: "X (Twitter)", handle: "@Nektahr_", url: "https://x.com/Nektahr_", soon: false, note: { en: "Sketches & WIPs", es: "Bocetos y procesos", ru: "Скетчи и процесс работы" } },
+      { name: "YCH.Commishes", handle: "nektahr", url: "https://ych.commishes.com/user/nektahr/", soon: false, note: { en: "YCH & adopt auctions", es: "Subastas de YCH y adopts", ru: "Аукционы YCH и адоптов" } },
+      { name: "YCH.art", handle: "Ned'hal", url: "https://ych.art/user/nedhal", soon: false, note: { en: "Current YCH profile & availability", es: "Perfil YCH y disponibilidad actual", ru: "Профиль YCH и актуальная доступность" } },
+      { name: "FurAffinity", handle: "nektahr", url: "https://www.furaffinity.net/user/nektahr", soon: false, note: { en: "Main archive", es: "Archivo principal", ru: "Основной архив" } },
+      { name: "Pixiv", handle: "User 44242225", url: "https://www.pixiv.net/en/users/44242225", soon: false, note: { en: "Illustrations & works", es: "Ilustraciones y trabajos", ru: "Иллюстрации и работы" } },
+      { name: "Ko-fi", handle: "nektahr", url: "https://ko-fi.com/nektahr", soon: false, note: { en: "Support & payments", es: "Apoyo y pagos", ru: "Поддержка и оплата" } },
+      { name: "Patreon", handle: "Coming Soon", url: "", soon: true, note: { en: "Memberships and extra content are on the way.", es: "Las membresías y el contenido extra llegarán pronto.", ru: "Подписки и дополнительный контент скоро появятся." } }
+    ];
+
+    // Gallery Works
+    const GALLERY_ITEMS = [
+{"id": 101, "title": "Illustration 1", "cat": "comm", "nsfw": false, "img": "/assets/gallery/ofordet-bg.webp", "processWork": 1},{"id": 102, "title": "Illustration 2", "cat": "comm", "nsfw": true, "img": "/assets/process/art-2-2.webp", "processWork": 2},{"id": 103, "title": "SFW / NSFW fan art", "cat": "fanart", "nsfw": false, "img": "/assets/process/art-3-0.webp", "processWork": 3},{"id": 104, "title": "YCH example", "cat": "ych", "nsfw": false, "img": "/assets/process/art-4-1.webp", "processWork": 4},
+{"id": 105, "title": "YCH \u00b7 TH", "cat": "ych", "nsfw": true, "img": "/assets/process/art-5-1.webp", "processWork": 5},{"id": 106, "title": "YCH \u00b7 All Plain to See", "cat": "ych", "nsfw": true, "img": "/assets/process/art-6-1.webp", "processWork": 6},
+      { id: 1, gallery: false, title: "Portfolio Sample 01", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "/assets/gallery/gal-adopt-cdg-v1bg.webp", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 2, gallery: false, title: "Portfolio Sample 02", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 3, title: "Portfolio Sample 03", cat: "other", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 4, gallery: false, title: "Portfolio Sample 04", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/e7055f07.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 5, gallery: false, title: "Portfolio Sample 05", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/035b86ab.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 6, title: "Portfolio Sample 06", cat: "other", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/8aff8bc5.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 7, gallery: false, title: "Portfolio Sample 07", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/83fa427a.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 8, gallery: false, title: "Portfolio Sample 08", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/a748db6a.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 9, gallery: false, title: "Portfolio Sample 09", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/d29f0f1f.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 10, gallery: false, title: "Portfolio Sample 10", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7638b7cd.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 11, gallery: false, title: "Portfolio Sample 11", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7b5b1c4e.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 12, gallery: false, title: "Portfolio Sample 12", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." }
+    ];
+    GALLERY_ITEMS.push(...(window.PORTFOLIO_WORKS||[]).map(work=>({id:100+work.id,title:work.title,localizedTitles:work.titles,cat:work.cat,nsfw:work.nsfw[work.thumb],img:work.images[work.thumb],processWork:work.id,gallery:work.gallery,catalogWork:true,designKind:work.designKind})));
+
+
+    // Translations (EN main · ES · RU)
+    const I18N = {
+  "en": {
+    "nav": {
+      "board": "Board",
+      "pricing": "Pricing",
+      "gallery": "Gallery",
+      "queue": "Queue",
+      "tos": "ToS",
+      "faq": "FAQ"
+    },
+    "statusBadge": "Check Current Availability",
+    "hero": {
+      "eyebrow": "Character Art & Commissions",
+      "title": "Hey, welcome to my little corner of the internet!",
+      "desc1": "You’ve already found me somewhere else. This is where everything comes together: my art, other links, commission prices, YCHs, and adopts.",
+      "desc2": "I draw cute characters, fanart, and experimental pieces, from anime and fantasy humanoids to kemonomimi and humanoid furries. Got an idea in mind? Take a look around and let’s see what we can make.",
+      "pathA": {
+        "tag": "OPTION A · EXPLORE",
+        "title": "Art Gallery & Archives",
+        "sub": "Browse public SFW samples and external galleries (DA, FA, Pixiv, X). DM for additional / NSFW examples."
+      },
+      "pathB": {
+        "tag": "OPTION B · ORDER INFO",
+        "title": "Pricing, Stages & Adopts",
+        "sub": "Compare render stages, bid tiers & build a quote"
+      }
+    },
+    "contacts": {
+      "eyebrow": "DIRECT MESSAGING & NETWORKS",
+      "title": "Where to Find & Message Me",
+      "primaryTitle": "Primary Direct Contacts (Fastest Response)",
+      "platformsTitle": "Art Platforms & Galleries"
+    },
+    "featured": {
+      "eyebrow": "SELECTED WORKS",
+      "title": "Recent Highlights",
+      "viewAll": "Open Full Gallery →"
+    },
+    "pricing": {
+      "eyebrow": "PRICING · STAGES · ADOPTS · YCH",
+      "title": "What You're Paying For",
+      "sub": "Compare custom commission packages, cumulative adoptable tiers, and the published YCH price guide. The quote builder gives a starting estimate; confirm the final quote and availability directly.",
+      "tabs": {
+        "custom": "Custom Commissions",
+        "adopt": "Adopts & Bid Tiers",
+        "ych": "YCH Price Guide"
+      },
+      "stageSectionTitle": "Custom Commission Packages",
+      "stageSectionHint": "Select a package to load it into the quote builder",
+      "stages": [
+        {
+          "key": "single",
+          "name": "One character + simple background",
+          "range": "From $200",
+          "time": "14–30 business days",
+          "desc": "One character with a white or simple background. Final quote depends on the brief and complexity."
+        },
+        {
+          "key": "duo",
+          "name": "Two characters + simple background",
+          "range": "From $300",
+          "time": "14–30 business days",
+          "desc": "Second character +$100; each subsequent character +$80."
+        },
+        {
+          "key": "extras",
+          "name": "Optional extras",
+          "range": "From $50",
+          "time": "Quoted separately",
+          "desc": "Extra outfits +$50. Second character +$100; each further character +$80. Standard weapon / prop +$35; complex weapon from +$70; complex armour from +$60. Backgrounds are quoted individually."
+        }
+      ],
+      "matrix": {
+        "eyebrow": "CUSTOM PRICE TABLE (USD)",
+        "title": "Custom / Commission Price Matrix",
+        "hint": "See the package cards above for current base prices.",
+        "format": "Framing",
+        "s1": "Sketch",
+        "s2": "Flat Color",
+        "s3": "Full Render",
+        "bust": "Portrait / Bust",
+        "bustSub": "Head & shoulders",
+        "half": "Half-Body / Waist",
+        "halfSub": "Waist or mid-thigh up",
+        "full": "Full-Body",
+        "fullSub": "Head to toe pose"
+      },
+      "compare": {
+        "eyebrow": "BEFORE / AFTER SLIDER",
+        "title": "Interactive Stage Comparison",
+        "hint": "Drag the slider handle left or right to compare detail levels"
+      },
+      "breakdown": {
+        "eyebrow": "CHARACTER DESIGN FOCUS",
+        "title": "Character Art: Details & Focus Areas",
+        "items": [
+          {
+            "tag": "SILHOUETTE & WARDROBE",
+            "title": "Full Silhouette & Outfit",
+            "desc": "Readable posture, dark minimal or fantasy tailoring, and clean palette separation.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c"
+          },
+          {
+            "tag": "PORTRAIT & GAZE",
+            "title": "Face & Micro-Expressions",
+            "desc": "Expressive eye rendering, hair flow, piercings, makeup, and emotional mood.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c"
+          },
+          {
+            "tag": "PROPS & GESTURES",
+            "title": "Hands, Weapons & Callouts",
+            "desc": "Anatomical hand gestures, rings, weapons, and close-up material details.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c"
+          }
+        ]
+      },
+      "adoptSection": {
+        "eyebrow": "ADOPTABLE TIERS · $100 – $500",
+        "title": "Adoptables: Ready Designs & Stretch Goal Tiers",
+        "desc": "Each higher adopt tier includes the previous ones. From $200: full render and one alternative version of your choice. From $350: bonus character artwork. From $500: reference sheet and close-ups. Extra outfits are $50 each. Minimum auction bid increment: $5.",
+        "blueprintTitle": "STRETCH GOAL BLUEPRINT",
+        "blueprintSub": "Custom-drawn specifically for the winning bidder",
+        "tiers": [
+          {
+            "val": 100,
+            "badge": "SB · STARTING BID",
+            "price": "$100",
+            "title": "SB — Base Adoptable Design",
+            "desc": "Base design from $100, or $110 with a weapon already included. Sold once; a later similar/twin design is a separate order. Includes an unwatermarked SFW image / PNG and personal-use rights. Minimum bid increment: $5.",
+            "perks": [
+              "SFW image / PNG without watermark",
+              "Personal-use rights",
+              "Base tier delivered after payment"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 200,
+            "badge": "TIER II",
+            "price": "$200+",
+            "title": "+ Full Render & Alternative Version",
+            "desc": "At bids of $200 or more, the bundle includes a full render and one agreed alternative version, such as an outfit or species variant.",
+            "perks": [
+              "Everything in SB",
+              "Full rendered artwork",
+              "One agreed alternative version"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 350,
+            "badge": "TIER III",
+            "price": "$350+",
+            "title": "+ Bonus Character Artwork",
+            "desc": "At bids of $350 or more, the bundle also includes bonus artwork featuring the character.",
+            "perks": [
+              "Everything in Tier II",
+              "Additional character artwork",
+              "Details confirmed with the winning bidder"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 500,
+            "badge": "AB · AUTO-BUY",
+            "price": "$500+",
+            "title": "+ Reference Sheet & Close-ups",
+            "desc": "From $500: previous tier bonuses, a reference sheet and close-ups. NSFW is included at AB even when the chosen Tier II alternative is a different type. Commercial use is discussed separately.",
+            "perks": [
+              "Everything in Tier III",
+              "Reference sheet",
+              "Close-ups of selected details",
+              "NSFW alternative included"
+            ],
+            "hasSample": false
+          }
+        ]
+      },
+      "ychSection": {
+        "eyebrow": "PRE-POSED TEMPLATES",
+        "title": "YCH Price Guide",
+        "desc": "Published base prices for YCH artwork. These are price-guide options, not a statement that a specific slot is currently available.",
+        "slots": [
+          {
+            "val": 30,
+            "code": "YCH · SKETCH",
+            "title": "Clean Sketch",
+            "stage": "Sketch",
+            "price": "$30",
+            "status": "Price guide",
+            "desc": "Estimated turnaround: up to 14 business days."
+          },
+          {
+            "val": 60,
+            "code": "YCH · COLOR SKETCH",
+            "title": "Color Sketch",
+            "stage": "Color sketch",
+            "price": "$60",
+            "status": "Price guide",
+            "desc": "Estimated turnaround: up to 14 business days."
+          },
+          {
+            "val": 120,
+            "code": "YCH · FULL RENDER",
+            "title": "Full Render",
+            "stage": "Full render",
+            "price": "$120",
+            "status": "Price guide",
+            "desc": "Estimated turnaround: up to 14 business days."
+          },
+          {
+            "val": 160,
+            "code": "YCH · AB · FULL RENDER + NSFW",
+            "title": "Full Render + NSFW Alt",
+            "stage": "Discuss NSFW in advance",
+            "price": "$160",
+            "status": "Price guide",
+            "desc": "NSFW content must be discussed and agreed in advance."
+          }
+        ]
+      }
+    },
+    "calc": {
+      "title": "Quote Builder",
+      "reset": "Reset",
+      "modes": {
+        "custom": "Custom Commission",
+        "adopt": "Adoptable Tier",
+        "ych": "YCH Slot"
+      },
+      "stageCustom": "Select commission package",
+      "stageAdopt": "Select adoptable tier",
+      "stageYch": "Select YCH finish",
+      "crop": "Framing / Crop",
+      "addonsCustom": "Optional Extras",
+      "addonsAdopt": "Adoptable Upgrades & Extras",
+      "addonsYch": "Optional extras",
+      "notesPlaceholder": "Optional: character reference links, pose idea, SFW/NSFW...",
+      "totalLabel": "Estimated Total",
+      "copyBtn": "Copy Ready DM Request",
+      "copiedBtn": "Copied to Clipboard!",
+      "previewLabel": "Preview DM Message Text"
+    },
+    "gallery": {
+      "eyebrow": "CURATED ARCHIVE",
+      "title": "Art Gallery",
+      "sub": "Browse the gallery by category. 18+ artwork stays blurred until you confirm your age.",
+      "filters": {
+        "all": "All Works",
+        "comm": "Commissions",
+        "adopt": "Adopts",
+        "ych": "YCH",
+        "fanart": "Fan art",
+        "other": "Other works"
+      },
+      "nsfwToggle": "Show 18+ Content",
+      "modal": {
+        "eyebrow": "MATURE CONTENT WARNING",
+        "title": "Age Verification (18+)",
+        "desc": "Enabling this filter reveals mature / NSFW artwork intended strictly for adults. Are you 18 years of age or older?",
+        "yes": "Yes, I am 18+",
+        "no": "No, keep blurred"
+      },
+      "extTitle": "Full Archives & External Galleries",
+      "extSub": "For more works and current auction listings, visit my linked profiles:"
+    },
+    "queue": {
+      "eyebrow": "QUEUE & AVAILABILITY",
+      "title": "Queue & Availability",
+      "sub": "Only active orders appear here. Finished commissions have left the stage.",
+      "cols": {
+        "slot": "Order",
+        "client": "Type",
+        "details": "Details",
+        "stage": "Status",
+        "progress": "Progress"
+      },
+      "loading": "Loading the latest queue…",
+      "emptyTitle": "All caught up!",
+      "empty": "The studio is suspiciously quiet… No active commissions right now. The artist may be found drawing, refilling tea, or staring dramatically at a blank canvas.",
+      "error": "The live queue could not be loaded. Please try again later or contact me directly.",
+      "noProgress": "Progress update pending",
+      "queuedProgress": "Not started yet",
+      "started": "Started",
+      "eta": "Est. completion"
+    },
+    "tos": {
+      "eyebrow": "TERMS OF SERVICE",
+      "title": "Commissions, Adopts & YCH — Rules",
+      "sub": "By commissioning me or bidding on an adoptable/YCH, you agree to the terms below.",
+      "summaryTitle": "Quick Summary (At a Glance)",
+      "cards": [
+        {
+          "num": "01",
+          "title": "Payment & plans",
+          "desc": "PayPal / Ko-fi; DeviantArt is also available for adopts. Pay within 48 hours after confirmation; an agreed payment plan requires a down payment."
+        },
+        {
+          "num": "02",
+          "title": "Refund Policy",
+          "desc": "Cancellation and refund arrangements are discussed before payment. If I cannot finish the agreed work, contact me to arrange cancellation and a refund for the uncompleted part."
+        },
+        {
+          "num": "03",
+          "title": "Revisions & Edits",
+          "desc": "Up to 5 minor edits are included during the sketch stage. Changes after approval may cost extra; my own mistakes are fixed for free."
+        },
+        {
+          "num": "04",
+          "title": "Personal Use Default",
+          "desc": "All art is for personal use by default. Credit @Nektahr_ when reposting."
+        },
+        {
+          "num": "05",
+          "title": "Adoptable Resale",
+          "desc": "Adopts may be resold for the same price or lower (higher only if commissioned art is added)."
+        },
+        {
+          "num": "06",
+          "title": "Strict No AI / No NFT",
+          "desc": "Zero tolerance for AI training, machine learning datasets, or crypto/NFT minting."
+        }
+      ],
+      "agreeCheck": "I have read and agree to the Terms of Service (include the checkbox confirmation in the quote request)",
+      "fullTitle": "Detailed Terms & Conditions",
+      "sections": [
+        {
+          "tag": "SECTION 01 · PAYMENT & REFUNDS",
+          "title": "Payment Methods, Holds & Refund Policy",
+          "bullets": [
+            "Prices are in USD; EUR can be agreed before payment. Custom commissions and YCH: PayPal or Ko-fi. Adopts: PayPal, Ko-fi or DeviantArt, subject to the listing and confirmed payment method.",
+            "Payment is due within 48 hours after the order or winning bid is confirmed. Contact me before payment if you need a different arrangement.",
+            "If you do not reply for 24 hours, an unpaid reservation may be released. An unpaid adopt may be offered again; for YCH, the reservation is released and the template remains available for repeat orders.",
+            "For adopt bids over $200, a payment plan can be agreed in advance. A down payment is required; its amount and remaining schedule are agreed individually. Final files are delivered after full payment.",
+            "Cancellation and refund arrangements are confirmed before payment. If I cannot complete the agreed work, I will discuss cancellation and a refund for the uncompleted part with you.",
+            "Any species, gender or body type can be discussed for a YCH; changes must fit the template and are agreed first. Sketch $30, color sketch $60, full render $120, AB $160 with one NSFW version. An extra outfit is $50. The template accepts repeat orders."
+          ]
+        },
+        {
+          "tag": "SECTION 02 · WORKFLOW & DEADLINES",
+          "title": "Process Stages, WIPs & Turnaround Time",
+          "bullets": [
+            "Estimated turnaround: YCH up to 14 business days; custom commissions 14–30 business days; adoptable base tier delivered immediately, higher tiers 14–40 business days. Turnaround starts once payment and all references have been received. For an agreed payment plan, it starts after the first instalment and references.",
+            "You will receive WIP (Work in Progress) screenshots at key milestones: 1) Rough Sketch, 2) Clean Lineart & Flat Colors, and 3) Final Rendering.",
+            "The public Queue page shows order numbers, estimated deadlines and work status. Private details stay off the site.",
+            "If you have a strict deadline (e.g., a birthday or stream debut), please mention it upfront. Rush orders (3–5 business days) may cost an additional $50–$100, depending on the deadline and scope."
+          ]
+        },
+        {
+          "tag": "SECTION 03 · REVISIONS & EDITS",
+          "title": "Corrections During Each Stage",
+          "bullets": [
+            "Sketch Stage: Up to 3–5 minor revisions or pose adjustments are included for free. Please request all structural changes here.",
+            "Flat Color Stage: Color palette tweaks and small markings adjustments are free.",
+            "Render Stage: Major structural changes (changing the pose, outfit, or camera angle) after lineart approval require an extra fee depending on complexity.",
+            "Artist Mistakes: If I miss a clear detail that was present on your reference sheet, I will always fix it for free at any stage.",
+            "Additional minor edits beyond the included revisions cost $10 each. Medium changes and major redraws are quoted before work begins. Fixing my mistakes remains free.",
+            "An additional facial expression costs $25; other alternative versions cost $50 (futa $25 with an existing NSFW base)."
+          ]
+        },
+        {
+          "tag": "SECTION 04 · COPYRIGHT, USAGE & NDA",
+          "title": "Personal Rights, Commercial License & Privacy",
+          "bullets": [
+            "I retain authorship and portfolio rights to all artwork I create (posting low-res watermarked versions on DeviantArt, FurAffinity, Pixiv, or X).",
+            "Personal Use (Included): You may use the art for personal avatars, banners, character profiles (Toyhouse), and printing for yourself. Please credit @Nektahr_ when sharing.",
+            "Private / NDA Orders (+35%): If you wish the artwork to remain completely private and never be posted to my public galleries, a +35% NDA fee applies.",
+            "Personal avatars, profile posts and prints for yourself are personal use. Selling prints or merchandise, advertising, and using artwork in a paid product require a separate commercial agreement; the price is agreed individually."
+          ]
+        },
+        {
+          "tag": "SECTION 05 · ADOPTABLE & DESIGN RULES",
+          "title": "Ownership, Redesigns & Resale Policy",
+          "bullets": [
+            "After full payment, you may rename the character, change their story or design, and post them on your profiles. Keep the design credit. Commercial use requires a separate agreement.",
+            "Each higher adopt tier includes the previous ones. From $200: full render and one alternative version of your choice. From $350: bonus character artwork. From $500: reference sheet and close-ups. Extra outfits are $50 each. Minimum auction bid increment: $5.",
+            "You may resell the adopt for the same price you paid or less. Notify me of the transfer; keep the design credit. Gifting and trading are allowed.",
+            "Design credit must always remain with Nek'tahr (@nektahr).",
+            "PSD files are available on request only for adoptables at AB or above. PSD files are not offered separately for commissions or YCH."
+          ]
+        },
+        {
+          "tag": "SECTION 06 · STRICT AI & NFT PROHIBITION",
+          "title": "Zero Tolerance for AI Training & Crypto",
+          "bullets": [
+            "You may NOT under any circumstances feed my sketches, lineart, adoptables, or finished illustrations into AI image generators, LoRA training, or machine learning datasets.",
+            "You may NOT mint any of my artworks or character designs as NFTs or use them in blockchain/crypto projects."
+          ]
+        }
+      ],
+      "willTitle": "✓ Will Draw",
+      "willList": [
+        "Original Characters (OCs), Fantasy, DnD",
+        "Anime / Semi-realism / Dark aesthetic",
+        "Complex outfits, weapons, accessories",
+        "Kemonomimi (ears, tails, horns, wings)",
+        "Couples, romance & tasteful NSFW (18+)"
+      ],
+      "wontTitle": "! Special Requests — Ask First",
+      "wontList": [
+        "Mecha, full anthro, and extreme proportions may be difficult or cost extra",
+        "Discuss NSFW requests before payment",
+        "Please confirm unusual or complex requests before ordering"
+      ]
+    },
+    "faq": {
+      "eyebrow": "KNOWLEDGE BASE",
+      "title": "Frequently Asked Questions",
+      "sub": "Everything you need to know about ordering commissions, bidding on adopts, payment plans, and file delivery.",
+      "cats": {
+        "all": "All Questions",
+        "order": "Ordering",
+        "payment": "Payment & Plans",
+        "adopts": "Adopts & YCH",
+        "process": "Process & Files"
+      },
+      "items": [
+        {
+          "cat": "order",
+          "q": "How do I place an order?",
+          "a": "Use the Quote Builder on the Pricing page to estimate your price and copy the ready request text. Then send it to me via Discord (drintrava), Telegram DM (@nek_tahr), or Email (nektahr@gmail.com) along with your character references."
+        },
+        {
+          "cat": "order",
+          "q": "Can I order if I don't have a visual reference sheet?",
+          "a": "Yes! I can work from moodboards, outfit photos, Dollmaker/Picrew screenshots, and clear written descriptions. If we are designing a complex character completely from scratch without visual references, a small custom design fee may apply."
+        },
+        {
+          "cat": "payment",
+          "q": "What payment methods and currencies do you accept?",
+          "a": "Prices are in USD; EUR can be agreed before payment. Custom commissions and YCH: PayPal or Ko-fi. Adopts: PayPal, Ko-fi or DeviantArt, subject to the listing and confirmed payment method. Payment is due within 48 hours after the order or winning bid is confirmed. Contact me before payment if you need a different arrangement."
+        },
+        {
+          "cat": "payment",
+          "q": "Do you offer payment plans (installments) for higher tiers or AB?",
+          "a": "For adopt bids over $200, a payment plan can be agreed before payment. A down payment is required; the amount and dates are agreed individually. Final files follow full payment."
+        },
+        {
+          "cat": "adopts",
+          "q": "How do Adoptable Stretch Goal Tiers work if there is no sample image yet?",
+          "a": "Adoptable tiers are cumulative: from $200 the bundle adds a full render and an agreed alternative version; from $350 it adds bonus character artwork; from $500 it adds a reference sheet and close-up details. Higher-tier extras are custom-drawn after the auction."
+        },
+        {
+          "cat": "adopts",
+          "q": "Where do Adoptable & YCH auctions take place, and when do they end?",
+          "a": "Auctions are announced on the relevant platform. Check my current profile or message me to confirm whether a specific auction is active and when it ends."
+        },
+        {
+          "cat": "adopts",
+          "q": "Can I change the gender, body type, or species on a YCH slot?",
+          "a": "Minor adjustments to body type, ears/tails (kemonomimi), horns, wings, and expressions are always welcome on YCH slots! If a YCH requires a complete anatomical rebuild, I will let you know in DMs if a small adjustment fee applies."
+        },
+        {
+          "cat": "process",
+          "q": "How do I track my commission progress and turnaround time?",
+          "a": "The website does not publish live queue data. Contact me directly to check availability and progress; WIP updates are shared during the agreed workflow."
+        },
+        {
+          "cat": "process",
+          "q": "What file formats and resolution will I receive?",
+          "a": "File formats, resolution, and delivery method are agreed before work starts. Please confirm specific export requirements with me when ordering. PSD files are available on request only for adoptables at AB or above. PSD files are not offered separately for commissions or YCH. Turnaround starts once payment and all references have been received. For an agreed payment plan, it starts after the first instalment and references."
+        },
+        {
+          "cat": "process",
+          "q": "Can I keep my commission private (NDA) or use it for streaming / VTubing?",
+          "a": "Yes. A private / NDA request adds 35%. Commercial use requires a separate agreement and a separately quoted fee."
+        },
+        {
+          "cat": "order",
+          "q": "How do I check current availability?",
+          "a": "Please contact me directly to check availability or ask about a waitlist. The website does not publish live slot counts."
+        }
+      ]
+    }
+  },
+  "es": {
+    "nav": {
+      "board": "Inicio",
+      "pricing": "Precios",
+      "gallery": "Galería",
+      "queue": "Cola",
+      "tos": "Términos",
+      "faq": "FAQ"
+    },
+    "statusBadge": "Consultar disponibilidad",
+    "hero": {
+      "eyebrow": "Arte de personajes y comisiones",
+      "title": "¡Bienvenido a mi pequeño rincón de internet!",
+      "desc1": "Ya me has encontrado en otro sitio. Aquí está todo junto: mi arte, otros enlaces, precios de comisiones, YCHs y adopts.",
+      "desc2": "Dibujo personajes adorables, fanart y piezas experimentales, desde anime y humanoides fantásticos hasta kemonomimi y furries humanoides. ¿Tienes alguna idea? Echa un vistazo y veamos qué podemos crear.",
+      "pathA": {
+        "tag": "OPCIÓN A · EXPLORAR",
+        "title": "Galería y Archivos",
+        "sub": "Muestras públicas SFW y galerías en DA, FA, Pixiv y X. Para ejemplos adicionales o NSFW, escríbeme."
+      },
+      "pathB": {
+        "tag": "OPCIÓN B · COMISIONES",
+        "title": "Precios, Etapas y Adopts",
+        "sub": "Compara etapas, niveles de subasta y calcula tu orden"
+      }
+    },
+    "contacts": {
+      "eyebrow": "CONTACTO DIRECTO Y PLATAFORMAS",
+      "title": "Dónde Encontrarme y Escribirme",
+      "primaryTitle": "Contacto Directo Principal (Respuesta Rápida)",
+      "platformsTitle": "Plataformas de Arte y Subastas"
+    },
+    "featured": {
+      "eyebrow": "OBRAS DESTACADAS",
+      "title": "Trabajos Recientes",
+      "viewAll": "Ver Galería Completa →"
+    },
+    "pricing": {
+      "eyebrow": "PRECIOS · ETAPAS · ADOPTS · YCH",
+      "title": "Lo Que Estás Pagando",
+      "sub": "Compara paquetes de comisiones, niveles acumulativos de adopts y precios orientativos de YCH. La calculadora da un presupuesto inicial; confirma el precio final y la disponibilidad directamente.",
+      "tabs": {
+        "custom": "Comisiones personalizadas",
+        "adopt": "Adopts y Niveles",
+        "ych": "Precios de YCH"
+      },
+      "stageSectionTitle": "Paquetes de Comisiones Personalizadas",
+      "stageSectionHint": "Selecciona un paquete para cargarlo en la calculadora",
+      "stages": [
+        {
+          "key": "single",
+          "name": "Un personaje + fondo sencillo",
+          "range": "Desde $200",
+          "time": "14–30 días laborables",
+          "desc": "Un personaje con fondo blanco o sencillo. El precio final depende de la complejidad y la descripción."
+        },
+        {
+          "key": "duo",
+          "name": "Dos personajes + fondo sencillo",
+          "range": "Desde $300",
+          "time": "14–30 días laborables",
+          "desc": "Segundo personaje +$100; cada personaje posterior +$80."
+        },
+        {
+          "key": "extras",
+          "name": "Extras opcionales",
+          "range": "Desde $50",
+          "time": "Precio por confirmar",
+          "desc": "Atuendo extra +$50. Segundo personaje +$100; cada posterior +$80. Arma / objeto estándar +$35; arma compleja desde +$70; armadura compleja desde +$60. Fondos: presupuesto individual."
+        }
+      ],
+      "matrix": {
+        "eyebrow": "TABLA DE PRECIOS (USD)",
+        "title": "Matriz de Precios de Comisiones",
+        "hint": "Consulta los paquetes actuales en las tarjetas de arriba.",
+        "format": "Encuadre",
+        "s1": "Boceto",
+        "s2": "Color Base",
+        "s3": "Render Total",
+        "bust": "Retrato / Busto",
+        "bustSub": "Cabeza y hombros",
+        "half": "Medio Cuerpo",
+        "halfSub": "Hasta cintura o muslos",
+        "full": "Cuerpo Completo",
+        "fullSub": "Pose de pies a cabeza"
+      },
+      "compare": {
+        "eyebrow": "COMPARADOR ANTES / DESPUÉS",
+        "title": "Comparación Interactiva de Etapas",
+        "hint": "Arrastra el control deslizante para comparar el nivel de detalle"
+      },
+      "breakdown": {
+        "eyebrow": "ENFOQUE DE DISEÑO",
+        "title": "Detalles y Enfoques del Arte de Personajes",
+        "items": [
+          {
+            "tag": "SILUETA Y ATUENDO",
+            "title": "Silueta Completa y Moda",
+            "desc": "Postura legible, sastrería oscura o fantasía y paleta de colores limpia.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c"
+          },
+          {
+            "tag": "RETRATO Y MIRADA",
+            "title": "Rostro y Microexpresiones",
+            "desc": "Renderizado expresivo de ojos, cabello, piercings y maquillaje.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c"
+          },
+          {
+            "tag": "MANOS Y ACCESORIOS",
+            "title": "Manos, Armas y Detalles",
+            "desc": "Gestos anatómicos de manos, anillos, armas y zoom de materiales.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c"
+          }
+        ]
+      },
+      "adoptSection": {
+        "eyebrow": "NIVELES DE ADOPTS · $100 – $500",
+        "title": "Adoptables: Diseños y Niveles de Oferta (Tiers)",
+        "desc": "Cada nivel incluye los anteriores. Desde $200: render completo y una versión alternativa a elegir. Desde $350: ilustración extra. Desde $500: hoja de referencia y detalles. Atuendo adicional: $50. Incremento mínimo de puja: $5.",
+        "blueprintTitle": "ESQUEMA DE BONIFICACIÓN",
+        "blueprintSub": "Dibujado a medida para el ganador de la subasta",
+        "tiers": [
+          {
+            "val": 100,
+            "badge": "SB · OFERTA INICIAL",
+            "price": "$100",
+            "title": "SB — Diseño Base del Adopt",
+            "desc": "Diseño base desde $100, o $110 con arma incluida. Se vende una sola vez; un diseño similar/twin posterior es un pedido aparte. Incluye imagen SFW / PNG sin marca de agua y uso personal. Incremento mínimo: $5.",
+            "perks": [
+              "Imagen SFW / PNG sin marca de agua",
+              "Derechos de uso personal",
+              "Entrega del nivel base tras el pago"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 200,
+            "badge": "NIVEL II",
+            "price": "$200+",
+            "title": "+ Render Completo y Versión Alternativa",
+            "desc": "Con ofertas de $200 o más, el paquete incluye un render completo y una versión alternativa acordada, por ejemplo, otro atuendo o variante de especie.",
+            "perks": [
+              "Todo lo del nivel SB",
+              "Ilustración renderizada",
+              "Una versión alternativa acordada"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 350,
+            "badge": "NIVEL III",
+            "price": "$350+",
+            "title": "+ Ilustración Extra del Personaje",
+            "desc": "Con ofertas de $350 o más, se añade una ilustración extra con el personaje.",
+            "perks": [
+              "Todo lo del nivel II",
+              "Ilustración adicional",
+              "Detalles acordados con la persona ganadora"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 500,
+            "badge": "AB · COMPRA AUTOMÁTICA",
+            "price": "$500+",
+            "title": "+ Hoja de Referencia y Detalles",
+            "desc": "Desde $500: bonos anteriores, hoja de referencia y detalles. AB incluye NSFW aunque la alternativa elegida del nivel II sea de otro tipo. Uso comercial por acuerdo aparte.",
+            "perks": [
+              "Todo lo del nivel III",
+              "Hoja de referencia",
+              "Primeros planos de detalles elegidos",
+              "Versión NSFW incluida"
+            ],
+            "hasSample": false
+          }
+        ]
+      },
+      "ychSection": {
+        "eyebrow": "POSES PREDISEÑADAS",
+        "title": "Guía de precios YCH",
+        "desc": "Precios base publicados para YCH. Estas opciones son una guía de precios, no una confirmación de disponibilidad actual.",
+        "slots": [
+          {
+            "val": 30,
+            "code": "YCH · BOCETO",
+            "title": "Boceto limpio",
+            "stage": "Boceto",
+            "price": "$30",
+            "status": "Guía de precios",
+            "desc": "Plazo estimado: hasta 14 días laborables."
+          },
+          {
+            "val": 60,
+            "code": "YCH · BOCETO A COLOR",
+            "title": "Boceto a color",
+            "stage": "Boceto a color",
+            "price": "$60",
+            "status": "Guía de precios",
+            "desc": "Plazo estimado: hasta 14 días laborables."
+          },
+          {
+            "val": 120,
+            "code": "YCH · RENDER COMPLETO",
+            "title": "Render completo",
+            "stage": "Render completo",
+            "price": "$120",
+            "status": "Guía de precios",
+            "desc": "Plazo estimado: hasta 14 días laborables."
+          },
+          {
+            "val": 160,
+            "code": "YCH · RENDER + NSFW",
+            "title": "Render completo + versión NSFW",
+            "stage": "Hablar sobre NSFW antes",
+            "price": "$160",
+            "status": "Guía de precios",
+            "desc": "El contenido NSFW debe hablarse y acordarse de antemano."
+          }
+        ]
+      }
+    },
+    "calc": {
+      "title": "Calculadora",
+      "reset": "Reiniciar",
+      "modes": {
+        "custom": "Comisión Custom",
+        "adopt": "Subasta Adopt",
+        "ych": "Slot YCH"
+      },
+      "stageCustom": "Selecciona un paquete",
+      "stageAdopt": "Selecciona el nivel del adopt",
+      "stageYch": "Selecciona el acabado YCH",
+      "crop": "Encuadre",
+      "addonsCustom": "Extras opcionales",
+      "addonsAdopt": "Extras de Adoptable",
+      "addonsYch": "Extras opcionales",
+      "notesPlaceholder": "Opcional: enlaces a referencias, idea de pose, SFW/NSFW...",
+      "totalLabel": "Total Estimado",
+      "copyBtn": "Copiar Solicitud para MD",
+      "copiedBtn": "¡Copiado al Portapapeles!",
+      "previewLabel": "Vista Previa del Mensaje"
+    },
+    "gallery": {
+      "eyebrow": "ARCHIVO VISUAL",
+      "title": "Galería de Arte",
+      "sub": "Explora la galería por categoría. Las obras 18+ permanecerán difuminadas hasta que confirmes tu edad.",
+      "filters": {
+        "all": "Todas las obras",
+        "comm": "Comisiones",
+        "adopt": "Adopts",
+        "ych": "YCH",
+        "fanart": "Fan art",
+        "other": "Otros trabajos"
+      },
+      "nsfwToggle": "Mostrar contenido 18+",
+      "modal": {
+        "eyebrow": "AVISO DE CONTENIDO PARA ADULTOS",
+        "title": "Verificación de edad (18+)",
+        "desc": "Este filtro muestra obras maduras / NSFW destinadas exclusivamente a adultos. ¿Tienes 18 años o más?",
+        "yes": "Sí, tengo 18+",
+        "no": "No, mantener difuminado"
+      },
+      "extTitle": "Archivos Completos y Galerías Externas",
+      "extSub": "Para ver más obras y subastas actuales, visita mis perfiles enlazados:"
+    },
+    "queue": {
+      "eyebrow": "COLA Y DISPONIBILIDAD",
+      "title": "Cola y disponibilidad",
+      "sub": "Aquí solo aparecen los pedidos activos. Los trabajos terminados ya han salido del escenario.",
+      "cols": {
+        "slot": "Pedido",
+        "client": "Tipo",
+        "details": "Detalles",
+        "stage": "Estado",
+        "progress": "Progreso"
+      },
+      "loading": "Cargando la cola actual…",
+      "emptyTitle": "¡Todo al día!",
+      "empty": "El estudio está sospechosamente tranquilo… No hay encargos activos por ahora. Puede que el artista esté dibujando, rellenando el té o mirando dramáticamente un lienzo en blanco.",
+      "error": "No se pudo cargar la cola. Inténtalo más tarde o escríbeme directamente.",
+      "noProgress": "Actualización de progreso pendiente",
+      "queuedProgress": "Aún no ha comenzado",
+      "started": "Inicio",
+      "eta": "Finalización estimada"
+    },
+    "tos": {
+      "eyebrow": "TÉRMINOS DE SERVICIO",
+      "title": "Comisiones, Adopts y YCH — Reglas",
+      "sub": "Al comisionarme o pujar por un adopt/YCH, aceptas los siguientes términos.",
+      "summaryTitle": "Resumen Rápido",
+      "cards": [
+        {
+          "num": "01",
+          "title": "Pago y planes",
+          "desc": "PayPal / Ko-fi; también DeviantArt para adopts. Pago en 48 horas tras confirmar; los planes acordados requieren un anticipo."
+        },
+        {
+          "num": "02",
+          "title": "Reembolsos",
+          "desc": "Las condiciones de cancelación y reembolso se acuerdan antes del pago. Si no puedo terminar el trabajo, hablaremos de cancelar y reembolsar la parte sin realizar."
+        },
+        {
+          "num": "03",
+          "title": "Revisiones",
+          "desc": "Se incluyen hasta 5 cambios menores durante la etapa de boceto. Los cambios posteriores pueden tener coste; mis propios errores se corrigen gratis."
+        },
+        {
+          "num": "04",
+          "title": "Uso Personal",
+          "desc": "Uso personal por defecto. Acreditar a @Nektahr_ al publicar."
+        },
+        {
+          "num": "05",
+          "title": "Reventa de Adopts",
+          "desc": "Se pueden revender al mismo precio o menor (mayor solo con arte extra)."
+        },
+        {
+          "num": "06",
+          "title": "Prohibido IA y NFT",
+          "desc": "Prohibido usar mi arte para entrenar IA o crear NFTs/cripto."
+        }
+      ],
+      "agreeCheck": "He leído y acepto los Términos de Servicio (incluir la confirmación de la casilla en el mensaje de solicitud)",
+      "fullTitle": "Términos Detallados",
+      "sections": [
+        {
+          "tag": "SECCIÓN 01 · PAGOS Y REEMBOLSOS",
+          "title": "Métodos de Pago, Reservas y Reembolsos",
+          "bullets": [
+            "Precios en USD; se puede acordar EUR antes del pago. Encargos y YCH: PayPal o Ko-fi. Adopts: PayPal, Ko-fi o DeviantArt; se confirma el método para cada artículo.",
+            "El pago debe realizarse dentro de las 48 horas tras confirmar el pedido o la puja ganadora. Consulta otros acuerdos antes de pagar.",
+            "Si no respondes durante 24 horas, se puede liberar una reserva sin pagar. Un adopt sin pagar puede volver a ofrecerse; en YCH se libera la reserva y la plantilla sigue disponible para más pedidos.",
+            "Para pujas de adopts superiores a $200 se puede acordar un plan de pagos antes de pagar. Se requiere un anticipo; el importe y calendario se acuerdan individualmente. Los archivos finales se entregan tras el pago completo.",
+            "Las condiciones de cancelación y reembolso se acuerdan antes del pago. Si no puedo completar el trabajo acordado, hablaremos de la cancelación y del reembolso de la parte sin realizar.",
+            "Se puede consultar cualquier especie, género o tipo de cuerpo para YCH; los cambios deben encajar con la plantilla y se acuerdan antes. Boceto $30, boceto a color $60, render completo $120, AB $160 con una versión NSFW. Atuendo adicional: $50. La plantilla admite pedidos repetidos."
+          ]
+        },
+        {
+          "tag": "SECCIÓN 02 · PROCESO Y PLAZOS",
+          "title": "Etapas WIP y Tiempo de Entrega",
+          "bullets": [
+            "Plazos estimados: YCH hasta 14 días laborables; comisiones personalizadas 14–30 días laborables; adopt base inmediata y niveles superiores 14–40 días laborables. El plazo empieza tras recibir el pago y todas las referencias. Con un plan de pagos acordado, empieza tras la primera cuota y las referencias.",
+            "Recibirás avances (WIPs) en boceto, color base y render final.",
+            "La página Cola muestra números públicos de pedido, fechas estimadas y estado del trabajo. Los datos privados no se publican.",
+            "Los pedidos urgentes (3–5 días laborables) pueden añadir $50–$100 según la fecha límite y el alcance."
+          ]
+        },
+        {
+          "tag": "SECCIÓN 03 · REVISIONES Y CAMBIOS",
+          "title": "Correcciones Durante el Proceso",
+          "bullets": [
+            "Etapa de boceto: incluye hasta 3–5 ajustes menores o de pose sin coste. Solicita todos los cambios estructurales en esta etapa.",
+            "Etapa de color base: los ajustes de paleta y pequeños cambios en las marcas del personaje son gratuitos.",
+            "Etapa de render: los cambios estructurales importantes de pose, atuendo o ángulo de cámara tras aprobar el lineart tienen un coste adicional según su complejidad.",
+            "Mis errores: si omití un detalle claro que aparecía en tu referencia, lo corregiré gratis en cualquier etapa.",
+            "Los pequeños ajustes adicionales, fuera de las revisiones incluidas, cuestan $10 cada uno. Los cambios medianos y grandes se presupuestan antes. Corregir mis errores sigue siendo gratis.",
+            "Una expresión facial adicional cuesta $25; otras versiones alternativas cuestan $50 (futa $25 con base NSFW)."
+          ]
+        },
+        {
+          "tag": "SECCIÓN 04 · DERECHOS, PRIVACIDAD Y USO COMERCIAL",
+          "title": "Uso Personal, NDA y Licencia Comercial",
+          "bullets": [
+            "Conservo los derechos de autor para mostrar la obra con marca de agua en mi portafolio.",
+            "Uso Personal (Incluido): avatares, banners y perfiles personales acreditando a @Nektahr_.",
+            "Pedidos Privados / NDA (+35%): si deseas que la obra sea totalmente privada y no se publique.",
+            "Avatares personales, publicar la compra en tu perfil e imprimir para ti son usos personales. Vender impresiones o productos, publicidad y usar la obra en un producto de pago requieren un acuerdo comercial aparte; el precio se acuerda individualmente."
+          ]
+        },
+        {
+          "tag": "SECCIÓN 05 · REGLAS DE ADOPTABLES",
+          "title": "Propiedad, Rediseño y Reventa",
+          "bullets": [
+            "Tras el pago completo puedes cambiar el nombre, historia o diseño del personaje y publicarlo en tus perfiles. Conserva el crédito del diseño. El uso comercial requiere un acuerdo aparte.",
+            "Cada nivel incluye los anteriores. Desde $200: render completo y una versión alternativa a elegir. Desde $350: ilustración extra. Desde $500: hoja de referencia y detalles. Atuendo adicional: $50. Incremento mínimo de puja: $5.",
+            "Puedes revender el adopt por el mismo precio que pagaste o menos. Avísame de la transferencia y conserva el crédito del diseño. Se permiten regalos e intercambios.",
+            "El crédito del diseño debe mantenerse siempre a nombre de Nek'tahr (@nektahr).",
+            "Los archivos PSD solo están disponibles bajo petición para adopts de nivel AB o superior. No se ofrecen por separado para encargos o YCH."
+          ]
+        },
+        {
+          "tag": "SECCIÓN 06 · PROHIBICIÓN DE IA Y NFT",
+          "title": "Tolerancia Cero con IA y Cripto",
+          "bullets": [
+            "Queda estrictamente prohibido usar mis obras para entrenar modelos de Inteligencia Artificial (IA) o datasets.",
+            "Queda prohibido acuñar o vender mis diseños o ilustraciones como NFTs."
+          ]
+        }
+      ],
+      "willTitle": "✓ Sí Dibujo",
+      "willList": [
+        "Personajes originales (OCs), fantasía, DnD",
+        "Anime / Semi-realismo / Estética oscura",
+        "Ropa compleja, armas, accesorios",
+        "Kemonomimi (orejas, colas, cuernos, alas)",
+        "Parejas, romance y NSFW estético (+18)"
+      ],
+      "wontTitle": "! Encargos especiales — Consultar antes",
+      "wontList": [
+        "Mecha, anthro completo y proporciones extremas pueden ser difíciles o costar más",
+        "Habla sobre solicitudes NSFW antes de pagar",
+        "Confirma los encargos complejos antes de pedir"
+      ]
+    },
+    "faq": {
+      "eyebrow": "PREGUNTAS FRECUENTES",
+      "title": "Respuestas Rápidas (FAQ)",
+      "sub": "Todo sobre pedidos, subastas de adopts, pagos fraccionados y entrega de archivos.",
+      "cats": {
+        "all": "Todas",
+        "order": "Pedidos",
+        "payment": "Pagos",
+        "adopts": "Adopts y YCH",
+        "process": "Proceso y Archivos"
+      },
+      "items": [
+        {
+          "cat": "order",
+          "q": "¿Cómo hago un pedido?",
+          "a": "Usa la calculadora en la página de Precios, copia el mensaje generado y envíamelo por Discord (drintrava), Telegram DM (@nek_tahr) o Email junto con tus referencias."
+        },
+        {
+          "cat": "order",
+          "q": "¿Puedo pedir sin hoja de referencia?",
+          "a": "¡Sí! Puedo trabajar con moodboards, fotos de ropa, capturas de Picrew y descripciones claras."
+        },
+        {
+          "cat": "payment",
+          "q": "¿Qué métodos de pago y monedas aceptas?",
+          "a": "Precios en USD; se puede acordar EUR antes del pago. Encargos y YCH: PayPal o Ko-fi. Adopts: PayPal, Ko-fi o DeviantArt; se confirma el método para cada artículo. El pago debe realizarse dentro de las 48 horas tras confirmar el pedido o la puja ganadora. Consulta otros acuerdos antes de pagar."
+        },
+        {
+          "cat": "payment",
+          "q": "¿Aceptas planes de pago (en cuotas)?",
+          "a": "Para pujas de adopts superiores a $200 se puede acordar un plan de pagos previo. Se requiere un anticipo; el importe y las fechas se acuerdan individualmente. Archivos finales tras el pago completo."
+        },
+        {
+          "cat": "adopts",
+          "q": "¿Cómo funcionan los niveles de Adopts sin imagen de ejemplo?",
+          "a": "Los extras de los niveles desbloqueados se dibujan a medida. El plazo estimado para los niveles superiores de adopt es de 14–40 días laborables, según el alcance acordado."
+        },
+        {
+          "cat": "adopts",
+          "q": "¿Dónde se realizan las subastas de Adopts y YCH?",
+          "a": "Las subastas activas y su hora de cierre se anuncian en la plataforma correspondiente. Consulta mi perfil o escríbeme para confirmar la disponibilidad actual."
+        },
+        {
+          "cat": "adopts",
+          "q": "¿Se puede cambiar el cuerpo o detalles en un YCH?",
+          "a": "Ajustes de expresión, orejas, colas, cuernos o alas siempre son posibles. Si requiere redibujar toda la anatomía, te avisaré por MD."
+        },
+        {
+          "cat": "process",
+          "q": "¿Cómo consulto el avance de mi pedido?",
+          "a": "Escríbeme directamente para consultar disponibilidad y avances; esta web no publica una cola en tiempo real."
+        },
+        {
+          "cat": "process",
+          "q": "¿En qué formato y resolución entregas los archivos?",
+          "a": "Los formatos, la resolución y el método de entrega se acuerdan antes de empezar. Confirma cualquier requisito específico al hacer el pedido. Los archivos PSD solo están disponibles bajo petición para adopts de nivel AB o superior. No se ofrecen por separado para encargos o YCH. El plazo empieza tras recibir el pago y todas las referencias. Con un plan de pagos acordado, empieza tras la primera cuota y las referencias."
+        },
+        {
+          "cat": "process",
+          "q": "¿Puedo pedir privacidad (NDA) o licencia comercial?",
+          "a": "La privacidad / NDA añade un 35%. El uso comercial requiere un acuerdo y una tarifa aparte, que deben confirmarse antes del pago."
+        },
+        {
+          "cat": "order",
+          "q": "¿Qué pasa si todos los cupos están llenos?",
+          "a": "Puedes escribirme para entrar en la Lista de Espera (Waitlist) y reservar lugar en la siguiente tanda."
+        }
+      ]
+    }
+  },
+  "ru": {
+    "nav": {
+      "board": "Главная",
+      "pricing": "Прайс",
+      "gallery": "Галерея",
+      "queue": "Очередь",
+      "tos": "Правила",
+      "faq": "FAQ"
+    },
+    "statusBadge": "Уточнить наличие",
+    "hero": {
+      "eyebrow": "Арт персонажей и заказы",
+      "title": "Добро пожаловать в мой маленький уголок интернета!",
+      "desc1": "Ты уже нашёл меня где-то ещё. Здесь собрано всё остальное: мои арты, другие ссылки, цены на заказы, YCH и адопты.",
+      "desc2": "Я рисую милых персонажей, фанарт и экспериментальные работы: от аниме и фэнтезийных гуманоидов до кемономими и гуманоидных фурри. Есть идея? Осмотрись, и давай посмотрим, что из неё можно сделать.",
+      "pathA": {
+        "tag": "ВАРИАНТ А · АРТЫ И АРХИВЫ",
+        "title": "Галерея и Площадки",
+        "sub": "Публичные SFW-примеры и галереи на DA, FA, Pixiv, X. За дополнительными или NSFW-примерами напишите мне."
+      },
+      "pathB": {
+        "tag": "ВАРИАНТ Б · ЗАКАЗАТЬ АРТ",
+        "title": "Цены, Поэтапка и Адопты",
+        "sub": "Сравнение этапов, тиры адоптов и калькулятор"
+      }
+    },
+    "contacts": {
+      "eyebrow": "ПРЯМАЯ СВЯЗЬ И СОЦСЕТИ",
+      "title": "Где меня найти и куда писать",
+      "primaryTitle": "Основная связь (Личные сообщения и Почта)",
+      "platformsTitle": "Галереи, Аукционы и Площадки"
+    },
+    "featured": {
+      "eyebrow": "ИЗБРАННЫЕ РАБОТЫ",
+      "title": "Примеры работ",
+      "viewAll": "Открыть всю галерею →"
+    },
+    "pricing": {
+      "eyebrow": "ПРАЙС · ПОЭТАПКА · АДОПТЫ · ЮЧИ",
+      "title": "Цены и комплектация заказов",
+      "sub": "Сравни пакеты индивидуальных заказов, накопительные уровни адоптов и ориентиры цен YCH. Калькулятор показывает начальную оценку, окончательную цену и наличие слота нужно подтвердить напрямую.",
+      "tabs": {
+        "custom": "Индивидуальные заказы",
+        "adopt": "Адопты и Уровни",
+        "ych": "Цены YCH"
+      },
+      "stageSectionTitle": "Пакеты индивидуальных заказов",
+      "stageSectionHint": "Выбери пакет, чтобы загрузить его в калькулятор",
+      "stages": [
+        {
+          "key": "single",
+          "name": "Один персонаж + простой фон",
+          "range": "От $200",
+          "time": "14–30 рабочих дней",
+          "desc": "Один персонаж на белом или простом фоне. Итоговая цена зависит от задачи и сложности."
+        },
+        {
+          "key": "duo",
+          "name": "Два персонажа + простой фон",
+          "range": "От $300",
+          "time": "14–30 рабочих дней",
+          "desc": "Второй персонаж +$100, каждый следующий после него +$80."
+        },
+        {
+          "key": "extras",
+          "name": "Дополнительные опции",
+          "range": "От $50",
+          "time": "Цена уточняется",
+          "desc": "Дополнительный наряд +$50. Второй персонаж +$100, каждый следующий +$80. Обычное оружие / предмет +$35; сложное оружие от +$70; сложная броня от +$60. Фон — цена по договорённости."
+        }
+      ],
+      "matrix": {
+        "eyebrow": "ТАБЛИЦА ЦЕН (USD)",
+        "title": "Матрица цен по формату и этапу",
+        "hint": "Актуальные стартовые цены указаны в карточках выше.",
+        "format": "Формат",
+        "s1": "Скетч",
+        "s2": "Базовый цвет",
+        "s3": "Полный рендер",
+        "bust": "Портрет / По грудь",
+        "bustSub": "Голова и плечи (Bust)",
+        "half": "По пояс / бёдра",
+        "halfSub": "Half-Body",
+        "full": "В полный рост",
+        "fullSub": "Full-Body"
+      },
+      "compare": {
+        "eyebrow": "ИНТЕРАКТИВНАЯ ШТОРКА",
+        "title": "Сравнение этапов До / После",
+        "hint": "Потяни ползунок на арте влево или вправо для сравнения детализации"
+      },
+      "breakdown": {
+        "eyebrow": "ПРОРАБОТКА ДИЗАЙНА",
+        "title": "Детали и акценты в арте персонажей",
+        "items": [
+          {
+            "tag": "СИЛУЭТ И КОСТЮМ",
+            "title": "Полный рост и крой одежды",
+            "desc": "Читаемый силуэт, тёмный минимализм или фэнтези-гардероб и гармония палитры.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c"
+          },
+          {
+            "tag": "ПОРТРЕТ И ЭМОЦИИ",
+            "title": "Лицо, взгляд и мимика",
+            "desc": "Детальная проработка глаз, прядей волос, пирсинга, макияжа и эмоций.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c"
+          },
+          {
+            "tag": "РУКИ И АКСЕССУАРЫ",
+            "title": "Пластика рук, оружие и детали",
+            "desc": "Выразительные жесты кистей, кольца, оружие и крупные планы материалов.",
+            "img": "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c"
+          }
+        ]
+      },
+      "adoptSection": {
+        "eyebrow": "УРОВНИ АДОПТОВ · $100 – $500",
+        "title": "Адопты: базовый дизайн и бонусные уровни ставок",
+        "desc": "Каждый следующий уровень адопта включает предыдущие. От $200: полный рендер и одна альтернативная версия на выбор. От $350: дополнительный арт персонажа. От $500: референс-лист и крупные планы. Дополнительный наряд — $50. Минимальный шаг ставки — $5.",
+        "blueprintTitle": "ЭСКИЗ-СХЕМА УРОВНЯ",
+        "blueprintSub": "Отрисовывается индивидуально под победителя аукциона",
+        "tiers": [
+          {
+            "val": 100,
+            "badge": "SB · НАЧАЛЬНАЯ СТАВКА",
+            "price": "$100",
+            "title": "SB — Базовый дизайн адопта",
+            "desc": "Базовый дизайн от $100, с оружием — от $110. Продаётся один раз; похожий/twin-дизайн после продажи — отдельный заказ. SFW-изображение / PNG без водяного знака и личное использование включены. Минимальный шаг ставки — $5.",
+            "perks": [
+              "SFW-изображение / PNG без водяного знака",
+              "Личное использование",
+              "Базовые файлы после оплаты"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 200,
+            "badge": "УРОВЕНЬ II",
+            "price": "$200+",
+            "title": "+ Полный рендер и альтернативная версия",
+            "desc": "При ставке от $200 комплект включает полный рендер и одну согласованную альтернативную версию, например другой наряд или вариант вида персонажа.",
+            "perks": [
+              "Всё из уровня SB",
+              "Полноценный рендер",
+              "Одна согласованная альтернативная версия"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 350,
+            "badge": "УРОВЕНЬ III",
+            "price": "$350+",
+            "title": "+ Дополнительный арт персонажа",
+            "desc": "При ставке от $350 в комплект также входит дополнительная иллюстрация с персонажем.",
+            "perks": [
+              "Всё из уровня II",
+              "Дополнительная иллюстрация",
+              "Детали согласуются с победителем"
+            ],
+            "hasSample": false
+          },
+          {
+            "val": 500,
+            "badge": "AB · АВТОВЫКУП",
+            "price": "$500+",
+            "title": "+ Референс-лист и крупные планы",
+            "desc": "От $500: бонусы предыдущих уровней, референс-лист и крупные планы. В AB NSFW включена и тогда, когда альтернативой уровня II выбран другой тип. Коммерческое использование обсуждается отдельно.",
+            "perks": [
+              "Всё из уровня III",
+              "Референс-лист",
+              "Крупные планы выбранных деталей",
+              "NSFW-версия включена"
+            ],
+            "hasSample": false
+          }
+        ]
+      },
+      "ychSection": {
+        "eyebrow": "ГОТОВЫЕ КОМПОЗИЦИИ",
+        "title": "Ориентиры цен YCH",
+        "desc": "Опубликованные базовые цены YCH. Карточки показывают ориентиры, но не подтверждают, что конкретный слот сейчас свободен.",
+        "slots": [
+          {
+            "val": 30,
+            "code": "YCH · СКЕТЧ",
+            "title": "Чистый скетч",
+            "stage": "Скетч",
+            "price": "$30",
+            "status": "Ориентир по цене",
+            "desc": "Ориентировочный срок: до 14 рабочих дней."
+          },
+          {
+            "val": 60,
+            "code": "YCH · ЦВЕТНОЙ СКЕТЧ",
+            "title": "Цветной скетч",
+            "stage": "Цветной скетч",
+            "price": "$60",
+            "status": "Ориентир по цене",
+            "desc": "Ориентировочный срок: до 14 рабочих дней."
+          },
+          {
+            "val": 120,
+            "code": "YCH · ПОЛНЫЙ РЕНДЕР",
+            "title": "Полный рендер",
+            "stage": "Полный рендер",
+            "price": "$120",
+            "status": "Ориентир по цене",
+            "desc": "Ориентировочный срок: до 14 рабочих дней."
+          },
+          {
+            "val": 160,
+            "code": "YCH · РЕНДЕР + NSFW",
+            "title": "Полный рендер + NSFW-версия",
+            "stage": "NSFW обсудить заранее",
+            "price": "$160",
+            "status": "Ориентир по цене",
+            "desc": "NSFW-контент нужно обсудить и согласовать заранее."
+          }
+        ]
+      }
+    },
+    "calc": {
+      "title": "Калькулятор заявки",
+      "reset": "Сброс",
+      "modes": {
+        "custom": "Индивидуальная Комишка",
+        "adopt": "Адопт и Уровни",
+        "ych": "Слот YCH"
+      },
+      "stageCustom": "Этап проработки",
+      "stageAdopt": "Уровень ставки (Bid Tier)",
+      "stageYch": "Выбор слота и рендера YCH",
+      "crop": "Формат (Кадрирование)",
+      "addonsCustom": "Дополнения к комишке",
+      "addonsAdopt": "Дополнения к адопту",
+      "addonsYch": "Опции для YCH",
+      "notesPlaceholder": "Необязательно: ссылки на рефы, идея позы, SFW/NSFW...",
+      "totalLabel": "Ориентировочно",
+      "copyBtn": "Скопировать готовый запрос для ЛС",
+      "copiedBtn": "Скопировано в буфер обмена!",
+      "previewLabel": "Предпросмотр текста заявки"
+    },
+    "gallery": {
+      "eyebrow": "АРХИВ РАБОТ",
+      "title": "Галерея",
+      "sub": "Смотри работы по категориям. Контент 18+ останется размытым, пока ты не подтвердишь возраст.",
+      "filters": {
+        "all": "Все работы",
+        "comm": "Коммишки",
+        "adopt": "Адопты",
+        "ych": "YCH",
+        "fanart": "Фан-арт",
+        "other": "Другие работы"
+      },
+      "nsfwToggle": "Показывать контент 18+",
+      "modal": {
+        "eyebrow": "ПРЕДУПРЕЖДЕНИЕ 18+",
+        "title": "Подтверждение возраста (18+)",
+        "desc": "Этот фильтр открывает взрослые / NSFW-работы, предназначенные только для совершеннолетних. Тебе уже есть 18 лет?",
+        "yes": "Да, мне есть 18",
+        "no": "Нет, оставить размытым"
+      },
+      "extTitle": "Полные архивы и внешние галереи",
+      "extSub": "Хочешь посмотреть больше работ в полном разрешении или поучаствовать в аукционах? Мои профили:"
+    },
+    "queue": {
+      "eyebrow": "СТАТУС ЗАКАЗОВ",
+      "title": "Текущая очередь (Queue)",
+      "sub": "Здесь отображаются только активные заказы. Завершённые уже покинули сцену.",
+      "cols": {
+        "slot": "Заказ",
+        "client": "Тип",
+        "details": "Детали",
+        "stage": "Статус",
+        "progress": "Прогресс"
+      },
+      "loading": "Загружаем актуальную очередь…",
+      "emptyTitle": "Все заказы разобраны!",
+      "empty": "В студии подозрительно тихо… Сейчас активных заказов нет. Возможно, художник рисует, доливает чай или драматично смотрит на пустой холст.",
+      "error": "Не удалось загрузить очередь. Попробуйте позже или напишите мне напрямую.",
+      "noProgress": "Ожидается обновление прогресса",
+      "queuedProgress": "Ещё не начат",
+      "started": "Начат",
+      "eta": "Ожидаемое завершение"
+    },
+    "tos": {
+      "eyebrow": "TERMS OF SERVICE",
+      "title": "Правила заказов, адоптов и YCH (T.O.S.)",
+      "sub": "Заказывая комишку или покупая адопта/YCH, вы соглашаетесь с этими простыми правилами.",
+      "summaryTitle": "Коротко о главном (Сводка по карточкам)",
+      "cards": [
+        {
+          "num": "01",
+          "title": "Оплата и рассрочка",
+          "desc": "PayPal / Ko-fi; для адоптов также DeviantArt. Оплата в течение 48 часов после подтверждения; при согласованной рассрочке обязателен первый взнос."
+        },
+        {
+          "num": "02",
+          "title": "Возврат средств",
+          "desc": "Условия отмены и возврата обсуждаем до оплаты. Если я не смогу закончить согласованную работу, обсудим отмену и возврат за невыполненную часть."
+        },
+        {
+          "num": "03",
+          "title": "Правки на скетче",
+          "desc": "На этапе скетча включено до 5 мелких правок. После утверждения скетча изменения могут оплачиваться отдельно; мои собственные ошибки исправляю бесплатно."
+        },
+        {
+          "num": "04",
+          "title": "Личное использование",
+          "desc": "По умолчанию арт для личного пользования. При публикации указывайте @Nektahr_."
+        },
+        {
+          "num": "05",
+          "title": "Перепродажа адоптов",
+          "desc": "Разрешена по цене не выше покупки (дороже — только если есть новые заказанные арты)."
+        },
+        {
+          "num": "06",
+          "title": "Запрет ИИ и NFT",
+          "desc": "Строго запрещено использовать мои работы для обучения нейросетей (AI) и создания NFT."
+        }
+      ],
+      "agreeCheck": "Я прочитал(а) и согласен(на) с правилами ToS (включить отметку о согласии в текст заявки)",
+      "fullTitle": "Полные условия работы (Detailed T.O.S.)",
+      "sections": [
+        {
+          "tag": "РАЗДЕЛ 01 · ОПЛАТА, БРОНЬ И ВОЗВРАТЫ",
+          "title": "Способы оплаты, рассрочка и политика возврата",
+          "bullets": [
+            "Цены указаны в USD; оплату в EUR можно согласовать заранее. Коммишки и YCH: PayPal или Ko-fi. Адопты: PayPal, Ko-fi или DeviantArt — способ подтверждаем для конкретного лота.",
+            "Оплата — в течение 48 часов после подтверждения заказа или выигравшей ставки. Если нужны другие условия, обсуди их до оплаты.",
+            "Если не отвечать 24 часа, неоплаченная бронь может быть снята. Неоплаченный адопт снова предлагается к продаже; у YCH снимается бронь заказа, а шаблон остаётся доступным для повторных заказов.",
+            "При ставке за адопт выше $200 можно заранее согласовать рассрочку. Первый взнос обязателен; сумму и график остальных платежей обсуждаем лично. Финальные файлы передаются после полной оплаты.",
+            "Условия отмены и возврата обсуждаем до оплаты. Если я не смогу выполнить согласованную работу, обсудим отмену и возврат за невыполненную часть.",
+            "Для YCH можно обсудить любой вид, гендер и телосложение; изменения должны подходить шаблону и согласуются заранее. Скетч $30, цветной скетч $60, полный рендер $120, AB $160 с одной NSFW-версией. Дополнительный наряд — $50. Шаблон доступен для повторных заказов."
+          ]
+        },
+        {
+          "tag": "РАЗДЕЛ 02 · ПРОЦЕСС, WIP-ЭТАПЫ И СРОКИ",
+          "title": "Как строится работа и сколько времени занимает арт",
+          "bullets": [
+            "Сроки: YCH до 14 рабочих дней; индивидуальные заказы 14–30 рабочих дней; базовый уровень адопта сразу, расширенные уровни 14–40 рабочих дней. Срок отсчитывается после получения оплаты и всех референсов. При согласованной рассрочке — после первого платежа и референсов.",
+            "Я присылаю WIP-скриншоты в ЛС на каждом ключевом этапе: 1) композиционный скетч, 2) чистый лайн и базовые цвета, 3) финальный рендер.",
+            "В разделе «Очередь» отображаются публичные номера заказов, ориентировочные сроки и статус работы. Личные данные не публикуются.",
+            "Срочный заказ на 3–5 рабочих дней может стоить дополнительно $50–$100 в зависимости от дедлайна и объёма."
+          ]
+        },
+        {
+          "tag": "РАЗДЕЛ 03 · ПРАВКИ И ИЗМЕНЕНИЯ",
+          "title": "Что можно поправить бесплатно, а что за доплату",
+          "bullets": [
+            "На этапе скетча: включено до 3–5 бесплатных правок по позе, анатомии, эмоциям и деталям костюма.",
+            "На этапе базового цвета: бесплатно корректируются оттенки и палитра.",
+            "На этапе рендера: значительные изменения утверждённой позы, одежды или ракурса после согласования лайна оплачиваются отдельно в зависимости от сложности.",
+            "Мои ошибки: если я упустил чётко указанную деталь с вашего референса, исправлю её бесплатно на любом этапе.",
+            "Дополнительные мелкие правки сверх включённых — $10 за каждую. Средние изменения и большие переделки оцениваются до начала правок. Исправление моих ошибок остаётся бесплатным.",
+            "Дополнительное выражение лица — $25; остальные альт-версии — $50 (futa $25 при NSFW-основе)."
+          ]
+        },
+        {
+          "tag": "РАЗДЕЛ 04 · АВТОРСКИЕ ПРАВА, ПРИВАТНОСТЬ И КОММЕРЦИЯ",
+          "title": "Личное использование, NDA и коммерческая лицензия",
+          "bullets": [
+            "Авторское право остаётся за мной: я могу публиковать уменьшенную версию с вотермаркой в своём портфолио (DA, FA, Pixiv, X).",
+            "Личное использование (по умолчанию): вы можете ставить арт на аватарку, баннер, оформлять профиль (Toyhouse) и печатать для себя с указанием автора @Nektahr_.",
+            "Приватный заказ / NDA (+35%): если вы хотите, чтобы работа нигде не публиковалась и осталась полностью закрытой.",
+            "Аватарка, публикация покупки в своём профиле и печать для себя — личное использование. Продажа принтов или мерча, реклама и использование арта в платном продукте требуют отдельного коммерческого соглашения; цена по договорённости."
+          ]
+        },
+        {
+          "tag": "РАЗДЕЛ 05 · ПРАВИЛА ВЛАДЕНИЯ АДОПТАМИ И ДИЗАЙНАМИ",
+          "title": "Права покупателя, редизайн и перепродажа",
+          "bullets": [
+            "После полной оплаты можно переименовать персонажа, изменить историю или дизайн и публиковать его на своих страницах. Сохраняй указание автора дизайна. Коммерческое использование — по отдельной договорённости.",
+            "Каждый следующий уровень адопта включает предыдущие. От $200: полный рендер и одна альтернативная версия на выбор. От $350: дополнительный арт персонажа. От $500: референс-лист и крупные планы. Дополнительный наряд — $50. Минимальный шаг ставки — $5.",
+            "Адопта можно перепродать за ту же цену, за которую ты его купил, или дешевле. Сообщи мне о передаче и сохрани авторство дизайна. Дарение и обмен разрешены.",
+            "Авторство базового дизайна всегда остаётся за Nek'tahr (@nektahr).",
+            "PSD доступен по запросу только для адоптов на уровне AB и выше. Отдельно для коммишек и YCH PSD не предлагается."
+          ]
+        },
+        {
+          "tag": "РАЗДЕЛ 06 · СТРОГИЙ ЗАПРЕТ НА ИИ (AI) И NFT",
+          "title": "Никаких нейросетей и блокчейна",
+          "bullets": [
+            "Категорически запрещено загружать мои скетчи, адоптов или готовые работы в генераторы ИИ, использовать для обучения LoRA или датасетов машинного обучения.",
+            "Запрещено выпускать мои работы или дизайнов в виде NFT и использовать в крипто-проектах."
+          ]
+        }
+      ],
+      "willTitle": "✓ Что я рисую",
+      "willList": [
+        "Оригинальных персонажей (OC), фэнтези, DnD",
+        "Аниме / Семи-реализм / Тёмную эстетику",
+        "Сложные костюмы, броню, оружие, украшения",
+        "Кемономими (ушки, хвосты, рога, крылья)",
+        "Пары, романтику и эстетичный NSFW (18+)"
+      ],
+      "wontTitle": "! Сложные запросы: сначала обсудить",
+      "wontList": [
+        "Меха, полный антро и экстремальные пропорции могут быть сложнее или дороже",
+        "NSFW-заказы нужно обсудить до оплаты",
+        "Сложные и нестандартные задачи согласуйте заранее"
+      ]
+    },
+    "faq": {
+      "eyebrow": "ЧАСТЫЕ ВОПРОСЫ",
+      "title": "Ответы на вопросы по заказам (FAQ)",
+      "sub": "Подробные ответы про оформление заказа, рассрочку, бонусные тиры адоптов, форматы файлов и очередь.",
+      "cats": {
+        "all": "Все вопросы",
+        "order": "Заказ и Рефы",
+        "payment": "Оплата и Рассрочка",
+        "adopts": "Адопты и YCH",
+        "process": "Процесс и Файлы"
+      },
+      "items": [
+        {
+          "cat": "order",
+          "q": "Как оформить заказ?",
+          "a": "Собери ориентировочную заявку в калькуляторе на вкладке «Прайс», нажми «Скопировать готовый запрос» и пришли его мне в Discord (drintrava), в Telegram (@nek_tahr) или на почту (nektahr@gmail.com) вместе с референсами."
+        },
+        {
+          "cat": "order",
+          "q": "Можно ли заказать арт без готового референс-листа?",
+          "a": "Да! Я спокойно работаю по мудбордам, фотографиям одежды, скриншотам из игр/Picrew и понятному текстовому описанию. Если мы разрабатываем сложный дизайн с нуля чисто по тексту, может добавиться небольшая доплата за концепт."
+        },
+        {
+          "cat": "payment",
+          "q": "Какие способы оплаты и валюты ты принимаешь?",
+          "a": "Цены указаны в USD; оплату в EUR можно согласовать заранее. Коммишки и YCH: PayPal или Ko-fi. Адопты: PayPal, Ko-fi или DeviantArt — способ подтверждаем для конкретного лота. Оплата — в течение 48 часов после подтверждения заказа или выигравшей ставки. Если нужны другие условия, обсуди их до оплаты."
+        },
+        {
+          "cat": "payment",
+          "q": "Есть ли рассрочка (Payment Plan) на крупные заказы и AB адоптов?",
+          "a": "При ставке за адопт выше $200 можно заранее согласовать рассрочку. Первый взнос обязателен; его сумму и даты остальных платежей обсуждаем лично. Финальные файлы — после полной оплаты."
+        },
+        {
+          "cat": "adopts",
+          "q": "Как работают бонусные уровни адоптов, если для них пока нет примера?",
+          "a": "Разблокированные бонусы отрисовываются индивидуально. Ориентировочный срок для расширенных уровней адопта — 14–40 рабочих дней в зависимости от согласованного объёма."
+        },
+        {
+          "cat": "adopts",
+          "q": "Где проходят аукционы на Адоптов и YCH и когда они заканчиваются?",
+          "a": "Активные аукционы и время завершения указываются на соответствующей площадке. Проверьте мой профиль или напишите мне, чтобы уточнить актуальную доступность."
+        },
+        {
+          "cat": "adopts",
+          "q": "Можно ли изменить телосложение, эмоции или добавить ушки/рога/крылья в YCH?",
+          "a": "Небольшие изменения мимики, кемономими-детали (ушки, хвосты, рожки) и подгонка под пропорции твоего персонажа делаются без проблем. Для крупных крыльев или сложного костюма в калькуляторе YCH есть удобные опции."
+        },
+        {
+          "cat": "process",
+          "q": "Как следить за очередью и процессом работы?",
+          "a": "Чтобы узнать текущую доступность и прогресс, напиши мне напрямую. На сайте не публикуются данные живой очереди."
+        },
+        {
+          "cat": "process",
+          "q": "В каком разрешении и формате я получу готовую работу?",
+          "a": "Форматы, разрешение и способ передачи файлов согласуются до начала работы. Уточните требования к экспорту при оформлении заказа. PSD доступен по запросу только для адоптов на уровне AB и выше. Отдельно для коммишек и YCH PSD не предлагается. Срок отсчитывается после получения оплаты и всех референсов. При согласованной рассрочке — после первого платежа и референсов."
+        },
+        {
+          "cat": "process",
+          "q": "Можно ли заказать приватный арт (NDA) или коммерцию для мерча / VTuber?",
+          "a": "Да. Приватность / NDA добавляет 35%. Коммерческое использование требует отдельного соглашения и отдельно согласованной доплаты."
+        },
+        {
+          "cat": "order",
+          "q": "Что делать, если сейчас все слоты заняты?",
+          "a": "Напиши мне в Telegram или Discord, чтобы уточнить текущую доступность и возможность попасть в лист ожидания."
+        }
+      ]
+    }
+  }
+};
+
+    const UI_TEXT = {
+      en: {
+        copy: "Copy", copied: "Copied", copyFailed: "Copy failed. Please select and copy the text manually.",
+        quoteRefsLabel: "Reference links", quoteRefsPlaceholder: "Paste character sheets, moodboards or image links", quoteDeadlineLabel: "Preferred deadline", quoteDeadlinePlaceholder: "Flexible / add a date", quoteContactLabel: "Preferred contact", quoteContactTelegram: "Telegram", quoteContactDiscord: "Discord", quoteContactEmail: "Email", quoteBriefLabel: "Brief & extra details", quoteStepPackage: "01 / Choose your package", quoteStepExtras: "02 / Customize the order", quoteStepBrief: "03 / Tell me about it", quoteEstimateNote: "Starting estimate only. Final price depends on the brief and will be confirmed directly.", quoteDeadlineLine: "Preferred deadline", quoteContactLine: "Preferred contact", quoteRefsLine: "Reference links", quoteNotProvided: "Not provided",
+        copyPermissionFailed: "Copy failed. Please select and copy the text manually.",
+        agreementAttached: "ToS agreement attached to Quote Builder", loadedOne: "Loaded: 1 character", loadedTwo: "Loaded: 2 characters",
+        loadedTier: "Loaded into Quote Builder ($VALUE)", noSamples: "No portfolio samples in this category yet.", confirmAvailability: "Confirm availability",
+        headerTagline: "Character Art & Commissions", quoteGreeting: "Hi Nek'tahr! I'd like to request:", quoteCategory: "Category", quoteAddons: "Add-ons", quoteNone: "None",
+        quoteTotal: "Estimated starting total", quoteReferences: "References / Notes", quotePlaceholder: "[Will attach references in DM]", quoteTos: "ToS",
+        quoteAccepted: "Accepted (confirmed by checkbox)", quoteNotConfirmed: "Not confirmed", closePreview: "Close artwork preview", pricingLink: "Pricing →", footerRights: "NEK'TAHR © 2026 · ALL RIGHTS RESERVED · NO AI / NO NFT", footerTelegram: "Telegram DM"
+      },
+      es: {
+        copy: "Copiar", copied: "Copiado", copyFailed: "No se pudo copiar. Selecciona y copia el texto manualmente.",
+        quoteRefsLabel: "Enlaces de referencia", quoteRefsPlaceholder: "Hojas de personaje, moodboards o imágenes", quoteDeadlineLabel: "Fecha preferida", quoteDeadlinePlaceholder: "Flexible / añade una fecha", quoteContactLabel: "Contacto preferido", quoteContactTelegram: "Telegram", quoteContactDiscord: "Discord", quoteContactEmail: "Correo", quoteBriefLabel: "Descripción y detalles", quoteStepPackage: "01 / Elige el paquete", quoteStepExtras: "02 / Personaliza el pedido", quoteStepBrief: "03 / Cuéntame tu idea", quoteEstimateNote: "Precio inicial orientativo. El precio final depende de la descripción y se confirma directamente.", quoteDeadlineLine: "Fecha preferida", quoteContactLine: "Contacto preferido", quoteRefsLine: "Enlaces de referencia", quoteNotProvided: "No indicado",
+        copyPermissionFailed: "No se pudo copiar. Selecciona y copia el texto manualmente.",
+        agreementAttached: "Aceptación de ToS añadida a la solicitud", loadedOne: "Cargado: 1 personaje", loadedTwo: "Cargado: 2 personajes",
+        loadedTier: "Cargado en la solicitud ($VALUE)", noSamples: "Todavía no hay muestras de portafolio en esta categoría.", confirmAvailability: "Confirma disponibilidad",
+        headerTagline: "Arte de personajes y comisiones", quoteGreeting: "¡Hola, Nek'tahr! Me gustaría solicitar:", quoteCategory: "Categoría", quoteAddons: "Extras", quoteNone: "Ninguno",
+        quoteTotal: "Precio inicial estimado", quoteReferences: "Referencias / notas", quotePlaceholder: "[Adjuntaré las referencias por mensaje]", quoteTos: "Términos (ToS)",
+        quoteAccepted: "Aceptado (confirmado con la casilla)", quoteNotConfirmed: "Sin confirmar", closePreview: "Cerrar vista previa de la obra", pricingLink: "Precios →", footerRights: "NEK'TAHR © 2026 · TODOS LOS DERECHOS RESERVADOS · SIN IA / SIN NFT", footerTelegram: "Mensaje por Telegram"
+      },
+      ru: {
+        copy: "Скопировать", copied: "Скопировано", copyFailed: "Не удалось скопировать. Выделите и скопируйте текст вручную.",
+        quoteRefsLabel: "Ссылки на референсы", quoteRefsPlaceholder: "Реф-листы, мудборды или ссылки на изображения", quoteDeadlineLabel: "Желаемый срок", quoteDeadlinePlaceholder: "Не срочно / укажи дату", quoteContactLabel: "Предпочтительный контакт", quoteContactTelegram: "Telegram", quoteContactDiscord: "Discord", quoteContactEmail: "Почта", quoteBriefLabel: "Описание и детали", quoteStepPackage: "01 / Выбери пакет", quoteStepExtras: "02 / Настрой заказ", quoteStepBrief: "03 / Расскажи об идее", quoteEstimateNote: "Это ориентировочная стартовая цена. Итог зависит от задачи и подтверждается отдельно.", quoteDeadlineLine: "Желаемый срок", quoteContactLine: "Предпочтительный контакт", quoteRefsLine: "Ссылки на референсы", quoteNotProvided: "Не указано",
+        copyPermissionFailed: "Не удалось скопировать. Выделите и скопируйте текст вручную.",
+        agreementAttached: "Отметка о согласии с ToS добавлена в заявку", loadedOne: "Выбрано: 1 персонаж", loadedTwo: "Выбрано: 2 персонажа",
+        loadedTier: "Добавлено в заявку ($VALUE)", noSamples: "В этой категории пока нет примеров портфолио.", confirmAvailability: "Уточнить доступность",
+        headerTagline: "Арт персонажей и заказы", quoteGreeting: "Привет, Nek'tahr! Хочу заказать:", quoteCategory: "Категория", quoteAddons: "Дополнения", quoteNone: "Нет",
+        quoteTotal: "Ориентировочная стартовая цена", quoteReferences: "Референсы / примечания", quotePlaceholder: "[Пришлю референсы в личные сообщения]", quoteTos: "Правила (ToS)",
+        quoteAccepted: "Согласие подтверждено галочкой", quoteNotConfirmed: "Не подтверждено", closePreview: "Закрыть предпросмотр работы", pricingLink: "Прайс →", footerRights: "NEK'TAHR © 2026 · ВСЕ ПРАВА ЗАЩИЩЕНЫ · ЗАПРЕТ ИИ / NFT", footerTelegram: "Написать в Telegram"
+      }
+    };
+    function uiText(key) {
+      return (UI_TEXT[currentLang] && UI_TEXT[currentLang][key]) || UI_TEXT.en[key] || key;
+    }
+
+    // Individual Calculator Data per Category
+    const CALC_CONFIG = {
+      custom: {
+        options: [
+          { value: "single", price: 200, label: { en: "1 character + simple background — from $200", es: "1 personaje + fondo sencillo — desde $200", ru: "1 персонаж + простой фон — от $200" } },
+          { value: "duo", price: 300, label: { en: "2 characters + simple background — from $300", es: "2 personajes + fondo sencillo — desde $300", ru: "2 персонажа + простой фон — от $300" } }
+        ],
+        addons: [
+          { id: "outfit", price: 50, label: { en: "Extra outfit (+$50)", es: "Atuendo extra (+$50)", ru: "Дополнительный наряд (+$50)" } },
+          { id: "extra_character", price: 100, label: { en: "Additional character (from +$100)", es: "Personaje adicional (desde +$100)", ru: "Дополнительный персонаж (от +$100)" } },
+          { id: "rush", price: 50, label: { en: "Rush order (minimum +$50; may be +$100)", es: "Pedido urgente (mínimo +$50; puede ser +$100)", ru: "Срочный заказ (от +$50, может быть +$100)" } }
+        ],
+        mults: [
+          { id: "nda", mult: 1.35, badge: "+35%", label: { en: "Private / NDA", es: "Privado / NDA", ru: "Приватность / NDA" } }
+        ],
+        note: {
+          en: "Additional character: from $100. Commercial use requires a separate agreement and quote. Rush pricing depends on the deadline. All totals are estimates; confirm the final quote directly. Turnaround starts once payment and all references have been received. For an agreed payment plan, it starts after the first instalment and references.",
+          es: "Personaje adicional: desde $100. El uso comercial requiere un acuerdo y presupuesto separados. El precio urgente depende de la fecha límite. El total es orientativo; confirma el precio final directamente. El plazo empieza tras recibir el pago y todas las referencias. Con un plan de pagos acordado, empieza tras la primera cuota y las referencias.",
+          ru: "Дополнительный персонаж: от $100. Коммерческое использование требует отдельного соглашения и расчёта. Цена срочности зависит от дедлайна. Сумма ориентировочная, окончательную цену нужно подтвердить напрямую. Срок отсчитывается после получения оплаты и всех референсов. При согласованной рассрочке — после первого платежа и референсов."
+        }
+      },
+      adopt: {
+        options: [
+          { value: "100", price: 100, label: { en: "SB — Base design ($100)", es: "SB — Diseño base ($100)", ru: "SB — Базовый дизайн ($100)" } },
+          { value: "110", price: 110, label: { en: "SB — Base design with weapon ($110)", es: "SB — Diseño base con arma ($110)", ru: "SB — Базовый дизайн с оружием ($110)" } },
+          { value: "200", price: 200, label: { en: "Tier II — Full render + alternative version ($200+)", es: "Nivel II — Render + versión alternativa ($200+)", ru: "Уровень II — Рендер + альтернативная версия ($200+)" } },
+          { value: "350", price: 350, label: { en: "Tier III — Bonus character artwork ($350+)", es: "Nivel III — Ilustración extra ($350+)", ru: "Уровень III — Дополнительный арт ($350+)" } },
+          { value: "500", price: 500, label: { en: "AB — Reference sheet + close-ups ($500+)", es: "AB — Hoja de referencia + detalles ($500+)", ru: "AB — Референс-лист + детали ($500+)" } }
+        ],
+        addons: [
+          { id: "feature", price: 50, label: { en: "Extra feature / variant (from +$50)", es: "Detalle o variante extra (desde +$50)", ru: "Дополнительная деталь / вариант (от +$50)" } }
+        ],
+        mults: [
+          { id: "nda_a", mult: 1.35, badge: "+35%", label: { en: "Private / NDA", es: "Privado / NDA", ru: "Приватность / NDA" } }
+        ],
+        note: {
+          en: "PSD files are available on request only for adoptables at AB or above. PSD files are not offered separately for commissions or YCH. From $200, one alternative is included; AB also includes NSFW. Below $200 or outside the included choice, NSFW is +$50. Tier inclusions are cumulative. Commercial use is not included automatically and requires a separate agreement and quote.",
+          es: "Desde $200 se incluye una alternativa; AB también incluye NSFW. NSFW adicional o por debajo de $200: +$50. Los niveles incluyen lo anterior. El uso comercial no está incluido automáticamente y requiere un acuerdo y presupuesto separados.",
+          ru: "От $200 включена одна альтернатива; в AB также включена NSFW. Ниже $200 или вне включённого выбора NSFW — +$50. Каждый уровень включает предыдущие бонусы. Коммерческое использование автоматически не включено и требует отдельного соглашения и расчёта."
+        }
+      },
+      ych: {
+        options: [
+          { value: "30", price: 30, label: { en: "Clean Sketch ($30)", es: "Boceto limpio ($30)", ru: "Чистый скетч ($30)" } },
+          { value: "60", price: 60, label: { en: "Color Sketch ($60)", es: "Boceto a color ($60)", ru: "Цветной скетч ($60)" } },
+          { value: "120", price: 120, label: { en: "Full Render ($120)", es: "Render completo ($120)", ru: "Полный рендер ($120)" } },
+          { value: "160", price: 160, label: { en: "AB — Full Render + NSFW ($160)", es: "AB — Render + NSFW ($160)", ru: "AB — Полный рендер + NSFW ($160)" } }
+        ],
+        addons: [
+          { id: "outfit_y", price: 50, label: { en: "Extra outfit (+$50)", es: "Atuendo extra (+$50)", ru: "Дополнительный наряд (+$50)" } }
+        ],
+        mults: [
+          { id: "nda_y", mult: 1.35, badge: "+35%", label: { en: "Private / NDA", es: "Privado / NDA", ru: "Приватность / NDA" } }
+        ],
+        note: {
+          en: "YCH turnaround: up to 14 business days. NSFW must be discussed and agreed in advance. Commercial use requires a separate agreement and quote.",
+          es: "Plazo de YCH: hasta 14 días laborables. El contenido NSFW debe acordarse de antemano. El uso comercial requiere un acuerdo y presupuesto separados.",
+          ru: "Срок YCH: до 14 рабочих дней. NSFW нужно согласовать заранее. Коммерческое использование требует отдельного соглашения и расчёта."
+        }
+      }
+    };
+
+    function getProcessLabel(item) {
+      if(item.processWork===7)return ({en:'Line + Color → Full Render',ru:'Лайн + цвет → Полный рендер',es:'Líneas + color → Render completo'})[currentLang];if(item.catalogWork){const model=(window.PORTFOLIO_WORKS||[]).find(w=>w.id===item.processWork);if(model?.historicalNote)return model.historicalNote[currentLang]||model.historicalNote.en;if(model?.historicalTier==='AB')return 'AB · 2024';if(model?.type==='single')return (model.labels[currentLang]||model.labels.en)[0];return model?.type==='process'?({en:'Art process',ru:'Процесс работы',es:'Proceso'})[currentLang]:model?.type==='ych'?({en:'Template → Examples',ru:'Шаблон → Примеры',es:'Plantilla → Ejemplos'})[currentLang]:({en:'Versions',ru:'Версии',es:'Versiones'})[currentLang];}
+      const labels={en:['Art process','SFW / NSFW','Template → Result + Alt'],es:['Proceso','SFW / NSFW','Plantilla → Resultado + Alt'],ru:['Процесс работы','SFW / NSFW','Шаблон → Результат + Альт']};
+      if(item.processWork===4)return ({en:'Template → Color Sketch + Alt',ru:'Шаблон → Цветной скетч + Альт',es:'Plantilla → Boceto a color + Alt'})[currentLang];if([5,6].includes(item.processWork))return ({en:'Template → Color Sketch',ru:'Шаблон → Цветной скетч',es:'Plantilla → Boceto a color'})[currentLang];if(item.processWork>=5)return ({en:'Template → Finished example',ru:'Шаблон → Готовый пример',es:'Plantilla → Ejemplo terminado'})[currentLang];return labels[currentLang][item.processWork===3?1:0];
+    }
+    function getGalleryKind(item) {
+      const labels={en:{comm:'Commission',fanart:'Fan art',ych:'YCH',adopt:'Adopt',other:'Illustration'},ru:{comm:'Коммишен',fanart:'Фан-арт',ych:'YCH',adopt:'Адопт',other:'Иллюстрация'},es:{comm:'Encargo',fanart:'Fan art',ych:'YCH',adopt:'Adoptable',other:'Ilustración'}};
+      return (labels[currentLang]||labels.en)[item.cat]||labels.en.other;
+    }
+    function getGallerySeries(item) {
+      if(item.processWork===3)return 'Genshin Impact';
+      return (window.PORTFOLIO_WORKS||[]).find(w=>w.id===item.processWork)?.series||'';
+    }
+    function getGalleryTitle(item) {
+      if(item.localizedTitles)return item.localizedTitles[currentLang]||item.localizedTitles.en;
+      if (item.processWork) {
+        const names={en:['Illustration 1','Illustration 2','Wriothesley','Happy Bun','TH','All Plain to See'],es:['Ilustración 1','Ilustración 2','Wriothesley','Happy Bun','TH','All Plain to See'],ru:['Иллюстрация 1','Иллюстрация 2','Ризли','Happy Bun','TH','All Plain to See']};
+        return names[currentLang][item.processWork-1];
+      }
+      if(item.id===3)return ({en:'Character portrait',ru:'Портрет персонажа',es:'Retrato de personaje'})[currentLang];
+      if(item.id===6)return ({en:'White dress',ru:'Белое платье',es:'Vestido blanco'})[currentLang];
+      const prefix = { en: "Portfolio Sample", es: "Muestra de portafolio", ru: "Пример портфолио" };
+      return `${prefix[currentLang] || prefix.en} ${String(item.id).padStart(2, '0')}`;
+    }
+    function getGalleryDescription() {
+      return ({
+        en: "Public SFW portfolio sample. Open to view; ask me for details.",
+        es: "Muestra pública SFW del portafolio. Ábrela para verla; escríbeme si quieres más detalles.",
+        ru: "Публичный SFW-пример из портфолио. Откройте для просмотра, а за подробностями напишите мне."
+      })[currentLang] || "Public SFW portfolio sample.";
+    }
+    function getGalleryStage() {
+      return ({ en: "SFW Sample", es: "Muestra SFW", ru: "SFW-пример" })[currentLang] || "SFW Sample";
+    }
+    function getGalleryPriceLabel() {
+      return ({ en: "Portfolio", es: "Portafolio", ru: "Портфолио" })[currentLang] || "Portfolio";
+    }
+
+    // Global State
+    let currentLang = 'en'; // EN is main by default
+    let currentPage = document.body.dataset.page || 'board';
+    let currentPricingTab = 'custom';
+    const CALC_MODE_STATE = { custom: { value: 'single', addons: [], mults: [] }, adopt: { value: '100', addons: [], mults: [] }, ych: { value: '30', addons: [], mults: [] } };
+    let currentGalCat = 'all';
+    let currentFaqCat = 'all';
+    let isAdultVerified = false;try{isAdultVerified=sessionStorage.getItem('nektahr-demo-age-verified')==='yes'}catch{}
+    let showNsfwGallery = false;try{showNsfwGallery=isAdultVerified&&sessionStorage.getItem('nektahr-demo-nsfw-visible')==='yes'}catch{}
+    // Change the consent revision when the terms materially change.
+    const TOS_CONSENT_KEY = 'nektahr-tos-consent-20261028';
+    let tosAgreed = false;try{tosAgreed=sessionStorage.getItem(TOS_CONSENT_KEY)==='yes'}catch{}
+    let ageModalReturnFocus = null;
+
+  </script>
+
+  <!-- =====================================================================
+       STICKY HEADER
+  ====================================================================== -->
+  <header class="sticky top-0 z-40 h-16 bg-[#0B0A0E]/90 backdrop-blur-md border-b hairline px-4 sm:px-8 flex items-center justify-between gap-4">
+    <button onclick="switchPage('board')" class="text-left group cursor-pointer flex items-baseline gap-2.5">
+      <span class="serif text-2xl sm:text-3xl tracking-wide text-textMain group-hover:text-accent transition">Nek'tahr</span>
+      <span id="header-tagline" class="hidden sm:inline-block mono text-[10px] uppercase text-textDim">Character Art &amp; Commissions</span>
+    </button>
+
+    <nav id="nav-links" aria-label="Main navigation" class="flex items-center gap-1 sm:gap-5 text-xs sm:text-sm">
+      <button onclick="switchPage('board')" data-p="board" id="nav-board" class="nav-link px-2 py-1 text-accent border-b border-accent transition cursor-pointer">Board</button>
+      <button onclick="switchPage('pricing')" data-p="pricing" id="nav-pricing" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Pricing</button>
+      <button onclick="switchPage('catalog')" data-p="catalog" id="nav-catalog" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Catalog</button>
+      <button onclick="switchPage('gallery')" data-p="gallery" id="nav-gallery" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Gallery</button>
+      <button onclick="switchPage('queue')" data-p="queue" id="nav-queue" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Queue</button>
+      <button onclick="switchPage('tos')" data-p="tos" id="nav-tos" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">ToS</button>
+      <button onclick="switchPage('faq')" data-p="faq" id="nav-faq" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">FAQ</button>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <!-- Language Switcher: EN (main) · ES · RU -->
+      <div class="flex items-center border hairline bg-surface p-0.5 mono text-[11px]">
+        <button onclick="setLang('en')" data-l="en" class="lang-btn px-2 py-0.5 bg-accent text-bg font-medium transition cursor-pointer">EN</button>
+        <button onclick="setLang('es')" data-l="es" class="lang-btn px-2 py-0.5 text-textDim hover:text-textMain transition cursor-pointer">ES</button>
+        <button onclick="setLang('ru')" data-l="ru" class="lang-btn px-2 py-0.5 text-textDim hover:text-textMain transition cursor-pointer">RU</button>
+      </div>
+
+      <button onclick="switchPage('queue')" title="Active commission queue" aria-label="Open active commission queue" class="flex items-center gap-1.5 px-2 py-1 border border-accent/30 bg-accent/5 text-accent mono text-[10px] uppercase cursor-pointer hover:bg-accent/10 transition whitespace-nowrap">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+        <span id="header-queue-counter">QUEUE · —</span>
+      </button>
+
+      <button onclick="switchPage('queue')" class="hidden lg:flex items-center gap-2 px-3 py-1 border border-accent/30 bg-accent/10 text-accent mono text-[10px] uppercase cursor-pointer hover:border-accent transition">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+        <span id="header-status-badge">Check Current Availability</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       MAIN CONTENT CONTAINER (6 SEPARATE PAGES)
+  ====================================================================== -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-8 py-10 sm:py-14">
+
+    <!-- ===================================================================
+         PAGE 1: BOARD (HOME HUB — OPTION A & OPTION B + CONTACTS)
+    ==================================================================== -->
+    <section id="page-board" class="page-section space-y-16">
+      <!-- Hero Grid -->
+      <div class="grid lg:grid-cols-12 gap-10 items-center">
+        <div class="lg:col-span-7 space-y-6">
+          <div id="hero-eyebrow" class="mono text-xs uppercase text-accent">PORTFOLIO · COMMISSIONS · ADOPTS · YCH</div>
+          <h1 id="hero-title" class="serif text-4xl sm:text-6xl leading-[1.06] text-textMain">
+            Hey, welcome to my little corner of the internet!
+          </h1>
+          <div class="max-w-2xl space-y-3 text-sm sm:text-base text-textMuted leading-relaxed">
+            <p id="hero-desc"></p>
+            <p id="hero-desc-2"></p>
+          </div>
+
+          <!-- Two Clear Entry Paths (Option A & Option B) -->
+          <div class="grid sm:grid-cols-2 gap-4 pt-2">
+            <button onclick="switchPage('gallery')" class="card card-interactive p-5 text-left group cursor-pointer">
+              <div class="flex items-center justify-between mono text-[10px] uppercase text-textDim mb-2">
+                <span id="path-a-tag">OPTION A · EXPLORE</span>
+                <span class="text-accent group-hover:translate-x-1 transition">→</span>
+              </div>
+              <div id="path-a-title" class="serif text-2xl text-textMain mb-1">Links & Art Gallery</div>
+              <p id="path-a-sub" class="text-xs text-textMuted"></p>
+            </button>
+
+            <button onclick="switchPage('pricing')" class="card card-interactive p-5 text-left border-accent/40 bg-accent/5 group cursor-pointer">
+              <div class="flex items-center justify-between mono text-[10px] uppercase text-accent mb-2">
+                <span id="path-b-tag">OPTION B · ORDER INFO</span>
+                <span class="text-accent group-hover:translate-x-1 transition">→</span>
+              </div>
+              <div id="path-b-title" class="serif text-2xl text-textMain mb-1">Pricing, Stages & Adopts</div>
+              <p id="path-b-sub" class="text-xs text-textMuted"></p>
+            </button>
+          </div>
+        </div>
+
+        <!-- Featured Cover Artwork -->
+        <div class="lg:col-span-5">
+          <button type="button" onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group text-left w-full">
+            <div class="aspect-[4/5] overflow-hidden relative bg-bg">
+              <img src="/assets/gallery/gal-adopt-cdg-v1bg.webp" alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0B0A0E] via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+                <div>
+                  <span id="hero-featured-label" class="mono text-[10px] uppercase px-2 py-0.5 bg-bg/85 border hairline text-accent">Selected Works</span>
+                  <h3 id="hero-featured-title" class="serif text-2xl text-textMain mt-1.5">Recent Highlights</h3>
+                </div>
+                <span id="hero-featured-link" class="mono text-xs text-accent">Open Full Gallery →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contacts & Networks Section -->
+      <div class="space-y-6 pt-6 border-t hairline">
+        <div>
+          <div id="contacts-eyebrow" class="mono text-xs uppercase text-accent">DIRECT MESSAGING & NETWORKS</div>
+          <h2 id="contacts-title" class="serif text-3xl sm:text-4xl mt-1">Where to Find & Message Me</h2>
+        </div>
+
+        <!-- Primary Direct Contacts: Discord (drintrava), Telegram DM 1, Telegram DM 2, Email -->
+        <div>
+          <h3 id="primary-contacts-label" class="mono text-[11px] uppercase text-textDim mb-3">Primary Direct Contacts (Fastest Response)</h3>
+          <div id="primary-contacts-grid" class="grid md:grid-cols-3 gap-3.5"></div>
+        </div>
+
+        <!-- Verified art platforms and contact destinations -->
+        <div>
+          <h3 id="platforms-label" class="mono text-[11px] uppercase text-textDim mb-3">Art Platforms & Galleries</h3>
+          <div id="platforms-grid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5"></div>
+        </div>
+      </div>
+
+      <!-- Selected Highlights Preview -->
+      <div class="space-y-6 pt-6 border-t hairline">
+        <div class="flex items-end justify-between">
+          <div>
+            <div id="feat-eyebrow" class="mono text-xs uppercase text-accent">SELECTED WORKS</div>
+            <h2 id="feat-title" class="serif text-3xl sm:text-4xl mt-1">Recent Highlights</h2>
+          </div>
+          <button onclick="switchPage('gallery')" id="feat-view-all" class="mono text-xs text-accent hover:underline cursor-pointer">Open Full Gallery →</button>
+        </div>
+        <div id="board-highlights-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+      </div>
+    </section>
+
+
+    <!-- ===================================================================
+         PAGE 2: PRICING, STAGES, ADOPTS, YCH & INDIVIDUAL QUOTE BUILDER
+    ==================================================================== -->
+    <section id="page-pricing" class="page-section hidden space-y-10">
+      <!-- Top Header + 3 Single-Line Tabs Without Numbers -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b hairline pb-8">
+        <div class="max-w-2xl space-y-2">
+          <div id="pricing-eyebrow" class="mono text-xs uppercase text-accent">PRICING · STAGES · ADOPTS · YCH</div>
+          <h1 id="pricing-title" class="serif text-4xl sm:text-5xl">What You're Paying For</h1>
+          <p id="pricing-sub" class="text-sm text-textMuted leading-relaxed"></p>
+        </div>
+
+        <!-- Strictly 1-Line Tabs, No Numbers, No Wrap -->
+        <div role="tablist" aria-label="Pricing categories" class="grid grid-cols-3 gap-2 w-full lg:w-auto lg:min-w-[440px] shrink-0">
+          <button onclick="switchPricingTab('custom')" role="tab" aria-controls="pricing-view-custom" aria-selected="true" data-t="custom" id="ptab-custom" class="ptab-btn px-3 py-2.5 mono text-xs uppercase whitespace-nowrap truncate text-center bg-accent text-bg border border-accent font-medium transition cursor-pointer">
+            Customs & Stages
+          </button>
+          <button onclick="switchPricingTab('adopt')" role="tab" aria-controls="pricing-view-adopt" aria-selected="false" data-t="adopt" id="ptab-adopt" class="ptab-btn px-3 py-2.5 mono text-xs uppercase whitespace-nowrap truncate text-center text-textMuted border hairline hover:text-textMain transition cursor-pointer">
+            Adopts & Bid Tiers
+          </button>
+          <button onclick="switchPricingTab('ych')" role="tab" aria-controls="pricing-view-ych" aria-selected="false" data-t="ych" id="ptab-ych" class="ptab-btn px-3 py-2.5 mono text-xs uppercase whitespace-nowrap truncate text-center text-textMuted border hairline hover:text-textMain transition cursor-pointer">
+            YCH Slots
+          </button>
+        </div>
+      </div>
+
+      <button type="button" class="version-example-link" id="fanart-version-link" onclick="openLightbox(103)"></button>
+      <!-- Main 2-Column Layout: Left (Content per Tab) + Right (Individual Sticky Calculator) -->
+      <div class="pricing-workspace" id="pricing-workspace">
+
+        <!-- LEFT COLUMN (8 cols) -->
+        <div class="lg:col-span-8 space-y-12">
+
+          <!-- SUB-VIEW A: CUSTOMS & STAGES -->
+          <div role="tabpanel" aria-labelledby="ptab-custom" id="pricing-view-custom" class="pricing-subview space-y-12">
+            <!-- 3 Stage Cards -->
+            <div class="space-y-4">
+              <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+                <h2 id="stage-sec-title" class="serif text-3xl">Stage-by-Stage Render Breakdown</h2>
+                <span id="stage-sec-hint" class="mono text-[10px] uppercase text-textDim">Click any card to load into calculator</span>
+              </div>
+              <div id="custom-stages-grid" class="grid sm:grid-cols-3 gap-4"></div>
+            </div>
+            
+            <!-- Character Sheet & Detail Breakdown -->
+            <div class="space-y-4">
+              <div>
+                <div id="brk-eyebrow" class="mono text-[10px] uppercase text-accent">CHARACTER DESIGN FOCUS</div>
+                <h3 id="brk-title" class="serif text-3xl mt-0.5">Character Sheet & Detail Breakdown</h3>
+              </div>
+              <div id="breakdown-grid" class="grid sm:grid-cols-3 gap-4"></div>
+            </div>
+            <div id="process-dock-custom"><section id="pricing-examples" class="examples-panel"><h3 id="pricing-examples-label" class="examples-heading">Artwork examples & stages</h3><div id="pricing-samples-grid" class="pricing-samples-grid"></div></section></div>
+          </div>
+
+          <!-- SUB-VIEW B: ADOPTS & BID TIERS -->
+          <div role="tabpanel" aria-labelledby="ptab-adopt" id="pricing-view-adopt" class="pricing-subview hidden space-y-6">
+            <div class="card p-6 sm:p-8 space-y-2">
+              <div id="adopt-eyebrow" class="mono text-[10px] uppercase text-accent">ADOPTABLE TIERS · $100 – $500</div>
+              <h2 id="adopt-title" class="serif text-3xl sm:text-4xl">Adoptables: Ready Designs & Stretch Goal Tiers</h2>
+              <p id="adopt-desc" class="text-sm text-textMuted leading-relaxed"></p>
+            </div>
+
+            <div id="adopt-tiers-grid" class="grid sm:grid-cols-2 gap-5"></div><div id="process-dock-adopt"></div>
+          </div>
+
+          <!-- SUB-VIEW C: YCH SLOTS -->
+          <div role="tabpanel" aria-labelledby="ptab-ych" id="pricing-view-ych" class="pricing-subview hidden space-y-6">
+            <div class="card p-6 sm:p-8 space-y-2">
+              <div id="ych-eyebrow" class="mono text-[10px] uppercase text-accent">PRE-POSED TEMPLATES</div>
+              <h2 id="ych-title" class="serif text-3xl sm:text-4xl">Available YCH Slots</h2>
+              <p id="ych-desc" class="text-sm text-textMuted leading-relaxed"></p>
+            </div>
+
+            <div id="ych-slots-grid" class="grid sm:grid-cols-3 gap-4"></div><div id="process-dock-ych"></div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: INDIVIDUAL STICKY QUOTE BUILDER (4 cols) -->
+        <div class="lg:col-span-4">
+          <div class="quote-panel">
+            <div class="flex items-start justify-between border-b hairline pb-4">
+              <div>
+                <h3 id="calc-title" class="serif text-3xl text-textMain">Quote Builder</h3>
+                <div id="calc-category-pill" class="mono text-[10px] uppercase text-accent mt-0.5">Custom Commission</div>
+              </div>
+              <button onclick="resetCalculator()" id="calc-reset-btn" class="mono text-[10px] uppercase text-textDim hover:text-textMain border hairline px-2 py-1 transition cursor-pointer">
+                Reset
+              </button>
+            </div>
+
+            <!-- Live estimate -->
+            <div class="quote-total space-y-2">
+              <div class="flex items-end justify-between gap-3"><div><span id="calc-total-label" class="block mono text-[10px] uppercase text-textDim">Estimated Total</span><span id="calc-formula" class="block mt-1 mono text-[11px] text-textMuted">Base $120</span></div><span id="calc-total-value" class="serif text-4xl sm:text-5xl text-accent">$120</span></div>
+              <details class="quote-breakdown"><summary id="calc-breakdown-summary">Price breakdown</summary><div id="calc-breakdown-list" aria-live="polite" aria-atomic="true"></div></details><p id="calc-estimate-note" class="text-[11px] leading-relaxed text-textDim">Starting estimate only. Final price depends on the brief and will be confirmed directly.</p>
+            </div>
+
+
+            <!-- Dynamically Rebuilt Controls per Active Category (Custom / Adopt / YCH) -->
+            <div id="calc-dynamic-body" class="space-y-4"></div>
+
+            <button onclick="copyCalcRequest()" id="calc-copy-btn" class="quote-cta w-full py-3 bg-accent text-bg mono text-xs uppercase font-medium hover:bg-textMain transition cursor-pointer">
+              Copy Ready DM Request
+            </button>
+
+            <!-- Order brief -->
+            <details class="quote-brief" id="calc-brief-panel"><summary id="calc-brief-summary">Add references & brief (optional)</summary><div class="space-y-3">
+              <div id="calc-step-brief" class="mono text-[10px] uppercase tracking-widest text-accent">03 / Tell me about it</div>
+              <div><label for="calc-refs" id="calc-refs-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Reference links</label><input id="calc-refs" oninput="recalcTotal()" type="text" placeholder="Paste character sheets, moodboards or image links" class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent" /></div>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div><label for="calc-deadline" id="calc-deadline-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Preferred deadline</label><input id="calc-deadline" oninput="recalcTotal()" type="text" placeholder="Flexible / add a date" class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent" /></div>
+                <div><label for="calc-contact" id="calc-contact-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Preferred contact</label><select id="calc-contact" onchange="recalcTotal()" class="w-full bg-bg border hairline p-3 text-sm text-textMain focus:outline-none focus:border-accent"><option value="Telegram">Telegram</option><option value="Discord">Discord</option><option value="Email">Email</option></select></div>
+              </div>
+              <div><label for="calc-notes" id="calc-brief-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Brief & extra details</label><textarea id="calc-notes" oninput="recalcTotal()" rows="4" placeholder="Character details, pose, mood, SFW/NSFW, background..." class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent resize-y"></textarea></div>
+            </div></details>
+
+
+            <details class="pt-2 border-t hairline text-xs">
+              <summary id="calc-preview-label" class="mono text-[10px] uppercase text-textDim hover:text-textMain cursor-pointer select-none">
+                Preview DM Message Text
+              </summary>
+              <pre id="calc-preview-text" class="mt-2 p-3 bg-bg border hairline mono text-[11px] text-textMuted whitespace-pre-wrap leading-relaxed"></pre>
+            </details>
+          </div>
+        </div>
+
+      </div>
+      <div id="pricing-process-storage" hidden><section id="art-process" aria-label="Artwork process and versions"></section></div>
+    </section>
+
+
+    <!-- ===================================================================
+         PAGE 3: GALLERY (WITH 'OTHER WORKS' & 18+ CONFIRMATION MODAL)
+    ==================================================================== -->
+    <section id="page-gallery" class="page-section hidden space-y-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b hairline pb-6">
+        <div>
+          <div id="gal-eyebrow" class="mono text-xs uppercase text-accent">CURATED ARCHIVE</div>
+          <h1 id="gal-title" class="serif text-4xl sm:text-5xl mt-1">Art Gallery</h1>
+          <p id="gal-sub" class="text-sm text-textMuted mt-1"></p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <!-- Category Filters + 18+ Toggle -->
+          <div class="flex flex-wrap items-center gap-3">
+            <div id="gallery-category-filters" class="flex flex-wrap gap-1.5 mono text-xs" role="group" aria-label="Gallery filters">
+              <button type="button" onclick="setGalleryCat('all')" data-c="all" id="gf-all" aria-pressed="true" class="gal-filter-btn px-3 py-1.5 bg-accent text-bg font-medium transition cursor-pointer">All Works</button>
+              <button type="button" onclick="setGalleryCat('comm')" data-c="comm" id="gf-comm" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Commissions</button>
+              <button type="button" onclick="setGalleryCat('adopt')" data-c="adopt" id="gf-adopt" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Adopts</button>
+              <button type="button" onclick="setGalleryCat('ych')" data-c="ych" id="gf-ych" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">YCH</button>
+              <button type="button" onclick="setGalleryCat('fanart')" data-c="fanart" id="gf-fanart" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Fan art</button>
+              <button type="button" onclick="setGalleryCat('other')" data-c="other" id="gf-other" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Other works</button>
+            </div>
+            <label class="flex items-center gap-2 px-3 py-1.5 border border-error/40 bg-error/5 mono text-xs text-error cursor-pointer select-none whitespace-nowrap">
+              <input type="checkbox" id="nsfw-switch" onchange="handleNsfwToggle(this)" class="accent-[#D48A94] w-3.5 h-3.5">
+              <span id="gal-nsfw-label">Show 18+ Content</span>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="gallery-cards-grid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"></div>
+
+      <!-- External Art Galleries & Archives (DA, FA, Pixiv, X, YCH) -->
+      <div class="pt-8 border-t hairline space-y-4">
+        <div>
+          <h2 id="gal-ext-title" class="serif text-2xl sm:text-3xl text-textMain">Full Archives & External Galleries</h2>
+          <p id="gal-ext-sub" class="text-xs sm:text-sm text-textMuted mt-0.5"></p>
+        </div>
+        <div id="gal-ext-platforms" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3"></div>
+      </div>
+    </section>
+
+
+    <!-- ===================================================================
+         PAGE 4: QUEUE (SELF-HOSTED WORK TRACKER WITHOUT TRELLO)
+    ==================================================================== -->
+    <section id="page-queue" class="page-section hidden space-y-8">
+      <div class="border-b hairline pb-6">
+        <div id="q-eyebrow" class="mono text-xs uppercase text-accent">LIVE WORK TRACKER</div>
+        <h1 id="q-title" class="serif text-4xl sm:text-5xl mt-1">Current Commission Queue</h1>
+        <p id="q-sub" class="text-sm text-textMuted mt-1 max-w-2xl"></p>
+      </div>
+
+<section id="queue-overview" class="queue-overview" aria-label="Queue summary"><div><span id="queue-active-label"></span><strong id="queue-active-count">—</strong></div><div><span id="queue-reserved-label"></span><strong id="queue-reserved-count">—</strong></div><div class="queue-sync"><p id="queue-sync-status" role="status" aria-live="polite"></p><button type="button" id="queue-refresh"></button></div></section>
+      <div id="queue-tabs" class="queue-tabs" role="tablist" aria-label="Queue views"><button type="button" id="queue-tab-active" role="tab" aria-selected="true"></button><button type="button" id="queue-tab-reserved" role="tab" aria-selected="false"></button></div>
+      <div class="card p-6 sm:p-8 overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[700px]"><thead><tr class="border-b hairline mono text-xs uppercase text-textDim"><th id="q-col-slot" class="pb-3 pr-4 font-normal"></th><th id="q-col-client" class="pb-3 px-4 font-normal"></th><th id="q-col-details" class="pb-3 px-4 font-normal"></th><th id="q-col-stage" class="pb-3 px-4 font-normal"></th><th id="q-col-progress" class="pb-3 pl-4 font-normal"></th></tr></thead><tbody id="queue-table-body" class="divide-y hairline text-sm"></tbody></table>
+      </div>
+      <section id="reservation-info" class="reservation-info"><div><span id="reservation-eyebrow" class="mono"></span><h2 id="reservation-title" class="serif"></h2><p id="reservation-description"></p><small id="reservation-terms"></small></div><a href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" id="reservation-contact"></a></section>
+    </section>
+
+
+    <!-- ===================================================================
+         PAGE 5: TERMS OF SERVICE (CLEAN 6-CARD SUMMARY + FULL RULES)
+    ==================================================================== -->
+    <section id="page-tos" class="page-section hidden space-y-12">
+      <div class="border-b hairline pb-6">
+        <div id="tos-eyebrow" class="mono text-xs uppercase text-accent">TERMS OF SERVICE</div>
+        <h1 id="tos-title" class="serif text-4xl sm:text-5xl mt-1">Commissions, Adopts & YCH — Rules</h1>
+        <p id="tos-sub" class="text-sm text-textMuted mt-1 max-w-2xl"></p>
+      </div>
+
+      <!-- Structured 6-Card Short Summary -->
+      <div class="space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <h2 id="tos-summary-title" class="serif text-3xl">Quick Summary (At a Glance)</h2>
+          <label class="flex items-center gap-2.5 px-4 py-2 card border-accent/40 text-xs text-textMain cursor-pointer select-none">
+            <input type="checkbox" id="tos-agree-checkbox" onchange="toggleTosConfirmation(this.checked)" class="accent-[#E2B478] w-4 h-4">
+            <span id="tos-agree-label">I have read and agree to the Terms of Service</span>
+          </label>
+        </div>
+        <div id="tos-cards-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </div>
+
+      <!-- Will Draw / Won't Draw + Full Detailed Sections -->
+      <div class="space-y-6 pt-6 border-t hairline">
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div class="card p-6 space-y-3">
+            <div id="tos-will-title" class="mono text-xs uppercase text-accent">✓ Will Draw</div>
+            <ul id="tos-will-list" class="space-y-2 text-sm text-textMuted"></ul>
+          </div>
+          <div class="card p-6 space-y-3 border-error/30">
+            <div id="tos-wont-title" class="mono text-xs uppercase text-error">✕ Won't Draw</div>
+            <ul id="tos-wont-list" class="space-y-2 text-sm text-textMuted"></ul>
+          </div>
+        </div>
+
+        <h2 id="tos-full-title" class="serif text-3xl pt-4">Detailed Terms & Conditions</h2>
+        <div id="tos-detailed-sections" class="grid md:grid-cols-2 gap-5"></div>
+      </div>
+    </section>
+
+
+    <!-- ===================================================================
+         PAGE 6: FAQ
+    ==================================================================== -->
+    <section id="page-faq" class="page-section hidden space-y-8 max-w-4xl mx-auto">
+      <div class="border-b hairline pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <div id="faq-eyebrow" class="mono text-xs uppercase text-accent">KNOWLEDGE BASE</div>
+          <h1 id="faq-title" class="serif text-4xl sm:text-5xl mt-1">Frequently Asked Questions</h1>
+          <p id="faq-sub" class="text-sm text-textMuted mt-1"></p>
+        </div>
+        <div id="faq-cat-buttons" class="flex flex-wrap gap-1.5 mono text-xs"></div>
+      </div>
+
+      <div id="faq-items-list" class="space-y-3"></div>
+    </section>
+
+<section id="page-catalog" class="page-section hidden space-y-8"><div class="catalog-header"><div><div id="catalog-eyebrow" class="mono"></div><h1 id="catalog-title" class="serif"></h1><p id="catalog-subtitle"></p></div><a href="https://www.deviantart.com/nektahr" target="_blank" rel="noopener noreferrer" id="catalog-profile"></a></div><div class="catalog-notice" id="catalog-notice" role="note"></div><div class="catalog-toolbar"><div id="catalog-type-filters" class="catalog-filters" role="group"></div><label><span id="catalog-search-label" class="sr-only"></span><input type="search" id="catalog-search"></label></div><div class="catalog-controls"><div id="catalog-state-filters" class="catalog-filters" role="group"></div><button type="button" id="catalog-adult-toggle" role="switch" aria-checked="false"></button></div><div id="catalog-grid" class="catalog-grid"></div><p id="catalog-empty" hidden></p><div id="catalog-pagination" class="catalog-pagination"></div><section class="reservation-info"><div><h2 id="catalog-reserve-title" class="serif"></h2><p id="catalog-reserve-description"></p></div><a href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" id="catalog-reserve-contact"></a></section></section>
+<dialog id="catalog-dialog" aria-labelledby="catalog-dialog-title"><button type="button" id="catalog-dialog-close" class="catalog-close" aria-label="Close">×</button><div id="catalog-dialog-image"></div><div class="catalog-dialog-content"><p id="catalog-dialog-meta" class="mono"></p><h2 id="catalog-dialog-title" class="serif"></h2><p id="catalog-dialog-description"></p><div id="catalog-dialog-includes"></div><p id="catalog-dialog-status"></p><div id="catalog-dialog-badges" class="catalog-dialog-badges"></div><div class="catalog-dialog-actions"><button type="button" id="catalog-dialog-preview" hidden></button><button type="button" id="catalog-dialog-copy"></button><a href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" id="catalog-dialog-contact"></a></div><p class="catalog-dialog-disclaimer" id="catalog-dialog-disclaimer"></p></div></dialog>
+  </main>
+
+  <!-- =====================================================================
+       18+ AGE VERIFICATION MODAL
+  ====================================================================== -->
+  <div id="nsfw-modal" class="hidden fixed inset-0 z-50 bg-bg/90 backdrop-blur-md flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="mod-title">
+    <div class="card max-w-md w-full p-8 text-center space-y-5 border-error/40">
+      <div id="mod-eyebrow" class="mono text-[10px] uppercase text-error">MATURE CONTENT WARNING</div>
+      <h2 id="mod-title" class="serif text-3xl text-textMain">Age Verification (18+)</h2>
+      <p id="mod-desc" class="text-sm text-textMuted leading-relaxed"></p>
+      <div class="flex gap-3 pt-2">
+        <button type="button" onclick="confirmAgeModal(false)" id="mod-btn-no" class="flex-1 py-2.5 border hairline mono text-xs uppercase text-textMuted hover:text-textMain transition cursor-pointer">No, keep blurred</button>
+        <button type="button" onclick="confirmAgeModal(true)" id="mod-btn-yes" class="flex-1 py-2.5 bg-error text-bg mono text-xs uppercase font-medium hover:opacity-90 transition cursor-pointer">Yes, I am 18+</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       GALLERY LIGHTBOX MODAL
+  ====================================================================== -->
+  <div id="lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="lb-title" onclick="closeLightbox()" class="hidden fixed inset-0 z-50 bg-bg/95 backdrop-blur-md flex items-center justify-center p-4">
+    <div onclick="event.stopPropagation()" class="card max-w-2xl w-full overflow-hidden">
+      <div class="relative bg-bg max-h-[70vh] flex items-center justify-center overflow-hidden border-b hairline">
+        <img id="lb-image" alt="Artwork" class="max-h-[70vh] w-auto object-contain" />
+        <button type="button" id="lb-close" onclick="closeLightbox()" aria-label="Close artwork preview" class="absolute top-3 right-3 px-3 py-1 bg-bg/85 border hairline mono text-xs text-textMuted hover:text-textMain cursor-pointer">
+          ✕
+        </button>
+      </div>
+      <div class="p-5 flex items-center justify-between gap-4">
+        <div>
+          <div id="lb-stage" class="mono text-[10px] uppercase text-accent"></div>
+          <h3 id="lb-title" class="serif text-2xl text-textMain"></h3>
+          <p id="lb-desc" class="text-xs text-textDim mt-0.5"></p>
+        </div>
+        <button type="button" id="lb-pricing-link" onclick="closeLightbox(); switchPage('pricing');" class="px-4 py-2 bg-accent text-bg mono text-xs uppercase font-medium hover:bg-textMain transition cursor-pointer shrink-0">
+          Pricing →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       FOOTER & TOAST NOTIFICATION
+  ====================================================================== -->
+  <footer class="border-t hairline mt-20 py-8 px-4 sm:px-8 text-center mono text-xs text-textDim">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div id="footer-rights">NEK'TAHR © 2026 · ALL RIGHTS RESERVED · NO AI / NO NFT</div>
+      <div class="flex gap-4">
+        <button onclick="copyToClipboard('drintrava', 'Discord (drintrava)')" class="hover:text-accent transition cursor-pointer">Discord: drintrava</button>
+        <a id="footer-telegram" href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition">Telegram DM</a>
+        <a href="mailto:nektahr@gmail.com" class="hover:text-accent transition">nektahr@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 card border-accent px-4 py-2.5 mono text-xs text-accent opacity-0 pointer-events-none transition-opacity duration-300">
+    Copied
+  </div>
+
+  <!-- =====================================================================
+       APPLICATION LOGIC
+  ====================================================================== -->
+  <script>
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.remove('opacity-0');
+      setTimeout(() => el.classList.add('opacity-0'), 2200);
+    }
+
+    async function copyToClipboard(val, label) {
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(val);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = val;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          const copied = document.execCommand('copy');
+          document.body.removeChild(ta);
+          if (!copied) throw new Error('Clipboard permission unavailable');
+        }
+        showToast(`${uiText('copied')}: ${label}`);
+        return true;
+      } catch (error) {
+        showToast(uiText('copyFailed'));
+        return false;
+      }
+    }
+
+    // Page Navigation: each destination is a real static HTML route.
+    const PAGE_PATHS = {
+      board: "/",
+      pricing: "/pricing/",
+      catalog: "/catalog/",
+      gallery: "/gallery/",
+      queue: "/queue/",
+      tos: "/terms/",
+      faq: "/faq/"
+    };
+
+    function switchPage(pageId) {
+      const targetPath = PAGE_PATHS[pageId] || PAGE_PATHS.board;
+      const normalizePath = path => path.replace(/\/+$/, "") || "/";
+      if (normalizePath(window.location.pathname) !== normalizePath(targetPath)) {
+        window.location.href = targetPath;
+        return;
+      }
+
+      currentPage = pageId;
+      document.querySelectorAll('.page-section').forEach(sec => {
+        sec.classList.toggle('hidden', sec.id !== `page-${pageId}`);
+      });
+      document.querySelectorAll('.nav-link').forEach(btn => {
+        const active = btn.dataset.p === pageId;
+        if(active)btn.setAttribute('aria-current','page');else btn.removeAttribute('aria-current');
+        btn.className = active
+          ? "nav-link px-2 py-1 text-accent border-b border-accent transition cursor-pointer"
+          : "nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer";
+      });
+    }
+
+    // Language Switching (EN main, ES, RU)
+    function setLang(lang) {
+      if(document.getElementById('calc-stage-sel'))saveCalculatorModeState(currentPricingTab);
+      if (!I18N[lang]) lang = 'en';
+      currentLang = lang;
+      try { localStorage.setItem('nektahr-hub-language', lang); } catch (_) {}
+      document.documentElement.lang = lang;
+      const pageMeta = {
+        board: {
+          en: ["Nek'tahr | Artist Portfolio, Commissions, Adopts & YCH", "Explore Nek'tahr's art portfolio, commission pricing, adoptables, YCH options, and contact links."],
+          es: ["Nek'tahr | Portafolio y comisiones", "Explora el portafolio de Nek'tahr, precios, adopts, opciones YCH y contactos."],
+          ru: ["Nek'tahr | Портфолио и коммишки", "Портфолио Nek'tahr, цены, адопты, YCH и контакты."]
+        },
+        catalog: {en:["Catalog | Nek’tahr","YCH templates and adoptable designs — catalog mockup."],es:["Catálogo | Nek’tahr","Plantillas YCH y diseños adoptables — maqueta."],ru:["Каталог | Nek’tahr","YCH и адопты — макет каталога."]},
+        pricing: {
+          en: ["Pricing | Nek'tahr Hub", "Commission pricing, adoptable tiers, YCH slots, and a quote calculator."],
+          es: ["Precios | Nek'tahr Hub", "Precios de comisiones, adopts, plazas YCH y calculadora de presupuesto."],
+          ru: ["Цены | Nek'tahr Hub", "Цены на коммишки, адопты, YCH и калькулятор стоимости."]
+        },
+        gallery: {
+          en: ["Gallery | Nek'tahr Hub", "Browse Nek'tahr's art gallery, filter works, and view artwork details."],
+          es: ["Galería | Nek'tahr Hub", "Explora la galería de Nek'tahr, filtra obras y consulta sus detalles."],
+          ru: ["Галерея | Nek'tahr Hub", "Галерея Nek'tahr: фильтры работ и просмотр изображений."]
+        },
+        queue: {
+          en: ["Commission Queue | Nek'tahr Hub", "View the current public commission queue and progress."],
+          es: ["Cola de comisiones | Nek'tahr Hub", "Consulta la cola pública de comisiones y su progreso."],
+          ru: ["Очередь заказов | Nek'tahr Hub", "Текущая публичная очередь заказов и прогресс."]
+        },
+        tos: {
+          en: ["Terms of Service | Nek'tahr Hub", "Read the terms for commissions, adopts, and YCH."],
+          es: ["Términos | Nek'tahr Hub", "Lee las condiciones de comisiones, adopts y YCH."],
+          ru: ["Правила | Nek'tahr Hub", "Условия коммишек, адоптов и YCH."]
+        },
+        faq: {
+          en: ["FAQ | Nek'tahr Hub", "Answers to common questions about commissions, payments, and artwork."],
+          es: ["Preguntas frecuentes | Nek'tahr Hub", "Respuestas sobre comisiones, pagos y arte."],
+          ru: ["FAQ | Nek'tahr Hub", "Ответы на частые вопросы о заказах, оплате и арте."]
+        }
+      };
+      const localizedTitles = { en: "Nek'tahr | Artist Portfolio, Commissions, Adopts & YCH", es: "Nek'tahr | Portafolio y comisiones", ru: "Nek'tahr | Портфолио и коммишки" };
+      const localizedDescriptions = {
+        en: "Explore Nek'tahr's SFW portfolio, commission pricing, adoptables, YCH options, terms, and contact links.",
+        es: "Explora el portafolio SFW de Nek'tahr, precios de comisiones y adopts, opciones YCH, términos y contactos.",
+        ru: "Публичное SFW-портфолио Nek'tahr, цены на коммишки и адоптов, варианты YCH, правила и контакты."
+      };
+      const activeMeta = (pageMeta[currentPage] || pageMeta.board)[lang] || pageMeta.board.en;
+      document.title = activeMeta[0];
+      document.querySelector('meta[name="description"]').content = activeMeta[1];
+      document.querySelector('meta[property="og:title"]').content = activeMeta[0];
+      document.querySelector('meta[property="og:description"]').content = activeMeta[1];
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        const active = btn.dataset.l === lang;
+        btn.className = active
+          ? "lang-btn px-2 py-0.5 bg-accent text-bg font-medium transition cursor-pointer"
+          : "lang-btn px-2 py-0.5 text-textDim hover:text-textMain transition cursor-pointer";
+      });
+      renderAllText();
+    }
+
+    // Pricing Sub-tabs (Customs / Adopts / YCH)
+    function switchPricingTab(tabKey) {
+      saveCalculatorModeState(currentPricingTab);
+      currentPricingTab = tabKey;
+      ['custom', 'adopt', 'ych'].forEach(k => {
+        document.getElementById(`pricing-view-${k}`).classList.toggle('hidden', k !== tabKey);
+        const btn = document.getElementById(`ptab-${k}`);btn.setAttribute('aria-selected',String(k===tabKey));btn.tabIndex=k===tabKey?0:-1;
+        if (k === tabKey) {
+          btn.className = "ptab-btn px-3 py-2.5 mono text-xs uppercase whitespace-nowrap truncate text-center bg-accent text-bg border border-accent font-medium transition cursor-pointer";
+        } else {
+          btn.className = "ptab-btn px-3 py-2.5 mono text-xs uppercase whitespace-nowrap truncate text-center text-textMuted border hairline hover:text-textMain transition cursor-pointer";
+        }
+      });
+      buildIndividualCalculator();
+    }
+
+    function updatePricingPresentation() {
+      const examples=document.getElementById('pricing-examples');if(!examples)return;
+      const mode=currentPricingTab;
+      const dock=document.getElementById(mode==='ych'?'process-dock-ych':mode==='adopt'?'process-dock-adopt':'process-dock-custom');
+      dock.append(examples);examples.hidden=false;
+      const labels={en:{custom:'Artwork examples & drawing stages',ych:'YCH template, result & alternative',brief:'Add references & brief (optional)'},es:{custom:'Ejemplos y etapas de dibujo',ych:'Plantilla YCH, resultado y alternativa',brief:'Añadir referencias y detalles (opcional)'},ru:{custom:'Примеры работ и этапы',ych:'Шаблон YCH, результат и альт',brief:'Добавить референсы и описание (необязательно)'}}[currentLang];
+      document.getElementById('pricing-examples-label').textContent=mode==='ych'?labels.ych:labels.custom;
+      document.getElementById('calc-brief-summary').textContent=labels.brief;
+      window.setProcessContext?.(mode);
+    }
+    // Keep each category's selections when switching tabs.
+    function saveCalculatorModeState(mode) {
+      const state = CALC_MODE_STATE[mode];
+      if (!state) return;
+      const sel = document.getElementById('calc-stage-sel');
+      if (sel) state.value = sel.value;
+      state.addons = [...document.querySelectorAll('.calc-addon-check:checked')].map(el => el.dataset.id);
+      state.mults = [...document.querySelectorAll('.calc-mult-check:checked')].map(el => el.dataset.id);
+    }
+
+    // Individual Calculator Builder per Category
+    function buildIndividualCalculator() {
+      updatePricingPresentation();
+      const t = I18N[currentLang].calc, mode = currentPricingTab, cfg = CALC_CONFIG[mode], state = CALC_MODE_STATE[mode];
+      document.getElementById('calc-category-pill').textContent = t.modes[mode];
+      document.getElementById('calc-estimate-note').textContent = uiText('quoteEstimateNote');
+      document.getElementById('calc-notes').placeholder = t.notesPlaceholder;
+      ['quoteStepBrief','quoteRefsLabel','quoteDeadlineLabel','quoteContactLabel','quoteBriefLabel'].forEach((key, i) => {
+        const ids = ['calc-step-brief','calc-refs-label','calc-deadline-label','calc-contact-label','calc-brief-label'];
+        document.getElementById(ids[i]).textContent = uiText(key);
+      });
+      ['calc-refs','calc-deadline'].forEach((id, i) => document.getElementById(id).placeholder = uiText(i ? 'quoteDeadlinePlaceholder' : 'quoteRefsPlaceholder'));
+      [...document.getElementById('calc-contact').options].forEach(opt => {
+        opt.textContent = uiText(opt.value === 'Telegram' ? 'quoteContactTelegram' : opt.value === 'Discord' ? 'quoteContactDiscord' : 'quoteContactEmail');
+      });
+      document.getElementById('calc-dynamic-body').innerHTML = `
+        <div class="space-y-3">
+          <div class="mono text-[10px] uppercase tracking-widest text-accent">${uiText('quoteStepPackage')}</div>
+          <label for="calc-stage-sel" class="block mono text-[10px] uppercase text-textDim mb-1.5">${mode === 'custom' ? ({en:'Commission package',es:'Paquete',ru:'Пакет заказа'})[currentLang] : mode === 'adopt' ? t.stageAdopt : t.stageYch}</label>
+          <select id="calc-stage-sel" onchange="recalcTotal()" class="w-full bg-bg border hairline p-3 text-sm text-textMain focus:outline-none focus:border-accent">
+            ${cfg.options.map((opt, i) => `<option value="${opt.value}" ${String(state.value) === String(opt.value) || (!state.value && i === 0) ? 'selected' : ''}>${opt.label[currentLang] || opt.label.en}</option>`).join('')}
+          </select>
+          <fieldset class="quote-packages" aria-label="${mode === 'custom' ? ({en:'Commission package',es:'Paquete',ru:'Пакет заказа'})[currentLang] : mode === 'adopt' ? t.stageAdopt : t.stageYch}">
+            ${cfg.options.map((opt,i)=>`<label class="quote-package"><input type="radio" name="quote-package" value="${opt.value}" ${String(state.value)===String(opt.value)||(!state.value&&i===0)?'checked':''} onchange="document.getElementById('calc-stage-sel').value=this.value;recalcTotal()"><span>${opt.label[currentLang]||opt.label.en}</span></label>`).join('')}
+          </fieldset>
+        </div>
+        <div class="space-y-3 border-t hairline pt-4">
+          <div class="mono text-[10px] uppercase tracking-widest text-accent">${uiText('quoteStepExtras')}</div>
+          <div class="mono text-[10px] uppercase text-textDim">${mode === 'custom' ? t.addonsCustom : mode === 'adopt' ? t.addonsAdopt : t.addonsYch}</div>
+          <div class="grid grid-cols-1 gap-2">
+            ${cfg.addons.map(a => { const label = a.label[currentLang] || a.label.en; return `<label class="addon-pill cursor-pointer block"><input type="checkbox" value="${a.price}" data-id="${a.id}" data-label="${label}" onchange="recalcTotal()" class="calc-addon-check" ${state.addons.includes(a.id) ? 'checked' : ''}><div class="px-3 py-3 border hairline text-xs text-textMuted flex items-center justify-between gap-3 transition"><span>${label.replace(/\s*\([^)]*\$[^)]*\)/g,'')}</span><span class="mono text-accent shrink-0">${a.id==='rush'?'+$50–100':a.id==='extra_character'||a.id==='feature'?`+$${a.price}+`:`+$${a.price}`}</span></div></label>`; }).join('')}
+            ${cfg.mults.map(m => { const label = m.label[currentLang] || m.label.en; return `<label class="addon-pill cursor-pointer block"><input type="checkbox" value="${m.mult}" data-id="${m.id}" data-label="${label} (${m.badge})" onchange="recalcTotal()" class="calc-mult-check" ${state.mults.includes(m.id) ? 'checked' : ''}><div class="px-3 py-3 border hairline text-xs text-textMuted flex items-center justify-between gap-3 transition"><span>${label}</span><span class="mono text-accent shrink-0">${m.badge}</span></div></label>`; }).join('')}
+          </div>
+          <p class="quote-config-note text-textDim">${cfg.note[currentLang] || cfg.note.en}</p>
+        </div>`;
+      recalcTotal();
+    }
+
+    function recalcTotal() {
+      const mode = currentPricingTab;
+      const cfg = CALC_CONFIG[mode];
+      const sel = document.getElementById('calc-stage-sel');
+      if (!sel) return;
+      const selected = cfg.options.find(opt => String(opt.value) === String(sel.value)) || cfg.options[0];
+      const base = selected ? selected.price : 0;
+      const itemSummary = selected ? (selected.label[currentLang] || selected.label.en) : 'Unselected';
+
+      let extras = 0;
+      const pickedNames = [];
+      document.querySelectorAll('.calc-addon-check:checked').forEach(chk => {
+        extras += Number.parseFloat(chk.value) || 0;
+        pickedNames.push(chk.dataset.label);
+      });
+      let mult = 1;
+      document.querySelectorAll('.calc-mult-check:checked').forEach(chk => {
+        mult *= Number.parseFloat(chk.value) || 1;
+        pickedNames.push(chk.dataset.label);
+      });
+
+      const total = Math.round((base + extras) * mult);
+      saveCalculatorModeState(mode);
+      document.querySelectorAll('input[name="quote-package"]').forEach(radio=>radio.checked=String(radio.value)===String(sel.value));
+      document.querySelectorAll('[data-quote-value]').forEach(card=>{const active=card.dataset.quoteMode===mode&&String(card.dataset.quoteValue)===String(sel.value);card.classList.toggle('quote-selected',active);card.setAttribute('aria-pressed',String(active));});
+      const rows=document.getElementById('calc-breakdown-list');rows.replaceChildren();
+      function quoteRow(label,value){const row=document.createElement('div');row.className='quote-line';const name=document.createElement('span'),price=document.createElement('span');name.textContent=label;price.textContent=value;row.append(name,price);rows.append(row);}
+      quoteRow(({en:'Base package',es:'Precio base',ru:'Базовый пакет'})[currentLang],`$${base}`);
+      document.querySelectorAll('.calc-addon-check:checked').forEach(chk=>quoteRow(chk.dataset.label.replace(/\s*\([^)]*\$[^)]*\)/g,''),`+$${chk.value}`));
+      if(mult>1)quoteRow(({en:'Privacy surcharge',es:'Recargo de privacidad',ru:'Доплата за приватность'})[currentLang],`+$${total-base-extras}`);
+      document.getElementById('calc-total-value').textContent = `$${total}${mode === 'custom' || mode === 'adopt' ? '+' : ''}`;
+      document.getElementById('calc-formula').textContent = `Base $${base}` + (extras > 0 ? ` + Extras $${extras}` : '') + (mult > 1 ? ` × ${mult.toFixed(2)}` : '');
+
+      const notes = document.getElementById('calc-notes').value.trim() || uiText('quotePlaceholder');
+      const refs = document.getElementById('calc-refs').value.trim() || uiText('quoteNotProvided');
+      const deadline = document.getElementById('calc-deadline').value.trim() || uiText('quoteNotProvided');
+      const contact = document.getElementById('calc-contact').value || 'Telegram';
+      const tosStatus = tosAgreed ? uiText('quoteAccepted') : uiText('quoteNotConfirmed');
+      const msg = `${uiText('quoteGreeting')}
+• ${uiText('quoteCategory')}: ${itemSummary}
+• ${uiText('quoteAddons')}: ${pickedNames.length ? pickedNames.join(', ') : uiText('quoteNone')}
+• ${uiText('quoteTotal')}: ~$${total} USD
+• ${uiText('quoteRefsLine')}: ${refs}
+• ${uiText('quoteDeadlineLine')}: ${deadline}
+• ${uiText('quoteContactLine')}: ${contact}
+• ${uiText('quoteReferences')}: ${notes}
+• ${uiText('quoteTos')}: ${tosStatus}`;
+      document.getElementById('calc-preview-text').textContent = msg;
+    }
+
+    function resetCalculator() {
+      CALC_MODE_STATE[currentPricingTab] = { value: currentPricingTab==='custom'?'single':CALC_CONFIG[currentPricingTab].options[0].value, addons: [], mults: [] };
+      document.getElementById('calc-notes').value = '';
+      document.getElementById('calc-refs').value = '';
+      document.getElementById('calc-deadline').value = '';
+      document.getElementById('calc-contact').value = 'Telegram';
+      buildIndividualCalculator();
+    }
+
+    function quickPickCustom(packageKey) {
+      if (currentPricingTab !== 'custom') switchPricingTab('custom');
+      const sel = document.getElementById('calc-stage-sel');
+      if (sel && ['single', 'duo'].includes(packageKey)) sel.value = packageKey;
+      recalcTotal();
+      if (['single', 'duo'].includes(packageKey)) showToast(uiText(packageKey === 'single' ? 'loadedOne' : 'loadedTwo'));
+    }
+
+    function quickPickTier(mode, amount) {
+      if (currentPricingTab !== mode) switchPricingTab(mode);
+      const sel = document.getElementById('calc-stage-sel');
+      if (sel) {
+        const value = String(amount);
+        if ([...sel.options].some(opt => opt.value === value)) sel.value = value;
+      }
+      recalcTotal();
+      showToast(uiText('loadedTier').replace('$VALUE', `$${amount}`));
+    }
+
+    async function copyCalcRequest() {
+      recalcTotal();
+      const txt = document.getElementById('calc-preview-text').textContent;
+      const copied = await copyToClipboard(txt, 'DM Order Request');
+      if (copied) {
+        const btn = document.getElementById('calc-copy-btn');
+        const t = I18N[currentLang].calc;
+        btn.textContent = t.copiedBtn;
+        setTimeout(() => { btn.textContent = t.copyBtn; }, 2000);
+      }
+    }
+
+
+    window.syncSiteNsfwFromProcess = function(visible, verified) {
+      if (showNsfwGallery === visible && isAdultVerified === verified) return;
+      showNsfwGallery = visible; isAdultVerified = verified;
+      document.getElementById('nsfw-switch').checked = visible;
+      renderGalleryGrid();
+    };
+    function openArtworkProcess(id) {
+      const info=(window.PORTFOLIO_WORKS||[]).find(w=>w.id===id);const mode=info?(info.cat==='adopt'?'adopt':info.cat==='ych'?'ych':'custom'):id>=4?'ych':'custom';
+      if(document.body.dataset.page!=='pricing'){try{sessionStorage.setItem('nektahr-pricing-tab',mode)}catch{};switchPage('pricing');return;}
+      switchPricingTab(mode);document.getElementById('pricing-workspace').scrollIntoView({behavior:'smooth',block:'start'});
+    }
+
+    // Gallery categories and age-gated mature artwork.
+    function setGalleryCat(cat) {
+      currentGalCat = cat;
+      document.querySelectorAll('.gal-filter-btn').forEach(btn => {
+        const active = btn.dataset.c === cat;
+        btn.setAttribute('aria-pressed', String(active));
+        btn.className = active
+          ? "gal-filter-btn px-3 py-1.5 bg-accent text-bg font-medium transition cursor-pointer"
+          : "gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer";
+      });
+      renderGalleryGrid();
+    }
+
+    function openAgeModal(trigger) {
+      ageModalReturnFocus = trigger || document.getElementById('nsfw-switch');
+      document.getElementById('nsfw-modal').classList.remove('hidden');
+      document.getElementById('mod-btn-no')?.focus();
+    }
+
+    function handleNsfwToggle(checkbox) {
+      if (checkbox.checked && !isAdultVerified) {
+        checkbox.checked = false;
+        openAgeModal(checkbox);
+      } else {
+        showNsfwGallery = checkbox.checked;
+        renderGalleryGrid();
+      }
+    }
+
+    function confirmAgeModal(confirmed) {
+      document.getElementById('nsfw-modal').classList.add('hidden');
+      if (confirmed) {
+        isAdultVerified = true;
+        showNsfwGallery = true;
+        document.getElementById('nsfw-switch').checked = true;
+      } else {
+        showNsfwGallery = false;
+        document.getElementById('nsfw-switch').checked = false;
+      }
+      renderGalleryGrid();
+      const returnFocus = ageModalReturnFocus;
+      ageModalReturnFocus = null;
+      if (returnFocus?.isConnected) returnFocus.focus();
+      else document.getElementById('nsfw-switch')?.focus();
+    }
+
+    function renderGalleryGrid() {
+      try {sessionStorage.setItem('nektahr-demo-age-verified',isAdultVerified?'yes':'no');sessionStorage.setItem('nektahr-demo-nsfw-visible',showNsfwGallery?'yes':'no');} catch (_) {}
+      document.getElementById('nsfw-switch').checked=showNsfwGallery;
+      window.processViewerSync?.(showNsfwGallery,isAdultVerified);
+      const grid = document.getElementById('gallery-cards-grid');
+      const filtered = GALLERY_ITEMS.filter(item => item.gallery!==false && (currentGalCat === 'all' || item.cat === currentGalCat));
+      if (!filtered.length) {
+        grid.innerHTML = `<p class="text-sm text-textMuted py-8" role="status">${uiText('noSamples')}</p>`;
+        return;
+      }
+      grid.innerHTML = filtered.map(item => {
+        const blurred = Boolean(item.nsfw) && !showNsfwGallery;
+        return `
+          <button type="button" onclick="openLightbox(${Number(item.id)})" class="card card-interactive overflow-hidden group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-label="${blurred ? ({en:'18+ artwork; confirm your age to view',ru:'Работа 18+; для просмотра подтверди возраст',es:'Obra 18+; confirma tu edad para verla'})[currentLang] : `${({en:'Open',ru:'Открыть',es:'Abrir'})[currentLang]} ${getGalleryTitle(item)}`}">
+            <div class="aspect-[4/5] bg-surfaceAlt relative overflow-hidden border-b hairline">
+              <img src="${item.img}" alt="${blurred ? ({en:'Blurred 18+ artwork preview',ru:'Размытое превью работы 18+',es:'Vista difuminada de una obra 18+'})[currentLang] : getGalleryTitle(item)}" loading="lazy" decoding="async" class="w-full h-full object-contain transition duration-500 ${blurred ? 'blur-2xl scale-110' : 'group-hover:scale-105'}" />
+              <div class="absolute top-2.5 left-2.5 flex gap-1.5">
+                ${item.nsfw ? '<span class="px-2 py-0.5 bg-bg/90 border border-error/50 mono text-[10px] text-error">18+</span>' : ''}
+              </div>
+              ${blurred ? `<div class="absolute inset-0 bg-bg/60 flex flex-col items-center justify-center p-4 text-center"><span class="flex items-center justify-center w-10 h-10 border border-error/50 rounded-full text-error mb-2" aria-hidden="true">🔒</span><span class="mono text-[10px] uppercase text-error">NSFW · 18+</span></div>` : ''}
+            </div>
+            <div class="gallery-card-caption">
+              <div class="min-w-0">
+                <span class="gallery-kind" data-kind="${item.cat}">${getGalleryKind(item)}</span>
+                <h3 class="serif text-xl text-textMain">${getGalleryTitle(item)}</h3>
+                ${getGallerySeries(item)?`<p class="gallery-series">${getGallerySeries(item)}</p>`:''}
+                <p class="text-xs text-textDim">${item.processWork?getProcessLabel(item):getGalleryStage()}</p>
+              </div>
+              <span class="mono text-xs text-accent shrink-0">${item.processWork?'↗':getGalleryPriceLabel()}</span>
+            </div>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function openLightbox(id) { window.openGalleryArtwork?.(id); }
+
+    let lastGalleryTrigger = null;
+    function closeLightbox() {
+      document.getElementById('lightbox-modal').classList.add('hidden');
+      if (lastGalleryTrigger && typeof lastGalleryTrigger.focus === 'function') lastGalleryTrigger.focus();
+    }
+    document.addEventListener('keydown', event => {
+      const ageModal = document.getElementById('nsfw-modal');
+      if (ageModal && !ageModal.classList.contains('hidden')) {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          confirmAgeModal(false);
+          return;
+        }
+        if (event.key === 'Tab') {
+          const focusable = [...ageModal.querySelectorAll('button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')];
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last?.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first?.focus();
+          }
+        }
+        return;
+      }
+      if (event.key === 'Escape' && !document.getElementById('lightbox-modal').classList.contains('hidden')) closeLightbox();
+    });
+
+    function toggleTosConfirmation(checked) {
+      tosAgreed = Boolean(checked);
+      try{sessionStorage.setItem(TOS_CONSENT_KEY,tosAgreed?'yes':'no')}catch{}
+      recalcTotal();
+      if (checked) showToast(uiText('agreementAttached'));
+    }
+
+    function setFaqCat(cat) {
+      currentFaqCat = cat;
+      renderFaqSection();
+    }
+
+    function renderFaqSection() {
+      const t = I18N[currentLang].faq;
+      document.getElementById('faq-eyebrow').textContent = t.eyebrow;
+      document.getElementById('faq-title').textContent = t.title;
+      document.getElementById('faq-sub').textContent = t.sub;
+
+      const catKeys = Object.keys(t.cats);
+      document.getElementById('faq-cat-buttons').innerHTML = catKeys.map(k => {
+        const active = k === currentFaqCat;
+        return `
+          <button onclick="setFaqCat('${k}')" class="${active ? 'px-3 py-1.5 bg-accent text-bg font-medium' : 'px-3 py-1.5 border hairline text-textMuted hover:text-textMain'} transition cursor-pointer">
+            ${t.cats[k]}
+          </button>
+        `;
+      }).join('');
+
+      const filtered = t.items.filter(it => currentFaqCat === 'all' || it.cat === currentFaqCat);
+      document.getElementById('faq-items-list').innerHTML = filtered.map((f, idx) => `
+        <details class="card p-5 group" ${idx === 0 ? 'open' : ''}>
+          <summary class="serif text-2xl text-textMain cursor-pointer list-none flex items-center justify-between gap-4">
+            <span>${f.q}</span>
+            <span class="mono text-accent group-open:rotate-45 transition">+</span>
+          </summary>
+          <p class="text-sm text-textMuted mt-3 pt-3 border-t hairline leading-relaxed">${f.a}</p>
+        </details>
+      `).join('');
+    }
+
+    // Master Render for All Sections & Languages
+    function renderAllText() {
+      const t = I18N[currentLang];
+      const a11y=({en:{nav:'Main navigation',queue:'Open active commission queue',pricing:'Pricing categories',gallery:'Gallery filters',process:'Artwork process and versions'},ru:{nav:'Основная навигация',queue:'Открыть очередь заказов',pricing:'Категории заказов',gallery:'Фильтры галереи',process:'Этапы и версии работы'},es:{nav:'Navegación principal',queue:'Abrir cola de encargos',pricing:'Categorías de encargos',gallery:'Filtros de galería',process:'Proceso y versiones de la obra'}})[currentLang];
+      document.getElementById('nav-links').setAttribute('aria-label',a11y.nav);
+      const queueLink=document.getElementById('header-queue-counter').closest('button');queueLink.setAttribute('aria-label',a11y.queue);queueLink.title=a11y.queue;
+      document.querySelector('[aria-label="Pricing categories"],#page-pricing [role="tablist"]').setAttribute('aria-label',a11y.pricing);
+      document.getElementById('gallery-category-filters').setAttribute('aria-label',a11y.gallery);
+      document.getElementById('art-process').setAttribute('aria-label',a11y.process);
+
+      // Header Nav
+      document.getElementById('nav-board').textContent = t.nav.board;
+      document.getElementById('nav-pricing').textContent = t.nav.pricing;
+      document.getElementById('nav-gallery').textContent = t.nav.gallery;
+      document.getElementById('nav-queue').textContent = t.nav.queue;
+      document.getElementById('nav-tos').textContent = t.nav.tos;
+      document.getElementById('nav-faq').textContent = t.nav.faq;
+      document.getElementById('header-status-badge').textContent = t.statusBadge;
+      document.getElementById('header-tagline').textContent = uiText('headerTagline');
+      document.getElementById('footer-rights').textContent = uiText('footerRights');
+      document.getElementById('footer-telegram').textContent = uiText('footerTelegram');
+      document.getElementById('lb-pricing-link').textContent = uiText('pricingLink');
+      document.getElementById('toast').textContent = uiText('copied');
+
+      // Board / Hero
+      document.getElementById('hero-eyebrow').textContent = t.hero.eyebrow;
+      document.getElementById('hero-title').textContent = t.hero.title;
+      document.getElementById('hero-desc').textContent = t.hero.desc1;
+      document.getElementById('hero-desc-2').textContent = t.hero.desc2;
+      document.getElementById('path-a-tag').textContent = t.hero.pathA.tag;
+      document.getElementById('path-a-title').textContent = t.hero.pathA.title;
+      document.getElementById('path-a-sub').textContent = t.hero.pathA.sub;
+      document.getElementById('path-b-tag').textContent = t.hero.pathB.tag;
+      document.getElementById('path-b-title').textContent = t.hero.pathB.title;
+      document.getElementById('path-b-sub').textContent = t.hero.pathB.sub;
+
+      // Contacts
+      document.getElementById('contacts-eyebrow').textContent = t.contacts.eyebrow;
+      document.getElementById('contacts-title').textContent = t.contacts.title;
+      document.getElementById('primary-contacts-label').textContent = t.contacts.primaryTitle;
+      document.getElementById('platforms-label').textContent = t.contacts.platformsTitle;
+
+      document.getElementById('primary-contacts-grid').innerHTML = CONTACTS_PRIMARY.map(c => {
+        const subText = c.sub[currentLang] || c.sub.en;
+        const [descriptor, action] = subText.split(' · ');
+        const helper = action
+          ? `<span class="block mono text-[10px] uppercase text-accent/80 mt-1">${action}</span>`
+          : '';
+        const topLabel = `<span class="block mono text-[10px] uppercase text-textDim">${descriptor}</span>${helper}`;
+        if (c.type === 'copy') {
+          return `
+            <button onclick="copyToClipboard('${c.value}', '${c.label} (${c.handle})')" class="card card-interactive p-4 border-accent/40 bg-accent/5 text-left flex flex-col justify-between gap-3 cursor-pointer">
+              <div class="flex items-start justify-between gap-2 w-full">
+                <div>${topLabel}</div>
+                <span class="mono text-xs text-accent shrink-0">${uiText('copy')}</span>
+              </div>
+              <div>
+                <div class="serif text-2xl text-textMain">${c.label}</div>
+                <div class="mono text-xs text-textMuted mt-0.5">${c.handle}</div>
+              </div>
+            </button>
+          `;
+        }
+        return `
+          <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="card card-interactive p-4 border-accent/40 bg-accent/5 flex flex-col justify-between gap-3">
+            <div class="flex items-start justify-between gap-2 w-full">
+              <div>${topLabel}</div>
+              <span class="mono text-xs text-accent shrink-0">↗</span>
+            </div>
+            <div>
+              <div class="serif text-2xl text-textMain">${c.label}</div>
+              <div class="mono text-xs text-textMuted mt-0.5">${c.handle}</div>
+            </div>
+          </a>
+        `;
+      }).join('');
+
+      document.getElementById('platforms-grid').innerHTML = PLATFORMS.map(p => {
+        const note = p.note[currentLang] || p.note.en;
+        if (p.soon) {
+          return `
+            <div class="card p-4 opacity-55 flex flex-col justify-between gap-2 select-none">
+              <div class="flex items-center justify-between">
+                <span class="serif text-xl text-textMuted">${p.name}</span>
+                <span class="mono text-[10px] uppercase px-2 py-0.5 border hairline text-textDim">${({en:'Coming soon',ru:'Скоро',es:'Próximamente'})[currentLang]}</span>
+              </div>
+              <div class="text-xs text-textDim">${note}</div>
+            </div>
+          `;
+        }
+        return `
+          <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="card card-interactive p-4 flex flex-col justify-between gap-2 group">
+            <div class="flex items-center justify-between">
+              <span class="serif text-xl text-textMain group-hover:text-accent transition">${p.name}</span>
+              <span class="mono text-xs text-textDim group-hover:text-accent transition">↗</span>
+            </div>
+            <div class="text-xs text-textDim">${note}</div>
+          </a>
+        `;
+      }).join('');
+
+      // Board Highlights
+      document.getElementById('feat-eyebrow').textContent = t.featured.eyebrow;
+      document.getElementById('feat-title').textContent = t.featured.title;
+      document.getElementById('feat-view-all').textContent = t.featured.viewAll;
+      document.getElementById('hero-featured-label').textContent = t.featured.eyebrow;
+      document.getElementById('hero-featured-title').textContent = t.featured.title;
+      document.getElementById('hero-featured-link').textContent = t.featured.viewAll;
+      document.getElementById('board-highlights-grid').innerHTML = GALLERY_ITEMS.filter(x => x.gallery!==false && !x.nsfw).slice(0, 4).map(it => `
+        <button type="button" onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group text-left w-full">
+          <div class="aspect-[4/5] bg-bg overflow-hidden border-b hairline">
+            <img src="${it.img}" alt="${getGalleryTitle(it)}" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
+          </div>
+          <div class="highlight-caption"><span class="gallery-kind" data-kind="${it.cat}">${getGalleryKind(it)}</span>
+            <span class="serif text-lg text-textMain">${getGalleryTitle(it)}</span>
+            <span class="highlight-detail">${it.processWork?getProcessLabel(it):getGalleryStage()}</span>
+          </div>
+        </button>
+      `).join('');
+
+      window.mountProcessViewer?.();
+      // Pricing Page
+      document.getElementById('pricing-eyebrow').textContent = t.pricing.eyebrow;
+      document.getElementById('pricing-title').textContent = t.pricing.title;
+      document.getElementById('pricing-sub').textContent = t.pricing.sub;
+      document.getElementById('ptab-custom').textContent = ({en:'Commissions',ru:'Коммишки',es:'Encargos'})[currentLang];
+      document.getElementById('ptab-adopt').textContent = ({en:'Adopts',ru:'Адопты',es:'Adopts'})[currentLang];
+      document.getElementById('ptab-ych').textContent = ({en:'YCH',ru:'YCH',es:'YCH'})[currentLang];
+
+      document.getElementById('stage-sec-title').textContent = t.pricing.stageSectionTitle;
+      document.getElementById('stage-sec-hint').textContent = t.pricing.stageSectionHint;
+
+      document.getElementById('custom-stages-grid').innerHTML = t.pricing.stages.map(st => {
+        const selectable = ['sketch', 'color', 'single'].includes(st.key);
+        return `
+          <div ${selectable ? `role="button" tabindex="0" data-quote-mode="custom" data-quote-value="${st.key}" onclick="quickPickCustom('${st.key}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();quickPickCustom('${st.key}');}"` : ''} class="card ${selectable ? 'card-interactive cursor-pointer' : 'price-extras-note'} p-5 flex flex-col gap-3">
+            <div class="mono text-[10px] uppercase text-accent">${st.time}</div>
+            <h3 class="serif text-2xl text-textMain">${st.name}</h3>
+            <div class="serif text-3xl text-accent">${st.range}</div>
+            <p class="text-xs text-textMuted leading-relaxed">${st.desc}</p>
+          </div>`;
+      }).join('');
+
+      // Breakdown
+      document.getElementById('brk-eyebrow').textContent = t.pricing.breakdown.eyebrow;
+      document.getElementById('brk-title').textContent = t.pricing.breakdown.title;
+      document.getElementById('breakdown-grid').innerHTML = t.pricing.breakdown.items.map(b => `
+        <div class="card p-5 space-y-3">
+          <div class="mono text-[10px] uppercase text-accent">${b.tag}</div>
+          <h4 class="serif text-xl text-textMain">${b.title}</h4>
+          <p class="text-xs text-textMuted leading-relaxed">${b.desc}</p>
+        </div>
+      `).join('');
+
+      // Adopts Section
+      document.getElementById('adopt-eyebrow').textContent = t.pricing.adoptSection.eyebrow;
+      document.getElementById('adopt-title').textContent = t.pricing.adoptSection.title;
+      document.getElementById('adopt-desc').textContent = t.pricing.adoptSection.desc;
+      document.getElementById('adopt-tiers-grid').innerHTML = t.pricing.adoptSection.tiers.map(tr => `
+        <button type="button" data-quote-mode="adopt" data-quote-value="${tr.val}" onclick="quickPickTier('adopt', ${tr.val})" class="card card-interactive overflow-hidden flex flex-col justify-between cursor-pointer text-left w-full">
+          <div>
+            ${tr.hasSample ? `
+              <div class="h-48 bg-bg overflow-hidden relative border-b hairline">
+                <img src="${tr.img}" alt="${tr.title}" class="w-full h-full object-cover" />
+                <span class="absolute top-3 left-3 px-2.5 py-0.5 bg-bg/85 border hairline mono text-[10px] text-accent">${tr.badge}</span>
+              </div>
+            ` : `
+              <div class="h-48 blueprint-box border-b hairline flex flex-col items-center justify-center p-6 text-center">
+                <div class="w-9 h-9 border hairline flex items-center justify-center text-accent mono text-xs mb-2">✦</div>
+                <div class="mono text-[10px] uppercase text-accent">${t.pricing.adoptSection.blueprintTitle}</div>
+                <div class="text-xs text-textDim mt-1">${t.pricing.adoptSection.blueprintSub}</div>
+              </div>
+            `}
+            <div class="p-5 space-y-2.5">
+              <div class="flex items-baseline justify-between">
+                <span class="mono text-[10px] uppercase text-textDim">${tr.badge}</span>
+                <span class="serif text-3xl text-accent">${tr.price}</span>
+              </div>
+              <h3 class="serif text-2xl text-textMain">${tr.title}</h3>
+              <p class="text-xs text-textMuted leading-relaxed">${tr.desc}</p>
+              <ul class="pt-2 border-t hairline space-y-1 text-xs text-textDim">
+                ${tr.perks.map(p => `<li>• ${p}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+        </button>
+      `).join('');
+
+      // YCH Section
+      document.getElementById('ych-eyebrow').textContent = t.pricing.ychSection.eyebrow;
+      document.getElementById('ych-title').textContent = t.pricing.ychSection.title;
+      document.getElementById('ych-desc').textContent = t.pricing.ychSection.desc;
+      document.getElementById('ych-slots-grid').innerHTML = t.pricing.ychSection.slots.map(sl => `
+        <div role="button" tabindex="0" data-quote-mode="ych" data-quote-value="${sl.val}" onclick="quickPickTier('ych', ${sl.val})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();quickPickTier('ych', ${sl.val});}" class="card card-interactive p-5 flex flex-col gap-3 cursor-pointer">
+          <div class="mono text-[10px] text-textDim">${sl.code}</div>
+          <h3 class="serif text-2xl text-textMain">${sl.title}</h3>
+          <div class="flex flex-wrap items-center justify-between gap-2 border-t hairline pt-3">
+            <span class="text-xs text-textMuted">${sl.stage}</span>
+            <span class="mono text-lg text-accent">${sl.price}</span>
+          </div>
+          <p class="text-xs text-textMuted leading-relaxed">${sl.desc}</p>
+          <span class="mono text-[10px] uppercase text-textDim">${sl.status} · ${uiText('confirmAvailability')}</span>
+        </div>`).join('');
+
+      // Calculator Labels
+      document.getElementById('calc-title').textContent = t.calc.title;
+      document.getElementById('calc-reset-btn').textContent = t.calc.reset;
+      document.getElementById('calc-total-label').textContent = t.calc.totalLabel;
+      document.getElementById('calc-copy-btn').textContent = t.calc.copyBtn;
+      document.getElementById('calc-preview-label').textContent = t.calc.previewLabel;
+      buildIndividualCalculator();
+
+      // Gallery Labels
+      document.getElementById('gal-eyebrow').textContent = t.gallery.eyebrow;
+      document.getElementById('gal-title').textContent = t.gallery.title;
+      document.getElementById('gal-sub').textContent = t.gallery.sub;
+      Object.entries(t.gallery.filters).forEach(([key, label]) => {
+        const button = document.getElementById(`gf-${key}`);
+        if (button) button.textContent = label;
+      });
+      document.getElementById('gal-nsfw-label').textContent = t.gallery.nsfwToggle;
+      document.getElementById('mod-eyebrow').textContent = t.gallery.modal.eyebrow;
+      document.getElementById('mod-title').textContent = t.gallery.modal.title;
+      document.getElementById('mod-desc').textContent = t.gallery.modal.desc;
+      document.getElementById('mod-btn-yes').textContent = t.gallery.modal.yes;
+      document.getElementById('mod-btn-no').textContent = t.gallery.modal.no;
+      document.getElementById('gal-ext-title').textContent = t.gallery.extTitle;
+      document.getElementById('gal-ext-sub').textContent = t.gallery.extSub;
+      document.getElementById('gal-ext-platforms').innerHTML = PLATFORMS.filter(p => !p.soon).map(p => {
+        const note = p.note[currentLang] || p.note.en;
+        return `
+          <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="card card-interactive p-4 flex flex-col justify-between gap-1.5 group">
+            <div class="flex items-center justify-between">
+              <span class="serif text-xl text-textMain group-hover:text-accent transition">${p.name}</span>
+              <span class="mono text-xs text-accent">↗</span>
+            </div>
+            <div class="mono text-[11px] text-textMuted">${p.handle}</div>
+            <div class="text-[11px] text-textDim">${note}</div>
+          </a>
+        `;
+      }).join('');
+      renderGalleryGrid();
+
+      // Queue Page
+      document.getElementById('q-eyebrow').textContent = t.queue.eyebrow;
+      document.getElementById('q-title').textContent = t.queue.title;
+      document.getElementById('q-sub').textContent = t.queue.sub;
+      document.getElementById('q-col-slot').textContent = t.queue.cols.slot;
+      document.getElementById('q-col-client').textContent = t.queue.cols.client;
+      document.getElementById('q-col-details').textContent = t.queue.cols.details;
+      document.getElementById('q-col-stage').textContent = t.queue.cols.stage;
+      document.getElementById('q-col-progress').textContent = t.queue.cols.progress;
+
+      renderLiveQueue();
+
+      // ToS Page
+      document.getElementById('tos-agree-checkbox').checked=tosAgreed;
+      document.getElementById('tos-eyebrow').textContent = t.tos.eyebrow;
+      document.getElementById('tos-title').textContent = t.tos.title;
+      document.getElementById('tos-sub').textContent = t.tos.sub;
+      document.getElementById('tos-summary-title').textContent = t.tos.summaryTitle;
+      document.getElementById('tos-agree-label').textContent = t.tos.agreeCheck;
+      document.getElementById('tos-full-title').textContent = t.tos.fullTitle;
+      document.getElementById('tos-will-title').textContent = t.tos.willTitle;
+      document.getElementById('tos-wont-title').textContent = t.tos.wontTitle;
+
+      document.getElementById('tos-cards-grid').innerHTML = t.tos.cards.map((c, idx) => `
+        <div class="card p-5 space-y-2 ${idx === 5 ? 'border-error/40 bg-error/5' : ''}">
+          <div class="mono text-xs ${idx === 5 ? 'text-error' : 'text-accent'}">${c.num}</div>
+          <h3 class="serif text-2xl text-textMain">${c.title}</h3>
+          <p class="text-xs text-textMuted leading-relaxed">${c.desc}</p>
+        </div>
+      `).join('');
+
+      document.getElementById('tos-will-list').innerHTML = t.tos.willList.map(i => `<li>• ${i}</li>`).join('');
+      document.getElementById('tos-wont-list').innerHTML = t.tos.wontList.map(i => `<li>• ${i}</li>`).join('');
+      document.getElementById('tos-detailed-sections').innerHTML = t.tos.sections.map(sec => `
+        <div class="card p-6 space-y-3">
+          <div class="mono text-[10px] uppercase text-accent">${sec.tag}</div>
+          <h3 class="serif text-2xl text-textMain">${sec.title}</h3>
+          <ul class="space-y-2 text-xs sm:text-sm text-textMuted leading-relaxed pt-2 border-t hairline">
+            ${sec.bullets.map(b => `<li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>${b}</span></li>`).join('')}
+          </ul>
+        </div>
+      `).join('');
+
+      // FAQ Page
+      renderFaqSection();
+      window.renderCatalog?.();
+    }
+
+    // Apply the saved language before the page becomes visible, preventing an English flash.
+    const initialLang = document.documentElement.dataset.initialLang || 'en';
+    try {
+      setLang(initialLang);
+      switchPage(document.body.dataset.page || 'board');
+    } finally {
+      // Never leave the entire page invisible if initialization throws.
+      document.documentElement.classList.remove('language-loading');
+    }
+
+    window.onload = function() {
+      let initialPricingTab='custom';try{const saved=sessionStorage.getItem('nektahr-pricing-tab');if(['custom','adopt','ych'].includes(saved))initialPricingTab=saved;sessionStorage.removeItem('nektahr-pricing-tab')}catch{}
+      switchPricingTab(initialPricingTab);
+      if(!window.queueManagerReady)loadLiveQueue();
+    };
+  </script>
+<script src="/assets/process-viewer.js?v=20261028-audit11"></script>
+<script src="/assets/artwork-interactions.js?v=20261028-audit11"></script>
+<dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
+<script src="/assets/gallery-viewer.js?v=20261028-audit11"></script>
+<script src="/assets/pricing-samples.js?v=20261028-audit11"></script>
+<script src="/assets/quote-builder.js?v=20261028-audit11"></script>
+<script src="/assets/catalog.js?v=20261028-audit11"></script>
+</body>
+</html>

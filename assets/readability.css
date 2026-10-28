@@ -1,0 +1,147 @@
+/* Readability revision: shared Latin/Cyrillic UI and visible control labels. */
+:root{--ui-font:'Noto Sans',system-ui,-apple-system,'Segoe UI',sans-serif}
+body{font-family:var(--ui-font);font-size:14px;line-height:1.65}
+button,input,select,textarea{font-family:inherit}input,select,textarea{max-width:100%}
+body .font-sans{font-family:var(--ui-font)}
+.text-textDim{color:#a69b90} .page-section .text-textDim{color:#a69b90}
+.page-section p:not(.mono),#tos-detailed-sections li{font-size:14px;line-height:1.75}
+.page-section .text-xs:not(.mono),.page-section .text-\[11px\]:not(.mono){font-size:13px}
+.mono{letter-spacing:.035em;line-height:1.6}
+.page-section .mono.text-\[9px\],.page-section .mono.text-\[10px\],.page-section .mono.text-\[11px\]{font-size:11px}
+#nav-links .nav-link{font-size:13px;min-height:40px;padding:9px 10px}
+.lang-btn{min-width:32px;min-height:32px;font-size:12px}
+.ptab-btn{overflow:visible!important;text-overflow:clip!important;overflow-wrap:anywhere;letter-spacing:.025em}
+#page-pricing .ptab-btn{font-size:12px;min-height:48px}
+#page-pricing .quote-panel{font-size:13px}
+#page-pricing .quote-line{font-size:12px;line-height:1.65}
+#page-pricing #calc-dynamic-body .quote-config-note,#page-pricing .quote-unpriced-note,#page-pricing .quote-character-range p,#page-pricing #calc-estimate-note{font-size:12px;line-height:1.75}
+#page-pricing .quote-range-ends{font-size:11px}
+#page-pricing .quote-quantity-row label,#page-pricing .quote-existing-label,#page-pricing .quote-version-chips button{font-size:13px;line-height:1.55}
+#page-pricing .quote-quantity-row small{font-size:12px}
+#page-pricing .quote-stepper button{min-width:34px;min-height:36px}
+#page-pricing .pricing-sample .sample-label small,#page-pricing .pricing-sample .sample-label>span{font-size:12px}
+#gallery-cards-grid>button p{font-size:13px;line-height:1.65}
+.catalog-notice,.catalog-header p,.catalog-dialog-content p,.reservation-info p{font-size:14px;line-height:1.75}
+.catalog-filters button,.catalog-toolbar input,.catalog-dialog-actions button,.catalog-dialog-actions a,.queue-tabs button,.queue-sync button{font-size:13px;min-height:40px}
+.catalog-card-meta,.catalog-status,.catalog-demo-badge,.catalog-card-body>small,.catalog-card-price>span,.catalog-dialog-disclaimer,#catalog-dialog-id,.queue-overview span,.queue-sync p,.reservation-info small{font-size:12px!important;line-height:1.6}
+.catalog-card h2,.catalog-dialog-content h2{overflow-wrap:anywhere}
+#queue-table-body td{font-size:13px}#queue-table-body small,.queue-status{font-size:12px}
+.queue-status{white-space:normal}#queue-table-body td strong{overflow-wrap:anywhere}
+#art-process{font-family:var(--ui-font)}#art-process .hint,#art-process .type-note,#art-process .card-type,#art-process .content-preferences{font-size:12px}
+#art-process button{font-family:var(--ui-font);min-height:40px}
+.artwork-modal-counter,.artwork-modal-footer p,.artwork-modal-footer button{font-size:12px}
+@media(max-width:800px){html{scroll-padding-top:150px}#nav-links{gap:4px!important}#page-pricing .ptab-btn{font-size:11px}#stage-sec-hint{max-width:100%}}
+@media(max-width:600px){#page-pricing #custom-stages-grid,#page-pricing #ych-slots-grid{grid-template-columns:1fr}#page-pricing .ptab-btn{padding:12px 7px}#page-pricing .quote-panel{padding:18px}#catalog-dialog-image .catalog-art{height:230px}.catalog-dialog-content h2{font-size:30px}.queue-sync{align-items:flex-start;flex-wrap:wrap}.artwork-modal-header{gap:8px}.artwork-modal-header h2{font-size:21px}#art-process .stagebar{flex-wrap:wrap}}
+@media(max-width:360px){header.sticky{padding-left:12px;padding-right:12px}header.sticky>button:first-child{font-size:24px}header.sticky>div:last-child{gap:6px}.lang-btn{min-width:28px;padding-left:5px;padding-right:5px}#header-queue-counter{font-size:10px}#page-pricing .ptab-btn{font-size:10px}}
+/* Seven navigation items need a second row on tablets too. */
+@media(min-width:768px) and (max-width:1080px){header.sticky{height:auto;min-height:4rem;flex-wrap:wrap;padding-top:.65rem;padding-bottom:.45rem;gap:8px}header.sticky>button:first-child{order:1}header.sticky>div:last-child{order:2;margin-left:auto}header.sticky #nav-links{order:3;flex:0 0 100%;width:100%;max-width:100%;overflow-x:auto;justify-content:flex-start;padding:.35rem 0 .15rem;scrollbar-width:thin}#nav-links .nav-link{flex:0 0 auto}html{scroll-padding-top:150px}#page-pricing .quote-panel{top:128px;max-height:calc(100dvh - 150px)}}
+
+/* Keep all five queue fields readable without a sideways table on phones. */
+@media(max-width:600px){#page-queue .overflow-x-auto{border:0;padding:0;overflow:visible}#page-queue table{display:block;min-width:0!important;width:100%}#page-queue thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}#queue-table-body{display:grid;gap:14px}#queue-table-body tr{display:grid;grid-template-columns:1fr 1fr;gap:15px 18px;border:1px solid #e2b47833;border-radius:12px;background:#141017;padding:18px}#queue-table-body td{display:block;padding:0!important;font-size:13px;min-width:0;white-space:normal}#queue-table-body td:nth-child(2),#queue-table-body td:nth-child(5),#queue-table-body .queue-message{grid-column:1/-1}#queue-table-body td:before{content:attr(data-label);display:block;font-family:var(--ui-font);font-size:11px;letter-spacing:.02em;color:#b7ae9f;margin-bottom:6px}#queue-table-body td.queue-message:before{display:none}#queue-table-body strong{font-size:15px}#queue-table-body small{font-size:12px}.queue-status{font-size:13px}}
+/* Desktop review: calmer typography, contained images and deliberate controls. */
+:root{--ui-font:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif}
+body,body .font-sans{font-family:var(--ui-font)}
+h1,h2,h3,h4,.serif{font-family:var(--ui-font);font-weight:500;letter-spacing:-.025em}
+body>header>button:first-child{font-family:'Cormorant Garamond',Georgia,serif;font-size:32px;letter-spacing:-.02em}
+.mono{font-family:var(--ui-font);letter-spacing:.055em;font-weight:500}
+.page-section h1{font-size:clamp(32px,3.3vw,46px);line-height:1.18!important;max-width:28ch}
+.page-section h2{font-size:28px;line-height:1.3}.page-section h3{font-size:22px;line-height:1.35}.page-section h4{font-size:19px}
+.page-section p{font-size:14px;line-height:1.8}.artwork-modal-header h2{font-family:var(--ui-font);font-size:22px}
+.catalog-card-price strong,#catalog-dialog-includes,.queue-overview strong{font-family:var(--ui-font);font-size:28px;font-weight:500;letter-spacing:-.03em}
+#primary-contacts-grid{grid-template-columns:repeat(3,minmax(0,1fr));width:100%}#primary-contacts-grid>*{min-width:0;padding:20px}
+#page-queue .overflow-x-auto{padding:0}#page-queue thead th{padding:18px 24px;font-size:11px;background:#1b1720;letter-spacing:.055em;line-height:1.6}
+#page-queue #queue-table-body td{padding:22px 24px;font-family:var(--ui-font)}#page-queue #queue-table-body td:first-child{padding-left:24px;font-size:17px;font-weight:500}#page-queue #queue-table-body td:last-child{padding-right:24px}
+#catalog-dialog{width:min(980px,calc(100vw - 40px));max-width:980px;isolation:isolate}
+#catalog-dialog[open]{grid-template-columns:minmax(0,46%) minmax(0,54%);align-items:stretch}
+#catalog-dialog-image{min-width:0;overflow:hidden;position:relative;background:#201724}
+#catalog-dialog-image .catalog-art{width:100%;min-width:0;min-height:0;height:100%;aspect-ratio:auto}
+#catalog-dialog-image .catalog-art img{width:100%;max-width:100%;height:100%;max-height:78dvh;object-fit:contain;position:relative}
+#catalog-dialog .catalog-dialog-content{min-width:0;padding:42px 32px 30px;position:relative;background:#100c15;overflow-wrap:anywhere}
+#catalog-dialog .catalog-dialog-content h2{font-size:29px;line-height:1.3;margin:16px 0}
+#catalog-dialog .catalog-dialog-content p{font-size:14px;line-height:1.8}
+#catalog-dialog .catalog-dialog-actions{margin-top:24px;gap:12px}
+#catalog-dialog .catalog-close{z-index:3}
+/* Whole-row selections replace detached checkboxes and tiny switches. */
+#page-pricing .addon-pill,#page-pricing .quote-existing-label,#page-pricing .quote-package{position:relative;display:flex;align-items:center;gap:14px;justify-content:space-between;width:100%;padding:13px 14px;border:1px solid #75627366;border-radius:10px;background:#100d15;cursor:pointer;font-size:13px;line-height:1.65;transition:background .15s,border-color .15s}
+#page-pricing .addon-pill input,#page-pricing .quote-existing-label input,#page-pricing .quote-package input{position:absolute!important;inset:0!important;width:100%!important;height:100%!important;opacity:0;margin:0!important;z-index:1;cursor:pointer}
+#page-pricing .addon-pill>div{display:flex;align-items:center;justify-content:space-between;gap:12px;flex:1;min-width:0;padding:0;border:0;border-radius:0;background:transparent;font-size:13px;line-height:1.65}
+#page-pricing .addon-pill>div span:last-child{font-family:var(--ui-font);font-size:12px;white-space:nowrap}
+#page-pricing .addon-pill:after,#page-pricing .quote-existing-label:after,#page-pricing .quote-package:after{content:'+';display:grid;place-items:center;flex:0 0 24px;width:24px;height:24px;border:1px solid #80697b;border-radius:7px;font:16px var(--ui-font);color:#b7ae9f;background:#211824}
+#page-pricing .addon-pill:has(input:checked),#page-pricing .quote-existing-label:has(input:checked),#page-pricing .quote-package:has(input:checked){border-color:#e2b478;background:#e2b47812;color:#f2ece4}
+#page-pricing .addon-pill:has(input:checked):after,#page-pricing .quote-existing-label:has(input:checked):after,#page-pricing .quote-package:has(input:checked):after{content:'✓';background:#e2b478;color:#100b15;border-color:#e2b478}
+#page-pricing .addon-pill input:checked+div{background:transparent;border:0}
+#page-pricing .addon-pill:has(input:focus-visible),#page-pricing .quote-existing-label:has(input:focus-visible),#page-pricing .quote-package:has(input:focus-visible){outline:2px solid #e2b478;outline-offset:3px}
+#page-pricing .quote-version-chips button{padding:10px 12px;font-size:13px;line-height:1.5}
+#page-pricing .quote-existing-label span{flex:1}
+#page-pricing .pricing-examples{margin-top:26px}
+.artwork-work-strip{display:flex;gap:10px;overflow-x:auto;padding:18px 22px;border-top:1px solid #e2b47829;background:#131017}
+.artwork-work-strip button{flex:1 0 120px;max-width:210px;display:flex;align-items:center;gap:10px;position:relative;border:1px solid #e2b47833;border-radius:9px;padding:8px;background:#19121e;color:#cfc3d0;text-align:left;font-size:12px;cursor:pointer}
+.artwork-work-strip button[aria-pressed=true]{border-color:#e2b478;color:#e2b478;background:#e2b47813}
+.artwork-work-strip img{width:42px;height:52px;object-fit:contain;border-radius:5px;background:#29202d}.artwork-work-strip .strip-adult img{filter:blur(7px)}
+@media(max-width:700px){#primary-contacts-grid{grid-template-columns:1fr}#catalog-dialog[open]{display:block}#catalog-dialog-image .catalog-art{height:260px}#catalog-dialog .catalog-dialog-content{padding:30px 22px}.page-section h1{font-size:32px}.page-section h2{font-size:26px}}
+/* Stable highlight frames and compact quote rows. */
+#board-highlights-grid{align-items:stretch}
+#board-highlights-grid>button{display:flex;flex-direction:column;align-self:stretch;min-width:0}
+#board-highlights-grid>button>div:first-child{width:100%;aspect-ratio:4/5;flex:none;overflow:hidden;border-bottom:1px solid #e2b47833;background:#1a1620}
+#board-highlights-grid>button img{display:block;width:100%;height:100%;object-fit:contain!important;object-position:center}
+#board-highlights-grid>button>div:last-child{flex:1;min-height:94px;width:100%;padding:15px;align-items:flex-start;background:#121118}
+#board-highlights-grid>button>div:last-child>span:first-child{font-size:16px;line-height:1.5}
+#board-highlights-grid>button>div:last-child>span:last-child{font-size:10px;max-width:65px;text-align:right;line-height:1.6}
+#page-pricing .quote-panel{gap:11px;padding:17px}
+#page-pricing .quote-panel h3{font-size:23px}#page-pricing .quote-total #calc-total-value{font-size:34px}
+#page-pricing .quote-breakdown{margin-top:8px;font-size:12px}
+#page-pricing .quote-breakdown>summary{cursor:pointer;color:#c4b6c6;padding:5px 0}
+#page-pricing .quote-breakdown #calc-breakdown-list{padding:8px 0 0}
+#page-pricing .quote-packages{display:none}
+#page-pricing #calc-dynamic-body>div:not(.quote-single-base) #calc-stage-sel{display:block;font-size:13px;line-height:1.5;padding:10px 12px;min-height:44px;background:#100d15}
+#page-pricing .quote-character-range{padding-top:2px}
+#page-pricing .quote-character-range p{font-size:11px;margin-top:7px;line-height:1.6}
+#page-pricing .addon-pill,#page-pricing .quote-existing-label{padding:9px 11px;border-radius:8px;font-size:12px;line-height:1.5}
+#page-pricing .addon-pill>div{font-size:12px}#page-pricing .addon-pill:after,#page-pricing .quote-existing-label:after{flex-basis:20px;width:20px;height:20px;font-size:14px}
+#page-pricing .compact-options{display:block;padding-top:11px}
+#page-pricing .compact-options h4{font-size:14px;margin:0 0 7px}
+#page-pricing .compact-options .quote-quantity-row{display:grid;grid-template-columns:minmax(0,1fr) 90px;align-items:center;gap:10px;padding:8px 0;border:0;border-bottom:1px solid #e2b47814;min-height:46px}
+#page-pricing .compact-options .quote-quantity-row>div:first-child{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#page-pricing .compact-options .quote-quantity-row label{font-size:12px;line-height:1.4;min-width:0}
+#page-pricing .compact-options .quote-quantity-row small{font-size:11px;margin:0;flex-shrink:0;color:#bfa9c3;max-width:105px;text-align:right;line-height:1.4}
+#page-pricing .compact-options .quote-quantity-row.has-quantity label{color:#e2b478}
+#page-pricing .compact-options .quote-stepper{width:90px;display:grid;grid-template-columns:28px 32px 28px;border-radius:7px}
+#page-pricing .compact-options .quote-stepper button{min-width:0;width:28px;min-height:30px;height:30px}
+#page-pricing .compact-options .quote-stepper input{width:32px!important;min-width:0;height:30px;padding:0;font-size:12px}
+#page-pricing .compact-options>.quote-existing-label{margin:10px 0 5px}
+#page-pricing .compact-options>.quote-unpriced-note{font-size:11px;line-height:1.6;margin:4px 0 8px}
+#page-pricing .quote-more-options{border-top:1px solid #e2b47829;margin-top:10px;padding-top:5px}
+#page-pricing .quote-more-options>summary{padding:9px 0;font-size:12px;color:#cdb9ce;cursor:pointer}
+#page-pricing .quote-more-options .quote-unpriced-note{font-size:11px;line-height:1.65;padding-top:7px}
+#page-pricing .quote-panel .quote-config-note{font-size:11px!important;line-height:1.65!important}
+#page-pricing .pricing-samples-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:12px}
+#page-pricing .pricing-sample .sample-label{padding:10px}#page-pricing .sample-label strong{font-size:12px}
+#art-process .ych-view,#art-process .ych-view .curtain,#art-process .ych-view .curtain-reveal{background:var(--ych-background,#ffbe86)}
+#artwork-dialog .artwork-work-strip button:disabled,#artwork-dialog .artwork-modal-buttons button:disabled{opacity:.35;cursor:default}
+/* Version sets may contain more than the original three images. */
+#art-process #stage1,#art-process #stage2{display:none!important}
+#art-process .phases button{white-space:normal;line-height:1.45;min-height:42px}
+#page-pricing .pricing-samples-grid[data-count="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+/* Clear category / title / version hierarchy across gallery cards. */
+.gallery-card-caption{padding:16px 16px 18px;display:flex;align-items:flex-end;justify-content:space-between;gap:12px;min-height:154px;align-items:flex-start}
+.gallery-kind{display:block;font-family:Inter,sans-serif;font-size:10px;line-height:1.4;font-weight:650;letter-spacing:.1em;text-transform:uppercase;color:#e2b478;margin-bottom:7px}
+.gallery-kind[data-kind="fanart"]{color:#cab6e9}.gallery-kind[data-kind="ych"]{color:#accdc2}.gallery-kind[data-kind="comm"]{color:#e8c492}
+.gallery-card-caption h3{font-size:17px;line-height:1.4;margin:0 0 5px;font-weight:600;overflow-wrap:anywhere}
+.gallery-card-caption p{line-height:1.5;font-size:11px}.gallery-card-caption .gallery-series{font-size:11px;color:#c3b6c7;margin:0 0 4px}
+.highlight-caption{padding:15px;display:flex;flex-direction:column;align-items:flex-start;gap:3px;min-height:113px}.highlight-caption .gallery-kind{margin-bottom:2px}.highlight-caption>.serif{font-size:16px;line-height:1.4;font-weight:600}.highlight-detail{font-size:11px;line-height:1.5;color:#b6a8bd}
+
+.gallery-card-caption>span:last-child{align-self:flex-end}
+
+/* Current finish levels and binary alternative-version choices. */
+#page-pricing .quote-custom-base #calc-stage-sel{display:block;font-size:13px;line-height:1.5;padding:10px 12px;min-height:44px;background:#100d15}
+#page-pricing .quote-custom-base .quote-packages{display:none}
+#page-pricing .quote-version-toggles{display:grid;gap:7px}
+#page-pricing .quote-version-line{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid #e2b47829;padding:10px 12px;border-radius:8px;font-size:12px;color:#c9bfce}
+#page-pricing .quote-version-line>span:last-child{font-size:11px;color:#e2b478;text-align:right}
+#page-pricing .quote-version-toggles .is-included{opacity:.85;cursor:default}
+#page-pricing .pricing-sample .sample-thumb{aspect-ratio:1/1}
+#page-pricing .pricing-sample .sample-thumb img{object-fit:contain;object-position:center}
+#page-pricing .pricing-samples-grid[data-count="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+.quote-included-group{padding:12px;border:1px solid #e2b47855;border-radius:9px;background:#e2b47808}.quote-included-group[hidden]{display:none}.quote-included-group label{display:block;font-size:11px;color:#e2b478;margin-bottom:8px}.quote-included-group select{width:100%;background:#100d15;border:1px solid #e2b47833;border-radius:6px;padding:9px;font-size:12px;color:#f5f0e8}.quote-included-group p{font-size:10px;line-height:1.6;color:#b7adbf;margin-top:8px}.catalog-sales-terms{font-size:12px;color:#bfb0bb;line-height:1.7;border-top:1px solid #e2b47822;padding-top:12px;margin-top:14px}.catalog-sales-terms summary{cursor:pointer;color:#e2b478}.catalog-sales-terms p{margin:10px 0}.catalog-sales-terms a{color:#e2b478}
