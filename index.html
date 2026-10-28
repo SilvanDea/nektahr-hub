@@ -1714,7 +1714,7 @@
           <div class="mono text-[10px] uppercase tracking-widest text-accent">${uiText('quoteStepExtras')}</div>
           <div class="mono text-[10px] uppercase text-textDim">${mode === 'custom' ? t.addonsCustom : mode === 'adopt' ? t.addonsAdopt : t.addonsYch}</div>
           <div class="grid grid-cols-1 gap-2">
-            ${cfg.addons.map(a => { const label = a.label[currentLang] || a.label.en; return `<label class="addon-pill cursor-pointer block"><input type="checkbox" value="${a.price}" data-id="${a.id}" data-label="${label}" onchange="recalcTotal()" class="calc-addon-check sr-only" ${state.addons.includes(a.id) ? 'checked' : ''}><div class="px-3 py-3 border hairline text-xs text-textMuted flex items-center justify-between gap-3 transition"><span>${label}</span><span class="mono text-accent shrink-0">+${a.price}</span></div></label>`; }).join('')}
+            ${cfg.addons.map(a => { const label = a.label[currentLang] || a.label.en; return `<label class="addon-pill cursor-pointer block"><input type="checkbox" value="${a.price}" data-id="${a.id}" data-label="${label}" onchange="recalcTotal()" class="calc-addon-check sr-only" ${state.addons.includes(a.id) ? 'checked' : ''}><div class="px-3 py-3 border hairline text-xs text-textMuted flex items-center justify-between gap-3 transition"><span>${label}</span><span class="mono text-accent shrink-0">+$${a.price}</span></div></label>`; }).join('')}
             ${cfg.mults.map(m => { const label = m.label[currentLang] || m.label.en; return `<label class="addon-pill cursor-pointer block"><input type="checkbox" value="${m.mult}" data-id="${m.id}" data-label="${label} (${m.badge})" onchange="recalcTotal()" class="calc-mult-check sr-only" ${state.mults.includes(m.id) ? 'checked' : ''}><div class="px-3 py-3 border hairline text-xs text-textMuted flex items-center justify-between gap-3 transition"><span>${label}</span><span class="mono text-accent shrink-0">${m.badge}</span></div></label>`; }).join('')}
           </div>
           <p class="text-xs text-textDim leading-relaxed">${cfg.note[currentLang] || cfg.note.en}</p>
@@ -1755,7 +1755,7 @@
       const msg = `${uiText('quoteGreeting')}
 • ${uiText('quoteCategory')}: ${itemSummary}
 • ${uiText('quoteAddons')}: ${pickedNames.length ? pickedNames.join(', ') : uiText('quoteNone')}
-• ${uiText('quoteTotal')}: ~${total} USD
+• ${uiText('quoteTotal')}: ~$${total} USD
 • ${uiText('quoteRefsLine')}: ${refs}
 • ${uiText('quoteDeadlineLine')}: ${deadline}
 • ${uiText('quoteContactLine')}: ${contact}
