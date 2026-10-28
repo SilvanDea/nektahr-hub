@@ -2246,9 +2246,13 @@
 
     // Apply the saved language before the page becomes visible, preventing an English flash.
     const initialLang = document.documentElement.dataset.initialLang || 'en';
-    setLang(initialLang);
-    switchPage(document.body.dataset.page || 'board');
-    document.documentElement.classList.remove('language-loading');
+    try {
+      setLang(initialLang);
+      switchPage(document.body.dataset.page || 'board');
+    } finally {
+      // Never leave the entire page invisible if initialization throws.
+      document.documentElement.classList.remove('language-loading');
+    }
 
     window.onload = function() {
       switchPricingTab('custom');
