@@ -1,0 +1,40 @@
+/* Readability revision: shared Latin/Cyrillic UI and visible control labels. */
+:root{--ui-font:'Noto Sans',system-ui,-apple-system,'Segoe UI',sans-serif}
+body{font-family:var(--ui-font);font-size:14px;line-height:1.65}
+button,input,select,textarea{font-family:inherit}input,select,textarea{max-width:100%}
+body .font-sans{font-family:var(--ui-font)}
+.text-textDim{color:#a69b90} .page-section .text-textDim{color:#a69b90}
+.page-section p:not(.mono),#tos-detailed-sections li{font-size:14px;line-height:1.75}
+.page-section .text-xs:not(.mono),.page-section .text-\[11px\]:not(.mono){font-size:13px}
+.mono{letter-spacing:.035em;line-height:1.6}
+.page-section .mono.text-\[9px\],.page-section .mono.text-\[10px\],.page-section .mono.text-\[11px\]{font-size:11px}
+#nav-links .nav-link{font-size:13px;min-height:40px;padding:9px 10px}
+.lang-btn{min-width:32px;min-height:32px;font-size:12px}
+.ptab-btn{overflow:visible!important;text-overflow:clip!important;overflow-wrap:anywhere;letter-spacing:.025em}
+#page-pricing .ptab-btn{font-size:12px;min-height:48px}
+#page-pricing .quote-panel{font-size:13px}
+#page-pricing .quote-line{font-size:12px;line-height:1.65}
+#page-pricing #calc-dynamic-body .quote-config-note,#page-pricing .quote-unpriced-note,#page-pricing .quote-character-range p,#page-pricing #calc-estimate-note{font-size:12px;line-height:1.75}
+#page-pricing .quote-range-ends{font-size:11px}
+#page-pricing .quote-quantity-row label,#page-pricing .quote-existing-label,#page-pricing .quote-version-chips button{font-size:13px;line-height:1.55}
+#page-pricing .quote-quantity-row small{font-size:12px}
+#page-pricing .quote-stepper button{min-width:34px;min-height:36px}
+#page-pricing .pricing-sample .sample-label small,#page-pricing .pricing-sample .sample-label>span{font-size:12px}
+#gallery-cards-grid>button p{font-size:13px;line-height:1.65}
+.catalog-notice,.catalog-header p,.catalog-dialog-content p,.reservation-info p{font-size:14px;line-height:1.75}
+.catalog-filters button,.catalog-toolbar input,.catalog-dialog-actions button,.catalog-dialog-actions a,.queue-tabs button,.queue-sync button{font-size:13px;min-height:40px}
+.catalog-card-meta,.catalog-status,.catalog-demo-badge,.catalog-card-body>small,.catalog-card-price>span,.catalog-dialog-disclaimer,#catalog-dialog-id,.queue-overview span,.queue-sync p,.reservation-info small{font-size:12px!important;line-height:1.6}
+.catalog-card h2,.catalog-dialog-content h2{overflow-wrap:anywhere}
+#queue-table-body td{font-size:13px}#queue-table-body small,.queue-status{font-size:12px}
+.queue-status{white-space:normal}#queue-table-body td strong{overflow-wrap:anywhere}
+#art-process{font-family:var(--ui-font)}#art-process .hint,#art-process .type-note,#art-process .card-type,#art-process .content-preferences{font-size:12px}
+#art-process button{font-family:var(--ui-font);min-height:40px}
+.artwork-modal-counter,.artwork-modal-footer p,.artwork-modal-footer button{font-size:12px}
+@media(max-width:800px){html{scroll-padding-top:150px}#nav-links{gap:4px!important}#page-pricing .ptab-btn{font-size:11px}#stage-sec-hint{max-width:100%}}
+@media(max-width:600px){#page-pricing #custom-stages-grid,#page-pricing #ych-slots-grid{grid-template-columns:1fr}#page-pricing .ptab-btn{padding:12px 7px}#page-pricing .quote-panel{padding:18px}#catalog-dialog-image .catalog-art{height:230px}.catalog-dialog-content h2{font-size:30px}.queue-sync{align-items:flex-start;flex-wrap:wrap}.artwork-modal-header{gap:8px}.artwork-modal-header h2{font-size:21px}#art-process .stagebar{flex-wrap:wrap}}
+@media(max-width:360px){header.sticky{padding-left:12px;padding-right:12px}header.sticky>button:first-child{font-size:24px}header.sticky>div:last-child{gap:6px}.lang-btn{min-width:28px;padding-left:5px;padding-right:5px}#header-queue-counter{font-size:10px}#page-pricing .ptab-btn{font-size:10px}}
+/* Seven navigation items need a second row on tablets too. */
+@media(min-width:768px) and (max-width:1080px){header.sticky{height:auto;min-height:4rem;flex-wrap:wrap;padding-top:.65rem;padding-bottom:.45rem;gap:8px}header.sticky>button:first-child{order:1}header.sticky>div:last-child{order:2;margin-left:auto}header.sticky #nav-links{order:3;flex:0 0 100%;width:100%;max-width:100%;overflow-x:auto;justify-content:flex-start;padding:.35rem 0 .15rem;scrollbar-width:thin}#nav-links .nav-link{flex:0 0 auto}html{scroll-padding-top:150px}#page-pricing .quote-panel{top:128px;max-height:calc(100dvh - 150px)}}
+
+/* Keep all five queue fields readable without a sideways table on phones. */
+@media(max-width:600px){#page-queue .overflow-x-auto{border:0;padding:0;overflow:visible}#page-queue table{display:block;min-width:0!important;width:100%}#page-queue thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}#queue-table-body{display:grid;gap:14px}#queue-table-body tr{display:grid;grid-template-columns:1fr 1fr;gap:15px 18px;border:1px solid #e2b47833;border-radius:12px;background:#141017;padding:18px}#queue-table-body td{display:block;padding:0!important;font-size:13px;min-width:0;white-space:normal}#queue-table-body td:nth-child(2),#queue-table-body td:nth-child(5),#queue-table-body .queue-message{grid-column:1/-1}#queue-table-body td:before{content:attr(data-label);display:block;font-family:var(--ui-font);font-size:11px;letter-spacing:.02em;color:#b7ae9f;margin-bottom:6px}#queue-table-body td.queue-message:before{display:none}#queue-table-body strong{font-size:15px}#queue-table-body small{font-size:12px}.queue-status{font-size:13px}}

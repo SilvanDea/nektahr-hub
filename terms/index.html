@@ -27,14 +27,14 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Noto+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
             serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
-            sans: ['"Outfit"', 'system-ui', 'sans-serif'],
+            sans: ['"Noto Sans"', 'system-ui', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
@@ -56,7 +56,7 @@
     body {
       background-color: #0B0A0E;
       color: #B7AE9F;
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Noto Sans', system-ui, sans-serif;
       overflow-x: hidden;
       background-image: radial-gradient(circle at 50% 0%, rgba(226, 180, 120, 0.05), transparent 55%);
     }
@@ -125,6 +125,7 @@
 <link rel="stylesheet" href="/assets/site-polish.css">
 <link rel="stylesheet" href="/assets/quote-controls.css">
 <link rel="stylesheet" href="/assets/catalog-queue.css">
+<link rel="stylesheet" href="/assets/readability.css">
 </head>
 <body data-page="tos" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
@@ -696,9 +697,10 @@
               tag: "SECCIÓN 03 · REVISIONES Y CAMBIOS",
               title: "Correcciones Durante el Proceso",
               bullets: [
-                "Etapa de Boceto: incluye 3–5 ajustes gratuitos de pose o expresión.",
-                "Etapa de Color: ajustes de paleta gratuitos.",
-                "Etapa de Render: redibujar la pose ya aprobada tiene un costo adicional. Si olvidé un detalle claro de tu referencia, lo corrijo gratis."
+                "Etapa de boceto: incluye hasta 3–5 ajustes menores o de pose sin coste. Solicita todos los cambios estructurales en esta etapa.",
+                "Etapa de color base: los ajustes de paleta y pequeños cambios en las marcas del personaje son gratuitos.",
+                "Etapa de render: los cambios estructurales importantes de pose, atuendo o ángulo de cámara tras aprobar el lineart tienen un coste adicional según su complejidad.",
+                "Mis errores: si omití un detalle claro que aparecía en tu referencia, lo corregiré gratis en cualquier etapa."
               ]
             },
             {
@@ -715,9 +717,10 @@
               tag: "SECCIÓN 05 · REGLAS DE ADOPTABLES",
               title: "Propiedad, Rediseño y Reventa",
               bullets: [
-                "Recibes los archivos PNG/JPG en alta resolución sin marca de agua tras completar el pago.",
-                "Puedes elegir nombre, historia y hacer ajustes menores al diseño.",
-                "Puedes regalar, intercambiar o revender el personaje por un precio igual o menor al pagado (o mayor si incluye comisiones adicionales)."
+                "Tras completar el pago, recibes la propiedad del diseño del personaje, archivos PNG/JPG en alta resolución sin marca de agua y versiones transparentes.",
+                "Puedes elegir el nombre, la historia y el género del personaje, y hacer ajustes menores o moderados en su ropa o peinado.",
+                "Puedes regalar o intercambiar el personaje en cualquier momento. Puedes revenderlo por un precio igual o menor al pagado; solo puede ser mayor si se han añadido nuevas ilustraciones encargadas.",
+                "El crédito del diseño debe mantenerse siempre a nombre de Nek'tahr (@nektahr)."
               ]
             },
             {
@@ -920,7 +923,8 @@
               bullets: [
                 "На этапе скетча: включено до 3–5 бесплатных правок по позе, анатомии, эмоциям и деталям костюма.",
                 "На этапе базового цвета: бесплатно корректируются оттенки и палитра.",
-                "На этапе рендера: полная перерисовка уже утверждённой позы оплачивается отдельно. Если я случайно упустил деталь, которая была на вашем референсе — исправляю бесплатно на любом этапе."
+                "На этапе рендера: значительные изменения утверждённой позы, одежды или ракурса после согласования лайна оплачиваются отдельно в зависимости от сложности.",
+                "Мои ошибки: если я упустил чётко указанную деталь с вашего референса, исправлю её бесплатно на любом этапе."
               ]
             },
             {
@@ -1923,9 +1927,9 @@
       grid.innerHTML = filtered.map(item => {
         const blurred = Boolean(item.nsfw) && !showNsfwGallery;
         return `
-          <button type="button" onclick="openLightbox(${Number(item.id)})" class="card card-interactive overflow-hidden group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-label="${blurred ? '18+ mature content, verify age to view' : `Open ${getGalleryTitle(item)}`}">
+          <button type="button" onclick="openLightbox(${Number(item.id)})" class="card card-interactive overflow-hidden group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-label="${blurred ? ({en:'18+ artwork; confirm your age to view',ru:'Работа 18+; для просмотра подтверди возраст',es:'Obra 18+; confirma tu edad para verla'})[currentLang] : `${({en:'Open',ru:'Открыть',es:'Abrir'})[currentLang]} ${getGalleryTitle(item)}`}">
             <div class="aspect-[4/5] bg-surfaceAlt relative overflow-hidden border-b hairline">
-              <img src="${item.img}" alt="${blurred ? 'Blurred 18+ artwork preview' : getGalleryTitle(item)}" loading="lazy" decoding="async" class="w-full h-full object-contain transition duration-500 ${blurred ? 'blur-2xl scale-110' : 'group-hover:scale-105'}" />
+              <img src="${item.img}" alt="${blurred ? ({en:'Blurred 18+ artwork preview',ru:'Размытое превью работы 18+',es:'Vista difuminada de una obra 18+'})[currentLang] : getGalleryTitle(item)}" loading="lazy" decoding="async" class="w-full h-full object-contain transition duration-500 ${blurred ? 'blur-2xl scale-110' : 'group-hover:scale-105'}" />
               <div class="absolute top-2.5 left-2.5 flex gap-1.5">
                 <span class="px-2 py-0.5 bg-bg/85 border hairline mono text-[10px] text-textMuted">${item.processWork ? getProcessLabel(item) : getGalleryStage()}</span>
                 ${item.nsfw ? '<span class="px-2 py-0.5 bg-bg/90 border border-error/50 mono text-[10px] text-error">18+</span>' : ''}
@@ -2018,6 +2022,12 @@
     // Master Render for All Sections & Languages
     function renderAllText() {
       const t = I18N[currentLang];
+      const a11y=({en:{nav:'Main navigation',queue:'Open active commission queue',pricing:'Pricing categories',gallery:'Gallery filters',process:'Artwork process and versions'},ru:{nav:'Основная навигация',queue:'Открыть очередь заказов',pricing:'Категории заказов',gallery:'Фильтры галереи',process:'Этапы и версии работы'},es:{nav:'Navegación principal',queue:'Abrir cola de encargos',pricing:'Categorías de encargos',gallery:'Filtros de galería',process:'Proceso y versiones de la obra'}})[currentLang];
+      document.getElementById('nav-links').setAttribute('aria-label',a11y.nav);
+      const queueLink=document.getElementById('header-queue-counter').closest('button');queueLink.setAttribute('aria-label',a11y.queue);queueLink.title=a11y.queue;
+      document.querySelector('[aria-label="Pricing categories"],#page-pricing [role="tablist"]').setAttribute('aria-label',a11y.pricing);
+      document.getElementById('gallery-category-filters').setAttribute('aria-label',a11y.gallery);
+      document.getElementById('art-process').setAttribute('aria-label',a11y.process);
 
       // Header Nav
       document.getElementById('nav-board').textContent = t.nav.board;
@@ -2093,7 +2103,7 @@
             <div class="card p-4 opacity-55 flex flex-col justify-between gap-2 select-none">
               <div class="flex items-center justify-between">
                 <span class="serif text-xl text-textMuted">${p.name}</span>
-                <span class="mono text-[10px] uppercase px-2 py-0.5 border hairline text-textDim">Coming Soon</span>
+                <span class="mono text-[10px] uppercase px-2 py-0.5 border hairline text-textDim">${({en:'Coming soon',ru:'Скоро',es:'Próximamente'})[currentLang]}</span>
               </div>
               <div class="text-xs text-textDim">${note}</div>
             </div>
@@ -2134,9 +2144,9 @@
       document.getElementById('pricing-eyebrow').textContent = t.pricing.eyebrow;
       document.getElementById('pricing-title').textContent = t.pricing.title;
       document.getElementById('pricing-sub').textContent = t.pricing.sub;
-      document.getElementById('ptab-custom').textContent = t.pricing.tabs.custom;
-      document.getElementById('ptab-adopt').textContent = t.pricing.tabs.adopt;
-      document.getElementById('ptab-ych').textContent = t.pricing.tabs.ych;
+      document.getElementById('ptab-custom').textContent = ({en:'Commissions',ru:'Коммишки',es:'Encargos'})[currentLang];
+      document.getElementById('ptab-adopt').textContent = ({en:'Adopts',ru:'Адопты',es:'Adopts'})[currentLang];
+      document.getElementById('ptab-ych').textContent = ({en:'YCH',ru:'YCH',es:'YCH'})[currentLang];
 
       document.getElementById('stage-sec-title').textContent = t.pricing.stageSectionTitle;
       document.getElementById('stage-sec-hint').textContent = t.pricing.stageSectionHint;
