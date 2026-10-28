@@ -262,7 +262,8 @@
       { name: "YCH.art", handle: "Ned'hal", url: "https://ych.art/user/nedhal", soon: false, note: { en: "Current YCH profile & availability", es: "Perfil YCH y disponibilidad actual", ru: "Профиль YCH и актуальная доступность" } },
       { name: "FurAffinity", handle: "nektahr", url: "https://www.furaffinity.net/user/nektahr", soon: false, note: { en: "Main archive", es: "Archivo principal", ru: "Основной архив" } },
       { name: "Pixiv", handle: "User 44242225", url: "https://www.pixiv.net/en/users/44242225", soon: false, note: { en: "Illustrations & works", es: "Ilustraciones y trabajos", ru: "Иллюстрации и работы" } },
-      { name: "Ko-fi", handle: "nektahr", url: "https://ko-fi.com/nektahr", soon: false, note: { en: "Support & payments", es: "Apoyo y pagos", ru: "Поддержка и оплата" } }
+      { name: "Ko-fi", handle: "nektahr", url: "https://ko-fi.com/nektahr", soon: false, note: { en: "Support & payments", es: "Apoyo y pagos", ru: "Поддержка и оплата" } },
+      { name: "Patreon", handle: "Coming Soon", url: "", soon: true, note: { en: "Memberships and extra content are on the way.", es: "Las membresías y el contenido extra llegarán pronto.", ru: "Подписки и дополнительный контент скоро появятся." } }
     ];
 
     // Gallery Works
@@ -386,7 +387,7 @@
           eyebrow: "CURATED ARCHIVE",
           title: "Art Gallery",
           sub: "Browse the gallery by category. 18+ artwork stays blurred until you confirm your age.",
-          filters: { all: "All Works", ill: "Illustrations", comm: "Commissions", adopt: "Adopts", ych: "YCH", other: "Other works", samples: "Portfolio Samples" },
+          filters: { all: "All Works", comm: "Commissions", adopt: "Adopts", ych: "YCH", other: "Other works" },
           nsfwToggle: "Show 18+ Content",
           modal: { eyebrow: "MATURE CONTENT WARNING", title: "Age Verification (18+)", desc: "Enabling this filter reveals mature / NSFW artwork intended strictly for adults. Are you 18 years of age or older?", yes: "Yes, I am 18+", no: "No, keep blurred" },
           extTitle: "Full Archives & External Galleries",
@@ -610,7 +611,7 @@
           eyebrow: "ARCHIVO VISUAL",
           title: "Galería de Arte",
           sub: "Explora la galería por categoría. Las obras 18+ permanecerán difuminadas hasta que confirmes tu edad.",
-          filters: { all: "Todas las obras", ill: "Ilustraciones", comm: "Comisiones", adopt: "Adopts", ych: "YCH", other: "Otros trabajos", samples: "Muestras de portafolio" },
+          filters: { all: "Todas las obras", comm: "Comisiones", adopt: "Adopts", ych: "YCH", other: "Otros trabajos" },
           nsfwToggle: "Mostrar contenido 18+",
           modal: { eyebrow: "AVISO DE CONTENIDO PARA ADULTOS", title: "Verificación de edad (18+)", desc: "Este filtro muestra obras maduras / NSFW destinadas exclusivamente a adultos. ¿Tienes 18 años o más?", yes: "Sí, tengo 18+", no: "No, mantener difuminado" },
           extTitle: "Archivos Completos y Galerías Externas",
@@ -832,7 +833,7 @@
           eyebrow: "АРХИВ РАБОТ",
           title: "Галерея",
           sub: "Смотри работы по категориям. Контент 18+ останется размытым, пока ты не подтвердишь возраст.",
-          filters: { all: "Все работы", ill: "Иллюстрации", comm: "Коммишки", adopt: "Адопты", ych: "YCH", other: "Другие работы", samples: "Примеры портфолио" },
+          filters: { all: "Все работы", comm: "Коммишки", adopt: "Адопты", ych: "YCH", other: "Другие работы" },
           nsfwToggle: "Показывать контент 18+",
           modal: { eyebrow: "ПРЕДУПРЕЖДЕНИЕ 18+", title: "Подтверждение возраста (18+)", desc: "Этот фильтр открывает взрослые / NSFW-работы, предназначенные только для совершеннолетних. Тебе уже есть 18 лет?", yes: "Да, мне есть 18", no: "Нет, оставить размытым" },
           extTitle: "Полные архивы и внешние галереи",
@@ -1350,12 +1351,10 @@
           <div class="flex flex-wrap items-center gap-3">
             <div id="gallery-category-filters" class="flex flex-wrap gap-1.5 mono text-xs" role="group" aria-label="Gallery filters">
               <button type="button" onclick="setGalleryCat('all')" data-c="all" id="gf-all" aria-pressed="true" class="gal-filter-btn px-3 py-1.5 bg-accent text-bg font-medium transition cursor-pointer">All Works</button>
-              <button type="button" onclick="setGalleryCat('ill')" data-c="ill" id="gf-ill" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Illustrations</button>
               <button type="button" onclick="setGalleryCat('comm')" data-c="comm" id="gf-comm" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Commissions</button>
               <button type="button" onclick="setGalleryCat('adopt')" data-c="adopt" id="gf-adopt" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Adopts</button>
               <button type="button" onclick="setGalleryCat('ych')" data-c="ych" id="gf-ych" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">YCH</button>
               <button type="button" onclick="setGalleryCat('other')" data-c="other" id="gf-other" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Other works</button>
-              <button type="button" onclick="setGalleryCat('samples')" data-c="samples" id="gf-samples" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Portfolio Samples</button>
             </div>
             <label class="flex items-center gap-2 px-3 py-1.5 border border-error/40 bg-error/5 mono text-xs text-error cursor-pointer select-none whitespace-nowrap">
               <input type="checkbox" id="nsfw-switch" onchange="handleNsfwToggle(this)" class="accent-[#D48A94] w-3.5 h-3.5">
