@@ -1153,21 +1153,21 @@
 
           <!-- Two Clear Entry Paths (Option A & Option B) -->
           <div class="grid sm:grid-cols-2 gap-4 pt-2">
-            <button onclick="switchPage('gallery')" class="card card-interactive p-5 text-left group cursor-pointer">
-              <div class="flex items-center justify-between mono text-[10px] uppercase text-textDim mb-2">
-                <span id="path-a-tag">OPTION A · EXPLORE</span>
-                <span class="text-accent group-hover:translate-x-1 transition">→</span>
+            <button onclick="switchPage('gallery')" class="card card-interactive p-5 text-left group cursor-pointer flex flex-col h-full">
+              <div class="flex h-4 items-center justify-between mono text-[10px] uppercase text-textDim mb-2">
+                <span id="path-a-tag" class="whitespace-nowrap">OPTION A · EXPLORE</span>
+                <span class="shrink-0 text-accent group-hover:translate-x-1 transition">→</span>
               </div>
-              <div id="path-a-title" class="serif text-2xl text-textMain mb-1">Links & Art Gallery</div>
+              <div id="path-a-title" class="serif text-2xl leading-tight text-textMain mb-1 min-h-[3.5rem]">Links & Art Gallery</div>
               <p id="path-a-sub" class="text-xs text-textMuted"></p>
             </button>
 
-            <button onclick="switchPage('pricing')" class="card card-interactive p-5 text-left border-accent/40 bg-accent/5 group cursor-pointer">
-              <div class="flex items-center justify-between mono text-[10px] uppercase text-accent mb-2">
-                <span id="path-b-tag">OPTION B · ORDER INFO</span>
-                <span class="text-accent group-hover:translate-x-1 transition">→</span>
+            <button onclick="switchPage('pricing')" class="card card-interactive p-5 text-left border-accent/40 bg-accent/5 group cursor-pointer flex flex-col h-full">
+              <div class="flex h-4 items-center justify-between mono text-[10px] uppercase text-accent mb-2">
+                <span id="path-b-tag" class="whitespace-nowrap">OPTION B · ORDER INFO</span>
+                <span class="shrink-0 text-accent group-hover:translate-x-1 transition">→</span>
               </div>
-              <div id="path-b-title" class="serif text-2xl text-textMain mb-1">Pricing, Stages & Adopts</div>
+              <div id="path-b-title" class="serif text-2xl leading-tight text-textMain mb-1 min-h-[3.5rem]">Pricing, Stages & Adopts</div>
               <p id="path-b-sub" class="text-xs text-textMuted"></p>
             </button>
           </div>
