@@ -23,7 +23,8 @@
   <meta property="og:title" content="Nek'tahr | Artist Portfolio & Commissions" />
   <meta property="og:description" content="Art portfolio, commission pricing, adoptables, YCH options, and contact links." />
   <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
-  <script src="/assets/queue-manager.js?v=20261028-compact3" defer></script>
+  <script src="/assets/portfolio-data.js?v=20261028-catalog4"></script>
+  <script src="/assets/queue-manager.js?v=20261028-catalog4" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -117,15 +118,15 @@
     /* Tailwind CDN is still required for the original utility classes; these small fallbacks keep basic readability if it fails. */
     .hidden { display: none !important; }
   </style>
-<link rel="stylesheet" href="/assets/process-viewer.css?v=20261028-compact3">
+<link rel="stylesheet" href="/assets/process-viewer.css?v=20261028-catalog4">
 <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/assets/favicon-32.png" sizes="32x32">
   <style>img{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none}</style>
-<link rel="stylesheet" href="/assets/pricing-layout.css?v=20261028-compact3">
-<link rel="stylesheet" href="/assets/site-polish.css?v=20261028-compact3">
-<link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-compact3">
-<link rel="stylesheet" href="/assets/catalog-queue.css?v=20261028-compact3">
-<link rel="stylesheet" href="/assets/readability.css?v=20261028-compact3">
+<link rel="stylesheet" href="/assets/pricing-layout.css?v=20261028-catalog4">
+<link rel="stylesheet" href="/assets/site-polish.css?v=20261028-catalog4">
+<link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-catalog4">
+<link rel="stylesheet" href="/assets/catalog-queue.css?v=20261028-catalog4">
+<link rel="stylesheet" href="/assets/readability.css?v=20261028-catalog4">
 </head>
 <body data-page="catalog" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
@@ -294,7 +295,7 @@
     const GALLERY_ITEMS = [
 {"id": 101, "title": "Illustration 1", "cat": "comm", "nsfw": false, "img": "/assets/process/art-1-2.webp", "processWork": 1},{"id": 102, "title": "Illustration 2", "cat": "comm", "nsfw": true, "img": "/assets/process/art-2-2.webp", "processWork": 2},{"id": 103, "title": "SFW / NSFW fan art", "cat": "other", "nsfw": false, "img": "/assets/process/art-3-0.webp", "processWork": 3},{"id": 104, "title": "YCH example", "cat": "ych", "nsfw": false, "img": "/assets/process/art-4-1.webp", "processWork": 4},
 {"id": 105, "title": "YCH \u00b7 TH", "cat": "ych", "nsfw": true, "img": "/assets/process/art-5-1.webp", "processWork": 5},{"id": 106, "title": "YCH \u00b7 All Plain to See", "cat": "ych", "nsfw": true, "img": "/assets/process/art-6-1.webp", "processWork": 6},
-      { id: 1, title: "Portfolio Sample 01", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/83524f34.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 1, gallery: false, title: "Portfolio Sample 01", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/83524f34.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
       { id: 2, title: "Portfolio Sample 02", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
       { id: 3, title: "Portfolio Sample 03", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
       { id: 4, title: "Portfolio Sample 04", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/e7055f07.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
@@ -307,6 +308,8 @@
       { id: 11, title: "Portfolio Sample 11", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7b5b1c4e.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
       { id: 12, title: "Portfolio Sample 12", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." }
     ];
+    GALLERY_ITEMS.push(...(window.PORTFOLIO_WORKS||[]).map(work=>({id:100+work.id,title:work.title,localizedTitles:work.titles,cat:work.cat,nsfw:work.nsfw[work.thumb],img:work.images[work.thumb],processWork:work.id,gallery:work.gallery,catalogWork:true,designKind:work.designKind})));
+
 
     // Translations (EN main · ES · RU)
     const I18N = {
@@ -1826,10 +1829,12 @@
     };
 
     function getProcessLabel(item) {
+      if(item.processWork===7)return ({en:'Line + Color → Full Render',ru:'Лайн + цвет → Полный рендер',es:'Líneas + color → Render completo'})[currentLang];if(item.catalogWork)return ({en:'Finished design / versions',ru:'Готовый дизайн / версии',es:'Diseño terminado / versiones'})[currentLang];
       const labels={en:['Art process','SFW / NSFW','Template → Result + Alt'],es:['Proceso','SFW / NSFW','Plantilla → Resultado + Alt'],ru:['Процесс работы','SFW / NSFW','Шаблон → Результат + Альт']};
       if(item.processWork===4)return ({en:'Template → Color Sketch + Alt',ru:'Шаблон → Цветной скетч + Альт',es:'Plantilla → Boceto a color + Alt'})[currentLang];if(item.processWork>=5)return ({en:'Template → Finished example',ru:'Шаблон → Готовый пример',es:'Plantilla → Ejemplo terminado'})[currentLang];return labels[currentLang][item.processWork===3?1:0];
     }
     function getGalleryTitle(item) {
+      if(item.localizedTitles)return item.localizedTitles[currentLang]||item.localizedTitles.en;
       if (item.processWork) {
         const names={en:['Illustration 1','Illustration 2','Fan art · SFW / NSFW','YCH · Happy Bun','YCH · TH','YCH · All Plain to See'],es:['Ilustración 1','Ilustración 2','Fan art · SFW / NSFW','YCH · Happy Bun','YCH · TH','YCH · All Plain to See'],ru:['Иллюстрация 1','Иллюстрация 2','Фан-арт · SFW / NSFW','YCH · Happy Bun','YCH · TH','YCH · All Plain to See']};
         return names[currentLang][item.processWork-1];
@@ -2250,8 +2255,8 @@
       <div id="faq-items-list" class="space-y-3"></div>
     </section>
 
-<section id="page-catalog" class="page-section hidden space-y-8"><div class="catalog-header"><div><div id="catalog-eyebrow" class="mono"></div><h1 id="catalog-title" class="serif"></h1><p id="catalog-subtitle"></p></div><a href="https://www.deviantart.com/nektahr" target="_blank" rel="noopener noreferrer" id="catalog-profile"></a></div><div class="catalog-notice" id="catalog-notice" role="note"></div><div class="catalog-toolbar"><div id="catalog-type-filters" class="catalog-filters" role="group"></div><label><span id="catalog-search-label" class="sr-only"></span><input type="search" id="catalog-search"></label></div><div id="catalog-state-filters" class="catalog-filters" role="group"></div><div id="catalog-grid" class="catalog-grid"></div><p id="catalog-empty" hidden></p><section class="reservation-info"><div><h2 id="catalog-reserve-title" class="serif"></h2><p id="catalog-reserve-description"></p></div><a href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" id="catalog-reserve-contact"></a></section></section>
-<dialog id="catalog-dialog" aria-labelledby="catalog-dialog-title"><button type="button" id="catalog-dialog-close" class="catalog-close" aria-label="Close">×</button><div id="catalog-dialog-image"></div><div class="catalog-dialog-content"><p id="catalog-dialog-meta" class="mono"></p><h2 id="catalog-dialog-title" class="serif"></h2><p id="catalog-dialog-description"></p><div id="catalog-dialog-includes"></div><p id="catalog-dialog-status"></p><div class="catalog-dialog-actions"><button type="button" id="catalog-dialog-preview" hidden></button><button type="button" id="catalog-dialog-copy"></button><a href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" id="catalog-dialog-contact"></a></div><p class="catalog-dialog-disclaimer" id="catalog-dialog-disclaimer"></p></div></dialog>
+<section id="page-catalog" class="page-section hidden space-y-8"><div class="catalog-header"><div><div id="catalog-eyebrow" class="mono"></div><h1 id="catalog-title" class="serif"></h1><p id="catalog-subtitle"></p></div><a href="https://www.deviantart.com/nektahr" target="_blank" rel="noopener noreferrer" id="catalog-profile"></a></div><div class="catalog-notice" id="catalog-notice" role="note"></div><div class="catalog-toolbar"><div id="catalog-type-filters" class="catalog-filters" role="group"></div><label><span id="catalog-search-label" class="sr-only"></span><input type="search" id="catalog-search"></label></div><div class="catalog-controls"><div id="catalog-state-filters" class="catalog-filters" role="group"></div><button type="button" id="catalog-adult-toggle" role="switch" aria-checked="false"></button></div><div id="catalog-grid" class="catalog-grid"></div><p id="catalog-empty" hidden></p><div id="catalog-pagination" class="catalog-pagination"></div><section class="reservation-info"><div><h2 id="catalog-reserve-title" class="serif"></h2><p id="catalog-reserve-description"></p></div><a href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" id="catalog-reserve-contact"></a></section></section>
+<dialog id="catalog-dialog" aria-labelledby="catalog-dialog-title"><button type="button" id="catalog-dialog-close" class="catalog-close" aria-label="Close">×</button><div id="catalog-dialog-image"></div><div class="catalog-dialog-content"><p id="catalog-dialog-meta" class="mono"></p><h2 id="catalog-dialog-title" class="serif"></h2><p id="catalog-dialog-description"></p><div id="catalog-dialog-includes"></div><p id="catalog-dialog-status"></p><div id="catalog-dialog-badges" class="catalog-dialog-badges"></div><div class="catalog-dialog-actions"><button type="button" id="catalog-dialog-preview" hidden></button><button type="button" id="catalog-dialog-copy"></button><a href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" id="catalog-dialog-contact"></a></div><p class="catalog-dialog-disclaimer" id="catalog-dialog-disclaimer"></p></div></dialog>
   </main>
 
   <!-- =====================================================================
@@ -2609,7 +2614,7 @@
       renderGalleryGrid();
     };
     function openArtworkProcess(id) {
-      const mode=id>=4?'ych':'custom';
+      const info=(window.PORTFOLIO_WORKS||[]).find(w=>w.id===id);const mode=info?(info.cat==='adopt'?'adopt':info.cat==='ych'?'ych':'custom'):id>=4?'ych':'custom';
       if(document.body.dataset.page!=='pricing'){try{sessionStorage.setItem('nektahr-pricing-tab',mode)}catch{};switchPage('pricing');return;}
       switchPricingTab(mode);document.getElementById('pricing-workspace').scrollIntoView({behavior:'smooth',block:'start'});
     }
@@ -2665,7 +2670,7 @@
       document.getElementById('nsfw-switch').checked=showNsfwGallery;
       window.processViewerSync?.(showNsfwGallery,isAdultVerified);
       const grid = document.getElementById('gallery-cards-grid');
-      const filtered = GALLERY_ITEMS.filter(item => currentGalCat === 'all' || item.cat === currentGalCat);
+      const filtered = GALLERY_ITEMS.filter(item => item.gallery!==false && (currentGalCat === 'all' || item.cat === currentGalCat));
       if (!filtered.length) {
         grid.innerHTML = `<p class="text-sm text-textMuted py-8" role="status">${uiText('noSamples')}</p>`;
         return;
@@ -2873,7 +2878,7 @@
       document.getElementById('hero-featured-label').textContent = t.featured.eyebrow;
       document.getElementById('hero-featured-title').textContent = t.featured.title;
       document.getElementById('hero-featured-link').textContent = t.featured.viewAll;
-      document.getElementById('board-highlights-grid').innerHTML = GALLERY_ITEMS.filter(x => !x.nsfw).slice(0, 4).map(it => `
+      document.getElementById('board-highlights-grid').innerHTML = GALLERY_ITEMS.filter(x => x.gallery!==false && !x.nsfw).slice(0, 4).map(it => `
         <button type="button" onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group text-left w-full">
           <div class="aspect-[4/5] bg-bg overflow-hidden border-b hairline">
             <img src="${it.img}" alt="${getGalleryTitle(it)}" loading="lazy" decoding="async" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
@@ -3071,12 +3076,12 @@
       if(!window.queueManagerReady)loadLiveQueue();
     };
   </script>
-<script src="/assets/process-viewer.js?v=20261028-compact3"></script>
-<script src="/assets/artwork-interactions.js?v=20261028-compact3"></script>
+<script src="/assets/process-viewer.js?v=20261028-catalog4"></script>
+<script src="/assets/artwork-interactions.js?v=20261028-catalog4"></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
-<script src="/assets/gallery-viewer.js?v=20261028-compact3"></script>
-<script src="/assets/pricing-samples.js?v=20261028-compact3"></script>
-<script src="/assets/quote-builder.js?v=20261028-compact3"></script>
-<script src="/assets/catalog.js?v=20261028-compact3"></script>
+<script src="/assets/gallery-viewer.js?v=20261028-catalog4"></script>
+<script src="/assets/pricing-samples.js?v=20261028-catalog4"></script>
+<script src="/assets/quote-builder.js?v=20261028-catalog4"></script>
+<script src="/assets/catalog.js?v=20261028-catalog4"></script>
 </body>
 </html>

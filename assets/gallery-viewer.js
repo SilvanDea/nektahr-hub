@@ -7,11 +7,11 @@
   function itemsForOpening(item){
     const page=document.body.dataset.page;
     if(page==='pricing'){
-      const allowed=item.processWork===3?[3]:currentPricingTab==='ych'?[4,5,6]:[1,2];
+      const allowed=item.processWork===3?[3]:currentPricingTab==='ych'?[4,5,6]:[1,2,7];
       return GALLERY_ITEMS.filter(x=>allowed.includes(x.processWork));
     }
-    if(page==='catalog')return GALLERY_ITEMS.filter(x=>[4,5,6].includes(x.processWork));
-    return GALLERY_ITEMS.filter(x=>currentGalCat==='all'||x.cat===currentGalCat);
+    if(page==='catalog')return [item];
+    return GALLERY_ITEMS.filter(x=>x.gallery!==false&&(currentGalCat==='all'||x.cat===currentGalCat));
   }
   function restoreViewer(){const viewer=$('art-process');if(viewerParent&&viewer&&viewer.parentElement!==viewerParent)viewerParent.append(viewer);window.setProcessContext?.(currentPricingTab);}
   function finishClose(){if(!document.body.classList.contains('artwork-modal-open'))return;restoreViewer();document.body.classList.remove('artwork-modal-open');if(returnFocus?.isConnected)returnFocus.focus();else $('nsfw-switch')?.focus();}
@@ -19,7 +19,7 @@
   window.openGalleryArtwork=id=>{
     const item=GALLERY_ITEMS.find(x=>x.id===Number(id));if(!item)return;
     const opening=!dialog.open;if(opening)sessionItems=itemsForOpening(item);if(!sessionItems.some(x=>x.id===item.id))return;if(opening){returnFocus=document.activeElement;viewerParent=$('art-process').parentElement;dialog.showModal();document.body.classList.add('artwork-modal-open');}
-    currentItem=item;const strip=$('artwork-work-strip');strip.replaceChildren();sessionItems.filter(x=>x.processWork).forEach(work=>{const button=document.createElement('button');button.type='button';button.setAttribute('aria-pressed',String(work.id===item.id));if(work.nsfw&&!showNsfwGallery)button.className='strip-adult';const thumb=document.createElement('img');thumb.src=work.img;thumb.alt='';const title=document.createElement('span');title.textContent=getGalleryTitle(work);if(work.nsfw&&!showNsfwGallery)title.textContent+=' · 18+';button.append(thumb,title);button.onclick=()=>window.openGalleryArtwork(work.id);strip.append(button)});const t=text();$('artwork-dialog-title').textContent=getGalleryTitle(item);const items=filtered();$('artwork-dialog-prev').disabled=items.length<2;$('artwork-dialog-next').disabled=items.length<2;$('artwork-dialog-prices').hidden=document.body.dataset.page==='pricing';$('artwork-dialog-counter').textContent=`${items.findIndex(x=>x.id===item.id)+1} / ${items.length}`;
+    currentItem=item;const strip=$('artwork-work-strip');strip.replaceChildren();sessionItems.filter(x=>x.processWork&&sessionItems.length>1&&sessionItems.length<15).forEach(work=>{const button=document.createElement('button');button.type='button';button.setAttribute('aria-pressed',String(work.id===item.id));if(work.nsfw&&!showNsfwGallery)button.className='strip-adult';const thumb=document.createElement('img');thumb.src=work.img;thumb.alt='';thumb.loading='lazy';thumb.decoding='async';const title=document.createElement('span');title.textContent=getGalleryTitle(work);if(work.nsfw&&!showNsfwGallery)title.textContent+=' · 18+';button.append(thumb,title);button.onclick=()=>window.openGalleryArtwork(work.id);strip.append(button)});const t=text();$('artwork-dialog-title').textContent=getGalleryTitle(item);const items=filtered();$('artwork-dialog-prev').disabled=items.length<2;$('artwork-dialog-next').disabled=items.length<2;$('artwork-dialog-prices').hidden=document.body.dataset.page==='pricing';$('artwork-dialog-counter').textContent=`${items.findIndex(x=>x.id===item.id)+1} / ${items.length}`;
     $('artwork-dialog-close').setAttribute('aria-label',t.close);$('artwork-dialog-prev').setAttribute('aria-label',t.prev);$('artwork-dialog-next').setAttribute('aria-label',t.next);$('artwork-dialog-prices').textContent=t.prices;$('artwork-dialog-hint').textContent=t.hint;
     const body=$('artwork-dialog-body'),image=$('artwork-dialog-image'),error=$('artwork-dialog-error');error.hidden=true;
     if(item.processWork){image.hidden=true;body.append($('art-process'));$('art-process').hidden=false;window.setProcessContext?.('gallery');window.openProcessWork?.(item.processWork);}
