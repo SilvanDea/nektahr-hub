@@ -385,8 +385,10 @@
         gallery: {
           eyebrow: "CURATED ARCHIVE",
           title: "Art Gallery",
-          sub: "Public SFW samples only. Message me for additional works or NSFW examples.",
-          filters: { all: "All Samples", samples: "Portfolio Samples" },
+          sub: "Browse the gallery by category. 18+ artwork stays blurred until you confirm your age.",
+          filters: { all: "All Works", ill: "Illustrations", comm: "Commissions", adopt: "Adopts", ych: "YCH", other: "Other works", samples: "Portfolio Samples" },
+          nsfwToggle: "Show 18+ Content",
+          modal: { eyebrow: "MATURE CONTENT WARNING", title: "Age Verification (18+)", desc: "Enabling this filter reveals mature / NSFW artwork intended strictly for adults. Are you 18 years of age or older?", yes: "Yes, I am 18+", no: "No, keep blurred" },
           extTitle: "Full Archives & External Galleries",
           extSub: "For more works and current auction listings, visit my linked profiles:",
         },
@@ -607,8 +609,10 @@
         gallery: {
           eyebrow: "ARCHIVO VISUAL",
           title: "Galería de Arte",
-          sub: "Solo muestras públicas SFW. Escríbeme para ver más trabajos o ejemplos NSFW.",
-          filters: { all: "Todas las muestras", samples: "Muestras de portafolio" },
+          sub: "Explora la galería por categoría. Las obras 18+ permanecerán difuminadas hasta que confirmes tu edad.",
+          filters: { all: "Todas las obras", ill: "Ilustraciones", comm: "Comisiones", adopt: "Adopts", ych: "YCH", other: "Otros trabajos", samples: "Muestras de portafolio" },
+          nsfwToggle: "Mostrar contenido 18+",
+          modal: { eyebrow: "AVISO DE CONTENIDO PARA ADULTOS", title: "Verificación de edad (18+)", desc: "Este filtro muestra obras maduras / NSFW destinadas exclusivamente a adultos. ¿Tienes 18 años o más?", yes: "Sí, tengo 18+", no: "No, mantener difuminado" },
           extTitle: "Archivos Completos y Galerías Externas",
           extSub: "Para ver más obras y subastas actuales, visita mis perfiles enlazados:",
         },
@@ -827,8 +831,10 @@
         gallery: {
           eyebrow: "АРХИВ РАБОТ",
           title: "Галерея",
-          sub: "В галерее показаны публичные SFW-примеры. За дополнительными работами или NSFW-примерами напишите мне.",
-          filters: { all: "Все примеры", samples: "Примеры портфолио" },
+          sub: "Смотри работы по категориям. Контент 18+ останется размытым, пока ты не подтвердишь возраст.",
+          filters: { all: "Все работы", ill: "Иллюстрации", comm: "Коммишки", adopt: "Адопты", ych: "YCH", other: "Другие работы", samples: "Примеры портфолио" },
+          nsfwToggle: "Показывать контент 18+",
+          modal: { eyebrow: "ПРЕДУПРЕЖДЕНИЕ 18+", title: "Подтверждение возраста (18+)", desc: "Этот фильтр открывает взрослые / NSFW-работы, предназначенные только для совершеннолетних. Тебе уже есть 18 лет?", yes: "Да, мне есть 18", no: "Нет, оставить размытым" },
           extTitle: "Полные архивы и внешние галереи",
           extSub: "Хочешь посмотреть больше работ в полном разрешении или поучаствовать в аукционах? Мои профили:",
         },
@@ -1066,6 +1072,8 @@
     let currentPricingTab = 'custom';
     let currentGalCat = 'all';
     let currentFaqCat = 'all';
+    let isAdultVerified = false;
+    let showNsfwGallery = false;
     let tosAgreed = false;
 
   </script>
@@ -1338,10 +1346,21 @@
         </div>
 
         <div class="flex flex-wrap items-center gap-3">
-          <!-- Category Filter Buttons -->
-          <div class="flex flex-wrap gap-1.5 mono text-xs" role="group" aria-label="Gallery filters">
-            <button type="button" onclick="setGalleryCat('all')" data-c="all" id="gf-all" aria-pressed="true" class="gal-filter-btn px-3 py-1.5 bg-accent text-bg font-medium transition cursor-pointer">All Samples</button>
-            <button type="button" onclick="setGalleryCat('samples')" data-c="samples" id="gf-samples" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Portfolio Samples</button>
+          <!-- Category Filters + 18+ Toggle -->
+          <div class="flex flex-wrap items-center gap-3">
+            <div id="gallery-category-filters" class="flex flex-wrap gap-1.5 mono text-xs" role="group" aria-label="Gallery filters">
+              <button type="button" onclick="setGalleryCat('all')" data-c="all" id="gf-all" aria-pressed="true" class="gal-filter-btn px-3 py-1.5 bg-accent text-bg font-medium transition cursor-pointer">All Works</button>
+              <button type="button" onclick="setGalleryCat('ill')" data-c="ill" id="gf-ill" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Illustrations</button>
+              <button type="button" onclick="setGalleryCat('comm')" data-c="comm" id="gf-comm" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Commissions</button>
+              <button type="button" onclick="setGalleryCat('adopt')" data-c="adopt" id="gf-adopt" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Adopts</button>
+              <button type="button" onclick="setGalleryCat('ych')" data-c="ych" id="gf-ych" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">YCH</button>
+              <button type="button" onclick="setGalleryCat('other')" data-c="other" id="gf-other" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Other works</button>
+              <button type="button" onclick="setGalleryCat('samples')" data-c="samples" id="gf-samples" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Portfolio Samples</button>
+            </div>
+            <label class="flex items-center gap-2 px-3 py-1.5 border border-error/40 bg-error/5 mono text-xs text-error cursor-pointer select-none whitespace-nowrap">
+              <input type="checkbox" id="nsfw-switch" onchange="handleNsfwToggle(this)" class="accent-[#D48A94] w-3.5 h-3.5">
+              <span id="gal-nsfw-label">Show 18+ Content</span>
+            </label>
           </div>
 
         </div>
@@ -1445,6 +1464,21 @@
     </section>
 
   </main>
+
+  <!-- =====================================================================
+       18+ AGE VERIFICATION MODAL
+  ====================================================================== -->
+  <div id="nsfw-modal" class="hidden fixed inset-0 z-50 bg-bg/90 backdrop-blur-md flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="mod-title">
+    <div class="card max-w-md w-full p-8 text-center space-y-5 border-error/40">
+      <div id="mod-eyebrow" class="mono text-[10px] uppercase text-error">MATURE CONTENT WARNING</div>
+      <h2 id="mod-title" class="serif text-3xl text-textMain">Age Verification (18+)</h2>
+      <p id="mod-desc" class="text-sm text-textMuted leading-relaxed"></p>
+      <div class="flex gap-3 pt-2">
+        <button type="button" onclick="confirmAgeModal(false)" id="mod-btn-no" class="flex-1 py-2.5 border hairline mono text-xs uppercase text-textMuted hover:text-textMain transition cursor-pointer">No, keep blurred</button>
+        <button type="button" onclick="confirmAgeModal(true)" id="mod-btn-yes" class="flex-1 py-2.5 bg-error text-bg mono text-xs uppercase font-medium hover:opacity-90 transition cursor-pointer">Yes, I am 18+</button>
+      </div>
+    </div>
+  </div>
 
   <!-- =====================================================================
        GALLERY LIGHTBOX MODAL
@@ -1692,7 +1726,7 @@
       }
     }
 
-    // Gallery: public SFW samples only. Open cards with mouse or keyboard.
+    // Gallery categories and age-gated mature artwork.
     function setGalleryCat(cat) {
       currentGalCat = cat;
       document.querySelectorAll('.gal-filter-btn').forEach(btn => {
@@ -1705,6 +1739,29 @@
       renderGalleryGrid();
     }
 
+    function handleNsfwToggle(checkbox) {
+      if (checkbox.checked && !isAdultVerified) {
+        checkbox.checked = false;
+        document.getElementById('nsfw-modal').classList.remove('hidden');
+      } else {
+        showNsfwGallery = checkbox.checked;
+        renderGalleryGrid();
+      }
+    }
+
+    function confirmAgeModal(confirmed) {
+      document.getElementById('nsfw-modal').classList.add('hidden');
+      if (confirmed) {
+        isAdultVerified = true;
+        showNsfwGallery = true;
+        document.getElementById('nsfw-switch').checked = true;
+      } else {
+        showNsfwGallery = false;
+        document.getElementById('nsfw-switch').checked = false;
+      }
+      renderGalleryGrid();
+    }
+
     function renderGalleryGrid() {
       const grid = document.getElementById('gallery-cards-grid');
       const filtered = GALLERY_ITEMS.filter(item => currentGalCat === 'all' || item.cat === currentGalCat);
@@ -1712,23 +1769,28 @@
         grid.innerHTML = `<p class="text-sm text-textMuted py-8" role="status">${uiText('noSamples')}</p>`;
         return;
       }
-      grid.innerHTML = filtered.map(item => `
-        <button type="button" onclick="openLightbox(${Number(item.id)})" class="card card-interactive overflow-hidden group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-label="Open ${getGalleryTitle(item)}">
-          <div class="aspect-[4/5] bg-bg relative overflow-hidden border-b hairline">
-            <img src="${item.img}" alt="${getGalleryTitle(item)}" loading="lazy" decoding="async" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" />
-            <div class="absolute top-2.5 left-2.5 flex gap-1.5">
-              <span class="px-2 py-0.5 bg-bg/85 border hairline mono text-[10px] text-textMuted">${getGalleryStage()}</span>
+      grid.innerHTML = filtered.map(item => {
+        const blurred = Boolean(item.nsfw) && !showNsfwGallery;
+        return `
+          <button type="button" onclick="${blurred ? "document.getElementById('nsfw-modal').classList.remove('hidden')" : `openLightbox(${Number(item.id)})`}" class="card card-interactive overflow-hidden group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-label="${blurred ? '18+ mature content, verify age to view' : `Open ${getGalleryTitle(item)}`}">
+            <div class="aspect-[4/5] bg-bg relative overflow-hidden border-b hairline">
+              <img src="${item.img}" alt="${blurred ? 'Blurred 18+ artwork preview' : getGalleryTitle(item)}" loading="lazy" decoding="async" class="w-full h-full object-cover transition duration-500 ${blurred ? 'blur-2xl scale-110' : 'group-hover:scale-105'}" />
+              <div class="absolute top-2.5 left-2.5 flex gap-1.5">
+                <span class="px-2 py-0.5 bg-bg/85 border hairline mono text-[10px] text-textMuted">${getGalleryStage()}</span>
+                ${item.nsfw ? '<span class="px-2 py-0.5 bg-bg/90 border border-error/50 mono text-[10px] text-error">18+</span>' : ''}
+              </div>
+              ${blurred ? `<div class="absolute inset-0 bg-bg/60 flex flex-col items-center justify-center p-4 text-center"><span class="mono text-[10px] uppercase text-error border border-error/50 px-2.5 py-1 mb-1.5">18+ MATURE</span><span class="text-xs text-textMain">${I18N[currentLang].gallery.modal.desc}</span></div>` : ''}
             </div>
-          </div>
-          <div class="p-4 flex items-baseline justify-between gap-3">
-            <div class="min-w-0">
-              <h3 class="serif text-xl text-textMain">${getGalleryTitle(item)}</h3>
-              <p class="text-xs text-textDim">${getGalleryDescription()}</p>
+            <div class="p-4 flex items-baseline justify-between gap-3">
+              <div class="min-w-0">
+                <h3 class="serif text-xl text-textMain">${getGalleryTitle(item)}</h3>
+                <p class="text-xs text-textDim">${getGalleryDescription()}</p>
+              </div>
+              <span class="mono text-xs text-accent shrink-0">${getGalleryPriceLabel()}</span>
             </div>
-            <span class="mono text-xs text-accent shrink-0">${getGalleryPriceLabel()}</span>
-          </div>
-        </button>
-      `).join('');
+          </button>
+        `;
+      }).join('');
     }
 
     function openLightbox(id) {
@@ -2002,9 +2064,16 @@
       document.getElementById('gal-eyebrow').textContent = t.gallery.eyebrow;
       document.getElementById('gal-title').textContent = t.gallery.title;
       document.getElementById('gal-sub').textContent = t.gallery.sub;
-      document.getElementById('gf-all').textContent = t.gallery.filters.all;
-      document.getElementById('gf-samples').textContent = t.gallery.filters.samples;
-      // Public gallery is SFW-only; age-gated gallery controls are intentionally not shown.
+      Object.entries(t.gallery.filters).forEach(([key, label]) => {
+        const button = document.getElementById(`gf-${key}`);
+        if (button) button.textContent = label;
+      });
+      document.getElementById('gal-nsfw-label').textContent = t.gallery.nsfwToggle;
+      document.getElementById('mod-eyebrow').textContent = t.gallery.modal.eyebrow;
+      document.getElementById('mod-title').textContent = t.gallery.modal.title;
+      document.getElementById('mod-desc').textContent = t.gallery.modal.desc;
+      document.getElementById('mod-btn-yes').textContent = t.gallery.modal.yes;
+      document.getElementById('mod-btn-no').textContent = t.gallery.modal.no;
       document.getElementById('gal-ext-title').textContent = t.gallery.extTitle;
       document.getElementById('gal-ext-sub').textContent = t.gallery.extSub;
       document.getElementById('gal-ext-platforms').innerHTML = PLATFORMS.filter(p => !p.soon).map(p => {
