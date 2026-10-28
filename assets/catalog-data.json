@@ -1922,5 +1922,33 @@
     },
     "isExample": true,
     "saleMode": "repeatable"
+  },
+  {
+    "id": "ADOPT-STREET-DEMON",
+    "type": "adopt",
+    "titles": {
+      "en": "Street Demon",
+      "ru": "Street Demon",
+      "es": "Street Demon"
+    },
+    "image": "/assets/catalog/street-demon-mar18.webp",
+    "processWork": 60,
+    "status": "open",
+    "nsfw": false,
+    "hasAdultVersion": false,
+    "hasVersions": false,
+    "designKind": "standard",
+    "tags": [
+      "adopt",
+      "Street Demon",
+      "design"
+    ],
+    "sourceFiles": [
+      "mar18.jpg"
+    ],
+    "price": {
+      "kind": "quote"
+    },
+    "saleMode": "single"
   }
 ]
