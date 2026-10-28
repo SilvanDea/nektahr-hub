@@ -2,6 +2,19 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
+  <style>html.language-loading body { visibility: hidden; }</style>
+  <script>
+    (function () {
+      let lang = 'en';
+      try {
+        const storedLang = localStorage.getItem('nektahr-hub-language');
+        if (storedLang === 'en' || storedLang === 'es' || storedLang === 'ru') lang = storedLang;
+      } catch (_) {}
+      document.documentElement.lang = lang;
+      document.documentElement.dataset.initialLang = lang;
+      document.documentElement.classList.add('language-loading');
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nek'tahr | Artist Portfolio, Commissions, Adopts & YCH</title>
   <meta name="description" content="Explore Nek'tahr's SFW art portfolio, commission pricing, adoptable designs, YCH options, terms, and official contact links." />
@@ -2185,14 +2198,13 @@
       renderFaqSection();
     }
 
+    // Apply the saved language before the page becomes visible, preventing an English flash.
+    const initialLang = document.documentElement.dataset.initialLang || 'en';
+    setLang(initialLang);
+    switchPage(document.body.dataset.page || 'board');
+    document.documentElement.classList.remove('language-loading');
+
     window.onload = function() {
-      let savedLang = 'en';
-      try {
-        const storedLang = localStorage.getItem('nektahr-hub-language');
-        if (storedLang && I18N[storedLang]) savedLang = storedLang;
-      } catch (_) {}
-      setLang(savedLang);
-      switchPage(document.body.dataset.page || 'board');
       switchPricingTab('custom');
       loadLiveQueue();
     };
