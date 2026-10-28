@@ -144,6 +144,7 @@
         if (payload && Array.isArray(payload.orders)) {
           LIVE_QUEUE_DATA = payload.orders;
           LIVE_QUEUE_ERROR = false;
+          updateHeaderQueueCounter();
         } else {
           LIVE_QUEUE_DATA = [];
           LIVE_QUEUE_ERROR = true;
@@ -157,6 +158,7 @@
         if (settled) return;
         settled = true;
         LIVE_QUEUE_ERROR = true;
+        updateHeaderQueueCounter();
         window.clearTimeout(timeout);
         finish();
         renderLiveQueue();
@@ -166,12 +168,27 @@
         if (settled) return;
         settled = true;
         LIVE_QUEUE_ERROR = true;
+        updateHeaderQueueCounter();
         finish();
         renderLiveQueue();
       }, 12000);
 
       script.src = QUEUE_API_URL + "?callback=" + callbackName + "&_=" + Date.now();
       document.head.appendChild(script);
+    }
+
+    function updateHeaderQueueCounter() {
+      const counter = document.getElementById("header-queue-counter");
+      if (!counter) return;
+      if (LIVE_QUEUE_DATA === null || LIVE_QUEUE_ERROR) {
+        counter.textContent = "QUEUE · —";
+        counter.title = "Active commission count unavailable";
+        return;
+      }
+      const count = LIVE_QUEUE_DATA.filter(order => String(order.status || "").trim().toLowerCase() !== "completed").length;
+      counter.textContent = `QUEUE · ${count}`;
+      counter.title = count === 1 ? "1 active commission" : `${count} active commissions`;
+      counter.setAttribute("aria-label", counter.title);
     }
 
     function renderLiveQueue() {
@@ -240,11 +257,11 @@
 
     const PLATFORMS = [
       { name: "DeviantArt", handle: "@nektahr", url: "https://www.deviantart.com/nektahr", soon: false, note: { en: "SFW samples, adopts & gallery", es: "Muestras SFW, adopts y galería", ru: "SFW-примеры, адопты и галерея" } },
-      { name: "FurAffinity", handle: "nektahr", url: "https://www.furaffinity.net/user/nektahr", soon: false, note: { en: "Main archive", es: "Archivo principal", ru: "Основной архив" } },
+      { name: "X (Twitter)", handle: "@Nektahr_", url: "https://x.com/Nektahr_", soon: false, note: { en: "Sketches & WIPs", es: "Bocetos y procesos", ru: "Скетчи и процесс работы" } },
       { name: "YCH.Commishes", handle: "nektahr", url: "https://ych.commishes.com/user/nektahr/", soon: false, note: { en: "YCH & adopt auctions", es: "Subastas de YCH y adopts", ru: "Аукционы YCH и адоптов" } },
       { name: "YCH.art", handle: "Ned'hal", url: "https://ych.art/user/nedhal", soon: false, note: { en: "Current YCH profile & availability", es: "Perfil YCH y disponibilidad actual", ru: "Профиль YCH и актуальная доступность" } },
+      { name: "FurAffinity", handle: "nektahr", url: "https://www.furaffinity.net/user/nektahr", soon: false, note: { en: "Main archive", es: "Archivo principal", ru: "Основной архив" } },
       { name: "Pixiv", handle: "User 44242225", url: "https://www.pixiv.net/en/users/44242225", soon: false, note: { en: "Illustrations & works", es: "Ilustraciones y trabajos", ru: "Иллюстрации и работы" } },
-      { name: "X (Twitter)", handle: "@Nektahr_", url: "https://x.com/Nektahr_", soon: false, note: { en: "Sketches & WIPs", es: "Bocetos y procesos", ru: "Скетчи и процесс работы" } },
       { name: "Ko-fi", handle: "nektahr", url: "https://ko-fi.com/nektahr", soon: false, note: { en: "Support & payments", es: "Apoyo y pagos", ru: "Поддержка и оплата" } }
     ];
 
@@ -1079,6 +1096,11 @@
         <button onclick="setLang('ru')" data-l="ru" class="lang-btn px-2 py-0.5 text-textDim hover:text-textMain transition cursor-pointer">RU</button>
       </div>
 
+      <button onclick="switchPage('queue')" title="Active commission queue" aria-label="Open active commission queue" class="flex items-center gap-1.5 px-2 py-1 border border-accent/30 bg-accent/5 text-accent mono text-[10px] uppercase cursor-pointer hover:bg-accent/10 transition whitespace-nowrap">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+        <span id="header-queue-counter">QUEUE · —</span>
+      </button>
+
       <button onclick="switchPage('queue')" class="hidden lg:flex items-center gap-2 px-3 py-1 border border-accent/30 bg-accent/10 text-accent mono text-[10px] uppercase cursor-pointer hover:border-accent transition">
         <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
         <span id="header-status-badge">Check Current Availability</span>
@@ -1809,12 +1831,17 @@
 
       document.getElementById('primary-contacts-grid').innerHTML = CONTACTS_PRIMARY.map(c => {
         const subText = c.sub[currentLang] || c.sub.en;
+        const [descriptor, action] = subText.split(' · ');
+        const helper = action
+          ? `<span class="block mono text-[10px] uppercase text-accent/80 mt-1">${action}</span>`
+          : '';
+        const topLabel = `<span class="block mono text-[10px] uppercase text-textDim">${descriptor}</span>${helper}`;
         if (c.type === 'copy') {
           return `
-            <button onclick="copyToClipboard('${c.value}', '${c.label} (${c.handle})')" class="card card-interactive p-4 border-accent/40 bg-accent/5 text-left flex flex-col justify-between gap-2 cursor-pointer">
-              <div class="flex items-center justify-between w-full">
-                <span class="mono text-[10px] uppercase text-accent">${subText}</span>
-                <span class="mono text-xs text-accent">${uiText('copy')}</span>
+            <button onclick="copyToClipboard('${c.value}', '${c.label} (${c.handle})')" class="card card-interactive p-4 border-accent/40 bg-accent/5 text-left flex flex-col justify-between gap-3 cursor-pointer">
+              <div class="flex items-start justify-between gap-2 w-full">
+                <div>${topLabel}</div>
+                <span class="mono text-xs text-accent shrink-0">${uiText('copy')}</span>
               </div>
               <div>
                 <div class="serif text-2xl text-textMain">${c.label}</div>
@@ -1824,10 +1851,10 @@
           `;
         }
         return `
-          <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="card card-interactive p-4 border-accent/40 bg-accent/5 flex flex-col justify-between gap-2">
-            <div class="flex items-center justify-between w-full">
-              <span class="mono text-[10px] uppercase text-accent">${subText}</span>
-              <span class="mono text-xs text-accent">↗</span>
+          <a href="${c.url}" target="_blank" rel="noopener noreferrer" class="card card-interactive p-4 border-accent/40 bg-accent/5 flex flex-col justify-between gap-3">
+            <div class="flex items-start justify-between gap-2 w-full">
+              <div>${topLabel}</div>
+              <span class="mono text-xs text-accent shrink-0">↗</span>
             </div>
             <div>
               <div class="serif text-2xl text-textMain">${c.label}</div>
