@@ -282,8 +282,8 @@
     "processWork": 18,
     "status": "sold",
     "nsfw": false,
-    "hasAdultVersion": false,
-    "hasVersions": false,
+    "hasAdultVersion": true,
+    "hasVersions": true,
     "designKind": "twin",
     "tags": [
       "adopt",
@@ -291,7 +291,10 @@
       "twin"
     ],
     "sourceFiles": [
-      "Adoptable Chinese Dragon Girl  CLOSE TWIN.jpg"
+      "Adoptable Chinese Dragon Girl  CLOSE TWIN.jpg",
+      "img1/gal (+adopt)/BCDG-base.png",
+      "img1/gal (+adopt)/BCDG-v1bg.jpg",
+      "img1/gal (+adopt)/BCDG-v2bg.jpg"
     ],
     "price": {
       "kind": "quote"
@@ -306,12 +309,12 @@
       "ru": "Chinese Dragon Girl",
       "es": "Chinese Dragon Girl"
     },
-    "image": "/assets/catalog/adoptable-chinese-dragon-girl-close.webp",
+    "image": "/assets/gallery/gal-adopt-cdg-v1bg.webp",
     "processWork": 19,
     "status": "sold",
     "nsfw": false,
     "hasAdultVersion": false,
-    "hasVersions": false,
+    "hasVersions": true,
     "designKind": "standard",
     "tags": [
       "adopt",
@@ -319,7 +322,10 @@
       "design"
     ],
     "sourceFiles": [
-      "Adoptable Chinese Dragon Girl  CLOSE.jpg"
+      "Adoptable Chinese Dragon Girl  CLOSE.jpg",
+      "img1/gal (+adopt)/CDG-base.png",
+      "img1/gal (+adopt)/CDG-v1bg.jpg",
+      "img1/gal (+adopt)/CDG-v2bg.jpg"
     ],
     "price": {
       "kind": "quote"
@@ -1809,5 +1815,68 @@
       "kind": "auction",
       "startingBid": 30
     }
+  },
+  {
+    "id": "YCH-WATERMELON-EXAMPLE",
+    "type": "ych",
+    "titles": {
+      "en": "Watermelon · YCH",
+      "ru": "Арбуз · YCH",
+      "es": "Sandía · YCH"
+    },
+    "image": "/assets/gallery/27.webp",
+    "processWork": 72,
+    "status": "reference",
+    "nsfw": false,
+    "hasAdultVersion": true,
+    "hasVersions": true,
+    "designKind": "standard",
+    "tags": [
+      "ych",
+      "example",
+      "archive"
+    ],
+    "sourceFiles": [
+      "27.jpg",
+      "YCH_27_v1.jpg",
+      "YCH_27_v1-b.jpg",
+      "YCH_27_v2jpg.jpg",
+      "YCH_27_v2-b.jpg",
+      "YCH_27_v3(NSFW).jpg"
+    ],
+    "price": {
+      "kind": "quote"
+    },
+    "isExample": true
+  },
+  {
+    "id": "YCH-85-EXAMPLE",
+    "type": "ych",
+    "titles": {
+      "en": "YCH 85 · Character examples",
+      "ru": "YCH 85 · Примеры с персонажами",
+      "es": "YCH 85 · Ejemplos de personajes"
+    },
+    "image": "/assets/gallery/a85.webp",
+    "processWork": 73,
+    "status": "reference",
+    "nsfw": false,
+    "hasAdultVersion": false,
+    "hasVersions": true,
+    "designKind": "standard",
+    "tags": [
+      "ych",
+      "example",
+      "archive"
+    ],
+    "sourceFiles": [
+      "a85.jpg",
+      "a85-1(2024).jpg",
+      "a85_YCH_.png"
+    ],
+    "price": {
+      "kind": "quote"
+    },
+    "isExample": true
   }
 ]

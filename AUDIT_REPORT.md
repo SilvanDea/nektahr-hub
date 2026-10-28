@@ -177,3 +177,13 @@ Apps Script очереди по-прежнему не развёрнут авт�
 Проверки: 36 проверок JS-синтаксиса; 112 локальных ссылок из HTML; структура EN/RU/ES совпадает. Каталог на трёх языках показывает 66 лотов, фильтр брони — 1, проданных — 7. Соседние страницы не пересекаются; пустой поиск показывает пустую выдачу. Проверены переход Alistair в просмотр одежды/альтернативы, предупреждение 18+ и отмена, ссылка Moonlit Rose → Twin, статус Queen of the Abyss, отсутствие прежнего тарифа Furina в ценах. Галерея показывает 31 адопт и 49 карточек всего. Проверены файлы изображений и связи метаданных. Положительное подтверждение возраста и реальные финансовые/резервационные действия не выполнялись.
 
 Сверка всех ID, статусов и исходных имён находится в CATALOG_CONTENT.md. Цены и доступность перенесены из присланных материалов, не проверялись по внешним аукционам. Если отдельный лот уже изменился, достаточно скорректировать его запись catalog-data.json.
+
+## Gallery archive update — 2026-10-28
+
+- Accounted for all 40 supplied files: 39 optimized WebP assets, one identical existing image reused.
+- Added 23 grouped works; gallery has 63 visible cards after hiding nine duplicate legacy entries.
+- Updated two sold dragon designs with base/render/alternative versions; retained sold status. Added background version to Illustration 1.
+- Catalog contains 68 entries, including two archived YCH examples with unconfirmed availability. Historic line/color stages are examples, not new price tiers.
+- Verified variable-length viewers (including six versions), comparison, pricing-scoped navigation, adult warning, catalog reference filters in EN/RU/ES, and NSFW pricing below/at AB.
+- Seven routes, 36 JavaScript syntax checks, 119 local HTML asset references, translation structures, and all new image decodes pass. Three empty image exports were regenerated from originals before packaging.
+- Adult confirmation was not accepted during QA; positive adult-unlock path was not retested. Two unique legacy portfolio images remain remote because original files were not supplied.

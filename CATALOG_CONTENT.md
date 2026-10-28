@@ -1,10 +1,8 @@
-# Каталог из архива художника
+# Каталог: сверка источников
 
-70 файлов источника → 66 лотов. Две пары одежды объединены; Furina — отдельная работа с двумя этапами. Twin сохранён отдельным дизайном с пометкой и ссылкой на связанную карточку.
+68 карточек: 66 лотов из CATALOG.7z и два архивных YCH-примера из img1.7z. Статусы: 58 открытых, 7 проданных, 1 бронь, 2 архивных примера. Пример не означает подтверждённую доступность. Версии двух проданных драконьих дизайнов обновлены без создания повторных лотов.
 
-Статусы перенесены из CLOSE/CLOSED/RESERVED. Без таких отметок лот считается открытым по присланной структуре. Цены SB $30 и AB $160 перенесены только там, где они явно читались на изображении; остальные по договорённости. Калькулятор общих тарифов не заменяет условия конкретного лота.
-
-| ID | Название | Тип | Статус | Источник |
+| ID | Название | Тип | Статус | Источники |
 |---|---|---|---|---|
 | ADOPT-LIARY | Liary | adopt | open | AU_Fur_01_Liary.jpg |
 | ADOPT-VAELYN | Vaelyn | adopt | open | AU_Fur_02_Vaelyn.jpg |
@@ -16,8 +14,8 @@
 | ADOPT-KNOX | Knox | adopt | open | AU_Fur_10.jpg |
 | ADOPT-RIVZ | Rivz | adopt | open | AU_Fur_Rivz_07.jpg |
 | ADOPT-LUVI | Luvi | adopt | open | Adoptable - Luvi.jpg |
-| ADOPT-CHINESE-DRAGON-GIRL-TWIN | Chinese Dragon Girl · Twin | adopt | sold | Adoptable Chinese Dragon Girl  CLOSE TWIN.jpg |
-| ADOPT-CHINESE-DRAGON-GIRL | Chinese Dragon Girl | adopt | sold | Adoptable Chinese Dragon Girl  CLOSE.jpg |
+| ADOPT-CHINESE-DRAGON-GIRL-TWIN | Chinese Dragon Girl · Twin | adopt | sold | Adoptable Chinese Dragon Girl  CLOSE TWIN.jpg / img1/gal (+adopt)/BCDG-base.png / img1/gal (+adopt)/BCDG-v1bg.jpg / img1/gal (+adopt)/BCDG-v2bg.jpg |
+| ADOPT-CHINESE-DRAGON-GIRL | Chinese Dragon Girl | adopt | sold | Adoptable Chinese Dragon Girl  CLOSE.jpg / img1/gal (+adopt)/CDG-base.png / img1/gal (+adopt)/CDG-v1bg.jpg / img1/gal (+adopt)/CDG-v2bg.jpg |
 | ADOPT-ALISTAIR | Alistair | adopt | sold | Alistair-bg-outfit - adopt-CLOSE.jpg / Alistair-NSFW - adopt-CLOSE.jpg |
 | YCH-ALL-PLAIN-TO-SEE | All plain to see | ych | open | All plain to see YCH.jpg |
 | YCH-BAD-BOY | Bad Boy | ych | open | Bad Boy YCH.jpg |
@@ -72,3 +70,5 @@
 | ADOPT-VELVET-RIPPER | Velvet Ripper | adopt | open | Velvet Ripper ADOPT .jpg |
 | YCH-YOUR-LITTLE-TROUBLE | Your Little Trouble | ych | open | Your Little Trouble YCH.jpg |
 | YCH-YOUR-TEASE | Your Tease | ych | open | Your Tease YCH.jpg |
+| YCH-WATERMELON-EXAMPLE | Watermelon · YCH | ych | reference | 27.jpg / YCH_27_v1.jpg / YCH_27_v1-b.jpg / YCH_27_v2jpg.jpg / YCH_27_v2-b.jpg / YCH_27_v3(NSFW).jpg |
+| YCH-85-EXAMPLE | YCH 85 · Character examples | ych | reference | a85.jpg / a85-1(2024).jpg / a85_YCH_.png |

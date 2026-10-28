@@ -23,8 +23,8 @@
   <meta property="og:title" content="Nek'tahr | Artist Portfolio & Commissions" />
   <meta property="og:description" content="Art portfolio, commission pricing, adoptables, YCH options, and contact links." />
   <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
-  <script src="/assets/portfolio-data.js?v=20261028-catalog4"></script>
-  <script src="/assets/queue-manager.js?v=20261028-catalog4" defer></script>
+  <script src="/assets/portfolio-data.js?v=20261028-gallery5"></script>
+  <script src="/assets/queue-manager.js?v=20261028-gallery5" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -118,15 +118,15 @@
     /* Tailwind CDN is still required for the original utility classes; these small fallbacks keep basic readability if it fails. */
     .hidden { display: none !important; }
   </style>
-<link rel="stylesheet" href="/assets/process-viewer.css?v=20261028-catalog4">
+<link rel="stylesheet" href="/assets/process-viewer.css?v=20261028-gallery5">
 <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/assets/favicon-32.png" sizes="32x32">
   <style>img{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none}</style>
-<link rel="stylesheet" href="/assets/pricing-layout.css?v=20261028-catalog4">
-<link rel="stylesheet" href="/assets/site-polish.css?v=20261028-catalog4">
-<link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-catalog4">
-<link rel="stylesheet" href="/assets/catalog-queue.css?v=20261028-catalog4">
-<link rel="stylesheet" href="/assets/readability.css?v=20261028-catalog4">
+<link rel="stylesheet" href="/assets/pricing-layout.css?v=20261028-gallery5">
+<link rel="stylesheet" href="/assets/site-polish.css?v=20261028-gallery5">
+<link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-gallery5">
+<link rel="stylesheet" href="/assets/catalog-queue.css?v=20261028-gallery5">
+<link rel="stylesheet" href="/assets/readability.css?v=20261028-gallery5">
 </head>
 <body data-page="gallery" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
@@ -277,7 +277,7 @@
     const CONTACTS_PRIMARY = [
       { id: "discord", type: "copy", value: "drintrava", label: "Discord", handle: "drintrava", sub: { en: "Primary Contact · Click to Copy", es: "Contacto principal · Copiar", ru: "Основной контакт · Скопировать" } },
       { id: "tg1", type: "link", url: "https://t.me/nek_tahr", label: "Telegram", handle: "@nek_tahr", sub: { en: "Direct Messages", es: "Mensajes directos", ru: "Личные сообщения" } },
-      { id: "email", type: "link", url: "mailto:gapkuro@gmail.com", label: "Email", handle: "gapkuro@gmail.com", sub: { en: "Commercial inquiries · Send an email", es: "Consultas comerciales · Enviar correo", ru: "Коммерческие вопросы · Написать письмо" } }
+      { id: "email", type: "link", url: "mailto:nektahr@gmail.com", label: "Email", handle: "nektahr@gmail.com", sub: { en: "Commercial inquiries · Send an email", es: "Consultas comerciales · Enviar correo", ru: "Коммерческие вопросы · Написать письмо" } }
     ];
 
     const PLATFORMS = [
@@ -293,20 +293,20 @@
 
     // Gallery Works
     const GALLERY_ITEMS = [
-{"id": 101, "title": "Illustration 1", "cat": "comm", "nsfw": false, "img": "/assets/process/art-1-2.webp", "processWork": 1},{"id": 102, "title": "Illustration 2", "cat": "comm", "nsfw": true, "img": "/assets/process/art-2-2.webp", "processWork": 2},{"id": 103, "title": "SFW / NSFW fan art", "cat": "other", "nsfw": false, "img": "/assets/process/art-3-0.webp", "processWork": 3},{"id": 104, "title": "YCH example", "cat": "ych", "nsfw": false, "img": "/assets/process/art-4-1.webp", "processWork": 4},
+{"id": 101, "title": "Illustration 1", "cat": "comm", "nsfw": false, "img": "/assets/gallery/ofordet-bg.webp", "processWork": 1},{"id": 102, "title": "Illustration 2", "cat": "comm", "nsfw": true, "img": "/assets/process/art-2-2.webp", "processWork": 2},{"id": 103, "title": "SFW / NSFW fan art", "cat": "other", "nsfw": false, "img": "/assets/process/art-3-0.webp", "processWork": 3},{"id": 104, "title": "YCH example", "cat": "ych", "nsfw": false, "img": "/assets/process/art-4-1.webp", "processWork": 4},
 {"id": 105, "title": "YCH \u00b7 TH", "cat": "ych", "nsfw": true, "img": "/assets/process/art-5-1.webp", "processWork": 5},{"id": 106, "title": "YCH \u00b7 All Plain to See", "cat": "ych", "nsfw": true, "img": "/assets/process/art-6-1.webp", "processWork": 6},
-      { id: 1, gallery: false, title: "Portfolio Sample 01", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/83524f34.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 2, title: "Portfolio Sample 02", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 3, title: "Portfolio Sample 03", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 4, title: "Portfolio Sample 04", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/e7055f07.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 5, title: "Portfolio Sample 05", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/035b86ab.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 6, title: "Portfolio Sample 06", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/8aff8bc5.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 7, title: "Portfolio Sample 07", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/83fa427a.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 8, title: "Portfolio Sample 08", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/a748db6a.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 9, title: "Portfolio Sample 09", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/d29f0f1f.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 10, title: "Portfolio Sample 10", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7638b7cd.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 11, title: "Portfolio Sample 11", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7b5b1c4e.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 12, title: "Portfolio Sample 12", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." }
+      { id: 1, gallery: false, title: "Portfolio Sample 01", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "/assets/gallery/gal-adopt-cdg-v1bg.webp", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 2, gallery: false, title: "Portfolio Sample 02", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 3, title: "Portfolio Sample 03", cat: "other", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 4, gallery: false, title: "Portfolio Sample 04", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/e7055f07.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 5, gallery: false, title: "Portfolio Sample 05", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/035b86ab.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 6, title: "Portfolio Sample 06", cat: "other", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/8aff8bc5.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 7, gallery: false, title: "Portfolio Sample 07", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/83fa427a.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 8, gallery: false, title: "Portfolio Sample 08", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/a748db6a.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 9, gallery: false, title: "Portfolio Sample 09", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/d29f0f1f.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 10, gallery: false, title: "Portfolio Sample 10", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7638b7cd.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 11, gallery: false, title: "Portfolio Sample 11", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7b5b1c4e.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 12, gallery: false, title: "Portfolio Sample 12", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." }
     ];
     GALLERY_ITEMS.push(...(window.PORTFOLIO_WORKS||[]).map(work=>({id:100+work.id,title:work.title,localizedTitles:work.titles,cat:work.cat,nsfw:work.nsfw[work.thumb],img:work.images[work.thumb],processWork:work.id,gallery:work.gallery,catalogWork:true,designKind:work.designKind})));
 
@@ -730,7 +730,7 @@
         {
           "cat": "order",
           "q": "How do I place an order?",
-          "a": "Use the Quote Builder on the Pricing page to estimate your price and copy the ready request text. Then send it to me via Discord (drintrava), Telegram DM (@nek_tahr), or Email (gapkuro@gmail.com) along with your character references."
+          "a": "Use the Quote Builder on the Pricing page to estimate your price and copy the ready request text. Then send it to me via Discord (drintrava), Telegram DM (@nek_tahr), or Email (nektahr@gmail.com) along with your character references."
         },
         {
           "cat": "order",
@@ -1674,7 +1674,7 @@
         {
           "cat": "order",
           "q": "Как оформить заказ?",
-          "a": "Собери ориентировочную заявку в калькуляторе на вкладке «Прайс», нажми «Скопировать готовый запрос» и пришли его мне в Discord (drintrava), в Telegram (@nek_tahr) или на почту (gapkuro@gmail.com) вместе с референсами."
+          "a": "Собери ориентировочную заявку в калькуляторе на вкладке «Прайс», нажми «Скопировать готовый запрос» и пришли его мне в Discord (drintrava), в Telegram (@nek_tahr) или на почту (nektahr@gmail.com) вместе с референсами."
         },
         {
           "cat": "order",
@@ -1829,7 +1829,7 @@
     };
 
     function getProcessLabel(item) {
-      if(item.processWork===7)return ({en:'Line + Color → Full Render',ru:'Лайн + цвет → Полный рендер',es:'Líneas + color → Render completo'})[currentLang];if(item.catalogWork)return ({en:'Finished design / versions',ru:'Готовый дизайн / версии',es:'Diseño terminado / versiones'})[currentLang];
+      if(item.processWork===7)return ({en:'Line + Color → Full Render',ru:'Лайн + цвет → Полный рендер',es:'Líneas + color → Render completo'})[currentLang];if(item.catalogWork){const model=(window.PORTFOLIO_WORKS||[]).find(w=>w.id===item.processWork);if(model?.type==='single')return (model.labels[currentLang]||model.labels.en)[0];return model?.type==='process'?({en:'Art process',ru:'Процесс работы',es:'Proceso'})[currentLang]:model?.type==='ych'?({en:'Template → Examples',ru:'Шаблон → Примеры',es:'Plantilla → Ejemplos'})[currentLang]:({en:'Versions',ru:'Версии',es:'Versiones'})[currentLang];}
       const labels={en:['Art process','SFW / NSFW','Template → Result + Alt'],es:['Proceso','SFW / NSFW','Plantilla → Resultado + Alt'],ru:['Процесс работы','SFW / NSFW','Шаблон → Результат + Альт']};
       if(item.processWork===4)return ({en:'Template → Color Sketch + Alt',ru:'Шаблон → Цветной скетч + Альт',es:'Plantilla → Boceto a color + Alt'})[currentLang];if(item.processWork>=5)return ({en:'Template → Finished example',ru:'Шаблон → Готовый пример',es:'Plantilla → Ejemplo terminado'})[currentLang];return labels[currentLang][item.processWork===3?1:0];
     }
@@ -1956,7 +1956,7 @@
         <div class="lg:col-span-5">
           <button type="button" onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group text-left w-full">
             <div class="aspect-[4/5] overflow-hidden relative bg-bg">
-              <img src="https://nektahr.carrd.co/assets/images/gallery01/83524f34.jpg?v=299f438c" alt="Public SFW portfolio sample" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+              <img src="/assets/gallery/gal-adopt-cdg-v1bg.webp" alt="Public SFW portfolio sample" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#0B0A0E] via-transparent to-transparent"></div>
               <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                 <div>
@@ -2067,7 +2067,7 @@
               <p id="adopt-desc" class="text-sm text-textMuted leading-relaxed"></p>
             </div>
 
-            <div id="adopt-tiers-grid" class="grid sm:grid-cols-2 gap-5"></div>
+            <div id="adopt-tiers-grid" class="grid sm:grid-cols-2 gap-5"></div><div id="process-dock-adopt"></div>
           </div>
 
           <!-- SUB-VIEW C: YCH SLOTS -->
@@ -2307,7 +2307,7 @@
       <div class="flex gap-4">
         <button onclick="copyToClipboard('drintrava', 'Discord (drintrava)')" class="hover:text-accent transition cursor-pointer">Discord: drintrava</button>
         <a id="footer-telegram" href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition">Telegram DM</a>
-        <a href="mailto:gapkuro@gmail.com" class="hover:text-accent transition">gapkuro@gmail.com</a>
+        <a href="mailto:nektahr@gmail.com" class="hover:text-accent transition">nektahr@gmail.com</a>
       </div>
     </div>
   </footer>
@@ -2461,8 +2461,8 @@
     function updatePricingPresentation() {
       const examples=document.getElementById('pricing-examples');if(!examples)return;
       const mode=currentPricingTab;
-      const dock=document.getElementById(mode==='ych'?'process-dock-ych':'process-dock-custom');
-      dock.append(examples);examples.hidden=mode==='adopt';
+      const dock=document.getElementById(mode==='ych'?'process-dock-ych':mode==='adopt'?'process-dock-adopt':'process-dock-custom');
+      dock.append(examples);examples.hidden=false;
       const labels={en:{custom:'Artwork examples & drawing stages',ych:'YCH template, result & alternative',brief:'Add references & brief (optional)'},es:{custom:'Ejemplos y etapas de dibujo',ych:'Plantilla YCH, resultado y alternativa',brief:'Añadir referencias y detalles (opcional)'},ru:{custom:'Примеры работ и этапы',ych:'Шаблон YCH, результат и альт',brief:'Добавить референсы и описание (необязательно)'}}[currentLang];
       document.getElementById('pricing-examples-label').textContent=mode==='ych'?labels.ych:labels.custom;
       document.getElementById('calc-brief-summary').textContent=labels.brief;
@@ -3076,12 +3076,12 @@
       if(!window.queueManagerReady)loadLiveQueue();
     };
   </script>
-<script src="/assets/process-viewer.js?v=20261028-catalog4"></script>
-<script src="/assets/artwork-interactions.js?v=20261028-catalog4"></script>
+<script src="/assets/process-viewer.js?v=20261028-gallery5"></script>
+<script src="/assets/artwork-interactions.js?v=20261028-gallery5"></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
-<script src="/assets/gallery-viewer.js?v=20261028-catalog4"></script>
-<script src="/assets/pricing-samples.js?v=20261028-catalog4"></script>
-<script src="/assets/quote-builder.js?v=20261028-catalog4"></script>
-<script src="/assets/catalog.js?v=20261028-catalog4"></script>
+<script src="/assets/gallery-viewer.js?v=20261028-gallery5"></script>
+<script src="/assets/pricing-samples.js?v=20261028-gallery5"></script>
+<script src="/assets/quote-builder.js?v=20261028-gallery5"></script>
+<script src="/assets/catalog.js?v=20261028-gallery5"></script>
 </body>
 </html>

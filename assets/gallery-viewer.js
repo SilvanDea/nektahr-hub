@@ -7,7 +7,7 @@
   function itemsForOpening(item){
     const page=document.body.dataset.page;
     if(page==='pricing'){
-      const allowed=item.processWork===3?[3]:currentPricingTab==='ych'?[4,5,6]:[1,2,7];
+      const extra=(window.PORTFOLIO_WORKS||[]).filter(w=>w.pricingExample===currentPricingTab).map(w=>w.id);const allowed=item.processWork===3?[3]:currentPricingTab==='ych'?[4,5,6,...extra]:currentPricingTab==='adopt'?extra:[1,2,7,...extra];
       return GALLERY_ITEMS.filter(x=>allowed.includes(x.processWork));
     }
     if(page==='catalog')return [item];

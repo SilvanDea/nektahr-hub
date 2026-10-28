@@ -118,3 +118,7 @@ body>header>button:first-child{font-family:'Cormorant Garamond',Georgia,serif;fo
 #page-pricing .pricing-sample .sample-label{padding:10px}#page-pricing .sample-label strong{font-size:12px}
 #art-process .ych-view,#art-process .ych-view .curtain,#art-process .ych-view .curtain-reveal{background:var(--ych-background,#ffbe86)}
 #artwork-dialog .artwork-work-strip button:disabled,#artwork-dialog .artwork-modal-buttons button:disabled{opacity:.35;cursor:default}
+/* Version sets may contain more than the original three images. */
+#art-process #stage1,#art-process #stage2{display:none!important}
+#art-process .phases button{white-space:normal;line-height:1.45;min-height:42px}
+#page-pricing .pricing-samples-grid[data-count="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
