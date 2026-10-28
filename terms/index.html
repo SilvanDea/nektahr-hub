@@ -115,6 +115,7 @@
     /* Tailwind CDN is still required for the original utility classes; these small fallbacks keep basic readability if it fails. */
     .hidden { display: none !important; }
   </style>
+<link rel="stylesheet" href="/assets/process-viewer.css">
 </head>
 <body data-page="tos" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
@@ -281,6 +282,7 @@
 
     // Gallery Works
     const GALLERY_ITEMS = [
+{"id": 101, "title": "Illustration 1", "cat": "comm", "nsfw": false, "img": "/assets/process/art-1-2.webp", "processWork": 1},{"id": 102, "title": "Illustration 2", "cat": "comm", "nsfw": true, "img": "/assets/process/art-2-2.webp", "processWork": 2},{"id": 103, "title": "Illustration 3", "cat": "comm", "nsfw": false, "img": "/assets/process/art-3-0.webp", "processWork": 3},{"id": 104, "title": "YCH example", "cat": "ych", "nsfw": false, "img": "/assets/process/art-4-1.webp", "processWork": 4},
       { id: 1, title: "Portfolio Sample 01", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/83524f34.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
       { id: 2, title: "Portfolio Sample 02", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
       { id: 3, title: "Portfolio Sample 03", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
@@ -1065,7 +1067,15 @@
       }
     };
 
+    function getProcessLabel(item) {
+      const labels={en:['Art process','SFW / NSFW','Template → Result + Alt'],es:['Proceso','SFW / NSFW','Plantilla → Resultado + Alt'],ru:['Процесс работы','SFW / NSFW','Шаблон → Результат + Альт']};
+      return labels[currentLang][item.processWork===4?2:item.processWork===3?1:0];
+    }
     function getGalleryTitle(item) {
+      if (item.processWork) {
+        const names={en:['Illustration 1','Illustration 2','Illustration 3','YCH example'],es:['Ilustración 1','Ilustración 2','Ilustración 3','Ejemplo YCH'],ru:['Иллюстрация 1','Иллюстрация 2','Иллюстрация 3','Пример YCH']};
+        return names[currentLang][item.processWork-1];
+      }
       const prefix = { en: "Portfolio Sample", es: "Muestra de portafolio", ru: "Пример портфолио" };
       return `${prefix[currentLang] || prefix.en} ${String(item.id).padStart(2, '0')}`;
     }
@@ -1090,8 +1100,8 @@
     const CALC_MODE_STATE = { custom: { value: 'single', addons: [], mults: [] }, adopt: { value: '100', addons: [], mults: [] }, ych: { value: '30', addons: [], mults: [] } };
     let currentGalCat = 'all';
     let currentFaqCat = 'all';
-    let isAdultVerified = false;
-    let showNsfwGallery = false;
+    let isAdultVerified = false;try{isAdultVerified=sessionStorage.getItem('nektahr-demo-age-verified')==='yes'}catch{}
+    let showNsfwGallery = false;try{showNsfwGallery=isAdultVerified&&sessionStorage.getItem('nektahr-demo-nsfw-visible')==='yes'}catch{}
     let tosAgreed = false;
     let ageModalReturnFocus = null;
 
@@ -1256,6 +1266,7 @@
         </div>
       </div>
 
+      <section id="art-process" aria-label="Artwork process and versions"></section>
       <!-- Main 2-Column Layout: Left (Content per Tab) + Right (Individual Sticky Calculator) -->
       <div class="grid lg:grid-cols-12 gap-8 items-start">
 
@@ -1807,6 +1818,20 @@
       }
     }
 
+
+    window.syncSiteNsfwFromProcess = function(visible, verified) {
+      if (showNsfwGallery === visible && isAdultVerified === verified) return;
+      showNsfwGallery = visible; isAdultVerified = verified;
+      document.getElementById('nsfw-switch').checked = visible;
+      renderGalleryGrid();
+    };
+    function openArtworkProcess(id) {
+      try{sessionStorage.setItem('nektahr-open-process-work',String(id))}catch{}
+      if(document.body.dataset.page!=='pricing'){switchPage('pricing');return;}
+      switchPage('pricing'); switchPricingTab('custom');
+      window.openProcessWork?.(id);
+    }
+
     // Gallery categories and age-gated mature artwork.
     function setGalleryCat(cat) {
       currentGalCat = cat;
@@ -1854,6 +1879,9 @@
     }
 
     function renderGalleryGrid() {
+      try {sessionStorage.setItem('nektahr-demo-age-verified',isAdultVerified?'yes':'no');sessionStorage.setItem('nektahr-demo-nsfw-visible',showNsfwGallery?'yes':'no');} catch (_) {}
+      document.getElementById('nsfw-switch').checked=showNsfwGallery;
+      window.processViewerSync?.(showNsfwGallery,isAdultVerified);
       const grid = document.getElementById('gallery-cards-grid');
       const filtered = GALLERY_ITEMS.filter(item => currentGalCat === 'all' || item.cat === currentGalCat);
       if (!filtered.length) {
@@ -1864,20 +1892,20 @@
         const blurred = Boolean(item.nsfw) && !showNsfwGallery;
         return `
           <button type="button" onclick="${blurred ? "openAgeModal(this)" : `openLightbox(${Number(item.id)})`}" class="card card-interactive overflow-hidden group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-label="${blurred ? '18+ mature content, verify age to view' : `Open ${getGalleryTitle(item)}`}">
-            <div class="aspect-[4/5] bg-bg relative overflow-hidden border-b hairline">
-              <img src="${item.img}" alt="${blurred ? 'Blurred 18+ artwork preview' : getGalleryTitle(item)}" loading="lazy" decoding="async" class="w-full h-full object-cover transition duration-500 ${blurred ? 'blur-2xl scale-110' : 'group-hover:scale-105'}" />
+            <div class="aspect-[4/5] bg-surfaceAlt relative overflow-hidden border-b hairline">
+              <img src="${item.img}" alt="${blurred ? 'Blurred 18+ artwork preview' : getGalleryTitle(item)}" loading="lazy" decoding="async" class="w-full h-full object-contain transition duration-500 ${blurred ? 'blur-2xl scale-110' : 'group-hover:scale-105'}" />
               <div class="absolute top-2.5 left-2.5 flex gap-1.5">
-                <span class="px-2 py-0.5 bg-bg/85 border hairline mono text-[10px] text-textMuted">${getGalleryStage()}</span>
+                <span class="px-2 py-0.5 bg-bg/85 border hairline mono text-[10px] text-textMuted">${item.processWork ? getProcessLabel(item) : getGalleryStage()}</span>
                 ${item.nsfw ? '<span class="px-2 py-0.5 bg-bg/90 border border-error/50 mono text-[10px] text-error">18+</span>' : ''}
               </div>
-              ${blurred ? `<div class="absolute inset-0 bg-bg/60 flex flex-col items-center justify-center p-4 text-center"><span class="mono text-[10px] uppercase text-error border border-error/50 px-2.5 py-1 mb-1.5">18+ MATURE</span><span class="text-xs text-textMain">${I18N[currentLang].gallery.modal.desc}</span></div>` : ''}
+              ${blurred ? `<div class="absolute inset-0 bg-bg/60 flex flex-col items-center justify-center p-4 text-center"><span class="flex items-center justify-center w-10 h-10 border border-error/50 rounded-full text-error mb-2" aria-hidden="true">🔒</span><span class="mono text-[10px] uppercase text-error">NSFW · 18+</span><span class="text-xs text-textMain">${I18N[currentLang].gallery.modal.desc}</span></div>` : ''}
             </div>
             <div class="p-4 flex items-baseline justify-between gap-3">
               <div class="min-w-0">
                 <h3 class="serif text-xl text-textMain">${getGalleryTitle(item)}</h3>
-                <p class="text-xs text-textDim">${getGalleryDescription()}</p>
+                <p class="text-xs text-textDim">${item.processWork?getProcessLabel(item):getGalleryDescription()}</p>
               </div>
-              <span class="mono text-xs text-accent shrink-0">${getGalleryPriceLabel()}</span>
+              <span class="mono text-xs text-accent shrink-0">${item.processWork?'↗':getGalleryPriceLabel()}</span>
             </div>
           </button>
         `;
@@ -1885,6 +1913,8 @@
     }
 
     function openLightbox(id) {
+      const processItem=GALLERY_ITEMS.find(item=>item.id===id);
+      if(processItem?.processWork){openArtworkProcess(processItem.processWork);return;}
       const item = GALLERY_ITEMS.find(x => x.id === id);
       if (!item) return;
       lastGalleryTrigger = document.activeElement;
@@ -2081,6 +2111,7 @@
         </button>
       `).join('');
 
+      window.mountProcessViewer?.();
       // Pricing Page
       document.getElementById('pricing-eyebrow').textContent = t.pricing.eyebrow;
       document.getElementById('pricing-title').textContent = t.pricing.title;
@@ -2264,5 +2295,6 @@
       loadLiveQueue();
     };
   </script>
+<script src="/assets/process-viewer.js"></script>
 </body>
 </html>
