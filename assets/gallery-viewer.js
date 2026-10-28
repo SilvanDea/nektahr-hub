@@ -1,23 +1,32 @@
 
 (() => {
   const $=id=>document.getElementById(id);
-  const dialog=$('artwork-dialog');let currentItem=null,returnFocus=null,viewerParent=null;
+  const dialog=$('artwork-dialog');let currentItem=null,returnFocus=null,viewerParent=null,sessionItems=[];
   const text=()=>({en:{close:'Close preview',prev:'Previous artwork',next:'Next artwork',prices:'View prices →',hint:'Use ← / → to browse. Escape closes the preview.',error:'This image could not load. Please try again.'},es:{close:'Cerrar vista',prev:'Obra anterior',next:'Obra siguiente',prices:'Ver precios →',hint:'Usa ← / → para navegar. Escape cierra la vista.',error:'No se pudo cargar la imagen. Inténtalo de nuevo.'},ru:{close:'Закрыть просмотр',prev:'Предыдущая работа',next:'Следующая работа',prices:'Посмотреть цены →',hint:'← / → — другие работы. Escape — закрыть просмотр.',error:'Не удалось загрузить изображение. Попробуй ещё раз.'}})[document.documentElement.lang]||{close:'Close',prev:'Previous',next:'Next',prices:'Pricing',hint:'',error:'Image unavailable'};
-  const filtered=()=>{const items=GALLERY_ITEMS.filter(item=>currentGalCat==='all'||item.cat===currentGalCat);return currentItem&&!items.some(x=>x.id===currentItem.id)?GALLERY_ITEMS:items;};
+  const filtered=()=>sessionItems;
+  function itemsForOpening(item){
+    const page=document.body.dataset.page;
+    if(page==='pricing'){
+      const allowed=item.processWork===3?[3]:currentPricingTab==='ych'?[4,5,6]:[1,2];
+      return GALLERY_ITEMS.filter(x=>allowed.includes(x.processWork));
+    }
+    if(page==='catalog')return GALLERY_ITEMS.filter(x=>[4,5,6].includes(x.processWork));
+    return GALLERY_ITEMS.filter(x=>currentGalCat==='all'||x.cat===currentGalCat);
+  }
   function restoreViewer(){const viewer=$('art-process');if(viewerParent&&viewer&&viewer.parentElement!==viewerParent)viewerParent.append(viewer);window.setProcessContext?.(currentPricingTab);}
   function finishClose(){if(!document.body.classList.contains('artwork-modal-open'))return;restoreViewer();document.body.classList.remove('artwork-modal-open');if(returnFocus?.isConnected)returnFocus.focus();else $('nsfw-switch')?.focus();}
   function close(){if(dialog.open)dialog.close();finishClose();}
   window.openGalleryArtwork=id=>{
     const item=GALLERY_ITEMS.find(x=>x.id===Number(id));if(!item)return;
-    const opening=!dialog.open;if(opening){returnFocus=document.activeElement;viewerParent=$('art-process').parentElement;dialog.showModal();document.body.classList.add('artwork-modal-open');}
-    currentItem=item;const strip=$('artwork-work-strip');strip.replaceChildren();GALLERY_ITEMS.filter(x=>x.processWork).forEach(work=>{const button=document.createElement('button');button.type='button';button.setAttribute('aria-pressed',String(work.id===item.id));if(work.nsfw&&!showNsfwGallery)button.className='strip-adult';const thumb=document.createElement('img');thumb.src=work.img;thumb.alt='';const title=document.createElement('span');title.textContent=getGalleryTitle(work);if(work.nsfw&&!showNsfwGallery)title.textContent+=' · 18+';button.append(thumb,title);button.onclick=()=>window.openGalleryArtwork(work.id);strip.append(button)});const t=text();$('artwork-dialog-title').textContent=getGalleryTitle(item);const items=filtered();$('artwork-dialog-counter').textContent=`${items.findIndex(x=>x.id===item.id)+1} / ${items.length}`;
+    const opening=!dialog.open;if(opening)sessionItems=itemsForOpening(item);if(!sessionItems.some(x=>x.id===item.id))return;if(opening){returnFocus=document.activeElement;viewerParent=$('art-process').parentElement;dialog.showModal();document.body.classList.add('artwork-modal-open');}
+    currentItem=item;const strip=$('artwork-work-strip');strip.replaceChildren();sessionItems.filter(x=>x.processWork).forEach(work=>{const button=document.createElement('button');button.type='button';button.setAttribute('aria-pressed',String(work.id===item.id));if(work.nsfw&&!showNsfwGallery)button.className='strip-adult';const thumb=document.createElement('img');thumb.src=work.img;thumb.alt='';const title=document.createElement('span');title.textContent=getGalleryTitle(work);if(work.nsfw&&!showNsfwGallery)title.textContent+=' · 18+';button.append(thumb,title);button.onclick=()=>window.openGalleryArtwork(work.id);strip.append(button)});const t=text();$('artwork-dialog-title').textContent=getGalleryTitle(item);const items=filtered();$('artwork-dialog-prev').disabled=items.length<2;$('artwork-dialog-next').disabled=items.length<2;$('artwork-dialog-prices').hidden=document.body.dataset.page==='pricing';$('artwork-dialog-counter').textContent=`${items.findIndex(x=>x.id===item.id)+1} / ${items.length}`;
     $('artwork-dialog-close').setAttribute('aria-label',t.close);$('artwork-dialog-prev').setAttribute('aria-label',t.prev);$('artwork-dialog-next').setAttribute('aria-label',t.next);$('artwork-dialog-prices').textContent=t.prices;$('artwork-dialog-hint').textContent=t.hint;
     const body=$('artwork-dialog-body'),image=$('artwork-dialog-image'),error=$('artwork-dialog-error');error.hidden=true;
     if(item.processWork){image.hidden=true;body.append($('art-process'));$('art-process').hidden=false;window.setProcessContext?.('gallery');window.openProcessWork?.(item.processWork);}
     else{restoreViewer();image.hidden=false;image.alt=getGalleryTitle(item);image.onload=()=>error.hidden=true;image.onerror=()=>{image.hidden=true;error.hidden=false;error.textContent=t.error;};image.src=item.img;}
     if(opening)$('artwork-dialog-close').focus();
   };
-  function step(dir){const items=filtered();const index=items.findIndex(item=>item.id===currentItem?.id);window.openGalleryArtwork(items[(index+dir+items.length)%items.length].id);}
+  function step(dir){const items=filtered();if(items.length<2)return;const index=items.findIndex(item=>item.id===currentItem?.id);window.openGalleryArtwork(items[(index+dir+items.length)%items.length].id);}
   $('artwork-dialog-close').onclick=close;$('artwork-dialog-prev').onclick=()=>step(-1);$('artwork-dialog-next').onclick=()=>step(1);
   $('artwork-dialog-prices').onclick=()=>{const work=currentItem?.processWork;close();if(work)openArtworkProcess(work);else switchPage('pricing');};
   dialog.addEventListener('close',finishClose);dialog.addEventListener('cancel',event=>{event.preventDefault();close();});

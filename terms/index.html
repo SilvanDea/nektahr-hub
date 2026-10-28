@@ -23,7 +23,7 @@
   <meta property="og:title" content="Nek'tahr | Artist Portfolio & Commissions" />
   <meta property="og:description" content="Art portfolio, commission pricing, adoptables, YCH options, and contact links." />
   <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
-  <script src="/assets/queue-manager.js?v=20261028-review2" defer></script>
+  <script src="/assets/queue-manager.js?v=20261028-compact3" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -117,15 +117,15 @@
     /* Tailwind CDN is still required for the original utility classes; these small fallbacks keep basic readability if it fails. */
     .hidden { display: none !important; }
   </style>
-<link rel="stylesheet" href="/assets/process-viewer.css?v=20261028-review2">
+<link rel="stylesheet" href="/assets/process-viewer.css?v=20261028-compact3">
 <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/assets/favicon-32.png" sizes="32x32">
   <style>img{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none}</style>
-<link rel="stylesheet" href="/assets/pricing-layout.css?v=20261028-review2">
-<link rel="stylesheet" href="/assets/site-polish.css?v=20261028-review2">
-<link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-review2">
-<link rel="stylesheet" href="/assets/catalog-queue.css?v=20261028-review2">
-<link rel="stylesheet" href="/assets/readability.css?v=20261028-review2">
+<link rel="stylesheet" href="/assets/pricing-layout.css?v=20261028-compact3">
+<link rel="stylesheet" href="/assets/site-polish.css?v=20261028-compact3">
+<link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-compact3">
+<link rel="stylesheet" href="/assets/catalog-queue.css?v=20261028-compact3">
+<link rel="stylesheet" href="/assets/readability.css?v=20261028-compact3">
 </head>
 <body data-page="tos" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
@@ -293,6 +293,7 @@
     // Gallery Works
     const GALLERY_ITEMS = [
 {"id": 101, "title": "Illustration 1", "cat": "comm", "nsfw": false, "img": "/assets/process/art-1-2.webp", "processWork": 1},{"id": 102, "title": "Illustration 2", "cat": "comm", "nsfw": true, "img": "/assets/process/art-2-2.webp", "processWork": 2},{"id": 103, "title": "SFW / NSFW fan art", "cat": "other", "nsfw": false, "img": "/assets/process/art-3-0.webp", "processWork": 3},{"id": 104, "title": "YCH example", "cat": "ych", "nsfw": false, "img": "/assets/process/art-4-1.webp", "processWork": 4},
+{"id": 105, "title": "YCH \u00b7 TH", "cat": "ych", "nsfw": true, "img": "/assets/process/art-5-1.webp", "processWork": 5},{"id": 106, "title": "YCH \u00b7 All Plain to See", "cat": "ych", "nsfw": true, "img": "/assets/process/art-6-1.webp", "processWork": 6},
       { id: 1, title: "Portfolio Sample 01", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/83524f34.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
       { id: 2, title: "Portfolio Sample 02", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
       { id: 3, title: "Portfolio Sample 03", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
@@ -427,7 +428,7 @@
       "adoptSection": {
         "eyebrow": "ADOPTABLE TIERS · $100 – $500",
         "title": "Adoptables: Ready Designs & Stretch Goal Tiers",
-        "desc": "A finished base character design that expands into a full collector bundle at higher auction bids. Where finished samples aren't shown yet, a blueprint schematic explains what I custom-draw for the winner.",
+        "desc": "A finished base character design that expands into a full collector bundle at higher auction bids. Where finished samples aren't shown yet, a blueprint schematic explains what I custom-draw for the winner. One NSFW alternative is included at AB; below AB it can be added for $50.",
         "blueprintTitle": "STRETCH GOAL BLUEPRINT",
         "blueprintSub": "Custom-drawn specifically for the winning bidder",
         "tiers": [
@@ -475,11 +476,12 @@
             "badge": "AB · AUTO-BUY",
             "price": "$500+",
             "title": "+ Reference Sheet & Close-ups",
-            "desc": "At bids of $500 or more, the bundle includes a reference sheet and close-up details. Commercial use is not included automatically.",
+            "desc": "At bids of $500 or more, the bundle includes a reference sheet and close-up details. Commercial use is not included automatically. One NSFW alternative is included at AB; below AB it can be added for $50.",
             "perks": [
               "Everything in Tier III",
               "Reference sheet",
-              "Close-ups of selected details"
+              "Close-ups of selected details",
+              "NSFW alternative included"
             ],
             "hasSample": false
           }
@@ -661,7 +663,8 @@
             "Flat Color Stage: Color palette tweaks and small markings adjustments are free.",
             "Render Stage: Major structural changes (changing the pose, outfit, or camera angle) after lineart approval require an extra fee depending on complexity.",
             "Artist Mistakes: If I miss a clear detail that was present on your reference sheet, I will always fix it for free at any stage.",
-            "Additional minor edits beyond the included revisions cost $10 each. Medium changes and major redraws are quoted before work begins. Fixing my mistakes remains free."
+            "Additional minor edits beyond the included revisions cost $10 each. Medium changes and major redraws are quoted before work begins. Fixing my mistakes remains free.",
+            "An additional facial expression costs $25; other alternative versions cost $50 (futa $25 with an existing NSFW base)."
           ]
         },
         {
@@ -897,7 +900,7 @@
       "adoptSection": {
         "eyebrow": "NIVELES DE ADOPTS · $100 – $500",
         "title": "Adoptables: Diseños y Niveles de Oferta (Tiers)",
-        "desc": "Un diseño base que desbloquea extras a medida que sube la oferta. Donde aún no hay ejemplo gráfico, el esquema indica lo que dibujo a medida para el ganador.",
+        "desc": "Un diseño base que desbloquea extras a medida que sube la oferta. Donde aún no hay ejemplo gráfico, el esquema indica lo que dibujo a medida para el ganador. AB incluye una versión NSFW; por debajo de AB se puede añadir por $50.",
         "blueprintTitle": "ESQUEMA DE BONIFICACIÓN",
         "blueprintSub": "Dibujado a medida para el ganador de la subasta",
         "tiers": [
@@ -945,11 +948,12 @@
             "badge": "AB · COMPRA AUTOMÁTICA",
             "price": "$500+",
             "title": "+ Hoja de Referencia y Detalles",
-            "desc": "Con ofertas de $500 o más, se incluye una hoja de referencia y primeros planos. El uso comercial no está incluido automáticamente.",
+            "desc": "Con ofertas de $500 o más, se incluye una hoja de referencia y primeros planos. El uso comercial no está incluido automáticamente. AB incluye una versión NSFW; por debajo de AB se puede añadir por $50.",
             "perks": [
               "Todo lo del nivel III",
               "Hoja de referencia",
-              "Primeros planos de detalles elegidos"
+              "Primeros planos de detalles elegidos",
+              "Versión NSFW incluida"
             ],
             "hasSample": false
           }
@@ -1131,7 +1135,8 @@
             "Etapa de color base: los ajustes de paleta y pequeños cambios en las marcas del personaje son gratuitos.",
             "Etapa de render: los cambios estructurales importantes de pose, atuendo o ángulo de cámara tras aprobar el lineart tienen un coste adicional según su complejidad.",
             "Mis errores: si omití un detalle claro que aparecía en tu referencia, lo corregiré gratis en cualquier etapa.",
-            "Los pequeños ajustes adicionales, fuera de las revisiones incluidas, cuestan $10 cada uno. Los cambios medianos y grandes se presupuestan antes. Corregir mis errores sigue siendo gratis."
+            "Los pequeños ajustes adicionales, fuera de las revisiones incluidas, cuestan $10 cada uno. Los cambios medianos y grandes se presupuestan antes. Corregir mis errores sigue siendo gratis.",
+            "Una expresión facial adicional cuesta $25; otras versiones alternativas cuestan $50 (futa $25 con base NSFW)."
           ]
         },
         {
@@ -1367,7 +1372,7 @@
       "adoptSection": {
         "eyebrow": "УРОВНИ АДОПТОВ · $100 – $500",
         "title": "Адопты: базовый дизайн и бонусные уровни ставок",
-        "desc": "При росте ставки на аукционе к базовому дизайну добавляются новые бонусы. Там, где у меня пока нет отдельных примеров, стоит эскиз-схема комплектации — эти бонусы я дорисовываю специально под победителя.",
+        "desc": "При росте ставки на аукционе к базовому дизайну добавляются новые бонусы. Там, где у меня пока нет отдельных примеров, стоит эскиз-схема комплектации — эти бонусы я дорисовываю специально под победителя. Одна NSFW-версия включена в AB; ниже AB её можно заказать отдельно за $50.",
         "blueprintTitle": "ЭСКИЗ-СХЕМА УРОВНЯ",
         "blueprintSub": "Отрисовывается индивидуально под победителя аукциона",
         "tiers": [
@@ -1415,11 +1420,12 @@
             "badge": "AB · АВТОВЫКУП",
             "price": "$500+",
             "title": "+ Референс-лист и крупные планы",
-            "desc": "При ставке от $500 добавляются референс-лист и крупные планы деталей. Коммерческое использование автоматически не включено.",
+            "desc": "При ставке от $500 добавляются референс-лист и крупные планы деталей. Коммерческое использование автоматически не включено. Одна NSFW-версия включена в AB; ниже AB её можно заказать отдельно за $50.",
             "perks": [
               "Всё из уровня III",
               "Референс-лист",
-              "Крупные планы выбранных деталей"
+              "Крупные планы выбранных деталей",
+              "NSFW-версия включена"
             ],
             "hasSample": false
           }
@@ -1601,7 +1607,8 @@
             "На этапе базового цвета: бесплатно корректируются оттенки и палитра.",
             "На этапе рендера: значительные изменения утверждённой позы, одежды или ракурса после согласования лайна оплачиваются отдельно в зависимости от сложности.",
             "Мои ошибки: если я упустил чётко указанную деталь с вашего референса, исправлю её бесплатно на любом этапе.",
-            "Дополнительные мелкие правки сверх включённых — $10 за каждую. Средние изменения и большие переделки оцениваются до начала правок. Исправление моих ошибок остаётся бесплатным."
+            "Дополнительные мелкие правки сверх включённых — $10 за каждую. Средние изменения и большие переделки оцениваются до начала правок. Исправление моих ошибок остаётся бесплатным.",
+            "Дополнительное выражение лица — $25; остальные альт-версии — $50 (futa $25 при NSFW-основе)."
           ]
         },
         {
@@ -1792,9 +1799,9 @@
           { id: "nda_a", mult: 1.35, badge: "+35%", label: { en: "Private / NDA", es: "Privado / NDA", ru: "Приватность / NDA" } }
         ],
         note: {
-          en: "PSD files are available on request only for adoptables at AB or above. PSD files are not offered separately for commissions or YCH. Tier inclusions are cumulative. Commercial use is not included automatically and requires a separate agreement and quote.",
-          es: "Los niveles incluyen lo anterior. El uso comercial no está incluido automáticamente y requiere un acuerdo y presupuesto separados.",
-          ru: "Каждый уровень включает предыдущие бонусы. Коммерческое использование автоматически не включено и требует отдельного соглашения и расчёта."
+          en: "PSD files are available on request only for adoptables at AB or above. PSD files are not offered separately for commissions or YCH. One NSFW alternative is included at AB; below AB it is +$50. Tier inclusions are cumulative. Commercial use is not included automatically and requires a separate agreement and quote.",
+          es: "AB incluye una versión NSFW; por debajo de AB cuesta +$50. Los niveles incluyen lo anterior. El uso comercial no está incluido automáticamente y requiere un acuerdo y presupuesto separados.",
+          ru: "NSFW-версия включена в AB, ниже AB — +$50. Каждый уровень включает предыдущие бонусы. Коммерческое использование автоматически не включено и требует отдельного соглашения и расчёта."
         }
       },
       ych: {
@@ -1820,11 +1827,11 @@
 
     function getProcessLabel(item) {
       const labels={en:['Art process','SFW / NSFW','Template → Result + Alt'],es:['Proceso','SFW / NSFW','Plantilla → Resultado + Alt'],ru:['Процесс работы','SFW / NSFW','Шаблон → Результат + Альт']};
-      return labels[currentLang][item.processWork===4?2:item.processWork===3?1:0];
+      if(item.processWork===4)return ({en:'Template → Color Sketch + Alt',ru:'Шаблон → Цветной скетч + Альт',es:'Plantilla → Boceto a color + Alt'})[currentLang];if(item.processWork>=5)return ({en:'Template → Finished example',ru:'Шаблон → Готовый пример',es:'Plantilla → Ejemplo terminado'})[currentLang];return labels[currentLang][item.processWork===3?1:0];
     }
     function getGalleryTitle(item) {
       if (item.processWork) {
-        const names={en:['Illustration 1','Illustration 2','Fan art · SFW / NSFW','YCH example'],es:['Ilustración 1','Ilustración 2','Fan art · SFW / NSFW','Ejemplo YCH'],ru:['Иллюстрация 1','Иллюстрация 2','Фан-арт · SFW / NSFW','Пример YCH']};
+        const names={en:['Illustration 1','Illustration 2','Fan art · SFW / NSFW','YCH · Happy Bun','YCH · TH','YCH · All Plain to See'],es:['Ilustración 1','Ilustración 2','Fan art · SFW / NSFW','YCH · Happy Bun','YCH · TH','YCH · All Plain to See'],ru:['Иллюстрация 1','Иллюстрация 2','Фан-арт · SFW / NSFW','YCH · Happy Bun','YCH · TH','YCH · All Plain to See']};
         return names[currentLang][item.processWork-1];
       }
       const prefix = { en: "Portfolio Sample", es: "Muestra de portafolio", ru: "Пример портфолио" };
@@ -2087,7 +2094,7 @@
             <!-- Live estimate -->
             <div class="quote-total space-y-2">
               <div class="flex items-end justify-between gap-3"><div><span id="calc-total-label" class="block mono text-[10px] uppercase text-textDim">Estimated Total</span><span id="calc-formula" class="block mt-1 mono text-[11px] text-textMuted">Base $120</span></div><span id="calc-total-value" class="serif text-4xl sm:text-5xl text-accent">$120</span></div>
-              <div id="calc-breakdown-list" aria-live="polite" aria-atomic="true"></div><p id="calc-estimate-note" class="text-[11px] leading-relaxed text-textDim">Starting estimate only. Final price depends on the brief and will be confirmed directly.</p>
+              <details class="quote-breakdown"><summary id="calc-breakdown-summary">Price breakdown</summary><div id="calc-breakdown-list" aria-live="polite" aria-atomic="true"></div></details><p id="calc-estimate-note" class="text-[11px] leading-relaxed text-textDim">Starting estimate only. Final price depends on the brief and will be confirmed directly.</p>
             </div>
 
 
@@ -2602,7 +2609,7 @@
       renderGalleryGrid();
     };
     function openArtworkProcess(id) {
-      const mode=id===4?'ych':'custom';
+      const mode=id>=4?'ych':'custom';
       if(document.body.dataset.page!=='pricing'){try{sessionStorage.setItem('nektahr-pricing-tab',mode)}catch{};switchPage('pricing');return;}
       switchPricingTab(mode);document.getElementById('pricing-workspace').scrollIntoView({behavior:'smooth',block:'start'});
     }
@@ -3064,12 +3071,12 @@
       if(!window.queueManagerReady)loadLiveQueue();
     };
   </script>
-<script src="/assets/process-viewer.js?v=20261028-review2"></script>
-<script src="/assets/artwork-interactions.js?v=20261028-review2"></script>
+<script src="/assets/process-viewer.js?v=20261028-compact3"></script>
+<script src="/assets/artwork-interactions.js?v=20261028-compact3"></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
-<script src="/assets/gallery-viewer.js?v=20261028-review2"></script>
-<script src="/assets/pricing-samples.js?v=20261028-review2"></script>
-<script src="/assets/quote-builder.js?v=20261028-review2"></script>
-<script src="/assets/catalog.js?v=20261028-review2"></script>
+<script src="/assets/gallery-viewer.js?v=20261028-compact3"></script>
+<script src="/assets/pricing-samples.js?v=20261028-compact3"></script>
+<script src="/assets/quote-builder.js?v=20261028-compact3"></script>
+<script src="/assets/catalog.js?v=20261028-compact3"></script>
 </body>
 </html>
