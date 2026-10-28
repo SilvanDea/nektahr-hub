@@ -215,3 +215,9 @@ Aligned YCH color sketch to $60 in all seven routes and calculator. Added an exp
 Updated EN/RU/ES ToS, payment FAQs, tier descriptions and catalog payment disclosure: PayPal/Ko-fi for custom/YCH, plus DeviantArt for adopts; 48-hour payment window, 24-hour non-response releases unpaid holds; adopt payment plans over $200 require a negotiated down payment; bid increment $5; resale at same/lower paid price with artist notification. Removed outdated Stripe/blacklist/absolute refund-forfeiture wording. No checkout, payment processor, automatic reservation timer or legal compliance certification was added.
 
 Browser checks: Tier II default alternative $200; included NSFW + futa $225; included furry alone $200, +paid NSFW $250; included outfit alone $200, +one extra outfit $250; correct included/extra lines in request. AB with furry and included NSFW remains $500; dropping to base clears forced bonus selections ($100). YCH color sketch $60 and AB $160 pass. Verified Russian resale clause, Spanish payment text, one YCH-policy paragraph per route and catalog disclosure/link. Seven-page syntax/translation checks and all source/image validators pass. Current rules are recorded in PRICING_RULES.md.
+
+## YCH comparison corrections
+
+Work 73 (№85) disables comparison while retaining all three version controls; render also clears any comparison state. Work 72 (Watermelon) defines explicit phase pairs: template/blonde outfit1; blonde outfit1/outfit2; template/blue outfit1; blue outfit1/outfit2; blue outfit1/NSFW. Static works 5 (TH) and 6 (All Plain to See) are labeled Color Sketch in pricing, gallery and process controls (EN/RU/ES).
+
+Browser verified SFW pair image URLs and №85 hidden comparison button/curtain with three accessible versions. NSFW pair indices validated against metadata; adult reveal was not accepted during this check. Seven-route syntax/translation checks pass.

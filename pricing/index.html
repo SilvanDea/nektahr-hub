@@ -23,8 +23,8 @@
   <meta property="og:title" content="Nek'tahr | Artist Portfolio & Commissions" />
   <meta property="og:description" content="Art portfolio, commission pricing, adoptables, YCH options, and contact links." />
   <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
-  <script src="/assets/portfolio-data.js?v=20261028-terms9"></script>
-  <script src="/assets/queue-manager.js?v=20261028-terms9" defer></script>
+  <script src="/assets/portfolio-data.js?v=20261028-pairs10"></script>
+  <script src="/assets/queue-manager.js?v=20261028-pairs10" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -118,15 +118,15 @@
     /* Tailwind CDN is still required for the original utility classes; these small fallbacks keep basic readability if it fails. */
     .hidden { display: none !important; }
   </style>
-<link rel="stylesheet" href="/assets/process-viewer.css?v=20261028-terms9">
+<link rel="stylesheet" href="/assets/process-viewer.css?v=20261028-pairs10">
 <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/assets/favicon-32.png" sizes="32x32">
   <style>img{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none}</style>
-<link rel="stylesheet" href="/assets/pricing-layout.css?v=20261028-terms9">
-<link rel="stylesheet" href="/assets/site-polish.css?v=20261028-terms9">
-<link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-terms9">
-<link rel="stylesheet" href="/assets/catalog-queue.css?v=20261028-terms9">
-<link rel="stylesheet" href="/assets/readability.css?v=20261028-terms9">
+<link rel="stylesheet" href="/assets/pricing-layout.css?v=20261028-pairs10">
+<link rel="stylesheet" href="/assets/site-polish.css?v=20261028-pairs10">
+<link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-pairs10">
+<link rel="stylesheet" href="/assets/catalog-queue.css?v=20261028-pairs10">
+<link rel="stylesheet" href="/assets/readability.css?v=20261028-pairs10">
 </head>
 <body data-page="pricing" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
@@ -1838,7 +1838,7 @@
     function getProcessLabel(item) {
       if(item.processWork===7)return ({en:'Line + Color → Full Render',ru:'Лайн + цвет → Полный рендер',es:'Líneas + color → Render completo'})[currentLang];if(item.catalogWork){const model=(window.PORTFOLIO_WORKS||[]).find(w=>w.id===item.processWork);if(model?.historicalNote)return model.historicalNote[currentLang]||model.historicalNote.en;if(model?.historicalTier==='AB')return 'AB · 2024';if(model?.type==='single')return (model.labels[currentLang]||model.labels.en)[0];return model?.type==='process'?({en:'Art process',ru:'Процесс работы',es:'Proceso'})[currentLang]:model?.type==='ych'?({en:'Template → Examples',ru:'Шаблон → Примеры',es:'Plantilla → Ejemplos'})[currentLang]:({en:'Versions',ru:'Версии',es:'Versiones'})[currentLang];}
       const labels={en:['Art process','SFW / NSFW','Template → Result + Alt'],es:['Proceso','SFW / NSFW','Plantilla → Resultado + Alt'],ru:['Процесс работы','SFW / NSFW','Шаблон → Результат + Альт']};
-      if(item.processWork===4)return ({en:'Template → Color Sketch + Alt',ru:'Шаблон → Цветной скетч + Альт',es:'Plantilla → Boceto a color + Alt'})[currentLang];if(item.processWork>=5)return ({en:'Template → Finished example',ru:'Шаблон → Готовый пример',es:'Plantilla → Ejemplo terminado'})[currentLang];return labels[currentLang][item.processWork===3?1:0];
+      if(item.processWork===4)return ({en:'Template → Color Sketch + Alt',ru:'Шаблон → Цветной скетч + Альт',es:'Plantilla → Boceto a color + Alt'})[currentLang];if([5,6].includes(item.processWork))return ({en:'Template → Color Sketch',ru:'Шаблон → Цветной скетч',es:'Plantilla → Boceto a color'})[currentLang];if(item.processWork>=5)return ({en:'Template → Finished example',ru:'Шаблон → Готовый пример',es:'Plantilla → Ejemplo terminado'})[currentLang];return labels[currentLang][item.processWork===3?1:0];
     }
     function getGalleryKind(item) {
       const labels={en:{comm:'Commission',fanart:'Fan art',ych:'YCH',adopt:'Adopt',other:'Illustration'},ru:{comm:'Коммишен',fanart:'Фан-арт',ych:'YCH',adopt:'Адопт',other:'Иллюстрация'},es:{comm:'Encargo',fanart:'Fan art',ych:'YCH',adopt:'Adoptable',other:'Ilustración'}};
@@ -3095,12 +3095,12 @@
       if(!window.queueManagerReady)loadLiveQueue();
     };
   </script>
-<script src="/assets/process-viewer.js?v=20261028-terms9"></script>
-<script src="/assets/artwork-interactions.js?v=20261028-terms9"></script>
+<script src="/assets/process-viewer.js?v=20261028-pairs10"></script>
+<script src="/assets/artwork-interactions.js?v=20261028-pairs10"></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
-<script src="/assets/gallery-viewer.js?v=20261028-terms9"></script>
-<script src="/assets/pricing-samples.js?v=20261028-terms9"></script>
-<script src="/assets/quote-builder.js?v=20261028-terms9"></script>
-<script src="/assets/catalog.js?v=20261028-terms9"></script>
+<script src="/assets/gallery-viewer.js?v=20261028-pairs10"></script>
+<script src="/assets/pricing-samples.js?v=20261028-pairs10"></script>
+<script src="/assets/quote-builder.js?v=20261028-pairs10"></script>
+<script src="/assets/catalog.js?v=20261028-pairs10"></script>
 </body>
 </html>
