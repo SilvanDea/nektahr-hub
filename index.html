@@ -119,6 +119,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/assets/favicon-32.png" sizes="32x32">
   <style>img{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none}</style>
+<link rel="stylesheet" href="/assets/pricing-layout.css">
 </head>
 <body data-page="board" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
@@ -1267,9 +1268,8 @@
         </div>
       </div>
 
-      <section id="art-process" aria-label="Artwork process and versions"></section>
       <!-- Main 2-Column Layout: Left (Content per Tab) + Right (Individual Sticky Calculator) -->
-      <div class="grid lg:grid-cols-12 gap-8 items-start">
+      <div class="pricing-workspace" id="pricing-workspace">
 
         <!-- LEFT COLUMN (8 cols) -->
         <div class="lg:col-span-8 space-y-12">
@@ -1284,6 +1284,7 @@
               </div>
               <div id="custom-stages-grid" class="grid sm:grid-cols-3 gap-4"></div>
             </div>
+            <div id="process-dock-custom"><details id="pricing-examples" class="examples-panel"><summary id="pricing-examples-label">View artwork examples & compare stages</summary><section id="art-process" aria-label="Artwork process and versions"></section></details></div>
             <!-- Character Sheet & Detail Breakdown -->
             <div class="space-y-4">
               <div>
@@ -1313,14 +1314,14 @@
               <p id="ych-desc" class="text-sm text-textMuted leading-relaxed"></p>
             </div>
 
-            <div id="ych-slots-grid" class="grid sm:grid-cols-3 gap-4"></div>
+            <div id="ych-slots-grid" class="grid sm:grid-cols-3 gap-4"></div><div id="process-dock-ych"></div>
           </div>
 
         </div>
 
         <!-- RIGHT COLUMN: INDIVIDUAL STICKY QUOTE BUILDER (4 cols) -->
         <div class="lg:col-span-4">
-          <div class="card p-6 sticky top-20 space-y-5">
+          <div class="quote-panel">
             <div class="flex items-start justify-between border-b hairline pb-4">
               <div>
                 <h3 id="calc-title" class="serif text-3xl text-textMain">Quote Builder</h3>
@@ -1331,11 +1332,22 @@
               </button>
             </div>
 
+            <!-- Live estimate -->
+            <div class="quote-total space-y-2">
+              <div class="flex items-end justify-between gap-3"><div><span id="calc-total-label" class="block mono text-[10px] uppercase text-textDim">Estimated Total</span><span id="calc-formula" class="block mt-1 mono text-[11px] text-textMuted">Base $120</span></div><span id="calc-total-value" class="serif text-4xl sm:text-5xl text-accent">$120</span></div>
+              <div id="calc-breakdown-list" aria-live="polite" aria-atomic="true"></div><p id="calc-estimate-note" class="text-[11px] leading-relaxed text-textDim">Starting estimate only. Final price depends on the brief and will be confirmed directly.</p>
+            </div>
+
+
             <!-- Dynamically Rebuilt Controls per Active Category (Custom / Adopt / YCH) -->
             <div id="calc-dynamic-body" class="space-y-4"></div>
 
+            <button onclick="copyCalcRequest()" id="calc-copy-btn" class="quote-cta w-full py-3 bg-accent text-bg mono text-xs uppercase font-medium hover:bg-textMain transition cursor-pointer">
+              Copy Ready DM Request
+            </button>
+
             <!-- Order brief -->
-            <div class="space-y-3 border-t hairline pt-4">
+            <details class="quote-brief" id="calc-brief-panel"><summary id="calc-brief-summary">Add references & brief (optional)</summary><div class="space-y-3">
               <div id="calc-step-brief" class="mono text-[10px] uppercase tracking-widest text-accent">03 / Tell me about it</div>
               <div><label for="calc-refs" id="calc-refs-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Reference links</label><input id="calc-refs" oninput="recalcTotal()" type="text" placeholder="Paste character sheets, moodboards or image links" class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent" /></div>
               <div class="grid sm:grid-cols-2 gap-3">
@@ -1343,17 +1355,8 @@
                 <div><label for="calc-contact" id="calc-contact-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Preferred contact</label><select id="calc-contact" onchange="recalcTotal()" class="w-full bg-bg border hairline p-3 text-sm text-textMain focus:outline-none focus:border-accent"><option value="Telegram">Telegram</option><option value="Discord">Discord</option><option value="Email">Email</option></select></div>
               </div>
               <div><label for="calc-notes" id="calc-brief-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Brief & extra details</label><textarea id="calc-notes" oninput="recalcTotal()" rows="4" placeholder="Character details, pose, mood, SFW/NSFW, background..." class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent resize-y"></textarea></div>
-            </div>
+            </div></details>
 
-            <!-- Live estimate -->
-            <div class="pt-4 border-t hairline space-y-2">
-              <div class="flex items-end justify-between gap-3"><div><span id="calc-total-label" class="block mono text-[10px] uppercase text-textDim">Estimated Total</span><span id="calc-formula" class="block mt-1 mono text-[11px] text-textMuted">Base $120</span></div><span id="calc-total-value" class="serif text-4xl sm:text-5xl text-accent">$120</span></div>
-              <p id="calc-estimate-note" class="text-[11px] leading-relaxed text-textDim">Starting estimate only. Final price depends on the brief and will be confirmed directly.</p>
-            </div>
-
-            <button onclick="copyCalcRequest()" id="calc-copy-btn" class="w-full py-3 bg-accent text-bg mono text-xs uppercase font-medium hover:bg-textMain transition cursor-pointer">
-              Copy Ready DM Request
-            </button>
 
             <details class="pt-2 border-t hairline text-xs">
               <summary id="calc-preview-label" class="mono text-[10px] uppercase text-textDim hover:text-textMain cursor-pointer select-none">
@@ -1693,6 +1696,16 @@
       buildIndividualCalculator();
     }
 
+    function updatePricingPresentation() {
+      const examples=document.getElementById('pricing-examples');if(!examples)return;
+      const mode=currentPricingTab;
+      const dock=document.getElementById(mode==='ych'?'process-dock-ych':'process-dock-custom');
+      dock.append(examples);examples.hidden=mode==='adopt';
+      const labels={en:{custom:'View examples & compare drawing stages',ych:'View YCH template, result & alternative',brief:'Add references & brief (optional)'},es:{custom:'Ver ejemplos y comparar etapas',ych:'Ver plantilla YCH, resultado y alternativa',brief:'Añadir referencias y detalles (opcional)'},ru:{custom:'Посмотреть примеры и сравнить этапы',ych:'Посмотреть шаблон YCH, результат и альт',brief:'Добавить референсы и описание (необязательно)'}}[currentLang];
+      document.getElementById('pricing-examples-label').textContent=mode==='ych'?labels.ych:labels.custom;
+      document.getElementById('calc-brief-summary').textContent=labels.brief;
+      window.setProcessContext?.(mode);
+    }
     // Keep each category's selections when switching tabs.
     function saveCalculatorModeState(mode) {
       const state = CALC_MODE_STATE[mode];
@@ -1705,6 +1718,7 @@
 
     // Individual Calculator Builder per Category
     function buildIndividualCalculator() {
+      updatePricingPresentation();
       const t = I18N[currentLang].calc, mode = currentPricingTab, cfg = CALC_CONFIG[mode], state = CALC_MODE_STATE[mode];
       document.getElementById('calc-category-pill').textContent = t.modes[mode];
       document.getElementById('calc-estimate-note').textContent = uiText('quoteEstimateNote');
@@ -1720,19 +1734,22 @@
       document.getElementById('calc-dynamic-body').innerHTML = `
         <div class="space-y-3">
           <div class="mono text-[10px] uppercase tracking-widest text-accent">${uiText('quoteStepPackage')}</div>
-          <label for="calc-stage-sel" class="block mono text-[10px] uppercase text-textDim mb-1.5">${mode === 'custom' ? t.stageCustom : mode === 'adopt' ? t.stageAdopt : t.stageYch}</label>
+          <label for="calc-stage-sel" class="block mono text-[10px] uppercase text-textDim mb-1.5">${mode === 'custom' ? ({en:'Commission package',es:'Paquete',ru:'Пакет заказа'})[currentLang] : mode === 'adopt' ? t.stageAdopt : t.stageYch}</label>
           <select id="calc-stage-sel" onchange="recalcTotal()" class="w-full bg-bg border hairline p-3 text-sm text-textMain focus:outline-none focus:border-accent">
             ${cfg.options.map((opt, i) => `<option value="${opt.value}" ${String(state.value) === String(opt.value) || (!state.value && i === 0) ? 'selected' : ''}>${opt.label[currentLang] || opt.label.en}</option>`).join('')}
           </select>
+          <fieldset class="quote-packages" aria-label="${mode === 'custom' ? ({en:'Commission package',es:'Paquete',ru:'Пакет заказа'})[currentLang] : mode === 'adopt' ? t.stageAdopt : t.stageYch}">
+            ${cfg.options.map((opt,i)=>`<label class="quote-package"><input type="radio" name="quote-package" value="${opt.value}" ${String(state.value)===String(opt.value)||(!state.value&&i===0)?'checked':''} onchange="document.getElementById('calc-stage-sel').value=this.value;recalcTotal()"><span>${opt.label[currentLang]||opt.label.en}</span></label>`).join('')}
+          </fieldset>
         </div>
         <div class="space-y-3 border-t hairline pt-4">
           <div class="mono text-[10px] uppercase tracking-widest text-accent">${uiText('quoteStepExtras')}</div>
           <div class="mono text-[10px] uppercase text-textDim">${mode === 'custom' ? t.addonsCustom : mode === 'adopt' ? t.addonsAdopt : t.addonsYch}</div>
           <div class="grid grid-cols-1 gap-2">
-            ${cfg.addons.map(a => { const label = a.label[currentLang] || a.label.en; return `<label class="addon-pill cursor-pointer block"><input type="checkbox" value="${a.price}" data-id="${a.id}" data-label="${label}" onchange="recalcTotal()" class="calc-addon-check sr-only" ${state.addons.includes(a.id) ? 'checked' : ''}><div class="px-3 py-3 border hairline text-xs text-textMuted flex items-center justify-between gap-3 transition"><span>${label}</span><span class="mono text-accent shrink-0">+$${a.price}</span></div></label>`; }).join('')}
-            ${cfg.mults.map(m => { const label = m.label[currentLang] || m.label.en; return `<label class="addon-pill cursor-pointer block"><input type="checkbox" value="${m.mult}" data-id="${m.id}" data-label="${label} (${m.badge})" onchange="recalcTotal()" class="calc-mult-check sr-only" ${state.mults.includes(m.id) ? 'checked' : ''}><div class="px-3 py-3 border hairline text-xs text-textMuted flex items-center justify-between gap-3 transition"><span>${label}</span><span class="mono text-accent shrink-0">${m.badge}</span></div></label>`; }).join('')}
+            ${cfg.addons.map(a => { const label = a.label[currentLang] || a.label.en; return `<label class="addon-pill cursor-pointer block"><input type="checkbox" value="${a.price}" data-id="${a.id}" data-label="${label}" onchange="recalcTotal()" class="calc-addon-check" ${state.addons.includes(a.id) ? 'checked' : ''}><div class="px-3 py-3 border hairline text-xs text-textMuted flex items-center justify-between gap-3 transition"><span>${label.replace(/\s*\([^)]*\$[^)]*\)/g,'')}</span><span class="mono text-accent shrink-0">+$${a.price}</span></div></label>`; }).join('')}
+            ${cfg.mults.map(m => { const label = m.label[currentLang] || m.label.en; return `<label class="addon-pill cursor-pointer block"><input type="checkbox" value="${m.mult}" data-id="${m.id}" data-label="${label} (${m.badge})" onchange="recalcTotal()" class="calc-mult-check" ${state.mults.includes(m.id) ? 'checked' : ''}><div class="px-3 py-3 border hairline text-xs text-textMuted flex items-center justify-between gap-3 transition"><span>${label}</span><span class="mono text-accent shrink-0">${m.badge}</span></div></label>`; }).join('')}
           </div>
-          <p class="text-xs text-textDim leading-relaxed">${cfg.note[currentLang] || cfg.note.en}</p>
+          <p class="quote-config-note text-textDim">${cfg.note[currentLang] || cfg.note.en}</p>
         </div>`;
       recalcTotal();
     }
@@ -1759,6 +1776,14 @@
       });
 
       const total = Math.round((base + extras) * mult);
+      saveCalculatorModeState(mode);
+      document.querySelectorAll('input[name="quote-package"]').forEach(radio=>radio.checked=String(radio.value)===String(sel.value));
+      document.querySelectorAll('[data-quote-value]').forEach(card=>{const active=card.dataset.quoteMode===mode&&String(card.dataset.quoteValue)===String(sel.value);card.classList.toggle('quote-selected',active);card.setAttribute('aria-pressed',String(active));});
+      const rows=document.getElementById('calc-breakdown-list');rows.replaceChildren();
+      function quoteRow(label,value){const row=document.createElement('div');row.className='quote-line';const name=document.createElement('span'),price=document.createElement('span');name.textContent=label;price.textContent=value;row.append(name,price);rows.append(row);}
+      quoteRow(({en:'Base package',es:'Precio base',ru:'Базовый пакет'})[currentLang],`$${base}`);
+      document.querySelectorAll('.calc-addon-check:checked').forEach(chk=>quoteRow(chk.dataset.label.replace(/\s*\([^)]*\$[^)]*\)/g,''),`+$${chk.value}`));
+      if(mult>1)quoteRow(({en:'Privacy surcharge',es:'Recargo de privacidad',ru:'Доплата за приватность'})[currentLang],`+$${total-base-extras}`);
       document.getElementById('calc-total-value').textContent = `$${total}${mode === 'custom' || mode === 'adopt' ? '+' : ''}`;
       document.getElementById('calc-formula').textContent = `Base $${base}` + (extras > 0 ? ` + Extras $${extras}` : '') + (mult > 1 ? ` × ${mult.toFixed(2)}` : '');
 
@@ -1829,7 +1854,7 @@
     function openArtworkProcess(id) {
       try{sessionStorage.setItem('nektahr-open-process-work',String(id))}catch{}
       if(document.body.dataset.page!=='pricing'){switchPage('pricing');return;}
-      switchPage('pricing'); switchPricingTab('custom');
+      switchPage('pricing'); switchPricingTab(id===4?'ych':'custom');document.getElementById('pricing-examples').open=true;
       window.openProcessWork?.(id);
     }
 
@@ -2125,7 +2150,7 @@
       document.getElementById('custom-stages-grid').innerHTML = t.pricing.stages.map(st => {
         const selectable = ['single', 'duo'].includes(st.key);
         return `
-          <div ${selectable ? `role="button" tabindex="0" onclick="quickPickCustom('${st.key}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();quickPickCustom('${st.key}');}"` : ''} class="card ${selectable ? 'card-interactive cursor-pointer' : ''} p-5 flex flex-col gap-3">
+          <div ${selectable ? `role="button" tabindex="0" data-quote-mode="custom" data-quote-value="${st.key}" onclick="quickPickCustom('${st.key}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();quickPickCustom('${st.key}');}"` : ''} class="card ${selectable ? 'card-interactive cursor-pointer' : ''} p-5 flex flex-col gap-3">
             <div class="mono text-[10px] uppercase text-accent">${st.time}</div>
             <h3 class="serif text-2xl text-textMain">${st.name}</h3>
             <div class="serif text-3xl text-accent">${st.range}</div>
@@ -2149,7 +2174,7 @@
       document.getElementById('adopt-title').textContent = t.pricing.adoptSection.title;
       document.getElementById('adopt-desc').textContent = t.pricing.adoptSection.desc;
       document.getElementById('adopt-tiers-grid').innerHTML = t.pricing.adoptSection.tiers.map(tr => `
-        <button type="button" onclick="quickPickTier('adopt', ${tr.val})" class="card card-interactive overflow-hidden flex flex-col justify-between cursor-pointer text-left w-full">
+        <button type="button" data-quote-mode="adopt" data-quote-value="${tr.val}" onclick="quickPickTier('adopt', ${tr.val})" class="card card-interactive overflow-hidden flex flex-col justify-between cursor-pointer text-left w-full">
           <div>
             ${tr.hasSample ? `
               <div class="h-48 bg-bg overflow-hidden relative border-b hairline">
@@ -2183,7 +2208,7 @@
       document.getElementById('ych-title').textContent = t.pricing.ychSection.title;
       document.getElementById('ych-desc').textContent = t.pricing.ychSection.desc;
       document.getElementById('ych-slots-grid').innerHTML = t.pricing.ychSection.slots.map(sl => `
-        <div role="button" tabindex="0" onclick="quickPickTier('ych', ${sl.val})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();quickPickTier('ych', ${sl.val});}" class="card card-interactive p-5 flex flex-col gap-3 cursor-pointer">
+        <div role="button" tabindex="0" data-quote-mode="ych" data-quote-value="${sl.val}" onclick="quickPickTier('ych', ${sl.val})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();quickPickTier('ych', ${sl.val});}" class="card card-interactive p-5 flex flex-col gap-3 cursor-pointer">
           <div class="mono text-[10px] text-textDim">${sl.code}</div>
           <h3 class="serif text-2xl text-textMain">${sl.title}</h3>
           <div class="flex flex-wrap items-center justify-between gap-2 border-t hairline pt-3">
