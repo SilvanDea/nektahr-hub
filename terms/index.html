@@ -1849,7 +1849,8 @@
       renderGalleryGrid();
       const returnFocus = ageModalReturnFocus;
       ageModalReturnFocus = null;
-      returnFocus?.focus();
+      if (returnFocus?.isConnected) returnFocus.focus();
+      else document.getElementById('nsfw-switch')?.focus();
     }
 
     function renderGalleryGrid() {
