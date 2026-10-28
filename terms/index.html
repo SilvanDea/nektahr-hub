@@ -1093,6 +1093,7 @@
     let isAdultVerified = false;
     let showNsfwGallery = false;
     let tosAgreed = false;
+    let ageModalReturnFocus = null;
 
   </script>
 
@@ -1819,12 +1820,16 @@
       renderGalleryGrid();
     }
 
+    function openAgeModal(trigger) {
+      ageModalReturnFocus = trigger || document.getElementById('nsfw-switch');
+      document.getElementById('nsfw-modal').classList.remove('hidden');
+      document.getElementById('mod-btn-no')?.focus();
+    }
+
     function handleNsfwToggle(checkbox) {
       if (checkbox.checked && !isAdultVerified) {
         checkbox.checked = false;
-        const modal = document.getElementById('nsfw-modal');
-        modal.classList.remove('hidden');
-        document.getElementById('mod-btn-no')?.focus();
+        openAgeModal(checkbox);
       } else {
         showNsfwGallery = checkbox.checked;
         renderGalleryGrid();
@@ -1842,7 +1847,9 @@
         document.getElementById('nsfw-switch').checked = false;
       }
       renderGalleryGrid();
-      document.getElementById('nsfw-switch')?.focus();
+      const returnFocus = ageModalReturnFocus;
+      ageModalReturnFocus = null;
+      returnFocus?.focus();
     }
 
     function renderGalleryGrid() {
@@ -1855,7 +1862,7 @@
       grid.innerHTML = filtered.map(item => {
         const blurred = Boolean(item.nsfw) && !showNsfwGallery;
         return `
-          <button type="button" onclick="${blurred ? "document.getElementById('nsfw-modal').classList.remove('hidden')" : `openLightbox(${Number(item.id)})`}" class="card card-interactive overflow-hidden group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-label="${blurred ? '18+ mature content, verify age to view' : `Open ${getGalleryTitle(item)}`}">
+          <button type="button" onclick="${blurred ? "openAgeModal(this)" : `openLightbox(${Number(item.id)})`}" class="card card-interactive overflow-hidden group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-label="${blurred ? '18+ mature content, verify age to view' : `Open ${getGalleryTitle(item)}`}">
             <div class="aspect-[4/5] bg-bg relative overflow-hidden border-b hairline">
               <img src="${item.img}" alt="${blurred ? 'Blurred 18+ artwork preview' : getGalleryTitle(item)}" loading="lazy" decoding="async" class="w-full h-full object-cover transition duration-500 ${blurred ? 'blur-2xl scale-110' : 'group-hover:scale-105'}" />
               <div class="absolute top-2.5 left-2.5 flex gap-1.5">
