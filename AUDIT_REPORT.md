@@ -221,3 +221,7 @@ Browser checks: Tier II default alternative $200; included NSFW + futa $225; inc
 Work 73 (№85) disables comparison while retaining all three version controls; render also clears any comparison state. Work 72 (Watermelon) defines explicit phase pairs: template/blonde outfit1; blonde outfit1/outfit2; template/blue outfit1; blue outfit1/outfit2; blue outfit1/NSFW. Static works 5 (TH) and 6 (All Plain to See) are labeled Color Sketch in pricing, gallery and process controls (EN/RU/ES).
 
 Browser verified SFW pair image URLs and №85 hidden comparison button/curtain with three accessible versions. NSFW pair indices validated against metadata; adult reveal was not accepted during this check. Seven-route syntax/translation checks pass.
+
+## Comprehensive audit and repair — 2026-10-28
+
+See AUDIT_2026-10-28.md for the A–G report, evidence, seven confirmed issues, limitations and exact manual checks. Fixed explicit denied Public flags / malformed queue rows, minimized cached fields (v4), preserved ToS consent within the session/revision, added comparison-image error handling, matched custom Reset to the initial full-render default, and improved navigation/tab/hero accessibility. New regression suites pass 24 + 46 assertions; structural validator passes seven routes, 119 local HTML references, 124 images, 68 catalog items and 87 work models. No main/production or external workbook change.

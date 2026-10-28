@@ -23,8 +23,8 @@
   <meta property="og:title" content="Nek'tahr | Artist Portfolio & Commissions" />
   <meta property="og:description" content="Art portfolio, commission pricing, adoptables, YCH options, and contact links." />
   <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
-  <script src="/assets/portfolio-data.js?v=20261028-pairs10"></script>
-  <script src="/assets/queue-manager.js?v=20261028-pairs10" defer></script>
+  <script src="/assets/portfolio-data.js?v=20261028-audit11"></script>
+  <script src="/assets/queue-manager.js?v=20261028-audit11" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -118,15 +118,15 @@
     /* Tailwind CDN is still required for the original utility classes; these small fallbacks keep basic readability if it fails. */
     .hidden { display: none !important; }
   </style>
-<link rel="stylesheet" href="/assets/process-viewer.css?v=20261028-pairs10">
+<link rel="stylesheet" href="/assets/process-viewer.css?v=20261028-audit11">
 <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" href="/assets/favicon-32.png" sizes="32x32">
   <style>img{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none}</style>
-<link rel="stylesheet" href="/assets/pricing-layout.css?v=20261028-pairs10">
-<link rel="stylesheet" href="/assets/site-polish.css?v=20261028-pairs10">
-<link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-pairs10">
-<link rel="stylesheet" href="/assets/catalog-queue.css?v=20261028-pairs10">
-<link rel="stylesheet" href="/assets/readability.css?v=20261028-pairs10">
+<link rel="stylesheet" href="/assets/pricing-layout.css?v=20261028-audit11">
+<link rel="stylesheet" href="/assets/site-polish.css?v=20261028-audit11">
+<link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-audit11">
+<link rel="stylesheet" href="/assets/catalog-queue.css?v=20261028-audit11">
+<link rel="stylesheet" href="/assets/readability.css?v=20261028-audit11">
 </head>
 <body data-page="catalog" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
@@ -1882,7 +1882,9 @@
     let currentFaqCat = 'all';
     let isAdultVerified = false;try{isAdultVerified=sessionStorage.getItem('nektahr-demo-age-verified')==='yes'}catch{}
     let showNsfwGallery = false;try{showNsfwGallery=isAdultVerified&&sessionStorage.getItem('nektahr-demo-nsfw-visible')==='yes'}catch{}
-    let tosAgreed = false;
+    // Change the consent revision when the terms materially change.
+    const TOS_CONSENT_KEY = 'nektahr-tos-consent-20261028';
+    let tosAgreed = false;try{tosAgreed=sessionStorage.getItem(TOS_CONSENT_KEY)==='yes'}catch{}
     let ageModalReturnFocus = null;
 
   </script>
@@ -1973,7 +1975,7 @@
         <div class="lg:col-span-5">
           <button type="button" onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group text-left w-full">
             <div class="aspect-[4/5] overflow-hidden relative bg-bg">
-              <img src="/assets/gallery/gal-adopt-cdg-v1bg.webp" alt="Public SFW portfolio sample" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+              <img src="/assets/gallery/gal-adopt-cdg-v1bg.webp" alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#0B0A0E] via-transparent to-transparent"></div>
               <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                 <div>
@@ -2394,6 +2396,7 @@
       });
       document.querySelectorAll('.nav-link').forEach(btn => {
         const active = btn.dataset.p === pageId;
+        if(active)btn.setAttribute('aria-current','page');else btn.removeAttribute('aria-current');
         btn.className = active
           ? "nav-link px-2 py-1 text-accent border-b border-accent transition cursor-pointer"
           : "nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer";
@@ -2585,7 +2588,7 @@
     }
 
     function resetCalculator() {
-      CALC_MODE_STATE[currentPricingTab] = { value: CALC_CONFIG[currentPricingTab].options[0].value, addons: [], mults: [] };
+      CALC_MODE_STATE[currentPricingTab] = { value: currentPricingTab==='custom'?'single':CALC_CONFIG[currentPricingTab].options[0].value, addons: [], mults: [] };
       document.getElementById('calc-notes').value = '';
       document.getElementById('calc-refs').value = '';
       document.getElementById('calc-deadline').value = '';
@@ -2751,7 +2754,8 @@
     });
 
     function toggleTosConfirmation(checked) {
-      tosAgreed = checked;
+      tosAgreed = Boolean(checked);
+      try{sessionStorage.setItem(TOS_CONSENT_KEY,tosAgreed?'yes':'no')}catch{}
       recalcTotal();
       if (checked) showToast(uiText('agreementAttached'));
     }
@@ -3045,6 +3049,7 @@
       renderLiveQueue();
 
       // ToS Page
+      document.getElementById('tos-agree-checkbox').checked=tosAgreed;
       document.getElementById('tos-eyebrow').textContent = t.tos.eyebrow;
       document.getElementById('tos-title').textContent = t.tos.title;
       document.getElementById('tos-sub').textContent = t.tos.sub;
@@ -3095,12 +3100,12 @@
       if(!window.queueManagerReady)loadLiveQueue();
     };
   </script>
-<script src="/assets/process-viewer.js?v=20261028-pairs10"></script>
-<script src="/assets/artwork-interactions.js?v=20261028-pairs10"></script>
+<script src="/assets/process-viewer.js?v=20261028-audit11"></script>
+<script src="/assets/artwork-interactions.js?v=20261028-audit11"></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
-<script src="/assets/gallery-viewer.js?v=20261028-pairs10"></script>
-<script src="/assets/pricing-samples.js?v=20261028-pairs10"></script>
-<script src="/assets/quote-builder.js?v=20261028-pairs10"></script>
-<script src="/assets/catalog.js?v=20261028-pairs10"></script>
+<script src="/assets/gallery-viewer.js?v=20261028-audit11"></script>
+<script src="/assets/pricing-samples.js?v=20261028-audit11"></script>
+<script src="/assets/quote-builder.js?v=20261028-audit11"></script>
+<script src="/assets/catalog.js?v=20261028-audit11"></script>
 </body>
 </html>
