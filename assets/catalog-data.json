@@ -1,0 +1,5 @@
+[
+  {"id":"YCH-DEMO-01","type":"ych","titles":{"en":"Happy Bun — YCH","ru":"Happy Bun — YCH","es":"Happy Bun — YCH"},"image":"/assets/process/art-4-0.webp","processWork":4,"from":30,"status":"open","demo":true,"nsfw":false,"tags":["ych","bunny","template"],"profile":"https://www.deviantart.com/nektahr"},
+  {"id":"ADOPT-DEMO-01","type":"adopt","titles":{"en":"Character design · A","ru":"Дизайн персонажа · A","es":"Diseño de personaje · A"},"placeholder":"A","from":100,"status":"reserved","demo":true,"nsfw":false,"tags":["adopt","design"],"profile":"https://www.deviantart.com/nektahr"},
+  {"id":"ADOPT-DEMO-02","type":"adopt","titles":{"en":"Character design · B","ru":"Дизайн персонажа · B","es":"Diseño de personaje · B"},"placeholder":"B","from":200,"status":"sold","demo":true,"nsfw":false,"tags":["adopt","design","render"],"profile":"https://www.deviantart.com/nektahr"}
+]

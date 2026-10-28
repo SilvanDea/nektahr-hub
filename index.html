@@ -22,6 +22,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Nek'tahr | Artist Portfolio & Commissions" />
   <meta property="og:description" content="Art portfolio, commission pricing, adoptables, YCH options, and contact links." />
+  <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
+  <script src="/assets/queue-manager.js" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -122,6 +124,7 @@
 <link rel="stylesheet" href="/assets/pricing-layout.css">
 <link rel="stylesheet" href="/assets/site-polish.css">
 <link rel="stylesheet" href="/assets/quote-controls.css">
+<link rel="stylesheet" href="/assets/catalog-queue.css">
 </head>
 <body data-page="board" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
@@ -1125,6 +1128,7 @@
     <nav id="nav-links" aria-label="Main navigation" class="flex items-center gap-1 sm:gap-5 text-xs sm:text-sm">
       <button onclick="switchPage('board')" data-p="board" id="nav-board" class="nav-link px-2 py-1 text-accent border-b border-accent transition cursor-pointer">Board</button>
       <button onclick="switchPage('pricing')" data-p="pricing" id="nav-pricing" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Pricing</button>
+      <button onclick="switchPage('catalog')" data-p="catalog" id="nav-catalog" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Catalog</button>
       <button onclick="switchPage('gallery')" data-p="gallery" id="nav-gallery" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Gallery</button>
       <button onclick="switchPage('queue')" data-p="queue" id="nav-queue" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Queue</button>
       <button onclick="switchPage('tos')" data-p="tos" id="nav-tos" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">ToS</button>
@@ -1428,20 +1432,12 @@
         <p id="q-sub" class="text-sm text-textMuted mt-1 max-w-2xl"></p>
       </div>
 
+<section id="queue-overview" class="queue-overview" aria-label="Queue summary"><div><span id="queue-active-label"></span><strong id="queue-active-count">—</strong></div><div><span id="queue-reserved-label"></span><strong id="queue-reserved-count">—</strong></div><div class="queue-sync"><p id="queue-sync-status" role="status" aria-live="polite"></p><button type="button" id="queue-refresh"></button></div></section>
+      <div id="queue-tabs" class="queue-tabs" role="tablist" aria-label="Queue views"><button type="button" id="queue-tab-active" role="tab" aria-selected="true"></button><button type="button" id="queue-tab-reserved" role="tab" aria-selected="false"></button></div>
       <div class="card p-6 sm:p-8 overflow-x-auto">
-        <table class="w-full text-left border-collapse min-w-[600px]">
-          <thead>
-            <tr class="border-b hairline mono text-xs uppercase text-textDim">
-              <th id="q-col-slot" class="pb-3 pr-4 font-normal">Slot</th>
-              <th id="q-col-client" class="pb-3 px-4 font-normal">Client</th>
-              <th id="q-col-details" class="pb-3 px-4 font-normal">Order Details</th>
-              <th id="q-col-stage" class="pb-3 px-4 font-normal">Stage</th>
-              <th id="q-col-progress" class="pb-3 pl-4 text-right font-normal">Progress</th>
-            </tr>
-          </thead>
-          <tbody id="queue-table-body" class="divide-y hairline text-sm"></tbody>
-        </table>
+        <table class="w-full text-left border-collapse min-w-[700px]"><thead><tr class="border-b hairline mono text-xs uppercase text-textDim"><th id="q-col-slot" class="pb-3 pr-4 font-normal"></th><th id="q-col-client" class="pb-3 px-4 font-normal"></th><th id="q-col-details" class="pb-3 px-4 font-normal"></th><th id="q-col-stage" class="pb-3 px-4 font-normal"></th><th id="q-col-progress" class="pb-3 pl-4 font-normal"></th></tr></thead><tbody id="queue-table-body" class="divide-y hairline text-sm"></tbody></table>
       </div>
+      <section id="reservation-info" class="reservation-info"><div><span id="reservation-eyebrow" class="mono"></span><h2 id="reservation-title" class="serif"></h2><p id="reservation-description"></p><small id="reservation-terms"></small></div><a href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" id="reservation-contact"></a></section>
     </section>
 
 
@@ -1502,6 +1498,8 @@
       <div id="faq-items-list" class="space-y-3"></div>
     </section>
 
+<section id="page-catalog" class="page-section hidden space-y-8"><div class="catalog-header"><div><div id="catalog-eyebrow" class="mono"></div><h1 id="catalog-title" class="serif"></h1><p id="catalog-subtitle"></p></div><a href="https://www.deviantart.com/nektahr" target="_blank" rel="noopener noreferrer" id="catalog-profile"></a></div><div class="catalog-notice" id="catalog-notice" role="note"></div><div class="catalog-toolbar"><div id="catalog-type-filters" class="catalog-filters" role="group"></div><label><span id="catalog-search-label" class="sr-only"></span><input type="search" id="catalog-search"></label></div><div id="catalog-state-filters" class="catalog-filters" role="group"></div><div id="catalog-grid" class="catalog-grid"></div><p id="catalog-empty" hidden></p><section class="reservation-info"><div><h2 id="catalog-reserve-title" class="serif"></h2><p id="catalog-reserve-description"></p></div><a href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" id="catalog-reserve-contact"></a></section></section>
+<dialog id="catalog-dialog" aria-labelledby="catalog-dialog-title"><button type="button" id="catalog-dialog-close" class="catalog-close" aria-label="Close">×</button><div id="catalog-dialog-image"></div><div class="catalog-dialog-content"><p id="catalog-dialog-meta" class="mono"></p><h2 id="catalog-dialog-title" class="serif"></h2><p id="catalog-dialog-description"></p><div id="catalog-dialog-includes"></div><p id="catalog-dialog-status"></p><div class="catalog-dialog-actions"><button type="button" id="catalog-dialog-preview" hidden></button><button type="button" id="catalog-dialog-copy"></button><a href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" id="catalog-dialog-contact"></a></div><p class="catalog-dialog-disclaimer" id="catalog-dialog-disclaimer"></p></div></dialog>
   </main>
 
   <!-- =====================================================================
@@ -1600,6 +1598,7 @@
     const PAGE_PATHS = {
       board: "/",
       pricing: "/pricing/",
+      catalog: "/catalog/",
       gallery: "/gallery/",
       queue: "/queue/",
       tos: "/terms/",
@@ -1639,6 +1638,7 @@
           es: ["Nek'tahr | Portafolio y comisiones", "Explora el portafolio de Nek'tahr, precios, adopts, opciones YCH y contactos."],
           ru: ["Nek'tahr | Портфолио и коммишки", "Портфолио Nek'tahr, цены, адопты, YCH и контакты."]
         },
+        catalog: {en:["Catalog | Nek’tahr","YCH templates and adoptable designs — catalog mockup."],es:["Catálogo | Nek’tahr","Plantillas YCH y diseños adoptables — maqueta."],ru:["Каталог | Nek’tahr","YCH и адопты — макет каталога."]},
         pricing: {
           en: ["Pricing | Nek'tahr Hub", "Commission pricing, adoptable tiers, YCH slots, and a quote calculator."],
           es: ["Precios | Nek'tahr Hub", "Precios de comisiones, adopts, plazas YCH y calculadora de presupuesto."],
@@ -2292,6 +2292,7 @@
 
       // FAQ Page
       renderFaqSection();
+      window.renderCatalog?.();
     }
 
     // Apply the saved language before the page becomes visible, preventing an English flash.
@@ -2307,7 +2308,7 @@
     window.onload = function() {
       let initialPricingTab='custom';try{const saved=sessionStorage.getItem('nektahr-pricing-tab');if(['custom','adopt','ych'].includes(saved))initialPricingTab=saved;sessionStorage.removeItem('nektahr-pricing-tab')}catch{}
       switchPricingTab(initialPricingTab);
-      loadLiveQueue();
+      if(!window.queueManagerReady)loadLiveQueue();
     };
   </script>
 <script src="/assets/process-viewer.js"></script>
@@ -2316,5 +2317,6 @@
 <script src="/assets/gallery-viewer.js"></script>
 <script src="/assets/pricing-samples.js"></script>
 <script src="/assets/quote-builder.js"></script>
+<script src="/assets/catalog.js"></script>
 </body>
 </html>
