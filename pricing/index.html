@@ -1822,7 +1822,9 @@
     function handleNsfwToggle(checkbox) {
       if (checkbox.checked && !isAdultVerified) {
         checkbox.checked = false;
-        document.getElementById('nsfw-modal').classList.remove('hidden');
+        const modal = document.getElementById('nsfw-modal');
+        modal.classList.remove('hidden');
+        document.getElementById('mod-btn-no')?.focus();
       } else {
         showNsfwGallery = checkbox.checked;
         renderGalleryGrid();
@@ -1840,6 +1842,7 @@
         document.getElementById('nsfw-switch').checked = false;
       }
       renderGalleryGrid();
+      document.getElementById('nsfw-switch')?.focus();
     }
 
     function renderGalleryGrid() {
@@ -1893,6 +1896,27 @@
       if (lastGalleryTrigger && typeof lastGalleryTrigger.focus === 'function') lastGalleryTrigger.focus();
     }
     document.addEventListener('keydown', event => {
+      const ageModal = document.getElementById('nsfw-modal');
+      if (ageModal && !ageModal.classList.contains('hidden')) {
+        if (event.key === 'Escape') {
+          event.preventDefault();
+          confirmAgeModal(false);
+          return;
+        }
+        if (event.key === 'Tab') {
+          const focusable = [...ageModal.querySelectorAll('button:not([disabled]), a[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])')];
+          const first = focusable[0];
+          const last = focusable[focusable.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last?.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first?.focus();
+          }
+        }
+        return;
+      }
       if (event.key === 'Escape' && !document.getElementById('lightbox-modal').classList.contains('hidden')) closeLightbox();
     });
 
