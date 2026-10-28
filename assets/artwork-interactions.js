@@ -1,6 +1,6 @@
 // A convenience deterrent, not copy protection. Keep normal links and text usable.
 (() => {
-  const isArtwork = target => target instanceof Element && Boolean(target.closest('img, #art-process .viewer, #lb-image'));
+  const isArtwork = target => target instanceof Element && Boolean(target.closest('img, #art-process .viewer, #lb-image, #artwork-dialog-image'));
   document.addEventListener('contextmenu', event => {
     if (isArtwork(event.target)) event.preventDefault();
   });

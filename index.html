@@ -120,6 +120,7 @@
   <link rel="icon" type="image/png" href="/assets/favicon-32.png" sizes="32x32">
   <style>img{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none}</style>
 <link rel="stylesheet" href="/assets/pricing-layout.css">
+<link rel="stylesheet" href="/assets/site-polish.css">
 </head>
 <body data-page="board" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
@@ -216,12 +217,12 @@
       const contact = QUEUE_CONTACT_LABEL[currentLang] || QUEUE_CONTACT_LABEL.en;
       const contactLink = `<div class="mt-4"><a href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" class="inline-block px-4 py-2 bg-accent text-bg mono text-xs uppercase">${contact}</a></div>`;
 
-      if (LIVE_QUEUE_DATA === null) {
-        body.innerHTML = `<tr><td colspan="5" class="py-8 px-4 text-sm text-textMuted">${t.loading}</td></tr>`;
-        return;
-      }
       if (LIVE_QUEUE_ERROR) {
         body.innerHTML = `<tr><td colspan="5" class="py-8 px-4 text-sm text-textMuted">${t.error}${contactLink}</td></tr>`;
+        return;
+      }
+      if (LIVE_QUEUE_DATA === null) {
+        body.innerHTML = `<tr><td colspan="5" class="py-8 px-4 text-sm text-textMuted">${t.loading}</td></tr>`;
         return;
       }
       // Completed commissions belong in the portfolio, not the active queue.
@@ -270,7 +271,7 @@
     const CONTACTS_PRIMARY = [
       { id: "discord", type: "copy", value: "drintrava", label: "Discord", handle: "drintrava", sub: { en: "Primary Contact · Click to Copy", es: "Contacto principal · Copiar", ru: "Основной контакт · Скопировать" } },
       { id: "tg1", type: "link", url: "https://t.me/nek_tahr", label: "Telegram", handle: "@nek_tahr", sub: { en: "Direct Messages · Click to Message", es: "Mensajes directos · Clic para escribir", ru: "Личные сообщения · Нажмите, чтобы написать" } },
-      { id: "email", type: "link", url: "mailto:gapkuro@gmail.com", label: "Email", handle: "gapkuro@gmail.com", sub: { en: "Commercial inquiries · Verify address", es: "Consultas comerciales · Verificar correo", ru: "По коммерческим вопросам · Адрес требует проверки" } }
+      { id: "email", type: "link", url: "mailto:gapkuro@gmail.com", label: "Email", handle: "gapkuro@gmail.com", sub: { en: "Commercial inquiries · Send an email", es: "Consultas comerciales · Enviar correo", ru: "Коммерческие вопросы · Написать письмо" } }
     ];
 
     const PLATFORMS = [
@@ -1255,14 +1256,14 @@
         </div>
 
         <!-- Strictly 1-Line Tabs, No Numbers, No Wrap -->
-        <div class="grid grid-cols-3 gap-2 w-full lg:w-auto lg:min-w-[440px] shrink-0">
-          <button onclick="switchPricingTab('custom')" data-t="custom" id="ptab-custom" class="ptab-btn px-3 py-2.5 mono text-xs uppercase whitespace-nowrap truncate text-center bg-accent text-bg border border-accent font-medium transition cursor-pointer">
+        <div role="tablist" aria-label="Pricing categories" class="grid grid-cols-3 gap-2 w-full lg:w-auto lg:min-w-[440px] shrink-0">
+          <button onclick="switchPricingTab('custom')" role="tab" aria-controls="pricing-view-custom" aria-selected="true" data-t="custom" id="ptab-custom" class="ptab-btn px-3 py-2.5 mono text-xs uppercase whitespace-nowrap truncate text-center bg-accent text-bg border border-accent font-medium transition cursor-pointer">
             Customs & Stages
           </button>
-          <button onclick="switchPricingTab('adopt')" data-t="adopt" id="ptab-adopt" class="ptab-btn px-3 py-2.5 mono text-xs uppercase whitespace-nowrap truncate text-center text-textMuted border hairline hover:text-textMain transition cursor-pointer">
+          <button onclick="switchPricingTab('adopt')" role="tab" aria-controls="pricing-view-adopt" aria-selected="false" data-t="adopt" id="ptab-adopt" class="ptab-btn px-3 py-2.5 mono text-xs uppercase whitespace-nowrap truncate text-center text-textMuted border hairline hover:text-textMain transition cursor-pointer">
             Adopts & Bid Tiers
           </button>
-          <button onclick="switchPricingTab('ych')" data-t="ych" id="ptab-ych" class="ptab-btn px-3 py-2.5 mono text-xs uppercase whitespace-nowrap truncate text-center text-textMuted border hairline hover:text-textMain transition cursor-pointer">
+          <button onclick="switchPricingTab('ych')" role="tab" aria-controls="pricing-view-ych" aria-selected="false" data-t="ych" id="ptab-ych" class="ptab-btn px-3 py-2.5 mono text-xs uppercase whitespace-nowrap truncate text-center text-textMuted border hairline hover:text-textMain transition cursor-pointer">
             YCH Slots
           </button>
         </div>
@@ -1275,7 +1276,7 @@
         <div class="lg:col-span-8 space-y-12">
 
           <!-- SUB-VIEW A: CUSTOMS & STAGES -->
-          <div id="pricing-view-custom" class="pricing-subview space-y-12">
+          <div role="tabpanel" aria-labelledby="ptab-custom" id="pricing-view-custom" class="pricing-subview space-y-12">
             <!-- 3 Stage Cards -->
             <div class="space-y-4">
               <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
@@ -1284,7 +1285,7 @@
               </div>
               <div id="custom-stages-grid" class="grid sm:grid-cols-3 gap-4"></div>
             </div>
-            <div id="process-dock-custom"><details id="pricing-examples" class="examples-panel"><summary id="pricing-examples-label">View artwork examples & compare stages</summary><section id="art-process" aria-label="Artwork process and versions"></section></details></div>
+            <div id="process-dock-custom"><section id="pricing-examples" class="examples-panel"><h3 id="pricing-examples-label" class="examples-heading">Artwork examples & stages</h3><section id="art-process" aria-label="Artwork process and versions"></section></section></div>
             <!-- Character Sheet & Detail Breakdown -->
             <div class="space-y-4">
               <div>
@@ -1296,7 +1297,7 @@
           </div>
 
           <!-- SUB-VIEW B: ADOPTS & BID TIERS -->
-          <div id="pricing-view-adopt" class="pricing-subview hidden space-y-6">
+          <div role="tabpanel" aria-labelledby="ptab-adopt" id="pricing-view-adopt" class="pricing-subview hidden space-y-6">
             <div class="card p-6 sm:p-8 space-y-2">
               <div id="adopt-eyebrow" class="mono text-[10px] uppercase text-accent">ADOPTABLE TIERS · $100 – $500</div>
               <h2 id="adopt-title" class="serif text-3xl sm:text-4xl">Adoptables: Ready Designs & Stretch Goal Tiers</h2>
@@ -1307,7 +1308,7 @@
           </div>
 
           <!-- SUB-VIEW C: YCH SLOTS -->
-          <div id="pricing-view-ych" class="pricing-subview hidden space-y-6">
+          <div role="tabpanel" aria-labelledby="ptab-ych" id="pricing-view-ych" class="pricing-subview hidden space-y-6">
             <div class="card p-6 sm:p-8 space-y-2">
               <div id="ych-eyebrow" class="mono text-[10px] uppercase text-accent">PRE-POSED TEMPLATES</div>
               <h2 id="ych-title" class="serif text-3xl sm:text-4xl">Available YCH Slots</h2>
@@ -1521,7 +1522,7 @@
   <div id="lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="lb-title" onclick="closeLightbox()" class="hidden fixed inset-0 z-50 bg-bg/95 backdrop-blur-md flex items-center justify-center p-4">
     <div onclick="event.stopPropagation()" class="card max-w-2xl w-full overflow-hidden">
       <div class="relative bg-bg max-h-[70vh] flex items-center justify-center overflow-hidden border-b hairline">
-        <img id="lb-image" src="" alt="Artwork" class="max-h-[70vh] w-auto object-contain" />
+        <img id="lb-image" alt="Artwork" class="max-h-[70vh] w-auto object-contain" />
         <button type="button" id="lb-close" onclick="closeLightbox()" aria-label="Close artwork preview" class="absolute top-3 right-3 px-3 py-1 bg-bg/85 border hairline mono text-xs text-textMuted hover:text-textMain cursor-pointer">
           ✕
         </button>
@@ -1624,6 +1625,7 @@
 
     // Language Switching (EN main, ES, RU)
     function setLang(lang) {
+      if(document.getElementById('calc-stage-sel'))saveCalculatorModeState(currentPricingTab);
       if (!I18N[lang]) lang = 'en';
       currentLang = lang;
       try { localStorage.setItem('nektahr-hub-language', lang); } catch (_) {}
@@ -1686,7 +1688,7 @@
       currentPricingTab = tabKey;
       ['custom', 'adopt', 'ych'].forEach(k => {
         document.getElementById(`pricing-view-${k}`).classList.toggle('hidden', k !== tabKey);
-        const btn = document.getElementById(`ptab-${k}`);
+        const btn = document.getElementById(`ptab-${k}`);btn.setAttribute('aria-selected',String(k===tabKey));btn.tabIndex=k===tabKey?0:-1;
         if (k === tabKey) {
           btn.className = "ptab-btn px-3 py-2.5 mono text-xs uppercase whitespace-nowrap truncate text-center bg-accent text-bg border border-accent font-medium transition cursor-pointer";
         } else {
@@ -1701,7 +1703,7 @@
       const mode=currentPricingTab;
       const dock=document.getElementById(mode==='ych'?'process-dock-ych':'process-dock-custom');
       dock.append(examples);examples.hidden=mode==='adopt';
-      const labels={en:{custom:'View examples & compare drawing stages',ych:'View YCH template, result & alternative',brief:'Add references & brief (optional)'},es:{custom:'Ver ejemplos y comparar etapas',ych:'Ver plantilla YCH, resultado y alternativa',brief:'Añadir referencias y detalles (opcional)'},ru:{custom:'Посмотреть примеры и сравнить этапы',ych:'Посмотреть шаблон YCH, результат и альт',brief:'Добавить референсы и описание (необязательно)'}}[currentLang];
+      const labels={en:{custom:'Artwork examples & drawing stages',ych:'YCH template, result & alternative',brief:'Add references & brief (optional)'},es:{custom:'Ejemplos y etapas de dibujo',ych:'Plantilla YCH, resultado y alternativa',brief:'Añadir referencias y detalles (opcional)'},ru:{custom:'Примеры работ и этапы',ych:'Шаблон YCH, результат и альт',brief:'Добавить референсы и описание (необязательно)'}}[currentLang];
       document.getElementById('pricing-examples-label').textContent=mode==='ych'?labels.ych:labels.custom;
       document.getElementById('calc-brief-summary').textContent=labels.brief;
       window.setProcessContext?.(mode);
@@ -1746,7 +1748,7 @@
           <div class="mono text-[10px] uppercase tracking-widest text-accent">${uiText('quoteStepExtras')}</div>
           <div class="mono text-[10px] uppercase text-textDim">${mode === 'custom' ? t.addonsCustom : mode === 'adopt' ? t.addonsAdopt : t.addonsYch}</div>
           <div class="grid grid-cols-1 gap-2">
-            ${cfg.addons.map(a => { const label = a.label[currentLang] || a.label.en; return `<label class="addon-pill cursor-pointer block"><input type="checkbox" value="${a.price}" data-id="${a.id}" data-label="${label}" onchange="recalcTotal()" class="calc-addon-check" ${state.addons.includes(a.id) ? 'checked' : ''}><div class="px-3 py-3 border hairline text-xs text-textMuted flex items-center justify-between gap-3 transition"><span>${label.replace(/\s*\([^)]*\$[^)]*\)/g,'')}</span><span class="mono text-accent shrink-0">+$${a.price}</span></div></label>`; }).join('')}
+            ${cfg.addons.map(a => { const label = a.label[currentLang] || a.label.en; return `<label class="addon-pill cursor-pointer block"><input type="checkbox" value="${a.price}" data-id="${a.id}" data-label="${label}" onchange="recalcTotal()" class="calc-addon-check" ${state.addons.includes(a.id) ? 'checked' : ''}><div class="px-3 py-3 border hairline text-xs text-textMuted flex items-center justify-between gap-3 transition"><span>${label.replace(/\s*\([^)]*\$[^)]*\)/g,'')}</span><span class="mono text-accent shrink-0">${a.id==='rush'?'+$50–100':a.id==='extra_character'||a.id==='feature'?`+$${a.price}+`:`+$${a.price}`}</span></div></label>`; }).join('')}
             ${cfg.mults.map(m => { const label = m.label[currentLang] || m.label.en; return `<label class="addon-pill cursor-pointer block"><input type="checkbox" value="${m.mult}" data-id="${m.id}" data-label="${label} (${m.badge})" onchange="recalcTotal()" class="calc-mult-check" ${state.mults.includes(m.id) ? 'checked' : ''}><div class="px-3 py-3 border hairline text-xs text-textMuted flex items-center justify-between gap-3 transition"><span>${label}</span><span class="mono text-accent shrink-0">${m.badge}</span></div></label>`; }).join('')}
           </div>
           <p class="quote-config-note text-textDim">${cfg.note[currentLang] || cfg.note.en}</p>
@@ -1854,7 +1856,7 @@
     function openArtworkProcess(id) {
       try{sessionStorage.setItem('nektahr-open-process-work',String(id))}catch{}
       if(document.body.dataset.page!=='pricing'){switchPage('pricing');return;}
-      switchPage('pricing'); switchPricingTab(id===4?'ych':'custom');document.getElementById('pricing-examples').open=true;
+      switchPage('pricing'); switchPricingTab(id===4?'ych':'custom');
       window.openProcessWork?.(id);
     }
 
@@ -1917,19 +1919,19 @@
       grid.innerHTML = filtered.map(item => {
         const blurred = Boolean(item.nsfw) && !showNsfwGallery;
         return `
-          <button type="button" onclick="${blurred ? "openAgeModal(this)" : `openLightbox(${Number(item.id)})`}" class="card card-interactive overflow-hidden group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-label="${blurred ? '18+ mature content, verify age to view' : `Open ${getGalleryTitle(item)}`}">
+          <button type="button" onclick="openLightbox(${Number(item.id)})" class="card card-interactive overflow-hidden group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-label="${blurred ? '18+ mature content, verify age to view' : `Open ${getGalleryTitle(item)}`}">
             <div class="aspect-[4/5] bg-surfaceAlt relative overflow-hidden border-b hairline">
               <img src="${item.img}" alt="${blurred ? 'Blurred 18+ artwork preview' : getGalleryTitle(item)}" loading="lazy" decoding="async" class="w-full h-full object-contain transition duration-500 ${blurred ? 'blur-2xl scale-110' : 'group-hover:scale-105'}" />
               <div class="absolute top-2.5 left-2.5 flex gap-1.5">
                 <span class="px-2 py-0.5 bg-bg/85 border hairline mono text-[10px] text-textMuted">${item.processWork ? getProcessLabel(item) : getGalleryStage()}</span>
                 ${item.nsfw ? '<span class="px-2 py-0.5 bg-bg/90 border border-error/50 mono text-[10px] text-error">18+</span>' : ''}
               </div>
-              ${blurred ? `<div class="absolute inset-0 bg-bg/60 flex flex-col items-center justify-center p-4 text-center"><span class="flex items-center justify-center w-10 h-10 border border-error/50 rounded-full text-error mb-2" aria-hidden="true">🔒</span><span class="mono text-[10px] uppercase text-error">NSFW · 18+</span><span class="text-xs text-textMain">${I18N[currentLang].gallery.modal.desc}</span></div>` : ''}
+              ${blurred ? `<div class="absolute inset-0 bg-bg/60 flex flex-col items-center justify-center p-4 text-center"><span class="flex items-center justify-center w-10 h-10 border border-error/50 rounded-full text-error mb-2" aria-hidden="true">🔒</span><span class="mono text-[10px] uppercase text-error">NSFW · 18+</span></div>` : ''}
             </div>
             <div class="p-4 flex items-baseline justify-between gap-3">
               <div class="min-w-0">
                 <h3 class="serif text-xl text-textMain">${getGalleryTitle(item)}</h3>
-                <p class="text-xs text-textDim">${item.processWork?getProcessLabel(item):getGalleryDescription()}</p>
+                <p class="text-xs text-textDim">${item.processWork?getProcessLabel(item):getGalleryStage()}</p>
               </div>
               <span class="mono text-xs text-accent shrink-0">${item.processWork?'↗':getGalleryPriceLabel()}</span>
             </div>
@@ -1938,21 +1940,7 @@
       }).join('');
     }
 
-    function openLightbox(id) {
-      const processItem=GALLERY_ITEMS.find(item=>item.id===id);
-      if(processItem?.processWork){openArtworkProcess(processItem.processWork);return;}
-      const item = GALLERY_ITEMS.find(x => x.id === id);
-      if (!item) return;
-      lastGalleryTrigger = document.activeElement;
-      document.getElementById('lb-image').src = item.img;
-      document.getElementById('lb-image').alt = getGalleryTitle(item);
-      document.getElementById('lb-title').textContent = getGalleryTitle(item);
-      document.getElementById('lb-stage').textContent = `${getGalleryStage()} · ${getGalleryPriceLabel()}`;
-      document.getElementById('lb-desc').textContent = getGalleryDescription();
-      document.getElementById('lightbox-modal').classList.remove('hidden');
-      document.getElementById('lb-close').setAttribute('aria-label', uiText('closePreview'));
-      document.getElementById('lb-close').focus();
-    }
+    function openLightbox(id) { window.openGalleryArtwork?.(id); }
 
     let lastGalleryTrigger = null;
     function closeLightbox() {
@@ -2150,7 +2138,7 @@
       document.getElementById('custom-stages-grid').innerHTML = t.pricing.stages.map(st => {
         const selectable = ['single', 'duo'].includes(st.key);
         return `
-          <div ${selectable ? `role="button" tabindex="0" data-quote-mode="custom" data-quote-value="${st.key}" onclick="quickPickCustom('${st.key}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();quickPickCustom('${st.key}');}"` : ''} class="card ${selectable ? 'card-interactive cursor-pointer' : ''} p-5 flex flex-col gap-3">
+          <div ${selectable ? `role="button" tabindex="0" data-quote-mode="custom" data-quote-value="${st.key}" onclick="quickPickCustom('${st.key}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();quickPickCustom('${st.key}');}"` : ''} class="card ${selectable ? 'card-interactive cursor-pointer' : 'price-extras-note'} p-5 flex flex-col gap-3">
             <div class="mono text-[10px] uppercase text-accent">${st.time}</div>
             <h3 class="serif text-2xl text-textMain">${st.name}</h3>
             <div class="serif text-3xl text-accent">${st.range}</div>
@@ -2321,5 +2309,7 @@
   </script>
 <script src="/assets/process-viewer.js"></script>
 <script src="/assets/artwork-interactions.js"></script>
+<dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
+<script src="/assets/gallery-viewer.js"></script>
 </body>
 </html>
