@@ -971,6 +971,7 @@
     const UI_TEXT = {
       en: {
         copy: "Copy", copied: "Copied", copyFailed: "Copy failed. Please select and copy the text manually.",
+        quoteRefsLabel: "Reference links", quoteRefsPlaceholder: "Paste character sheets, moodboards or image links", quoteDeadlineLabel: "Preferred deadline", quoteDeadlinePlaceholder: "Flexible / add a date", quoteContactLabel: "Preferred contact", quoteContactTelegram: "Telegram", quoteContactDiscord: "Discord", quoteContactEmail: "Email", quoteBriefLabel: "Brief & extra details", quoteStepPackage: "01 / Choose your package", quoteStepExtras: "02 / Customize the order", quoteStepBrief: "03 / Tell me about it", quoteEstimateNote: "Starting estimate only. Final price depends on the brief and will be confirmed directly.", quoteDeadlineLine: "Preferred deadline", quoteContactLine: "Preferred contact", quoteRefsLine: "Reference links", quoteNotProvided: "Not provided",
         copyPermissionFailed: "Copy failed. Please select and copy the text manually.",
         agreementAttached: "ToS agreement attached to Quote Builder", loadedOne: "Loaded: 1 character", loadedTwo: "Loaded: 2 characters",
         loadedTier: "Loaded into Quote Builder ($VALUE)", noSamples: "No portfolio samples in this category yet.", confirmAvailability: "Confirm availability",
@@ -980,6 +981,7 @@
       },
       es: {
         copy: "Copiar", copied: "Copiado", copyFailed: "No se pudo copiar. Selecciona y copia el texto manualmente.",
+        quoteRefsLabel: "Enlaces de referencia", quoteRefsPlaceholder: "Hojas de personaje, moodboards o imágenes", quoteDeadlineLabel: "Fecha preferida", quoteDeadlinePlaceholder: "Flexible / añade una fecha", quoteContactLabel: "Contacto preferido", quoteContactTelegram: "Telegram", quoteContactDiscord: "Discord", quoteContactEmail: "Correo", quoteBriefLabel: "Descripción y detalles", quoteStepPackage: "01 / Elige el paquete", quoteStepExtras: "02 / Personaliza el pedido", quoteStepBrief: "03 / Cuéntame tu idea", quoteEstimateNote: "Precio inicial orientativo. El precio final depende de la descripción y se confirma directamente.", quoteDeadlineLine: "Fecha preferida", quoteContactLine: "Contacto preferido", quoteRefsLine: "Enlaces de referencia", quoteNotProvided: "No indicado",
         copyPermissionFailed: "No se pudo copiar. Selecciona y copia el texto manualmente.",
         agreementAttached: "Aceptación de ToS añadida a la solicitud", loadedOne: "Cargado: 1 personaje", loadedTwo: "Cargado: 2 personajes",
         loadedTier: "Cargado en la solicitud ($VALUE)", noSamples: "Todavía no hay muestras de portafolio en esta categoría.", confirmAvailability: "Confirma disponibilidad",
@@ -989,6 +991,7 @@
       },
       ru: {
         copy: "Скопировать", copied: "Скопировано", copyFailed: "Не удалось скопировать. Выделите и скопируйте текст вручную.",
+        quoteRefsLabel: "Ссылки на референсы", quoteRefsPlaceholder: "Реф-листы, мудборды или ссылки на изображения", quoteDeadlineLabel: "Желаемый срок", quoteDeadlinePlaceholder: "Не срочно / укажи дату", quoteContactLabel: "Предпочтительный контакт", quoteContactTelegram: "Telegram", quoteContactDiscord: "Discord", quoteContactEmail: "Почта", quoteBriefLabel: "Описание и детали", quoteStepPackage: "01 / Выбери пакет", quoteStepExtras: "02 / Настрой заказ", quoteStepBrief: "03 / Расскажи об идее", quoteEstimateNote: "Это ориентировочная стартовая цена. Итог зависит от задачи и подтверждается отдельно.", quoteDeadlineLine: "Желаемый срок", quoteContactLine: "Предпочтительный контакт", quoteRefsLine: "Ссылки на референсы", quoteNotProvided: "Не указано",
         copyPermissionFailed: "Не удалось скопировать. Выделите и скопируйте текст вручную.",
         agreementAttached: "Отметка о согласии с ToS добавлена в заявку", loadedOne: "Выбрано: 1 персонаж", loadedTwo: "Выбрано: 2 персонажа",
         loadedTier: "Добавлено в заявку ($VALUE)", noSamples: "В этой категории пока нет примеров портфолио.", confirmAvailability: "Уточнить доступность",
@@ -1084,6 +1087,7 @@
     let currentLang = 'en'; // EN is main by default
     let currentPage = document.body.dataset.page || 'board';
     let currentPricingTab = 'custom';
+    const CALC_MODE_STATE = { custom: { value: 'single', addons: [], mults: [] }, adopt: { value: '100', addons: [], mults: [] }, ych: { value: '30', addons: [], mults: [] } };
     let currentGalCat = 'all';
     let currentFaqCat = 'all';
     let isAdultVerified = false;
@@ -1317,18 +1321,21 @@
             <!-- Dynamically Rebuilt Controls per Active Category (Custom / Adopt / YCH) -->
             <div id="calc-dynamic-body" class="space-y-4"></div>
 
-            <!-- Notes Input -->
-            <div>
-              <textarea id="calc-notes" oninput="recalcTotal()" rows="2" placeholder="Optional: character reference links, pose idea, SFW/NSFW..." class="w-full bg-bg border hairline p-2.5 text-xs text-textMain placeholder:text-textDim focus:outline-none focus:border-accent resize-none"></textarea>
+            <!-- Order brief -->
+            <div class="space-y-3 border-t hairline pt-4">
+              <div id="calc-step-brief" class="mono text-[10px] uppercase tracking-widest text-accent">03 / Tell me about it</div>
+              <div><label for="calc-refs" id="calc-refs-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Reference links</label><input id="calc-refs" oninput="recalcTotal()" type="text" placeholder="Paste character sheets, moodboards or image links" class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent" /></div>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div><label for="calc-deadline" id="calc-deadline-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Preferred deadline</label><input id="calc-deadline" oninput="recalcTotal()" type="text" placeholder="Flexible / add a date" class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent" /></div>
+                <div><label for="calc-contact" id="calc-contact-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Preferred contact</label><select id="calc-contact" onchange="recalcTotal()" class="w-full bg-bg border hairline p-3 text-sm text-textMain focus:outline-none focus:border-accent"><option value="Telegram">Telegram</option><option value="Discord">Discord</option><option value="Email">Email</option></select></div>
+              </div>
+              <div><label for="calc-notes" id="calc-brief-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Brief & extra details</label><textarea id="calc-notes" oninput="recalcTotal()" rows="4" placeholder="Character details, pose, mood, SFW/NSFW, background..." class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent resize-y"></textarea></div>
             </div>
 
-            <!-- Total Display -->
-            <div class="pt-3 border-t hairline flex items-end justify-between">
-              <div>
-                <span id="calc-total-label" class="block mono text-[10px] uppercase text-textDim">Estimated Total</span>
-                <span id="calc-formula" class="mono text-[11px] text-textMuted">Base $120</span>
-              </div>
-              <span id="calc-total-value" class="serif text-4xl text-accent">$120</span>
+            <!-- Live estimate -->
+            <div class="pt-4 border-t hairline space-y-2">
+              <div class="flex items-end justify-between gap-3"><div><span id="calc-total-label" class="block mono text-[10px] uppercase text-textDim">Estimated Total</span><span id="calc-formula" class="block mt-1 mono text-[11px] text-textMuted">Base $120</span></div><span id="calc-total-value" class="serif text-4xl sm:text-5xl text-accent">$120</span></div>
+              <p id="calc-estimate-note" class="text-[11px] leading-relaxed text-textDim">Starting estimate only. Final price depends on the brief and will be confirmed directly.</p>
             </div>
 
             <button onclick="copyCalcRequest()" id="calc-copy-btn" class="w-full py-3 bg-accent text-bg mono text-xs uppercase font-medium hover:bg-textMain transition cursor-pointer">
@@ -1659,6 +1666,7 @@
 
     // Pricing Sub-tabs (Customs / Adopts / YCH)
     function switchPricingTab(tabKey) {
+      saveCalculatorModeState(currentPricingTab);
       currentPricingTab = tabKey;
       ['custom', 'adopt', 'ych'].forEach(k => {
         document.getElementById(`pricing-view-${k}`).classList.toggle('hidden', k !== tabKey);
@@ -1672,46 +1680,47 @@
       buildIndividualCalculator();
     }
 
+    // Keep each category's selections when switching tabs.
+    function saveCalculatorModeState(mode) {
+      const state = CALC_MODE_STATE[mode];
+      if (!state) return;
+      const sel = document.getElementById('calc-stage-sel');
+      if (sel) state.value = sel.value;
+      state.addons = [...document.querySelectorAll('.calc-addon-check:checked')].map(el => el.dataset.id);
+      state.mults = [...document.querySelectorAll('.calc-mult-check:checked')].map(el => el.dataset.id);
+    }
+
     // Individual Calculator Builder per Category
     function buildIndividualCalculator() {
-      const t = I18N[currentLang].calc;
-      const mode = currentPricingTab;
-      const cfg = CALC_CONFIG[mode];
+      const t = I18N[currentLang].calc, mode = currentPricingTab, cfg = CALC_CONFIG[mode], state = CALC_MODE_STATE[mode];
       document.getElementById('calc-category-pill').textContent = t.modes[mode];
+      document.getElementById('calc-estimate-note').textContent = uiText('quoteEstimateNote');
       document.getElementById('calc-notes').placeholder = t.notesPlaceholder;
-
-      let html = `
-        <div>
+      ['quoteStepBrief','quoteRefsLabel','quoteDeadlineLabel','quoteContactLabel','quoteBriefLabel'].forEach((key, i) => {
+        const ids = ['calc-step-brief','calc-refs-label','calc-deadline-label','calc-contact-label','calc-brief-label'];
+        document.getElementById(ids[i]).textContent = uiText(key);
+      });
+      ['calc-refs','calc-deadline'].forEach((id, i) => document.getElementById(id).placeholder = uiText(i ? 'quoteDeadlinePlaceholder' : 'quoteRefsPlaceholder'));
+      [...document.getElementById('calc-contact').options].forEach(opt => {
+        opt.textContent = uiText(opt.value === 'Telegram' ? 'quoteContactTelegram' : opt.value === 'Discord' ? 'quoteContactDiscord' : 'quoteContactEmail');
+      });
+      document.getElementById('calc-dynamic-body').innerHTML = `
+        <div class="space-y-3">
+          <div class="mono text-[10px] uppercase tracking-widest text-accent">${uiText('quoteStepPackage')}</div>
           <label for="calc-stage-sel" class="block mono text-[10px] uppercase text-textDim mb-1.5">${mode === 'custom' ? t.stageCustom : mode === 'adopt' ? t.stageAdopt : t.stageYch}</label>
-          <select id="calc-stage-sel" onchange="recalcTotal()" class="w-full bg-bg border hairline p-2.5 text-xs text-textMain focus:outline-none focus:border-accent">
-            ${cfg.options.map((opt, index) => `<option value="${opt.value}" ${index === 0 ? 'selected' : ''}>${opt.label[currentLang] || opt.label.en}</option>`).join('')}
+          <select id="calc-stage-sel" onchange="recalcTotal()" class="w-full bg-bg border hairline p-3 text-sm text-textMain focus:outline-none focus:border-accent">
+            ${cfg.options.map((opt, i) => `<option value="${opt.value}" ${String(state.value) === String(opt.value) || (!state.value && i === 0) ? 'selected' : ''}>${opt.label[currentLang] || opt.label.en}</option>`).join('')}
           </select>
         </div>
-        <div>
-          <div class="block mono text-[10px] uppercase text-textDim mb-1.5">${mode === 'custom' ? t.addonsCustom : mode === 'adopt' ? t.addonsAdopt : t.addonsYch}</div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
-            ${cfg.addons.map(a => {
-              const label = a.label[currentLang] || a.label.en;
-              return `<label class="addon-pill cursor-pointer">
-                <input type="checkbox" value="${a.price}" data-label="${label}" onchange="recalcTotal()" class="calc-addon-check sr-only">
-                <div class="px-2.5 py-2 border hairline text-[11px] text-textMuted flex items-center justify-between gap-1 transition">
-                  <span>${label}</span><span class="mono text-accent shrink-0">+$${a.price}</span>
-                </div>
-              </label>`;
-            }).join('')}
-            ${cfg.mults.map(m => {
-              const label = m.label[currentLang] || m.label.en;
-              return `<label class="addon-pill cursor-pointer">
-                <input type="checkbox" value="${m.mult}" data-label="${label} (${m.badge})" onchange="recalcTotal()" class="calc-mult-check sr-only">
-                <div class="px-2.5 py-2 border hairline text-[11px] text-textMuted flex items-center justify-between gap-1 transition">
-                  <span>${label}</span><span class="mono text-accent shrink-0">${m.badge}</span>
-                </div>
-              </label>`;
-            }).join('')}
+        <div class="space-y-3 border-t hairline pt-4">
+          <div class="mono text-[10px] uppercase tracking-widest text-accent">${uiText('quoteStepExtras')}</div>
+          <div class="mono text-[10px] uppercase text-textDim">${mode === 'custom' ? t.addonsCustom : mode === 'adopt' ? t.addonsAdopt : t.addonsYch}</div>
+          <div class="grid grid-cols-1 gap-2">
+            ${cfg.addons.map(a => { const label = a.label[currentLang] || a.label.en; return `<label class="addon-pill cursor-pointer block"><input type="checkbox" value="${a.price}" data-id="${a.id}" data-label="${label}" onchange="recalcTotal()" class="calc-addon-check sr-only" ${state.addons.includes(a.id) ? 'checked' : ''}><div class="px-3 py-3 border hairline text-xs text-textMuted flex items-center justify-between gap-3 transition"><span>${label}</span><span class="mono text-accent shrink-0">+${a.price}</span></div></label>`; }).join('')}
+            ${cfg.mults.map(m => { const label = m.label[currentLang] || m.label.en; return `<label class="addon-pill cursor-pointer block"><input type="checkbox" value="${m.mult}" data-id="${m.id}" data-label="${label} (${m.badge})" onchange="recalcTotal()" class="calc-mult-check sr-only" ${state.mults.includes(m.id) ? 'checked' : ''}><div class="px-3 py-3 border hairline text-xs text-textMuted flex items-center justify-between gap-3 transition"><span>${label}</span><span class="mono text-accent shrink-0">${m.badge}</span></div></label>`; }).join('')}
           </div>
-          <p class="text-[11px] text-textDim leading-relaxed mt-2">${cfg.note[currentLang] || cfg.note.en}</p>
+          <p class="text-xs text-textDim leading-relaxed">${cfg.note[currentLang] || cfg.note.en}</p>
         </div>`;
-      document.getElementById('calc-dynamic-body').innerHTML = html;
       recalcTotal();
     }
 
@@ -1741,18 +1750,28 @@
       document.getElementById('calc-formula').textContent = `Base $${base}` + (extras > 0 ? ` + Extras $${extras}` : '') + (mult > 1 ? ` × ${mult.toFixed(2)}` : '');
 
       const notes = document.getElementById('calc-notes').value.trim() || uiText('quotePlaceholder');
+      const refs = document.getElementById('calc-refs').value.trim() || uiText('quoteNotProvided');
+      const deadline = document.getElementById('calc-deadline').value.trim() || uiText('quoteNotProvided');
+      const contact = document.getElementById('calc-contact').value || 'Telegram';
       const tosStatus = tosAgreed ? uiText('quoteAccepted') : uiText('quoteNotConfirmed');
       const msg = `${uiText('quoteGreeting')}
 • ${uiText('quoteCategory')}: ${itemSummary}
 • ${uiText('quoteAddons')}: ${pickedNames.length ? pickedNames.join(', ') : uiText('quoteNone')}
-• ${uiText('quoteTotal')}: ~$${total} USD
+• ${uiText('quoteTotal')}: ~${total} USD
+• ${uiText('quoteRefsLine')}: ${refs}
+• ${uiText('quoteDeadlineLine')}: ${deadline}
+• ${uiText('quoteContactLine')}: ${contact}
 • ${uiText('quoteReferences')}: ${notes}
 • ${uiText('quoteTos')}: ${tosStatus}`;
       document.getElementById('calc-preview-text').textContent = msg;
     }
 
     function resetCalculator() {
+      CALC_MODE_STATE[currentPricingTab] = { value: CALC_CONFIG[currentPricingTab].options[0].value, addons: [], mults: [] };
       document.getElementById('calc-notes').value = '';
+      document.getElementById('calc-refs').value = '';
+      document.getElementById('calc-deadline').value = '';
+      document.getElementById('calc-contact').value = 'Telegram';
       buildIndividualCalculator();
     }
 
