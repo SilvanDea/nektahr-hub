@@ -52,3 +52,34 @@ if(card.parentElement?.id==='gal-ext-platforms')card.replaceChildren(title);
   const render=renderAllText;window.renderAllText=function(){render();update();};
   update();
 })();
+
+/* Readable prose across routes; preserve controls, prices, links and short labels. */
+(()=>{
+ const selector=[
+ '#hero-desc','#hero-desc-2','#pricing-sub','#adopt-desc','#ych-desc','#gal-sub','#q-sub','#tos-sub',
+ '#catalog-subtitle','#catalog-notice','#catalog-reserve-description',
+ '#reservation-description','#reservation-terms',
+ '#faq-items-list p','#tos-cards-grid p','#tos-detailed-sections li',
+ '#pricing-view-custom p','#pricing-view-adopt p','#pricing-view-ych p',
+ '#catalog-dialog-description','#catalog-dialog-disclaimer','#catalog-detail-pricing p','#catalog-sales-terms li'
+ ].join(',');
+ function format(){
+  if(!Intl.Segmenter)return;
+  const segmenter=new Intl.Segmenter(document.documentElement.lang||'en',{granularity:'sentence'});
+  document.querySelectorAll(selector).forEach(el=>{
+   if(el.closest('button,a,summary,#calc-dynamic-body')||el.querySelector('input,textarea,select,button'))return;
+   for(const node of el.childNodes){
+    if(node.nodeType!==Node.TEXT_NODE||node.textContent.trim().length<85)continue;
+    const parts=[...segmenter.segment(node.textContent.trim())].map(x=>x.segment.trim());
+    if(parts.length<2)continue;
+    const next=parts.join('\n');
+    if(node.textContent!==next)node.textContent=next;
+    el.style.whiteSpace='pre-line';
+   }
+  });
+ }
+ let scheduled=false;
+ const observer=new MutationObserver(()=>{if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;observer.disconnect();format();observe();});});
+ function observe(){observer.observe(document.body,{subtree:true,childList:true,characterData:true});}
+ format();observe();
+})();
