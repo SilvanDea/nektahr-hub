@@ -314,7 +314,7 @@
 {"id": 105, "title": "YCH \u00b7 TH", "cat": "ych", "nsfw": true, "img": "/assets/process/art-5-1.webp", "processWork": 5},{"id": 106, "title": "YCH \u00b7 All Plain to See", "cat": "ych", "nsfw": true, "img": "/assets/process/art-6-1.webp", "processWork": 6},
       { id: 1, gallery: false, title: "Portfolio Sample 01", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "/assets/gallery/gal-adopt-cdg-v1bg.webp", desc: "Public SFW portfolio sample. See the source profile for context." },
       { id: 2, gallery: false, title: "Portfolio Sample 02", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 3, title: "Portfolio Sample 03", cat: "other", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
+      { id: 3, title: "Portfolio Sample 03", cat: "ych", stage: "Color Sketch", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
       { id: 4, gallery: false, title: "Portfolio Sample 04", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/e7055f07.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
       { id: 5, gallery: false, title: "Portfolio Sample 05", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/035b86ab.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
       { id: 6, title: "Portfolio Sample 06", cat: "other", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/8aff8bc5.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
@@ -1883,7 +1883,8 @@
         ru: "Публичный SFW-пример из портфолио. Откройте для просмотра, а за подробностями напишите мне."
       })[currentLang] || "Public SFW portfolio sample.";
     }
-    function getGalleryStage() {
+    function getGalleryStage(item) {
+      if(item?.id===3)return ({en:'Color Sketch',ru:'Цветной скетч',es:'Boceto a color'})[currentLang];
       return ({ en: "SFW Sample", es: "Muestra SFW", ru: "SFW-пример" })[currentLang] || "SFW Sample";
     }
     function getGalleryPriceLabel() {
@@ -2729,7 +2730,7 @@
                 <span class="gallery-kind" data-kind="${item.cat}">${getGalleryKind(item)}</span>
                 <h3 class="serif text-xl text-textMain">${getGalleryTitle(item)}</h3>
                 ${getGallerySeries(item)?`<p class="gallery-series">${getGallerySeries(item)}</p>`:''}
-                <p class="text-xs text-textDim">${item.processWork?getProcessLabel(item):getGalleryStage()}</p>
+                <p class="text-xs text-textDim">${item.processWork?getProcessLabel(item):getGalleryStage(item)}</p>
               </div>
               <span class="mono text-xs text-accent shrink-0">${item.processWork?'↗':getGalleryPriceLabel()}</span>
             </div>
@@ -2925,7 +2926,7 @@
           </div>
           <div class="highlight-caption"><span class="gallery-kind" data-kind="${it.cat}">${getGalleryKind(it)}</span>
             <span class="serif text-lg text-textMain">${getGalleryTitle(it)}</span>
-            <span class="highlight-detail">${it.processWork?getProcessLabel(it):getGalleryStage()}</span>
+            <span class="highlight-detail">${it.processWork?getProcessLabel(it):getGalleryStage(it)}</span>
           </div>
         </button>
       `).join('');
