@@ -23,3 +23,16 @@
 /* Discourage casual image dragging, selection and mobile long-press menus. */
 .artwork-no-save{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-user-drag:none}
 img{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-user-drag:none}
+
+.catalog-card-body{display:flex;flex-direction:column;min-height:230px}
+.catalog-card-price{margin-top:auto;padding-top:16px}
+.catalog-base-note,.catalog-versions-hint{display:none!important}
+.catalog-controls{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+#catalog-state-filters{display:flex;align-items:center;gap:7px;flex-wrap:wrap;flex:1}
+#catalog-adult-only{margin-left:6px}
+.site-adult-toggle{display:inline-flex!important;align-items:center;gap:10px;padding:9px 12px!important;border:1px solid #bd596456!important;border-radius:9px!important;background:#a83b4c0a!important;color:#e6a2ac!important;font:500 12px/1.4 Inter,system-ui!important;cursor:pointer;white-space:nowrap}
+.site-adult-toggle:before{content:'';width:34px;height:20px;flex:none;border-radius:20px;background:radial-gradient(circle at 10px 10px,#e0b6bc 0 6px,transparent 6.5px),#423039;transition:background .18s}
+.site-adult-toggle[data-enabled=true],.site-adult-toggle[aria-checked=true]{border-color:#de7180!important;background:#c34c5c17!important;color:#ffb6c1!important}
+.site-adult-toggle[data-enabled=true]:before,.site-adult-toggle[aria-checked=true]:before{background:radial-gradient(circle at 24px 10px,#fff0f2 0 6px,transparent 6.5px),#be4c5d}
+.site-adult-toggle input{position:absolute;opacity:0;width:1px;height:1px}
+.site-adult-toggle:focus-within{outline:2px solid #e995a2;outline-offset:3px}
