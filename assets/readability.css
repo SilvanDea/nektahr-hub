@@ -149,3 +149,15 @@ body>header>button:first-child{font-family:'Cormorant Garamond',Georgia,serif;fo
 /* Compact entry cards: descriptions follow their one-line headings. */
 #path-a-title,#path-b-title{min-height:0!important}
 #path-a-sub,#path-b-sub{margin-top:0;line-height:1.55}
+
+/* Pricing typography: readable body copy and consistent card hierarchy. */
+#custom-stages-grid,#adopt-tiers-grid,#ych-slots-grid{gap:18px!important}
+#custom-stages-grid>.card,#ych-slots-grid>.card{padding:24px!important;gap:14px!important}
+#custom-stages-grid p,#adopt-tiers-grid p,#ych-slots-grid p,#adopt-desc,#ych-desc,#pricing-sub{
+font-size:14px!important;line-height:1.75!important;color:#d2c8bc!important;text-wrap:pretty}
+#custom-stages-grid h3,#adopt-tiers-grid h3,#ych-slots-grid h3{font-size:22px!important;line-height:1.35!important;text-wrap:balance}
+#adopt-tiers-grid ul{font-size:13px!important;line-height:1.8!important;color:#d2c8bc!important}
+#custom-stages-grid .mono,#adopt-tiers-grid .mono,#ych-slots-grid .mono{line-height:1.5}
+#ych-slots-grid .text-textDim,#adopt-tiers-grid .text-textDim{color:#b9aa9c!important}
+#adopt-desc{max-width:65ch}
+@media(max-width:600px){#custom-stages-grid p,#adopt-tiers-grid p,#ych-slots-grid p{font-size:15px!important}}
