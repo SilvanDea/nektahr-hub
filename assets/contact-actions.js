@@ -43,6 +43,15 @@ if(card.parentElement?.id==='gal-ext-platforms')card.replaceChildren(title);
     $('header-status-badge').textContent=c.open;let badge=$('contacts-intake');if(!badge){badge=document.createElement('p');badge.id='contacts-intake';$('contacts-title').after(badge);}badge.textContent=c.open;
     let intake=$('commission-intake');if(!intake){intake=document.createElement('p');intake.id='commission-intake';$('q-sub').after(intake);}intake.textContent=c.intake;
     decorateContacts();
+    if(Intl.Segmenter){
+      const segmenter=new Intl.Segmenter(currentLang,{granularity:'sentence'});
+      document.querySelectorAll('#custom-stages-grid p,#adopt-tiers-grid p,#adopt-desc').forEach(el=>{
+        if(el.children.length)return;
+        const parts=[...segmenter.segment(el.textContent)].map(x=>x.segment.trim()).filter(Boolean);
+        if(parts.length<2)return;
+        el.replaceChildren(...parts.map(text=>{const line=document.createElement('span');line.textContent=text;line.style.display='block';line.style.marginTop='6px';return line;}));
+      });
+    }
     for(const id of ['hero-desc']){const el=$(id);if(el){el.textContent=el.textContent.replace(/([.!?])\s+(?=[A-ZА-ЯЁÁÉÍÓÚÜÑ¿¡])/g,'$1\n');el.style.whiteSpace='pre-line';el.style.textWrap='pretty';}}
 
     const grid=$('primary-contacts-grid');if(grid?.children.length===3){const email=grid.querySelector('a[href="mailto:nektahr@gmail.com"]');if(email){grid.insertBefore(email,grid.children[1]);const label=email.querySelector('span.text-textDim');if(label)label.textContent=({en:'Art orders & questions',ru:'Заказы и вопросы',es:'Encargos y consultas'})[currentLang];}}
