@@ -1,7 +1,7 @@
 
 (() => {
   const $=id=>document.getElementById(id);
-  const dialog=$('artwork-dialog');let currentItem=null,returnFocus=null,viewerParent=null,sessionItems=[];
+  const dialog=$('artwork-dialog');let currentItem=null,returnFocus=null,viewerParent=null,sessionItems=[],selectionVersion=0;
   const text=()=>({en:{close:'Close preview',prev:'Previous artwork',next:'Next artwork',prices:'View prices →',hint:'Use ← / → to browse. Escape closes the preview.',error:'This image could not load. Please try again.'},es:{close:'Cerrar vista',prev:'Obra anterior',next:'Obra siguiente',prices:'Ver precios →',hint:'Usa ← / → para navegar. Escape cierra la vista.',error:'No se pudo cargar la imagen. Inténtalo de nuevo.'},ru:{close:'Закрыть просмотр',prev:'Предыдущая работа',next:'Следующая работа',prices:'Посмотреть цены →',hint:'← / → — другие работы. Escape — закрыть просмотр.',error:'Не удалось загрузить изображение. Попробуй ещё раз.'}})[document.documentElement.lang]||{close:'Close',prev:'Previous',next:'Next',prices:'Pricing',hint:'',error:'Image unavailable'};
   const filtered=()=>sessionItems;
   function itemsForOpening(item){
@@ -19,11 +19,13 @@
   window.openGalleryArtwork=id=>{
     const item=GALLERY_ITEMS.find(x=>x.id===Number(id));if(!item)return;
     const opening=!dialog.open;if(opening)sessionItems=itemsForOpening(item);if(!sessionItems.some(x=>x.id===item.id))return;if(opening){returnFocus=document.activeElement;viewerParent=$('art-process').parentElement;dialog.showModal();document.body.classList.add('artwork-modal-open');}
+    const version=++selectionVersion;
     currentItem=item;const strip=$('artwork-work-strip');strip.replaceChildren();sessionItems.filter(x=>x.processWork&&sessionItems.length>1&&sessionItems.length<15).forEach(work=>{const button=document.createElement('button');button.type='button';button.setAttribute('aria-pressed',String(work.id===item.id));if(work.nsfw&&!showNsfwGallery)button.className='strip-adult';const thumb=document.createElement('img');thumb.src=work.img;thumb.alt='';thumb.loading='lazy';thumb.decoding='async';const title=document.createElement('span');title.textContent=getGalleryTitle(work);if(work.nsfw&&!showNsfwGallery)title.textContent+=' · 18+';button.append(thumb,title);button.onclick=()=>window.openGalleryArtwork(work.id);strip.append(button)});const t=text();$('artwork-dialog-title').textContent=getGalleryTitle(item);const items=filtered();$('artwork-dialog-prev').disabled=items.length<2;$('artwork-dialog-next').disabled=items.length<2;$('artwork-dialog-prices').hidden=document.body.dataset.page==='pricing';$('artwork-dialog-counter').textContent=[getGalleryKind(item),getGallerySeries(item),`${items.findIndex(x=>x.id===item.id)+1} / ${items.length}`].filter(Boolean).join(' · ');
     $('artwork-dialog-close').setAttribute('aria-label',t.close);$('artwork-dialog-prev').setAttribute('aria-label',t.prev);$('artwork-dialog-next').setAttribute('aria-label',t.next);$('artwork-dialog-prices').textContent=t.prices;$('artwork-dialog-hint').textContent=t.hint;
-    const body=$('artwork-dialog-body'),image=$('artwork-dialog-image'),error=$('artwork-dialog-error');error.hidden=true;
+    const body=$('artwork-dialog-body'),image=$('artwork-dialog-image'),error=$('artwork-dialog-error');error.hidden=true;image.onload=null;image.onerror=null;image.hidden=true;image.removeAttribute('src');
     if(item.processWork){image.hidden=true;body.append($('art-process'));$('art-process').hidden=false;window.setProcessContext?.('gallery');window.openProcessWork?.(item.processWork);}
-    else{restoreViewer();image.hidden=false;image.alt=getGalleryTitle(item);image.onload=()=>error.hidden=true;image.onerror=()=>{image.hidden=true;error.hidden=false;error.textContent=t.error;};image.src=item.img;}
+    else{restoreViewer();image.hidden=false;image.alt=getGalleryTitle(item);image.onload=()=>{if(version!==selectionVersion||currentItem?.id!==item.id)return;error.hidden=true;};image.onerror=()=>{if(version!==selectionVersion||currentItem?.id!==item.id)return;image.hidden=true;error.hidden=false;error.textContent=t.error;};image.src=item.img;}
+    dialog.scrollTop=0;
     if(opening)$('artwork-dialog-close').focus();
   };
   function step(dir){const items=filtered();if(items.length<2)return;const index=items.findIndex(item=>item.id===currentItem?.id);window.openGalleryArtwork(items[(index+dir+items.length)%items.length].id);}

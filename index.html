@@ -142,7 +142,7 @@
 <link rel="stylesheet" href="/assets/catalog-queue.css?v=20261029-reservation-image-guard">
 <link rel="stylesheet" href="/assets/readability.css?v=20261029-contact1">
 <link rel="stylesheet" href="/assets/compact-calculator.css?v=20261029-calc1">
-<link rel="stylesheet" href="/assets/contact-actions.css?v=20261029-contact2">
+<link rel="stylesheet" href="/assets/contact-actions.css?v=20261029-gallerycompact">
 <link rel="stylesheet" href="/assets/thumbnail-mats.css?v=20261029-frames1">
 </head>
 <body data-page="board" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
@@ -3024,19 +3024,9 @@
       document.getElementById('mod-btn-no').textContent = t.gallery.modal.no;
       document.getElementById('gal-ext-title').textContent = t.gallery.extTitle;
       document.getElementById('gal-ext-sub').textContent = t.gallery.extSub;
-      document.getElementById('gal-ext-platforms').innerHTML = PLATFORMS.filter(p => !p.soon).map(p => {
-        const note = p.note[currentLang] || p.note.en;
-        return `
-          <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="card card-interactive p-4 flex flex-col justify-between gap-1.5 group">
-            <div class="flex items-center justify-between">
-              <span class="serif text-xl text-textMain group-hover:text-accent transition">${p.name}</span>
-              <span class="mono text-xs text-accent">↗</span>
-            </div>
-            <div class="mono text-[11px] text-textMuted">${p.handle}</div>
-            <div class="text-[11px] text-textDim">${note}</div>
-          </a>
-        `;
-      }).join('');
+      document.getElementById('gal-ext-platforms').innerHTML = [...PLATFORMS.filter(p => !p.soon),{name:'Inkbunny',url:'https://inkbunny.net/DrinTrava'},{name:'Baraag',url:'https://baraag.net/@DrinTrava'}].map(p => `
+        <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="card card-interactive gallery-platform-link"><span class="serif text-textMain">${p.name}</span></a>
+      `).join('');
       renderGalleryGrid();
 
       // Queue Page
@@ -3111,7 +3101,7 @@
 <script src="/assets/quote-builder.js?v=20261028-street-demon-mar18"></script>
 <script src="/assets/catalog.js?v=20261028-street-demon-mar18"></script>
 <script src="/assets/compact-calculator.js?v=20261029-calc1"></script>
-<script src="/assets/contact-actions.js?v=20261029-discord3"></script>
+<script src="/assets/contact-actions.js?v=20261029-gallerycompact"></script>
 <script src="/assets/thumbnail-mats.js?v=20261029-frames1"></script>
 </body>
 </html>
