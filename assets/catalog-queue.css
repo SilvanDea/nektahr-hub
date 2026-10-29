@@ -59,3 +59,7 @@ img{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit
 #catalog-sales-terms h4{margin:16px 0 6px;color:#eee8df;font-size:14px}
 #catalog-copy-feedback{position:sticky;bottom:18px;grid-column:1/-1;justify-self:center;z-index:10;margin:0 auto 16px;padding:12px 20px;background:#203d2c;color:#d4f9de;border:1px solid #67ba85;border-radius:10px;box-shadow:0 8px 30px #0009;text-align:center}
 #catalog-copy-feedback[hidden]{display:none!important}
+
+/* Adult-only filters are distinct from gold category/status filters. */
+#gallery-adult-only,#catalog-adult-only{box-sizing:border-box!important;height:32px!important;min-height:32px!important;line-height:16px!important;padding:7px 12px!important;border-radius:4px!important;border-color:#a65060!important;background:#28171e!important;color:#ee9baa!important;align-self:center!important}
+#gallery-adult-only[aria-pressed=true],#catalog-adult-only[aria-pressed=true]{background:#a63e56!important;border-color:#d66a80!important;color:#fff0f3!important}
