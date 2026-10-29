@@ -47,7 +47,7 @@
     const list=document.createElement('ul');
     (item.type==='ych'?u.ychRows:u.adoptRows).forEach(text=>{const li=document.createElement('li');li.textContent=text;list.append(li)});
     const note=document.createElement('p');note.textContent=(item.type==='adopt'?u.cumulative+' ':'')+u.extra;
-    const calculator=document.createElement('a');calculator.href='/pricing/';calculator.textContent=u.calc;calculator.onclick=()=>{try{sessionStorage.setItem('nektahr-pricing-tab',item.type)}catch{}};
+    const calculator=document.createElement('a');calculator.href='/pricing/?type='+encodeURIComponent(item.type);calculator.textContent=u.calc;calculator.onclick=()=>{try{sessionStorage.setItem('nektahr-pricing-tab',item.type)}catch{}};
     panel.append(title,list,note,calculator);
     const summary=terms.querySelector('summary');terms.replaceChildren(summary);
     for(const [heading,rows] of [[u.payment,[u.paymentText]],[u.hold,u.holds]]){
