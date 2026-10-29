@@ -1313,7 +1313,8 @@
     "price": {
       "kind": "quote"
     },
-    "saleMode": "single"
+    "saleMode": "single",
+    "reservedUntil": "2026-11-01"
   },
   {
     "id": "YCH-RAWR-CHINESE-OUTFIT",
