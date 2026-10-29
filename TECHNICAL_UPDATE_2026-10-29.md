@@ -15,3 +15,7 @@ Checks: 29 queue/API assertions, 46 calculator/runtime assertions, 14 contact-fl
 ## Contact placement follow-up
 
 The artist preferred intake status outside the header. The header badge is now hidden, with the status shown next to home-page contacts and on the queue page. Email actions now open an accessible native dialog with a visible address, address copying, a generic Gmail link and an explicitly labeled mail-app option. This also applies to the existing home and footer email links. The Gmail link does not promise a prefilled draft. A direct Discord profile link is pending the artist's numeric user ID; no guessed profile or server invite was added. Contact regression coverage is now 17 assertions.
+
+## Discord profile and preview revision
+
+The artist supplied Discord user ID 361511957129461781. Discord links on the home page, footer and calculator now point to that profile and open in a new tab. They no longer replace the copied request with a username. The shared social preview uses a new JPEG URL and larger headings, with Gallery, Prices, Catalog and ToS/FAQ labels. Home-page static metadata now mentions the terms and Discord/email contact. Other routes retain their own descriptions. Telegram's screenshot shows older title/description data, which suggests a cached card; the actual Telegram recrawl cannot be verified from the site alone. No message was sent to WebpageBot or any contact.

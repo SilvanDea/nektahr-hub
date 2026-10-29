@@ -24,17 +24,17 @@
   <meta property="og:title" content="Commission Queue | Nek&#x27;tahr" />
   <meta property="og:description" content="View public order progress and reservations. Nek&#x27;tahr accepts art orders; timing is agreed individually." />
   <meta property="og:url" content="https://nektahr.com/queue/" />
-  <meta property="og:image" content="https://nektahr.com/assets/social-preview.png" />
-  <meta property="og:image:secure_url" content="https://nektahr.com/assets/social-preview.png" />
-  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image" content="https://nektahr.com/assets/social-preview-v2.jpg" />
+  <meta property="og:image:secure_url" content="https://nektahr.com/assets/social-preview-v2.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="Nek&#x27;tahr — character art, commissions, YCH and adopts" />
+  <meta property="og:image:alt" content="Nek&#x27;tahr — character art, commissions, YCH, adopts, ToS and FAQ" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Commission Queue | Nek&#x27;tahr" />
   <meta name="twitter:description" content="View public order progress and reservations. Nek&#x27;tahr accepts art orders; timing is agreed individually." />
-  <meta name="twitter:image" content="https://nektahr.com/assets/social-preview.png" />
-  <meta name="twitter:image:alt" content="Nek&#x27;tahr — character art, commissions, YCH and adopts" />
+  <meta name="twitter:image" content="https://nektahr.com/assets/social-preview-v2.jpg" />
+  <meta name="twitter:image:alt" content="Nek&#x27;tahr — character art, commissions, YCH, adopts, ToS and FAQ" />
   <meta name="theme-color" content="#0B0A0E" />
   <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
   <script src="/assets/portfolio-data.js?v=20261028-street-demon-mar18"></script>
@@ -291,7 +291,7 @@
 
     // Primary Contacts & Platforms
     const CONTACTS_PRIMARY = [
-      { id: "discord", type: "copy", value: "drintrava", label: "Discord", handle: "drintrava", sub: { en: "Primary Contact · Click to Copy", es: "Contacto principal · Copiar", ru: "Основной контакт · Скопировать" } },
+      { id: "discord", type: "link", url: "https://discord.com/users/361511957129461781", value: "drintrava", label: "Discord", handle: "drintrava", sub: { en: "Primary Contact · Open profile", es: "Contacto principal · Abrir perfil", ru: "Основной контакт · Открыть профиль" } },
       { id: "tg1", type: "link", url: "https://t.me/nek_tahr", label: "Telegram", handle: "@nek_tahr", sub: { en: "Direct Messages", es: "Mensajes directos", ru: "Личные сообщения" } },
       { id: "email", type: "link", url: "mailto:nektahr@gmail.com", label: "Email", handle: "nektahr@gmail.com", sub: { en: "Commercial inquiries · Send an email", es: "Consultas comerciales · Enviar correo", ru: "Коммерческие вопросы · Написать письмо" } }
     ];
@@ -2341,7 +2341,7 @@
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <div id="footer-rights">NEK'TAHR © 2026 · ALL RIGHTS RESERVED · NO AI / NO NFT</div>
       <div class="flex gap-4">
-        <button onclick="copyToClipboard('drintrava', 'Discord (drintrava)')" class="hover:text-accent transition cursor-pointer">Discord: drintrava</button>
+        <a href="https://discord.com/users/361511957129461781" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition cursor-pointer">Discord: drintrava</a>
         <a id="footer-telegram" href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition">Telegram DM</a>
         <a href="mailto:nektahr@gmail.com" class="hover:text-accent transition">nektahr@gmail.com</a>
       </div>
@@ -2428,7 +2428,7 @@
       document.documentElement.lang = lang;
       const pageMeta = {
         board: {
-          en: ["Nek'tahr | Artist Portfolio, Commissions, Adopts & YCH", "Explore Nek'tahr's art portfolio, commission pricing, adoptables, YCH options, and contact links."],
+          en: ["Nek'tahr | Art, Prices, YCH, Adopts & ToS", "Character art, commission prices, YCH templates and adoptable designs by Nek'tahr. Browse the gallery, read the ToS and contact me on Discord or email."],
           es: ["Nek'tahr | Portafolio y comisiones", "Explora el portafolio de Nek'tahr, precios, adopts, opciones YCH y contactos."],
           ru: ["Nek'tahr | Портфолио и коммишки", "Портфолио Nek'tahr, цены, адопты, YCH и контакты."]
         },
@@ -2459,7 +2459,7 @@
           ru: ["FAQ | Nek'tahr Hub", "Ответы на частые вопросы о заказах, оплате и арте."]
         }
       };
-      const localizedTitles = { en: "Nek'tahr | Artist Portfolio, Commissions, Adopts & YCH", es: "Nek'tahr | Portafolio y comisiones", ru: "Nek'tahr | Портфолио и коммишки" };
+      const localizedTitles = { en: "Nek'tahr | Art, Prices, YCH, Adopts & ToS", es: "Nek'tahr | Portafolio y comisiones", ru: "Nek'tahr | Портфолио и коммишки" };
       const localizedDescriptions = {
         en: "Explore Nek'tahr's SFW portfolio, commission pricing, adoptables, YCH options, terms, and contact links.",
         es: "Explora el portafolio SFW de Nek'tahr, precios de comisiones y adopts, opciones YCH, términos y contactos.",
@@ -3124,7 +3124,7 @@
 <script src="/assets/quote-builder.js?v=20261028-street-demon-mar18"></script>
 <script src="/assets/catalog.js?v=20261028-street-demon-mar18"></script>
 <script src="/assets/compact-calculator.js?v=20261029-calc1"></script>
-<script src="/assets/contact-actions.js?v=20261029-contact2"></script>
+<script src="/assets/contact-actions.js?v=20261029-discord3"></script>
 </body>
 </html>
 

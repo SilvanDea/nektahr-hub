@@ -13,8 +13,8 @@ let checks=0;function check(x,msg){checks++;assert.ok(x,msg)}
  await ctx.copyCalcRequest();check(copied[0].includes('private'),'Full brief remains the clipboard payload');check(nodes.get('quote-copy-status').textContent.startsWith('Request copied'),'Success is reported only after clipboard success');
  nodes.get('calc-preview-text').textContent='Updated brief';ctx.recalcTotal();check(nodes.get('quote-copy-status').textContent==='','Editing invalidates an old copy confirmation');
  succeeds=false;await ctx.copyCalcRequest();check(nodes.get('quote-copy-status').textContent.startsWith('Could not copy'),'Clipboard failure is explicit');check(nodes.get('calc-preview-text').parentElement.open,'Failure exposes the manual-copy preview');
- await nodes.get('quote-discord').onclick();check(copied.at(-1)==='drintrava','Discord action copies only the username');check(nodes.get('quote-copy-status').textContent.includes('username'),'Username failure is not reported as request-copy success');
- succeeds=true;ctx.currentLang='ru';ctx.renderAllText();await nodes.get('quote-discord').onclick();check(nodes.get('quote-copy-status').textContent.includes('Ник Discord скопирован'),'Russian copy confirmation');
+ check(nodes.get('quote-discord').href==='https://discord.com/users/361511957129461781','Discord points to the artist-provided user ID');check(nodes.get('quote-discord').target==='_blank'&&nodes.get('quote-discord').rel.includes('noopener'),'Discord opens safely in a separate tab');
+ succeeds=true;ctx.currentLang='ru';ctx.renderAllText();check(nodes.get('quote-discord').textContent==='Открыть Discord'&&!nodes.get('quote-discord').onclick,'Discord navigation no longer overwrites the copied request');
  ctx.currentLang='es';ctx.renderAllText();check(nodes.get('quote-email').textContent==='Escribir por email','Spanish contact action');
  check(nodes.get('quote-contact-actions').children.length===3,'Rendering does not duplicate the contact panel');
  console.log(JSON.stringify({suite:'contact-regression',checks,passed:true}));

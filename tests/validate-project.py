@@ -60,10 +60,11 @@ for file in ROUTES:
  assert f'<link rel="canonical" href="{expected}"' in markup
  assert f'property="og:url" content="{expected}"' in markup
  assert 'name="twitter:card" content="summary_large_image"' in markup
- assert 'property="og:image" content="https://nektahr.com/assets/social-preview.png"' in markup
+ assert 'property="og:image" content="https://nektahr.com/assets/social-preview-v2.jpg"' in markup
  nav=markup.split('<nav id="nav-links"',1)[1].split('</nav>',1)[0]
  assert len(re.findall(r'<a href="/',nav))==7 and '<button' not in nav
  assert '<option value="Discord">Discord</option><option value="Email">Email</option>' in markup
+ assert 'https://discord.com/users/361511957129461781' in markup
 assert 'Sitemap: https://nektahr.com/sitemap.xml' in (ROOT/'robots.txt').read_text()
-with Image.open(ROOT/'assets/social-preview.png') as im:assert im.size==(1200,630)
+with Image.open(ROOT/'assets/social-preview-v2.jpg') as im:assert im.size==(1200,630)
 print(json.dumps({'suite':'static-metadata-and-navigation','routes':7,'passed':True}))
