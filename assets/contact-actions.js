@@ -17,9 +17,10 @@
   let messageKey='',copyTimer,lastCopied='';
 
   function decorateContacts(){
+ document.querySelectorAll('#gal-ext-platforms a[href*="baraag.net"]').forEach(link=>link.remove());
 const galleryLinks=document.getElementById('gal-ext-platforms');
 if(galleryLinks){
- for(const [name,url] of [['Inkbunny','https://inkbunny.net/DrinTrava'],['Baraag','https://baraag.net/@DrinTrava']]){
+ for(const [name,url] of [['Inkbunny','https://inkbunny.net/DrinTrava']]){
   if([...galleryLinks.querySelectorAll('a')].some(a=>a.href===url))continue;
   const a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';a.className='card card-interactive p-4';
   const title=document.createElement('span');title.className='serif text-xl text-textMain';title.textContent=name;a.append(title);galleryLinks.append(a);
