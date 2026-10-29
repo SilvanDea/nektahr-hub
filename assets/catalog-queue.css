@@ -67,3 +67,5 @@ img{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit
 /* Match the catalog status buttons exactly; retain the adult filter colors. */
 #catalog-state-filters button{box-sizing:border-box;height:40px;line-height:20px}
 #catalog-state-filters #catalog-adult-only{height:40px!important;min-height:40px!important;padding:9px 13px!important;border-radius:7px!important;font:inherit!important;font-size:11px!important;line-height:20px!important;letter-spacing:normal!important;align-self:auto!important}
+
+#catalog-dialog-preview[hidden]{display:none!important}
