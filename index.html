@@ -16,15 +16,29 @@
     })();
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nek'tahr | Artist Portfolio, Commissions, Adopts & YCH</title>
-  <meta name="description" content="Explore Nek'tahr's SFW art portfolio, commission pricing, adoptable designs, YCH options, terms, and official contact links." />
-  <meta name="theme-color" content="#0B0A0E" />
+  <title>Nek&#x27;tahr | Artist Portfolio, Commissions, Adopts &amp; YCH</title>
+  <meta name="description" content="Explore Nek&#x27;tahr&#x27;s character art, commission prices, YCH templates, adoptable designs and official contact links." />
+  <link rel="canonical" href="https://nektahr.com/" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Nek'tahr | Artist Portfolio & Commissions" />
-  <meta property="og:description" content="Art portfolio, commission pricing, adoptables, YCH options, and contact links." />
+  <meta property="og:site_name" content="Nek&#x27;tahr" />
+  <meta property="og:title" content="Nek&#x27;tahr | Artist Portfolio, Commissions, Adopts &amp; YCH" />
+  <meta property="og:description" content="Explore Nek&#x27;tahr&#x27;s character art, commission prices, YCH templates, adoptable designs and official contact links." />
+  <meta property="og:url" content="https://nektahr.com/" />
+  <meta property="og:image" content="https://nektahr.com/assets/social-preview.png" />
+  <meta property="og:image:secure_url" content="https://nektahr.com/assets/social-preview.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Nek&#x27;tahr — character art, commissions, YCH and adopts" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nek&#x27;tahr | Artist Portfolio, Commissions, Adopts &amp; YCH" />
+  <meta name="twitter:description" content="Explore Nek&#x27;tahr&#x27;s character art, commission prices, YCH templates, adoptable designs and official contact links." />
+  <meta name="twitter:image" content="https://nektahr.com/assets/social-preview.png" />
+  <meta name="twitter:image:alt" content="Nek&#x27;tahr — character art, commissions, YCH and adopts" />
+  <meta name="theme-color" content="#0B0A0E" />
   <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
   <script src="/assets/portfolio-data.js?v=20261028-street-demon-mar18"></script>
-  <script src="/assets/queue-manager.js?v=20261028-street-demon-mar18" defer></script>
+  <script src="/assets/queue-manager.js?v=20261029-contact1" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -104,7 +118,7 @@
     img { max-width: 100%; }
     @media (max-width: 767px) {
       header.sticky { height: auto; min-height: 4rem; flex-wrap: wrap; padding-top: .65rem; padding-bottom: .45rem; }
-      header.sticky > button:first-child { order: 1; }
+      header.sticky > a:first-child { order: 1; }
       header.sticky > div:last-child { order: 2; margin-left: auto; }
       #nav-links { order: 3; flex: 0 0 100%; width: 100%; max-width: 100%; overflow-x: auto; justify-content: flex-start; padding: .35rem 0 .15rem; scrollbar-width: thin; }
       #nav-links .nav-link { flex: 0 0 auto; white-space: nowrap; }
@@ -126,8 +140,9 @@
 <link rel="stylesheet" href="/assets/site-polish.css?v=20261028-street-demon-mar18">
 <link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-street-demon-mar18">
 <link rel="stylesheet" href="/assets/catalog-queue.css?v=20261028-street-demon-mar18">
-<link rel="stylesheet" href="/assets/readability.css?v=20261028-street-demon-mar18">
+<link rel="stylesheet" href="/assets/readability.css?v=20261029-contact1">
 <link rel="stylesheet" href="/assets/compact-calculator.css?v=20261029-calc1">
+<link rel="stylesheet" href="/assets/contact-actions.css?v=20261029-contact1">
 </head>
 <body data-page="board" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
@@ -1894,19 +1909,19 @@
        STICKY HEADER
   ====================================================================== -->
   <header class="sticky top-0 z-40 h-16 bg-[#0B0A0E]/90 backdrop-blur-md border-b hairline px-4 sm:px-8 flex items-center justify-between gap-4">
-    <button onclick="switchPage('board')" class="text-left group cursor-pointer flex items-baseline gap-2.5">
+    <a href="/" class="text-left group cursor-pointer flex items-baseline gap-2.5">
       <span class="serif text-2xl sm:text-3xl tracking-wide text-textMain group-hover:text-accent transition">Nek'tahr</span>
       <span id="header-tagline" class="hidden sm:inline-block mono text-[10px] uppercase text-textDim">Character Art &amp; Commissions</span>
-    </button>
+    </a>
 
     <nav id="nav-links" aria-label="Main navigation" class="flex items-center gap-1 sm:gap-5 text-xs sm:text-sm">
-      <button onclick="switchPage('board')" data-p="board" id="nav-board" class="nav-link px-2 py-1 text-accent border-b border-accent transition cursor-pointer">Board</button>
-      <button onclick="switchPage('pricing')" data-p="pricing" id="nav-pricing" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Pricing</button>
-      <button onclick="switchPage('catalog')" data-p="catalog" id="nav-catalog" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Catalog</button>
-      <button onclick="switchPage('gallery')" data-p="gallery" id="nav-gallery" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Gallery</button>
-      <button onclick="switchPage('queue')" data-p="queue" id="nav-queue" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Queue</button>
-      <button onclick="switchPage('tos')" data-p="tos" id="nav-tos" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">ToS</button>
-      <button onclick="switchPage('faq')" data-p="faq" id="nav-faq" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">FAQ</button>
+      <a href="/" data-p="board" id="nav-board" class="nav-link px-2 py-1 text-accent border-b border-accent transition cursor-pointer">Board</a>
+      <a href="/pricing/" data-p="pricing" id="nav-pricing" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Pricing</a>
+      <a href="/catalog/" data-p="catalog" id="nav-catalog" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Catalog</a>
+      <a href="/gallery/" data-p="gallery" id="nav-gallery" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Gallery</a>
+      <a href="/queue/" data-p="queue" id="nav-queue" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Queue</a>
+      <a href="/terms/" data-p="tos" id="nav-tos" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">ToS</a>
+      <a href="/faq/" data-p="faq" id="nav-faq" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">FAQ</a>
     </nav>
 
     <div class="flex items-center gap-3">
@@ -1917,15 +1932,15 @@
         <button onclick="setLang('ru')" data-l="ru" class="lang-btn px-2 py-0.5 text-textDim hover:text-textMain transition cursor-pointer">RU</button>
       </div>
 
-      <button onclick="switchPage('queue')" title="Active commission queue" aria-label="Open active commission queue" class="flex items-center gap-1.5 px-2 py-1 border border-accent/30 bg-accent/5 text-accent mono text-[10px] uppercase cursor-pointer hover:bg-accent/10 transition whitespace-nowrap">
+      <a href="/queue/" title="Active commission queue" aria-label="Open active commission queue" class="flex items-center gap-1.5 px-2 py-1 border border-accent/30 bg-accent/5 text-accent mono text-[10px] uppercase cursor-pointer hover:bg-accent/10 transition whitespace-nowrap">
         <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-        <span id="header-queue-counter">QUEUE · —</span>
-      </button>
+        <span id="header-queue-counter">QUEUE · Loading</span>
+      </a>
 
-      <button onclick="switchPage('queue')" class="hidden lg:flex items-center gap-2 px-3 py-1 border border-accent/30 bg-accent/10 text-accent mono text-[10px] uppercase cursor-pointer hover:border-accent transition">
+      <a href="/queue/" class="intake-link flex items-center gap-2 px-3 py-1 border border-accent/30 bg-accent/10 text-accent mono text-[10px] uppercase cursor-pointer hover:border-accent transition">
         <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
-        <span id="header-status-badge">Check Current Availability</span>
-      </button>
+        <span id="header-status-badge">Commissions open</span>
+      </a>
     </div>
   </header>
 
@@ -1952,21 +1967,21 @@
 
           <!-- Two Clear Entry Paths (Option A & Option B) -->
           <div class="grid sm:grid-cols-2 gap-4 pt-2">
-            <button onclick="switchPage('gallery')" class="card card-interactive p-4 text-left group cursor-pointer flex flex-col h-full">
+            <a href="/gallery/" class="card card-interactive p-4 text-left group cursor-pointer flex flex-col h-full">
               <div class="flex items-start justify-between gap-3 mb-2">
                 <div id="path-a-title" class="serif text-2xl leading-tight text-textMain min-h-[3.5rem]">Art Gallery & Archives</div>
                 <span class="shrink-0 text-accent group-hover:translate-x-1 transition mt-1">→</span>
               </div>
               <p id="path-a-sub" class="text-xs text-textMuted"></p>
-            </button>
+            </a>
 
-            <button onclick="switchPage('pricing')" class="card card-interactive p-4 text-left border-accent/40 bg-accent/5 group cursor-pointer flex flex-col h-full">
+            <a href="/pricing/" class="card card-interactive p-4 text-left border-accent/40 bg-accent/5 group cursor-pointer flex flex-col h-full">
               <div class="flex items-start justify-between gap-3 mb-2">
                 <div id="path-b-title" class="serif text-2xl leading-tight text-textMain min-h-[3.5rem]">Pricing, Stages & Adopts</div>
                 <span class="shrink-0 text-accent group-hover:translate-x-1 transition mt-1">→</span>
               </div>
               <p id="path-b-sub" class="text-xs text-textMuted"></p>
-            </button>
+            </a>
           </div>
         </div>
 
@@ -2015,7 +2030,7 @@
             <div id="feat-eyebrow" class="mono text-xs uppercase text-accent">SELECTED WORKS</div>
             <h2 id="feat-title" class="serif text-3xl sm:text-4xl mt-1">Recent Highlights</h2>
           </div>
-          <button onclick="switchPage('gallery')" id="feat-view-all" class="mono text-xs text-accent hover:underline cursor-pointer">Open Full Gallery →</button>
+          <a href="/gallery/" id="feat-view-all" class="mono text-xs text-accent hover:underline cursor-pointer">Open Full Gallery →</a>
         </div>
         <div id="board-highlights-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
       </div>
@@ -2134,7 +2149,7 @@
               <div><label for="calc-refs" id="calc-refs-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Reference links</label><input id="calc-refs" oninput="recalcTotal()" type="text" placeholder="Paste character sheets, moodboards or image links" class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent" /></div>
               <div class="grid sm:grid-cols-2 gap-3">
                 <div><label for="calc-deadline" id="calc-deadline-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Preferred deadline</label><input id="calc-deadline" oninput="recalcTotal()" type="text" placeholder="Flexible / add a date" class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent" /></div>
-                <div><label for="calc-contact" id="calc-contact-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Preferred contact</label><select id="calc-contact" onchange="recalcTotal()" class="w-full bg-bg border hairline p-3 text-sm text-textMain focus:outline-none focus:border-accent"><option value="Telegram">Telegram</option><option value="Discord">Discord</option><option value="Email">Email</option></select></div>
+                <div><label for="calc-contact" id="calc-contact-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Preferred contact</label><select id="calc-contact" onchange="recalcTotal()" class="w-full bg-bg border hairline p-3 text-sm text-textMain focus:outline-none focus:border-accent"><option value="Discord">Discord</option><option value="Email">Email</option><option value="Telegram">Telegram</option></select></div>
               </div>
               <div><label for="calc-notes" id="calc-brief-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Brief & extra details</label><textarea id="calc-notes" oninput="recalcTotal()" rows="4" placeholder="Character details, pose, mood, SFW/NSFW, background..." class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent resize-y"></textarea></div>
             </div></details>
@@ -2797,7 +2812,7 @@
       const t = I18N[currentLang];
       const a11y=({en:{nav:'Main navigation',queue:'Open active commission queue',pricing:'Pricing categories',gallery:'Gallery filters',process:'Artwork process and versions'},ru:{nav:'Основная навигация',queue:'Открыть очередь заказов',pricing:'Категории заказов',gallery:'Фильтры галереи',process:'Этапы и версии работы'},es:{nav:'Navegación principal',queue:'Abrir cola de encargos',pricing:'Categorías de encargos',gallery:'Filtros de galería',process:'Proceso y versiones de la obra'}})[currentLang];
       document.getElementById('nav-links').setAttribute('aria-label',a11y.nav);
-      const queueLink=document.getElementById('header-queue-counter').closest('button');queueLink.setAttribute('aria-label',a11y.queue);queueLink.title=a11y.queue;
+      const queueLink=document.getElementById('header-queue-counter').closest('a,button');queueLink.setAttribute('aria-label',a11y.queue);queueLink.title=a11y.queue;
       document.querySelector('[aria-label="Pricing categories"],#page-pricing [role="tablist"]').setAttribute('aria-label',a11y.pricing);
       document.getElementById('gallery-category-filters').setAttribute('aria-label',a11y.gallery);
       document.getElementById('art-process').setAttribute('aria-label',a11y.process);
@@ -3105,6 +3120,7 @@
 <script src="/assets/quote-builder.js?v=20261028-street-demon-mar18"></script>
 <script src="/assets/catalog.js?v=20261028-street-demon-mar18"></script>
 <script src="/assets/compact-calculator.js?v=20261029-calc1"></script>
+<script src="/assets/contact-actions.js?v=20261029-contact1"></script>
 </body>
 </html>
 

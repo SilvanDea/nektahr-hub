@@ -1,0 +1,13 @@
+#quote-contact-actions{margin-top:-3px;display:grid;gap:8px}
+#quote-contact-actions>div{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#quote-contact-actions button,#quote-contact-actions a{display:flex;align-items:center;justify-content:center;min-height:40px;padding:9px 10px;border:1px solid #e2b47855;border-radius:8px;background:#e2b47808;color:#e2b478;font:400 11px/1.5 system-ui;text-align:center;cursor:pointer;text-decoration:none}
+#quote-contact-actions button:hover,#quote-contact-actions a:hover{border-color:#e2b478;background:#e2b47815}
+#quote-send-hint,#quote-copy-status{margin:0;font:400 11px/1.65 system-ui;color:#b7ae9f}
+#quote-copy-status:empty{display:none}
+#quote-copy-status{color:#e2b478}
+#commission-intake{display:inline-block;margin-top:12px;padding:7px 11px;border:1px solid #8dab9455;border-radius:7px;color:#bad0bd;font:400 12px/1.6 system-ui}
+#header-status-badge{color:#bad0bd}
+@media(max-width:400px){#quote-contact-actions>div{grid-template-columns:1fr}}
+
+header.sticky .intake-link{display:flex}
+@media(max-width:1100px){header.sticky .intake-link{display:none}}

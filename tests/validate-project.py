@@ -48,3 +48,22 @@ for p in ROOT.rglob('*'):
   if re.search(r'BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY|(?:ghp_|github_pat_|sk_live_)[A-Za-z0-9_]{20,}|AIza[A-Za-z0-9_-]{30,}',p.read_text()):secrets.append(str(p.relative_to(ROOT)))
 assert not secrets,'Potential secret in: '+','.join(secrets)
 print(json.dumps({'suite':'validate-project','routes':len(ROUTES),'local_html_refs':refs,'decoded_images':images,'catalog_items':len(items),'work_records':len(works),'shared_business_logic':'identical (intentional hero variants excluded)','secret_pattern_scan':'no matches','passed':True}))
+
+# Static metadata must be useful before application JavaScript executes.
+import xml.etree.ElementTree as ET
+urls={e.text for e in ET.parse(ROOT/'sitemap.xml').iter('{http://www.sitemaps.org/schemas/sitemap/0.9}loc')}
+assert len(urls)==7
+for file in ROUTES:
+ markup=(ROOT/file).read_text();route='/' if file=='index.html' else '/'+file.split('/')[0]+'/'
+ expected='https://nektahr.com'+route
+ assert expected in urls
+ assert f'<link rel="canonical" href="{expected}"' in markup
+ assert f'property="og:url" content="{expected}"' in markup
+ assert 'name="twitter:card" content="summary_large_image"' in markup
+ assert 'property="og:image" content="https://nektahr.com/assets/social-preview.png"' in markup
+ nav=markup.split('<nav id="nav-links"',1)[1].split('</nav>',1)[0]
+ assert len(re.findall(r'<a href="/',nav))==7 and '<button' not in nav
+ assert '<option value="Discord">Discord</option><option value="Email">Email</option>' in markup
+assert 'Sitemap: https://nektahr.com/sitemap.xml' in (ROOT/'robots.txt').read_text()
+with Image.open(ROOT/'assets/social-preview.png') as im:assert im.size==(1200,630)
+print(json.dumps({'suite':'static-metadata-and-navigation','routes':7,'passed':True}))
