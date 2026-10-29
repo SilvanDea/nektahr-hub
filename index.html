@@ -1896,6 +1896,10 @@
     let currentPricingTab = 'custom';
     const CALC_MODE_STATE = { custom: { value: 'single', addons: [], mults: [] }, adopt: { value: '100', addons: [], mults: [] }, ych: { value: '30', addons: [], mults: [] } };
     let currentGalCat = 'all';
+    let galleryAdultOnly = false;
+    function hasAdultArtwork(item) { return Boolean(item.nsfw || (window.PORTFOLIO_WORKS||[]).find(w=>w.id===item.processWork)?.nsfw.some(Boolean)); }
+    function matchesGalleryFilters(item) { return item.gallery!==false && (currentGalCat==='all'||item.cat===currentGalCat) && (!galleryAdultOnly||hasAdultArtwork(item)); }
+    function toggleGalleryAdultOnly() { galleryAdultOnly=!galleryAdultOnly; renderGalleryGrid(); }
     let currentFaqCat = 'all';
     let isAdultVerified = false;try{isAdultVerified=sessionStorage.getItem('nektahr-demo-age-verified')==='yes'}catch{}
     let showNsfwGallery = false;try{showNsfwGallery=isAdultVerified&&sessionStorage.getItem('nektahr-demo-nsfw-visible')==='yes'}catch{}
@@ -2191,6 +2195,7 @@
               <button type="button" onclick="setGalleryCat('ych')" data-c="ych" id="gf-ych" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">YCH</button>
               <button type="button" onclick="setGalleryCat('fanart')" data-c="fanart" id="gf-fanart" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Fan art</button>
               <button type="button" onclick="setGalleryCat('other')" data-c="other" id="gf-other" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Other works</button>
+              <button type="button" id="gallery-adult-only" onclick="toggleGalleryAdultOnly()" aria-pressed="false" class="adult-only-filter">Only 18+</button>
             </div>
             <label class="flex items-center gap-2 px-3 py-1.5 border border-error/40 bg-error/5 mono text-xs text-error cursor-pointer select-none whitespace-nowrap">
               <input type="checkbox" id="nsfw-switch" onchange="handleNsfwToggle(this)" class="accent-[#D48A94] w-3.5 h-3.5">
@@ -2706,7 +2711,10 @@
       document.getElementById('nsfw-switch').checked=showNsfwGallery;
       window.processViewerSync?.(showNsfwGallery,isAdultVerified);
       const grid = document.getElementById('gallery-cards-grid');
-      const filtered = GALLERY_ITEMS.filter(item => item.gallery!==false && (currentGalCat === 'all' || item.cat === currentGalCat));
+      const adultFilter=document.getElementById('gallery-adult-only');
+      adultFilter.textContent=({en:'Only 18+',ru:'Только 18+',es:'Solo 18+'})[currentLang];
+      adultFilter.setAttribute('aria-pressed',String(galleryAdultOnly));
+      const filtered = GALLERY_ITEMS.filter(matchesGalleryFilters);
       if (!filtered.length) {
         grid.innerHTML = `<p class="text-sm text-textMuted py-8" role="status">${uiText('noSamples')}</p>`;
         return;

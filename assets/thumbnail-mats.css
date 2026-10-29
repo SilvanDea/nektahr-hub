@@ -1,5 +1,8 @@
-/* Artwork remains complete; the portrait canvas is shared by gallery, catalog and highlights. */
-#gallery-cards-grid>button>div:first-child,#catalog-grid .catalog-art,#board-highlights-grid>button>div:first-child{aspect-ratio:3/4!important;position:relative;overflow:hidden}
-#gallery-cards-grid .thumbnail-mat,#catalog-grid .thumbnail-mat,#board-highlights-grid .thumbnail-mat{background:var(--mat-background,linear-gradient(180deg,#211b27,#19151f))!important}
+/* Shared 3:4 neutral canvas; no sampled colors or artificial image extension. */
+#gallery-cards-grid>button>div:first-child,#catalog-grid .catalog-art,#board-highlights-grid>button>div:first-child{aspect-ratio:3/4!important;position:relative;overflow:hidden;border-bottom:0!important}
+#gallery-cards-grid .thumbnail-mat,#catalog-grid .thumbnail-mat,#board-highlights-grid .thumbnail-mat{background:#141119!important}
 #gallery-cards-grid .thumbnail-mat>img,#catalog-grid .thumbnail-mat>img,#board-highlights-grid .thumbnail-mat>img{display:block;width:100%;height:100%;object-fit:contain!important;object-position:center}
+#gallery-cards-grid .thumbnail-close-fit>img,#catalog-grid .thumbnail-close-fit>img,#board-highlights-grid .thumbnail-close-fit>img{object-fit:cover!important}
 #gallery-cards-grid .thumbnail-mat>img:not(.blur-2xl),#board-highlights-grid .thumbnail-mat>img{transform:none!important}
+.adult-only-filter{padding:7px 11px;border:1px solid #e2b47844;border-radius:6px;background:#141119;color:#b7ae9f;font-size:11px;cursor:pointer;white-space:nowrap}
+.adult-only-filter[aria-pressed=true]{background:#e2b478;color:#100c15;border-color:#e2b478}

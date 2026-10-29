@@ -11,7 +11,7 @@
       return GALLERY_ITEMS.filter(x=>allowed.includes(x.processWork));
     }
     if(page==='catalog')return [item];
-    return GALLERY_ITEMS.filter(x=>x.gallery!==false&&(currentGalCat==='all'||x.cat===currentGalCat));
+    return GALLERY_ITEMS.filter(matchesGalleryFilters);
   }
   function restoreViewer(){const viewer=$('art-process');if(viewerParent&&viewer&&viewer.parentElement!==viewerParent)viewerParent.append(viewer);window.setProcessContext?.(currentPricingTab);}
   function finishClose(){if(!document.body.classList.contains('artwork-modal-open'))return;restoreViewer();document.body.classList.remove('artwork-modal-open');if(returnFocus?.isConnected)returnFocus.focus();else $('nsfw-switch')?.focus();}

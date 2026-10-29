@@ -13,4 +13,4 @@ The first two suites use Node.js built-ins only. They evaluate actual applicatio
 
 The structural/media validator uses Python 3 with Pillow. It checks all seven routes, references, IDs, shared business logic, data relationships, all local images and a limited set of secret patterns. It deliberately allows the existing page-specific hero variants.
 
-Browser interaction results and manual checks are recorded in `../AUDIT_2026-10-28.md`. These tests do not certify production hosting, access control of the deployed Apps Script, legal compliance, the OS clipboard or physical mobile devices.
+Browser interaction results and manual checks are recorded in `../docs/archive/AUDIT_2026-10-28.md`. These tests do not certify production hosting, access control of the deployed Apps Script, legal compliance, the OS clipboard or physical mobile devices.

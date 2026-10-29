@@ -1,0 +1,7 @@
+# Repository-only maintenance files are not part of the public GitHub Pages output.
+exclude:
+  - docs
+  - tests
+  - scripts
+  - integrations
+  - README.md
