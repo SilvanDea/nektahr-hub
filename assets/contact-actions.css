@@ -49,3 +49,5 @@ header.sticky .intake-link{display:none!important}
 #platforms-grid .contact-brand-title{line-height:1.4}
 #primary-contacts-grid>.card{justify-content:flex-start!important;gap:16px}
 #primary-contacts-grid>.card>div:first-of-type{min-height:36px}
+
+#gal-ext-platforms>.card{justify-content:flex-start!important;gap:10px}#gal-ext-platforms>.card>div:first-child{min-height:28px;align-items:center}#gal-ext-platforms .contact-brand-title{font-size:18px;line-height:1.4;gap:8px}#gal-ext-platforms .contact-site-icon{flex-basis:22px;width:22px;height:22px}#gal-ext-platforms .contact-site-icon svg,#gal-ext-platforms .contact-site-icon img{width:22px;height:22px}
