@@ -48,3 +48,14 @@ img{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit
 #gal-nsfw-label{display:inline!important;flex:none!important;margin:0!important;padding:0!important;font:inherit!important;letter-spacing:inherit!important}
 #page-gallery .site-adult-toggle input{position:absolute!important;opacity:0!important;width:1px!important;height:1px!important;margin:0!important}
 #page-gallery .site-adult-toggle:focus-within,#catalog-adult-toggle:focus-visible{outline:2px solid #e995a2;outline-offset:3px}
+
+/* Readable listing information and feedback inside the modal top layer. */
+#catalog-detail-pricing{margin:18px 0;padding:16px;border:1px solid #e2b47833;border-radius:10px;background:#e2b47808}
+#catalog-detail-pricing h3{font-size:16px;color:#e2b478;margin:0 0 12px}
+#catalog-detail-pricing ul,#catalog-sales-terms ul{padding-left:18px;margin:8px 0 14px}
+#catalog-detail-pricing li,#catalog-sales-terms li{margin:8px 0;line-height:1.65}
+#catalog-detail-pricing p{margin:12px 0;font-size:12px;line-height:1.65}
+#catalog-detail-pricing a{display:inline-block;color:#e2b478;padding:8px 0;text-decoration:underline;text-underline-offset:3px}
+#catalog-sales-terms h4{margin:16px 0 6px;color:#eee8df;font-size:14px}
+#catalog-copy-feedback{position:sticky;bottom:18px;grid-column:1/-1;justify-self:center;z-index:10;margin:0 auto 16px;padding:12px 20px;background:#203d2c;color:#d4f9de;border:1px solid #67ba85;border-radius:10px;box-shadow:0 8px 30px #0009;text-align:center}
+#catalog-copy-feedback[hidden]{display:none!important}
