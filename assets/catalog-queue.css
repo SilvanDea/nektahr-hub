@@ -36,3 +36,6 @@ img{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit
 .site-adult-toggle[data-enabled=true]:before,.site-adult-toggle[aria-checked=true]:before{background:radial-gradient(circle at 24px 10px,#fff0f2 0 6px,transparent 6.5px),#be4c5d}
 .site-adult-toggle input{position:absolute;opacity:0;width:1px;height:1px}
 .site-adult-toggle:focus-within{outline:2px solid #e995a2;outline-offset:3px}
+
+/* Author display:block rules must never override viewer visibility. */
+#artwork-dialog-image[hidden],#artwork-dialog-error[hidden],#art-process[hidden]{display:none!important}
