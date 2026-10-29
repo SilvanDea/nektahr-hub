@@ -1871,7 +1871,7 @@
         const names={en:['Illustration 1','Illustration 2','Wriothesley','Happy Bun','TH','All Plain to See'],es:['Ilustración 1','Ilustración 2','Wriothesley','Happy Bun','TH','All Plain to See'],ru:['Иллюстрация 1','Иллюстрация 2','Ризли','Happy Bun','TH','All Plain to See']};
         return names[currentLang][item.processWork-1];
       }
-      if(item.id===3)return ({en:'Character portrait',ru:'Портрет персонажа',es:'Retrato de personaje'})[currentLang];
+      if(item.id===3)return 'Thinking of You';
       if(item.id===6)return ({en:'White dress',ru:'Белое платье',es:'Vestido blanco'})[currentLang];
       const prefix = { en: "Portfolio Sample", es: "Muestra de portafolio", ru: "Пример портфолио" };
       return `${prefix[currentLang] || prefix.en} ${String(item.id).padStart(2, '0')}`;
