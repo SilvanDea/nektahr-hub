@@ -20,3 +20,6 @@
 #catalog-grid .catalog-card h2{font-size:21px;line-height:1.35}#catalog-grid .catalog-card-price strong{font-size:16px;line-height:1.5;letter-spacing:0;font-family:var(--ui-font)}
 
 .catalog-sale-rule{display:block;color:#bdcbbc;font-size:10px;line-height:1.5;margin:3px 0 9px}.catalog-base-note{display:block;font-size:10px;color:#b6a8bd;line-height:1.5;margin-top:6px}
+/* Discourage casual image dragging, selection and mobile long-press menus. */
+.artwork-no-save{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-user-drag:none}
+img{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-user-drag:none}
