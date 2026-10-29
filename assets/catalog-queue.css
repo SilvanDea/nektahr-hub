@@ -73,3 +73,9 @@ img{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit
 /* Preserve modal scrolling without a visible scrollbar or reserved gutter. */
 #catalog-dialog,#catalog-dialog .catalog-dialog-content{scrollbar-width:none;-ms-overflow-style:none;scrollbar-gutter:auto}
 #catalog-dialog::-webkit-scrollbar,#catalog-dialog .catalog-dialog-content::-webkit-scrollbar{display:none;width:0;height:0}
+
+/* Center close glyphs independently of inherited font metrics and padding. */
+#catalog-dialog-close,#artwork-dialog-close,#lb-close{display:inline-flex;align-items:center;justify-content:center;padding:0;line-height:1;box-sizing:border-box}
+#catalog-dialog-close,#artwork-dialog-close{font-family:Arial,sans-serif;font-size:22px}
+#catalog-dialog-close{width:34px;height:34px}
+#lb-close{width:34px;height:34px}
