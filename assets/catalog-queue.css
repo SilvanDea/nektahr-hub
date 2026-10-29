@@ -39,3 +39,12 @@ img{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit
 
 /* Author display:block rules must never override viewer visibility. */
 #artwork-dialog-image[hidden],#artwork-dialog-error[hidden],#art-process[hidden]{display:none!important}
+
+/* Identical adult-only filters and compact reveal switches across both sections. */
+#gallery-adult-only,#catalog-adult-only{display:inline-flex;align-items:center;justify-content:center;min-height:32px;padding:7px 11px!important;border:1px solid #e2b47844!important;border-radius:6px!important;background:#141119!important;color:#b7ae9f!important;font:500 11px/1.4 Inter,system-ui!important;letter-spacing:.02em;white-space:nowrap;margin:0!important}
+#gallery-adult-only[aria-pressed=true],#catalog-adult-only[aria-pressed=true]{background:#e2b478!important;color:#100c15!important;border-color:#e2b478!important}
+#page-gallery .site-adult-toggle,#catalog-adult-toggle.site-adult-toggle{display:inline-flex!important;align-items:center!important;justify-content:flex-start!important;gap:8px!important;width:max-content!important;min-width:0!important;min-height:32px!important;padding:7px 10px!important;box-sizing:border-box;font:500 11px/1.4 Inter,system-ui!important;letter-spacing:0!important}
+#page-gallery .site-adult-toggle:before,#catalog-adult-toggle.site-adult-toggle:before{width:34px;height:20px;flex:0 0 34px}
+#gal-nsfw-label{display:inline!important;flex:none!important;margin:0!important;padding:0!important;font:inherit!important;letter-spacing:inherit!important}
+#page-gallery .site-adult-toggle input{position:absolute!important;opacity:0!important;width:1px!important;height:1px!important;margin:0!important}
+#page-gallery .site-adult-toggle:focus-within,#catalog-adult-toggle:focus-visible{outline:2px solid #e995a2;outline-offset:3px}
