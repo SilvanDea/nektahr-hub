@@ -1,0 +1,23 @@
+/* Compact calculator only. */
+#page-pricing .quote-packages{display:none}
+#page-pricing #calc-stage-sel{display:block!important;width:100%;padding:11px 12px;border:1px solid #e2b47855;border-radius:8px;font:400 13px/1.4 system-ui;color:#eee7df;background:#0d0b10}
+#page-pricing #calc-dynamic-body>div:first-child>.mono{display:none}
+#page-pricing .quote-panel{gap:15px}
+#page-pricing .quote-panel>div:first-child{padding-bottom:12px}
+#page-pricing #calc-title{font-size:23px}
+#page-pricing #calc-category-pill{display:none}
+#page-pricing .quote-character-range{padding-top:14px;border:0;margin:0}
+#page-pricing .quote-character-range p{font-size:11px;margin:6px 0 0}
+#page-pricing .quote-range-ends{display:none}
+#page-pricing .compact-option-group{border-top:1px solid #e2b4782b;margin-top:14px;padding-top:0}
+#page-pricing .compact-option-group>summary{padding:13px 20px 13px 0;cursor:pointer;position:relative;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:5px;font-size:13px;color:#eee7df}
+#page-pricing .compact-option-group>summary::-webkit-details-marker{display:none}
+#page-pricing .compact-option-group>summary:after{content:'+';position:absolute;right:0;top:12px;color:#e2b478;font-size:18px}
+#page-pricing .compact-option-group[open]>summary:after{content:'−'}
+#page-pricing .compact-option-group>summary small{flex-basis:100%;font:400 11px/1.55 system-ui;color:#a99e94}
+#page-pricing .compact-selection-count{font:400 11px/1.4 system-ui;color:#e2b478}
+#page-pricing .compact-option-group .quote-version-toggles{display:grid;gap:6px}
+#page-pricing .compact-option-group .quote-quantity-row{padding:10px 0}
+#page-pricing .compact-option-group .quote-unpriced-note{font-size:11px;line-height:1.65}
+#page-pricing .compact-option-group>.addon-pill{margin-bottom:8px}
+#page-pricing .compact-option-group .quote-existing-label{margin:12px 0}
