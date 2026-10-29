@@ -73,3 +73,7 @@ header.sticky .intake-link{display:none!important}
 #gal-ext-platforms>a.card,#gal-ext-platforms>a.contact-with-icon{padding:10px 9px!important;flex:1 0 auto!important}
 #gal-ext-platforms .contact-brand-title{font-size:12px!important;gap:6px!important}
 #gal-ext-platforms .contact-site-icon,#gal-ext-platforms .contact-site-icon svg,#gal-ext-platforms .contact-site-icon img{width:18px!important;height:18px!important;flex-basis:18px!important}
+
+/* Avoid isolated final words without inserting manual breaks into prose. */
+p,#catalog-notice,#tos-detailed-sections li{ text-wrap:pretty; }
+#hero-desc,#hero-desc-2{text-wrap:pretty;}
