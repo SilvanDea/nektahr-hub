@@ -41,3 +41,11 @@ header.sticky .intake-link{display:none!important}
 .contact-site-icon svg,.contact-site-icon img{display:block;width:24px;height:24px;object-fit:contain}
 #primary-contacts-grid .contact-brand-title{gap:11px}
 #primary-contacts-grid .contact-site-icon,#primary-contacts-grid .contact-site-icon svg{width:27px;height:27px}
+
+/* Align platform headings and descriptions from the top instead of spacing them apart. */
+#platforms-grid>.card{justify-content:flex-start!important;gap:10px;min-height:112px}
+#platforms-grid>.card>div:first-of-type{min-height:28px;align-items:center}
+#platforms-grid>.card>div:last-of-type{margin-top:0;line-height:1.55}
+#platforms-grid .contact-brand-title{line-height:1.4}
+#primary-contacts-grid>.card{justify-content:flex-start!important;gap:16px}
+#primary-contacts-grid>.card>div:first-of-type{min-height:36px}
