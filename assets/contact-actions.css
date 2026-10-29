@@ -65,3 +65,5 @@ header.sticky .intake-link{display:none!important}
 /* Compact external galleries: platform logo and name only. */
 #gal-ext-platforms>.contact-with-icon{min-height:68px;display:flex;justify-content:center!important;gap:0}
 #gal-ext-platforms>.card>.contact-brand-title{flex:0 1 auto;align-items:center;font-size:17px}
+
+#gal-ext-platforms{display:flex!important;flex-wrap:wrap;gap:10px}#gal-ext-platforms>a.card,#gal-ext-platforms>a.contact-with-icon{min-height:0!important;height:auto;padding:12px 16px!important;flex:0 1 auto;justify-content:center!important}#gal-ext-platforms .contact-brand-title{font-size:14px;white-space:nowrap}#gal-ext-platforms .contact-site-icon,#gal-ext-platforms .contact-site-icon svg,#gal-ext-platforms .contact-site-icon img{width:20px;height:20px;flex-basis:20px}
