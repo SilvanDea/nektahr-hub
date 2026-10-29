@@ -79,3 +79,6 @@ img{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit
 #catalog-dialog-close,#artwork-dialog-close{font-family:Arial,sans-serif;font-size:22px}
 #catalog-dialog-close{width:34px;height:34px}
 #lb-close{width:34px;height:34px}
+
+/* Profile links are already available in the dedicated social sections. */
+#catalog-profile{display:none!important}
