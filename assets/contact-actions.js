@@ -15,10 +15,27 @@
   }
   const t=()=>texts[currentLang]||texts.en;
   let messageKey='',copyTimer,lastCopied='';
+
+  function decorateContacts(){
+    const marks=[
+      ['discord','◉','discord'],['mailto:','✉','email'],['t.me','➤','telegram'],
+      ['deviantart','DA','deviantart'],['twitter','𝕏','x'],['x.com','𝕏','x'],
+      ['commishes','YCH','ych'],['ych.art','YCH','ych'],['furaffinity','FA','fa'],
+      ['pixiv','pixiv','pixiv'],['ko-fi','☕','kofi'],['patreon','P','patreon']
+    ];
+    document.querySelectorAll('#primary-contacts-grid>a,#primary-contacts-grid>button,#platforms-grid>a,#platforms-grid>div').forEach(card=>{
+      if(card.querySelector('.contact-site-icon'))return;
+      const key=(card.getAttribute('href')||card.textContent).toLowerCase();
+      const mark=marks.find(([match])=>key.includes(match));if(!mark)return;
+      const icon=document.createElement('span');icon.className='contact-site-icon site-'+mark[2];icon.setAttribute('aria-hidden','true');icon.textContent=mark[1];card.prepend(icon);card.classList.add('contact-with-icon');
+    });
+  }
+
   function update(){const c=t();emailDialog();let actions=$('quote-contact-actions');if(!actions){actions=document.createElement('div');actions.id='quote-contact-actions';const buttons=document.createElement('div'),discord=document.createElement('a'),email=document.createElement('button'),hint=document.createElement('p'),status=document.createElement('p');discord.id='quote-discord';discord.href='https://discord.com/users/361511957129461781';discord.target='_blank';discord.rel='noopener noreferrer';email.id='quote-email';email.type='button';email.onclick=()=>openEmail(email);hint.id='quote-send-hint';status.id='quote-copy-status';status.setAttribute('role','status');status.setAttribute('aria-live','polite');buttons.append(discord,email);actions.append(buttons,hint,status);$('calc-copy-btn').after(actions);}
     $('quote-discord').textContent=c.discord;$('quote-discord').title='drintrava';$('quote-email').textContent=c.email;$('quote-email').setAttribute('aria-haspopup','dialog');$('quote-send-hint').textContent=c.hint;$('quote-copy-status').textContent=messageKey?c[messageKey]:'';
     $('header-status-badge').textContent=c.open;let badge=$('contacts-intake');if(!badge){badge=document.createElement('p');badge.id='contacts-intake';$('contacts-title').after(badge);}badge.textContent=c.open;
     let intake=$('commission-intake');if(!intake){intake=document.createElement('p');intake.id='commission-intake';$('q-sub').after(intake);}intake.textContent=c.intake;
+    decorateContacts();
     const grid=$('primary-contacts-grid');if(grid?.children.length===3){const email=grid.querySelector('a[href="mailto:nektahr@gmail.com"]');if(email){grid.insertBefore(email,grid.children[1]);const label=email.querySelector('span.text-textDim');if(label)label.textContent=({en:'Art orders & questions',ru:'Заказы и вопросы',es:'Encargos y consultas'})[currentLang];}}
   }
   window.copyCalcRequest=async function(){recalcTotal();const txt=$('calc-preview-text').textContent;const ok=await copyToClipboard(txt,'DM Order Request');messageKey=ok?'copied':'failed';if(ok)lastCopied=txt;clearTimeout(copyTimer);update();if(ok){$('calc-copy-btn').textContent=t().done;copyTimer=setTimeout(()=>{$('calc-copy-btn').textContent=({en:'Copy request',ru:'Скопировать заявку',es:'Copiar solicitud'})[currentLang];},2000);}else{$('calc-preview-text').parentElement.open=true;}};
