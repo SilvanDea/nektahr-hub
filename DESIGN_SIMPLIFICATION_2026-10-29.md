@@ -19,3 +19,15 @@ Base: production commit 05166a736cb816bca94363225b0c96ac31466735.
 - Browser: custom full render $200 + NSFW $50 + expression $25 = $275; YCH AB $160 auto-includes NSFW and lowers paid futa to $25. Changing language/category rebuilds the compact controls without losing package state. Adopt AB remains $500 after choosing furry as its included alternative while NSFW stays included. Catalog loads its 12-card first page and local images. EN/RU/ES copy checked in the UI.
 
 Scope: presentation changes only. Production hosting and main are not updated by this change. No real order, payment, age confirmation or ToS acceptance was submitted during QA.
+
+## Balanced follow-up
+
+The first compact pass removed too much context. The follow-up keeps the small calculator and price hierarchy, while restoring:
+
+- Two short explanatory sentences per custom/YCH finish, without repeating payment policies on every card.
+- One contextual note per pricing category: references for commissions, adapting a YCH pose, and what an adopt purchase includes.
+- A three-step order guide with a direct contact link.
+- A personal introduction and a short second paragraph on the home page, plus platform descriptions.
+- Gallery viewing hints and a clearer YCH/adopt explanation in the catalog.
+
+All new text has English, Russian and Spanish versions. No price, calculator formula, ToS, catalog availability or ownership rule changed. Still test branch only.

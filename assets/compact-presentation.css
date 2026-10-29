@@ -1,5 +1,5 @@
 /* Simpler information hierarchy for the test branch. */
-#pricing-eyebrow,#brk-eyebrow,#brk-title,#breakdown-grid,#adopt-eyebrow,#ych-eyebrow,#hero-desc-2,#contacts-eyebrow,#gal-eyebrow,#gal-ext-sub{display:none!important}
+#pricing-eyebrow,#brk-eyebrow,#brk-title,#breakdown-grid,#adopt-eyebrow,#ych-eyebrow,#contacts-eyebrow,#gal-eyebrow,#gal-ext-sub{display:none!important}
 #page-pricing #stage-sec-hint{display:block;max-width:43em;font:400 13px/1.65 system-ui;text-transform:none;letter-spacing:0;color:#b7ae9f}
 #page-pricing #custom-stages-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 #page-pricing #custom-stages-grid>button{grid-column:auto}
@@ -47,7 +47,7 @@
 #page-board #hero-desc{font-size:14px;max-width:36em}
 #page-board #hero-desc-2{margin:0}
 #page-board #primary-contacts-grid>*>div:first-child>div{display:none}
-#page-board #platforms-grid a>div:last-child{display:none}
+#page-board #platforms-grid a>div:last-child{font-size:11px;line-height:1.55}
 #page-catalog .catalog-card-body>small:not(.catalog-versions-hint),#page-catalog .catalog-sale-rule,#page-catalog .catalog-base-note{display:none}
 #page-catalog .catalog-card-body{gap:10px;padding:15px}
 #page-catalog .catalog-card-body h2{font-size:17px}
@@ -65,3 +65,26 @@
 #page-pricing #stage-sec-title:has(+ #stage-sec-hint){flex-shrink:0}
 #page-pricing div:has(> #stage-sec-title){flex-direction:column;align-items:flex-start}
 #page-pricing #fanart-version-link{margin:0;padding:12px 18px;border-top:1px solid #e2b47822;width:100%;text-align:left;font-size:11px}
+
+/* Balanced pass: restore context where it helps a visitor decide. */
+#page-board #hero-desc-2{display:block!important;font-size:13px;line-height:1.8;color:#b7ae9f;max-width:38em;margin-top:12px}
+#page-pricing .compact-price-card{min-height:190px;gap:13px}
+#page-pricing .compact-price-card p{font-size:12px;line-height:1.75}
+#page-pricing #pricing-sub{max-width:56em;line-height:1.8}
+#page-pricing .pricing-context{margin-top:20px;padding:18px 20px;border-left:2px solid #e2b47870;background:#e2b47805;border-radius:0 9px 9px 0}
+#page-pricing .pricing-context h3{font:500 14px/1.5 system-ui;color:#eee7df;margin:0 0 7px}
+#page-pricing .pricing-context p{font:400 13px/1.8 system-ui;color:#b7ae9f;margin:0;max-width:58em}
+#pricing-order-steps{border-top:1px solid #e2b47829;margin-top:36px;padding-top:26px}
+#pricing-order-steps>div{display:flex;justify-content:space-between;align-items:baseline;gap:16px}
+#pricing-order-steps h2{font:500 22px/1.4 system-ui;color:#eee7df;margin:0}
+#pricing-order-steps a{font-size:12px;color:#e2b478}
+#pricing-order-steps ol{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:20px 0 0;padding:0;gap:28px}
+#pricing-order-steps li{position:relative;padding-left:35px}
+#pricing-order-steps li>span{position:absolute;left:0;top:3px;color:#e2b478;font:500 11px/1.6 system-ui}
+#pricing-order-steps h3{font:500 14px/1.5 system-ui;color:#eee7df;margin:0 0 7px}
+#pricing-order-steps p{font:400 12px/1.8 system-ui;color:#b7ae9f;margin:0;max-width:31em}
+#page-pricing #compact-order-note{margin-top:25px}
+#page-catalog #catalog-notice{max-width:70em;line-height:1.8}
+#page-gallery #gal-sub{max-width:58em;line-height:1.8}
+@media(max-width:1080px){#page-pricing #custom-stages-grid .compact-price-card{min-height:0}}
+@media(max-width:650px){#pricing-order-steps ol{grid-template-columns:1fr;gap:20px}#page-pricing .compact-price-card{min-height:0}}
