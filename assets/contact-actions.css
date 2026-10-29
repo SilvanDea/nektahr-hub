@@ -9,5 +9,17 @@
 #header-status-badge{color:#bad0bd}
 @media(max-width:400px){#quote-contact-actions>div{grid-template-columns:1fr}}
 
-header.sticky .intake-link{display:flex}
-@media(max-width:1100px){header.sticky .intake-link{display:none}}
+header.sticky .intake-link{display:none!important}
+
+#contacts-intake{display:inline-block;margin:10px 0 0;padding:5px 10px;border:1px solid #8dab9455;border-radius:7px;color:#bad0bd;font:400 12px/1.6 system-ui}
+#email-contact-dialog{width:min(440px,calc(100vw - 32px));padding:27px;max-width:440px;background:#141119;color:#f2ece4;border:1px solid #e2b47855;border-radius:14px;box-shadow:0 20px 100px #0009}
+#email-contact-dialog::backdrop{background:#08060cd9;backdrop-filter:blur(5px)}
+#email-contact-close{position:absolute;right:12px;top:10px;width:32px;height:32px;color:#e2b478;font-size:24px;background:transparent;border:0;cursor:pointer}
+#email-contact-title{margin:0 32px 16px 0;font:500 23px/1.4 system-ui}
+#email-contact-address{margin:0 0 20px;padding:12px;border:1px solid #e2b47833;border-radius:8px;font:400 17px/1.5 system-ui;user-select:text}
+#email-contact-dialog>div{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+#email-contact-dialog>div button,#email-contact-dialog>div a{padding:11px 9px;min-height:42px;border:1px solid #e2b47855;border-radius:8px;color:#e2b478;background:#e2b47808;text-align:center;text-decoration:none;font:400 12px/1.5 system-ui;cursor:pointer}
+#email-open-app{grid-column:1/-1}
+#email-contact-note,#email-contact-status{margin:15px 0 0;color:#b7ae9f;font:400 11px/1.7 system-ui}
+#email-contact-status{color:#e2b478}
+#email-contact-status:empty{display:none}
