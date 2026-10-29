@@ -43,6 +43,8 @@ if(card.parentElement?.id==='gal-ext-platforms')card.replaceChildren(title);
     $('header-status-badge').textContent=c.open;let badge=$('contacts-intake');if(!badge){badge=document.createElement('p');badge.id='contacts-intake';$('contacts-title').after(badge);}badge.textContent=c.open;
     let intake=$('commission-intake');if(!intake){intake=document.createElement('p');intake.id='commission-intake';$('q-sub').after(intake);}intake.textContent=c.intake;
     decorateContacts();
+    for(const id of ['hero-desc','hero-desc-2']){const el=$(id);if(el){el.textContent=el.textContent.replace(/([.!?])\s+(?=[A-ZА-ЯЁÁÉÍÓÚÜÑ¿¡])/g,'$1\n');el.style.whiteSpace='pre-line';}}
+
     const grid=$('primary-contacts-grid');if(grid?.children.length===3){const email=grid.querySelector('a[href="mailto:nektahr@gmail.com"]');if(email){grid.insertBefore(email,grid.children[1]);const label=email.querySelector('span.text-textDim');if(label)label.textContent=({en:'Art orders & questions',ru:'Заказы и вопросы',es:'Encargos y consultas'})[currentLang];}}
   }
   window.copyCalcRequest=async function(){recalcTotal();const txt=$('calc-preview-text').textContent;const ok=await copyToClipboard(txt,'DM Order Request');messageKey=ok?'copied':'failed';if(ok)lastCopied=txt;clearTimeout(copyTimer);update();if(ok){$('calc-copy-btn').textContent=t().done;copyTimer=setTimeout(()=>{$('calc-copy-btn').textContent=({en:'Copy request',ru:'Скопировать заявку',es:'Copiar solicitud'})[currentLang];},2000);}else{$('calc-preview-text').parentElement.open=true;}};
