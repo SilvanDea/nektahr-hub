@@ -63,3 +63,7 @@ img{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit
 /* Adult-only filters are distinct from gold category/status filters. */
 #gallery-adult-only,#catalog-adult-only{box-sizing:border-box!important;height:32px!important;min-height:32px!important;line-height:16px!important;padding:7px 12px!important;border-radius:4px!important;border-color:#a65060!important;background:#28171e!important;color:#ee9baa!important;align-self:center!important}
 #gallery-adult-only[aria-pressed=true],#catalog-adult-only[aria-pressed=true]{background:#a63e56!important;border-color:#d66a80!important;color:#fff0f3!important}
+
+/* Match the catalog status buttons exactly; retain the adult filter colors. */
+#catalog-state-filters button{box-sizing:border-box;height:40px;line-height:20px}
+#catalog-state-filters #catalog-adult-only{height:40px!important;min-height:40px!important;padding:9px 13px!important;border-radius:7px!important;font:inherit!important;font-size:11px!important;line-height:20px!important;letter-spacing:normal!important;align-self:auto!important}
