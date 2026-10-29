@@ -43,7 +43,7 @@ if(card.parentElement?.id==='gal-ext-platforms')card.replaceChildren(title);
     $('header-status-badge').textContent=c.open;let badge=$('contacts-intake');if(!badge){badge=document.createElement('p');badge.id='contacts-intake';$('contacts-title').after(badge);}badge.textContent=c.open;
     let intake=$('commission-intake');if(!intake){intake=document.createElement('p');intake.id='commission-intake';$('q-sub').after(intake);}intake.textContent=c.intake;
     decorateContacts();
-    for(const id of ['hero-desc','hero-desc-2']){const el=$(id);if(el){el.textContent=el.textContent.replace(/([.!?])\s+(?=[A-ZА-ЯЁÁÉÍÓÚÜÑ¿¡])/g,'$1\n');el.style.whiteSpace='pre-line';}}
+    for(const id of ['hero-desc']){const el=$(id);if(el){el.textContent=el.textContent.replace(/([.!?])\s+(?=[A-ZА-ЯЁÁÉÍÓÚÜÑ¿¡])/g,'$1\n');el.style.whiteSpace='pre-line';el.style.textWrap='pretty';}}
 
     const grid=$('primary-contacts-grid');if(grid?.children.length===3){const email=grid.querySelector('a[href="mailto:nektahr@gmail.com"]');if(email){grid.insertBefore(email,grid.children[1]);const label=email.querySelector('span.text-textDim');if(label)label.textContent=({en:'Art orders & questions',ru:'Заказы и вопросы',es:'Encargos y consultas'})[currentLang];}}
   }
@@ -53,33 +53,3 @@ if(card.parentElement?.id==='gal-ext-platforms')card.replaceChildren(title);
   update();
 })();
 
-/* Readable prose across routes; preserve controls, prices, links and short labels. */
-(()=>{
- const selector=[
- '#hero-desc','#hero-desc-2','#pricing-sub','#adopt-desc','#ych-desc','#gal-sub','#q-sub','#tos-sub',
- '#catalog-subtitle','#catalog-notice','#catalog-reserve-description',
- '#reservation-description','#reservation-terms',
- '#faq-items-list p','#tos-cards-grid p','#tos-detailed-sections li',
- '#pricing-view-custom p','#pricing-view-adopt p','#pricing-view-ych p',
- '#catalog-dialog-description','#catalog-dialog-disclaimer','#catalog-detail-pricing p','#catalog-sales-terms li'
- ].join(',');
- function format(){
-  if(!Intl.Segmenter)return;
-  const segmenter=new Intl.Segmenter(document.documentElement.lang||'en',{granularity:'sentence'});
-  document.querySelectorAll(selector).forEach(el=>{
-   if(el.closest('button,a,summary,#calc-dynamic-body')||el.querySelector('input,textarea,select,button'))return;
-   for(const node of el.childNodes){
-    if(node.nodeType!==Node.TEXT_NODE||node.textContent.trim().length<85)continue;
-    const parts=[...segmenter.segment(node.textContent.trim())].map(x=>x.segment.trim());
-    if(parts.length<2)continue;
-    const next=parts.join('\n');
-    if(node.textContent!==next)node.textContent=next;
-    el.style.whiteSpace='pre-line';
-   }
-  });
- }
- let scheduled=false;
- const observer=new MutationObserver(()=>{if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{scheduled=false;observer.disconnect();format();observe();});});
- function observe(){observer.observe(document.body,{subtree:true,childList:true,characterData:true});}
- format();observe();
-})();
