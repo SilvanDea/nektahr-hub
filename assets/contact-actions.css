@@ -23,3 +23,13 @@ header.sticky .intake-link{display:none!important}
 #email-contact-note,#email-contact-status{margin:15px 0 0;color:#b7ae9f;font:400 11px/1.7 system-ui}
 #email-contact-status{color:#e2b478}
 #email-contact-status:empty{display:none}
+
+/* Artist-confirmed availability and quick visual platform identification. */
+#contacts-intake{display:inline-flex;align-items:center;gap:9px;padding:7px 12px;color:#8ee6af;border-color:#56cf8755;background:#48c87b0b}
+#contacts-intake:before{content:'';display:block;width:7px;height:7px;flex:none;border-radius:50%;background:#61df95;box-shadow:0 0 8px #61df954d;animation:intake-wave 2.6s ease-out infinite}
+@keyframes intake-wave{0%{box-shadow:0 0 0 0 #61df9566}70%,100%{box-shadow:0 0 0 7px #61df9500}}
+.contact-with-icon{position:relative;padding-left:56px!important}
+.contact-site-icon{position:absolute;left:16px;top:20px;display:flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:7px;color:#d8c4a7;background:#e2b4780b;font:600 13px/1 Inter,system-ui;letter-spacing:-.04em}
+#primary-contacts-grid .contact-site-icon{top:22px}
+.site-discord{color:#a5aaff}.site-telegram{color:#72bce7}.site-email{color:#e2b478;font-size:20px}.site-deviantart{color:#8ddbb5}.site-pixiv{color:#74b9ef;font-size:10px}.site-patreon{color:#e4aa9f}.site-ych{font-size:9px}.site-kofi{font-size:20px}
+@media(prefers-reduced-motion:reduce){#contacts-intake:before{animation:none}}
