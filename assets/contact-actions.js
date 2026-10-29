@@ -27,7 +27,16 @@
       if(card.querySelector('.contact-site-icon'))return;
       const key=(card.getAttribute('href')||card.textContent).toLowerCase();
       const mark=marks.find(([match])=>key.includes(match));if(!mark)return;
-      const icon=document.createElement('span');icon.className='contact-site-icon site-'+mark[2];icon.setAttribute('aria-hidden','true');icon.textContent=mark[1];card.prepend(icon);card.classList.add('contact-with-icon');
+      const icon=document.createElement('span');icon.className='contact-site-icon site-'+mark[2];icon.setAttribute('aria-hidden','true');icon.textContent=mark[1];
+      const brandPaths={
+        discord:'M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.211.375-.445.865-.609 1.249a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.618-1.249.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.675 4.37a.07.07 0 0 0-.032.027C.533 9.045-.319 13.579.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.127c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.891.077.077 0 0 0-.041.107c.36.698.772 1.363 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.418 2.157-2.418 1.21 0 2.176 1.095 2.157 2.418 0 1.334-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.418 2.157-2.418 1.21 0 2.176 1.095 2.157 2.418 0 1.334-.947 2.419-2.157 2.419z',
+        telegram:'M23.91 3.79 20.3 20.84c-.27 1.2-.98 1.5-1.98.94l-5.5-4.05-2.66 2.56c-.3.3-.55.55-1.13.55l.4-5.6L19.62 5.9c.44-.4-.1-.62-.68-.23L6.35 13.6.93 11.9c-1.18-.37-1.2-1.18.25-1.75L22.4 1.97c.98-.36 1.84.24 1.51 1.82z'
+      };
+      if(brandPaths[mark[2]]){
+        const svg=document.createElementNS('http://www.w3.org/2000/svg','svg');svg.setAttribute('viewBox','0 0 24 24');svg.setAttribute('width','24');svg.setAttribute('height','24');svg.setAttribute('fill','currentColor');svg.setAttribute('aria-hidden','true');
+        const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',brandPaths[mark[2]]);svg.append(path);icon.replaceChildren(svg);
+      }
+      card.prepend(icon);card.classList.add('contact-with-icon');
     });
   }
 
