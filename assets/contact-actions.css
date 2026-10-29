@@ -33,3 +33,11 @@ header.sticky .intake-link{display:none!important}
 #primary-contacts-grid .contact-site-icon{top:22px}
 .site-discord{color:#a5aaff}.site-telegram{color:#72bce7}.site-email{color:#e2b478;font-size:20px}.site-deviantart{color:#8ddbb5}.site-pixiv{color:#74b9ef;font-size:10px}.site-patreon{color:#e4aa9f}.site-ych{font-size:9px}.site-kofi{font-size:20px}
 @media(prefers-reduced-motion:reduce){#contacts-intake:before{animation:none}}
+
+#primary-contacts-grid>.contact-with-icon{padding:20px!important}
+#platforms-grid>.contact-with-icon{padding:16px!important}
+.contact-brand-title{display:flex;align-items:center;gap:10px;min-width:0}
+.contact-brand-title>.contact-site-icon{position:static!important;display:inline-flex;align-items:center;justify-content:center;flex:0 0 24px;width:24px;height:24px;background:none;border-radius:0}
+.contact-site-icon svg,.contact-site-icon img{display:block;width:24px;height:24px;object-fit:contain}
+#primary-contacts-grid .contact-brand-title{gap:11px}
+#primary-contacts-grid .contact-site-icon,#primary-contacts-grid .contact-site-icon svg{width:27px;height:27px}
