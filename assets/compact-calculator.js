@@ -26,3 +26,10 @@
   const recalc=recalcTotal;window.recalcTotal=function(){recalc();selection();};
   buildIndividualCalculator();
 })();
+
+/* Apply explicit catalog destination after the default page initialization. */
+window.addEventListener('load',()=>{
+ if(document.body.dataset.page!=='pricing')return;
+ const mode=new URLSearchParams(location.search).get('type');
+ if(['adopt','ych'].includes(mode))switchPricingTab(mode);
+});
