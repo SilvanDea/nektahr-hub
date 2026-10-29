@@ -61,3 +61,7 @@ header.sticky .intake-link{display:none!important}
 #gal-ext-platforms>.card>div:not(:first-child){overflow-wrap:anywhere}
 @media(max-width:700px){#gal-ext-platforms{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:420px){#gal-ext-platforms{grid-template-columns:1fr}}
+
+/* Compact external galleries: platform logo and name only. */
+#gal-ext-platforms>.contact-with-icon{min-height:68px;display:flex;justify-content:center!important;gap:0}
+#gal-ext-platforms>.card>.contact-brand-title{flex:0 1 auto;align-items:center;font-size:17px}
