@@ -19,3 +19,9 @@ The artist preferred intake status outside the header. The header badge is now h
 ## Discord profile and preview revision
 
 The artist supplied Discord user ID 361511957129461781. Discord links on the home page, footer and calculator now point to that profile and open in a new tab. They no longer replace the copied request with a username. The shared social preview uses a new JPEG URL and larger headings, with Gallery, Prices, Catalog and ToS/FAQ labels. Home-page static metadata now mentions the terms and Discord/email contact. Other routes retain their own descriptions. Telegram's screenshot shows older title/description data, which suggests a cached card; the actual Telegram recrawl cannot be verified from the site alone. No message was sent to WebpageBot or any contact.
+
+## Approved release: portrait frames and restored preview halo
+
+The artist explicitly approved production publication. Gallery, catalog and home highlight thumbnails now use 3:4 frames, matching the usual source artwork ratio. Nonstandard artwork remains fully visible with contain fitting. Thin edge strips are sampled offline into small color gradients, so unused space matches the artwork without loading another image. Transparent borders use the existing dark matte; unknown remote images have a neutral fallback. Adult blur/overlays are preserved, and modal/detail views are not resized by these thumbnail rules. The preview restores the outer circle and star accents requested by the artist, while keeping larger text and ToS/FAQ labels. New image URL: assets/social-preview-v3.jpg.
+
+Validation: existing contact and calculator assertions pass, all seven routes and static metadata pass structural validation. Browser checks confirm catalog and gallery 3:4 frames, contain fitting, expected background colors and continued adult blur (without age confirmation).

@@ -1,0 +1,5 @@
+/* Artwork remains complete; the portrait canvas is shared by gallery, catalog and highlights. */
+#gallery-cards-grid>button>div:first-child,#catalog-grid .catalog-art,#board-highlights-grid>button>div:first-child{aspect-ratio:3/4!important;position:relative;overflow:hidden}
+#gallery-cards-grid .thumbnail-mat,#catalog-grid .thumbnail-mat,#board-highlights-grid .thumbnail-mat{background:var(--mat-background,linear-gradient(180deg,#211b27,#19151f))!important}
+#gallery-cards-grid .thumbnail-mat>img,#catalog-grid .thumbnail-mat>img,#board-highlights-grid .thumbnail-mat>img{display:block;width:100%;height:100%;object-fit:contain!important;object-position:center}
+#gallery-cards-grid .thumbnail-mat>img:not(.blur-2xl),#board-highlights-grid .thumbnail-mat>img{transform:none!important}
