@@ -39,7 +39,7 @@
     })[lang]||null;
     const u=ui||{...({})};
     if(!ui)return;
-    const description=$('catalog-dialog-description');description.textContent=item.type==='ych'?u.ych:u.adopt;
+    const description=$('catalog-dialog-description');description.textContent=item.type==='ych'?u.ych:item.status==='sold'?t().soldNotice:'';description.hidden=!description.textContent;
     let panel=$('catalog-detail-pricing');
     if(!panel){panel=document.createElement('section');panel.id='catalog-detail-pricing';description.after(panel);}
     panel.replaceChildren();
@@ -55,6 +55,7 @@
       rows.forEach(text=>{const li=document.createElement('li');li.textContent=text;ul.append(li)});terms.append(h,ul);
     }
     const all=document.createElement('a');all.href='/terms/';all.textContent=(saleTerms[lang]||saleTerms.en).more;terms.append(all);
+    for(const el of [description,note,...terms.querySelectorAll('li'),$('catalog-dialog-disclaimer')]){el.textContent=el.textContent.replace(/([.!?])\s+(?=[A-ZА-ЯЁÁÉÍÓÚÜÑ¿¡])/g,'$1\n');el.style.whiteSpace='pre-line';}
     const contact=$('catalog-dialog-contact');contact.href='https://discord.com/users/361511957129461781';
     let feedback=$('catalog-copy-feedback');if(!feedback){feedback=document.createElement('div');feedback.id='catalog-copy-feedback';feedback.setAttribute('role','status');feedback.setAttribute('aria-live','polite');feedback.hidden=true;$('catalog-dialog').append(feedback);}
     feedback.hidden=true;
