@@ -2086,14 +2086,6 @@
               <div id="custom-stages-grid" class="grid sm:grid-cols-3 gap-4"></div>
             </div>
             
-            <!-- Character Sheet & Detail Breakdown -->
-            <div class="space-y-4">
-              <div>
-                <div id="brk-eyebrow" class="mono text-[10px] uppercase text-accent">CHARACTER DESIGN FOCUS</div>
-                <h3 id="brk-title" class="serif text-3xl mt-0.5">Character Sheet & Detail Breakdown</h3>
-              </div>
-              <div id="breakdown-grid" class="grid sm:grid-cols-3 gap-4"></div>
-            </div>
             <div id="process-dock-custom"><section id="pricing-examples" class="examples-panel"><h3 id="pricing-examples-label" class="examples-heading">Artwork examples & stages</h3><div id="pricing-samples-grid" class="pricing-samples-grid"></div></section></div>
           </div>
 
@@ -2956,17 +2948,6 @@
             <p class="text-xs text-textMuted leading-relaxed">${st.desc}</p>
           </div>`;
       }).join('');
-
-      // Breakdown
-      document.getElementById('brk-eyebrow').textContent = t.pricing.breakdown.eyebrow;
-      document.getElementById('brk-title').textContent = t.pricing.breakdown.title;
-      document.getElementById('breakdown-grid').innerHTML = t.pricing.breakdown.items.map(b => `
-        <div class="card p-5 space-y-3">
-          <div class="mono text-[10px] uppercase text-accent">${b.tag}</div>
-          <h4 class="serif text-xl text-textMain">${b.title}</h4>
-          <p class="text-xs text-textMuted leading-relaxed">${b.desc}</p>
-        </div>
-      `).join('');
 
       // Adopts Section
       document.getElementById('adopt-eyebrow').textContent = t.pricing.adoptSection.eyebrow;
