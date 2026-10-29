@@ -1,0 +1,67 @@
+/* Simpler information hierarchy for the test branch. */
+#pricing-eyebrow,#brk-eyebrow,#brk-title,#breakdown-grid,#adopt-eyebrow,#ych-eyebrow,#hero-desc-2,#contacts-eyebrow,#gal-eyebrow,#gal-ext-sub{display:none!important}
+#page-pricing #stage-sec-hint{display:block;max-width:43em;font:400 13px/1.65 system-ui;text-transform:none;letter-spacing:0;color:#b7ae9f}
+#page-pricing #custom-stages-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+#page-pricing #custom-stages-grid>button{grid-column:auto}
+#page-pricing #adopt-tiers-grid,#page-pricing #ych-slots-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+#page-pricing .compact-price-card{padding:20px;display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:12px;min-height:154px;border-radius:12px;position:relative}
+#page-pricing .compact-price-card h3{font:500 17px/1.35 system-ui;margin:0;color:#eee7df;padding-right:10px}
+#page-pricing .compact-price-card strong{font:500 32px/1.1 system-ui;color:#e2b478;letter-spacing:-1px}
+#page-pricing .compact-price-card p{font:400 12px/1.6 system-ui;color:#b7ae9f;margin:0;max-width:34em}
+#page-pricing .compact-price-card.quote-selected{box-shadow:none;border-color:#e2b478!important}
+#page-pricing .compact-price-card.quote-selected:after{content:'✓';position:absolute;top:15px;right:12px;color:#e2b478;font-size:13px}
+#page-pricing .pricing-subview>div:first-child.card{padding:0;background:none;border:0}
+#page-pricing .pricing-subview{gap:22px}
+#page-pricing .pricing-subview>*+*{margin-top:24px!important}
+#page-pricing .pricing-subview>div:has(#breakdown-grid){display:none}
+#page-pricing #stage-sec-title{font-size:25px}
+#page-pricing #custom-stages-grid~*{margin-top:20px}
+#page-pricing .quote-packages{display:none}
+#page-pricing #calc-stage-sel{display:block!important;width:100%;padding:11px 12px;border:1px solid #e2b47855;border-radius:8px;font:400 13px/1.4 system-ui;color:#eee7df;background:#0d0b10}
+#page-pricing #calc-dynamic-body>div:first-child>.mono{display:none}
+#page-pricing .quote-panel{gap:15px}
+#page-pricing .quote-panel>div:first-child{padding-bottom:12px}
+#page-pricing #calc-title{font-size:23px}
+#page-pricing #calc-category-pill{display:none}
+#page-pricing .quote-character-range{padding-top:14px;border:0;margin:0}
+#page-pricing .quote-character-range p{font-size:11px;margin:6px 0 0}
+#page-pricing .quote-range-ends{display:none}
+#page-pricing .compact-option-group{border-top:1px solid #e2b4782b;margin-top:14px;padding-top:0}
+#page-pricing .compact-option-group>summary{padding:13px 20px 13px 0;cursor:pointer;position:relative;list-style:none;display:flex;flex-wrap:wrap;align-items:baseline;gap:5px;font-size:13px;color:#eee7df}
+#page-pricing .compact-option-group>summary::-webkit-details-marker{display:none}
+#page-pricing .compact-option-group>summary:after{content:'+';position:absolute;right:0;top:12px;color:#e2b478;font-size:18px}
+#page-pricing .compact-option-group[open]>summary:after{content:'−'}
+#page-pricing .compact-option-group>summary small{flex-basis:100%;font:400 11px/1.55 system-ui;color:#a99e94}
+#page-pricing .compact-selection-count{font:400 11px/1.4 system-ui;color:#e2b478}
+#page-pricing .compact-option-group .quote-version-toggles{display:grid;gap:6px}
+#page-pricing .compact-option-group .quote-quantity-row{padding:10px 0}
+#page-pricing .compact-option-group .quote-unpriced-note{font-size:11px;line-height:1.65}
+#page-pricing .compact-option-group>.addon-pill{margin-bottom:8px}
+#page-pricing .compact-option-group .quote-existing-label{margin:12px 0}
+#page-pricing #compact-order-note{padding:22px 0;margin-top:32px;border-top:1px solid #e2b47829;display:grid;grid-template-columns:150px minmax(0,1fr) auto;align-items:start;gap:18px}
+#compact-order-note h2{font:500 15px/1.6 system-ui;margin:0;color:#eee7df}
+#compact-order-note p{font:400 12px/1.75 system-ui;margin:0;color:#b7ae9f;max-width:65em}
+#compact-order-note a{color:#e2b478;font-size:12px;white-space:nowrap;padding:4px 0}
+#page-pricing .examples-heading{font-size:13px;padding:13px 18px}
+#page-board #hero-title{font-size:clamp(30px,3.1vw,44px);line-height:1.2}
+#page-board #hero-desc{font-size:14px;max-width:36em}
+#page-board #hero-desc-2{margin:0}
+#page-board #primary-contacts-grid>*>div:first-child>div{display:none}
+#page-board #platforms-grid a>div:last-child{display:none}
+#page-catalog .catalog-card-body>small:not(.catalog-versions-hint),#page-catalog .catalog-sale-rule,#page-catalog .catalog-base-note{display:none}
+#page-catalog .catalog-card-body{gap:10px;padding:15px}
+#page-catalog .catalog-card-body h2{font-size:17px}
+#page-catalog .catalog-card-meta{font-size:10px}
+#page-catalog .catalog-header p{max-width:45em}
+#page-catalog #catalog-notice{padding:0;border:0;background:none;font-size:12px;margin-top:10px}
+#page-catalog .catalog-header h1{font-size:36px}
+#page-gallery #gal-sub{max-width:45em}
+@media(max-width:1080px){#page-pricing #custom-stages-grid{grid-template-columns:1fr}#page-pricing .compact-price-card{min-height:0}#page-pricing #custom-stages-grid .compact-price-card{display:grid;grid-template-columns:1fr auto;gap:8px 16px}#page-pricing #custom-stages-grid .compact-price-card p{grid-column:1/-1}#page-pricing #compact-order-note{grid-template-columns:1fr} }
+@media(max-width:600px){#page-pricing #adopt-tiers-grid,#page-pricing #ych-slots-grid{grid-template-columns:1fr}#page-catalog .catalog-header h1{font-size:29px}}
+
+#page-pricing .pricing-workspace>div:first-child>.pricing-subview{margin-top:0!important}
+#page-pricing #stage-sec-title{width:100%}
+#page-pricing #stage-sec-title + #stage-sec-hint{width:100%}
+#page-pricing #stage-sec-title:has(+ #stage-sec-hint){flex-shrink:0}
+#page-pricing div:has(> #stage-sec-title){flex-direction:column;align-items:flex-start}
+#page-pricing #fanart-version-link{margin:0;padding:12px 18px;border-top:1px solid #e2b47822;width:100%;text-align:left;font-size:11px}
