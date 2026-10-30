@@ -700,7 +700,7 @@
         <div class="card p-5 space-y-2 ${idx === 5 ? 'border-error/40 bg-error/5' : ''}">
           <div class="mono text-xs ${idx === 5 ? 'text-error' : 'text-accent'}">${c.num}</div>
           <h3 class="serif text-2xl text-textMain">${c.title}</h3>
-          <p class="tos-summary-copy">${c.desc}</p>
+          <p class="tos-summary-copy"><strong>${c.lead}</strong><span>${c.desc}</span></p>
         </div>
       `).join('');
 

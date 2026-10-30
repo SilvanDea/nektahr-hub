@@ -46,14 +46,14 @@
 <link rel="stylesheet" href="/assets/compact-calculator.css?v=b719dfe1a0b4">
 <link rel="stylesheet" href="/assets/contact-actions.css?v=e57e8e3f414b">
 <link rel="stylesheet" href="/assets/thumbnail-mats.css?v=f633d43cfe84">
-<link rel="stylesheet" href="/assets/review-batch.css?v=bcf444fd3870">
+<link rel="stylesheet" href="/assets/review-batch.css?v=9965a6d2bf1d">
 </head>
 <body data-page="board" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
   <!-- =====================================================================
        CENTRAL CONFIGURATION & LOCALIZATION (EN main · ES · RU)
   ====================================================================== -->
-  <script src="/assets/translations.js?v=fbd3652bd970"></script>
+  <script src="/assets/translations.js?v=448d1966efce"></script>
 <script src="/assets/app-state.js?v=b6ad5db6eea7"></script>
 
   <!-- =====================================================================
@@ -674,37 +674,37 @@
         <div class="card p-5 space-y-2 ">
           <div class="mono text-xs text-accent">01</div>
           <h3 class="serif text-2xl text-textMain">Payment & plans</h3>
-          <p class="tos-summary-copy">Full payment is required by default. For orders over $200, instalments can be agreed in advance; exceptions for smaller orders may be agreed individually. The deposit, dates and work start are confirmed before payment. Final files follow full payment.</p>
+          <p class="tos-summary-copy"><strong>Full payment by default.</strong><span>Instalments for orders over $200 can be agreed before payment; smaller orders may qualify by agreement. We confirm the deposit, dates and work start first. Final files follow full payment.</span></p>
         </div>
 
         <div class="card p-5 space-y-2 ">
           <div class="mono text-xs text-accent">02</div>
           <h3 class="serif text-2xl text-textMain">Refund Policy</h3>
-          <p class="tos-summary-copy">All payments are non-refundable, including payments for commissions, YCH, adopts and reservation advances. Any exception is entirely at my discretion and must be explicitly agreed by me.</p>
+          <p class="tos-summary-copy"><strong>Payments are non-refundable.</strong><span>This covers commissions, YCH, adopts and reservation advances. An exception is possible only if I explicitly agree to it.</span></p>
         </div>
 
         <div class="card p-5 space-y-2 ">
           <div class="mono text-xs text-accent">03</div>
           <h3 class="serif text-2xl text-textMain">Revisions & Edits</h3>
-          <p class="tos-summary-copy">My mistakes against the agreed brief are corrected free and do not count toward revisions. Normally 3–5 revisions are included at each available approval stage. I determine the scope and whether a change fits that stage; any extra fee is agreed before editing.</p>
+          <p class="tos-summary-copy"><strong>Normally 3–5 revisions per approval stage.</strong><span>My mistakes are corrected free and do not count toward revisions. I confirm whether a change fits the current stage; any extra fee is agreed before editing.</span></p>
         </div>
 
         <div class="card p-5 space-y-2 ">
           <div class="mono text-xs text-accent">04</div>
           <h3 class="serif text-2xl text-textMain">Personal Use Default</h3>
-          <p class="tos-summary-copy">Personal use is included: avatars, banners, character profiles and prints for yourself. Please credit me when sharing. Merchandise, advertising and other commercial uses require a separate agreement.</p>
+          <p class="tos-summary-copy"><strong>Personal use is included.</strong><span>Use your art for avatars, banners, character profiles or prints for yourself, with credit when sharing. Merchandise, advertising and other commercial use require a separate agreement.</span></p>
         </div>
 
         <div class="card p-5 space-y-2 ">
           <div class="mono text-xs text-accent">05</div>
           <h3 class="serif text-2xl text-textMain">Adoptable Resale</h3>
-          <p class="tos-summary-copy">You may resell an adopt for the price you paid or less. Gifting and trading are allowed; let me know about the transfer and keep the original design credit.</p>
+          <p class="tos-summary-copy"><strong>Resale at your purchase price or lower.</strong><span>You may also gift or trade your adopt. Let me know about the transfer, and keep the original design credit with the character.</span></p>
         </div>
 
         <div class="card p-5 space-y-2 border-error/40 bg-error/5">
           <div class="mono text-xs text-error">06</div>
           <h3 class="serif text-2xl text-textMain">Strict No AI / No NFT</h3>
-          <p class="tos-summary-copy">Do not use my artwork or designs for AI training, LoRAs or machine-learning datasets. This applies to sketches and lineart as well as finished work. NFTs and crypto projects are also prohibited.</p>
+          <p class="tos-summary-copy"><strong>No AI training, NFTs or crypto projects.</strong><span>Do not add my art or designs to training datasets or use them for LoRAs. This covers sketches, lineart and finished artwork alike.</span></p>
         </div>
       </div>
       </div>
@@ -1017,7 +1017,7 @@
   <!-- =====================================================================
        APPLICATION LOGIC
   ====================================================================== -->
-  <script src="/assets/app.js?v=1d6d8e7f7273"></script>
+  <script src="/assets/app.js?v=1d939557a4e7"></script>
 <script src="/assets/process-viewer.js?v=80f194fe702d"></script>
 <script src="/assets/artwork-interactions.js?v=97b89cb2e8ce"></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
