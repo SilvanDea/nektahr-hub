@@ -18,33 +18,37 @@
     set('quote-character-output',$('quote-character-count')?.value||'1');const label=base.querySelector('label[for="quote-character-count"]');if(label)label.textContent=c.count;
     set('calc-title',c.calc);set('calc-copy-btn',c.request);set('calc-brief-summary',c.brief);selection();
   }
-  function selection(){const c=t();let saving=document.getElementById('quote-bundle-saving');if(!saving){saving=document.createElement('small');saving.id='quote-bundle-saving';saving.style.cssText='display:block;color:#8ee6af;font-size:12px;margin-top:6px;text-align:right';document.getElementById('calc-total-value')?.parentElement.append(saving);}const ychBundle=currentPricingTab==='ych'&&document.getElementById('calc-stage-sel')?.value==='160';const customBundle=currentPricingTab==='custom'&&document.getElementById('calc-stage-sel')?.value==='single'&&['nsfw','furry','futa'].some(id=>CALC_MODE_STATE.custom.quantities?.[id]);saving.textContent=ychBundle||customBundle?({en:'Bundle saving: $10',ru:'Экономия комплекта: $10',es:'Ahorro del paquete: $10'})[currentLang]:'';
-const tier=Number(document.getElementById('calc-stage-sel')?.value);
-saving.removeAttribute('title');
-let explanation=$('quote-saving-details');
-if(!explanation){explanation=document.createElement('details');explanation.id='quote-saving-details';saving.after(explanation);}
-explanation.hidden=true;explanation.replaceChildren();
-const lc=({en:{how:'How it is calculated',base:'Base adopt',render:'Render upgrade',alt:'Included alt version',expressions:'Included expressions',art:'Bonus color-sketch artwork',back:'Back view',details:'Two close-ups',nsfw:'Included NSFW version',separate:'Separately',bundle:'Tier price',note:'Estimate using known separate rates. Unpriced work and purchased extras are excluded. This is not a claim that every higher tier has a larger discount.',partial:'An agreed custom alternative is not valued here.'},ru:{how:'Как посчитано',base:'База адопта',render:'Улучшение рендера',alt:'Включённая альт-версия',expressions:'Включённые эмоции',art:'Бонусный цветной скетч',back:'Вид сзади',details:'Два крупных плана',nsfw:'Включённая NSFW-версия',separate:'По отдельности',bundle:'Цена тира',note:'Оценка по известным отдельным тарифам. Неоценённая работа и докупленные extras исключены. Более высокий тир не обязательно даёт большую скидку.',partial:'Другая согласованная альтернатива здесь не оценена.'},es:{how:'Cómo se calcula',base:'Adopt base',render:'Mejora de render',alt:'Versión alt incluida',expressions:'Expresiones incluidas',art:'Boceto a color adicional',back:'Vista trasera',details:'Dos detalles',nsfw:'Versión NSFW incluida',separate:'Por separado',bundle:'Precio del nivel',note:'Estimación con tarifas conocidas. Sin trabajo no valorado ni extras comprados. Un nivel superior no implica un descuento mayor.',partial:'La alternativa personalizada no está valorada aquí.'}})[currentLang];
-if(currentPricingTab==='adopt'&&tier>=200){
- const variant=CALC_MODE_STATE.adopt.includedVariant||'nsfw';
- const nsfwBase=Boolean(CALC_MODE_STATE.adopt.baseNsfw)||tier>=500||variant==='nsfw';
- const alt=variant==='other'?0:variant==='futa'&&nsfwBase?25:50;
- const components=[[lc.base,100],[lc.render,100]];
- if(alt)components.push([lc.alt,alt]);
- components.push([lc.expressions,tier>=500?75:25]);
- if(tier>=350)components.push([lc.art,120]);
- if(tier>=500){components.push([lc.back,55],[lc.details,50]);if(variant!=='nsfw')components.push([lc.nsfw,50]);}
- const separate=components.reduce((sum,row)=>sum+row[1],0),difference=separate-tier;
- saving.textContent=difference>0?({en:'Estimated saving on priced inclusions: $',ru:'Экономия на оценённых включениях: $',es:'Ahorro estimado en elementos valorados: $'})[currentLang]+difference:'';
- const summary=document.createElement('summary');summary.textContent=lc.how;explanation.append(summary);
- for(const [name,value]of [...components,[lc.separate,separate],[lc.bundle,tier]]){const row=document.createElement('div');row.className='quote-line';const label=document.createElement('span'),cost=document.createElement('span');label.textContent=name;cost.textContent='$'+value;row.append(label,cost);explanation.append(row);}
- const note=document.createElement('p');note.textContent=lc.note+(variant==='other'?' '+lc.partial:'');explanation.append(note);explanation.hidden=false;
-}else if(ychBundle||customBundle){
- const summary=document.createElement('summary');summary.textContent=lc.how;const p=document.createElement('p');p.textContent=ychBundle?'$120 + $50 − $160 = $10':'$200 + $50 − $240 = $10';explanation.append(summary,p);explanation.hidden=false;
-}
-saving.style.textAlign='left';
-
-
+  // Only explicitly included bonuses are valued; this is not a discount calculation.
+  function adoptBonuses(tier,variant,baseNsfw){
+    if(tier<200)return [];
+    const nsfwIncluded=tier>=450||variant==='nsfw';
+    const alt=variant==='other'?0:variant==='futa'&&(baseNsfw||nsfwIncluded)?25:50;
+    const rows=[];
+    if(alt)rows.push(['alt',alt]);
+    rows.push(['expressions',tier>=450?75:25]);
+    if(tier>=300)rows.push(['art',120]);
+    if(tier>=450&&variant!=='nsfw')rows.push(['nsfw',50]);
+    return rows;
+  }
+  window.calculateAdoptBonuses=adoptBonuses;
+  function selection(){const c=t();let saving=$('quote-bundle-saving');if(!saving){saving=document.createElement('small');saving.id='quote-bundle-saving';saving.style.cssText='display:block;color:#8ee6af;font-size:12px;margin-top:6px;text-align:left';$('calc-total-value')?.parentElement.append(saving);}
+    saving.removeAttribute('title');saving.textContent='';saving.hidden=true;
+    let explanation=$('quote-saving-details');if(!explanation){explanation=document.createElement('details');explanation.id='quote-saving-details';saving.after(explanation);}
+    const expanded=explanation.open;explanation.hidden=true;explanation.replaceChildren();
+    const lc=({
+      en:{how:'Included bonuses · breakdown',label:'Priced bonuses included: $',alt:'Included alt version',expressions:'Included extra expressions',art:'Bonus color sketch',nsfw:'Additional NSFW version',total:'Bonus value',note:'Value of the listed bonuses at separate rates, not a discount on the package. Base design, rendering, reference sheet and purchased extras are excluded. An agreed custom alternative is not valued. The same version is counted once.'},
+      ru:{how:'Включённые бонусы · состав',label:'Включены оценённые бонусы на $',alt:'Включённая альт-версия',expressions:'Включённые дополнительные эмоции',art:'Бонусный цветной скетч',nsfw:'Дополнительная NSFW-версия',total:'Стоимость бонусов',note:'Стоимость перечисленных бонусов по отдельным тарифам, а не скидка на пакет. База, рендер, референс и докупленные дополнения не учитываются. Другая согласованная альтернатива не оценена. Одна и та же версия считается один раз.'},
+      es:{how:'Bonos incluidos · desglose',label:'Bonos valorados incluidos: $',alt:'Versión alt incluida',expressions:'Expresiones extra incluidas',art:'Boceto a color adicional',nsfw:'Versión NSFW adicional',total:'Valor de los bonos',note:'Valor de los bonos indicados con tarifas separadas, no un descuento del paquete. No incluye diseño base, render, referencia ni extras comprados. La alternativa personalizada no está valorada. Cada versión se cuenta una sola vez.'}
+    })[currentLang]||null;
+    const tier=Number($('calc-stage-sel')?.value);
+    if(currentPricingTab==='adopt'&&tier>=200){
+      const s=CALC_MODE_STATE.adopt,components=adoptBonuses(tier,s.includedVariant||'nsfw',Boolean(s.baseNsfw));
+      const total=components.reduce((sum,row)=>sum+row[1],0);
+      saving.hidden=false;saving.textContent=lc.label+total;
+      const summary=document.createElement('summary');summary.textContent=lc.how;explanation.append(summary);
+      for(const [key,value]of [...components,['total',total]]){const row=document.createElement('div');row.className='quote-line';const label=document.createElement('span'),cost=document.createElement('span');label.textContent=lc[key];cost.textContent='$'+value;row.append(label,cost);explanation.append(row);}
+      const note=document.createElement('p');note.textContent=lc.note;explanation.append(note);explanation.hidden=false;explanation.open=expanded;
+    }
     document.querySelectorAll('.compact-option-group').forEach(group=>{let count=[...group.querySelectorAll('input[type="checkbox"]')].filter(x=>x.checked).length;group.querySelectorAll('[data-quote-quantity]').forEach(x=>count+=Number(x.value)||0);const badge=group.querySelector('.compact-selection-count');badge.textContent=count?'· '+count+' '+c.selected:'';});
     set('calc-estimate-note',c.estimate);const pending=$('calc-breakdown-list')?.textContent;if(pending?.includes(({en:'To quote',ru:'По согласованию',es:'A consultar'})[currentLang]))set('calc-estimate-note',c.estimate+' '+({en:'Some extras are quoted separately.',ru:'Часть дополнений оценивается отдельно.',es:'Algunos extras se presupuestan aparte.'})[currentLang]);
   }
@@ -59,3 +63,4 @@ window.addEventListener('load',()=>{
  const mode=new URLSearchParams(location.search).get('type');
  if(['adopt','ych'].includes(mode))switchPricingTab(mode);
 });
+
