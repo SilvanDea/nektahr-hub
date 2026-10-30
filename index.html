@@ -140,7 +140,7 @@
 <link rel="stylesheet" href="/assets/site-polish.css?v=20261028-street-demon-mar18">
 <link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-street-demon-mar18">
 <link rel="stylesheet" href="/assets/catalog-queue.css?v=20261030-bundles1">
-<link rel="stylesheet" href="/assets/readability.css?v=20261030-gallery-adult2">
+<link rel="stylesheet" href="/assets/readability.css?v=20261030-gallery-caption3">
 <link rel="stylesheet" href="/assets/compact-calculator.css?v=20261030-bundles1">
 <link rel="stylesheet" href="/assets/contact-actions.css?v=20261030-bundles1">
 <link rel="stylesheet" href="/assets/thumbnail-mats.css?v=20261029-frames1">
@@ -2795,8 +2795,8 @@
               <div class="min-w-0">
                 <span class="gallery-kind" data-kind="${item.cat}">${getGalleryKind(item)}</span>
                 <h3 class="serif text-xl text-textMain">${getGalleryTitle(item)}</h3>
-                ${getGallerySeries(item)?`<p class="gallery-series">${getGallerySeries(item)}</p>`:''}
                 <p class="text-xs text-textDim">${item.processWork?getProcessLabel(item):getGalleryStage(item)}</p>
+                ${getGallerySeries(item)?`<p class="gallery-series">${getGallerySeries(item)}</p>`:''}
               </div>
               <span class="mono text-xs text-accent shrink-0">${item.processWork?'↗':getGalleryPriceLabel()}</span>
             </div>
