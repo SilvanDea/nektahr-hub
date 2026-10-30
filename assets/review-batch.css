@@ -37,3 +37,5 @@
 .tos-detail{height:100%;box-sizing:border-box}.tos-detail>ul{margin-top:16px}.tos-detail>ul>li:first-child{padding-top:3px}
 @media(min-width:900px){#tos-detailed-sections>.tos-detail:last-child:nth-child(odd){grid-column:1/-1}}
 @media(max-width:600px){#tos-cards-grid>.card{padding:20px}.tos-summary-copy{font-size:14px}}
+
+.tos-consent{width:fit-content;max-width:100%;flex:none;align-self:flex-start}.tos-consent input{flex:none}#tos-summary-title{flex:1;min-width:0}

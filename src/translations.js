@@ -284,7 +284,7 @@
     },
     "tos": {
       "eyebrow": "TERMS OF SERVICE",
-      "title": "Commissions, Adopts & YCH — Rules",
+      "title": "Rules: Commissions, Adopts & YCH",
       "sub": "By commissioning me or bidding on an adoptable/YCH, you agree to the terms below.",
       "summaryTitle": "Quick Summary (At a Glance)",
       "cards": [
@@ -325,7 +325,7 @@
           "lead": "No AI training, NFTs or crypto projects."
         }
       ],
-      "agreeCheck": "I have read and agree to the Terms of Service (include the checkbox confirmation in the quote request)",
+      "agreeCheck": "I’ve read and agree to the ToS",
       "fullTitle": "Detailed Terms & Conditions",
       "sections": [
         {
@@ -798,7 +798,7 @@
     },
     "tos": {
       "eyebrow": "TÉRMINOS DE SERVICIO",
-      "title": "Comisiones, Adopts y YCH — Reglas",
+      "title": "Reglas: encargos, adopts y YCH",
       "sub": "Al comisionarme o pujar por un adopt/YCH, aceptas los siguientes términos.",
       "summaryTitle": "Resumen Rápido",
       "cards": [
@@ -839,7 +839,7 @@
           "lead": "Sin entrenamiento de IA, NFT ni cripto."
         }
       ],
-      "agreeCheck": "He leído y acepto los Términos de Servicio (incluir la confirmación de la casilla en el mensaje de solicitud)",
+      "agreeCheck": "He leído y acepto los ToS",
       "fullTitle": "Términos Detallados",
       "sections": [
         {
@@ -1312,7 +1312,7 @@
     },
     "tos": {
       "eyebrow": "TERMS OF SERVICE",
-      "title": "Правила заказов, адоптов и YCH (T.O.S.)",
+      "title": "Правила: комишки, адопты и YCH",
       "sub": "Заказывая комишку или покупая адопта/YCH, вы соглашаетесь с этими простыми правилами.",
       "summaryTitle": "Коротко о главном (Сводка по карточкам)",
       "cards": [
@@ -1353,7 +1353,7 @@
           "lead": "Никакого обучения ИИ, NFT и криптопроектов."
         }
       ],
-      "agreeCheck": "Я прочитал(а) и согласен(на) с правилами ToS (включить отметку о согласии в текст заявки)",
+      "agreeCheck": "Я прочитал и принимаю ToS",
       "fullTitle": "Полные условия работы (Detailed T.O.S.)",
       "sections": [
         {
