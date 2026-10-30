@@ -182,8 +182,8 @@
           {
             "val": 30,
             "code": "YCH · SKETCH",
-            "title": "Clean Sketch",
-            "stage": "Sketch",
+            "title": "B&W Sketch",
+            "stage": "B&W Sketch",
             "price": "$30",
             "status": "Price guide",
             "desc": "Estimated turnaround: up to 14 business days."
@@ -291,32 +291,60 @@
         {
           "num": "01",
           "title": "Payment & plans",
-          "desc": "Full payment is required by default. For orders over $200, instalments can be agreed in advance; exceptions for smaller orders may be agreed individually. The deposit, dates and work start are confirmed before payment. Final files follow full payment."
+          "desc": "Full payment is required by default. For orders over $200, instalments can be agreed in advance; exceptions for smaller orders may be agreed individually. The deposit, dates and work start are confirmed before payment. Final files follow full payment.",
+          "points": [
+            "Full payment by default.",
+            "Instalments for orders over $200: agree before paying.",
+            "Final files after full payment."
+          ]
         },
         {
           "num": "02",
           "title": "Refund Policy",
-          "desc": "All payments are non-refundable, including payments for commissions, YCH, adopts and reservation advances. Any exception is entirely at my discretion and must be explicitly agreed by me."
+          "desc": "All payments are non-refundable, including payments for commissions, YCH, adopts and reservation advances. Any exception is entirely at my discretion and must be explicitly agreed by me.",
+          "points": [
+            "No refunds.",
+            "Exceptions only at my discretion."
+          ]
         },
         {
           "num": "03",
           "title": "Revisions & Edits",
-          "desc": "My mistakes against the agreed brief are corrected free and do not count toward revisions. Normally 3–5 revisions are included at each available approval stage. I determine the scope and whether a change fits that stage; any extra fee is agreed before editing."
+          "desc": "My mistakes against the agreed brief are corrected free and do not count toward revisions. Normally 3–5 revisions are included at each available approval stage. I determine the scope and whether a change fits that stage; any extra fee is agreed before editing.",
+          "points": [
+            "3–5 revisions per approval stage.",
+            "My mistakes: fixed free.",
+            "Extra edits: agree the fee first."
+          ]
         },
         {
           "num": "04",
           "title": "Personal Use Default",
-          "desc": "All art is for personal use by default. Credit @Nektahr_ when reposting."
+          "desc": "All art is for personal use by default. Credit @Nektahr_ when reposting.",
+          "points": [
+            "Personal use included.",
+            "Credit me when sharing.",
+            "Commercial use: separate agreement."
+          ]
         },
         {
           "num": "05",
           "title": "Adoptable Resale",
-          "desc": "Adopts may be resold at their original purchase price or lower; please notify me of the transfer."
+          "desc": "Adopts may be resold at their original purchase price or lower; please notify me of the transfer.",
+          "points": [
+            "Resell for what you paid or less.",
+            "Tell me about the transfer.",
+            "Keep the design credit."
+          ]
         },
         {
           "num": "06",
           "title": "Strict No AI / No NFT",
-          "desc": "Zero tolerance for AI training, machine learning datasets, or crypto/NFT minting."
+          "desc": "Zero tolerance for AI training, machine learning datasets, or crypto/NFT minting.",
+          "points": [
+            "No AI training or datasets.",
+            "No NFTs or crypto projects."
+          ]
         }
       ],
       "agreeCheck": "I have read and agree to the Terms of Service (include the checkbox confirmation in the quote request)",
@@ -690,8 +718,8 @@
           {
             "val": 30,
             "code": "YCH · BOCETO",
-            "title": "Boceto limpio",
-            "stage": "Boceto",
+            "title": "Boceto en B/N",
+            "stage": "Boceto en B/N",
             "price": "$30",
             "status": "Guía de precios",
             "desc": "Plazo estimado: hasta 14 días laborables."
@@ -799,32 +827,60 @@
         {
           "num": "01",
           "title": "Pago y planes",
-          "desc": "Se requiere el pago completo por defecto. Para pedidos superiores a $200 se pueden acordar cuotas; las excepciones para importes menores se negocian individualmente. El anticipo, las fechas y el inicio del trabajo se acuerdan antes de pagar. Los archivos finales se entregan tras el pago completo."
+          "desc": "Se requiere el pago completo por defecto. Para pedidos superiores a $200 se pueden acordar cuotas; las excepciones para importes menores se negocian individualmente. El anticipo, las fechas y el inicio del trabajo se acuerdan antes de pagar. Los archivos finales se entregan tras el pago completo.",
+          "points": [
+            "Pago completo por defecto.",
+            "Cuotas para pedidos de más de $200: acordar antes de pagar.",
+            "Archivos finales tras el pago completo."
+          ]
         },
         {
           "num": "02",
           "title": "Reembolsos",
-          "desc": "Todos los pagos son no reembolsables, incluidos encargos, YCH, adopts y anticipos de reserva. Cualquier excepción queda exclusivamente a mi criterio y requiere mi aprobación expresa."
+          "desc": "Todos los pagos son no reembolsables, incluidos encargos, YCH, adopts y anticipos de reserva. Cualquier excepción queda exclusivamente a mi criterio y requiere mi aprobación expresa.",
+          "points": [
+            "Sin reembolsos.",
+            "Excepciones solo a mi criterio."
+          ]
         },
         {
           "num": "03",
           "title": "Revisiones",
-          "desc": "Mis errores respecto al encargo acordado se corrigen gratis y no cuentan como revisiones. Normalmente se incluyen 3–5 revisiones en cada etapa disponible de aprobación. Yo determino el alcance y si el cambio corresponde a esa etapa; cualquier suplemento se acuerda antes de editar."
+          "desc": "Mis errores respecto al encargo acordado se corrigen gratis y no cuentan como revisiones. Normalmente se incluyen 3–5 revisiones en cada etapa disponible de aprobación. Yo determino el alcance y si el cambio corresponde a esa etapa; cualquier suplemento se acuerda antes de editar.",
+          "points": [
+            "3–5 revisiones por etapa de aprobación.",
+            "Mis errores: corrección gratuita.",
+            "Extras: acordamos la tarifa primero."
+          ]
         },
         {
           "num": "04",
           "title": "Uso Personal",
-          "desc": "Uso personal por defecto. Acreditar a @Nektahr_ al publicar."
+          "desc": "Uso personal por defecto. Acreditar a @Nektahr_ al publicar.",
+          "points": [
+            "Uso personal incluido.",
+            "Menciona mi autoría al publicar.",
+            "Uso comercial: acuerdo aparte."
+          ]
         },
         {
           "num": "05",
           "title": "Reventa de Adopts",
-          "desc": "Puedes revender el adopt por el precio original o menos; avísame de la transferencia."
+          "desc": "Puedes revender el adopt por el precio original o menos; avísame de la transferencia.",
+          "points": [
+            "Reventa por el precio pagado o menos.",
+            "Avísame del cambio de dueño.",
+            "Conserva el crédito del diseño."
+          ]
         },
         {
           "num": "06",
           "title": "Prohibido IA y NFT",
-          "desc": "Prohibido usar mi arte para entrenar IA o crear NFTs/cripto."
+          "desc": "Prohibido usar mi arte para entrenar IA o crear NFTs/cripto.",
+          "points": [
+            "Sin entrenamiento de IA ni datasets.",
+            "Sin NFT ni proyectos cripto."
+          ]
         }
       ],
       "agreeCheck": "He leído y acepto los Términos de Servicio (incluir la confirmación de la casilla en el mensaje de solicitud)",
@@ -1198,8 +1254,8 @@
           {
             "val": 30,
             "code": "YCH · СКЕТЧ",
-            "title": "Чистый скетч",
-            "stage": "Скетч",
+            "title": "Ч/б скетч",
+            "stage": "Ч/б скетч",
             "price": "$30",
             "status": "Ориентир по цене",
             "desc": "Ориентировочный срок: до 14 рабочих дней."
@@ -1307,32 +1363,61 @@
         {
           "num": "01",
           "title": "Оплата и рассрочка",
-          "desc": "По умолчанию требуется полная предоплата. Для заказов свыше $200 можно заранее согласовать оплату частями; исключения для меньшей суммы возможны по личной договорённости. Первый взнос, даты платежей и начало работы согласуются до оплаты. Готовые файлы передаются после полного расчёта."
+          "desc": "По умолчанию требуется полная предоплата. Для заказов свыше $200 можно заранее согласовать оплату частями; исключения для меньшей суммы возможны по личной договорённости. Первый взнос, даты платежей и начало работы согласуются до оплаты. Готовые файлы передаются после полного расчёта.",
+          "points": [
+            "По умолчанию — полная оплата.",
+            "Рассрочка свыше $200: договоримся до оплаты.",
+            "Финальные файлы — после полной оплаты."
+          ]
         },
         {
           "num": "02",
           "title": "Возврат средств",
-          "desc": "Все платежи невозвратные, включая оплату комишек, YCH, адоптов и авансы за бронь. Исключение возможно только по моему решению и с моим прямым согласием."
+          "desc": "Все платежи невозвратные, включая оплату комишек, YCH, адоптов и авансы за бронь. Исключение возможно только по моему решению и с моим прямым согласием.",
+          "points": [
+            "Возвратов нет.",
+            "Исключения — только по моему решению."
+          ]
         },
         {
           "num": "03",
           "title": "Правки на скетче",
-          "desc": "Мои ошибки относительно согласованного задания исправляются бесплатно и не входят в лимит. Базово на каждом доступном этапе согласования предусмотрено 3–5 правок. Объём правки и возможность её выполнения на текущем этапе определяю я; доплата согласуется до изменений."
+          "desc": "Мои ошибки относительно согласованного задания исправляются бесплатно и не входят в лимит. Базово на каждом доступном этапе согласования предусмотрено 3–5 правок. Объём правки и возможность её выполнения на текущем этапе определяю я; доплата согласуется до изменений.",
+          "points": [
+            "3–5 правок на этапе согласования.",
+            "Мои ошибки исправляю бесплатно.",
+            "Доплаты за правки согласуем заранее."
+          ]
         },
         {
           "num": "04",
           "title": "Личное использование",
-          "desc": "По умолчанию арт для личного пользования. При публикации указывайте @Nektahr_."
+          "desc": "По умолчанию арт для личного пользования. При публикации указывайте @Nektahr_.",
+          "points": [
+            "Личное использование включено.",
+            "При публикации укажи автора.",
+            "Коммерция — по отдельной договорённости."
+          ]
         },
         {
           "num": "05",
           "title": "Перепродажа адоптов",
-          "desc": "Адопта можно перепродать по первоначальной цене или дешевле; сообщи мне о передаче."
+          "desc": "Адопта можно перепродать по первоначальной цене или дешевле; сообщи мне о передаче.",
+          "points": [
+            "Перепродажа не дороже цены покупки.",
+            "Сообщи о передаче.",
+            "Сохрани авторство дизайна."
+          ]
         },
         {
           "num": "06",
           "title": "Запрет ИИ и NFT",
-          "desc": "Строго запрещено использовать мои работы для обучения нейросетей (AI) и создания NFT."
+          "desc": "Строго запрещено использовать мои работы для обучения нейросетей (AI) и создания NFT.",
+          "points": [
+            "Нельзя использовать для обучения ИИ.",
+            "Нельзя добавлять в датасеты.",
+            "Никаких NFT и криптопроектов."
+          ]
         }
       ],
       "agreeCheck": "Я прочитал(а) и согласен(на) с правилами ToS (включить отметку о согласии в текст заявки)",
