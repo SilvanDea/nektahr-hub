@@ -74,21 +74,3 @@ if(card.parentElement?.id==='gal-ext-platforms')card.replaceChildren(title);
   const render=renderAllText;window.renderAllText=function(){render();update();};
   update();
 })();
-
-
-/* Consistent tier names and explicit cumulative expression allowance. */
-(()=>{
- const tierNames={en:['Tier I','Tier II','Tier III','Tier IV'],ru:['Тир I','Тир II','Тир III','Тир IV'],es:['Nivel I','Nivel II','Nivel III','Nivel IV']};
- for(const lang of ['en','ru','es']){
-  const p=I18N[lang].pricing,tiers=tierNames[lang];
-  p.adoptSection.tiers.forEach((t,i)=>{t.badge=tiers[i];if(i===0)t.title=t.title.replace(/^SB\s*[—–-]\s*/,'');});
-  p.adoptSection.tiers[3].perks.push(({en:'3 extra expressions included in total',ru:'3 эмоции включены суммарно',es:'3 expresiones incluidas en total'})[lang]);
-  p.ychSection.slots.forEach((slot,i)=>{slot.code=i===3?tiers[i]+' · AB':tiers[i];});
-  const last=p.adoptSection.tiers[3];last.desc=last.desc.replace(/\bAB\b/g,tiers[3]);
- }
- for(const lang of ['en','ru','es']){CALC_CONFIG.adopt.note[lang]=CALC_CONFIG.adopt.note[lang].replace(/\bAB\b/g,tierNames[lang][3]);} 
- CALC_CONFIG.ych.options.forEach((o,i)=>{for(const lang of ['en','ru','es'])if(o.label?.[lang])o.label[lang]=tierNames[lang][i]+' · '+o.label[lang];});
- CALC_CONFIG.adopt.options.forEach((o,i)=>{for(const lang of ['en','ru','es'])if(o.label?.[lang])o.label[lang]=o.label[lang].replace(/\bSB\b/g,tierNames[lang][0]).replace(/\bAB\b/g,tierNames[lang][3]);});
- const oldRender=renderAllText;window.renderAllText=function(){oldRender();};
- renderAllText();
-})();

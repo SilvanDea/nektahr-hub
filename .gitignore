@@ -1,0 +1,4 @@
+.openai/
+public/
+__pycache__/
+node_modules/

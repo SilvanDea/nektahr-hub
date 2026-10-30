@@ -34,6 +34,6 @@
   window.renderLiveQueue=render;window.updateHeaderQueueCounter=render;window.loadLiveQueue=()=>load();window.queueManagerReady=true;
   $('queue-tab-active').onclick=()=>{view='active';render()};$('queue-tab-reserved').onclick=()=>{view='reserved';render()};$('queue-refresh').onclick=()=>load(true);
   $('queue-tabs').addEventListener('keydown',event=>{if(['ArrowLeft','ArrowRight'].includes(event.key)){event.preventDefault();view=view==='active'?'reserved':'active';render();$('queue-tab-'+view).focus();}});
-  fetch('/assets/catalog-data.json').then(r=>{if(!r.ok)throw Error('Catalog unavailable');return r.json()}).then(items=>{catalogReservations=items.filter(item=>item.status==='reserved'&&item.reservedUntil).map(item=>({orderId:item.id,title:item.titles.en,orderType:'Adopt',status:'reserved',acceptedAt:'',reservationUntil:item.reservedUntil,sortOrder:0}));render();}).catch(()=>{});
+  fetch('/assets/catalog-data.json', {cache:'no-cache', signal:AbortSignal.timeout(10000)}).then(r=>{if(!r.ok)throw Error('Catalog unavailable');return r.json()}).then(items=>{catalogReservations=items.filter(item=>item.status==='reserved'&&item.reservedUntil).map(item=>({orderId:item.id,title:item.titles.en,orderType:'Adopt',status:'reserved',acceptedAt:'',reservationUntil:item.reservedUntil,sortOrder:0}));render();}).catch(()=>{});
   render();load();setInterval(()=>{if(document.body.dataset.page==='queue'&&document.visibilityState==='visible')load(true)},120000);
 })();

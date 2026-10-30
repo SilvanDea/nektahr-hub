@@ -1,0 +1,1 @@
+const fs=require('node:fs'),vm=require('node:vm');const context={window:{}};vm.runInNewContext(fs.readFileSync('assets/tailwind-config.js','utf8'),context);module.exports={...context.window.tailwind.config,content:['./src/**/*.{html,js}','./assets/*.js']};

@@ -1,0 +1,66 @@
+
+    body {
+      background-color: #0B0A0E;
+      color: #B7AE9F;
+      font-family: 'Noto Sans', system-ui, sans-serif;
+      overflow-x: hidden;
+      background-image: radial-gradient(circle at 50% 0%, rgba(226, 180, 120, 0.05), transparent 55%);
+    }
+    h1, h2, h3, h4, .serif {
+      font-family: 'Cormorant Garamond', serif;
+      color: #F2ECE4;
+      font-weight: 500;
+    }
+    .mono {
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.06em;
+    }
+    .hairline {
+      border-color: rgba(226, 180, 120, 0.16);
+    }
+    .card {
+      background: #121118;
+      border: 1px solid rgba(226, 180, 120, 0.16);
+    }
+    .card-interactive {
+      transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+    }
+    .card-interactive:hover {
+      border-color: rgba(226, 180, 120, 0.5);
+      background-color: #16151E;
+    }
+    .blueprint-box {
+      background-color: #0E0D13;
+      background-image:
+        linear-gradient(rgba(226, 180, 120, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(226, 180, 120, 0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .addon-pill input:checked + div {
+      background-color: rgba(226, 180, 120, 0.16);
+      color: #F2ECE4;
+      border-color: #E2B478;
+    }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0B0A0E; }
+    ::-webkit-scrollbar-thumb { background: #3A3633; }
+    ::-webkit-scrollbar-thumb:hover { background: #E2B478; }
+    :focus-visible { outline: 2px solid #E2B478; outline-offset: 3px; }
+    img { max-width: 100%; }
+    @media (max-width: 767px) {
+      header.sticky { height: auto; min-height: 4rem; flex-wrap: wrap; padding-top: .65rem; padding-bottom: .45rem; }
+      header.sticky > a:first-child { order: 1; }
+      header.sticky > div:last-child { order: 2; margin-left: auto; }
+      #nav-links { order: 3; flex: 0 0 100%; width: 100%; max-width: 100%; overflow-x: auto; justify-content: flex-start; padding: .35rem 0 .15rem; scrollbar-width: thin; }
+      #nav-links .nav-link { flex: 0 0 auto; white-space: nowrap; }
+      .ptab-btn { white-space: normal; line-height: 1.25; }
+    }
+    @media (max-width: 360px) {
+      header.sticky { gap: .25rem; }
+      #nav-links { gap: .25rem; }
+      #nav-links .nav-link { padding-left: .35rem; padding-right: .35rem; font-size: .68rem; }
+    }
+    /* Utility CSS is generated locally and hosted with the site. */
+    .hidden { display: none !important; }
+  
+img{-webkit-user-drag:none;-webkit-touch-callout:none;user-select:none}
