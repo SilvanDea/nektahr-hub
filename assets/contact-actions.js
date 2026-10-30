@@ -43,6 +43,19 @@ if(card.parentElement?.id==='gal-ext-platforms')card.replaceChildren(title);
     $('header-status-badge').textContent=c.open;let badge=$('contacts-intake');if(!badge){badge=document.createElement('p');badge.id='contacts-intake';$('contacts-title').after(badge);}badge.textContent=c.open;
     let intake=$('commission-intake');if(!intake){intake=document.createElement('p');intake.id='commission-intake';$('q-sub').after(intake);}intake.textContent=c.intake;
     decorateContacts();
+    const briefCopy={
+      en:{title:'Links & notes (optional)',refs:'Reference links (optional)',placeholder:'Links to character references or a moodboard',notes:'Idea & important details (optional)',notesPlaceholder:'Describe your idea or leave this empty and discuss it in chat.',hint:'You can send all reference images and details in the order chat. These fields are optional; images are not uploaded here.'},
+      ru:{title:'Ссылки и пожелания (необязательно)',refs:'Ссылки на референсы (необязательно)',placeholder:'Ссылки на персонажа или подборку примеров',notes:'Идея и важные детали (необязательно)',notesPlaceholder:'Опиши идею или оставь поле пустым — обсудим в чате.',hint:'Все картинки и подробности можно отправить в чате заказа. Эти поля необязательны; загрузки изображений здесь нет.'},
+      es:{title:'Enlaces y notas (opcional)',refs:'Enlaces de referencia (opcional)',placeholder:'Enlaces al personaje o un moodboard',notes:'Idea y detalles (opcional)',notesPlaceholder:'Describe tu idea o déjalo vacío para hablarlo en el chat.',hint:'Puedes enviar todas las imágenes y detalles en el chat del pedido. Los campos son opcionales; aquí no se suben imágenes.'}
+    }[currentLang];
+    const refs=$('calc-refs'),notes=$('calc-notes');
+    if(refs){refs.placeholder=briefCopy.placeholder;refs.required=false;const label=document.querySelector('label[for="calc-refs"]');if(label)label.textContent=briefCopy.refs;}
+    if(notes){notes.placeholder=briefCopy.notesPlaceholder;notes.required=false;const label=document.querySelector('label[for="calc-notes"]');if(label)label.textContent=briefCopy.notes;}
+    const briefSummary=$('calc-brief-summary');if(briefSummary)briefSummary.textContent=briefCopy.title;
+    if(refs){let hint=$('quote-reference-help');if(!hint){hint=document.createElement('p');hint.id='quote-reference-help';hint.style.cssText='font-size:12px;line-height:1.65;color:#c8bcae;margin:8px 0 14px';refs.after(hint);}hint.textContent=briefCopy.hint;}
+    const ychDescriptions=({en:['Monochrome sketch of your character in this pose.','Color sketch with simple shading.','Finished artwork with detailed light and rendering.','Full render + one NSFW version. Save $10 as a bundle.'],ru:['Монохромный скетч твоего персонажа в заданной позе.','Цветной скетч с простой светотенью.','Готовый арт с проработкой света и рендера.','Полный рендер + одна NSFW-версия. Комплект дешевле на $10.'],es:['Boceto monocromo de tu personaje en esta pose.','Boceto a color con sombras sencillas.','Obra terminada con luz y render detallados.','Render completo + una versión NSFW. Ahorra $10 en el paquete.']})[currentLang];
+    document.querySelectorAll('#ych-slots-grid>.card').forEach((card,i)=>{const paragraph=card.querySelector('p');if(paragraph&&ychDescriptions[i])paragraph.textContent=ychDescriptions[i];});
+
     if(Intl.Segmenter){
       const segmenter=new Intl.Segmenter(currentLang,{granularity:'sentence'});
       document.querySelectorAll('#custom-stages-grid p,#adopt-tiers-grid p,#adopt-desc').forEach(el=>{
