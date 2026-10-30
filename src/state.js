@@ -17,54 +17,19 @@
       }[char]));
     }
 
-    function loadLiveQueue() {
+    async function loadLiveQueue() {
       if (LIVE_QUEUE_REQUESTED) return;
       LIVE_QUEUE_REQUESTED = true;
-      const callbackName = "nektahrQueueCallback";
-      const script = document.createElement("script");
-      let settled = false;
-      const finish = () => {
-        script.remove();
-        try { delete window[callbackName]; } catch (_) { window[callbackName] = undefined; }
-      };
-
-      window[callbackName] = payload => {
-        if (settled) return;
-        settled = true;
-        if (payload && Array.isArray(payload.orders)) {
-          LIVE_QUEUE_DATA = payload.orders;
-          LIVE_QUEUE_ERROR = false;
-          updateHeaderQueueCounter();
-        } else {
-          LIVE_QUEUE_DATA = [];
-          LIVE_QUEUE_ERROR = true;
-        }
-        window.clearTimeout(timeout);
-        finish();
-        renderLiveQueue();
-      };
-
-      script.onerror = () => {
-        if (settled) return;
-        settled = true;
-        LIVE_QUEUE_ERROR = true;
-        updateHeaderQueueCounter();
-        window.clearTimeout(timeout);
-        finish();
-        renderLiveQueue();
-      };
-
-      const timeout = window.setTimeout(() => {
-        if (settled) return;
-        settled = true;
-        LIVE_QUEUE_ERROR = true;
-        updateHeaderQueueCounter();
-        finish();
-        renderLiveQueue();
-      }, 12000);
-
-      script.src = QUEUE_API_URL + "?callback=" + callbackName + "&_=" + Date.now();
-      document.head.appendChild(script);
+      try {
+        const response = await fetch(QUEUE_API_URL, {credentials:'omit', cache:'no-store', signal:AbortSignal.timeout(12000)});
+        if (!response.ok) throw Error('Queue unavailable');
+        const payload = await response.json();
+        if (!payload || payload.error || !Array.isArray(payload.orders)) throw Error('Invalid queue');
+        LIVE_QUEUE_DATA = payload.orders;
+        LIVE_QUEUE_ERROR = false;
+      } catch (_) { LIVE_QUEUE_ERROR = true; }
+      updateHeaderQueueCounter();
+      renderLiveQueue();
     }
 
     function updateHeaderQueueCounter() {
@@ -161,17 +126,7 @@
 {"id": 101, "title": "Illustration 3", "cat": "comm", "nsfw": false, "img": "/assets/gallery/ofordet-bg.webp", "processWork": 1},{"id": 102, "title": "Illustration 4", "cat": "comm", "nsfw": true, "img": "/assets/process/art-2-2.webp", "processWork": 2},{"id": 103, "title": "SFW / NSFW fan art", "cat": "fanart", "nsfw": false, "img": "/assets/process/art-3-0.webp", "processWork": 3},{"id": 104, "title": "YCH example", "cat": "ych", "nsfw": false, "img": "/assets/process/art-4-1.webp", "processWork": 4},
 {"id": 105, "title": "YCH \u00b7 TH", "cat": "ych", "nsfw": true, "img": "/assets/process/art-5-1.webp", "processWork": 5},{"id": 106, "title": "YCH \u00b7 All Plain to See", "cat": "ych", "nsfw": true, "img": "/assets/process/art-6-1.webp", "processWork": 6},
       { id: 1, gallery: false, title: "Portfolio Sample 01", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "/assets/gallery/gal-adopt-cdg-v1bg.webp", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 2, gallery: false, title: "Portfolio Sample 02", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 3, gallery: false, title: "Portfolio Sample 03", cat: "ych", stage: "Color Sketch", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 4, gallery: false, title: "Portfolio Sample 04", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/e7055f07.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 5, gallery: false, title: "Portfolio Sample 05", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/035b86ab.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 6, title: "Portfolio Sample 06", cat: "fanart", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/8aff8bc5.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 7, gallery: false, title: "Portfolio Sample 07", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/83fa427a.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 8, gallery: false, title: "Portfolio Sample 08", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/a748db6a.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 9, gallery: false, title: "Portfolio Sample 09", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/d29f0f1f.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 10, gallery: false, title: "Portfolio Sample 10", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7638b7cd.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 11, gallery: false, title: "Portfolio Sample 11", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7b5b1c4e.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
-      { id: 12, gallery: false, title: "Portfolio Sample 12", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." }
+      { id: 6, title: "Portfolio Sample 06", cat: "fanart", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "/assets/gallery/frieren-white-dress.jpg", desc: "Public SFW portfolio sample. See the source profile for context." },
     ];
     GALLERY_ITEMS.push(...(window.PORTFOLIO_WORKS||[]).map(work=>({id:100+work.id,title:work.title,localizedTitles:work.titles,cat:work.cat,nsfw:work.nsfw[work.thumb],img:work.images[work.thumb],processWork:work.id,gallery:work.gallery,catalogWork:true,designKind:work.designKind,hasAdultVersion:work.nsfw.some(Boolean),hoverReveal:Boolean(work.hoverReveal)})));
 
@@ -200,7 +155,6 @@
       adopt: {
         options: [
           { value: "100", price: 100, label: { en: "SB — Base design ($100)", es: "SB — Diseño base ($100)", ru: "SB — Базовый дизайн ($100)" } },
-          { value: "110", price: 110, label: { en: "SB — Base design with weapon ($110)", es: "SB — Diseño base con arma ($110)", ru: "SB — Базовый дизайн с оружием ($110)" } },
           { value: "200", price: 200, label: { en: "Tier II — Full render + alternative version ($200+)", es: "Nivel II — Render + versión alternativa ($200+)", ru: "Уровень II — Рендер + альтернативная версия ($200+)" } },
           { value: "300", price: 300, label: { en: "Tier III — Bonus character artwork ($300+)", es: "Nivel III — Ilustración extra ($300+)", ru: "Уровень III — Дополнительный арт ($300+)" } },
           { value: "450", price: 450, label: { en: "AB — Reference sheet + close-ups ($450+)", es: "AB — Hoja de referencia + detalles ($450+)", ru: "AB — Референс-лист + детали ($450+)" } }

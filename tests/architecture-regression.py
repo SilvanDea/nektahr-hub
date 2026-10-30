@@ -19,3 +19,13 @@ for route in json.loads((R/'src/routes.json').read_text()):
 assert (R/'404.html').exists()
 for p in list((R/'assets').glob('*.js'))+list((R/'src').glob('*.js')):subprocess.run(['node','--check',str(p)],check=True,capture_output=True)
 print('Architecture: 7 static routes, content hashes, metadata, English content, JS syntax, 404 passed')
+# Business prices and transport contracts: listing-specific bases must not become global tiers.
+state=(R/'assets/app-state.js').read_text()
+assert 'value: "110"' not in state
+assert '$110' not in (R/'assets/translations.js').read_text()
+for folder in ['src','assets']:
+ for p in (R/folder).rglob('*'):
+  if p.suffix in ['.js','.html','.json']:assert 'nektahr.carrd.co/assets/images/' not in p.read_text(),p
+assert '?callback=' not in state
+assert "createElement('script')" not in (R/'assets/queue-manager.js').read_text()
+print('Global adopt bases, same-domain images and JSON-only queue contracts passed')

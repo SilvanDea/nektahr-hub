@@ -28,8 +28,22 @@
     else{table.innerHTML=[...visible].sort((a,b)=>a.sortOrder-b.sortOrder).map(row=>`<tr><td data-label="${escape(labels[0])}" class="queue-order-id" title="${escape(row.orderId||text.missing)}">${escape((row.orderId.match(/\d+/g)||[]).length?String(Number(row.orderId.match(/\d+/g).at(-1))):'—')}</td><td data-label="${escape(labels[1])}"><strong>${escape(row.title||row.orderType||text.missing)}</strong><small>${escape(row.orderType)}</small></td><td data-label="${escape(labels[2])}">${escape(date(row.acceptedAt))}</td><td data-label="${escape(labels[3])}">${escape((view==='reserved'?row.reservationUntil:row.estimatedCompletion)?date(view==='reserved'?row.reservationUntil:row.estimatedCompletion):text.tbd)}</td><td data-label="${escape(labels[4])}"><span class="queue-status ${isReservation(row)?'reserved':''}">${escape(text.statuses[normalized(row.status)]||row.status||text.tbd)}</span></td></tr>`).join('');}
     const counter=$('header-queue-counter');if(counter){counter.textContent='QUEUE · '+(active?.length??(lastError?'!':({en:'Loading',ru:'Загрузка',es:'Cargando'})[document.documentElement.lang]||'Loading'));counter.title=orders===null?(lastError?text.unavailable:text.loading):lastError?text.failed+' '+timestamp():text.active+': '+active.length+(source==='cache'?' · '+text.cached:'');counter.setAttribute('aria-label',counter.title);counter.setAttribute('data-state',orders===null?(lastError?'error':'loading'):lastError?'stale':source==='cache'?'cached':'ready');}
   }
-  function load(force=false){if(fetching)return;if(!force&&orders!==null&&Date.now()-savedAt<FRESH_MS){render();return;}fetching=true;render();const name='ntPublicQueue_'+Date.now()+'_'+Math.random().toString(36).slice(2,7);const script=document.createElement('script');let settled=false;const finish=()=>{clearTimeout(timeout);script.remove();window[name]=()=>{};setTimeout(()=>{try{delete window[name]}catch{}},60000);};const fail=()=>{if(settled)return;settled=true;fetching=false;lastError=true;finish();render();};
-    window[name]=payload=>{if(settled)return;if(!payload||payload.error||!Array.isArray(payload.orders)){fail();return;}settled=true;orders=project(payload.orders);savedAt=Date.now();source='live';fetching=false;lastError=false;try{localStorage.setItem(CACHE_KEY,JSON.stringify({savedAt,orders}));}catch{}finish();render();};const timeout=setTimeout(fail,10000);script.onerror=fail;script.src=QUEUE_API_URL+'?callback='+name;document.head.append(script);
+  function load(force=false){
+    if(fetching)return;
+    if(!force&&orders!==null&&Date.now()-savedAt<FRESH_MS){render();return;}
+    fetching=true;render();
+    const controller=new AbortController();let settled=false;
+    const fail=()=>{if(settled)return;settled=true;clearTimeout(timeout);controller.abort();fetching=false;lastError=true;render();};
+    const timeout=setTimeout(fail,10000);
+    fetch(QUEUE_API_URL,{signal:controller.signal,credentials:'omit',cache:'no-store'})
+      .then(response=>{if(!response.ok)throw Error('Queue unavailable');return response.json();})
+      .then(payload=>{
+        if(settled)return;
+        if(!payload||payload.error||!Array.isArray(payload.orders)){fail();return;}
+        settled=true;clearTimeout(timeout);orders=project(payload.orders);savedAt=Date.now();source='live';fetching=false;lastError=false;
+        try{localStorage.setItem(CACHE_KEY,JSON.stringify({savedAt,orders}));}catch{}
+        render();
+      }).catch(fail);
   }
   window.renderLiveQueue=render;window.updateHeaderQueueCounter=render;window.loadLiveQueue=()=>load();window.queueManagerReady=true;
   $('queue-tab-active').onclick=()=>{view='active';render()};$('queue-tab-reserved').onclick=()=>{view='reserved';render()};$('queue-refresh').onclick=()=>load(true);

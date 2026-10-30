@@ -97,20 +97,17 @@
           {
             "tag": "SILHOUETTE & WARDROBE",
             "title": "Full Silhouette & Outfit",
-            "desc": "Readable posture, dark minimal or fantasy tailoring, and clean palette separation.",
-            "img": "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c"
+            "desc": "Readable posture, dark minimal or fantasy tailoring, and clean palette separation."
           },
           {
             "tag": "PORTRAIT & GAZE",
             "title": "Face & Micro-Expressions",
-            "desc": "Expressive eye rendering, hair flow, piercings, makeup, and emotional mood.",
-            "img": "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c"
+            "desc": "Expressive eye rendering, hair flow, piercings, makeup, and emotional mood."
           },
           {
             "tag": "PROPS & GESTURES",
             "title": "Hands, Weapons & Callouts",
-            "desc": "Anatomical hand gestures, rings, weapons, and close-up material details.",
-            "img": "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c"
+            "desc": "Anatomical hand gestures, rings, weapons, and close-up material details."
           }
         ]
       },
@@ -126,7 +123,7 @@
             "badge": "SB · STARTING BID",
             "price": "$100",
             "title": "SB — Base Adoptable Design",
-            "desc": "The shown ready-made design, clean files and personal-use rights. Starting price depends on the listing; a design including a weapon starts at $110.",
+            "desc": "The shown ready-made design, clean files and personal-use rights. The base price is shown on each listing.",
             "perks": [
               "SFW image / PNG without watermark",
               "Personal-use rights",
@@ -593,20 +590,17 @@
           {
             "tag": "SILUETA Y ATUENDO",
             "title": "Silueta Completa y Moda",
-            "desc": "Postura legible, sastrería oscura o fantasía y paleta de colores limpia.",
-            "img": "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c"
+            "desc": "Postura legible, sastrería oscura o fantasía y paleta de colores limpia."
           },
           {
             "tag": "RETRATO Y MIRADA",
             "title": "Rostro y Microexpresiones",
-            "desc": "Renderizado expresivo de ojos, cabello, piercings y maquillaje.",
-            "img": "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c"
+            "desc": "Renderizado expresivo de ojos, cabello, piercings y maquillaje."
           },
           {
             "tag": "MANOS Y ACCESORIOS",
             "title": "Manos, Armas y Detalles",
-            "desc": "Gestos anatómicos de manos, anillos, armas y zoom de materiales.",
-            "img": "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c"
+            "desc": "Gestos anatómicos de manos, anillos, armas y zoom de materiales."
           }
         ]
       },
@@ -622,7 +616,7 @@
             "badge": "SB · OFERTA INICIAL",
             "price": "$100",
             "title": "SB — Diseño Base del Adopt",
-            "desc": "El diseño terminado mostrado, archivos limpios y uso personal. El precio inicial depende del anuncio; un diseño con arma empieza en $110.",
+            "desc": "El diseño terminado mostrado, archivos limpios y uso personal. El precio base se indica en cada anuncio.",
             "perks": [
               "Imagen SFW / PNG sin marca de agua",
               "Derechos de uso personal",
@@ -1089,20 +1083,17 @@
           {
             "tag": "СИЛУЭТ И КОСТЮМ",
             "title": "Полный рост и крой одежды",
-            "desc": "Читаемый силуэт, тёмный минимализм или фэнтези-гардероб и гармония палитры.",
-            "img": "https://nektahr.carrd.co/assets/images/gallery01/3921b191.jpg?v=299f438c"
+            "desc": "Читаемый силуэт, тёмный минимализм или фэнтези-гардероб и гармония палитры."
           },
           {
             "tag": "ПОРТРЕТ И ЭМОЦИИ",
             "title": "Лицо, взгляд и мимика",
-            "desc": "Детальная проработка глаз, прядей волос, пирсинга, макияжа и эмоций.",
-            "img": "https://nektahr.carrd.co/assets/images/gallery01/06708210.jpg?v=299f438c"
+            "desc": "Детальная проработка глаз, прядей волос, пирсинга, макияжа и эмоций."
           },
           {
             "tag": "РУКИ И АКСЕССУАРЫ",
             "title": "Пластика рук, оружие и детали",
-            "desc": "Выразительные жесты кистей, кольца, оружие и крупные планы материалов.",
-            "img": "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c"
+            "desc": "Выразительные жесты кистей, кольца, оружие и крупные планы материалов."
           }
         ]
       },
@@ -1118,7 +1109,7 @@
             "badge": "SB · НАЧАЛЬНАЯ СТАВКА",
             "price": "$100",
             "title": "SB — Базовый дизайн адопта",
-            "desc": "Показанный готовый дизайн, чистые файлы и личное использование. Стартовая цена зависит от объявления; дизайн с оружием — от $110.",
+            "desc": "Показанный готовый дизайн, чистые файлы и личное использование. Базовая цена указана в карточке конкретного адопта.",
             "perks": [
               "SFW-изображение / PNG без водяного знака",
               "Личное использование",
