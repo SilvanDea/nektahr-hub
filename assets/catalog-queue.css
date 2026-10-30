@@ -82,3 +82,7 @@ img{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;-webkit
 
 /* Profile links are already available in the dedicated social sections. */
 #catalog-profile{display:none!important}
+
+#quote-included-group[hidden],.quote-version-toggles label[hidden],[data-quantity-row][hidden],.quote-existing-label[hidden]{display:none!important}
+#quote-included-group:not([hidden]){display:flex;flex-direction:column;gap:10px}
+#quote-included-variant{display:block;width:100%;min-height:40px;color:#f2ece4;background:#18131b;border:1px solid #e2b47866;border-radius:6px;padding:8px;pointer-events:auto}
