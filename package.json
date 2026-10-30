@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "python scripts/build.py",
-    "test": "python tests/architecture-regression.py && python tests/validate-project.py && node tests/runtime-regression.cjs && node tests/queue-regression.cjs && node tests/contact-regression.cjs"
+    "test": "python tests/architecture-regression.py && python tests/validate-project.py && node tests/runtime-regression.cjs && node tests/queue-regression.cjs && node tests/contact-regression.cjs && node tests/data-contracts.cjs"
   },
   "repository": {
     "type": "git",

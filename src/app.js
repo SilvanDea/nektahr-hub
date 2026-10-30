@@ -67,6 +67,7 @@
       if(document.getElementById('calc-stage-sel'))saveCalculatorModeState(currentPricingTab);
       if (!I18N[lang]) lang = 'en';
       currentLang = lang;
+      const skip=document.getElementById('skip-content');if(skip)skip.textContent=({en:'Skip to content',ru:'Перейти к содержимому',es:'Saltar al contenido'})[lang];
       try { localStorage.setItem('nektahr-hub-language', lang); } catch (_) {}
       document.documentElement.lang = lang;
       const pageMeta = {
@@ -75,7 +76,7 @@
           es: ["Nek'tahr | Portafolio y comisiones", "Explora el portafolio de Nek'tahr, precios, adopts, opciones YCH y contactos."],
           ru: ["Nek'tahr | Портфолио и коммишки", "Портфолио Nek'tahr, цены, адопты, YCH и контакты."]
         },
-        catalog: {en:["Catalog | Nek’tahr","YCH templates and adoptable designs — catalog mockup."],es:["Catálogo | Nek’tahr","Plantillas YCH y diseños adoptables — maqueta."],ru:["Каталог | Nek’tahr","YCH и адопты — макет каталога."]},
+        catalog: {en:["Catalog | Nek’tahr","Browse YCH templates and adoptable designs, availability and versions."],es:["Catálogo | Nek’tahr","Explora plantillas YCH, diseños adoptables, disponibilidad y versiones."],ru:["Каталог | Nek’tahr","Шаблоны YCH, адопты, доступность и версии."]},
         pricing: {
           en: ["Pricing | Nek'tahr Hub", "Commission pricing, adoptable tiers, YCH slots, and a quote calculator."],
           es: ["Precios | Nek'tahr Hub", "Precios de comisiones, adopts, plazas YCH y calculadora de presupuesto."],
@@ -113,6 +114,8 @@
       document.querySelector('meta[name="description"]').content = activeMeta[1];
       document.querySelector('meta[property="og:title"]').content = activeMeta[0];
       document.querySelector('meta[property="og:description"]').content = activeMeta[1];
+      document.querySelector('meta[name="twitter:title"]')?.setAttribute('content',activeMeta[0]);
+      document.querySelector('meta[name="twitter:description"]')?.setAttribute('content',activeMeta[1]);
       document.querySelectorAll('.lang-btn').forEach(btn => {
         const active = btn.dataset.l === lang;
         btn.className = active
