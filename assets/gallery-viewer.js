@@ -17,11 +17,29 @@
   function restoreViewer(){const viewer=$('art-process');if(viewerParent&&viewer&&viewer.parentElement!==viewerParent)viewerParent.append(viewer);window.setProcessContext?.(currentPricingTab);}
   function finishClose(){if(!document.body.classList.contains('artwork-modal-open'))return;restoreViewer();document.body.classList.remove('artwork-modal-open');if(returnFocus?.isConnected)returnFocus.focus();else $('nsfw-switch')?.focus();}
   function close(){if(dialog.open)dialog.close();finishClose();}
+  function renderStrip(item){const strip=$('artwork-work-strip');const previousScroll=strip.scrollLeft;strip.replaceChildren();
+    sessionItems.filter(x=>x.processWork&&sessionItems.length>1).forEach(work=>{
+      const button=document.createElement('button');button.type='button';button.setAttribute('aria-pressed',String(work.id===item.id));
+      const model=(window.PORTFOLIO_WORKS||[]).find(w=>w.id===work.processWork);
+      const adultPreview=model?Boolean(model.nsfw[model.thumb]):Boolean(work.nsfw);
+      const locked=adultPreview&&!(isAdultVerified&&showNsfwGallery);
+      if(locked)button.className='strip-adult';else if(work.hoverReveal)button.className='adult-hover-preview';
+      const media=document.createElement('span');media.className='strip-media';
+      const thumb=document.createElement('img');thumb.src=work.img;thumb.alt='';thumb.loading='lazy';thumb.decoding='async';media.append(thumb);
+      if(locked){const cover=document.createElement('span');cover.className='strip-lock';cover.innerHTML='<span class="strip-lock-icon"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="10" width="12" height="11" rx="3"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><path d="M12 14v3"/></svg></span><small>NSFW · 18+</small>';media.append(cover);}
+      else if(hasAdultArtwork(work)){const badge=document.createElement('small');badge.className='strip-age';badge.textContent='18+';media.append(badge);}
+      const title=document.createElement('span');title.className='strip-title';title.textContent=getGalleryTitle(work);button.title=title.textContent;
+      button.append(media,title);button.onclick=()=>window.openGalleryArtwork(work.id);strip.append(button);
+    });
+    strip.scrollLeft=previousScroll;const selected=strip.querySelector('[aria-pressed="true"]');if(selected){const cardRect=selected.getBoundingClientRect(),stripRect=strip.getBoundingClientRect();if(cardRect.left<stripRect.left)strip.scrollLeft-=stripRect.left-cardRect.left;else if(cardRect.right>stripRect.right)strip.scrollLeft+=cardRect.right-stripRect.right;}
+}
+  new MutationObserver(records=>{if(dialog.open&&currentItem&&records.some(r=>r.target.id==='adultToggle'))renderStrip(currentItem);}).observe(dialog,{subtree:true,attributes:true,attributeFilter:['aria-checked']});
   window.openGalleryArtwork=(id,options={})=>{
     const item=GALLERY_ITEMS.find(x=>x.id===Number(id));if(!item)return;
     const opening=!dialog.open;if(opening){examplesMode=Boolean(options.examples);sessionItems=itemsForOpening(item);}if(!sessionItems.some(x=>x.id===item.id))return;if(opening){returnFocus=document.activeElement;viewerParent=$('art-process').parentElement;dialog.showModal();document.body.classList.add('artwork-modal-open');}
     const version=++selectionVersion;
-    currentItem=item;const strip=$('artwork-work-strip');strip.replaceChildren();sessionItems.filter(x=>x.processWork&&sessionItems.length>1).forEach(work=>{const button=document.createElement('button');button.type='button';button.setAttribute('aria-pressed',String(work.id===item.id));if(work.nsfw&&!(isAdultVerified&&showNsfwGallery))button.className='strip-adult';else if(work.hoverReveal)button.className='adult-hover-preview';const thumb=document.createElement('img');thumb.src=work.img;thumb.alt='';thumb.loading='lazy';thumb.decoding='async';const title=document.createElement('span');title.textContent=getGalleryTitle(work);if(hasAdultArtwork(work))title.textContent+=' · 18+';button.append(thumb,title);button.onclick=()=>window.openGalleryArtwork(work.id);strip.append(button)});const t=text();$('artwork-dialog-title').textContent=getGalleryTitle(item);const items=filtered();$('artwork-dialog-prev').disabled=items.length<2;$('artwork-dialog-next').disabled=items.length<2;$('artwork-dialog-prices').hidden=document.body.dataset.page==='pricing';$('artwork-dialog-counter').textContent=[getGalleryKind(item),getGallerySeries(item),`${items.findIndex(x=>x.id===item.id)+1} / ${items.length}`].filter(Boolean).join(' · ');
+    currentItem=item;renderStrip(item);
+    const t=text();$('artwork-dialog-title').textContent=getGalleryTitle(item);const items=filtered();$('artwork-dialog-prev').disabled=items.length<2;$('artwork-dialog-next').disabled=items.length<2;$('artwork-dialog-prices').hidden=document.body.dataset.page==='pricing';$('artwork-dialog-counter').textContent=[getGalleryKind(item),getGallerySeries(item),`${items.findIndex(x=>x.id===item.id)+1} / ${items.length}`].filter(Boolean).join(' · ');
     $('artwork-dialog-close').setAttribute('aria-label',t.close);$('artwork-dialog-prev').setAttribute('aria-label',t.prev);$('artwork-dialog-next').setAttribute('aria-label',t.next);$('artwork-dialog-prices').textContent=t.prices;$('artwork-dialog-hint').textContent=t.hint;
     const body=$('artwork-dialog-body'),image=$('artwork-dialog-image'),error=$('artwork-dialog-error');error.hidden=true;image.onload=null;image.onerror=null;image.hidden=true;image.removeAttribute('src');
     if(item.processWork){image.hidden=true;body.append($('art-process'));$('art-process').hidden=false;window.setProcessContext?.(examplesMode?'examples':'gallery');window.openProcessWork?.(item.processWork);}
