@@ -170,3 +170,10 @@ font-size:14px!important;line-height:1.75!important;color:#d2c8bc!important;text
 #page-pricing .quote-total>div:first-child{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
 #page-pricing #calc-total-value{align-self:flex-start;text-align:left}
 #page-pricing #quote-bundle-saving{font-size:11px!important;line-height:1.5;text-align:left!important;margin:0 0 5px!important;font-weight:400}
+
+#quote-saving-details{font-size:12px;line-height:1.6;margin:4px 0 12px}
+#quote-saving-details[hidden]{display:none!important}
+#quote-saving-details summary{cursor:pointer;color:#d4ba94;padding:6px 0}
+#quote-saving-details[open]{padding:10px;border:1px solid #e2b47833;border-radius:8px;background:#100d15}
+#quote-saving-details .quote-line{padding:4px 0}
+#quote-saving-details p{font-size:11px;color:#b7ae9f;margin-top:9px}
