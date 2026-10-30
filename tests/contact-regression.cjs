@@ -1,10 +1,10 @@
 const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
 const nodes=new Map();
-class Node{constructor(){this.children=[];this.textContent='';this.parentElement={open:false};}set id(v){this._id=v;nodes.set(v,this)}get id(){return this._id}append(...els){this.children.push(...els)}after(){}setAttribute(k,v){this[k]=v}querySelector(){return null}addEventListener(){}focus(){}showModal(){this.open=true}close(){this.open=false}}
+class Node{constructor(){this.children=[];this.textContent='';this.parentElement={open:false};}set id(v){this._id=v;nodes.set(v,this)}get id(){return this._id}append(...els){this.children.push(...els)}after(){}remove(){}getAttribute(k){return this[k]||null}setAttribute(k,v){this[k]=v}querySelectorAll(){return []}insertAdjacentHTML(){}querySelector(){return null}addEventListener(){}focus(){}showModal(){this.open=true}close(){this.open=false}}
 for(const id of ['calc-copy-btn','calc-preview-text','q-sub','header-status-badge','primary-contacts-grid','contacts-title']){const el=new Node();el.id=id;}
 nodes.get('calc-preview-text').textContent='A private long brief with references: https://example.test/private';
 let succeeds=true,copied=[],pending=[];
-const ctx={document:{getElementById:id=>nodes.get(id)||null,createElement:()=>new Node(),body:new Node(),querySelectorAll:()=>[...nodes.values()].filter(x=>x.href?.startsWith('mailto:'))},currentLang:'en',renderAllText(){},recalcTotal(){},copyToClipboard:async(value)=>{copied.push(value);return succeeds;},setTimeout:fn=>{pending.push(fn);return pending.length},clearTimeout(){},encodeURIComponent};ctx.window=ctx;vm.createContext(ctx);vm.runInContext(fs.readFileSync(__dirname+'/../assets/contact-actions.js','utf8'),ctx);
+const ctx={document:{getElementById:id=>nodes.get(id)||null,createElement:()=>new Node(),body:new Node(),querySelectorAll:s=>s.includes("baraag")?[]:[...nodes.values()].filter(x=>x.href?.startsWith('mailto:'))},currentLang:'en',renderAllText(){},recalcTotal(){},copyToClipboard:async(value)=>{copied.push(value);return succeeds;},setTimeout:fn=>{pending.push(fn);return pending.length},clearTimeout(){},encodeURIComponent};ctx.window=ctx;vm.createContext(ctx);vm.runInContext(fs.readFileSync(__dirname+'/../assets/contact-actions.js','utf8'),ctx);
 let checks=0;function check(x,msg){checks++;assert.ok(x,msg)}
 (async()=>{
  check(nodes.has('quote-discord')&&nodes.has('quote-email'),'Both contact actions exist before any copy');

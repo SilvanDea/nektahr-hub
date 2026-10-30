@@ -81,7 +81,7 @@
   $('catalog-dialog-preview').onclick=()=>{const work=current?.processWork;$('catalog-dialog').close();if(work)openLightbox(100+work)};
   $('catalog-adult-toggle').onclick=()=>{if(showNsfwGallery){showNsfwGallery=false;renderGalleryGrid()}else if(isAdultVerified){showNsfwGallery=true;renderGalleryGrid()}else openAgeModal($('catalog-adult-toggle'))};
   const previousRender=renderGalleryGrid;window.renderGalleryGrid=function(){previousRender();render()};window.renderCatalog=render;render();
-  if(document.body.dataset.page==='catalog')fetch('/assets/catalog-data.json?v=20261030-gallery-adult2').then(response=>{if(!response.ok)throw Error('Unavailable');return response.json()}).then(data=>{if(!Array.isArray(data))throw Error('Bad catalog');items=data.filter(item=>item&&typeof item.id==='string'&&['ych','adopt'].includes(item.type)&&['open','reserved','sold','reference'].includes(item.status)&&item.titles?.en&&Array.isArray(item.tags)&&item.image);loaded=true;render()}).catch(()=>{failed=true;render()});
+  if(document.body.dataset.page==='catalog')fetch('/assets/catalog-data.json', {cache:'no-cache', signal:AbortSignal.timeout(10000)}).then(response=>{if(!response.ok)throw Error('Unavailable');return response.json()}).then(data=>{if(!Array.isArray(data))throw Error('Bad catalog');items=data.filter(item=>item&&typeof item.id==='string'&&['ych','adopt'].includes(item.type)&&['open','reserved','sold','reference'].includes(item.status)&&item.titles?.en&&Array.isArray(item.tags)&&item.image);loaded=true;render()}).catch(()=>{failed=true;render()});
 })();
 
 /* One session-wide adult-content preference, shared by every surface. */

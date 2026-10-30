@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <script src="/assets/language-init.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{title}}</title>
+  <meta name="description" content="{{description}}" />
+  <link rel="canonical" href="{{url}}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Nek&#x27;tahr" />
+  <meta property="og:title" content="{{title}}" />
+  <meta property="og:description" content="{{description}}" />
+  <meta property="og:url" content="{{url}}" />
+  <meta property="og:image" content="https://nektahr.com/assets/social-preview-v4.jpg?rev=20261029-hold-min10" />
+  <meta property="og:image:secure_url" content="https://nektahr.com/assets/social-preview-v4.jpg?rev=20261029-hold-min10" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Nek&#x27;tahr — character art, commissions, YCH, adopts, ToS and FAQ" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{title}}" />
+  <meta name="twitter:description" content="{{description}}" />
+  <meta name="twitter:image" content="https://nektahr.com/assets/social-preview-v4.jpg?rev=20261029-hold-min10" />
+  <meta name="twitter:image:alt" content="Nek&#x27;tahr — character art, commissions, YCH, adopts, ToS and FAQ" />
+  <meta name="theme-color" content="#0B0A0E" />
+  <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
+  <script src="/assets/portfolio-data.js?v=20261030-gallery-repair4"></script>
+  <script src="/assets/queue-manager.js?v=20261030-policy1" defer></script>
+  <link rel="stylesheet" href="/assets/utilities.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+  
+  
+<link rel="stylesheet" href="/assets/styles.css">
+<link rel="stylesheet" href="/assets/process-viewer.css?v=20261028-street-demon-mar18">
+<link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/assets/favicon-32.png" sizes="32x32">
+  
+<link rel="stylesheet" href="/assets/pricing-layout.css?v=20261028-street-demon-mar18">
+<link rel="stylesheet" href="/assets/site-polish.css?v=20261028-street-demon-mar18">
+<link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-street-demon-mar18">
+<link rel="stylesheet" href="/assets/catalog-queue.css?v=20261030-bundles1">
+<link rel="stylesheet" href="/assets/readability.css?v=20261030-gallery-repair4">
+<link rel="stylesheet" href="/assets/compact-calculator.css?v=20261030-bundles1">
+<link rel="stylesheet" href="/assets/contact-actions.css?v=20261030-bundles1">
+<link rel="stylesheet" href="/assets/thumbnail-mats.css?v=20261029-frames1">
+</head>
+<body data-page="{{page}}" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
+
+  <!-- =====================================================================
+       CENTRAL CONFIGURATION & LOCALIZATION (EN main · ES · RU)
+  ====================================================================== -->
+  <!-- APP_CONFIG -->
+
+  <!-- =====================================================================
+       STICKY HEADER
+  ====================================================================== -->
+  <header class="sticky top-0 z-40 h-16 bg-[#0B0A0E]/90 backdrop-blur-md border-b hairline px-4 sm:px-8 flex items-center justify-between gap-4">
+    <a href="/" class="text-left group cursor-pointer flex items-baseline gap-2.5">
+      <span class="serif text-2xl sm:text-3xl tracking-wide text-textMain group-hover:text-accent transition">Nek'tahr</span>
+      <span id="header-tagline" class="hidden sm:inline-block mono text-[10px] uppercase text-textDim">Character Art &amp; Commissions</span>
+    </a>
+
+    <nav id="nav-links" aria-label="Main navigation" class="flex items-center gap-1 sm:gap-5 text-xs sm:text-sm">
+      <a href="/" data-p="board" id="nav-board" class="nav-link px-2 py-1 text-accent border-b border-accent transition cursor-pointer">Board</a>
+      <a href="/pricing/" data-p="pricing" id="nav-pricing" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Pricing</a>
+      <a href="/catalog/" data-p="catalog" id="nav-catalog" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Catalog</a>
+      <a href="/gallery/" data-p="gallery" id="nav-gallery" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Gallery</a>
+      <a href="/queue/" data-p="queue" id="nav-queue" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">Queue</a>
+      <a href="/terms/" data-p="tos" id="nav-tos" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">ToS</a>
+      <a href="/faq/" data-p="faq" id="nav-faq" class="nav-link px-2 py-1 text-textMuted hover:text-textMain transition cursor-pointer">FAQ</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <!-- Language Switcher: EN (main) · ES · RU -->
+      <div class="flex items-center border hairline bg-surface p-0.5 mono text-[11px]">
+        <button onclick="setLang('en')" data-l="en" class="lang-btn px-2 py-0.5 bg-accent text-bg font-medium transition cursor-pointer">EN</button>
+        <button onclick="setLang('es')" data-l="es" class="lang-btn px-2 py-0.5 text-textDim hover:text-textMain transition cursor-pointer">ES</button>
+        <button onclick="setLang('ru')" data-l="ru" class="lang-btn px-2 py-0.5 text-textDim hover:text-textMain transition cursor-pointer">RU</button>
+      </div>
+
+      <a href="/queue/" title="Active commission queue" aria-label="Open active commission queue" class="flex items-center gap-1.5 px-2 py-1 border border-accent/30 bg-accent/5 text-accent mono text-[10px] uppercase cursor-pointer hover:bg-accent/10 transition whitespace-nowrap">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+        <span id="header-queue-counter">QUEUE · Loading</span>
+      </a>
+
+      <a href="/queue/" class="intake-link flex items-center gap-2 px-3 py-1 border border-accent/30 bg-accent/10 text-accent mono text-[10px] uppercase cursor-pointer hover:border-accent transition">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
+        <span id="header-status-badge">Commissions open</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       MAIN CONTENT CONTAINER (6 SEPARATE PAGES)
+  ====================================================================== -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-8 py-10 sm:py-14">
+
+    <!-- ===================================================================
+         PAGE 1: BOARD (HOME HUB — OPTION A & OPTION B + CONTACTS)
+    ==================================================================== -->
+    <section id="page-board" class="page-section space-y-16">
+      <!-- Hero Grid -->
+      <div class="grid lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-6">
+          <div id="hero-eyebrow" class="mono text-xs uppercase text-accent">PORTFOLIO · COMMISSIONS · ADOPTS · YCH</div>
+          <h1 id="hero-title" class="serif text-4xl sm:text-6xl leading-[1.06] text-textMain">
+            Hey, welcome to my little corner of the internet!
+          </h1>
+          <div class="max-w-2xl space-y-3 text-sm sm:text-base text-textMuted leading-relaxed">
+            <p id="hero-desc"></p>
+            <p id="hero-desc-2"></p>
+          </div>
+
+          <!-- Two Clear Entry Paths (Option A & Option B) -->
+          <div class="grid sm:grid-cols-2 gap-4 pt-2">
+            <a href="/gallery/" class="card card-interactive p-4 text-left group cursor-pointer flex flex-col h-full">
+              <div class="flex items-start justify-between gap-3 mb-2">
+                <div id="path-a-title" class="serif text-2xl leading-tight text-textMain min-h-[3.5rem]">Art Gallery & Archives</div>
+                <span class="shrink-0 text-accent group-hover:translate-x-1 transition mt-1">→</span>
+              </div>
+              <p id="path-a-sub" class="text-xs text-textMuted"></p>
+            </a>
+
+            <a href="/pricing/" class="card card-interactive p-4 text-left border-accent/40 bg-accent/5 group cursor-pointer flex flex-col h-full">
+              <div class="flex items-start justify-between gap-3 mb-2">
+                <div id="path-b-title" class="serif text-2xl leading-tight text-textMain min-h-[3.5rem]">Pricing, Stages & Adopts</div>
+                <span class="shrink-0 text-accent group-hover:translate-x-1 transition mt-1">→</span>
+              </div>
+              <p id="path-b-sub" class="text-xs text-textMuted"></p>
+            </a>
+          </div>
+        </div>
+
+        <!-- Featured Cover Artwork -->
+        <div class="lg:col-span-5">
+          <button type="button" onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group text-left w-full">
+            <div class="aspect-[4/5] overflow-hidden relative bg-bg">
+              <img src="/assets/gallery/gal-adopt-cdg-v1bg.webp" alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0B0A0E] via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
+                <div>
+                  <span id="hero-featured-label" class="mono text-[10px] uppercase px-2 py-0.5 bg-bg/85 border hairline text-accent">Selected Works</span>
+                  <h3 id="hero-featured-title" class="serif text-2xl text-textMain mt-1.5">Recent Highlights</h3>
+                </div>
+                <span id="hero-featured-link" class="mono text-xs text-accent">Open Full Gallery →</span>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Contacts & Networks Section -->
+      <div class="space-y-6 pt-6 border-t hairline">
+        <div>
+          <div id="contacts-eyebrow" class="mono text-xs uppercase text-accent">DIRECT MESSAGING & NETWORKS</div>
+          <h2 id="contacts-title" class="serif text-3xl sm:text-4xl mt-1">Where to Find & Message Me</h2>
+        </div>
+
+        <!-- Primary Direct Contacts: Discord (drintrava), Telegram DM 1, Telegram DM 2, Email -->
+        <div>
+          <h3 id="primary-contacts-label" class="mono text-[11px] uppercase text-textDim mb-3">Primary Direct Contacts (Fastest Response)</h3>
+          <div id="primary-contacts-grid" class="grid md:grid-cols-3 gap-3.5"></div>
+        </div>
+
+        <!-- Verified art platforms and contact destinations -->
+        <div>
+          <h3 id="platforms-label" class="mono text-[11px] uppercase text-textDim mb-3">Art Platforms & Galleries</h3>
+          <div id="platforms-grid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3.5"></div>
+        </div>
+      </div>
+
+      <!-- Selected Highlights Preview -->
+      <div class="space-y-6 pt-6 border-t hairline">
+        <div class="flex items-end justify-between">
+          <div>
+            <div id="feat-eyebrow" class="mono text-xs uppercase text-accent">SELECTED WORKS</div>
+            <h2 id="feat-title" class="serif text-3xl sm:text-4xl mt-1">Recent Highlights</h2>
+          </div>
+          <a href="/gallery/" id="feat-view-all" class="mono text-xs text-accent hover:underline cursor-pointer">Open Full Gallery →</a>
+        </div>
+        <div id="board-highlights-grid" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
+      </div>
+    </section>
+
+
+    <!-- ===================================================================
+         PAGE 2: PRICING, STAGES, ADOPTS, YCH & INDIVIDUAL QUOTE BUILDER
+    ==================================================================== -->
+    <section id="page-pricing" class="page-section hidden space-y-10">
+      <!-- Top Header + 3 Single-Line Tabs Without Numbers -->
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b hairline pb-8">
+        <div class="max-w-2xl space-y-2">
+          <div id="pricing-eyebrow" class="mono text-xs uppercase text-accent">PRICING · STAGES · ADOPTS · YCH</div>
+          <h1 id="pricing-title" class="serif text-4xl sm:text-5xl">What You're Paying For</h1>
+          <p id="pricing-sub" class="text-sm text-textMuted leading-relaxed"></p>
+        </div>
+
+        <!-- Strictly 1-Line Tabs, No Numbers, No Wrap -->
+        <div role="tablist" aria-label="Pricing categories" class="grid grid-cols-3 gap-2 w-full lg:w-auto lg:min-w-[440px] shrink-0">
+          <button onclick="switchPricingTab('custom')" role="tab" aria-controls="pricing-view-custom" aria-selected="true" data-t="custom" id="ptab-custom" class="ptab-btn px-3 py-2.5 mono text-xs uppercase whitespace-nowrap truncate text-center bg-accent text-bg border border-accent font-medium transition cursor-pointer">
+            Customs & Stages
+          </button>
+          <button onclick="switchPricingTab('adopt')" role="tab" aria-controls="pricing-view-adopt" aria-selected="false" data-t="adopt" id="ptab-adopt" class="ptab-btn px-3 py-2.5 mono text-xs uppercase whitespace-nowrap truncate text-center text-textMuted border hairline hover:text-textMain transition cursor-pointer">
+            Adopts & Bid Tiers
+          </button>
+          <button onclick="switchPricingTab('ych')" role="tab" aria-controls="pricing-view-ych" aria-selected="false" data-t="ych" id="ptab-ych" class="ptab-btn px-3 py-2.5 mono text-xs uppercase whitespace-nowrap truncate text-center text-textMuted border hairline hover:text-textMain transition cursor-pointer">
+            YCH Slots
+          </button>
+        </div>
+      </div>
+
+      <button type="button" class="version-example-link" id="fanart-version-link" onclick="openLightbox(103)"></button>
+      <!-- Main 2-Column Layout: Left (Content per Tab) + Right (Individual Sticky Calculator) -->
+      <div class="pricing-workspace" id="pricing-workspace">
+
+        <!-- LEFT COLUMN (8 cols) -->
+        <div class="lg:col-span-8 space-y-12">
+
+          <!-- SUB-VIEW A: CUSTOMS & STAGES -->
+          <div role="tabpanel" aria-labelledby="ptab-custom" id="pricing-view-custom" class="pricing-subview space-y-12">
+            <!-- 3 Stage Cards -->
+            <div class="space-y-4">
+              <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+                <h2 id="stage-sec-title" class="serif text-3xl">Stage-by-Stage Render Breakdown</h2>
+                <span id="stage-sec-hint" class="mono text-[10px] uppercase text-textDim">Click any card to load into calculator</span>
+              </div>
+              <div id="custom-stages-grid" class="grid sm:grid-cols-3 gap-4"></div>
+            </div>
+            
+            <div id="process-dock-custom"><section id="pricing-examples" class="examples-panel"><h3 id="pricing-examples-label" class="examples-heading">Artwork examples & stages</h3><div id="pricing-samples-grid" class="pricing-samples-grid"></div></section></div>
+          </div>
+
+          <!-- SUB-VIEW B: ADOPTS & BID TIERS -->
+          <div role="tabpanel" aria-labelledby="ptab-adopt" id="pricing-view-adopt" class="pricing-subview hidden space-y-6">
+            <div class="card p-6 sm:p-8 space-y-2">
+              <div id="adopt-eyebrow" class="mono text-[10px] uppercase text-accent">ADOPTABLE TIERS · $100 – $450</div>
+              <h2 id="adopt-title" class="serif text-3xl sm:text-4xl">Adoptables: Ready Designs & Stretch Goal Tiers</h2>
+              <p id="adopt-desc" class="text-sm text-textMuted leading-relaxed"></p>
+            </div>
+
+            <div id="adopt-tiers-grid" class="grid sm:grid-cols-2 gap-5"></div><div id="process-dock-adopt"></div>
+          </div>
+
+          <!-- SUB-VIEW C: YCH SLOTS -->
+          <div role="tabpanel" aria-labelledby="ptab-ych" id="pricing-view-ych" class="pricing-subview hidden space-y-6">
+            <div class="card p-6 sm:p-8 space-y-2">
+              <div id="ych-eyebrow" class="mono text-[10px] uppercase text-accent">PRE-POSED TEMPLATES</div>
+              <h2 id="ych-title" class="serif text-3xl sm:text-4xl">Available YCH Slots</h2>
+              <p id="ych-desc" class="text-sm text-textMuted leading-relaxed"></p>
+            </div>
+
+            <div id="ych-slots-grid" class="grid sm:grid-cols-3 gap-4"></div><div id="process-dock-ych"></div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: INDIVIDUAL STICKY QUOTE BUILDER (4 cols) -->
+        <div class="lg:col-span-4">
+          <div class="quote-panel">
+            <div class="flex items-start justify-between border-b hairline pb-4">
+              <div>
+                <h3 id="calc-title" class="serif text-3xl text-textMain">Quote Builder</h3>
+                <div id="calc-category-pill" class="mono text-[10px] uppercase text-accent mt-0.5">Custom Commission</div>
+              </div>
+              <button onclick="resetCalculator()" id="calc-reset-btn" class="mono text-[10px] uppercase text-textDim hover:text-textMain border hairline px-2 py-1 transition cursor-pointer">
+                Reset
+              </button>
+            </div>
+
+            <!-- Live estimate -->
+            <div class="quote-total space-y-2">
+              <div class="flex items-end justify-between gap-3"><div><span id="calc-total-label" class="block mono text-[10px] uppercase text-textDim">Estimated Total</span><span id="calc-formula" class="block mt-1 mono text-[11px] text-textMuted">Base $120</span></div><span id="calc-total-value" class="serif text-4xl sm:text-5xl text-accent">$120</span></div>
+              <details class="quote-breakdown"><summary id="calc-breakdown-summary">Price breakdown</summary><div id="calc-breakdown-list" aria-live="polite" aria-atomic="true"></div></details><p id="calc-estimate-note" class="text-[11px] leading-relaxed text-textDim">Starting estimate only. Final price depends on the brief and will be confirmed directly.</p>
+            </div>
+
+
+            <!-- Dynamically Rebuilt Controls per Active Category (Custom / Adopt / YCH) -->
+            <div id="calc-dynamic-body" class="space-y-4"></div>
+
+            <button onclick="copyCalcRequest()" id="calc-copy-btn" class="quote-cta w-full py-3 bg-accent text-bg mono text-xs uppercase font-medium hover:bg-textMain transition cursor-pointer">
+              Copy Ready DM Request
+            </button>
+
+            <!-- Order brief -->
+            <details class="quote-brief" id="calc-brief-panel"><summary id="calc-brief-summary">Add references & brief (optional)</summary><div class="space-y-3">
+              <div id="calc-step-brief" class="mono text-[10px] uppercase tracking-widest text-accent">03 / Tell me about it</div>
+              <div><label for="calc-refs" id="calc-refs-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Reference links</label><input id="calc-refs" oninput="recalcTotal()" type="text" placeholder="Paste character sheets, moodboards or image links" class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent" /></div>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div><label for="calc-deadline" id="calc-deadline-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Preferred deadline</label><input id="calc-deadline" oninput="recalcTotal()" type="text" placeholder="Flexible / add a date" class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent" /></div>
+                <div><label for="calc-contact" id="calc-contact-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Preferred contact</label><select id="calc-contact" onchange="recalcTotal()" class="w-full bg-bg border hairline p-3 text-sm text-textMain focus:outline-none focus:border-accent"><option value="Discord">Discord</option><option value="Email">Email</option><option value="Telegram">Telegram</option></select></div>
+              </div>
+              <div><label for="calc-notes" id="calc-brief-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Brief & extra details</label><textarea id="calc-notes" oninput="recalcTotal()" rows="4" placeholder="Character details, pose, mood, SFW/NSFW, background..." class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent resize-y"></textarea></div>
+            </div></details>
+
+
+            <details class="pt-2 border-t hairline text-xs">
+              <summary id="calc-preview-label" class="mono text-[10px] uppercase text-textDim hover:text-textMain cursor-pointer select-none">
+                Preview DM Message Text
+              </summary>
+              <pre id="calc-preview-text" class="mt-2 p-3 bg-bg border hairline mono text-[11px] text-textMuted whitespace-pre-wrap leading-relaxed"></pre>
+            </details>
+          </div>
+        </div>
+
+      </div>
+      <div id="pricing-process-storage" hidden><section id="art-process" aria-label="Artwork process and versions"></section></div>
+    </section>
+
+
+    <!-- ===================================================================
+         PAGE 3: GALLERY (WITH 'OTHER WORKS' & 18+ CONFIRMATION MODAL)
+    ==================================================================== -->
+    <section id="page-gallery" class="page-section hidden space-y-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b hairline pb-6">
+        <div>
+          <div id="gal-eyebrow" class="mono text-xs uppercase text-accent">CURATED ARCHIVE</div>
+          <h1 id="gal-title" class="serif text-4xl sm:text-5xl mt-1">Art Gallery</h1>
+          <p id="gal-sub" class="text-sm text-textMuted mt-1"></p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3">
+          <!-- Category Filters + 18+ Toggle -->
+          <div class="flex flex-wrap items-center gap-3">
+            <div id="gallery-category-filters" class="flex flex-wrap gap-1.5 mono text-xs" role="group" aria-label="Gallery filters">
+              <button type="button" onclick="setGalleryCat('all')" data-c="all" id="gf-all" aria-pressed="true" class="gal-filter-btn px-3 py-1.5 bg-accent text-bg font-medium transition cursor-pointer">All Works</button>
+              <button type="button" onclick="setGalleryCat('comm')" data-c="comm" id="gf-comm" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Commissions</button>
+              <button type="button" onclick="setGalleryCat('adopt')" data-c="adopt" id="gf-adopt" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Adopts</button>
+              <button type="button" onclick="setGalleryCat('ych')" data-c="ych" id="gf-ych" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">YCH</button>
+              <button type="button" onclick="setGalleryCat('fanart')" data-c="fanart" id="gf-fanart" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Fan art</button>
+              <button type="button" onclick="setGalleryCat('other')" data-c="other" id="gf-other" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Other works</button>
+              <button type="button" id="gallery-adult-only" onclick="toggleGalleryAdultOnly()" aria-pressed="false" class="adult-only-filter">Only 18+</button>
+            </div>
+            <label class="flex items-center gap-2 px-3 py-1.5 border border-error/40 bg-error/5 mono text-xs text-error cursor-pointer select-none whitespace-nowrap">
+              <input type="checkbox" id="nsfw-switch" onchange="handleNsfwToggle(this)" class="accent-[#D48A94] w-3.5 h-3.5">
+              <span id="gal-nsfw-label">Show 18+ Content</span>
+            </label>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="gallery-cards-grid" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5"></div>
+
+      <!-- External Art Galleries & Archives (DA, FA, Pixiv, X, YCH) -->
+      <div class="pt-8 border-t hairline space-y-4">
+        <div>
+          <h2 id="gal-ext-title" class="serif text-2xl sm:text-3xl text-textMain">Full Archives & External Galleries</h2>
+          <p id="gal-ext-sub" class="text-xs sm:text-sm text-textMuted mt-0.5"></p>
+        </div>
+        <div id="gal-ext-platforms" class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3"></div>
+      </div>
+    </section>
+
+
+    <!-- ===================================================================
+         PAGE 4: QUEUE (SELF-HOSTED WORK TRACKER WITHOUT TRELLO)
+    ==================================================================== -->
+    <section id="page-queue" class="page-section hidden space-y-8">
+      <div class="border-b hairline pb-6">
+        <div id="q-eyebrow" class="mono text-xs uppercase text-accent">LIVE WORK TRACKER</div>
+        <h1 id="q-title" class="serif text-4xl sm:text-5xl mt-1">Current Commission Queue</h1>
+        <p id="q-sub" class="text-sm text-textMuted mt-1 max-w-2xl"></p>
+      </div>
+
+<section id="queue-overview" class="queue-overview" aria-label="Queue summary"><div><span id="queue-active-label"></span><strong id="queue-active-count">—</strong></div><div><span id="queue-reserved-label"></span><strong id="queue-reserved-count">—</strong></div><div class="queue-sync"><p id="queue-sync-status" role="status" aria-live="polite"></p><button type="button" id="queue-refresh"></button></div></section>
+      <div id="queue-tabs" class="queue-tabs" role="tablist" aria-label="Queue views"><button type="button" id="queue-tab-active" role="tab" aria-selected="true"></button><button type="button" id="queue-tab-reserved" role="tab" aria-selected="false"></button></div>
+      <div class="card p-6 sm:p-8 overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[700px]"><thead><tr class="border-b hairline mono text-xs uppercase text-textDim"><th id="q-col-slot" class="pb-3 pr-4 font-normal"></th><th id="q-col-client" class="pb-3 px-4 font-normal"></th><th id="q-col-details" class="pb-3 px-4 font-normal"></th><th id="q-col-stage" class="pb-3 px-4 font-normal"></th><th id="q-col-progress" class="pb-3 pl-4 font-normal"></th></tr></thead><tbody id="queue-table-body" class="divide-y hairline text-sm"></tbody></table>
+      </div>
+      <section id="reservation-info" class="reservation-info"><div><span id="reservation-eyebrow" class="mono"></span><h2 id="reservation-title" class="serif"></h2><p id="reservation-description"></p><small id="reservation-terms"></small></div><a href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" id="reservation-contact"></a></section>
+    </section>
+
+
+    <!-- ===================================================================
+         PAGE 5: TERMS OF SERVICE (CLEAN 6-CARD SUMMARY + FULL RULES)
+    ==================================================================== -->
+    <section id="page-tos" class="page-section hidden space-y-12">
+      <div class="border-b hairline pb-6">
+        <div id="tos-eyebrow" class="mono text-xs uppercase text-accent">TERMS OF SERVICE</div>
+        <h1 id="tos-title" class="serif text-4xl sm:text-5xl mt-1">Commissions, Adopts & YCH — Rules</h1>
+        <p id="tos-sub" class="text-sm text-textMuted mt-1 max-w-2xl"></p>
+      </div>
+
+      <!-- Structured 6-Card Short Summary -->
+      <div class="space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <h2 id="tos-summary-title" class="serif text-3xl">Quick Summary (At a Glance)</h2>
+          <label class="flex items-center gap-2.5 px-4 py-2 card border-accent/40 text-xs text-textMain cursor-pointer select-none">
+            <input type="checkbox" id="tos-agree-checkbox" onchange="toggleTosConfirmation(this.checked)" class="accent-[#E2B478] w-4 h-4">
+            <span id="tos-agree-label">I have read and agree to the Terms of Service</span>
+          </label>
+        </div>
+        <div id="tos-cards-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </div>
+
+      <!-- Will Draw / Won't Draw + Full Detailed Sections -->
+      <div class="space-y-6 pt-6 border-t hairline">
+        <div class="grid sm:grid-cols-2 gap-6">
+          <div class="card p-6 space-y-3">
+            <div id="tos-will-title" class="mono text-xs uppercase text-accent">✓ Will Draw</div>
+            <ul id="tos-will-list" class="space-y-2 text-sm text-textMuted"></ul>
+          </div>
+          <div class="card p-6 space-y-3 border-error/30">
+            <div id="tos-wont-title" class="mono text-xs uppercase text-error">✕ Won't Draw</div>
+            <ul id="tos-wont-list" class="space-y-2 text-sm text-textMuted"></ul>
+          </div>
+        </div>
+
+        <h2 id="tos-full-title" class="serif text-3xl pt-4">Detailed Terms & Conditions</h2>
+        <div id="tos-detailed-sections" class="grid md:grid-cols-2 gap-5"></div>
+      </div>
+    </section>
+
+
+    <!-- ===================================================================
+         PAGE 6: FAQ
+    ==================================================================== -->
+    <section id="page-faq" class="page-section hidden space-y-8 max-w-4xl mx-auto">
+      <div class="border-b hairline pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+        <div>
+          <div id="faq-eyebrow" class="mono text-xs uppercase text-accent">KNOWLEDGE BASE</div>
+          <h1 id="faq-title" class="serif text-4xl sm:text-5xl mt-1">Frequently Asked Questions</h1>
+          <p id="faq-sub" class="text-sm text-textMuted mt-1"></p>
+        </div>
+        <div id="faq-cat-buttons" class="flex flex-wrap gap-1.5 mono text-xs"></div>
+      </div>
+
+      <div id="faq-items-list" class="space-y-3"></div>
+    </section>
+
+<section id="page-catalog" class="page-section hidden space-y-8"><div class="catalog-header"><div><div id="catalog-eyebrow" class="mono"></div><h1 id="catalog-title" class="serif">Available YCH &amp; Adoptable Designs</h1><p id="catalog-subtitle">Browse character designs and reusable pose templates. Confirm availability before ordering.</p></div><a href="https://www.deviantart.com/nektahr" target="_blank" rel="noopener noreferrer" id="catalog-profile"></a></div><div class="catalog-notice" id="catalog-notice" role="note"></div><div class="catalog-toolbar"><div id="catalog-type-filters" class="catalog-filters" role="group"></div><label><span id="catalog-search-label" class="sr-only"></span><input type="search" id="catalog-search"></label></div><div class="catalog-controls"><div id="catalog-state-filters" class="catalog-filters" role="group"></div><button type="button" id="catalog-adult-toggle" role="switch" aria-checked="false"></button></div><div id="catalog-grid" class="catalog-grid"></div><p id="catalog-empty" hidden></p><div id="catalog-pagination" class="catalog-pagination"></div><section class="reservation-info"><div><h2 id="catalog-reserve-title" class="serif"></h2><p id="catalog-reserve-description"></p></div><a href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" id="catalog-reserve-contact"></a></section></section>
+<dialog id="catalog-dialog" aria-labelledby="catalog-dialog-title"><button type="button" id="catalog-dialog-close" class="catalog-close" aria-label="Close">×</button><div id="catalog-dialog-image"></div><div class="catalog-dialog-content"><p id="catalog-dialog-meta" class="mono"></p><h2 id="catalog-dialog-title" class="serif"></h2><p id="catalog-dialog-description"></p><div id="catalog-dialog-includes"></div><p id="catalog-dialog-status"></p><div id="catalog-dialog-badges" class="catalog-dialog-badges"></div><div class="catalog-dialog-actions"><button type="button" id="catalog-dialog-preview" hidden></button><button type="button" id="catalog-dialog-copy"></button><a href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" id="catalog-dialog-contact"></a></div><p class="catalog-dialog-disclaimer" id="catalog-dialog-disclaimer"></p></div></dialog>
+  </main>
+
+  <!-- =====================================================================
+       18+ AGE VERIFICATION MODAL
+  ====================================================================== -->
+  <div id="nsfw-modal" class="hidden fixed inset-0 z-50 bg-bg/90 backdrop-blur-md flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="mod-title">
+    <div class="card max-w-md w-full p-8 text-center space-y-5 border-error/40">
+      <div id="mod-eyebrow" class="mono text-[10px] uppercase text-error">MATURE CONTENT WARNING</div>
+      <h2 id="mod-title" class="serif text-3xl text-textMain">Age Verification (18+)</h2>
+      <p id="mod-desc" class="text-sm text-textMuted leading-relaxed"></p>
+      <div class="flex gap-3 pt-2">
+        <button type="button" onclick="confirmAgeModal(false)" id="mod-btn-no" class="flex-1 py-2.5 border hairline mono text-xs uppercase text-textMuted hover:text-textMain transition cursor-pointer">No, keep blurred</button>
+        <button type="button" onclick="confirmAgeModal(true)" id="mod-btn-yes" class="flex-1 py-2.5 bg-error text-bg mono text-xs uppercase font-medium hover:opacity-90 transition cursor-pointer">Yes, I am 18+</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       GALLERY LIGHTBOX MODAL
+  ====================================================================== -->
+  <div id="lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="lb-title" onclick="closeLightbox()" class="hidden fixed inset-0 z-50 bg-bg/95 backdrop-blur-md flex items-center justify-center p-4">
+    <div onclick="event.stopPropagation()" class="card max-w-2xl w-full overflow-hidden">
+      <div class="relative bg-bg max-h-[70vh] flex items-center justify-center overflow-hidden border-b hairline">
+        <img id="lb-image" alt="Artwork" class="max-h-[70vh] w-auto object-contain" />
+        <button type="button" id="lb-close" onclick="closeLightbox()" aria-label="Close artwork preview" class="absolute top-3 right-3 px-3 py-1 bg-bg/85 border hairline mono text-xs text-textMuted hover:text-textMain cursor-pointer">
+          ✕
+        </button>
+      </div>
+      <div class="p-5 flex items-center justify-between gap-4">
+        <div>
+          <div id="lb-stage" class="mono text-[10px] uppercase text-accent"></div>
+          <h3 id="lb-title" class="serif text-2xl text-textMain"></h3>
+          <p id="lb-desc" class="text-xs text-textDim mt-0.5"></p>
+        </div>
+        <button type="button" id="lb-pricing-link" onclick="closeLightbox(); switchPage('pricing');" class="px-4 py-2 bg-accent text-bg mono text-xs uppercase font-medium hover:bg-textMain transition cursor-pointer shrink-0">
+          Pricing →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       FOOTER & TOAST NOTIFICATION
+  ====================================================================== -->
+  <footer class="border-t hairline mt-20 py-8 px-4 sm:px-8 text-center mono text-xs text-textDim">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div id="footer-rights">NEK'TAHR © 2026 · ALL RIGHTS RESERVED · NO AI / NO NFT</div>
+      <div class="flex gap-4">
+        <a href="https://discord.com/users/361511957129461781" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition cursor-pointer">Discord: drintrava</a>
+        <a id="footer-telegram" href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition">Telegram DM</a>
+        <a href="mailto:nektahr@gmail.com" class="hover:text-accent transition">nektahr@gmail.com</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" role="status" aria-live="polite" class="fixed bottom-6 right-6 z-50 card border-accent px-4 py-2.5 mono text-xs text-accent opacity-0 pointer-events-none transition-opacity duration-300">
+    Copied
+  </div>
+
+  <!-- =====================================================================
+       APPLICATION LOGIC
+  ====================================================================== -->
+  <!-- APP_LOGIC -->
+<script src="/assets/process-viewer.js?v=20261030-artwork-names1"></script>
+<script src="/assets/artwork-interactions.js?v=20261029-image-guard"></script>
+<dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
+<script src="/assets/gallery-viewer.js?v=20261030-gallery-adult2"></script>
+<script src="/assets/pricing-samples.js?v=20261030-commission-options1"></script>
+<script src="/assets/quote-builder.js?v=20261030-commission-options1"></script>
+<script src="/assets/catalog.js?v=20261030-gallery-adult2"></script>
+<script src="/assets/compact-calculator.js?v=20261030-commission-options1"></script>
+<script src="/assets/contact-actions.js?v=20261030-tier-bonuses2"></script>
+<script src="/assets/thumbnail-mats.js?v=20261029-frames1"></script>
+</body>
+</html>
+
+
+

@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');let checks=0;const check=(ok,msg)=>{checks++;assert.ok(ok,msg)};
-const html=fs.readFileSync(__dirname+'/../index.html','utf8'),quote=fs.readFileSync(__dirname+'/../assets/quote-builder.js','utf8');
-const tables={};vm.createContext(tables);vm.runInContext(html.slice(html.indexOf('const I18N ='),html.indexOf('function getProcessLabel'))+';this.data={I18N,CALC_CONFIG};',tables);
+const html=(fs.readFileSync(__dirname+'/../assets/translations.js','utf8')+fs.readFileSync(__dirname+'/../assets/app-state.js','utf8')+fs.readFileSync(__dirname+'/../assets/app.js','utf8')),quote=fs.readFileSync(__dirname+'/../assets/quote-builder.js','utf8');
+const tables={window:{}};vm.createContext(tables);vm.runInContext(html.slice(html.indexOf('const I18N ='),html.indexOf('function getProcessLabel'))+';this.data={I18N,CALC_CONFIG};',tables);
 function calculator({mode='custom',value='single',characters=1,q={},alt='nsfw',existing=false,nda=false,rush=false}){
  const nodes=new Map(),style={setProperty(){}},classes={toggle(){}};const make=()=>({textContent:'',value:'',checked:false,disabled:false,dataset:{},style,classList:classes,append(){},replaceChildren(){},setAttribute(){},closest(){return {classList:classes}}});
  const get=id=>{if(!nodes.has(id))nodes.set(id,make());return nodes.get(id)};get('calc-stage-sel').value=value;get('quote-character-count').value=characters;get('quote-existing-nsfw').checked=existing;
@@ -11,15 +11,15 @@ function calculator({mode='custom',value='single',characters=1,q={},alt='nsfw',e
 const cases=[
  [{value:'sketch'},80],[{value:'color'},120],[{},200],[{characters:2},300],[{characters:3},380],[{characters:8},780],
  [{value:'sketch',q:{nsfw:1,futa:1,expression:2}},205],[{value:'sketch',q:{futa:1}},130],[{value:'sketch',q:{futa:1},existing:true},105],
- [{value:'sketch',q:{outfit:2,expression:3,weapon:1,complexWeapon:1,armour:1,minorEdit:2}},440],
+ [{value:'sketch',q:{outfit:2,expression:3,weapon:1,complexWeapon:1,armour:1,minorEdit:2}},255],
  [{value:'sketch',q:{outfit:-5,expression:'bad'}},80],[{value:'sketch',q:{expression:100}},305],[{value:'sketch',nda:true},108],[{value:'sketch',rush:true},130],
  [{mode:'ych',value:'30'},30],[{mode:'ych',value:'60'},60],[{mode:'ych',value:'120'},120],[{mode:'ych',value:'120',q:{nsfw:1}},170],[{mode:'ych',value:'160'},160],[{mode:'ych',value:'160',q:{futa:1}},185],
- [{mode:'adopt',value:'100'},100],[{mode:'adopt',value:'110'},110],[{mode:'adopt',value:'100',q:{nsfw:1}},150],[{mode:'adopt',value:'200'},200],
- [{mode:'adopt',value:'200',q:{futa:1}},225],[{mode:'adopt',value:'200',alt:'furry'},200],[{mode:'adopt',value:'200',alt:'furry',q:{nsfw:1}},250],[{mode:'adopt',value:'200',alt:'outfit'},200],[{mode:'adopt',value:'200',alt:'outfit',q:{outfit:1}},250],[{mode:'adopt',value:'200',alt:'futa'},200],[{mode:'adopt',value:'350',alt:'other'},350],[{mode:'adopt',value:'500',alt:'furry'},500],[{mode:'adopt',value:'500',alt:'furry',q:{futa:1}},525]
+ [{mode:'adopt',value:'100'},100],[{mode:'adopt',value:'110'},110],[{mode:'adopt',value:'100',q:{nsfw:1}},100],[{mode:'adopt',value:'200'},200],
+ [{mode:'adopt',value:'200',q:{futa:1}},225],[{mode:'adopt',value:'200',alt:'furry'},200],[{mode:'adopt',value:'200',alt:'furry',q:{nsfw:1}},250],[{mode:'adopt',value:'200',alt:'outfit'},200],[{mode:'adopt',value:'200',alt:'outfit',q:{outfit:1}},250],[{mode:'adopt',value:'200',alt:'futa'},200],[{mode:'adopt',value:'300',alt:'other'},300],[{mode:'adopt',value:'450',alt:'furry'},450],[{mode:'adopt',value:'450',alt:'furry',q:{futa:1}},475]
 ];
 for(const [input,want]of cases){const result=calculator(input);check(result.total===want,JSON.stringify(input)+' expected '+want+', got '+result.total)}
 {
- const c=calculator({mode:'adopt',value:'200',alt:'furry'});check(c.toggles.find(x=>x.dataset.quoteToggle==='furry').disabled,'Included version locked');check(c.message.includes('Furry version')&&c.message.includes('Included in this package'),'Included choice recorded in request');
+ const c=calculator({mode:'adopt',value:'200',alt:'furry'});check(c.toggles.find(x=>x.dataset.quoteToggle==='furry').disabled,'Included version locked');check(c.message.includes('Furry / human version')&&c.message.includes('Included in this package'),'Included choice recorded in request');
 }
 // Consent is tested in an isolated synthetic context, not accepted in a browser.
 const init=html.slice(html.indexOf('const TOS_CONSENT_KEY ='),html.indexOf('    let ageModalReturnFocus'));

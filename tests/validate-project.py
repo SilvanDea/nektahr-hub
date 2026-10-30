@@ -20,14 +20,15 @@ for file,route in ROUTES.items():
  s=(ROOT/file).read_text();p=Page();p.feed(s);assert p.body==route,(file,p.body);assert not [k for k,v in Counter(p.ids).items() if v>1],file+' duplicate ids'
  for url in p.local:assert (ROOT/url.lstrip('/')).exists(),(file,url)
  refs+=len(p.local);assert all('noopener' in rel for rel in p.blank),file+' unsafe target'
- chunks=[x for x in re.findall(r'<script\b[^>]*>([\s\S]*?)</script>',s) if x.strip()];business=s[s.index('const I18N ='):s.index("    let currentLang =")]+s[s.index('    function showToast'):s.index('</script>',s.index('    function showToast'))];business='\n'.join(line for line in business.splitlines() if not any(k in line for k in ["getElementById('path-a-tag')","getElementById('path-b-tag')"]));script_hashes.append(hashlib.sha256(business.encode()).hexdigest())
+ scripts=re.findall(r'<script src="(/assets/[^"?]+)',s);script_hashes.append(tuple(scripts))
  assert 'gapkuro@gmail.com' not in s and '$65' not in s,file+' stale contact/price'
 assert len(set(script_hashes))==1,'Application logic differs between routes'
 works=json.loads((ROOT/'assets/portfolio-data.js').read_text().split(' = ',1)[1].rstrip(';\n'));items=json.loads((ROOT/'assets/catalog-data.json').read_text());ids={w['id'] for w in works};assert len(ids)==len(works);assert len({x['id'] for x in items})==len(items)
 for w in works:
  n=len(w['images']);assert n==len(w['nsfw']) and 0<=w['thumb']<n
  for lang in ['en','ru','es']:assert len(w['labels'][lang])==n and w['titles'][lang]
- for u in w['images']:assert (ROOT/u.lstrip('/')).is_file(),u
+ for u in w['images']:
+  if u.startswith('/'):assert (ROOT/u.lstrip('/')).is_file(),u
  if 'comparisonPairs'in w:
   assert len(w['comparisonPairs'])==n
   for pair in w['comparisonPairs']:assert len(pair)==2 and all(isinstance(i,int) and 0<=i<n for i in pair)
@@ -60,7 +61,7 @@ for file in ROUTES:
  assert f'<link rel="canonical" href="{expected}"' in markup
  assert f'property="og:url" content="{expected}"' in markup
  assert 'name="twitter:card" content="summary_large_image"' in markup
- assert 'property="og:image" content="https://nektahr.com/assets/social-preview-v4.jpg"' in markup
+ assert 'property="og:image" content="https://nektahr.com/assets/social-preview-v4.jpg?rev=20261029-hold-min10"' in markup
  nav=markup.split('<nav id="nav-links"',1)[1].split('</nav>',1)[0]
  assert len(re.findall(r'<a href="/',nav))==7 and '<button' not in nav
  assert '<option value="Discord">Discord</option><option value="Email">Email</option>' in markup

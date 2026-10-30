@@ -1,0 +1,51 @@
+[
+  {
+    "file": "index.html",
+    "page": "board",
+    "title": "Nek&#x27;tahr | Character Art &amp; Commissions",
+    "description": "Character art, commissions, YCH and adoptable designs by Nek&#x27;tahr. Browse the gallery and prices, view available designs, and contact me on Discord or email.",
+    "url": "https://nektahr.com/"
+  },
+  {
+    "file": "pricing/index.html",
+    "page": "pricing",
+    "title": "Commission Prices, YCH &amp; Adopt Tiers | Nek&#x27;tahr",
+    "description": "Compare character commission finishes, YCH prices and adopt tiers. Build an estimate and contact Nek&#x27;tahr on Discord or email.",
+    "url": "https://nektahr.com/pricing/"
+  },
+  {
+    "file": "catalog/index.html",
+    "page": "catalog",
+    "title": "YCH &amp; Adoptable Catalog | Nek&#x27;tahr",
+    "description": "Browse YCH templates and adoptable character designs. Check available, reserved and sold items and discuss an order with Nek&#x27;tahr.",
+    "url": "https://nektahr.com/catalog/"
+  },
+  {
+    "file": "gallery/index.html",
+    "page": "gallery",
+    "title": "Art Gallery | Nek&#x27;tahr",
+    "description": "Explore commissions, fan art, YCH examples and character designs by Nek&#x27;tahr. SFW previews with optional age-gated adult versions.",
+    "url": "https://nektahr.com/gallery/"
+  },
+  {
+    "file": "queue/index.html",
+    "page": "queue",
+    "title": "Commission Queue | Nek&#x27;tahr",
+    "description": "View public order progress and reservations. Nek&#x27;tahr accepts art orders; timing is agreed individually.",
+    "url": "https://nektahr.com/queue/"
+  },
+  {
+    "file": "terms/index.html",
+    "page": "tos",
+    "title": "Commission Terms | Nek&#x27;tahr",
+    "description": "Read Nek&#x27;tahr&#x27;s terms for commissions, YCH and adoptables: payment, revisions, usage rights, delivery and cancellations.",
+    "url": "https://nektahr.com/terms/"
+  },
+  {
+    "file": "faq/index.html",
+    "page": "faq",
+    "title": "Art Commission FAQ | Nek&#x27;tahr",
+    "description": "Answers about ordering art from Nek&#x27;tahr, references, payment plans, files, YCH templates and adoptable character designs.",
+    "url": "https://nektahr.com/faq/"
+  }
+]
