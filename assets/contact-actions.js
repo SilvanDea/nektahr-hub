@@ -53,7 +53,7 @@ if(card.parentElement?.id==='gal-ext-platforms')card.replaceChildren(title);
     if(notes){notes.placeholder=briefCopy.notesPlaceholder;notes.required=false;const label=document.querySelector('label[for="calc-notes"]');if(label)label.textContent=briefCopy.notes;}
     const briefSummary=$('calc-brief-summary');if(briefSummary)briefSummary.textContent=briefCopy.title;
     if(refs){let hint=$('quote-reference-help');if(!hint){hint=document.createElement('p');hint.id='quote-reference-help';hint.style.cssText='font-size:12px;line-height:1.65;color:#c8bcae;margin:8px 0 14px';refs.after(hint);}hint.textContent=briefCopy.hint;}
-    const ychDescriptions=({en:['Monochrome sketch of your character in this pose.','Color sketch with simple shading.','Finished artwork with detailed light and rendering.','Full render + one NSFW version. Save $10 as a bundle.'],ru:['Монохромный скетч твоего персонажа в заданной позе.','Цветной скетч с простой светотенью.','Готовый арт с проработкой света и рендера.','Полный рендер + одна NSFW-версия. Комплект дешевле на $10.'],es:['Boceto monocromo de tu personaje en esta pose.','Boceto a color con sombras sencillas.','Obra terminada con luz y render detallados.','Render completo + una versión NSFW. Ahorra $10 en el paquete.']})[currentLang];
+    const ychDescriptions=({en:['Monochrome sketch of your character in this pose.','Color sketch with simple shading.','Finished artwork with detailed light and rendering.','Full render + one NSFW version.'],ru:['Монохромный скетч твоего персонажа в заданной позе.','Цветной скетч с простой светотенью.','Готовый арт с проработкой света и рендера.','Полный рендер + одна NSFW-версия.'],es:['Boceto monocromo de tu personaje en esta pose.','Boceto a color con sombras sencillas.','Obra terminada con luz y render detallados.','Render completo + una versión NSFW.']})[currentLang];
     document.querySelectorAll('#ych-slots-grid>.card').forEach((card,i)=>{const paragraph=card.querySelector('p');if(paragraph&&ychDescriptions[i])paragraph.textContent=ychDescriptions[i];});
 
     if(Intl.Segmenter){
@@ -75,3 +75,20 @@ if(card.parentElement?.id==='gal-ext-platforms')card.replaceChildren(title);
   update();
 })();
 
+
+/* Consistent tier names and explicit cumulative expression allowance. */
+(()=>{
+ const tierNames={en:['Tier I','Tier II','Tier III','Tier IV'],ru:['Тир I','Тир II','Тир III','Тир IV'],es:['Nivel I','Nivel II','Nivel III','Nivel IV']};
+ for(const lang of ['en','ru','es']){
+  const p=I18N[lang].pricing,tiers=tierNames[lang];
+  p.adoptSection.tiers.forEach((t,i)=>{t.badge=tiers[i];if(i===0)t.title=t.title.replace(/^SB\s*[—–-]\s*/,'');});
+  p.adoptSection.tiers[3].perks.push(({en:'3 extra expressions total; more available at $25 each',ru:'3 эмоции суммарно; следующие по $25',es:'3 expresiones en total; adicionales a $25'})[lang]);
+  p.ychSection.slots.forEach((slot,i)=>{slot.code=i===3?tiers[i]+' · AB':tiers[i];});
+  const last=p.adoptSection.tiers[3];last.desc=last.desc.replace(/\bAB\b/g,tiers[3]);
+ }
+ for(const lang of ['en','ru','es']){CALC_CONFIG.adopt.note[lang]=CALC_CONFIG.adopt.note[lang].replace(/\bAB\b/g,tierNames[lang][3]);} 
+ CALC_CONFIG.ych.options.forEach((o,i)=>{for(const lang of ['en','ru','es'])if(o.label?.[lang])o.label[lang]=tierNames[lang][i]+' · '+o.label[lang];});
+ CALC_CONFIG.adopt.options.forEach((o,i)=>{for(const lang of ['en','ru','es'])if(o.label?.[lang])o.label[lang]=o.label[lang].replace(/\bSB\b/g,tierNames[lang][0]).replace(/\bAB\b/g,tierNames[lang][3]);});
+ const oldRender=renderAllText;window.renderAllText=function(){oldRender();};
+ renderAllText();
+})();
