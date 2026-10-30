@@ -177,3 +177,20 @@ font-size:14px!important;line-height:1.75!important;color:#d2c8bc!important;text
 #quote-saving-details[open]{padding:10px;border:1px solid #e2b47833;border-radius:8px;background:#100d15}
 #quote-saving-details .quote-line{padding:4px 0}
 #quote-saving-details p{font-size:11px;color:#b7ae9f;margin-top:9px}
+
+
+/* Distinct category chips and intentionally covered adopt thumbnails. */
+.gallery-kind[data-kind="fanart"],.gallery-kind[data-kind="ych"]{display:inline-flex;width:fit-content;padding:4px 8px;border-radius:5px;letter-spacing:.06em;font-weight:700}
+.gallery-kind[data-kind="fanart"]{color:#f0dcff;background:#503368;border:1px solid #ac7cce}
+.gallery-kind[data-kind="ych"]{color:#cefff3;background:#205d54;border:1px solid #64bdab}
+.adult-hover-preview{position:relative;overflow:hidden}
+.adult-hover-preview img{filter:blur(16px);transform:scale(1.08);transition:filter .22s ease,transform .22s ease}
+.adult-hover-hint{position:absolute;left:12px;right:12px;bottom:14px;z-index:2;width:fit-content;margin:auto;padding:7px 10px;border:1px solid #e3b2c45e;border-radius:6px;background:#100b14e8;color:#f4d9e5;font:500 11px/1.5 Inter,sans-serif;text-align:center;pointer-events:none;transition:opacity .15s ease}
+.media-adult-badge{position:absolute;top:10px;left:10px;z-index:3;padding:3px 8px;border:1px solid #d66a81;border-radius:4px;background:#180e18eb;color:#ffa5b9;font:650 11px/1.4 Inter,sans-serif}
+@media(hover:hover) and (pointer:fine){
+ .card:hover .adult-hover-preview img,.catalog-card:hover .adult-hover-preview img,button.adult-hover-preview:hover img,.art:hover .adult-hover-preview img{filter:none;transform:scale(1)}
+ .card:hover .adult-hover-hint,.catalog-card:hover .adult-hover-hint{opacity:0}
+}
+.card:focus-visible .adult-hover-preview img,.catalog-card:focus-visible .adult-hover-preview img,button.adult-hover-preview:focus-visible img,.art:focus-visible .adult-hover-preview img{filter:none;transform:scale(1)}
+.card:focus-visible .adult-hover-hint,.catalog-card:focus-visible .adult-hover-hint{opacity:0}
+@media(prefers-reduced-motion:reduce){.adult-hover-preview img,.adult-hover-hint{transition:none}}

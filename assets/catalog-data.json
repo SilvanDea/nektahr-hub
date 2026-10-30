@@ -25,7 +25,8 @@
     "price": {
       "kind": "quote"
     },
-    "saleMode": "single"
+    "saleMode": "single",
+    "hoverReveal": true
   },
   {
     "id": "ADOPT-VAELYN",
@@ -53,7 +54,8 @@
     "price": {
       "kind": "quote"
     },
-    "saleMode": "single"
+    "saleMode": "single",
+    "hoverReveal": true
   },
   {
     "id": "ADOPT-ARLIA",
@@ -81,7 +83,8 @@
     "price": {
       "kind": "quote"
     },
-    "saleMode": "single"
+    "saleMode": "single",
+    "hoverReveal": true
   },
   {
     "id": "ADOPT-TAVVY",
@@ -109,7 +112,8 @@
     "price": {
       "kind": "quote"
     },
-    "saleMode": "single"
+    "saleMode": "single",
+    "hoverReveal": true
   },
   {
     "id": "ADOPT-SOLIS",
@@ -137,7 +141,8 @@
     "price": {
       "kind": "quote"
     },
-    "saleMode": "single"
+    "saleMode": "single",
+    "hoverReveal": true
   },
   {
     "id": "ADOPT-MARINUS",
@@ -165,7 +170,8 @@
     "price": {
       "kind": "quote"
     },
-    "saleMode": "single"
+    "saleMode": "single",
+    "hoverReveal": true
   },
   {
     "id": "ADOPT-KAITO",
@@ -222,7 +228,8 @@
     "price": {
       "kind": "quote"
     },
-    "saleMode": "single"
+    "saleMode": "single",
+    "hoverReveal": true
   },
   {
     "id": "ADOPT-RIVZ",
@@ -250,7 +257,8 @@
     "price": {
       "kind": "quote"
     },
-    "saleMode": "single"
+    "saleMode": "single",
+    "hoverReveal": true
   },
   {
     "id": "ADOPT-LUVI",

@@ -37,7 +37,7 @@
   <meta name="twitter:image:alt" content="Nek&#x27;tahr — character art, commissions, YCH, adopts, ToS and FAQ" />
   <meta name="theme-color" content="#0B0A0E" />
   <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
-  <script src="/assets/portfolio-data.js?v=20261028-street-demon-mar18"></script>
+  <script src="/assets/portfolio-data.js?v=20261030-gallery-adult2"></script>
   <script src="/assets/queue-manager.js?v=20261030-policy1" defer></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -140,7 +140,7 @@
 <link rel="stylesheet" href="/assets/site-polish.css?v=20261028-street-demon-mar18">
 <link rel="stylesheet" href="/assets/quote-controls.css?v=20261028-street-demon-mar18">
 <link rel="stylesheet" href="/assets/catalog-queue.css?v=20261030-bundles1">
-<link rel="stylesheet" href="/assets/readability.css?v=20261030-bundles1">
+<link rel="stylesheet" href="/assets/readability.css?v=20261030-gallery-adult2">
 <link rel="stylesheet" href="/assets/compact-calculator.css?v=20261030-bundles1">
 <link rel="stylesheet" href="/assets/contact-actions.css?v=20261030-bundles1">
 <link rel="stylesheet" href="/assets/thumbnail-mats.css?v=20261029-frames1">
@@ -325,7 +325,7 @@
       { id: 11, gallery: false, title: "Portfolio Sample 11", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7b5b1c4e.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." },
       { id: 12, gallery: false, title: "Portfolio Sample 12", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "https://nektahr.carrd.co/assets/images/gallery01/7cac3ea3.jpg?v=299f438c", desc: "Public SFW portfolio sample. See the source profile for context." }
     ];
-    GALLERY_ITEMS.push(...(window.PORTFOLIO_WORKS||[]).map(work=>({id:100+work.id,title:work.title,localizedTitles:work.titles,cat:work.cat,nsfw:work.nsfw[work.thumb],img:work.images[work.thumb],processWork:work.id,gallery:work.gallery,catalogWork:true,designKind:work.designKind})));
+    GALLERY_ITEMS.push(...(window.PORTFOLIO_WORKS||[]).map(work=>({id:100+work.id,title:work.title,localizedTitles:work.titles,cat:work.cat,nsfw:work.nsfw[work.thumb],img:work.images[work.thumb],processWork:work.id,gallery:work.gallery,catalogWork:true,designKind:work.designKind,hasAdultVersion:work.nsfw.some(Boolean),hoverReveal:Boolean(work.hoverReveal)})));
 
 
     // Translations (EN main · ES · RU)
@@ -1964,7 +1964,7 @@
     const CALC_MODE_STATE = { custom: { value: 'single', addons: [], mults: [] }, adopt: { value: '100', addons: [], mults: [] }, ych: { value: '30', addons: [], mults: [] } };
     let currentGalCat = 'all';
     let galleryAdultOnly = false;
-    function hasAdultArtwork(item) { return Boolean(item.nsfw || (window.PORTFOLIO_WORKS||[]).find(w=>w.id===item.processWork)?.nsfw.some(Boolean)); }
+    function hasAdultArtwork(item) { return Boolean(item.nsfw || item.hasAdultVersion || [3,4].includes(item.processWork) || (window.PORTFOLIO_WORKS||[]).find(w=>w.id===item.processWork)?.nsfw.some(Boolean)); }
     function matchesGalleryFilters(item) { return item.gallery!==false && (currentGalCat==='all'||item.cat===currentGalCat) && (!galleryAdultOnly||hasAdultArtwork(item)); }
     function toggleGalleryAdultOnly() { galleryAdultOnly=!galleryAdultOnly; renderGalleryGrid(); }
     let currentFaqCat = 'all';
@@ -2781,15 +2781,17 @@
         return;
       }
       grid.innerHTML = filtered.map(item => {
-        const blurred = Boolean(item.nsfw) && !showNsfwGallery;
+        const blurred = Boolean(item.nsfw) && !(isAdultVerified && showNsfwGallery);
+        const hoverReveal = Boolean(item.hoverReveal && isAdultVerified && showNsfwGallery);
         return `
           <button type="button" onclick="openLightbox(${Number(item.id)})" class="card card-interactive overflow-hidden group cursor-pointer text-left w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" aria-label="${blurred ? ({en:'18+ artwork; confirm your age to view',ru:'Работа 18+; для просмотра подтверди возраст',es:'Obra 18+; confirma tu edad para verla'})[currentLang] : `${({en:'Open',ru:'Открыть',es:'Abrir'})[currentLang]} ${getGalleryTitle(item)}`}">
-            <div class="aspect-[4/5] bg-surfaceAlt relative overflow-hidden border-b hairline">
+            <div class="aspect-[4/5] bg-surfaceAlt relative overflow-hidden border-b hairline ${hoverReveal ? 'adult-hover-preview' : ''}">
               <img src="${item.img}" alt="${blurred ? ({en:'Blurred 18+ artwork preview',ru:'Размытое превью работы 18+',es:'Vista difuminada de una obra 18+'})[currentLang] : getGalleryTitle(item)}" loading="lazy" decoding="async" class="w-full h-full object-contain transition duration-500 ${blurred ? 'blur-2xl scale-110' : 'group-hover:scale-105'}" />
               <div class="absolute top-2.5 left-2.5 flex gap-1.5">
-                ${item.nsfw ? '<span class="px-2 py-0.5 bg-bg/90 border border-error/50 mono text-[10px] text-error">18+</span>' : ''}
+                ${hasAdultArtwork(item) ? '<span class="px-2 py-0.5 bg-bg/90 border border-error/50 mono text-[10px] text-error">18+</span>' : ''}
               </div>
               ${blurred ? `<div class="absolute inset-0 bg-bg/60 flex flex-col items-center justify-center p-4 text-center"><span class="flex items-center justify-center w-10 h-10 border border-error/50 rounded-full text-error mb-2" aria-hidden="true">🔒</span><span class="mono text-[10px] uppercase text-error">NSFW · 18+</span></div>` : ''}
+              ${hoverReveal ? `<span class="adult-hover-hint">${({en:'Hover or open to view · 18+',ru:'Наведи или открой · 18+',es:'Pasa el cursor o abre · 18+'})[currentLang]}</span>` : ''}
             </div>
             <div class="gallery-card-caption">
               <div class="min-w-0">
@@ -3159,17 +3161,18 @@
       if(!window.queueManagerReady)loadLiveQueue();
     };
   </script>
-<script src="/assets/process-viewer.js?v=20261030-commission-options1"></script>
+<script src="/assets/process-viewer.js?v=20261030-gallery-adult2"></script>
 <script src="/assets/artwork-interactions.js?v=20261029-image-guard"></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
-<script src="/assets/gallery-viewer.js?v=20261028-street-demon-mar18"></script>
+<script src="/assets/gallery-viewer.js?v=20261030-gallery-adult2"></script>
 <script src="/assets/pricing-samples.js?v=20261030-commission-options1"></script>
 <script src="/assets/quote-builder.js?v=20261030-commission-options1"></script>
-<script src="/assets/catalog.js?v=20261030-tier-bonuses2"></script>
+<script src="/assets/catalog.js?v=20261030-gallery-adult2"></script>
 <script src="/assets/compact-calculator.js?v=20261030-commission-options1"></script>
 <script src="/assets/contact-actions.js?v=20261030-tier-bonuses2"></script>
 <script src="/assets/thumbnail-mats.js?v=20261029-frames1"></script>
 </body>
 </html>
+
 
 
