@@ -193,3 +193,6 @@ font-size:14px!important;line-height:1.75!important;color:#d2c8bc!important;text
 .card:focus-visible .adult-hover-preview img,.catalog-card:focus-visible .adult-hover-preview img,button.adult-hover-preview:focus-visible img,.art:focus-visible .adult-hover-preview img{filter:none;transform:scale(1)}
 .card:focus-visible .adult-hover-hint,.catalog-card:focus-visible .adult-hover-hint{opacity:0}
 @media(prefers-reduced-motion:reduce){.adult-hover-preview img,.adult-hover-hint{transition:none}}
+
+/* Category names remain plain text. */
+.gallery-kind[data-kind="fanart"],.gallery-kind[data-kind="ych"]{display:block;padding:0;border:0;border-radius:0;background:transparent;letter-spacing:.1em;font-weight:650}
