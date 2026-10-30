@@ -25,7 +25,7 @@
   <meta name="twitter:image:alt" content="Nek&#x27;tahr — character art, commissions, YCH, adopts, ToS and FAQ" />
   <meta name="theme-color" content="#0B0A0E" />
   <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
-  <script src="/assets/portfolio-data.js?v=b9f6112d7f9b"></script>
+  <script src="/assets/portfolio-data.js?v=27216369661b"></script>
   <script src="/assets/queue-manager.js?v=c9cfc3289626" defer></script>
   <link rel="stylesheet" href="/assets/utilities.css?v=c9e008dcf472">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,14 +46,15 @@
 <link rel="stylesheet" href="/assets/compact-calculator.css?v=b719dfe1a0b4">
 <link rel="stylesheet" href="/assets/contact-actions.css?v=e57e8e3f414b">
 <link rel="stylesheet" href="/assets/thumbnail-mats.css?v=f633d43cfe84">
+<link rel="stylesheet" href="/assets/review-batch.css?v=49c992e472c9">
 </head>
 <body data-page="tos" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
 
   <!-- =====================================================================
        CENTRAL CONFIGURATION & LOCALIZATION (EN main · ES · RU)
   ====================================================================== -->
-  <script src="/assets/translations.js?v=800b9b8055df"></script>
-<script src="/assets/app-state.js?v=3cf4535a356c"></script>
+  <script src="/assets/translations.js?v=3f227f6f3423"></script>
+<script src="/assets/app-state.js?v=3af2f13f28ef"></script>
 
   <!-- =====================================================================
        STICKY HEADER
@@ -105,7 +106,7 @@
     <section id="page-board" class="page-section space-y-16 hidden">
       <!-- Hero Grid -->
       <div class="grid lg:grid-cols-12 gap-10 items-start">
-        <div class="lg:col-span-7 space-y-6">
+        <div class="hero-copy lg:col-span-7 space-y-6">
           <div id="hero-eyebrow" class="mono text-xs uppercase text-accent">Character Art &amp; Commissions</div>
           <h1 id="hero-title" class="serif text-4xl sm:text-6xl leading-[1.06] text-textMain">Hey, welcome to my little corner of the internet!</h1>
           <div class="max-w-2xl space-y-3 text-sm sm:text-base text-textMuted leading-relaxed">
@@ -330,8 +331,8 @@
       <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 border-b hairline pb-8">
         <div class="max-w-2xl space-y-2">
           <div id="pricing-eyebrow" class="mono text-xs uppercase text-accent">PRICING · STAGES · ADOPTS · YCH</div>
-          <h1 id="pricing-title" class="serif text-4xl sm:text-5xl">What You&#x27;re Paying For</h1>
-          <p id="pricing-sub" class="text-sm text-textMuted leading-relaxed">Compare custom commission packages, cumulative adoptable tiers, and the published YCH price guide. The quote builder gives a starting estimate; confirm the final quote and availability directly.</p>
+          <h1 id="pricing-title" class="serif text-4xl sm:text-5xl">Prices &amp; options</h1>
+          <p id="pricing-sub" class="text-sm text-textMuted leading-relaxed">Pick a commission, adopt tier or YCH finish. The calculator gives a starting estimate — we’ll confirm the details, availability and final price together.</p>
         </div>
 
         <!-- Strictly 1-Line Tabs, No Numbers, No Wrap -->
@@ -374,7 +375,7 @@
             <div class="mono text-[10px] uppercase text-accent">Quoted separately</div>
             <h3 class="serif text-2xl text-textMain">Optional extras</h3>
             <div class="serif text-3xl text-accent">From $50</div>
-            <p class="text-xs text-textMuted leading-relaxed">Extra outfits +$50. Second character +$100; each further character +$80. Standard weapon / prop +$35; complex weapon from +$70; complex armour from +$60. Backgrounds are quoted individually.</p>
+            <p class="text-xs text-textMuted leading-relaxed">Outfits and extra expressions have the prices shown in the calculator. Backgrounds, detailed props, armour and commercial use are quoted separately.</p>
           </div></div>
             </div>
 
@@ -385,8 +386,8 @@
           <div role="tabpanel" aria-labelledby="ptab-adopt" id="pricing-view-adopt" class="pricing-subview hidden space-y-6">
             <div class="card p-6 sm:p-8 space-y-2">
               <div id="adopt-eyebrow" class="mono text-[10px] uppercase text-accent">ADOPTABLE TIERS · $100 – $450</div>
-              <h2 id="adopt-title" class="serif text-3xl sm:text-4xl">Adoptables: Ready Designs &amp; Stretch Goal Tiers</h2>
-              <p id="adopt-desc" class="text-sm text-textMuted leading-relaxed">Higher tiers include the previous ones. $200: full render, one alt version and one extra expression. $300: one bonus color sketch, framing of your choice up to three-quarter, one character and a simple background. $450: front/back reference sheet, palette and two close-ups; the front view uses existing artwork. Three extra expressions in total and NSFW are included at Tier IV.</p>
+              <h2 id="adopt-title" class="serif text-3xl sm:text-4xl">Adopt tiers</h2>
+              <p id="adopt-desc" class="text-sm text-textMuted leading-relaxed">Each tier includes the previous tier’s perks. Pick a card below to see what goes into your estimate.</p>
             </div>
 
             <div id="adopt-tiers-grid" class="grid sm:grid-cols-2 gap-5">
@@ -487,12 +488,12 @@
           <p class="text-xs text-textMuted leading-relaxed">Estimated turnaround: up to 14 business days.</p>
           <span class="mono text-[10px] uppercase text-textDim">Price guide · Confirm availability</span>
         </div>
-        <div role="button" tabindex="0" data-quote-mode="ych" data-quote-value="60" onclick="quickPickTier('ych', 60)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();quickPickTier('ych', 60);}" class="card card-interactive p-5 flex flex-col gap-3 cursor-pointer">
+        <div role="button" tabindex="0" data-quote-mode="ych" data-quote-value="65" onclick="quickPickTier('ych', 65)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();quickPickTier('ych', 65);}" class="card card-interactive p-5 flex flex-col gap-3 cursor-pointer">
           <div class="mono text-[10px] text-textDim">Tier II</div>
           <h3 class="serif text-2xl text-textMain">Color Sketch</h3>
           <div class="flex flex-wrap items-center justify-between gap-2 border-t hairline pt-3">
             <span class="text-xs text-textMuted">Color sketch</span>
-            <span class="mono text-lg text-accent">$60</span>
+            <span class="mono text-lg text-accent">$65</span>
           </div>
           <p class="text-xs text-textMuted leading-relaxed">Estimated turnaround: up to 14 business days.</p>
           <span class="mono text-[10px] uppercase text-textDim">Price guide · Confirm availability</span>
@@ -713,7 +714,7 @@
         <div class="grid sm:grid-cols-2 gap-6">
           <div class="card p-6 space-y-3">
             <div id="tos-will-title" class="mono text-xs uppercase text-accent">✓ Will Draw</div>
-            <ul id="tos-will-list" class="space-y-2 text-sm text-textMuted"><li>• Original Characters (OCs), Fantasy, DnD</li><li>• Anime / Semi-realism / Dark aesthetic</li><li>• Complex outfits, weapons, accessories</li><li>• Kemonomimi (ears, tails, horns, wings)</li><li>• Couples, romance & tasteful NSFW (18+)</li></ul>
+            <ul id="tos-will-list" class="space-y-2 text-sm text-textMuted"><li>• Original Characters (OCs), Fantasy, DnD</li><li>• Anime / Semi-realism / Dark aesthetic</li><li>• Complex outfits, weapons, accessories</li><li>• Kemonomimi (ears, tails, horns, wings)</li><li>• Couples, romance & tasteful NSFW (18+)</li><li>• Yes, I draw BDSM and other fetish themes. Feel free to ask about any ideas or preferences — we’ll discuss the details and whether I can take the request.</li></ul>
           </div>
           <div class="card p-6 space-y-3 border-error/30">
             <div id="tos-wont-title" class="mono text-xs uppercase text-error">! Special Requests — Ask First</div>
@@ -727,7 +728,7 @@
           <div class="mono text-[10px] uppercase text-accent">SECTION 01 · PAYMENT & REFUNDS</div>
           <h3 class="serif text-2xl text-textMain">Payment Methods, Holds & Refund Policy</h3>
           <ul class="space-y-2 text-xs sm:text-sm text-textMuted leading-relaxed pt-2 border-t hairline">
-            <li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Prices are in USD; EUR can be agreed before payment. Custom commissions and YCH: PayPal or Ko-fi. Adopts: PayPal, Ko-fi or DeviantArt, subject to the listing and confirmed payment method.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Payment is due within 48 hours after the order or winning bid is confirmed. Contact me before payment if you need a different arrangement.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>A free hold lasts 48 hours. Paid holds start at 7 days; longer terms can be agreed. The advance is at least $10 and is credited toward the purchase. The remaining balance is due before the hold expires; otherwise, the hold ends and the item may be offered again. An auction listing may be reserved only if it remains unsold after bidding ends and has been listed for more than 14 days. Confirming a reservation closes the listing to new offers. For YCH, the slot is released while the template remains available for repeat orders.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Full payment is required by default. For orders over $200, instalments can be agreed in advance; exceptions for smaller orders may be agreed individually. The deposit, dates and work start are confirmed before payment. Final files follow full payment.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Cancellation and refund arrangements are confirmed before payment. If I cannot complete the agreed work, I will discuss cancellation and a refund for the uncompleted part with you.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Any species, gender or body type can be discussed for a YCH; changes must fit the template and are agreed first. Sketch $30, color sketch $60, full render $120, AB $160 with one NSFW version. An extra outfit is $50. The template accepts repeat orders.</span></li>
+            <li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Prices are in USD; EUR can be agreed before payment. Custom commissions and YCH: PayPal or Ko-fi. Adopts: PayPal, Ko-fi or DeviantArt, subject to the listing and confirmed payment method.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Payment is due within 48 hours after the order or winning bid is confirmed. Contact me before payment if you need a different arrangement.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>A free hold lasts 48 hours. Paid holds start at 7 days; longer terms can be agreed. The advance is at least $10 and is credited toward the purchase. The remaining balance is due before the hold expires; otherwise, the hold ends and the item may be offered again. An auction listing may be reserved only if it remains unsold after bidding ends and has been listed for more than 14 days. Confirming a reservation closes the listing to new offers. For YCH, the slot is released while the template remains available for repeat orders.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Full payment is required by default. For orders over $200, instalments can be agreed in advance; exceptions for smaller orders may be agreed individually. The deposit, dates and work start are confirmed before payment. Final files follow full payment.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Cancellation and refund arrangements are confirmed before payment. If I cannot complete the agreed work, I will discuss cancellation and a refund for the uncompleted part with you.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Any species, gender or body type can be discussed for a YCH; changes must fit the template and are agreed first. Sketch $30, color sketch $65, full render $120, AB $160 with one NSFW version. An extra outfit is $50. The template accepts repeat orders.</span></li>
           </ul>
         </div>
 
@@ -743,7 +744,7 @@
           <div class="mono text-[10px] uppercase text-accent">SECTION 03 · REVISIONS & EDITS</div>
           <h3 class="serif text-2xl text-textMain">Corrections During Each Stage</h3>
           <ul class="space-y-2 text-xs sm:text-sm text-textMuted leading-relaxed pt-2 border-t hairline">
-            <li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>My mistakes against the agreed brief are corrected free and do not count toward revisions. Normally 3–5 revisions are included at each available approval stage. I determine the scope and whether a change fits that stage; any extra fee is agreed before editing.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Custom commissions: the main pose, composition and design are approved at the sketch stage. Later stages allow smaller changes; reworking an approved stage may cost extra. A custom adopt is a custom commission.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>YCH: your character is drawn using the shown pose and composition. Changes are agreed before payment and depend on the template. A new pose or substantial redraw is quoted separately. Approval stages depend on the chosen finish; templates accept repeat orders.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Ready-made adopts: you buy the displayed design and the files included in the selected tier. There is no new sketch approval for an already finished base. Additional artwork and versions have their own agreed scope and approval stages.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Additional minor edits beyond the included revisions cost $10 each. Medium changes and major redraws are quoted before work begins. Fixing my mistakes remains free.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>An additional facial expression costs $25; other alternative versions cost $50 (futa $25 with an existing NSFW base).</span></li>
+            <li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>My mistakes against the agreed brief are corrected free and do not count toward revisions. Normally 3–5 revisions are included at each available approval stage. I determine the scope and whether a change fits that stage; any extra fee is agreed before editing.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Additional minor edits beyond the included revisions cost $10 each. Medium changes and major redraws are quoted before work begins. Fixing my mistakes remains free.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>An additional facial expression costs $25; other alternative versions cost $50 (futa $25 with an existing NSFW base).</span></li>
           </ul>
         </div>
 
@@ -759,7 +760,7 @@
           <div class="mono text-[10px] uppercase text-accent">SECTION 05 · ADOPTABLE & DESIGN RULES</div>
           <h3 class="serif text-2xl text-textMain">Ownership, Redesigns & Resale Policy</h3>
           <ul class="space-y-2 text-xs sm:text-sm text-textMuted leading-relaxed pt-2 border-t hairline">
-            <li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>The base adopt purchase includes finished files without sales text or watermarks. You may freely choose or change the character’s name, story, personality and other non-visual information when ordering or afterwards. This does not permit changing the visual design. Keep the original design credit; commercial use requires a separate agreement.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Higher tiers include the previous ones. $200: full render, one alt version and one extra expression. $300: one bonus color sketch, framing of your choice up to three-quarter, one character and a simple background. $450: front/back reference sheet, palette and two close-ups; the front view uses existing artwork. Three extra expressions in total and NSFW are included at Tier IV.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>You may resell the adopt for the same price you paid or less. Notify me of the transfer; keep the design credit. Gifting and trading are allowed.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Design credit must always remain with Nek'tahr (@nektahr).</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>PSD files are available on request only for adoptables at AB or above. PSD files are not offered separately for commissions or YCH.</span></li>
+            <li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>The base adopt purchase includes finished files without sales text or watermarks. You may freely choose or change the character’s name, story, personality and other non-visual information when ordering or afterwards. This does not permit changing the visual design. Keep the original design credit; commercial use requires a separate agreement.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Higher tiers include the previous ones. $200: full render, one alt version and one extra expression. $300: one bonus color sketch, framing of your choice up to three-quarter, one character and a simple background. $450: front/back reference sheet, palette and two close-ups; the front view uses existing artwork. Three extra expressions in total and NSFW are included at Tier IV.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>You may resell the adopt for the same price you paid or less. Notify me of the transfer; keep the design credit. Gifting and trading are allowed.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>Design credit must always remain with Nek'tahr (@nektahr).</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>PSD files are available on request only for adoptables at Tier IV. PSD files are not offered separately for commissions or YCH.</span></li>
           </ul>
         </div>
 
@@ -768,6 +769,14 @@
           <h3 class="serif text-2xl text-textMain">Zero Tolerance for AI Training & Crypto</h3>
           <ul class="space-y-2 text-xs sm:text-sm text-textMuted leading-relaxed pt-2 border-t hairline">
             <li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>You may NOT under any circumstances feed my sketches, lineart, adoptables, or finished illustrations into AI image generators, LoRA training, or machine learning datasets.</span></li><li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>You may NOT mint any of my artworks or character designs as NFTs or use them in blockchain/crypto projects.</span></li>
+          </ul>
+        </div>
+
+        <div class="card p-6 space-y-3">
+          <div class="mono text-[10px] uppercase text-accent">LANGUAGE · EN / RU / ES</div>
+          <h3 class="serif text-2xl text-textMain">English is the reference version</h3>
+          <ul class="space-y-2 text-xs sm:text-sm text-textMuted leading-relaxed pt-2 border-t hairline">
+            <li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>These terms are written in English. Translations are provided for convenience. If wording differs or there is a dispute about interpretation, the English version applies.</span></li>
           </ul>
         </div>
       </div>
@@ -782,7 +791,7 @@
       <div class="border-b hairline pb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <div id="faq-eyebrow" class="mono text-xs uppercase text-accent">KNOWLEDGE BASE</div>
-          <h1 id="faq-title" class="serif text-4xl sm:text-5xl mt-1">Frequently Asked Questions</h1>
+          <h1 id="faq-title" class="serif text-4xl sm:text-5xl mt-1">Got questions?</h1>
           <p id="faq-sub" class="text-sm text-textMuted mt-1">Everything you need to know about ordering commissions, bidding on adopts, payment plans, and file delivery.</p>
         </div>
         <div id="faq-cat-buttons" class="flex flex-wrap gap-1.5 mono text-xs">
@@ -928,6 +937,14 @@
           </summary>
           <p class="text-sm text-textMuted mt-3 pt-3 border-t hairline leading-relaxed">You may post your purchased artwork on your profiles with artist credit and use it personally under the ToS. Commercial use requires a separate agreement.</p>
         </details>
+
+        <details class="card p-5 group" >
+          <summary class="serif text-2xl text-textMain cursor-pointer list-none flex items-center justify-between gap-4">
+            <span>Can I ask for BDSM or fetish art?</span>
+            <span class="mono text-accent group-open:rotate-45 transition">+</span>
+          </summary>
+          <p class="text-sm text-textMuted mt-3 pt-3 border-t hairline leading-relaxed">Yes, I draw BDSM and other fetish themes. Feel free to ask about any ideas or preferences — we’ll discuss the details and whether I can take the request.</p>
+        </details>
       </div>
     </section>
 
@@ -992,15 +1009,16 @@
        APPLICATION LOGIC
   ====================================================================== -->
   <script src="/assets/app.js?v=8584788845db"></script>
-<script src="/assets/process-viewer.js?v=58e628d1a147"></script>
+<script src="/assets/process-viewer.js?v=75ef1de7d204"></script>
 <script src="/assets/artwork-interactions.js?v=97b89cb2e8ce"></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
 <script src="/assets/gallery-viewer.js?v=59d828fb72cb"></script>
-<script src="/assets/pricing-samples.js?v=ef82b9a27a44"></script>
-<script src="/assets/quote-builder.js?v=50f59f9b7322"></script>
-<script src="/assets/catalog.js?v=50c998bf0e3c"></script>
+<script src="/assets/pricing-samples.js?v=7a03228dc7ee"></script>
+<script src="/assets/quote-builder.js?v=c8a36916c363"></script>
+<script src="/assets/catalog.js?v=b82dd8b10573"></script>
 <script src="/assets/compact-calculator.js?v=3c78ec45d022"></script>
 <script src="/assets/contact-actions.js?v=174d03029ae1"></script>
 <script src="/assets/thumbnail-mats.js?v=b39f58205f4f"></script>
+<script src="/assets/review-batch.js?v=2b092abf7f96"></script>
 </body>
 </html>

@@ -38,8 +38,8 @@
     },
     "pricing": {
       "eyebrow": "PRICING · STAGES · ADOPTS · YCH",
-      "title": "What You're Paying For",
-      "sub": "Compare custom commission packages, cumulative adoptable tiers, and the published YCH price guide. The quote builder gives a starting estimate; confirm the final quote and availability directly.",
+      "title": "Prices & options",
+      "sub": "Pick a commission, adopt tier or YCH finish. The calculator gives a starting estimate — we’ll confirm the details, availability and final price together.",
       "tabs": {
         "custom": "Custom Commissions",
         "adopt": "Adopts & Bid Tiers",
@@ -67,7 +67,7 @@
           "name": "Optional extras",
           "range": "From $50",
           "time": "Quoted separately",
-          "desc": "Extra outfits +$50. Second character +$100; each further character +$80. Standard weapon / prop +$35; complex weapon from +$70; complex armour from +$60. Backgrounds are quoted individually."
+          "desc": "Outfits and extra expressions have the prices shown in the calculator. Backgrounds, detailed props, armour and commercial use are quoted separately."
         }
       ],
       "matrix": {
@@ -113,8 +113,8 @@
       },
       "adoptSection": {
         "eyebrow": "ADOPTABLE TIERS · $100 – $450",
-        "title": "Adoptables: Ready Designs & Stretch Goal Tiers",
-        "desc": "Higher tiers include the previous ones. $200: full render, one alt version and one extra expression. $300: one bonus color sketch, framing of your choice up to three-quarter, one character and a simple background. $450: front/back reference sheet, palette and two close-ups; the front view uses existing artwork. Three extra expressions in total and NSFW are included at Tier IV.",
+        "title": "Adopt tiers",
+        "desc": "Each tier includes the previous tier’s perks. Pick a card below to see what goes into your estimate.",
         "blueprintTitle": "STRETCH GOAL BLUEPRINT",
         "blueprintSub": "Custom-drawn specifically for the winning bidder",
         "tiers": [
@@ -189,11 +189,11 @@
             "desc": "Estimated turnaround: up to 14 business days."
           },
           {
-            "val": 60,
+            "val": 65,
             "code": "YCH · COLOR SKETCH",
             "title": "Color Sketch",
             "stage": "Color sketch",
-            "price": "$60",
+            "price": "$65",
             "status": "Price guide",
             "desc": "Estimated turnaround: up to 14 business days."
           },
@@ -331,7 +331,7 @@
             "A free hold lasts 48 hours. Paid holds start at 7 days; longer terms can be agreed. The advance is at least $10 and is credited toward the purchase. The remaining balance is due before the hold expires; otherwise, the hold ends and the item may be offered again. An auction listing may be reserved only if it remains unsold after bidding ends and has been listed for more than 14 days. Confirming a reservation closes the listing to new offers. For YCH, the slot is released while the template remains available for repeat orders.",
             "Full payment is required by default. For orders over $200, instalments can be agreed in advance; exceptions for smaller orders may be agreed individually. The deposit, dates and work start are confirmed before payment. Final files follow full payment.",
             "Cancellation and refund arrangements are confirmed before payment. If I cannot complete the agreed work, I will discuss cancellation and a refund for the uncompleted part with you.",
-            "Any species, gender or body type can be discussed for a YCH; changes must fit the template and are agreed first. Sketch $30, color sketch $60, full render $120, AB $160 with one NSFW version. An extra outfit is $50. The template accepts repeat orders."
+            "Any species, gender or body type can be discussed for a YCH; changes must fit the template and are agreed first. Sketch $30, color sketch $65, full render $120, AB $160 with one NSFW version. An extra outfit is $50. The template accepts repeat orders."
           ]
         },
         {
@@ -350,9 +350,6 @@
           "title": "Corrections During Each Stage",
           "bullets": [
             "My mistakes against the agreed brief are corrected free and do not count toward revisions. Normally 3–5 revisions are included at each available approval stage. I determine the scope and whether a change fits that stage; any extra fee is agreed before editing.",
-            "Custom commissions: the main pose, composition and design are approved at the sketch stage. Later stages allow smaller changes; reworking an approved stage may cost extra. A custom adopt is a custom commission.",
-            "YCH: your character is drawn using the shown pose and composition. Changes are agreed before payment and depend on the template. A new pose or substantial redraw is quoted separately. Approval stages depend on the chosen finish; templates accept repeat orders.",
-            "Ready-made adopts: you buy the displayed design and the files included in the selected tier. There is no new sketch approval for an already finished base. Additional artwork and versions have their own agreed scope and approval stages.",
             "Additional minor edits beyond the included revisions cost $10 each. Medium changes and major redraws are quoted before work begins. Fixing my mistakes remains free.",
             "An additional facial expression costs $25; other alternative versions cost $50 (futa $25 with an existing NSFW base)."
           ]
@@ -375,7 +372,7 @@
             "Higher tiers include the previous ones. $200: full render, one alt version and one extra expression. $300: one bonus color sketch, framing of your choice up to three-quarter, one character and a simple background. $450: front/back reference sheet, palette and two close-ups; the front view uses existing artwork. Three extra expressions in total and NSFW are included at Tier IV.",
             "You may resell the adopt for the same price you paid or less. Notify me of the transfer; keep the design credit. Gifting and trading are allowed.",
             "Design credit must always remain with Nek'tahr (@nektahr).",
-            "PSD files are available on request only for adoptables at AB or above. PSD files are not offered separately for commissions or YCH."
+            "PSD files are available on request only for adoptables at Tier IV. PSD files are not offered separately for commissions or YCH."
           ]
         },
         {
@@ -385,6 +382,13 @@
             "You may NOT under any circumstances feed my sketches, lineart, adoptables, or finished illustrations into AI image generators, LoRA training, or machine learning datasets.",
             "You may NOT mint any of my artworks or character designs as NFTs or use them in blockchain/crypto projects."
           ]
+        },
+        {
+          "tag": "LANGUAGE · EN / RU / ES",
+          "title": "English is the reference version",
+          "bullets": [
+            "These terms are written in English. Translations are provided for convenience. If wording differs or there is a dispute about interpretation, the English version applies."
+          ]
         }
       ],
       "willTitle": "✓ Will Draw",
@@ -393,7 +397,8 @@
         "Anime / Semi-realism / Dark aesthetic",
         "Complex outfits, weapons, accessories",
         "Kemonomimi (ears, tails, horns, wings)",
-        "Couples, romance & tasteful NSFW (18+)"
+        "Couples, romance & tasteful NSFW (18+)",
+        "Yes, I draw BDSM and other fetish themes. Feel free to ask about any ideas or preferences — we’ll discuss the details and whether I can take the request."
       ],
       "wontTitle": "! Special Requests — Ask First",
       "wontList": [
@@ -404,7 +409,7 @@
     },
     "faq": {
       "eyebrow": "KNOWLEDGE BASE",
-      "title": "Frequently Asked Questions",
+      "title": "Got questions?",
       "sub": "Everything you need to know about ordering commissions, bidding on adopts, payment plans, and file delivery.",
       "cats": {
         "all": "All Questions",
@@ -488,6 +493,11 @@
           "cat": "process",
           "q": "Can I post the artwork?",
           "a": "You may post your purchased artwork on your profiles with artist credit and use it personally under the ToS. Commercial use requires a separate agreement."
+        },
+        {
+          "cat": "order",
+          "q": "Can I ask for BDSM or fetish art?",
+          "a": "Yes, I draw BDSM and other fetish themes. Feel free to ask about any ideas or preferences — we’ll discuss the details and whether I can take the request."
         }
       ]
     }
@@ -531,8 +541,8 @@
     },
     "pricing": {
       "eyebrow": "PRECIOS · ETAPAS · ADOPTS · YCH",
-      "title": "Lo Que Estás Pagando",
-      "sub": "Compara paquetes de comisiones, niveles acumulativos de adopts y precios orientativos de YCH. La calculadora da un presupuesto inicial; confirma el precio final y la disponibilidad directamente.",
+      "title": "Precios y opciones",
+      "sub": "Elige una comisión, un nivel de adopt o un acabado YCH. La calculadora muestra una estimación inicial: confirmaremos juntos los detalles, la disponibilidad y el precio final.",
       "tabs": {
         "custom": "Comisiones personalizadas",
         "adopt": "Adopts y Niveles",
@@ -560,7 +570,7 @@
           "name": "Extras opcionales",
           "range": "Desde $50",
           "time": "Precio por confirmar",
-          "desc": "Atuendo extra +$50. Segundo personaje +$100; cada posterior +$80. Arma / objeto estándar +$35; arma compleja desde +$70; armadura compleja desde +$60. Fondos: presupuesto individual."
+          "desc": "Los precios de atuendos y expresiones extra figuran en la calculadora. Los fondos, accesorios detallados, armaduras y uso comercial se presupuestan aparte."
         }
       ],
       "matrix": {
@@ -606,8 +616,8 @@
       },
       "adoptSection": {
         "eyebrow": "NIVELES DE ADOPTS · $100 – $450",
-        "title": "Adoptables: Diseños y Niveles de Oferta (Tiers)",
-        "desc": "Cada nivel incluye los anteriores. $200: render completo, una versión alt y una expresión extra. $300: un boceto a color adicional de un personaje, encuadre a elegir hasta tres cuartos y fondo sencillo. $450: referencia frontal/trasera, paleta y dos detalles; la vista frontal usa el dibujo existente. El nivel IV incluye tres expresiones extra en total y una versión NSFW.",
+        "title": "Niveles de adopts",
+        "desc": "Cada nivel incluye las ventajas del anterior. Elige una tarjeta para cargar el paquete en la calculadora.",
         "blueprintTitle": "ESQUEMA DE BONIFICACIÓN",
         "blueprintSub": "Dibujado a medida para el ganador de la subasta",
         "tiers": [
@@ -682,11 +692,11 @@
             "desc": "Plazo estimado: hasta 14 días laborables."
           },
           {
-            "val": 60,
+            "val": 65,
             "code": "YCH · BOCETO A COLOR",
             "title": "Boceto a color",
             "stage": "Boceto a color",
-            "price": "$60",
+            "price": "$65",
             "status": "Guía de precios",
             "desc": "Plazo estimado: hasta 14 días laborables."
           },
@@ -824,7 +834,7 @@
             "La reserva gratuita dura 48 horas. Las reservas pagadas empiezan en 7 días; se puede acordar un plazo mayor. El anticipo es de al menos $10 y se descuenta del precio. El resto debe pagarse antes de que termine la reserva; de lo contrario, vence y el artículo puede volver a ofrecerse. Un artículo de subasta solo se puede reservar si sigue sin venderse después del cierre y lleva publicado más de 14 días. Al confirmar la reserva, se cierra a nuevas ofertas. En YCH se libera el turno y la plantilla sigue disponible para más pedidos.",
             "Se requiere el pago completo por defecto. Para pedidos superiores a $200 se pueden acordar cuotas; las excepciones para importes menores se negocian individualmente. El anticipo, las fechas y el inicio del trabajo se acuerdan antes de pagar. Los archivos finales se entregan tras el pago completo.",
             "Las condiciones de cancelación y reembolso se acuerdan antes del pago. Si no puedo completar el trabajo acordado, hablaremos de la cancelación y del reembolso de la parte sin realizar.",
-            "Se puede consultar cualquier especie, género o tipo de cuerpo para YCH; los cambios deben encajar con la plantilla y se acuerdan antes. Boceto $30, boceto a color $60, render completo $120, AB $160 con una versión NSFW. Atuendo adicional: $50. La plantilla admite pedidos repetidos."
+            "Se puede consultar cualquier especie, género o tipo de cuerpo para YCH; los cambios deben encajar con la plantilla y se acuerdan antes. Boceto $30, boceto a color $65, render completo $120, AB $160 con una versión NSFW. Atuendo adicional: $50. La plantilla admite pedidos repetidos."
           ]
         },
         {
@@ -843,9 +853,6 @@
           "title": "Correcciones Durante el Proceso",
           "bullets": [
             "Mis errores respecto al encargo acordado se corrigen gratis y no cuentan como revisiones. Normalmente se incluyen 3–5 revisiones en cada etapa disponible de aprobación. Yo determino el alcance y si el cambio corresponde a esa etapa; cualquier suplemento se acuerda antes de editar.",
-            "Encargos personalizados: la pose, composición y diseño principales se aprueban en el boceto. Después se permiten cambios menores; rehacer una etapa aprobada puede tener coste adicional. Un adopt personalizado se considera un encargo.",
-            "YCH: tu personaje se dibuja a partir de la pose y composición mostradas. Los cambios se acuerdan antes de pagar y dependen de la plantilla. Una pose nueva o un redibujo importante se presupuestan aparte. Las etapas dependen del acabado; las plantillas admiten pedidos repetidos.",
-            "Adopts terminados: compras el diseño mostrado y los archivos del nivel elegido. Una base ya terminada no tiene una nueva aprobación de boceto. Las ilustraciones y versiones adicionales tienen alcance y etapas acordados aparte.",
             "Los pequeños ajustes adicionales, fuera de las revisiones incluidas, cuestan $10 cada uno. Los cambios medianos y grandes se presupuestan antes. Corregir mis errores sigue siendo gratis.",
             "Una expresión facial adicional cuesta $25; otras versiones alternativas cuestan $50 (futa $25 con base NSFW)."
           ]
@@ -868,7 +875,7 @@
             "Cada nivel incluye los anteriores. $200: render completo, una versión alt y una expresión extra. $300: un boceto a color adicional de un personaje, encuadre a elegir hasta tres cuartos y fondo sencillo. $450: referencia frontal/trasera, paleta y dos detalles; la vista frontal usa el dibujo existente. El nivel IV incluye tres expresiones extra en total y una versión NSFW.",
             "Puedes revender el adopt por el mismo precio que pagaste o menos. Avísame de la transferencia y conserva el crédito del diseño. Se permiten regalos e intercambios.",
             "El crédito del diseño debe mantenerse siempre a nombre de Nek'tahr (@nektahr).",
-            "Los archivos PSD solo están disponibles bajo petición para adopts de nivel AB o superior. No se ofrecen por separado para encargos o YCH."
+            "Los archivos PSD solo están disponibles bajo petición para adopts de nivel IV. No se ofrecen por separado para encargos o YCH."
           ]
         },
         {
@@ -878,6 +885,13 @@
             "Queda estrictamente prohibido usar mis obras para entrenar modelos de Inteligencia Artificial (IA) o datasets.",
             "Queda prohibido acuñar o vender mis diseños o ilustraciones como NFTs."
           ]
+        },
+        {
+          "tag": "LANGUAGE · EN / RU / ES",
+          "title": "La versión de referencia es la inglesa",
+          "bullets": [
+            "Estas condiciones están redactadas en inglés. Las traducciones se ofrecen para facilitar su lectura. Si hay diferencias de redacción o una disputa de interpretación, se aplica la versión inglesa."
+          ]
         }
       ],
       "willTitle": "✓ Sí Dibujo",
@@ -886,7 +900,8 @@
         "Anime / Semi-realismo / Estética oscura",
         "Ropa compleja, armas, accesorios",
         "Kemonomimi (orejas, colas, cuernos, alas)",
-        "Parejas, romance y NSFW estético (+18)"
+        "Parejas, romance y NSFW estético (+18)",
+        "Sí, dibujo BDSM y otras temáticas fetichistas. Pregunta sin vergüenza por tus ideas y preferencias: hablaremos de los detalles y de si puedo aceptar el encargo."
       ],
       "wontTitle": "! Encargos especiales — Consultar antes",
       "wontList": [
@@ -897,7 +912,7 @@
     },
     "faq": {
       "eyebrow": "PREGUNTAS FRECUENTES",
-      "title": "Respuestas Rápidas (FAQ)",
+      "title": "¿Tienes dudas?",
       "sub": "Todo sobre pedidos, subastas de adopts, pagos fraccionados y entrega de archivos.",
       "cats": {
         "all": "Todas",
@@ -981,6 +996,11 @@
           "cat": "process",
           "q": "¿Puedo publicar la obra comprada?",
           "a": "Puedes publicarla en tus perfiles con crédito al artista y usarla personalmente según los ToS. El uso comercial requiere un acuerdo separado."
+        },
+        {
+          "cat": "order",
+          "q": "¿Puedo pedir arte BDSM o de fetiches?",
+          "a": "Sí, dibujo BDSM y otras temáticas fetichistas. Pregunta sin vergüenza por tus ideas y preferencias: hablaremos de los detalles y de si puedo aceptar el encargo."
         }
       ]
     }
@@ -1024,8 +1044,8 @@
     },
     "pricing": {
       "eyebrow": "ПРАЙС · ПОЭТАПКА · АДОПТЫ · ЮЧИ",
-      "title": "Цены и комплектация заказов",
-      "sub": "Сравни пакеты индивидуальных заказов, накопительные уровни адоптов и ориентиры цен YCH. Калькулятор показывает начальную оценку, окончательную цену и наличие слота нужно подтвердить напрямую.",
+      "title": "Цены и варианты",
+      "sub": "Выбери коммишку, тир адопта или исполнение YCH. Калькулятор покажет предварительную сумму — детали, доступность и итоговую цену обсудим вместе.",
       "tabs": {
         "custom": "Индивидуальные заказы",
         "adopt": "Адопты и Уровни",
@@ -1053,7 +1073,7 @@
           "name": "Дополнительные опции",
           "range": "От $50",
           "time": "Цена уточняется",
-          "desc": "Дополнительный наряд +$50. Второй персонаж +$100, каждый следующий +$80. Обычное оружие / предмет +$35; сложное оружие от +$70; сложная броня от +$60. Фон — цена по договорённости."
+          "desc": "Цены на костюмы и дополнительные эмоции указаны в калькуляторе. Фон, сложные предметы, броню и коммерческое использование обсудим отдельно."
         }
       ],
       "matrix": {
@@ -1099,8 +1119,8 @@
       },
       "adoptSection": {
         "eyebrow": "УРОВНИ АДОПТОВ · $100 – $450",
-        "title": "Адопты: базовый дизайн и бонусные уровни ставок",
-        "desc": "Каждый тир включает предыдущий. $200: полный рендер, одна альт-версия и одна дополнительная эмоция. $300: бонусный цветной скетч одного персонажа с кадрированием на выбор до трёх четвертей и простым фоном. $450: референс спереди/сзади, палитра и два крупных плана; вид спереди использует готовый арт. В IV тир входят три дополнительные эмоции суммарно и NSFW-версия.",
+        "title": "Тиры адоптов",
+        "desc": "Каждый следующий тир включает бонусы предыдущего. Выбери карточку ниже — пакет загрузится в калькулятор.",
         "blueprintTitle": "ЭСКИЗ-СХЕМА УРОВНЯ",
         "blueprintSub": "Отрисовывается индивидуально под победителя аукциона",
         "tiers": [
@@ -1175,11 +1195,11 @@
             "desc": "Ориентировочный срок: до 14 рабочих дней."
           },
           {
-            "val": 60,
+            "val": 65,
             "code": "YCH · ЦВЕТНОЙ СКЕТЧ",
             "title": "Цветной скетч",
             "stage": "Цветной скетч",
-            "price": "$60",
+            "price": "$65",
             "status": "Ориентир по цене",
             "desc": "Ориентировочный срок: до 14 рабочих дней."
           },
@@ -1317,7 +1337,7 @@
             "Бесплатная бронь действует 48 часов. Платная бронь — от 7 дней; более долгий срок можно согласовать. Аванс — минимум $10, он засчитывается в стоимость. Остаток нужно внести до окончания брони, иначе бронь истекает и лот можно снова выставить. Аукционный лот можно забронировать, только если он не продан после окончания торгов и опубликован больше 14 дней. После подтверждения брони новые предложения не принимаются. У YCH освобождается слот заказа, а шаблон остаётся доступен для повторных заказов.",
             "По умолчанию требуется полная предоплата. Для заказов свыше $200 можно заранее согласовать оплату частями; исключения для меньшей суммы возможны по личной договорённости. Первый взнос, даты платежей и начало работы согласуются до оплаты. Готовые файлы передаются после полного расчёта.",
             "Условия отмены и возврата обсуждаем до оплаты. Если я не смогу выполнить согласованную работу, обсудим отмену и возврат за невыполненную часть.",
-            "Для YCH можно обсудить любой вид, гендер и телосложение; изменения должны подходить шаблону и согласуются заранее. Скетч $30, цветной скетч $60, полный рендер $120, AB $160 с одной NSFW-версией. Дополнительный наряд — $50. Шаблон доступен для повторных заказов."
+            "Для YCH можно обсудить любой вид, гендер и телосложение; изменения должны подходить шаблону и согласуются заранее. Скетч $30, цветной скетч $65, полный рендер $120, AB $160 с одной NSFW-версией. Дополнительный наряд — $50. Шаблон доступен для повторных заказов."
           ]
         },
         {
@@ -1336,9 +1356,6 @@
           "title": "Что можно поправить бесплатно, а что за доплату",
           "bullets": [
             "Мои ошибки относительно согласованного задания исправляются бесплатно и не входят в лимит. Базово на каждом доступном этапе согласования предусмотрено 3–5 правок. Объём правки и возможность её выполнения на текущем этапе определяю я; доплата согласуется до изменений.",
-            "Комиссии: основные пожелания к позе, композиции и дизайну согласуются на скетче. На следующих этапах возможны менее значительные изменения; переделка утверждённого этапа может потребовать доплаты. Кастомный адопт считается комиссией.",
-            "YCH: твой персонаж рисуется на основе показанной позы и композиции. Изменения обсуждаются до оплаты и зависят от шаблона. Новая поза и существенная переделка оцениваются отдельно. Этапы согласования зависят от уровня исполнения; шаблон можно заказывать многократно.",
-            "Готовый адопт: покупается показанный дизайн и файлы выбранного уровня. Для уже готовой базы нового согласования скетча нет. Заказанные арты и дополнительные версии имеют отдельный согласованный объём и этапы.",
             "Дополнительные мелкие правки сверх включённых — $10 за каждую. Средние изменения и большие переделки оцениваются до начала правок. Исправление моих ошибок остаётся бесплатным.",
             "Дополнительное выражение лица — $25; остальные альт-версии — $50 (futa $25 при NSFW-основе)."
           ]
@@ -1361,7 +1378,7 @@
             "Каждый тир включает предыдущий. $200: полный рендер, одна альт-версия и одна дополнительная эмоция. $300: бонусный цветной скетч одного персонажа с кадрированием на выбор до трёх четвертей и простым фоном. $450: референс спереди/сзади, палитра и два крупных плана; вид спереди использует готовый арт. В IV тир входят три дополнительные эмоции суммарно и NSFW-версия.",
             "Адопта можно перепродать за ту же цену, за которую ты его купил, или дешевле. Сообщи мне о передаче и сохрани авторство дизайна. Дарение и обмен разрешены.",
             "Авторство базового дизайна всегда остаётся за Nek'tahr (@nektahr).",
-            "PSD доступен по запросу только для адоптов на уровне AB и выше. Отдельно для коммишек и YCH PSD не предлагается."
+            "PSD доступен по запросу только для адоптов на уровне IV. Отдельно для коммишек и YCH PSD не предлагается."
           ]
         },
         {
@@ -1371,6 +1388,13 @@
             "Категорически запрещено загружать мои скетчи, адоптов или готовые работы в генераторы ИИ, использовать для обучения LoRA или датасетов машинного обучения.",
             "Запрещено выпускать мои работы или дизайнов в виде NFT и использовать в крипто-проектах."
           ]
+        },
+        {
+          "tag": "LANGUAGE · EN / RU / ES",
+          "title": "Основная версия — английская",
+          "bullets": [
+            "Эти условия составлены на английском. Переводы даны для удобства. При расхождениях формулировок или спорной трактовке применяется английская версия."
+          ]
         }
       ],
       "willTitle": "✓ Что я рисую",
@@ -1379,7 +1403,8 @@
         "Аниме / Семи-реализм / Тёмную эстетику",
         "Сложные костюмы, броню, оружие, украшения",
         "Кемономими (ушки, хвосты, рога, крылья)",
-        "Пары, романтику и эстетичный NSFW (18+)"
+        "Пары, романтику и эстетичный NSFW (18+)",
+        "Да, рисую BDSM и другие фетишные темы. Не стесняйся спрашивать о любых идеях и пожеланиях — обсудим детали и возможность выполнения."
       ],
       "wontTitle": "! Сложные запросы: сначала обсудить",
       "wontList": [
@@ -1390,7 +1415,7 @@
     },
     "faq": {
       "eyebrow": "ЧАСТЫЕ ВОПРОСЫ",
-      "title": "Ответы на вопросы по заказам (FAQ)",
+      "title": "Есть вопросы?",
       "sub": "Подробные ответы про оформление заказа, рассрочку, бонусные тиры адоптов, форматы файлов и очередь.",
       "cats": {
         "all": "Все вопросы",
@@ -1474,12 +1499,16 @@
           "cat": "process",
           "q": "Можно публиковать купленную работу?",
           "a": "Можно размещать её на своих страницах с указанием автора и использовать лично согласно ToS. Коммерческое использование требует отдельного согласования."
+        },
+        {
+          "cat": "order",
+          "q": "Можно заказать BDSM или фетиш-арт?",
+          "a": "Да, рисую BDSM и другие фетишные темы. Не стесняйся спрашивать о любых идеях и пожеланиях — обсудим детали и возможность выполнения."
         }
       ]
     }
   }
 };
-
     const UI_TEXT = {
       en: {
         copy: "Copy", copied: "Copied", copyFailed: "Copy failed. Please select and copy the text manually.",

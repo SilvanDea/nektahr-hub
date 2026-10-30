@@ -12,7 +12,7 @@ for route in json.loads((R/'src/routes.json').read_text()):
  assert s.count('aria-current="page"')==1
  for url,rev in re.findall(r'(?:src|href)="(/assets/[^"?]+\.(?:js|css))\?v=([a-f0-9]+)"',s):
   assert hashlib.sha256((R/url.lstrip('/')).read_bytes()).hexdigest().startswith(rev)
- assert 'Payment' in s and 'Frequently Asked Questions' in s
+ assert 'Payment' in s and 'Got questions?' in s
  assert '3 extra expressions included in total' in s
  assert 'https://nektahr.com/assets/social-preview' in s
  for file in ['app.js','app-state.js','translations.js']:assert s.count('/assets/'+file+'?')==1

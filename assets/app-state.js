@@ -174,7 +174,7 @@
       ych: {
         options: [
           { value: "30", price: 30, label: { en: "Clean Sketch ($30)", es: "Boceto limpio ($30)", ru: "Чистый скетч ($30)" } },
-          { value: "60", price: 60, label: { en: "Color Sketch ($60)", es: "Boceto a color ($60)", ru: "Цветной скетч ($60)" } },
+          { value: "65", price: 65, label: { en: "Color Sketch ($65)", es: "Boceto a color ($65)", ru: "Цветной скетч ($65)" } },
           { value: "120", price: 120, label: { en: "Full Render ($120)", es: "Render completo ($120)", ru: "Полный рендер ($120)" } },
           { value: "160", price: 160, label: { en: "AB — Full Render + NSFW ($160)", es: "AB — Render + NSFW ($160)", ru: "AB — Полный рендер + NSFW ($160)" } }
         ],
@@ -243,7 +243,7 @@
     let isAdultVerified = false;try{isAdultVerified=sessionStorage.getItem('nektahr-demo-age-verified')==='yes'}catch{}
     let showNsfwGallery = false;try{showNsfwGallery=isAdultVerified&&sessionStorage.getItem('nektahr-demo-nsfw-visible')==='yes'}catch{}
     // Change the consent revision when the terms materially change.
-    const TOS_CONSENT_KEY = 'nektahr-tos-consent-20261028';
+    const TOS_CONSENT_KEY = 'nektahr-tos-consent-20261030-review';
     let tosAgreed = false;try{tosAgreed=sessionStorage.getItem(TOS_CONSENT_KEY)==='yes'}catch{}
     let ageModalReturnFocus = null;
 
