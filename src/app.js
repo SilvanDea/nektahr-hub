@@ -700,7 +700,7 @@
         <div class="card p-5 space-y-2 ${idx === 5 ? 'border-error/40 bg-error/5' : ''}">
           <div class="mono text-xs ${idx === 5 ? 'text-error' : 'text-accent'}">${c.num}</div>
           <h3 class="serif text-2xl text-textMain">${c.title}</h3>
-          <ul class="tos-summary-points">${(c.points||[c.desc]).map(point=>`<li>${point}</li>`).join('')}</ul>
+          <p class="tos-summary-copy">${c.desc}</p>
         </div>
       `).join('');
 
@@ -711,7 +711,7 @@
           <div class="mono text-[10px] uppercase text-accent">${sec.tag}</div>
           <h3 class="serif text-2xl text-textMain">${sec.title}</h3>
           <ul class="space-y-2 text-xs sm:text-sm text-textMuted leading-relaxed pt-2 border-t hairline">
-            ${sec.bullets.map(b => `<li>${b.split(/(?<=[.!?])\s+(?=[A-ZА-ЯЁÁÉÍÓÚ])/u).map(sentence=>`<p>${sentence}</p>`).join('')}</li>`).join('')}
+            ${sec.bullets.map(b => `<li><p>${b}</p></li>`).join('')}
           </ul>
         </section>
       `).join('');

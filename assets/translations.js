@@ -320,7 +320,7 @@
         {
           "num": "04",
           "title": "Personal Use Default",
-          "desc": "All art is for personal use by default. Credit @Nektahr_ when reposting.",
+          "desc": "Personal use is included: avatars, banners, character profiles and prints for yourself. Please credit me when sharing. Merchandise, advertising and other commercial uses require a separate agreement.",
           "points": [
             "Personal use included.",
             "Credit me when sharing.",
@@ -330,7 +330,7 @@
         {
           "num": "05",
           "title": "Adoptable Resale",
-          "desc": "Adopts may be resold at their original purchase price or lower; please notify me of the transfer.",
+          "desc": "You may resell an adopt for the price you paid or less. Gifting and trading are allowed; let me know about the transfer and keep the original design credit.",
           "points": [
             "Resell for what you paid or less.",
             "Tell me about the transfer.",
@@ -340,7 +340,7 @@
         {
           "num": "06",
           "title": "Strict No AI / No NFT",
-          "desc": "Zero tolerance for AI training, machine learning datasets, or crypto/NFT minting.",
+          "desc": "Do not use my artwork or designs for AI training, LoRAs or machine-learning datasets. This applies to sketches and lineart as well as finished work. NFTs and crypto projects are also prohibited.",
           "points": [
             "No AI training or datasets.",
             "No NFTs or crypto projects."
@@ -856,7 +856,7 @@
         {
           "num": "04",
           "title": "Uso Personal",
-          "desc": "Uso personal por defecto. Acreditar a @Nektahr_ al publicar.",
+          "desc": "El uso personal está incluido: avatares, banners, perfiles de personajes e impresiones para ti. Menciona mi autoría al compartir. El merchandising, la publicidad y otros usos comerciales requieren un acuerdo aparte.",
           "points": [
             "Uso personal incluido.",
             "Menciona mi autoría al publicar.",
@@ -866,7 +866,7 @@
         {
           "num": "05",
           "title": "Reventa de Adopts",
-          "desc": "Puedes revender el adopt por el precio original o menos; avísame de la transferencia.",
+          "desc": "Puedes revender un adopt por el precio que pagaste o menos, regalarlo o intercambiarlo. Avísame del cambio de dueño y conserva el crédito original del diseño.",
           "points": [
             "Reventa por el precio pagado o menos.",
             "Avísame del cambio de dueño.",
@@ -876,7 +876,7 @@
         {
           "num": "06",
           "title": "Prohibido IA y NFT",
-          "desc": "Prohibido usar mi arte para entrenar IA o crear NFTs/cripto.",
+          "desc": "No uses mis dibujos ni diseños para entrenar IA, LoRA o datasets. Esto incluye bocetos y lineart, además de obras terminadas. También se prohíben los NFT y los proyectos cripto.",
           "points": [
             "Sin entrenamiento de IA ni datasets.",
             "Sin NFT ni proyectos cripto."
@@ -1392,7 +1392,7 @@
         {
           "num": "04",
           "title": "Личное использование",
-          "desc": "По умолчанию арт для личного пользования. При публикации указывайте @Nektahr_.",
+          "desc": "Личное использование включено: аватарки, баннеры, профили персонажей и печать для себя. При публикации укажи автора. Мерч, реклама и другое коммерческое использование требуют отдельной договорённости.",
           "points": [
             "Личное использование включено.",
             "При публикации укажи автора.",
@@ -1402,7 +1402,7 @@
         {
           "num": "05",
           "title": "Перепродажа адоптов",
-          "desc": "Адопта можно перепродать по первоначальной цене или дешевле; сообщи мне о передаче.",
+          "desc": "Адопта можно перепродать за цену покупки или дешевле, подарить или обменять. Сообщи мне о передаче новому владельцу и сохрани исходное авторство дизайна.",
           "points": [
             "Перепродажа не дороже цены покупки.",
             "Сообщи о передаче.",
@@ -1412,7 +1412,7 @@
         {
           "num": "06",
           "title": "Запрет ИИ и NFT",
-          "desc": "Строго запрещено использовать мои работы для обучения нейросетей (AI) и создания NFT.",
+          "desc": "Нельзя использовать мои рисунки и дизайны для обучения ИИ, LoRA или датасетов. Правило относится и к скетчам с лайном, и к готовым работам. NFT и криптопроекты тоже запрещены.",
           "points": [
             "Нельзя использовать для обучения ИИ.",
             "Нельзя добавлять в датасеты.",
