@@ -291,60 +291,38 @@
         {
           "num": "01",
           "title": "Payment & plans",
-          "desc": "Full payment is required by default. For orders over $200, instalments can be agreed in advance; exceptions for smaller orders may be agreed individually. The deposit, dates and work start are confirmed before payment. Final files follow full payment.",
-          "points": [
-            "Full payment by default.",
-            "Instalments for orders over $200: agree before paying.",
-            "Final files after full payment."
-          ]
+          "desc": "Instalments for orders over $200 can be agreed before payment; smaller orders may qualify by agreement. We confirm the deposit, dates and work start first. Final files follow full payment.",
+          "lead": "Full payment by default."
         },
         {
           "num": "02",
           "title": "Refund Policy",
-          "desc": "All payments are non-refundable, including payments for commissions, YCH, adopts and reservation advances. Any exception is entirely at my discretion and must be explicitly agreed by me.",
-          "points": [
-            "No refunds.",
-            "Exceptions only at my discretion."
-          ]
+          "desc": "This covers commissions, YCH, adopts and reservation advances. An exception is possible only if I explicitly agree to it.",
+          "lead": "Payments are non-refundable."
         },
         {
           "num": "03",
           "title": "Revisions & Edits",
-          "desc": "My mistakes against the agreed brief are corrected free and do not count toward revisions. Normally 3–5 revisions are included at each available approval stage. I determine the scope and whether a change fits that stage; any extra fee is agreed before editing.",
-          "points": [
-            "3–5 revisions per approval stage.",
-            "My mistakes: fixed free.",
-            "Extra edits: agree the fee first."
-          ]
+          "desc": "My mistakes are corrected free and do not count toward revisions. I confirm whether a change fits the current stage; any extra fee is agreed before editing.",
+          "lead": "Normally 3–5 revisions per approval stage."
         },
         {
           "num": "04",
           "title": "Personal Use Default",
-          "desc": "Personal use is included: avatars, banners, character profiles and prints for yourself. Please credit me when sharing. Merchandise, advertising and other commercial uses require a separate agreement.",
-          "points": [
-            "Personal use included.",
-            "Credit me when sharing.",
-            "Commercial use: separate agreement."
-          ]
+          "desc": "Use your art for avatars, banners, character profiles or prints for yourself, with credit when sharing. Merchandise, advertising and other commercial use require a separate agreement.",
+          "lead": "Personal use is included."
         },
         {
           "num": "05",
           "title": "Adoptable Resale",
-          "desc": "You may resell an adopt for the price you paid or less. Gifting and trading are allowed; let me know about the transfer and keep the original design credit.",
-          "points": [
-            "Resell for what you paid or less.",
-            "Tell me about the transfer.",
-            "Keep the design credit."
-          ]
+          "desc": "You may also gift or trade your adopt. Let me know about the transfer, and keep the original design credit with the character.",
+          "lead": "Resale at your purchase price or lower."
         },
         {
           "num": "06",
           "title": "Strict No AI / No NFT",
-          "desc": "Do not use my artwork or designs for AI training, LoRAs or machine-learning datasets. This applies to sketches and lineart as well as finished work. NFTs and crypto projects are also prohibited.",
-          "points": [
-            "No AI training or datasets.",
-            "No NFTs or crypto projects."
-          ]
+          "desc": "Do not add my art or designs to training datasets or use them for LoRAs. This covers sketches, lineart and finished artwork alike.",
+          "lead": "No AI training, NFTs or crypto projects."
         }
       ],
       "agreeCheck": "I have read and agree to the Terms of Service (include the checkbox confirmation in the quote request)",
@@ -827,60 +805,38 @@
         {
           "num": "01",
           "title": "Pago y planes",
-          "desc": "Se requiere el pago completo por defecto. Para pedidos superiores a $200 se pueden acordar cuotas; las excepciones para importes menores se negocian individualmente. El anticipo, las fechas y el inicio del trabajo se acuerdan antes de pagar. Los archivos finales se entregan tras el pago completo.",
-          "points": [
-            "Pago completo por defecto.",
-            "Cuotas para pedidos de más de $200: acordar antes de pagar.",
-            "Archivos finales tras el pago completo."
-          ]
+          "desc": "Para pedidos de más de $200 podemos acordar cuotas antes de pagar; las excepciones para importes menores se hablan aparte. Confirmamos anticipo, fechas e inicio. Archivos finales tras el pago completo.",
+          "lead": "Pago completo por defecto."
         },
         {
           "num": "02",
           "title": "Reembolsos",
-          "desc": "Todos los pagos son no reembolsables, incluidos encargos, YCH, adopts y anticipos de reserva. Cualquier excepción queda exclusivamente a mi criterio y requiere mi aprobación expresa.",
-          "points": [
-            "Sin reembolsos.",
-            "Excepciones solo a mi criterio."
-          ]
+          "desc": "Esto incluye encargos, YCH, adopts y anticipos de reserva. Solo hay excepciones si las apruebo expresamente.",
+          "lead": "Los pagos no son reembolsables."
         },
         {
           "num": "03",
           "title": "Revisiones",
-          "desc": "Mis errores respecto al encargo acordado se corrigen gratis y no cuentan como revisiones. Normalmente se incluyen 3–5 revisiones en cada etapa disponible de aprobación. Yo determino el alcance y si el cambio corresponde a esa etapa; cualquier suplemento se acuerda antes de editar.",
-          "points": [
-            "3–5 revisiones por etapa de aprobación.",
-            "Mis errores: corrección gratuita.",
-            "Extras: acordamos la tarifa primero."
-          ]
+          "desc": "Corrijo mis errores gratis y no cuentan como revisiones. Confirmo si un cambio corresponde a la etapa actual; cualquier coste extra se acuerda antes de editar.",
+          "lead": "Normalmente 3–5 revisiones por etapa."
         },
         {
           "num": "04",
           "title": "Uso Personal",
-          "desc": "El uso personal está incluido: avatares, banners, perfiles de personajes e impresiones para ti. Menciona mi autoría al compartir. El merchandising, la publicidad y otros usos comerciales requieren un acuerdo aparte.",
-          "points": [
-            "Uso personal incluido.",
-            "Menciona mi autoría al publicar.",
-            "Uso comercial: acuerdo aparte."
-          ]
+          "desc": "Puedes usar el dibujo en avatares, banners, perfiles de personajes e impresiones para ti, con crédito al compartir. Merchandising, publicidad y otros usos comerciales requieren un acuerdo aparte.",
+          "lead": "Uso personal incluido."
         },
         {
           "num": "05",
           "title": "Reventa de Adopts",
-          "desc": "Puedes revender un adopt por el precio que pagaste o menos, regalarlo o intercambiarlo. Avísame del cambio de dueño y conserva el crédito original del diseño.",
-          "points": [
-            "Reventa por el precio pagado o menos.",
-            "Avísame del cambio de dueño.",
-            "Conserva el crédito del diseño."
-          ]
+          "desc": "También puedes regalar o intercambiar tu adopt. Avísame del cambio de dueño y conserva el crédito original del diseño.",
+          "lead": "Reventa por el precio pagado o menos."
         },
         {
           "num": "06",
           "title": "Prohibido IA y NFT",
-          "desc": "No uses mis dibujos ni diseños para entrenar IA, LoRA o datasets. Esto incluye bocetos y lineart, además de obras terminadas. También se prohíben los NFT y los proyectos cripto.",
-          "points": [
-            "Sin entrenamiento de IA ni datasets.",
-            "Sin NFT ni proyectos cripto."
-          ]
+          "desc": "No añadas mis dibujos o diseños a datasets ni los uses para LoRA. Esto incluye bocetos, lineart y obras terminadas.",
+          "lead": "Sin entrenamiento de IA, NFT ni cripto."
         }
       ],
       "agreeCheck": "He leído y acepto los Términos de Servicio (incluir la confirmación de la casilla en el mensaje de solicitud)",
@@ -1363,61 +1319,38 @@
         {
           "num": "01",
           "title": "Оплата и рассрочка",
-          "desc": "По умолчанию требуется полная предоплата. Для заказов свыше $200 можно заранее согласовать оплату частями; исключения для меньшей суммы возможны по личной договорённости. Первый взнос, даты платежей и начало работы согласуются до оплаты. Готовые файлы передаются после полного расчёта.",
-          "points": [
-            "По умолчанию — полная оплата.",
-            "Рассрочка свыше $200: договоримся до оплаты.",
-            "Финальные файлы — после полной оплаты."
-          ]
+          "desc": "Для заказов свыше $200 можно заранее согласовать рассрочку; меньшие суммы обсуждаем отдельно. Предоплату, даты и начало работы согласуем до оплаты. Финальные файлы — после полной оплаты.",
+          "lead": "По умолчанию — полная оплата."
         },
         {
           "num": "02",
           "title": "Возврат средств",
-          "desc": "Все платежи невозвратные, включая оплату комишек, YCH, адоптов и авансы за бронь. Исключение возможно только по моему решению и с моим прямым согласием.",
-          "points": [
-            "Возвратов нет.",
-            "Исключения — только по моему решению."
-          ]
+          "desc": "Это касается комишек, YCH, адоптов и авансов за бронь. Исключение возможно только по моему решению и с моим прямым согласием.",
+          "lead": "Все платежи невозвратные."
         },
         {
           "num": "03",
           "title": "Правки на скетче",
-          "desc": "Мои ошибки относительно согласованного задания исправляются бесплатно и не входят в лимит. Базово на каждом доступном этапе согласования предусмотрено 3–5 правок. Объём правки и возможность её выполнения на текущем этапе определяю я; доплата согласуется до изменений.",
-          "points": [
-            "3–5 правок на этапе согласования.",
-            "Мои ошибки исправляю бесплатно.",
-            "Доплаты за правки согласуем заранее."
-          ]
+          "desc": "Мои ошибки исправляю бесплатно, вне лимита правок. Я определяю, подходит ли изменение текущему этапу; любую доплату согласуем до внесения правок.",
+          "lead": "Обычно 3–5 правок на этапе согласования."
         },
         {
           "num": "04",
           "title": "Личное использование",
-          "desc": "Личное использование включено: аватарки, баннеры, профили персонажей и печать для себя. При публикации укажи автора. Мерч, реклама и другое коммерческое использование требуют отдельной договорённости.",
-          "points": [
-            "Личное использование включено.",
-            "При публикации укажи автора.",
-            "Коммерция — по отдельной договорённости."
-          ]
+          "desc": "Можно использовать арт для аватарок, баннеров, профилей персонажей и печати для себя. При публикации укажи автора. Мерч, реклама и другая коммерция — по отдельной договорённости.",
+          "lead": "Личное использование включено."
         },
         {
           "num": "05",
           "title": "Перепродажа адоптов",
-          "desc": "Адопта можно перепродать за цену покупки или дешевле, подарить или обменять. Сообщи мне о передаче новому владельцу и сохрани исходное авторство дизайна.",
-          "points": [
-            "Перепродажа не дороже цены покупки.",
-            "Сообщи о передаче.",
-            "Сохрани авторство дизайна."
-          ]
+          "desc": "Адопта также можно подарить или обменять. Сообщи мне о передаче новому владельцу и сохрани исходное авторство дизайна.",
+          "lead": "Перепродажа не дороже цены покупки."
         },
         {
           "num": "06",
           "title": "Запрет ИИ и NFT",
-          "desc": "Нельзя использовать мои рисунки и дизайны для обучения ИИ, LoRA или датасетов. Правило относится и к скетчам с лайном, и к готовым работам. NFT и криптопроекты тоже запрещены.",
-          "points": [
-            "Нельзя использовать для обучения ИИ.",
-            "Нельзя добавлять в датасеты.",
-            "Никаких NFT и криптопроектов."
-          ]
+          "desc": "Нельзя добавлять мои арты и дизайны в датасеты или использовать для LoRA. Это относится ко всем этапам — от скетча и лайна до готовой работы.",
+          "lead": "Никакого обучения ИИ, NFT и криптопроектов."
         }
       ],
       "agreeCheck": "Я прочитал(а) и согласен(на) с правилами ToS (включить отметку о согласии в текст заявки)",
