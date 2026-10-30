@@ -243,7 +243,7 @@
     let isAdultVerified = false;try{isAdultVerified=sessionStorage.getItem('nektahr-demo-age-verified')==='yes'}catch{}
     let showNsfwGallery = false;try{showNsfwGallery=isAdultVerified&&sessionStorage.getItem('nektahr-demo-nsfw-visible')==='yes'}catch{}
     // Change the consent revision when the terms materially change.
-    const TOS_CONSENT_KEY = 'nektahr-tos-consent-20261030-review';
+    const TOS_CONSENT_KEY = 'nektahr-tos-consent-20261030-refunds';
     let tosAgreed = false;try{tosAgreed=sessionStorage.getItem(TOS_CONSENT_KEY)==='yes'}catch{}
     let ageModalReturnFocus = null;
 

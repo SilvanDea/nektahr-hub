@@ -296,7 +296,7 @@
         {
           "num": "02",
           "title": "Refund Policy",
-          "desc": "Cancellation and refund arrangements are discussed before payment. If I cannot finish the agreed work, contact me to arrange cancellation and a refund for the uncompleted part."
+          "desc": "All payments are non-refundable, including payments for commissions, YCH, adopts and reservation advances. Any exception is entirely at my discretion and must be explicitly agreed by me."
         },
         {
           "num": "03",
@@ -330,7 +330,7 @@
             "Payment is due within 48 hours after the order or winning bid is confirmed. Contact me before payment if you need a different arrangement.",
             "A free hold lasts 48 hours. Paid holds start at 7 days; longer terms can be agreed. The advance is at least $10 and is credited toward the purchase. The remaining balance is due before the hold expires; otherwise, the hold ends and the item may be offered again. An auction listing may be reserved only if it remains unsold after bidding ends and has been listed for more than 14 days. Confirming a reservation closes the listing to new offers. For YCH, the slot is released while the template remains available for repeat orders.",
             "Full payment is required by default. For orders over $200, instalments can be agreed in advance; exceptions for smaller orders may be agreed individually. The deposit, dates and work start are confirmed before payment. Final files follow full payment.",
-            "Cancellation and refund arrangements are confirmed before payment. If I cannot complete the agreed work, I will discuss cancellation and a refund for the uncompleted part with you.",
+            "All payments are non-refundable, including payments for commissions, YCH, adopts and reservation advances. Any exception is entirely at my discretion and must be explicitly agreed by me.",
             "Any species, gender or body type can be discussed for a YCH; changes must fit the template and are agreed first. Sketch $30, color sketch $65, full render $120, AB $160 with one NSFW version. An extra outfit is $50. The template accepts repeat orders."
           ]
         },
@@ -342,7 +342,7 @@
             "YCH: your character is drawn using the shown pose and composition. Changes are agreed before payment and depend on the template. A new pose or substantial redraw is quoted separately. Approval stages depend on the chosen finish; templates accept repeat orders.",
             "Ready-made adopts: you buy the displayed design and the files included in the selected tier. There is no new sketch approval for an already finished base. Additional artwork and versions have their own agreed scope and approval stages.",
             "If I need your approval or more information, work may pause until you reply and the estimated delivery date may move. References guide the result, which is drawn in my style; they are not a promise to copy another artist’s work.",
-            "Your agreed delivery estimate specifies waiting time and production time. Ready-made adopt files follow full payment; unfinished tier bonuses and later additions have separate estimates. Please save the original files after delivery."
+            "Your agreed delivery estimate specifies waiting time and production time. Ready-made adopt files follow full payment; unfinished tier bonuses and later additions have separate estimates. Download and back up your files as soon as you receive them. I do not guarantee file storage, continued availability of download links or replacement copies. Keeping your files safe is your responsibility."
           ]
         },
         {
@@ -462,7 +462,7 @@
         {
           "cat": "process",
           "q": "How are files delivered?",
-          "a": "Original files are delivered by a download link or another agreed method. Ready-made adopt files can be delivered before commissioned additions. Formats and resolution are confirmed before ordering. PSD is available on request only for adopts at AB or above. Please save your files."
+          "a": "Original files are delivered by a download link or another agreed method. Ready-made adopt files can be delivered before commissioned additions. Formats and resolution are confirmed before ordering. PSD is available on request only for adopts at Tier IV. Download and back up your files as soon as you receive them. I do not guarantee file storage, continued availability of download links or replacement copies. Keeping your files safe is your responsibility."
         },
         {
           "cat": "process",
@@ -498,6 +498,11 @@
           "cat": "order",
           "q": "Can I ask for BDSM or fetish art?",
           "a": "Yes, I draw BDSM and other fetish themes. Feel free to ask about any ideas or preferences — we’ll discuss the details and whether I can take the request."
+        },
+        {
+          "cat": "payment",
+          "q": "Can I get a refund?",
+          "a": "All payments are non-refundable, including payments for commissions, YCH, adopts and reservation advances. Any exception is entirely at my discretion and must be explicitly agreed by me."
         }
       ]
     }
@@ -799,7 +804,7 @@
         {
           "num": "02",
           "title": "Reembolsos",
-          "desc": "Las condiciones de cancelación y reembolso se acuerdan antes del pago. Si no puedo terminar el trabajo, hablaremos de cancelar y reembolsar la parte sin realizar."
+          "desc": "Todos los pagos son no reembolsables, incluidos encargos, YCH, adopts y anticipos de reserva. Cualquier excepción queda exclusivamente a mi criterio y requiere mi aprobación expresa."
         },
         {
           "num": "03",
@@ -833,7 +838,7 @@
             "El pago debe realizarse dentro de las 48 horas tras confirmar el pedido o la puja ganadora. Consulta otros acuerdos antes de pagar.",
             "La reserva gratuita dura 48 horas. Las reservas pagadas empiezan en 7 días; se puede acordar un plazo mayor. El anticipo es de al menos $10 y se descuenta del precio. El resto debe pagarse antes de que termine la reserva; de lo contrario, vence y el artículo puede volver a ofrecerse. Un artículo de subasta solo se puede reservar si sigue sin venderse después del cierre y lleva publicado más de 14 días. Al confirmar la reserva, se cierra a nuevas ofertas. En YCH se libera el turno y la plantilla sigue disponible para más pedidos.",
             "Se requiere el pago completo por defecto. Para pedidos superiores a $200 se pueden acordar cuotas; las excepciones para importes menores se negocian individualmente. El anticipo, las fechas y el inicio del trabajo se acuerdan antes de pagar. Los archivos finales se entregan tras el pago completo.",
-            "Las condiciones de cancelación y reembolso se acuerdan antes del pago. Si no puedo completar el trabajo acordado, hablaremos de la cancelación y del reembolso de la parte sin realizar.",
+            "Todos los pagos son no reembolsables, incluidos encargos, YCH, adopts y anticipos de reserva. Cualquier excepción queda exclusivamente a mi criterio y requiere mi aprobación expresa.",
             "Se puede consultar cualquier especie, género o tipo de cuerpo para YCH; los cambios deben encajar con la plantilla y se acuerdan antes. Boceto $30, boceto a color $65, render completo $120, AB $160 con una versión NSFW. Atuendo adicional: $50. La plantilla admite pedidos repetidos."
           ]
         },
@@ -845,7 +850,7 @@
             "YCH: tu personaje se dibuja a partir de la pose y composición mostradas. Los cambios se acuerdan antes de pagar y dependen de la plantilla. Una pose nueva o un redibujo importante se presupuestan aparte. Las etapas dependen del acabado; las plantillas admiten pedidos repetidos.",
             "Adopts terminados: compras el diseño mostrado y los archivos del nivel elegido. Una base ya terminada no tiene una nueva aprobación de boceto. Las ilustraciones y versiones adicionales tienen alcance y etapas acordados aparte.",
             "Si necesito tu aprobación o más información, el trabajo puede pausarse hasta recibir respuesta y la fecha estimada puede cambiar. Las referencias orientan la idea; dibujo en mi estilo y no prometo copiar una obra ajena.",
-            "Al acordar el plazo se especifican la espera y la producción. Los archivos de un adopt terminado se entregan tras el pago completo; los bonos sin dibujar y extras posteriores tienen plazos separados. Guarda los originales al recibirlos."
+            "Al acordar el plazo se especifican la espera y la producción. Los archivos de un adopt terminado se entregan tras el pago completo; los bonos sin dibujar y extras posteriores tienen plazos separados. Descarga tus archivos en cuanto los recibas y guarda una copia de seguridad. No garantizo el almacenamiento de archivos, que los enlaces sigan disponibles ni el reenvío de copias. Conservar tus archivos es tu responsabilidad."
           ]
         },
         {
@@ -965,7 +970,7 @@
         {
           "cat": "process",
           "q": "¿Cómo recibiré los archivos?",
-          "a": "Los originales se entregan mediante enlace de descarga u otro método acordado. Un adopt terminado puede entregarse antes de sus extras. Formatos y resolución se confirman antes de pedir. PSD solo está disponible bajo petición para adopts AB o superiores. Guarda tus archivos."
+          "a": "Los originales se entregan mediante enlace de descarga u otro método acordado. Un adopt terminado puede entregarse antes de sus extras. Formatos y resolución se confirman antes de pedir. PSD solo está disponible bajo petición para adopts de nivel IV. Descarga tus archivos en cuanto los recibas y guarda una copia de seguridad. No garantizo el almacenamiento de archivos, que los enlaces sigan disponibles ni el reenvío de copias. Conservar tus archivos es tu responsabilidad."
         },
         {
           "cat": "process",
@@ -1001,6 +1006,11 @@
           "cat": "order",
           "q": "¿Puedo pedir arte BDSM o de fetiches?",
           "a": "Sí, dibujo BDSM y otras temáticas fetichistas. Pregunta sin vergüenza por tus ideas y preferencias: hablaremos de los detalles y de si puedo aceptar el encargo."
+        },
+        {
+          "cat": "payment",
+          "q": "¿Puedo recibir un reembolso?",
+          "a": "Todos los pagos son no reembolsables, incluidos encargos, YCH, adopts y anticipos de reserva. Cualquier excepción queda exclusivamente a mi criterio y requiere mi aprobación expresa."
         }
       ]
     }
@@ -1302,7 +1312,7 @@
         {
           "num": "02",
           "title": "Возврат средств",
-          "desc": "Условия отмены и возврата обсуждаем до оплаты. Если я не смогу закончить согласованную работу, обсудим отмену и возврат за невыполненную часть."
+          "desc": "Все платежи невозвратные, включая оплату комишек, YCH, адоптов и авансы за бронь. Исключение возможно только по моему решению и с моим прямым согласием."
         },
         {
           "num": "03",
@@ -1336,7 +1346,7 @@
             "Оплата — в течение 48 часов после подтверждения заказа или выигравшей ставки. Если нужны другие условия, обсуди их до оплаты.",
             "Бесплатная бронь действует 48 часов. Платная бронь — от 7 дней; более долгий срок можно согласовать. Аванс — минимум $10, он засчитывается в стоимость. Остаток нужно внести до окончания брони, иначе бронь истекает и лот можно снова выставить. Аукционный лот можно забронировать, только если он не продан после окончания торгов и опубликован больше 14 дней. После подтверждения брони новые предложения не принимаются. У YCH освобождается слот заказа, а шаблон остаётся доступен для повторных заказов.",
             "По умолчанию требуется полная предоплата. Для заказов свыше $200 можно заранее согласовать оплату частями; исключения для меньшей суммы возможны по личной договорённости. Первый взнос, даты платежей и начало работы согласуются до оплаты. Готовые файлы передаются после полного расчёта.",
-            "Условия отмены и возврата обсуждаем до оплаты. Если я не смогу выполнить согласованную работу, обсудим отмену и возврат за невыполненную часть.",
+            "Все платежи невозвратные, включая оплату комишек, YCH, адоптов и авансы за бронь. Исключение возможно только по моему решению и с моим прямым согласием.",
             "Для YCH можно обсудить любой вид, гендер и телосложение; изменения должны подходить шаблону и согласуются заранее. Скетч $30, цветной скетч $65, полный рендер $120, AB $160 с одной NSFW-версией. Дополнительный наряд — $50. Шаблон доступен для повторных заказов."
           ]
         },
@@ -1348,7 +1358,7 @@
             "YCH: твой персонаж рисуется на основе показанной позы и композиции. Изменения обсуждаются до оплаты и зависят от шаблона. Новая поза и существенная переделка оцениваются отдельно. Этапы согласования зависят от уровня исполнения; шаблон можно заказывать многократно.",
             "Готовый адопт: покупается показанный дизайн и файлы выбранного уровня. Для уже готовой базы нового согласования скетча нет. Заказанные арты и дополнительные версии имеют отдельный согласованный объём и этапы.",
             "Если для продолжения нужен ответ или информация клиента, работа может приостанавливаться, а ориентировочный срок — сдвигаться. Референсы передают идею и детали; результат выполняется в моём стиле и не предполагает точного копирования чужой работы.",
-            "При согласовании срока уточняются ожидание в очереди и выполнение. Готовые файлы адопта передаются после полной оплаты; ненарисованные бонусы и поздние дополнения имеют отдельные сроки. Сохрани оригиналы после получения."
+            "При согласовании срока уточняются ожидание в очереди и выполнение. Готовые файлы адопта передаются после полной оплаты; ненарисованные бонусы и поздние дополнения имеют отдельные сроки. Скачай файлы сразу после получения и сохрани резервную копию. Хранение файлов, доступность ссылок в будущем и повторная отправка не гарантируются. За сохранность полученных файлов отвечаешь ты."
           ]
         },
         {
@@ -1468,7 +1478,7 @@
         {
           "cat": "process",
           "q": "Как передаются файлы?",
-          "a": "Оригиналы передаются ссылкой на скачивание или другим согласованным способом. Готового адопта можно получить раньше заказанных дополнений. Форматы и разрешение уточняются до заказа. PSD доступен по запросу только для адоптов уровня AB и выше. Сохрани полученные файлы."
+          "a": "Оригиналы передаются ссылкой на скачивание или другим согласованным способом. Готового адопта можно получить раньше заказанных дополнений. Форматы и разрешение уточняются до заказа. PSD доступен по запросу только для адоптов уровня IV. Скачай файлы сразу после получения и сохрани резервную копию. Хранение файлов, доступность ссылок в будущем и повторная отправка не гарантируются. За сохранность полученных файлов отвечаешь ты."
         },
         {
           "cat": "process",
@@ -1504,6 +1514,11 @@
           "cat": "order",
           "q": "Можно заказать BDSM или фетиш-арт?",
           "a": "Да, рисую BDSM и другие фетишные темы. Не стесняйся спрашивать о любых идеях и пожеланиях — обсудим детали и возможность выполнения."
+        },
+        {
+          "cat": "payment",
+          "q": "Можно получить возврат?",
+          "a": "Все платежи невозвратные, включая оплату комишек, YCH, адоптов и авансы за бронь. Исключение возможно только по моему решению и с моим прямым согласием."
         }
       ]
     }
