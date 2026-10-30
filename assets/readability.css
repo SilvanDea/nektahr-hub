@@ -163,4 +163,4 @@ font-size:14px!important;line-height:1.75!important;color:#d2c8bc!important;text
 @media(max-width:600px){#custom-stages-grid p,#adopt-tiers-grid p,#ych-slots-grid p{font-size:15px!important}}
 
 /* Highlight cumulative tier inclusions without a competing banner. */
-#adopt-tiers-grid ul li:first-child{color:#edc58e!important;font-weight:600;padding:7px 9px;background:#e2b47810;border-left:2px solid #e2b47888;border-radius:3px;margin-bottom:8px}
+#adopt-tiers-grid [data-quote-value]:not([data-quote-value="100"]) ul li:first-child{color:#edc58e!important;font-weight:600;padding:7px 9px;background:#e2b47810;border-left:2px solid #e2b47888;border-radius:3px;margin-bottom:8px}
