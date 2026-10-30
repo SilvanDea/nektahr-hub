@@ -29,3 +29,13 @@ Commit both sources and generated outputs. Build also compiles the pinned Tailwi
 utilities locally and fingerprints local CSS/JS URLs. Do not edit generated HTML
 or `assets/app.js`, `assets/app-state.js`, `assets/translations.js` directly.
 See `docs/INTERNAL_AUDIT_2026-10-30.md` for findings, checks, limits and rollback.
+
+### Validated publishing
+
+The Actions workflow builds from source, runs all tests, packages only public files
+and uploads a Pages artifact. Deployment depends on that successful job. PRs never
+deploy. In Settings → Pages → Build and deployment, Source must be **GitHub Actions**;
+branch publishing bypasses these checks. Domain/DNS settings do not change.
+
+Adopt tier I defaults to $100; any different base belongs in the individual
+`assets/catalog-data.json` listing's `price` data, never a global weapon tier.
