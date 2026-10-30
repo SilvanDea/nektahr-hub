@@ -22,7 +22,7 @@ function src(img,value){if(img.getAttribute('src')!==value)img.src=value}
 function reportImageErrors(){const images=$('curtain').hidden?[$('stage0')]:[$('curtainBefore'),$('curtainAfter')];const failed=images.some(img=>img.dataset.failed==='yes');$('error').hidden=!failed;$('error').textContent=failed?t.error:'';$('error').setAttribute('role','alert')}
 function watchImage(img,url){img.onload=()=>{img.dataset.failed='';reportImageErrors()};img.onerror=()=>{img.dataset.failed='yes';reportImageErrors()};if(img.getAttribute('src')!==url)img.dataset.failed='';src(img,url)}
 function resetCurtain(){$('curtainSlider').value=50;moveCurtain()}
-function pair(){if(work.comparisonPairs?.[phase])return work.comparisonPairs[phase];if(work.labels.length===1)return [0,0];if(work.type==='ych'||work.compareFromBase)return [0,phase>0?phase:1];return phase===work.labels.length-1?[phase-1,phase]:[phase,phase+1]}
+function pair(){if(work.labels.length===1)return [0,0];return [Math.max(0,phase-1),phase>0?phase:1]}
 function moveCurtain(){const v=Number($('curtainSlider').value);$('curtainReveal').style.clipPath=`inset(0 ${100-v}% 0 0)`;$('divider').style.left=`${v}%`;$('curtainSlider').setAttribute('aria-valuetext',`${$('pairBefore').textContent} / ${$('pairAfter').textContent}: ${v}%`)}
 function askAdult(action){if(ageVerified){adultAllowed=true;action?.();render();return}pendingAdult=action;opener=document.activeElement;$('ageDialog').showModal();$('ageCancel').focus()}
 function cancelAdult(){pendingAdult=null;$('ageDialog').close();opener?.focus()}
