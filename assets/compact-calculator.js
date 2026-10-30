@@ -18,16 +18,32 @@
     set('quote-character-output',$('quote-character-count')?.value||'1');const label=base.querySelector('label[for="quote-character-count"]');if(label)label.textContent=c.count;
     set('calc-title',c.calc);set('calc-copy-btn',c.request);set('calc-brief-summary',c.brief);selection();
   }
-  function selection(){const c=t();let saving=document.getElementById('quote-bundle-saving');if(!saving){saving=document.createElement('small');saving.id='quote-bundle-saving';saving.style.cssText='display:block;color:#8ee6af;font-size:12px;margin-top:6px;text-align:right';document.getElementById('calc-total-value')?.parentElement.append(saving);}const ychBundle=currentPricingTab==='ych'&&document.getElementById('calc-stage-sel')?.value==='160';const customBundle=currentPricingTab==='custom'&&document.getElementById('calc-stage-sel')?.value==='single'&&['nsfw','furry','futa'].some(id=>CALC_MODE_STATE.custom.quantities?.[id]);saving.textContent=ychBundle||customBundle?({en:'Bundle saving: $10',ru:'Экономия комплекта: $10',es:'Ahorro del paquete: $10'})[currentLang]:'';const tier=Number(document.getElementById('calc-stage-sel')?.value);
+  function selection(){const c=t();let saving=document.getElementById('quote-bundle-saving');if(!saving){saving=document.createElement('small');saving.id='quote-bundle-saving';saving.style.cssText='display:block;color:#8ee6af;font-size:12px;margin-top:6px;text-align:right';document.getElementById('calc-total-value')?.parentElement.append(saving);}const ychBundle=currentPricingTab==='ych'&&document.getElementById('calc-stage-sel')?.value==='160';const customBundle=currentPricingTab==='custom'&&document.getElementById('calc-stage-sel')?.value==='single'&&['nsfw','furry','futa'].some(id=>CALC_MODE_STATE.custom.quantities?.[id]);saving.textContent=ychBundle||customBundle?({en:'Bundle saving: $10',ru:'Экономия комплекта: $10',es:'Ahorro del paquete: $10'})[currentLang]:'';
+const tier=Number(document.getElementById('calc-stage-sel')?.value);
+saving.removeAttribute('title');
+let explanation=$('quote-saving-details');
+if(!explanation){explanation=document.createElement('details');explanation.id='quote-saving-details';saving.after(explanation);}
+explanation.hidden=true;explanation.replaceChildren();
+const lc=({en:{how:'How it is calculated',base:'Base adopt',render:'Render upgrade',alt:'Included alt version',expressions:'Included expressions',art:'Bonus color-sketch artwork',back:'Back view',details:'Two close-ups',nsfw:'Included NSFW version',separate:'Separately',bundle:'Tier price',note:'Estimate using known separate rates. Unpriced work and purchased extras are excluded. This is not a claim that every higher tier has a larger discount.',partial:'An agreed custom alternative is not valued here.'},ru:{how:'Как посчитано',base:'База адопта',render:'Улучшение рендера',alt:'Включённая альт-версия',expressions:'Включённые эмоции',art:'Бонусный цветной скетч',back:'Вид сзади',details:'Два крупных плана',nsfw:'Включённая NSFW-версия',separate:'По отдельности',bundle:'Цена тира',note:'Оценка по известным отдельным тарифам. Неоценённая работа и докупленные extras исключены. Более высокий тир не обязательно даёт большую скидку.',partial:'Другая согласованная альтернатива здесь не оценена.'},es:{how:'Cómo se calcula',base:'Adopt base',render:'Mejora de render',alt:'Versión alt incluida',expressions:'Expresiones incluidas',art:'Boceto a color adicional',back:'Vista trasera',details:'Dos detalles',nsfw:'Versión NSFW incluida',separate:'Por separado',bundle:'Precio del nivel',note:'Estimación con tarifas conocidas. Sin trabajo no valorado ni extras comprados. Un nivel superior no implica un descuento mayor.',partial:'La alternativa personalizada no está valorada aquí.'}})[currentLang];
 if(currentPricingTab==='adopt'&&tier>=200){
  const variant=CALC_MODE_STATE.adopt.includedVariant||'nsfw';
- const alt=variant==='other'?0:variant==='futa'?25:50;
- const separate=100+100+alt+(tier>=500?75:25)+(tier>=350?120:0)+(tier>=500?55+50+(variant!=='nsfw'?50:0):0);
- const difference=separate-tier;
- saving.textContent=difference>0?({en:'Approx. bundle saving: $',ru:'Примерная экономия комплекта: $',es:'Ahorro aproximado del paquete: $'})[currentLang]+difference:'';
- saving.title=({en:'Base $100 + render upgrade $100 + chosen version + expressions; tier III adds color-sketch art $120; tier IV adds back view $55 and two close-ups $25 each. Unpriced items and purchased extras excluded.',ru:'База $100 + улучшение рендера $100 + выбранная версия + эмоции; Tier III: цветной скетч $120; Tier IV: вид сзади $55 и два крупных плана по $25. Неоценённые позиции и докупленные дополнения не учитываются.',es:'Base $100 + mejora de render $100 + versión y expresiones; nivel III: arte $120; nivel IV: vista trasera $55 y dos detalles de $25. Sin extras comprados ni elementos sin precio.'})[currentLang];
+ const nsfwBase=Boolean(CALC_MODE_STATE.adopt.baseNsfw)||tier>=500||variant==='nsfw';
+ const alt=variant==='other'?0:variant==='futa'&&nsfwBase?25:50;
+ const components=[[lc.base,100],[lc.render,100]];
+ if(alt)components.push([lc.alt,alt]);
+ components.push([lc.expressions,tier>=500?75:25]);
+ if(tier>=350)components.push([lc.art,120]);
+ if(tier>=500){components.push([lc.back,55],[lc.details,50]);if(variant!=='nsfw')components.push([lc.nsfw,50]);}
+ const separate=components.reduce((sum,row)=>sum+row[1],0),difference=separate-tier;
+ saving.textContent=difference>0?({en:'Estimated saving on priced inclusions: $',ru:'Экономия на оценённых включениях: $',es:'Ahorro estimado en elementos valorados: $'})[currentLang]+difference:'';
+ const summary=document.createElement('summary');summary.textContent=lc.how;explanation.append(summary);
+ for(const [name,value]of [...components,[lc.separate,separate],[lc.bundle,tier]]){const row=document.createElement('div');row.className='quote-line';const label=document.createElement('span'),cost=document.createElement('span');label.textContent=name;cost.textContent='$'+value;row.append(label,cost);explanation.append(row);}
+ const note=document.createElement('p');note.textContent=lc.note+(variant==='other'?' '+lc.partial:'');explanation.append(note);explanation.hidden=false;
+}else if(ychBundle||customBundle){
+ const summary=document.createElement('summary');summary.textContent=lc.how;const p=document.createElement('p');p.textContent=ychBundle?'$120 + $50 − $160 = $10':'$200 + $50 − $240 = $10';explanation.append(summary,p);explanation.hidden=false;
 }
 saving.style.textAlign='left';
+
 
     document.querySelectorAll('.compact-option-group').forEach(group=>{let count=[...group.querySelectorAll('input[type="checkbox"]')].filter(x=>x.checked).length;group.querySelectorAll('[data-quote-quantity]').forEach(x=>count+=Number(x.value)||0);const badge=group.querySelector('.compact-selection-count');badge.textContent=count?'· '+count+' '+c.selected:'';});
     set('calc-estimate-note',c.estimate);const pending=$('calc-breakdown-list')?.textContent;if(pending?.includes(({en:'To quote',ru:'По согласованию',es:'A consultar'})[currentLang]))set('calc-estimate-note',c.estimate+' '+({en:'Some extras are quoted separately.',ru:'Часть дополнений оценивается отдельно.',es:'Algunos extras se presupuestan aparte.'})[currentLang]);
