@@ -55,3 +55,6 @@
 #artwork-dialog #art-process .controls{padding-top:12px}
 #artwork-dialog #art-process .layout{margin-top:14px}
 #artwork-dialog #art-process .content-preferences{margin-bottom:10px}
+
+.skip-content{position:fixed;top:8px;left:16px;z-index:10000;padding:10px 16px;border-radius:5px;background:#e2b478;color:#100c15;transform:translateY(-180%)}.skip-content:focus{transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
