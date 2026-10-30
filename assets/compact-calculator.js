@@ -33,8 +33,8 @@
   window.calculateAdoptBonuses=adoptBonuses;
   function selection(){const c=t();let saving=$('quote-bundle-saving');if(!saving){saving=document.createElement('small');saving.id='quote-bundle-saving';saving.style.cssText='display:block;color:#8ee6af;font-size:12px;margin-top:6px;text-align:left';$('calc-total-value')?.parentElement.append(saving);}
     saving.removeAttribute('title');saving.textContent='';saving.hidden=true;
-    let explanation=$('quote-saving-details');if(!explanation){explanation=document.createElement('details');explanation.id='quote-saving-details';saving.after(explanation);}
-    const expanded=explanation.open;explanation.hidden=true;explanation.replaceChildren();
+    let explanation=$('quote-saving-details');if(!explanation){explanation=document.createElement('section');explanation.id='quote-saving-details';}
+    explanation.hidden=true;explanation.replaceChildren();$('calc-breakdown-list')?.append(explanation);
     const lc=({
       en:{how:'Included bonuses · breakdown',label:'Priced bonuses included: $',alt:'Included alt version',expressions:'Included extra expressions',art:'Bonus color sketch',nsfw:'Additional NSFW version',total:'Bonus value',note:'Value of the listed bonuses at separate rates, not a discount on the package. Base design, rendering, reference sheet and purchased extras are excluded. An agreed custom alternative is not valued. The same version is counted once.'},
       ru:{how:'Включённые бонусы · состав',label:'Включены оценённые бонусы на $',alt:'Включённая альт-версия',expressions:'Включённые дополнительные эмоции',art:'Бонусный цветной скетч',nsfw:'Дополнительная NSFW-версия',total:'Стоимость бонусов',note:'Стоимость перечисленных бонусов по отдельным тарифам, а не скидка на пакет. База, рендер, референс и докупленные дополнения не учитываются. Другая согласованная альтернатива не оценена. Одна и та же версия считается один раз.'},
@@ -45,9 +45,9 @@
       const s=CALC_MODE_STATE.adopt,components=adoptBonuses(tier,s.includedVariant||'nsfw',Boolean(s.baseNsfw));
       const total=components.reduce((sum,row)=>sum+row[1],0);
       saving.hidden=false;saving.textContent=lc.label+total;
-      const summary=document.createElement('summary');summary.textContent=lc.how;explanation.append(summary);
+      const heading=document.createElement('h4');heading.textContent=lc.how;heading.style.cssText='margin:12px 0 8px;padding-top:12px;border-top:1px solid rgba(228,182,117,.18);font-size:12px;font-weight:600;color:var(--accent,#e4b675)';explanation.append(heading);
       for(const [key,value]of [...components,['total',total]]){const row=document.createElement('div');row.className='quote-line';const label=document.createElement('span'),cost=document.createElement('span');label.textContent=lc[key];cost.textContent='$'+value;row.append(label,cost);explanation.append(row);}
-      const note=document.createElement('p');note.textContent=lc.note;explanation.append(note);explanation.hidden=false;explanation.open=expanded;
+      const note=document.createElement('p');note.textContent=lc.note;explanation.append(note);explanation.hidden=false;
     }
     document.querySelectorAll('.compact-option-group').forEach(group=>{let count=[...group.querySelectorAll('input[type="checkbox"]')].filter(x=>x.checked).length;group.querySelectorAll('[data-quote-quantity]').forEach(x=>count+=Number(x.value)||0);const badge=group.querySelector('.compact-selection-count');badge.textContent=count?'· '+count+' '+c.selected:'';});
     set('calc-estimate-note',c.estimate);const pending=$('calc-breakdown-list')?.textContent;if(pending?.includes(({en:'To quote',ru:'По согласованию',es:'A consultar'})[currentLang]))set('calc-estimate-note',c.estimate+' '+({en:'Some extras are quoted separately.',ru:'Часть дополнений оценивается отдельно.',es:'Algunos extras se presupuestan aparte.'})[currentLang]);
