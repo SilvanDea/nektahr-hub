@@ -13,7 +13,7 @@ const cases=[
  [{value:'sketch',q:{nsfw:1,futa:1,expression:2}},205],[{value:'sketch',q:{futa:1}},130],[{value:'sketch',q:{futa:1},existing:true},105],
  [{value:'sketch',q:{outfit:2,expression:3,weapon:1,complexWeapon:1,armour:1,minorEdit:2}},255],
  [{value:'sketch',q:{outfit:-5,expression:'bad'}},80],[{value:'sketch',q:{expression:100}},305],[{value:'sketch',nda:true},108],[{value:'sketch',rush:true},130],
- [{mode:'ych',value:'30'},30],[{mode:'ych',value:'60'},60],[{mode:'ych',value:'120'},120],[{mode:'ych',value:'120',q:{nsfw:1}},170],[{mode:'ych',value:'160'},160],[{mode:'ych',value:'160',q:{futa:1}},185],
+ [{mode:'ych',value:'30'},30],[{mode:'ych',value:'65'},65],[{mode:'ych',value:'120'},120],[{mode:'ych',value:'120',q:{nsfw:1}},170],[{mode:'ych',value:'160'},160],[{mode:'ych',value:'160',q:{futa:1}},185],
  [{mode:'adopt',value:'100'},100],[{mode:'adopt',value:'100',q:{nsfw:1}},100],[{mode:'adopt',value:'200'},200],
  [{mode:'adopt',value:'200',q:{futa:1}},225],[{mode:'adopt',value:'200',alt:'furry'},200],[{mode:'adopt',value:'200',alt:'furry',q:{nsfw:1}},250],[{mode:'adopt',value:'200',alt:'outfit'},200],[{mode:'adopt',value:'200',alt:'outfit',q:{outfit:1}},250],[{mode:'adopt',value:'200',alt:'futa'},200],[{mode:'adopt',value:'300',alt:'other'},300],[{mode:'adopt',value:'450',alt:'furry'},450],[{mode:'adopt',value:'450',alt:'furry',q:{futa:1}},475]
 ];

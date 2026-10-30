@@ -21,7 +21,7 @@ for file,route in ROUTES.items():
  for url in p.local:assert (ROOT/url.lstrip('/')).exists(),(file,url)
  refs+=len(p.local);assert all('noopener' in rel for rel in p.blank),file+' unsafe target'
  scripts=re.findall(r'<script src="(/assets/[^"?]+)',s);script_hashes.append(tuple(scripts))
- assert 'gapkuro@gmail.com' not in s and '$65' not in s,file+' stale contact/price'
+ assert 'gapkuro@gmail.com' not in s ,file+' stale contact/price'
 assert len(set(script_hashes))==1,'Application logic differs between routes'
 works=json.loads((ROOT/'assets/portfolio-data.js').read_text().split(' = ',1)[1].rstrip(';\n'));items=json.loads((ROOT/'assets/catalog-data.json').read_text());ids={w['id'] for w in works};assert len(ids)==len(works);assert len({x['id'] for x in items})==len(items)
 for w in works:
@@ -41,7 +41,7 @@ for x in works:
  if x['id']==72:assert x['comparisonPairs']==[[0,1],[0,1],[1,2],[0,3],[3,4],[3,5]]
 images=0;secrets=[]
 for p in ROOT.rglob('*'):
- if not p.is_file() or {'public','.openai'}.intersection(p.relative_to(ROOT).parts):continue
+ if not p.is_file() or {'public','.openai','_site','node_modules'}.intersection(p.relative_to(ROOT).parts):continue
  if p.suffix.lower() in ['.webp','.png','.jpg','.jpeg','.ico']:
   with Image.open(p) as im:im.verify()
   images+=1
