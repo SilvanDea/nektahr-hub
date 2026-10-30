@@ -82,7 +82,7 @@ if(card.parentElement?.id==='gal-ext-platforms')card.replaceChildren(title);
  for(const lang of ['en','ru','es']){
   const p=I18N[lang].pricing,tiers=tierNames[lang];
   p.adoptSection.tiers.forEach((t,i)=>{t.badge=tiers[i];if(i===0)t.title=t.title.replace(/^SB\s*[—–-]\s*/,'');});
-  p.adoptSection.tiers[3].perks.push(({en:'3 extra expressions total; more available at $25 each',ru:'3 эмоции суммарно; следующие по $25',es:'3 expresiones en total; adicionales a $25'})[lang]);
+  p.adoptSection.tiers[3].perks.push(({en:'3 extra expressions included in total',ru:'3 эмоции включены суммарно',es:'3 expresiones incluidas en total'})[lang]);
   p.ychSection.slots.forEach((slot,i)=>{slot.code=i===3?tiers[i]+' · AB':tiers[i];});
   const last=p.adoptSection.tiers[3];last.desc=last.desc.replace(/\bAB\b/g,tiers[3]);
  }
