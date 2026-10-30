@@ -15,3 +15,16 @@
 #page-pricing .addon-pill:after,#page-pricing .quote-existing-label:after,#page-pricing .quote-package:after{align-self:center;display:grid!important;place-items:center!important;font:16px/1 Arial,sans-serif!important;padding:0!important;box-sizing:border-box}
 
 #page-board .hero-copy>.grid{margin-top:auto}
+
+/* Shared palette and compact rectangular badges. */
+:root{--status-green:#bad0bd;--status-green-border:#8dab9455;--status-green-bg:#8dab9408;--status-gold:#e2b478;--status-pink:#d9acbe}
+.catalog-art>.catalog-status,.catalog-art>.media-adult-badge,.catalog-art>.catalog-demo-badge,.media-adult-badge,.adult-tag{border-radius:4px!important;min-height:25px!important;box-sizing:border-box;display:inline-flex;align-items:center;padding:4px 7px!important;font:500 10px/15px Inter,system-ui!important}
+#commission-intake,#contacts-intake{color:var(--status-green)!important;border-color:var(--status-green-border)!important;background:var(--status-green-bg)!important}
+.catalog-status.available,.catalog-status.status-open{color:var(--status-green);border-color:var(--status-green-border)}
+#artwork-work-strip{display:flex;gap:8px;overflow-x:auto;padding:8px;max-width:100%}#artwork-work-strip button{flex:0 0 125px}#artwork-work-strip img{height:90px;width:100%;object-fit:contain}#artwork-work-strip span{display:block;white-space:normal;font-size:12px}
+#artwork-dialog #art-process .layout>section:first-child{display:none!important}#artwork-dialog #art-process .layout{display:block}
+.tos-summary-points{font-size:15px;line-height:1.65;color:#eee4d8;display:grid;gap:9px;padding-top:6px}.tos-summary-points li{padding-left:13px;position:relative}.tos-summary-points li:before{content:'•';position:absolute;left:0;color:#e2b478}
+#tos-contents{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px}#tos-contents a{padding:9px 12px;border:1px solid #e2b47844;border-radius:5px;color:#e2b478;font-size:14px}
+#tos-detailed-sections{max-width:800px;margin-inline:auto;grid-template-columns:minmax(0,1fr)!important;gap:24px}.tos-detail{scroll-margin-top:90px}.tos-detail ul{font-size:16px!important;line-height:1.8!important;color:#ded4ca!important}.tos-detail li{padding:14px 0;border-bottom:1px solid #e2b47822}.tos-detail li:last-child{border:0}.tos-detail li p+p{margin-top:7px}.tos-detail h3{font-size:25px;line-height:1.35}
+#reservation-terms{display:none!important}
+.catalog-status.open,.queue-status:not(.reserved){color:var(--status-green)!important;border-color:var(--status-green-border)!important;background:var(--status-green-bg)!important}.catalog-status.reserved,.queue-status.reserved{color:var(--status-gold)!important;border-color:#e2b47855!important;background:#e2b4780a!important}.catalog-status.sold{color:#b7aabd!important}

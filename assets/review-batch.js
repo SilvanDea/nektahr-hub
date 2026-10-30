@@ -13,7 +13,7 @@
   for(const id of ['catalog-reserve-description','reservation-description']){const el=$(id);if(!el)continue;el.classList.add('readable-rules');el.innerHTML=(rules[lang()]||rules.en).map(([a,b])=>'<span><strong>'+a+':</strong> '+b+'</span>').join('');}
   if($('reservation-terms'))$('reservation-terms').hidden=true;
   const intake=$('contacts-intake');if(intake){intake.setAttribute('role','link');intake.tabIndex=0;intake.onclick=()=>location.assign('/pricing/?type=custom#order-conditions');intake.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();intake.click()}}}
-  const link=$('fanart-version-link');if(link){link.textContent=({en:'Other examples ↗',ru:'Другие примеры ↗',es:'Otros ejemplos ↗'})[lang()];link.onclick=e=>{e.preventDefault();openLightbox(101);window.setProcessContext?.('examples');const host=$('art-process');if(host)host.querySelectorAll('#arts>button').forEach(card=>{ /* Keep all multi-stage examples in the common selector. */ });};}
+  const link=$('fanart-version-link');if(link){link.textContent=({en:'Other examples ↗',ru:'Другие примеры ↗',es:'Otros ejemplos ↗'})[lang()];link.onclick=e=>{e.preventDefault();window.openGalleryArtwork?.(101,{examples:true});};}
   observer.observe(document.body,{childList:true,subtree:true});busy=false;
  }
  const observer=new MutationObserver(()=>{if(!busy)decorate()});decorate();

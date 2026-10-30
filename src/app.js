@@ -700,21 +700,22 @@
         <div class="card p-5 space-y-2 ${idx === 5 ? 'border-error/40 bg-error/5' : ''}">
           <div class="mono text-xs ${idx === 5 ? 'text-error' : 'text-accent'}">${c.num}</div>
           <h3 class="serif text-2xl text-textMain">${c.title}</h3>
-          <p class="text-xs text-textMuted leading-relaxed">${c.desc}</p>
+          <ul class="tos-summary-points">${(c.points||[c.desc]).map(point=>`<li>${point}</li>`).join('')}</ul>
         </div>
       `).join('');
 
       document.getElementById('tos-will-list').innerHTML = t.tos.willList.map(i => `<li>• ${i}</li>`).join('');
       document.getElementById('tos-wont-list').innerHTML = t.tos.wontList.map(i => `<li>• ${i}</li>`).join('');
-      document.getElementById('tos-detailed-sections').innerHTML = t.tos.sections.map(sec => `
-        <div class="card p-6 space-y-3">
+      document.getElementById('tos-detailed-sections').innerHTML = t.tos.sections.map((sec,index) => `
+        <section id="tos-section-${index+1}" class="card tos-detail p-6 space-y-3">
           <div class="mono text-[10px] uppercase text-accent">${sec.tag}</div>
           <h3 class="serif text-2xl text-textMain">${sec.title}</h3>
           <ul class="space-y-2 text-xs sm:text-sm text-textMuted leading-relaxed pt-2 border-t hairline">
-            ${sec.bullets.map(b => `<li class="flex gap-2"><span class="text-accent shrink-0">•</span><span>${b}</span></li>`).join('')}
+            ${sec.bullets.map(b => `<li>${b.split(/(?<=[.!?])\s+(?=[A-ZА-ЯЁÁÉÍÓÚ])/u).map(sentence=>`<p>${sentence}</p>`).join('')}</li>`).join('')}
           </ul>
-        </div>
+        </section>
       `).join('');
+      document.getElementById('tos-contents').innerHTML=t.tos.sections.map((sec,i)=>`<a href="#tos-section-${i+1}">${sec.title}</a>`).join('');
 
       // FAQ Page
       renderFaqSection();

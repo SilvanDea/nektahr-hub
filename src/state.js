@@ -123,7 +123,7 @@
 
     // Gallery Works
     const GALLERY_ITEMS = [
-{"id": 101, "title": "Illustration 3", "cat": "comm", "nsfw": false, "img": "/assets/gallery/ofordet-bg.webp", "processWork": 1},{"id": 102, "title": "Illustration 4", "cat": "comm", "nsfw": true, "img": "/assets/process/art-2-2.webp", "processWork": 2},{"id": 103, "title": "SFW / NSFW fan art", "cat": "fanart", "nsfw": false, "img": "/assets/process/art-3-0.webp", "processWork": 3},{"id": 104, "title": "YCH example", "cat": "ych", "nsfw": false, "img": "/assets/process/art-4-1.webp", "processWork": 4},
+{"id": 101, "title": "Illustration 2", "cat": "comm", "nsfw": false, "img": "/assets/gallery/ofordet-bg.webp", "processWork": 1},{"id": 102, "title": "Illustration 3", "cat": "comm", "nsfw": true, "img": "/assets/process/art-2-2.webp", "processWork": 2},{"id": 103, "title": "SFW / NSFW fan art", "cat": "fanart", "nsfw": false, "img": "/assets/process/art-3-0.webp", "processWork": 3},{"id": 104, "title": "YCH example", "cat": "ych", "nsfw": false, "img": "/assets/process/art-4-1.webp", "processWork": 4},
 {"id": 105, "title": "YCH \u00b7 TH", "cat": "ych", "nsfw": true, "img": "/assets/process/art-5-1.webp", "processWork": 5},{"id": 106, "title": "YCH \u00b7 All Plain to See", "cat": "ych", "nsfw": true, "img": "/assets/process/art-6-1.webp", "processWork": 6},
       { id: 1, gallery: false, title: "Portfolio Sample 01", cat: "samples", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "/assets/gallery/gal-adopt-cdg-v1bg.webp", desc: "Public SFW portfolio sample. See the source profile for context." },
       { id: 6, title: "Portfolio Sample 06", cat: "fanart", stage: "SFW Sample", price: "Portfolio", nsfw: false, img: "/assets/gallery/frieren-white-dress.jpg", desc: "Public SFW portfolio sample. See the source profile for context." },
@@ -173,7 +173,7 @@
       },
       ych: {
         options: [
-          { value: "30", price: 30, label: { en: "Clean Sketch ($30)", es: "Boceto limpio ($30)", ru: "Чистый скетч ($30)" } },
+          { value: "30", price: 30, label: { en: "B&W Sketch ($30)", es: "Boceto en B/N ($30)", ru: "Ч/б скетч ($30)" } },
           { value: "65", price: 65, label: { en: "Color Sketch ($65)", es: "Boceto a color ($65)", ru: "Цветной скетч ($65)" } },
           { value: "120", price: 120, label: { en: "Full Render ($120)", es: "Render completo ($120)", ru: "Полный рендер ($120)" } },
           { value: "160", price: 160, label: { en: "AB — Full Render + NSFW ($160)", es: "AB — Render + NSFW ($160)", ru: "AB — Полный рендер + NSFW ($160)" } }
@@ -208,7 +208,7 @@
     function getGalleryTitle(item) {
       if(item.localizedTitles)return item.localizedTitles[currentLang]||item.localizedTitles.en;
       if (item.processWork) {
-        const names={en:['Illustration 3','Illustration 4','Wriothesley','Happy Bun','TH','All Plain to See'],es:['Ilustración 3','Ilustración 4','Wriothesley','Happy Bun','TH','All Plain to See'],ru:['Иллюстрация 3','Иллюстрация 4','Ризли','Happy Bun','TH','All Plain to See']};
+        const names={en:['Illustration 2','Illustration 3','Wriothesley','Happy Bun','TH','All Plain to See'],es:['Ilustración 2','Ilustración 3','Wriothesley','Happy Bun','TH','All Plain to See'],ru:['Иллюстрация 2','Иллюстрация 3','Ризли','Happy Bun','TH','All Plain to See']};
         return names[currentLang][item.processWork-1];
       }
       if(item.id===3)return 'Thinking of You';
