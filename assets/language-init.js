@@ -1,1 +1,2 @@
-(() => {let lang='en';try{const saved=localStorage.getItem('nektahr-hub-language');if(['en','ru','es'].includes(saved))lang=saved;}catch{}document.documentElement.dataset.initialLang=lang;})();
+(() => {try{const patch=(o)=>{const d=o&&Object.getOwnPropertyDescriptor(o,'fetch');if(d&&d.configurable&&!d.set){let cur=window.fetch.bind(window);Object.defineProperty(o,'fetch',{configurable:true,enumerable:true,get:()=>cur,set:(fn)=>{if(typeof fn==='function')cur=fn;}});}};patch(window);patch(Window.prototype);}catch{}let lang='en';try{const saved=localStorage.getItem('nektahr-hub-language');if(['en','ru','es'].includes(saved))lang=saved;}catch{}document.documentElement.dataset.initialLang=lang;})();
+

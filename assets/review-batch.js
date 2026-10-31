@@ -23,11 +23,15 @@
  window.addEventListener('load',openConditions);
 
  // Mobile navigation drawer toggle and click-away
- const navToggle=$('mobile-nav-toggle'),navLinks=$('nav-links'),header=document.querySelector('header.sticky');
+ const navToggle=$('mobile-nav-toggle'),navLinks=$('nav-links'),header=document.querySelector('header.sticky'),bnavMore=$('bnav-more');
  function toggleMobileMenu(force){
   if(!navToggle||!navLinks)return;
   const open=typeof force==='boolean'?force:navToggle.getAttribute('aria-expanded')!=='true';
   navToggle.setAttribute('aria-expanded',String(open));
+  if(bnavMore){
+   bnavMore.setAttribute('aria-expanded',String(open));
+   bnavMore.classList.toggle('bnav-menu-open',open);
+  }
   header?.classList.toggle('mobile-menu-active',open);
   navLinks.classList.toggle('is-open',open);
   document.body.classList.toggle('mobile-menu-open',open);
@@ -39,7 +43,7 @@
   });
  }
  document.addEventListener('click',e=>{
-  if(header&&!header.contains(e.target))toggleMobileMenu(false);
+  if(header&&!header.contains(e.target)&&(!bnavMore||!bnavMore.contains(e.target)))toggleMobileMenu(false);
  });
  document.addEventListener('keydown',e=>{
   if(e.key==='Escape')toggleMobileMenu(false);
@@ -47,9 +51,9 @@
 
  // Mobile floating quote bar sync & visibility
  const quoteLabels={
-  en:{label:'Estimated Total',btn:'View DM Request'},
-  ru:{label:'Ориентировочно',btn:'К заявке'},
-  es:{label:'Total estimado',btn:'Ver solicitud'}
+  en:{label:'Estimated Total',btn:'To Quote'},
+  ru:{label:'Ориентировочно',btn:'К расчёту'},
+  es:{label:'Total estimado',btn:'Al cálculo'}
  };
  function syncMobileQuote(){
   const total=$('calc-total-value')?.textContent;
@@ -70,7 +74,7 @@
    entries.forEach(entry=>{
     quoteBar.classList.toggle('quote-bar-hidden',entry.isIntersecting);
    });
-  },{threshold:0.15}).observe(quotePanel);
+  },{threshold:0.12}).observe(quotePanel);
  }
 
  // Mobile bottom dock localization and active state sync
@@ -87,9 +91,51 @@
    if(!item)continue;
    const el=item.querySelector('.bnav-label');
    if(el)el.textContent=v;
-   item.classList.toggle('bnav-active',k===page);
+   const isActive=k===page||(k==='more'&&['queue','tos','faq'].includes(page));
+   item.classList.toggle('bnav-active',isActive);
   }
+  syncMobileQuote();
  }
  syncBottomNav();
  window.addEventListener('languagechange',syncBottomNav);
+ if(typeof window.renderAllText==='function'){
+  const prevRenderAll=window.renderAllText;
+  window.renderAllText=function(){
+   prevRenderAll();
+   syncBottomNav();
+  };
+ }
+
+ // Backdrop click-to-close for catalog bottom sheet and email contact modal
+ for(const id of ['catalog-dialog','email-contact-dialog']){
+  const dlg=$(id);
+  if(!dlg)continue;
+  dlg.addEventListener('click',e=>{
+   if(e.target!==dlg)return;
+   const r=dlg.getBoundingClientRect();
+   if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dlg.close();
+  });
+ }
+
+ // Touch swipe left/right for artwork preview modal (outside curtain slider & strip)
+ const artDialog=$('artwork-dialog');
+ let touchX=0,touchY=0,touchBlocked=false;
+ if(artDialog){
+  artDialog.addEventListener('touchstart',e=>{
+   if(e.touches.length!==1){touchBlocked=true;return;}
+   const tgt=e.target;
+   touchBlocked=Boolean(tgt?.closest?.('.curtain,input[type="range"],#artwork-work-strip,button,a'));
+   touchX=e.touches[0].clientX;
+   touchY=e.touches[0].clientY;
+  },{passive:true});
+  artDialog.addEventListener('touchend',e=>{
+   if(touchBlocked||!e.changedTouches.length)return;
+   const dx=e.changedTouches[0].clientX-touchX;
+   const dy=e.changedTouches[0].clientY-touchY;
+   if(Math.abs(dx)>64&&Math.abs(dx)>Math.abs(dy)*1.6){
+    const btn=$(dx<0?'artwork-dialog-next':'artwork-dialog-prev');
+    if(btn&&!btn.disabled)btn.click();
+   }
+  },{passive:true});
+ }
 })();

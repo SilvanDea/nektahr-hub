@@ -597,7 +597,7 @@
       document.getElementById('stage-sec-hint').textContent = t.pricing.stageSectionHint;
 
       document.getElementById('custom-stages-grid').innerHTML = t.pricing.stages.map(st => {
-        const selectable = ['single', 'duo'].includes(st.key);
+        const selectable = ['sketch', 'color', 'single', 'duo'].includes(st.key);
         const isExtras = st.key === 'extras';
         const action = selectable
           ? `onclick="quickPickCustom('${st.key}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();quickPickCustom('${st.key}');}"`
