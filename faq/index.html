@@ -46,7 +46,7 @@
 <link rel="stylesheet" href="/assets/compact-calculator.css?v=b719dfe1a0b4">
 <link rel="stylesheet" href="/assets/contact-actions.css?v=e57e8e3f414b">
 <link rel="stylesheet" href="/assets/thumbnail-mats.css?v=f633d43cfe84">
-<link rel="stylesheet" href="/assets/review-batch.css?v=93097bffbb0e">
+<link rel="stylesheet" href="/assets/review-batch.css?v=a67db8126f41">
 </head>
 <body data-page="faq" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
   <a href="#main-content" id="skip-content" class="skip-content">Skip to content</a>
@@ -1018,6 +1018,42 @@
   </div>
 
   <!-- =====================================================================
+       MOBILE BOTTOM APP BAR / DOCK (TOUCH-FRIENDLY QUICK NAVIGATION)
+  ====================================================================== -->
+  <nav id="mobile-bottom-nav" class="mobile-bottom-nav" aria-label="Mobile navigation">
+    <a href="/" class="bnav-item" id="bnav-board">
+      <span class="bnav-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      </span>
+      <span class="bnav-label">Home</span>
+    </a>
+    <a href="/pricing/" class="bnav-item" id="bnav-pricing">
+      <span class="bnav-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+      </span>
+      <span class="bnav-label">Pricing</span>
+    </a>
+    <a href="/catalog/" class="bnav-item" id="bnav-catalog">
+      <span class="bnav-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      </span>
+      <span class="bnav-label">Catalog</span>
+    </a>
+    <a href="/gallery/" class="bnav-item" id="bnav-gallery">
+      <span class="bnav-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+      </span>
+      <span class="bnav-label">Gallery</span>
+    </a>
+    <button type="button" class="bnav-item" id="bnav-more" aria-label="More sections" onclick="document.getElementById('mobile-nav-toggle')?.click()">
+      <span class="bnav-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
+      </span>
+      <span class="bnav-label">More</span>
+    </button>
+  </nav>
+
+  <!-- =====================================================================
        FOOTER & TOAST NOTIFICATION
   ====================================================================== -->
   <footer class="border-t hairline mt-20 py-8 px-4 sm:px-8 text-center mono text-xs text-textDim">
@@ -1047,6 +1083,6 @@
 <script src="/assets/compact-calculator.js?v=3c78ec45d022"></script>
 <script src="/assets/contact-actions.js?v=174d03029ae1"></script>
 <script src="/assets/thumbnail-mats.js?v=b39f58205f4f"></script>
-<script src="/assets/review-batch.js?v=fc3d4e9cb81d"></script>
+<script src="/assets/review-batch.js?v=15ba6a08c35f"></script>
 </body>
 </html>

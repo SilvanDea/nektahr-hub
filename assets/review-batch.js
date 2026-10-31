@@ -64,4 +64,20 @@
   new MutationObserver(syncMobileQuote).observe(calcTotal,{childList:true,characterData:true,subtree:true});
   syncMobileQuote();
  }
+
+ // Mobile bottom dock localization and active state sync
+ const bnavLabels={
+  en:{board:'Home',pricing:'Pricing',catalog:'Catalog',gallery:'Gallery',more:'More'},
+  ru:{board:'Главная',pricing:'Прайс',catalog:'Каталог',gallery:'Галерея',more:'Ещё'},
+  es:{board:'Inicio',pricing:'Precios',catalog:'Catálogo',gallery:'Galería',more:'Más'}
+ };
+ function syncBottomNav(){
+  const l=bnavLabels[lang()]||bnavLabels.en;
+  for(const[k,v]of Object.entries(l)){
+   const el=document.querySelector('#bnav-'+k+' .bnav-label');
+   if(el)el.textContent=v;
+  }
+ }
+ syncBottomNav();
+ window.addEventListener('languagechange',syncBottomNav);
 })();
