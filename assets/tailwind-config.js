@@ -8,9 +8,9 @@
             mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            bg: '#0B0A0E',
-            surface: '#121118',
-            surfaceAlt: '#171520',
+            bg: '#0d0b14',
+            surface: '#161321',
+            surfaceAlt: '#1c1829',
             textMain: '#F2ECE4',
             textMuted: '#B7AE9F',
             textDim: '#766F66',

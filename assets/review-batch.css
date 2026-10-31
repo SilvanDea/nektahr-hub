@@ -17,7 +17,79 @@
 #page-board .hero-copy>.grid{margin-top:auto}
 
 /* Shared palette and compact rectangular badges. */
-:root{--status-green:#bad0bd;--status-green-border:#8dab9455;--status-green-bg:#8dab9408;--status-gold:#e2b478;--status-pink:#d9acbe}
+:root{
+  --status-green:#bad0bd;
+  --status-green-border:#8dab9455;
+  --status-green-bg:#8dab9408;
+  --status-gold:#e2b478;
+  --status-pink:#d9acbe;
+  --theme-bg:#0d0b14;
+  --theme-card:#161321;
+  --theme-card-hover:#1e192d;
+  --theme-art-mat:#1c1829;
+  --theme-border:rgba(255, 255, 255, 0.08);
+}
+
+body {
+  background-color: var(--theme-bg) !important;
+}
+
+header.sticky {
+  background-color: rgba(13, 11, 20, 0.92) !important;
+}
+
+.card {
+  background: var(--theme-card) !important;
+  border: 1px solid var(--theme-border) !important;
+}
+
+.catalog-card {
+  background: var(--theme-card) !important;
+  border: 1px solid var(--theme-border) !important;
+}
+
+.catalog-card:hover {
+  border-color: rgba(226, 180, 120, 0.42) !important;
+}
+
+/* Card image frames: crisp 1px border so dark artworks never blend into the card or page */
+#gallery-cards-grid > button > div:first-child,
+.catalog-art,
+.sample-thumb {
+  background: var(--theme-art-mat) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: inset 0 0 16px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Soft ambient vignette on catalog art so bright white sketch canvases don't blind or clash */
+.catalog-art {
+  position: relative;
+  overflow: hidden;
+}
+.catalog-art::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(13, 11, 20, 0) 58%, rgba(13, 11, 20, 0.38) 100%);
+  box-shadow: inset 0 0 14px 2px rgba(13, 11, 20, 0.45);
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+.catalog-card:hover .catalog-art::after {
+  opacity: 0.15;
+}
+
+/* Light/white sketch YCHs gently toned until hover */
+.catalog-card[data-type="ych"] .catalog-art img,
+.catalog-card.type-ych .catalog-art img {
+  filter: brightness(0.94) contrast(1.02);
+  transition: filter 0.3s ease;
+}
+.catalog-card[data-type="ych"]:hover .catalog-art img,
+.catalog-card.type-ych:hover .catalog-art img {
+  filter: brightness(1) contrast(1);
+}
 
 /* --- PERFORMANCE & FLUID TOUCH OPTIMIZATIONS --- */
 button, a, select, input, [role="button"], [role="switch"] {
@@ -281,13 +353,13 @@ dialog[open]:not(#catalog-dialog) {
   to { opacity: 1; transform: scale(1) translateY(0); }
 }
 dialog:not(#catalog-dialog)::backdrop {
-  background: rgba(8, 6, 11, 0.88) !important;
+  background: rgba(13, 11, 20, 0.88) !important;
   backdrop-filter: blur(10px) !important;
   -webkit-backdrop-filter: blur(10px) !important;
   animation: backdropFade 0.25s ease forwards;
 }
 #catalog-dialog::backdrop {
-  background: rgba(8, 6, 11, 0.72) !important;
+  background: rgba(13, 11, 20, 0.72) !important;
   animation: backdropFade 0.25s ease forwards;
 }
 @keyframes backdropFade {
@@ -301,14 +373,14 @@ dialog:not(#catalog-dialog)::backdrop {
   height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #0b0a0e;
+  background: #0d0b14 !important;
 }
 ::-webkit-scrollbar-thumb {
-  background: #251e2c;
+  background: #231c31 !important;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #e2b478;
+  background: #e2b478 !important;
 }
 
 /* 15. Queue Active Item Animated Pulse */

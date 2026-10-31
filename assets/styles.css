@@ -1,6 +1,6 @@
 
     body {
-      background-color: #0B0A0E;
+      background-color: #0d0b14;
       color: #B7AE9F;
       font-family: 'Noto Sans', system-ui, sans-serif;
       overflow-x: hidden;
@@ -19,15 +19,15 @@
       border-color: rgba(226, 180, 120, 0.16);
     }
     .card {
-      background: #121118;
-      border: 1px solid rgba(226, 180, 120, 0.16);
+      background: #161321;
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
     .card-interactive {
       transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
     }
     .card-interactive:hover {
-      border-color: rgba(226, 180, 120, 0.5);
-      background-color: #16151E;
+      border-color: rgba(226, 180, 120, 0.45);
+      background-color: #1e192d;
     }
     .blueprint-box {
       background-color: #0E0D13;
