@@ -52,6 +52,167 @@ header.sticky {
   background-size: 200% 100% !important;
   animation: cardShimmer 2.6s infinite ease-in-out;
 }
+
+/* --- INTERACTIVE DESIGN ANIMATIONS & MICRO-INTERACTIONS --- */
+
+/* 1. Page reveal transition */
+@keyframes pageReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-section:not(.hidden) {
+  animation: pageReveal 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 2. Staggered card cascade entrance for gallery & catalog */
+@keyframes cardCascade {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#gallery-cards-grid > button,
+#catalog-grid > div {
+  animation: cardCascade 0.4s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+#gallery-cards-grid > button:nth-child(1), #catalog-grid > div:nth-child(1) { animation-delay: 0.02s; }
+#gallery-cards-grid > button:nth-child(2), #catalog-grid > div:nth-child(2) { animation-delay: 0.05s; }
+#gallery-cards-grid > button:nth-child(3), #catalog-grid > div:nth-child(3) { animation-delay: 0.08s; }
+#gallery-cards-grid > button:nth-child(4), #catalog-grid > div:nth-child(4) { animation-delay: 0.11s; }
+#gallery-cards-grid > button:nth-child(5), #catalog-grid > div:nth-child(5) { animation-delay: 0.14s; }
+#gallery-cards-grid > button:nth-child(6), #catalog-grid > div:nth-child(6) { animation-delay: 0.17s; }
+#gallery-cards-grid > button:nth-child(7), #catalog-grid > div:nth-child(7) { animation-delay: 0.20s; }
+#gallery-cards-grid > button:nth-child(8), #catalog-grid > div:nth-child(8) { animation-delay: 0.23s; }
+#gallery-cards-grid > button:nth-child(9), #catalog-grid > div:nth-child(9) { animation-delay: 0.26s; }
+#gallery-cards-grid > button:nth-child(10), #catalog-grid > div:nth-child(10) { animation-delay: 0.29s; }
+#gallery-cards-grid > button:nth-child(11), #catalog-grid > div:nth-child(11) { animation-delay: 0.32s; }
+#gallery-cards-grid > button:nth-child(12), #catalog-grid > div:nth-child(12) { animation-delay: 0.35s; }
+
+/* 3. Interactive card hover elevation & golden aura */
+.card-interactive {
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-interactive:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px -6px rgba(0, 0, 0, 0.75), 0 0 16px -2px rgba(226, 180, 120, 0.2) !important;
+    border-color: rgba(226, 180, 120, 0.45) !important;
+  }
+}
+
+/* 4. Primary CTA button shimmer shine */
+@keyframes ctaShimmer {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  25%, 100% { transform: translateX(250%) skewX(-20deg); }
+}
+
+#calc-copy-btn {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, background-color 0.2s ease !important;
+}
+
+#calc-copy-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 100%
+  );
+  transform: translateX(-150%) skewX(-20deg);
+  animation: ctaShimmer 5s infinite ease-in-out;
+  pointer-events: none;
+}
+
+#calc-copy-btn:hover {
+  box-shadow: 0 4px 22px rgba(226, 180, 120, 0.45) !important;
+  transform: translateY(-1px);
+}
+
+#calc-copy-btn:active {
+  transform: scale(0.97) !important;
+}
+
+/* 5. Stepper buttons elastic pop */
+.quote-stepper button {
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.15s ease !important;
+}
+.quote-stepper button:active {
+  transform: scale(0.88) !important;
+}
+
+/* 6. Package Selection Glow */
+@keyframes selectPulse {
+  0% { box-shadow: 0 0 0 0 rgba(226, 180, 120, 0.5); }
+  50% { box-shadow: 0 0 18px 2px rgba(226, 180, 120, 0.35); }
+  100% { box-shadow: 0 0 10px 1px rgba(226, 180, 120, 0.2); }
+}
+
+.quote-selected {
+  animation: selectPulse 0.45s ease-out forwards;
+}
+
+/* 7. Status badge live radar pulse */
+@keyframes radarPulse {
+  0% { box-shadow: 0 0 0 0 rgba(186, 208, 189, 0.7); }
+  70% { box-shadow: 0 0 0 6px rgba(186, 208, 189, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(186, 208, 189, 0); }
+}
+
+header a[title*="availability"] span:first-child,
+header a[title*="Availability"] span:first-child,
+header a[title*="queue"] span:first-child {
+  border-radius: 50% !important;
+  animation: radarPulse 2.2s infinite ease-out !important;
+}
+
+/* 8. Toast notification entrance */
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+#toast:not(.hidden) {
+  animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 9. Bottom Navigation Tap Indicator */
+.bnav-item {
+  transition: transform 0.15s ease, color 0.15s ease !important;
+}
+.bnav-item:active {
+  transform: scale(0.92) !important;
+}
+.bnav-item.bnav-active svg {
+  transform: scale(1.1);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
 .catalog-art>.catalog-status,.catalog-art>.media-adult-badge,.catalog-art>.catalog-demo-badge,.media-adult-badge,.adult-tag{border-radius:4px!important;min-height:25px!important;box-sizing:border-box;display:inline-flex;align-items:center;padding:4px 7px!important;font:500 10px/15px Inter,system-ui!important}
 #commission-intake,#contacts-intake{color:var(--status-green)!important;border-color:var(--status-green-border)!important;background:var(--status-green-bg)!important}
 .catalog-status.available,.catalog-status.status-open{color:var(--status-green);border-color:var(--status-green-border)}
