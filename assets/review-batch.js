@@ -21,4 +21,47 @@
  document.addEventListener('click',event=>{const a=event.target.closest('a[href^="mailto:"]');if(!a||a.id==='email-open-app')return;event.preventDefault();event.stopImmediatePropagation();$('quote-email')?.click();},true);
  function openConditions(){if(document.body.dataset.page!=='pricing'||location.hash!=='#order-conditions')return;switchPricingTab('custom');const group=document.querySelector('details[data-compact-group="more"]');if(group){group.id='order-conditions';group.open=true;group.scrollIntoView({block:'center'})}}
  window.addEventListener('load',openConditions);
+
+ // Mobile navigation drawer toggle and click-away
+ const navToggle=$('mobile-nav-toggle'),navLinks=$('nav-links'),header=document.querySelector('header.sticky');
+ function toggleMobileMenu(force){
+  if(!navToggle||!navLinks)return;
+  const open=typeof force==='boolean'?force:navToggle.getAttribute('aria-expanded')!=='true';
+  navToggle.setAttribute('aria-expanded',String(open));
+  header?.classList.toggle('mobile-menu-active',open);
+  navLinks.classList.toggle('is-open',open);
+  document.body.classList.toggle('mobile-menu-open',open);
+ }
+ if(navToggle)navToggle.onclick=()=>toggleMobileMenu();
+ if(navLinks){
+  navLinks.querySelectorAll('.nav-link').forEach(link=>{
+   link.addEventListener('click',()=>toggleMobileMenu(false));
+  });
+ }
+ document.addEventListener('click',e=>{
+  if(header&&!header.contains(e.target))toggleMobileMenu(false);
+ });
+ document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')toggleMobileMenu(false);
+ });
+
+ // Mobile floating quote bar sync
+ const quoteLabels={
+  en:{label:'Estimated Total',btn:'View DM Request'},
+  ru:{label:'Ориентировочно',btn:'К заявке'},
+  es:{label:'Total estimado',btn:'Ver solicitud'}
+ };
+ function syncMobileQuote(){
+  const total=$('calc-total-value')?.textContent;
+  const amount=$('mobile-quote-amount');
+  if(amount&&total)amount.textContent=total;
+  const l=quoteLabels[lang()]||quoteLabels.en;
+  if($('mobile-quote-label'))$('mobile-quote-label').textContent=l.label;
+  if($('mobile-quote-btn-text'))$('mobile-quote-btn-text').textContent=l.btn;
+ }
+ const calcTotal=$('calc-total-value');
+ if(calcTotal){
+  new MutationObserver(syncMobileQuote).observe(calcTotal,{childList:true,characterData:true,subtree:true});
+  syncMobileQuote();
+ }
 })();

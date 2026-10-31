@@ -66,7 +66,7 @@ emit('404.html','''<!doctype html><html lang="en"><head><meta charset="utf-8"><m
 failed=[]
 for p,s in outputs.items():
  if check:
-  if not Path(p).exists() or Path(p).read_text()!=s:failed.append(p)
- else:Path(p).write_text(s)
+  if not Path(p).exists() or Path(p).read_text(encoding='utf-8')!=s:failed.append(p)
+ else:Path(p).write_text(s,encoding='utf-8',newline='\n')
 if failed:raise SystemExit('Stale generated files: '+', '.join(failed))
 print(('Verified' if check else 'Generated')+f' {len(outputs)} files')
