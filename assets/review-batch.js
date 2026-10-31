@@ -72,9 +72,9 @@
  // Mobile navigation drawer toggle and click-away
  const navToggle=$('mobile-nav-toggle'),navLinks=$('nav-links'),header=document.querySelector('header.sticky'),bnavMore=$('bnav-more');
  function toggleMobileMenu(force){
-  if(!navToggle||!navLinks)return;
-  const open=typeof force==='boolean'?force:navToggle.getAttribute('aria-expanded')!=='true';
-  navToggle.setAttribute('aria-expanded',String(open));
+  if(!navLinks)return;
+  const open=typeof force==='boolean'?force:!navLinks.classList.contains('is-open');
+  if(navToggle)navToggle.setAttribute('aria-expanded',String(open));
   if(bnavMore){
    bnavMore.setAttribute('aria-expanded',String(open));
    bnavMore.classList.toggle('bnav-menu-open',open);
@@ -83,7 +83,8 @@
   navLinks.classList.toggle('is-open',open);
   document.body.classList.toggle('mobile-menu-open',open);
  }
- if(navToggle)navToggle.onclick=()=>toggleMobileMenu();
+ if(navToggle)navToggle.onclick=(e)=>{e?.preventDefault?.();toggleMobileMenu();};
+ if(bnavMore)bnavMore.onclick=(e)=>{e?.preventDefault?.();toggleMobileMenu();};
  if(navLinks){
   navLinks.querySelectorAll('.nav-link').forEach(link=>{
    link.addEventListener('click',()=>toggleMobileMenu(false));

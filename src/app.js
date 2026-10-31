@@ -1,9 +1,15 @@
 
     function showToast(msg) {
       const el = document.getElementById('toast');
+      if (!el) return;
       el.textContent = msg;
+      el.classList.add('toast-show');
       el.classList.remove('opacity-0');
-      setTimeout(() => el.classList.add('opacity-0'), 2200);
+      clearTimeout(el._toastTimer);
+      el._toastTimer = setTimeout(() => {
+        el.classList.remove('toast-show');
+        el.classList.add('opacity-0');
+      }, 2200);
     }
 
     async function copyToClipboard(val, label) {

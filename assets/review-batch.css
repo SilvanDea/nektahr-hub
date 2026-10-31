@@ -18,16 +18,16 @@
 
 /* Shared palette and compact rectangular badges. */
 :root{
-  --status-green:#bad0bd;
-  --status-green-border:#8dab9455;
-  --status-green-bg:#8dab9408;
+  --status-green:#48c87b;
+  --status-green-border:rgba(72, 200, 123, 0.45);
+  --status-green-bg:rgba(72, 200, 123, 0.08);
   --status-gold:#e2b478;
   --status-pink:#d9acbe;
-  --theme-bg:#0d0b14;
-  --theme-card:#161321;
-  --theme-card-hover:#1e192d;
-  --theme-art-mat:#1c1829;
-  --theme-border:rgba(255, 255, 255, 0.08);
+  --theme-bg:#0B0A0E;
+  --theme-card:#121118;
+  --theme-card-hover:#16151E;
+  --theme-art-mat:#18151f;
+  --theme-border:rgba(226, 180, 120, 0.12);
 }
 
 body {
@@ -35,21 +35,31 @@ body {
 }
 
 header.sticky {
-  background-color: rgba(13, 11, 20, 0.92) !important;
+  background-color: rgba(11, 10, 14, 0.92) !important;
 }
 
 .card {
   background: var(--theme-card) !important;
   border: 1px solid var(--theme-border) !important;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.card-interactive:hover,
+.catalog-card:hover {
+  border-color: rgba(226, 180, 120, 0.45) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 24px -4px rgba(0, 0, 0, 0.6), 0 0 16px -2px rgba(226, 180, 120, 0.12) !important;
+}
+
+.card-interactive:active,
+.catalog-card:active {
+  transform: scale(0.98) !important;
 }
 
 .catalog-card {
   background: var(--theme-card) !important;
   border: 1px solid var(--theme-border) !important;
-}
-
-.catalog-card:hover {
-  border-color: rgba(226, 180, 120, 0.42) !important;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
 /* Card image frames: crisp 1px border so dark artworks never blend into the card or page */
@@ -263,35 +273,33 @@ header.sticky {
 header a[title*="availability"],
 header a[title*="Availability"],
 header a[title*="queue"] {
-  background: linear-gradient(135deg, rgba(226, 180, 120, 0.12) 0%, rgba(141, 171, 148, 0.14) 100%) !important;
-  border: 1px solid rgba(226, 180, 120, 0.32) !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4), inset 0 0 10px rgba(186, 208, 189, 0.08) !important;
-  padding: 5px 12px !important;
-  border-radius: 9999px !important;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  background: rgba(226, 180, 120, 0.05) !important;
+  border: 1px solid rgba(226, 180, 120, 0.28) !important;
+  box-shadow: none !important;
+  padding: 4px 10px !important;
+  border-radius: 4px !important;
+  transition: all 0.2s ease !important;
 }
 header a[title*="availability"]:hover,
 header a[title*="Availability"]:hover,
 header a[title*="queue"]:hover {
-  background: linear-gradient(135deg, rgba(226, 180, 120, 0.18) 0%, rgba(141, 171, 148, 0.22) 100%) !important;
-  border-color: rgba(226, 180, 120, 0.55) !important;
-  box-shadow: 0 4px 18px rgba(226, 180, 120, 0.25) !important;
-  transform: translateY(-1px);
+  background: rgba(226, 180, 120, 0.12) !important;
+  border-color: rgba(226, 180, 120, 0.5) !important;
+  transform: none !important;
 }
 
 #header-status-badge {
-  color: #bad0bd !important;
-  font-weight: 600 !important;
-  letter-spacing: 0.04em !important;
-  text-shadow: 0 0 10px rgba(186, 208, 189, 0.45) !important;
+  color: #48c87b !important;
+  font-weight: 500 !important;
+  letter-spacing: 0.05em !important;
+  text-shadow: none !important;
 }
 
 header a[title*="queue"] .rounded-full.bg-accent,
 header a[title*="availability"] .rounded-full.bg-accent,
 header a[title*="Availability"] .rounded-full.bg-accent {
-  background-color: #61df95 !important;
-  box-shadow: 0 0 8px #61df95 !important;
-  animation: radarPulse 2.2s infinite ease-out !important;
+  background-color: #48c87b !important;
+  box-shadow: 0 0 6px #48c87b !important;
 }
 
 /* Intermediate states for queue counter */
@@ -376,20 +384,18 @@ header a[title*="Availability"] .rounded-full.bg-accent {
   }
 }
 
-/* 8. Toast notification entrance */
-@keyframes toastSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.94);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+/* 8. Toast notification */
+#toast {
+  pointer-events: none !important;
+  opacity: 0 !important;
+  transform: translateY(16px) scale(0.96) !important;
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-#toast:not(.hidden) {
-  animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+#toast.toast-show {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) !important;
+  pointer-events: auto !important;
 }
 
 /* 9. Bottom Navigation Tap Indicator */
@@ -530,25 +536,43 @@ dialog:not(#catalog-dialog)::backdrop {
 #tos-detailed-sections{max-width:none;grid-template-columns:minmax(0,1fr);gap:20px;align-items:stretch}.tos-detail{scroll-margin-top:90px}.tos-detail ul{font-size:14px!important;line-height:1.8!important;color:#ded4ca!important}.tos-detail li{padding:10px 0;border-bottom:1px solid #e2b47818}.tos-detail li:last-child{border:0}.tos-detail h3{font-size:24px;line-height:1.35}
 @media(min-width:900px){#tos-detailed-sections{grid-template-columns:repeat(2,minmax(0,1fr))}}
 #reservation-terms{display:none!important}
-.catalog-status.open {
-  color: #0b0a0e !important;
-  background: #bad0bd !important;
-  border-color: #bad0bd !important;
-  font-weight: 700 !important;
-  letter-spacing: 0.04em !important;
-  box-shadow: 0 0 12px rgba(186, 208, 189, 0.45) !important;
+.catalog-art > .catalog-status {
+  position: absolute !important;
+  right: 10px !important;
+  top: 10px !important;
+  z-index: 4 !important;
+  border-radius: 4px !important;
+  height: 25px !important;
+  min-height: 25px !important;
+  padding: 3px 8px !important;
+  box-sizing: border-box !important;
+  font: 600 11px/1.4 Inter, sans-serif !important;
+  letter-spacing: 0.03em !important;
+  backdrop-filter: blur(8px) !important;
+  display: inline-flex !important;
+  align-items: center !important;
 }
-.catalog-status.reserved {
-  color: #ffd166 !important;
-  background: rgba(226, 180, 120, 0.22) !important;
-  border-color: #e2b478 !important;
-  font-weight: 600 !important;
-  box-shadow: 0 0 10px rgba(226, 180, 120, 0.3) !important;
+.catalog-status.open,
+.catalog-status.status-open,
+.catalog-status.available {
+  color: #48c87b !important;
+  background: #141119ed !important;
+  border: 1px solid rgba(72, 200, 123, 0.65) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
 }
-.catalog-status.sold {
-  color: #9d92a3 !important;
-  background: rgba(20, 17, 25, 0.9) !important;
-  border-color: rgba(157, 146, 163, 0.35) !important;
+.catalog-status.reserved,
+.catalog-status.status-reserved {
+  color: #E2B478 !important;
+  background: #141119ed !important;
+  border: 1px solid rgba(226, 180, 120, 0.65) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+}
+.catalog-status.sold,
+.catalog-status.status-sold {
+  color: #9a8fa0 !important;
+  background: rgba(20, 17, 25, 0.88) !important;
+  border: 1px solid rgba(154, 143, 160, 0.4) !important;
+  box-shadow: none !important;
 }
 .queue-status:not(.reserved) {
   color: var(--status-green) !important;
@@ -1243,32 +1267,10 @@ body > main {
     min-width: 0 !important;
   }
 
-  /* Hide duplicate queue counter in top bar on mobile so row never crowds */
+  /* Mobile top bar: clean, elegant header with Logo on left, Lang switcher on right, no crowded/overflowing buttons */
+  header.sticky a.intake-link,
   header.sticky a:has(#header-queue-counter) {
     display: none !important;
-  }
-
-  header.sticky a.intake-link {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    min-width: 44px !important;
-    min-height: 38px !important;
-    height: 38px !important;
-    gap: 5px !important;
-    padding: 0 10px !important;
-    border-radius: 8px !important;
-    font-size: 10px !important;
-    line-height: 1.2 !important;
-    max-width: 148px !important;
-    overflow: hidden !important;
-    white-space: nowrap !important;
-  }
-
-  header.sticky a.intake-link #header-status-badge {
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    white-space: nowrap !important;
   }
 
   .lang-trigger-btn {
@@ -1516,12 +1518,13 @@ body > main {
   }
 
   #page-board > .grid:first-child > div:last-child .aspect-\[4\/5\] {
-    aspect-ratio: 16 / 9 !important;
-    max-height: 172px !important;
+    aspect-ratio: 4 / 5 !important;
+    min-height: 360px !important;
+    max-height: 480px !important;
   }
 
   #page-board > .grid:first-child > div:last-child img {
-    object-position: center 24% !important;
+    object-position: center top !important;
   }
 
   #hero-featured-title {
@@ -1635,87 +1638,83 @@ body > main {
     margin-bottom: 7px !important;
   }
 
-  /* Primary Direct Contacts: 3-Column Quick-Connect Bar (Discord · Email · Telegram) */
+  /* Primary Direct Contacts: 3 Square Icon-Only Tiles (Discord · Email · Telegram) */
   #primary-contacts-grid {
     display: grid !important;
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 7px !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px !important;
+    width: 100% !important;
+    max-width: 340px !important;
+    margin: 0 auto !important;
   }
 
   #primary-contacts-grid > .card {
-    position: relative !important;
-    padding: 10px 9px !important;
-    border-radius: 10px !important;
-    min-width: 44px !important;
-    min-height: 66px !important;
-    background: linear-gradient(145deg, #1c1720, #141017 65%) !important;
-    border: 1px solid rgba(226, 180, 120, 0.34) !important;
+    aspect-ratio: 1 / 1 !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 0 !important;
     display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
+    align-items: center !important;
     justify-content: center !important;
-    gap: 3px !important;
+    border-radius: 12px !important;
+    background: #121118 !important;
+    border: 1px solid rgba(226, 180, 120, 0.3) !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45) !important;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease !important;
+    position: relative !important;
     overflow: hidden !important;
   }
 
-  /* Hide verbose multi-line descriptor inside 3-col mobile contact pills; keep action indicator top-right */
-  #primary-contacts-grid > .card > div:first-child {
-    position: absolute !important;
-    top: 6px !important;
-    right: 7px !important;
-    width: auto !important;
-    margin: 0 !important;
+  #primary-contacts-grid > .card:active {
+    transform: scale(0.93) !important;
+    border-color: #E2B478 !important;
+    box-shadow: 0 0 14px rgba(226, 180, 120, 0.3) !important;
   }
 
-  #primary-contacts-grid > .card > div:first-child > div {
+  /* Hide all verbose text labels and descriptors inside the 3 mobile tiles */
+  #primary-contacts-grid > .card > div:first-child,
+  #primary-contacts-grid > .card .mono,
+  #primary-contacts-grid > .card .serif:not(.contact-brand-title) {
     display: none !important;
   }
 
-  #primary-contacts-grid > .card > div:first-child > span {
-    font-size: 9px !important;
-    line-height: 1 !important;
-    opacity: 0.85 !important;
-  }
-
   #primary-contacts-grid > .card > div:last-child {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     width: 100% !important;
-    min-width: 0 !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   #primary-contacts-grid .contact-brand-title {
-    font-size: 13px !important;
-    font-weight: 600 !important;
-    line-height: 1.25 !important;
-    gap: 6px !important;
     display: flex !important;
     align-items: center !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 0 !important; /* Hide text label without hiding child icon */
   }
 
   #primary-contacts-grid .contact-site-icon {
-    flex: 0 0 22px !important;
-    width: 22px !important;
-    height: 22px !important;
-    border-radius: 6px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin: 0 !important;
+    width: 44px !important;
+    height: 44px !important;
   }
 
   #primary-contacts-grid .contact-site-icon svg,
   #primary-contacts-grid .contact-site-icon img {
-    width: 13px !important;
-    height: 13px !important;
-  }
-
-  #primary-contacts-grid > .card > div:last-child > div:last-child {
-    font-size: 10px !important;
-    line-height: 1.3 !important;
-    margin-top: 3px !important;
-    color: #b7ae9f !important;
-    white-space: nowrap !important;
-    overflow: hidden !important;
-    text-overflow: ellipsis !important;
-    max-width: 100% !important;
+    width: 32px !important;
+    height: 32px !important;
+    display: block !important;
   }
 
   /* Art Platforms & Galleries: Compact 2-Column Link-Chip Grid on Mobile */
@@ -3247,17 +3246,111 @@ body > main {
   header.sticky > div:last-of-type {
     gap: 4px !important;
   }
-  header.sticky a.intake-link {
-    max-width: 122px !important;
-    padding: 0 8px !important;
+  header.sticky a.intake-link,
+  header.sticky a:has(#header-queue-counter) {
+    display: none !important;
   }
   #primary-contacts-grid {
-    grid-template-columns: 1fr !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
   }
   #page-pricing .ptab-btn {
     min-width: 44px !important;
     min-height: 46px !important;
     font-size: 10.5px !important;
     padding: 7px 4px !important;
+  }
+}
+
+/* =====================================================================
+   UNIFIED LUXURY ANIMATION & MICRO-INTERACTION SYSTEM
+====================================================================== */
+
+/* 1. Details & Accordions (FAQ, ToS, Pricing Brief) */
+details summary {
+  cursor: pointer;
+  transition: color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+details summary:hover {
+  color: #E2B478 !important;
+}
+details[open] summary {
+  color: #E2B478;
+}
+@keyframes accordionSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+details[open] > *:not(summary) {
+  animation: accordionSlideDown 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 2. Dialogs & Overlays */
+dialog[open] {
+  animation: modalScaleIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+dialog::backdrop {
+  animation: backdropFade 0.25s ease !important;
+}
+@keyframes backdropFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 3. Smooth Page/Tab Switch Transition */
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.page-section:not(.hidden) {
+  animation: pageFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 4. Touch & Click Tactile Micro-Interactions */
+.catalog-filters button,
+.gallery-filter,
+.queue-tabs button,
+.lang-trigger-btn,
+.quote-cta,
+.ptab-btn {
+  transition: transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease !important;
+}
+.catalog-filters button:active,
+.gallery-filter:active,
+.queue-tabs button:active,
+.lang-trigger-btn:active,
+.quote-cta:active {
+  transform: scale(0.95) !important;
+}
+
+/* 5. Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

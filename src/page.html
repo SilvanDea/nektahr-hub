@@ -72,7 +72,7 @@
     ]
   }
   </script>
-  <meta name="theme-color" content="#0d0b14" />
+  <meta name="theme-color" content="#0B0A0E" />
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link rel="dns-prefetch" href="https://cloud.umami.is">
@@ -103,7 +103,7 @@
 <link rel="stylesheet" href="/assets/thumbnail-mats.css?v=20261029-frames1">
 <link rel="stylesheet" href="/assets/review-batch.css">
 </head>
-<body data-page="{{page}}" class="min-h-screen bg-[#0d0b14] selection:bg-[#E2B478] selection:text-[#0d0b14]">
+<body data-page="{{page}}" class="min-h-screen bg-[#0B0A0E] selection:bg-[#E2B478] selection:text-[#0B0A0E]">
   <a href="#main-content" id="skip-content" class="skip-content">Skip to content</a>
 
   <!-- =====================================================================
@@ -114,7 +114,7 @@
   <!-- =====================================================================
        STICKY HEADER
   ====================================================================== -->
-  <header class="sticky top-0 z-40 h-16 bg-[#0d0b14]/90 backdrop-blur-md border-b hairline px-4 sm:px-8 flex items-center justify-between gap-4">
+  <header class="sticky top-0 z-40 h-16 bg-[#0B0A0E]/90 backdrop-blur-md border-b hairline px-4 sm:px-8 flex items-center justify-between gap-4">
     <a href="/" class="text-left group cursor-pointer flex items-baseline gap-2.5">
       <span class="serif text-2xl sm:text-3xl tracking-wide text-textMain group-hover:text-accent transition">Nek'tahr</span>
       <span id="header-tagline" class="hidden sm:inline-block mono text-[10px] uppercase text-textDim">Character Art &amp; Commissions</span>
@@ -200,19 +200,19 @@
           </div>
 
           <!-- Visual Anchor: Capability & Key Metrics Bar -->
-          <div class="hero-trust-bar flex flex-wrap items-center gap-3 sm:gap-6 py-2.5 px-4 rounded-lg bg-[#161321] border border-white/10 text-xs mono text-textMuted shadow-sm">
+          <div class="hero-trust-bar flex flex-wrap items-center gap-3 sm:gap-6 py-2.5 px-4 rounded-lg bg-[#121118] border border-white/10 text-xs mono text-textMuted shadow-sm">
             <div class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
+              <span class="w-2 h-2 rounded-full bg-[#E2B478] shadow-[0_0_6px_rgba(226,180,120,0.8)]"></span>
               <span class="text-textMain font-medium">85+ Hand-Drawn Works</span>
             </div>
             <span class="text-white/20 hidden sm:inline">•</span>
             <div class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-accent"></span>
-              <span class="text-textMain font-medium">Dark Fantasy &amp; Furry</span>
+              <span class="w-2 h-2 rounded-full bg-[#48c87b] shadow-[0_0_6px_rgba(72,200,123,0.8)]"></span>
+              <span class="text-textMain font-medium">Anime, Furry &amp; Fanart</span>
             </div>
             <span class="text-white/20 hidden sm:inline">•</span>
             <div class="flex items-center gap-2">
-              <span class="w-1.5 h-1.5 rounded-full bg-[#bad0bd]"></span>
+              <span class="w-2 h-2 rounded-full bg-[#48c87b] shadow-[0_0_6px_rgba(72,200,123,0.8)]"></span>
               <span class="text-textMain font-medium">Live Queue &amp; Direct DMs</span>
             </div>
           </div>
@@ -243,7 +243,7 @@
           <button type="button" onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group text-left w-full relative z-10">
             <div class="aspect-[4/5] overflow-hidden relative bg-bg">
               <img src="/assets/gallery/gal-adopt-cdg-v1bg.webp" srcset="/assets/gallery/gal-adopt-cdg-v1bg-515w.webp 515w, /assets/gallery/gal-adopt-cdg-v1bg.webp 1030w" sizes="(max-width: 640px) 100vw, 400px" alt="Featured character artwork" fetchpriority="high" decoding="async" width="400" height="500" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#0d0b14] via-transparent to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-[#0B0A0E] via-transparent to-transparent"></div>
               <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                 <div>
                   <span id="hero-featured-label" class="mono text-[10px] uppercase px-2 py-0.5 bg-bg/85 border hairline text-accent">Selected Works</span>
@@ -386,10 +386,6 @@
 
             <button onclick="copyCalcRequest()" id="calc-copy-btn" class="quote-cta w-full py-3 bg-accent text-bg mono text-xs uppercase font-medium hover:bg-textMain transition cursor-pointer">
               Copy Ready DM Request
-            </button>
-            <button type="button" onclick="copyQuoteLink()" id="calc-share-btn" class="w-full py-2.5 border hairline mono text-[11px] uppercase text-textDim hover:text-accent hover:border-accent transition cursor-pointer flex items-center justify-center gap-2">
-              <span aria-hidden="true">🔗</span>
-              <span id="calc-share-btn-text">Share configuration</span>
             </button>
 
             <!-- Order brief -->
@@ -636,7 +632,7 @@
       </span>
       <span class="bnav-label">Gallery</span>
     </a>
-    <button type="button" class="bnav-item" id="bnav-more" aria-label="More sections" onclick="document.getElementById('mobile-nav-toggle')?.click()">
+    <button type="button" class="bnav-item" id="bnav-more" aria-label="More sections">
       <span class="bnav-icon">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/></svg>
       </span>

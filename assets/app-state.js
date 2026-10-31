@@ -113,7 +113,7 @@
     const PLATFORMS = [
       { name: "DeviantArt", handle: "@nektahr", url: "https://www.deviantart.com/nektahr", soon: false, note: { en: "Portfolio, adopts & commission samples", es: "Portafolio, adopts y ejemplos de comisiones", ru: "Портфолио, адопты и примеры комиссий" } },
       { name: "X (Twitter)", handle: "@Nektahr_", url: "https://x.com/Nektahr_", soon: false, note: { en: "New art, sketches & works in progress", es: "Arte nuevo, bocetos y trabajos en proceso", ru: "Новые работы, скетчи и процесс рисования" } },
-      { name: "YCH.Commishes", handle: "nektahr", url: "https://ych.commishes.com/user/nektahr/", soon: false, note: { en: "YCH auctions & adoptable designs", es: "Subastas YCH y diseños adoptables", ru: "Аукционы YCH и адопты" } },
+      { name: "YCH.comm", handle: "nektahr", url: "https://ych.commishes.com/user/nektahr/", soon: false, note: { en: "YCH auctions & adoptable designs", es: "Subastas YCH y diseños adoptables", ru: "Аукционы YCH и адопты" } },
       { name: "YCH.art", handle: "Ned'hal", url: "https://ych.art/user/nedhal", soon: false, note: { en: "YCH listings & current availability", es: "Anuncios YCH y disponibilidad actual", ru: "Лоты YCH и актуальная доступность" } },
       { name: "FurAffinity", handle: "nektahr", url: "https://www.furaffinity.net/user/nektahr", soon: false, note: { en: "Furry art archive & updates", es: "Archivo de arte furry y novedades", ru: "Архив furry-арта и обновления" } },
       { name: "Pixiv", handle: "User 44242225", url: "https://www.pixiv.net/en/users/44242225", soon: false, note: { en: "Illustrations, fanart & character art", es: "Ilustraciones, fanart y arte de personajes", ru: "Иллюстрации, фанарт и персонажи" } },

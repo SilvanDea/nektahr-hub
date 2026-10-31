@@ -181,7 +181,7 @@ font-size:14px!important;line-height:1.75!important;color:#d2c8bc!important;text
 
 /* Brighter category text matching the other gallery labels. */
 .gallery-kind[data-kind="fanart"]{color:#e1c5fa}
-.gallery-kind[data-kind="ych"]{color:#b8eddd}
+.gallery-kind[data-kind="ych"]{color:#48c87b}
 .adult-hover-preview{position:relative;overflow:hidden}
 .adult-hover-preview img{filter:blur(16px);transform:scale(1.08);transition:filter .22s ease,transform .22s ease}
 .adult-hover-hint{position:absolute;left:12px;right:12px;bottom:14px;z-index:2;width:fit-content;margin:auto;padding:7px 10px;border:1px solid #e3b2c45e;border-radius:6px;background:#100b14e8;color:#f4d9e5;font:500 11px/1.5 Inter,sans-serif;text-align:center;pointer-events:none;transition:opacity .15s ease}
