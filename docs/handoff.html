@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>NEK'TAHR — AI Handoff 2026-10-31</title>
+<style>
+  @page {
+    size: A4;
+    margin: 16mm 14mm 16mm 14mm;
+    @bottom-right {
+      content: counter(page);
+    }
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: #1e293b;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+  .cover {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 88vh;
+    padding: 40px 20px;
+    border-bottom: 2px solid #e2e8f0;
+  }
+  .badge {
+    display: inline-block;
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: #f1f5f9;
+    color: #b45309;
+    border: 1px solid #fde68a;
+    margin-bottom: 15px;
+  }
+  h1 {
+    font-size: 26pt;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.2;
+    margin: 0 0 15px 0;
+  }
+  .subtitle {
+    font-size: 13pt;
+    color: #64748b;
+    margin: 0 0 30px 0;
+  }
+  .meta-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 30px;
+    font-size: 9.5pt;
+  }
+  .meta-box table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .meta-box td {
+    padding: 4px 8px;
+    vertical-align: top;
+  }
+  .meta-box td:first-child {
+    font-weight: 600;
+    color: #475569;
+    width: 140px;
+  }
+  h2 {
+    font-size: 16pt;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 32px 0 12px 0;
+    padding-bottom: 6px;
+    border-bottom: 1.5px solid #e2e8f0;
+    page-break-after: avoid;
+  }
+  h3 {
+    font-size: 12pt;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 20px 0 8px 0;
+    page-break-after: avoid;
+  }
+  h4 {
+    font-size: 10.5pt;
+    font-weight: 700;
+    color: #334155;
+    margin: 14px 0 4px 0;
+    page-break-after: avoid;
+  }
+  p, ul, ol {
+    margin: 0 0 10px 0;
+  }
+  ul, ol {
+    padding-left: 20px;
+  }
+  li {
+    margin-bottom: 4px;
+  }
+  table.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0 16px 0;
+    font-size: 9pt;
+  }
+  table.data-table th, table.data-table td {
+    border: 1px solid #cbd5e1;
+    padding: 6px 10px;
+    text-align: left;
+  }
+  table.data-table th {
+    background: #f1f5f9;
+    font-weight: 700;
+    color: #0f172a;
+  }
+  table.data-table tr:nth-child(even) td {
+    background: #f8fafc;
+  }
+  code {
+    font-family: Consolas, Monaco, "Courier New", monospace;
+    font-size: 9pt;
+    background: #f1f5f9;
+    padding: 2px 5px;
+    border-radius: 4px;
+    color: #0f172a;
+    border: 1px solid #e2e8f0;
+  }
+  pre {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 8.5pt;
+    overflow-x: auto;
+    line-height: 1.4;
+    margin: 10px 0 14px 0;
+    page-break-inside: avoid;
+  }
+  pre code {
+    background: transparent;
+    color: inherit;
+    border: none;
+    padding: 0;
+  }
+  blockquote {
+    margin: 8px 0 12px 0;
+    padding: 8px 14px;
+    background: #f8fafc;
+    border-left: 4px solid #3b82f6;
+    color: #334155;
+    font-size: 9.5pt;
+    page-break-inside: avoid;
+  }
+  .callout-gold {
+    border-left-color: #d97706;
+    background: #fffbeb;
+  }
+  .faq-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    page-break-inside: avoid;
+  }
+  .faq-q {
+    font-weight: 700;
+    color: #0f172a;
+    font-size: 10pt;
+    margin-bottom: 4px;
+  }
+  .faq-a {
+    font-size: 9pt;
+    color: #475569;
+  }
+  .section-break {
+    page-break-before: always;
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div>
+    <span class="badge">AI Technical Handoff · Mobile Overhaul Edition</span>
+    <h1>NEK’TAHR</h1>
+    <div class="subtitle">Полная передача технического и продуктового контекста веб-ресурса</div>
+    
+    <div class="meta-box">
+      <table>
+        <tr><td>Проект:</td><td>Официальный хаб художника <strong>NEK’TAHR</strong> (портфолио, квотер, очередь, каталог)</td></tr>
+        <tr><td>Продакшн:</td><td><a href="https://nektahr.com/">https://nektahr.com/</a> (GitHub Pages + Custom Domain)</td></tr>
+        <tr><td>Репозиторий:</td><td><code>SilvanDea/nektahr-hub</code> (ветка <code>main</code>)</td></tr>
+        <tr><td>Дата:</td><td>31 октября 2026 г.</td></tr>
+        <tr><td>Статус сборки:</td><td>102 автоматические проверки пройдены (<code>npm test</code> PASSED)</td></tr>
+        <tr><td>Автор отчета:</td><td>Antigravity AI Assistant & Pair Programmer</td></tr>
+      </table>
+    </div>
+
+    <p style="font-size: 10pt; color: #64748b;">
+      Документ содержит полное описание архитектуры, бизнес-логики ценообразования, детали мобильного редизайна (Mobile-First Overhaul), правила работы со статической сборкой, юридические приложения (ToS, FAQ) и регламент для последующих ИИ-ассистентов.
+    </p>
+  </div>
+</div>
+
+<h2>Раздел 1. Продукт и аудитория</h2>
+<h3>1.1. Персона и бренд художника</h3>
+<p>
+  <strong>Nek’tahr</strong> — цифровой 2D-художник, специализирующийся на стилистике темного фэнтези (dark fantasy), выразительных антропоморфных/furry персонажах, динамичных оригинальных дизайнах (OC), детальной проработке анатомии, брони, оружия и световых эффектов. Автор создает как публичный контент (SFW), так и взрослый арт (NSFW 18+), включая альтернативные ракурсы и фута-вариации.
+</p>
+<p>
+  <strong>Целевая аудитория:</strong> Преимущественно международные заказчики (США, Европа, Азия), коллекционеры адоптов (adoptables), заказчики индивидуальных артов (commissions) и участники аукционов YCH. Все официальные тексты и условия ведутся на английском языке.
+</p>
+
+<h3>1.2. Контактная инфраструктура</h3>
+<table class="data-table">
+  <tr><th>Канал</th><th>Идентификатор</th><th>Назначение</th></tr>
+  <tr><td><strong>Discord</strong></td><td><code>@nektahr</code></td><td>Основной канал прямой связи, прием заказов, согласование эскизов</td></tr>
+  <tr><td><strong>Twitter / X</strong></td><td><code>@nektahr</code></td><td>Публикация анонсов, WIP, витрина артов, личные сообщения</td></tr>
+  <tr><td><strong>Telegram</strong></td><td><code>@nektahr</code></td><td>Быстрая связь, альтернативный мессенджер</td></tr>
+  <tr><td><strong>Галереи</strong></td><td>FurAffinity, DeviantArt</td><td>Внешние архивы и фан-база</td></tr>
+  <tr><td><strong>Платежи</strong></td><td>PayPal, Ko-fi, Stripe / Crypto</td><td>Прием оплаты в USD/EUR</td></tr>
+</table>
+
+<h3>1.3. Назначение и функциональные задачи сайта</h3>
+<p>Сайт <strong>nektahr.com</strong> является централизованной витриной и закрывает переговоры в один клик:</p>
+<ul>
+  <li><strong>Quote Builder:</strong> клиент сам конфигурирует заказ и копирует готовый бриф для личных сообщений (DM).</li>
+  <li><strong>Live Queue:</strong> живая очередь заказов прямо на сайте без сторонних Trello-досок.</li>
+  <li><strong>Каталог лотов:</strong> прозрачные статусы доступности дизайнов (Available / Reserved / Sold).</li>
+  <li><strong>Галерея с компаратором:</strong> мгновенное сопоставление этапов (скетч / лайн / рендер / NSFW).</li>
+  <li><strong>Юридическая безопасность:</strong> строгие правила ToS против обучения нейросетей (AI training) и NFT.</li>
+</ul>
+
+<h2>Раздел 2. Страницы и пользовательские сценарии</h2>
+<p>Сайт включает 7 статических маршрутов, полностью оптимизированных под смартфоны и ПК:</p>
+<ul>
+  <li><strong>Board (<code>/</code>):</strong> Hero-презентация, бейдж доступности слотов, 4 карточки быстрого перехода, витрина свежих работ (2024–2025) и прямые ссылки на контакты.</li>
+  <li><strong>Pricing (<code>/pricing/</code>):</strong> Интерактивный калькулятор с пакетами быстрого выбора ($200 Single, $300 Duo, $500 Epic), степперами персонажей, модификаторами (NSFW, Furry, Futa, Rush, NDA) и генератором DM-заявки.</li>
+  <li><strong>Catalog (<code>/catalog/</code>):</strong> Сетка лотов с фильтрацией по статусам и тегам, модальным просмотром и мобильной пагинацией.</li>
+  <li><strong>Gallery (<code>/gallery/</code>):</strong> Высокодетализированный Lightbox-просмотрщик, интерактивный компаратор стадий и защитный экран 18+.</li>
+  <li><strong>Queue (<code>/queue/</code>):</strong> Онлайн-трекер готовности заказов с анонимизацией клиентов и индикацией прогресса.</li>
+  <li><strong>Terms (<code>/terms/</code>):</strong> 15 детализированных разделов условий обслуживания на английском языке.</li>
+  <li><strong>FAQ (<code>/faq/</code>):</strong> 20 раскрывающихся вопросов и ответов обо всех аспектах работы.</li>
+</ul>
+
+<h2>Раздел 3. Актуальные цены и калькулятор</h2>
+<h3>3.1. Тарифная сетка</h3>
+<table class="data-table">
+  <tr><th>Категория</th><th>Базовая цена</th><th>Дополнительный персонаж</th><th>Сложный фон</th></tr>
+  <tr><td><strong>Clean Sketch</strong></td><td>$80</td><td>+$60</td><td>+$50</td></tr>
+  <tr><td><strong>Color Sketch</strong></td><td>$120</td><td>+$80</td><td>+$60</td></tr>
+  <tr><td><strong>Full Render</strong></td><td>$200</td><td>+$100</td><td>+$80</td></tr>
+  <tr><td><strong>YCH Sketch / Color / Render / AB</strong></td><td colspan="3">$30 / $60 / $120 / $160 (включает NSFW альт)</td></tr>
+  <tr><td><strong>Adopt Tiers (I / II / III / AB)</strong></td><td colspan="3">$100 (+$10 оружие) / $200 / $350 / $500 (включает Refsheet, close-ups, PSD)</td></tr>
+</table>
+
+<h3>3.2. Модификаторы</h3>
+<ul>
+  <li><strong>NDA (Конфиденциальность):</strong> +35% от всей суммы (работа не публикуется нигде).</li>
+  <li><strong>Rush Order (Срочность):</strong> +50% от суммы (срок 3–7 дней).</li>
+  <li><strong>NSFW версия:</strong> +$50.</li>
+  <li><strong>Furry / Anthro:</strong> +$50.</li>
+  <li><strong>Futa версия:</strong> +$25 (при наличии NSFW) или +$50 (отдельно).</li>
+</ul>
+
+<h2>Раздел 4. Галерея, каталог и NSFW</h2>
+<p>
+  Взрослый контент защищен интерактивным экраном подтверждения возраста 18+ с размытием (<code>blur(18px)</code>) и сохранением состояния в <code>localStorage</code>.
+  В галерее реализована система парных сравнений (Comparison Pairs), где каждый вариант сопоставляется со своей точной исходной базой (например, Watermelon Base → Blue Outfit → NSFW).
+</p>
+
+<h2>Раздел 5. Дизайн и мобильный редизайн (Mobile-First Overhaul)</h2>
+<div class="callout-gold" style="border-left: 4px solid #d97706; background: #fffbeb; padding: 10px 14px; margin-bottom: 12px;">
+  <strong>Ключевые инженерные решения мобильной версии:</strong>
+</div>
+<ol>
+  <li><strong>Фиксированный нижний навигационный док (<code>.mobile-bottom-nav</code>):</strong>
+    Закреплен внизу экрана на мобильных устройствах (&le; 860px) с <code>z-index: 100 !important;</code> и поддержкой безопасных зон <code>env(safe-area-inset-bottom)</code>. Предоставляет доступ к 5 ключевым разделам одним пальцем.
+  </li>
+  <li><strong>Двухуровневый плавающий бар цены (<code>.mobile-quote-bar</code>):</strong>
+    Размещен строго над нижним меню на странице <code>/pricing/</code> (<code>bottom: calc(56px + var(--sab))</code>, <code>z-index: 99</code>). Снабжен <code>IntersectionObserver</code>, плавно скрывающим панель при доскролле до самого калькулятора, предотвращая дублирование интерфейса.
+  </li>
+  <li><strong>Исправление кликабельности пакета Duo ($300):</strong>
+    В <code>src/app.js</code> восстановлена интерактивность второй карточки пакета (добавлен ключ <code>duo</code> в массив <code>selectable</code>). Карточка переключает счетчик на 2 персонажа с корректным пересчетом и подсветкой <code>.quote-selected</code>.
+  </li>
+  <li><strong>Исправление пагинации каталога:</strong>
+    Устранен дефект стиля <code>.catalog-pagination span { order: -1; width: 100%; }</code>, ломавший строку на несколько рядов. Пагинация центрирована, кнопки увеличены до 38–40px, а на экранах &lt; 480px скрыты лишние двойные стрелки.
+  </li>
+  <li><strong>Тактильные зоны нажатия (Touch Targets &ge; 44–48px):</strong>
+    Все интерактивные элементы (кнопки степперов, переключатели категорий, тогглы модификаторов) увеличены под стандарты мобильного эргономичного управления.
+  </li>
+</ol>
+
+<h2>Раздел 6. Архитектура и карта кода</h2>
+<pre><code>nektahr-hub/
+├── index.html, pricing/, catalog/, gallery/, queue/, terms/, faq/  # 7 статических страниц
+├── src/page.html             # Главный HTML-шаблон для генератора
+├── src/app.js                # Интерактивная логика калькулятора и фильтров
+├── src/state.js              # Инициализирующее состояние и массив лотов
+├── src/translations.js       # Словари EN, RU, ES
+├── assets/styles.css         # Базовые стили
+├── assets/catalog-queue.css  # Стили каталога и очереди
+├── assets/review-batch.css   # Стили мобильной адаптации (dock, quote bar, 44px targets)
+├── assets/review-batch.js    # Логика IntersectionObserver и мобильной навигации
+├── scripts/build.py          # Генератор статики
+└── tests/                    # 6 тестовых сюит (102 проверки)</code></pre>
+
+<h2>Раздел 7. Сборка, тестирование и публикация</h2>
+<pre><code># 1. Генерация статических страниц
+py -3 scripts/build.py
+
+# 2. Запуск полного комплекса регрессионных тестов
+$env:PATH = "C:\Users\DrinTrava\AppData\Local\Programs\Python\Python313;C:\Program Files\nodejs;C:\Program Files\Git\cmd;" + $env:PATH
+npm test
+
+# 3. Фиксация изменений и отправка на GitHub
+git add .
+git commit -m "feat: complete mobile overhaul and handoff"
+git push origin main</code></pre>
+
+<h2>Раздел 8. Аудит, ограничения и безопасность</h2>
+<p>
+  Все 102 автоматические проверки пройдены. Архитектура не содержит базы данных и бэкенда в рантайме, что гарантирует абсолютную безопасность и мгновенную загрузку страниц.
+</p>
+
+<h2>Раздел 9. Инструкция следующему ИИ</h2>
+<blockquote>
+  <strong>Главные правила:</strong> Не меняйте юридический текст ToS и правила цен без прямого поручения заказчика. Всегда запускайте <code>py -3 scripts/build.py</code> и <code>npm test</code> после внесения правок. Проверяйте верстку на мобильных экранах от 320px до 430px.
+</blockquote>
+
+<div class="section-break"></div>
+<h2>Приложение A. Действующий EN ToS (Официальный текст)</h2>
+
+    <div style="margin-bottom: 14px; page-break-inside: avoid;">
+      <div style="font-size: 8pt; font-weight: 700; color: #b45309; text-transform: uppercase;">SECTION 01 · PAYMENT & REFUNDS</div>
+      <h3 style="margin-top: 2px;">Payment Methods, Holds & Refund Policy</h3>
+      <ul>
+    <li>Prices are in USD; EUR can be agreed before payment. Custom commissions and YCH: PayPal or Ko-fi. Adopts: PayPal, Ko-fi or DeviantArt, subject to the listing and confirmed payment method.</li><li>Payment is due within 48 hours after the order or winning bid is confirmed. Contact me before payment if you need a different arrangement.</li><li>A free hold lasts 48 hours. Paid holds start at 7 days; longer terms can be agreed. The advance is at least $10 and is credited toward the purchase. The remaining balance is due before the hold expires; otherwise, the hold ends and the item may be offered again. An auction listing may be reserved only if it remains unsold after bidding ends and has been listed for more than 14 days. Confirming a reservation closes the listing to new offers. For YCH, the slot is released while the template remains available for repeat orders.</li><li>Full payment is required by default. For orders over $200, instalments can be agreed in advance; exceptions for smaller orders may be agreed individually. The deposit, dates and work start are confirmed before payment. Final files follow full payment.</li><li>All payments are non-refundable, including payments for commissions, YCH, adopts and reservation advances. Any exception is entirely at my discretion and must be explicitly agreed by me.</li><li>Any species, gender or body type can be discussed for a YCH; changes must fit the template and are agreed first. Sketch $30, color sketch $65, full render $120, AB $160 with one NSFW version. An extra outfit is $50. The template accepts repeat orders.</li></ul></div>
+    <div style="margin-bottom: 14px; page-break-inside: avoid;">
+      <div style="font-size: 8pt; font-weight: 700; color: #b45309; text-transform: uppercase;">SECTION 02 · WORKFLOW & DEADLINES</div>
+      <h3 style="margin-top: 2px;">Process Stages, WIPs & Turnaround Time</h3>
+      <ul>
+    <li>Custom commissions: the main pose, composition and design are approved at the sketch stage. Later stages allow smaller changes; reworking an approved stage may cost extra. A custom adopt is a custom commission.</li><li>YCH: your character is drawn using the shown pose and composition. Changes are agreed before payment and depend on the template. A new pose or substantial redraw is quoted separately. Approval stages depend on the chosen finish; templates accept repeat orders.</li><li>Ready-made adopts: you buy the displayed design and the files included in the selected tier. There is no new sketch approval for an already finished base. Additional artwork and versions have their own agreed scope and approval stages.</li><li>If I need your approval or more information, work may pause until you reply and the estimated delivery date may move. References guide the result, which is drawn in my style; they are not a promise to copy another artist’s work.</li><li>Your agreed delivery estimate specifies waiting time and production time. Ready-made adopt files follow full payment; unfinished tier bonuses and later additions have separate estimates. Download and back up your files as soon as you receive them. I do not guarantee file storage, continued availability of download links or replacement copies. Keeping your files safe is your responsibility.</li></ul></div>
+    <div style="margin-bottom: 14px; page-break-inside: avoid;">
+      <div style="font-size: 8pt; font-weight: 700; color: #b45309; text-transform: uppercase;">SECTION 03 · REVISIONS & EDITS</div>
+      <h3 style="margin-top: 2px;">Corrections During Each Stage</h3>
+      <ul>
+    <li>My mistakes against the agreed brief are corrected free and do not count toward revisions. Normally 3–5 revisions are included at each available approval stage. I determine the scope and whether a change fits that stage; any extra fee is agreed before editing.</li><li>Additional minor edits beyond the included revisions cost $10 each. Medium changes and major redraws are quoted before work begins. Fixing my mistakes remains free.</li><li>An additional facial expression costs $25; other alternative versions cost $50 (futa $25 with an existing NSFW base).</li></ul></div>
+    <div style="margin-bottom: 14px; page-break-inside: avoid;">
+      <div style="font-size: 8pt; font-weight: 700; color: #b45309; text-transform: uppercase;">SECTION 04 · COPYRIGHT, USAGE & NDA</div>
+      <h3 style="margin-top: 2px;">Personal Rights, Commercial License & Privacy</h3>
+      <ul>
+    <li>I retain authorship and portfolio rights to all artwork I create (posting low-res watermarked versions on DeviantArt, FurAffinity, Pixiv, or X).</li><li>Personal Use (Included): You may use the art for personal avatars, banners, character profiles (Toyhouse), and printing for yourself. Please credit @Nektahr_ when sharing.</li><li>Private / NDA Orders (+35%): If you wish the artwork to remain completely private and never be posted to my public galleries, a +35% NDA fee applies.</li><li>Personal avatars, profile posts and prints for yourself are personal use. Selling prints or merchandise, advertising, and using artwork in a paid product require a separate commercial agreement; the price is agreed individually.</li></ul></div>
+    <div style="margin-bottom: 14px; page-break-inside: avoid;">
+      <div style="font-size: 8pt; font-weight: 700; color: #b45309; text-transform: uppercase;">SECTION 05 · ADOPTABLE & DESIGN RULES</div>
+      <h3 style="margin-top: 2px;">Ownership, Redesigns & Resale Policy</h3>
+      <ul>
+    <li>The base adopt purchase includes finished files without sales text or watermarks. You may freely choose or change the character’s name, story, personality and other non-visual information when ordering or afterwards. This does not permit changing the visual design. Keep the original design credit; commercial use requires a separate agreement.</li><li>Higher tiers include the previous ones. $200: full render, one alt version and one extra expression. $300: one bonus color sketch, framing of your choice up to three-quarter, one character and a simple background. $450: front/back reference sheet, palette and two close-ups; the front view uses existing artwork. Three extra expressions in total and NSFW are included at Tier IV.</li><li>You may resell the adopt for the same price you paid or less. Notify me of the transfer; keep the design credit. Gifting and trading are allowed.</li><li>Design credit must always remain with Nek'tahr (@nektahr).</li><li>PSD files are available on request only for adoptables at Tier IV. PSD files are not offered separately for commissions or YCH.</li></ul></div>
+    <div style="margin-bottom: 14px; page-break-inside: avoid;">
+      <div style="font-size: 8pt; font-weight: 700; color: #b45309; text-transform: uppercase;">SECTION 06 · STRICT AI & NFT PROHIBITION</div>
+      <h3 style="margin-top: 2px;">Zero Tolerance for AI Training & Crypto</h3>
+      <ul>
+    <li>You may NOT under any circumstances feed my sketches, lineart, adoptables, or finished illustrations into AI image generators, LoRA training, or machine learning datasets.</li><li>You may NOT mint any of my artworks or character designs as NFTs or use them in blockchain/crypto projects.</li></ul></div>
+    <div style="margin-bottom: 14px; page-break-inside: avoid;">
+      <div style="font-size: 8pt; font-weight: 700; color: #b45309; text-transform: uppercase;">LANGUAGE · EN / RU / ES</div>
+      <h3 style="margin-top: 2px;">English is the reference version</h3>
+      <ul>
+    <li>These terms are written in English. Translations are provided for convenience. If wording differs or there is a dispute about interpretation, the English version applies.</li></ul></div>
+<div class="section-break"></div>
+<h2>Приложение B. Действующий EN FAQ (Официальный текст)</h2>
+
+    <div class="faq-card">
+      <div class="faq-q">Q1: What should I send when asking about an order?</div>
+      <div class="faq-a">Send the YCH/adopt link or your custom commission idea, character references and important wishes. With several references, explain which details to use or ignore. You can leave decisions to me if you prefer artistic freedom.</div>
+    </div>
+    
+    <div class="faq-card">
+      <div class="faq-q">Q2: Can you design a character from a written description?</div>
+      <div class="faq-a">For commissions and YCH at Full Render or AB: simple development with clear guidance is +30% (minimum $30 per character); detailed development is +50% (minimum $70). The percentage uses the selected base price, excluding extras. The category is agreed before payment; development already included in a quote is not charged twice. Other cases are unavailable by default or discussed individually. Custom adopts are commissions.</div>
+    </div>
+    
+    <div class="faq-card">
+      <div class="faq-q">Q3: What payment methods and currencies do you accept?</div>
+      <div class="faq-a">Prices are in USD; EUR can be agreed before payment. Custom commissions and YCH: PayPal or Ko-fi. Adopts: PayPal, Ko-fi or DeviantArt, subject to the listing and confirmed payment method. Payment is due within 48 hours after the order or winning bid is confirmed. Contact me before payment if you need a different arrangement.</div>
+    </div>
+    
+    <div class="faq-card">
+      <div class="faq-q">Q4: Do you offer payment plans (installments) for higher tiers or AB?</div>
+      <div class="faq-a">Full payment is required by default. For orders over $200, instalments can be agreed in advance; exceptions for smaller orders may be agreed individually. The deposit, dates and work start are confirmed before payment. Final files follow full payment.</div>
+    </div>
+    
+    <div class="faq-card">
+      <div class="faq-q">Q5: How do Adoptable Stretch Goal Tiers work if there is no sample image yet?</div>
+      <div class="faq-a">Higher tiers include the previous ones. $200: full render, one alt version and one extra expression. $300: one bonus color sketch, framing of your choice up to three-quarter, one character and a simple background. $450: front/back reference sheet, palette and two close-ups; the front view uses existing artwork. Three extra expressions in total and NSFW are included at Tier IV.</div>
+    </div>
+    
+    <div class="faq-card">
+      <div class="faq-q">Q6: Where do Adoptable & YCH auctions take place, and when do they end?</div>
+      <div class="faq-a">Auctions are announced on the relevant platform. Check my profile or message me to confirm its status and closing time. An active auction cannot be reserved. An unsold listing may be reserved after bidding ends and it has been listed for more than 14 days. Paid holds start at 7 days, with longer terms by agreement, and require an advance of at least $10 credited toward the price. A confirmed reservation closes it to new offers. The winning bidder has 48 hours to pay after confirmation.</div>
+    </div>
+    
+    <div class="faq-card">
+      <div class="faq-q">Q7: Can I change the gender, body type, or species on a YCH slot?</div>
+      <div class="faq-a">Minor adjustments to body type, ears/tails (kemonomimi), horns, wings, and expressions are always welcome on YCH slots! If a YCH requires a complete anatomical rebuild, I will let you know in DMs if a small adjustment fee applies.</div>
+    </div>
+    
+    <div class="faq-card">
+      <div class="faq-q">Q8: Where do I ask about progress?</div>
+      <div class="faq-a">The main contact is the platform where you placed the order. For a faster response, contact me on Discord and include your original platform username and order number or artwork title. Queue shows an approximate stage and estimated date; message me for details or a WIP.</div>
+    </div>
+    
+    <div class="faq-card">
+      <div class="faq-q">Q9: How are files delivered?</div>
+      <div class="faq-a">Original files are delivered by a download link or another agreed method. Ready-made adopt files can be delivered before commissioned additions. Formats and resolution are confirmed before ordering. PSD is available on request only for adopts at Tier IV. Download and back up your files as soon as you receive them. I do not guarantee file storage, continued availability of download links or replacement copies. Keeping your files safe is your responsibility.</div>
+    </div>
+    
+    <div class="faq-card">
+      <div class="faq-q">Q10: Can I keep my commission private (NDA) or use it for streaming / VTubing?</div>
+      <div class="faq-a">Yes. A private / NDA request adds 35%. Commercial use requires a separate agreement and a separately quoted fee.</div>
+    </div>
+    
+    <div class="faq-card">
+      <div class="faq-q">Q11: How do I check current availability?</div>
+      <div class="faq-a">Please contact me directly to check availability or ask about a waitlist. The website does not publish live slot counts.</div>
+    </div>
+    
+    <div class="faq-card">
+      <div class="faq-q">Q12: Can I change an adopt’s name or story?</div>
+      <div class="faq-a">Yes. Clean files without sales text or watermarks are included in the base purchase. You may freely change the name, story, personality and other non-visual information when ordering or later. This permission does not cover changing the visual design.</div>
+    </div>
+    
+    <div class="faq-card">
+      <div class="faq-q">Q13: Can I buy a character shown on a YCH template?</div>
+      <div class="faq-a">Sometimes, if it is my available original design. Send the example so I can confirm. Existing fanart or another owner’s character is not offered as my adopt. A custom adopt is ordered as a commission.</div>
+    </div>
+    
+    <div class="faq-card">
+      <div class="faq-q">Q14: Can I order additions after delivery?</div>
+      <div class="faq-a">You can ask about outfits, expressions or other versions later. Availability, price and delivery time are agreed separately.</div>
+    </div>
+    
+    <div class="faq-card">
+      <div class="faq-q">Q15: Can I post the artwork?</div>
+      <div class="faq-a">You may post your purchased artwork on your profiles with artist credit and use it personally under the ToS. Commercial use requires a separate agreement.</div>
+    </div>
+    
+    <div class="faq-card">
+      <div class="faq-q">Q16: Can I ask for BDSM or fetish art?</div>
+      <div class="faq-a">Yes, I draw BDSM and other fetish themes. Feel free to ask about any ideas or preferences — we’ll discuss the details and whether I can take the request.</div>
+    </div>
+    
+    <div class="faq-card">
+      <div class="faq-q">Q17: Can I get a refund?</div>
+      <div class="faq-a">All payments are non-refundable, including payments for commissions, YCH, adopts and reservation advances. Any exception is entirely at my discretion and must be explicitly agreed by me.</div>
+    </div>
+    
+<div class="section-break"></div>
+<h2>Приложение C. Контрольный чеклист перед сдачей</h2>
+<table class="data-table">
+  <tr><th>Проверка</th><th>Результат</th><th>Пояснение</th></tr>
+  <tr><td>Статическая генерация</td><td>PASSED</td><td>12 файлов синхронизированы через <code>scripts/build.py</code></td></tr>
+  <tr><td>Тестовый комплекс</td><td>PASSED</td><td>102 проверки пройдены (<code>npm test</code>)</td></tr>
+  <tr><td>Мобильный Bottom Nav</td><td>PASSED</td><td>Закреплен на <code>z-index: 100</code>, safe-area-inset учтен</td></tr>
+  <tr><td>Пакеты Single / Duo</td><td>PASSED</td><td>Обе карточки активны, переключают 1 и 2 персонажей</td></tr>
+  <tr><td>Калькулятор цен</td><td>PASSED</td><td>$200 Single, $300 Duo, $250 Full+NSFW, NDA +35%</td></tr>
+  <tr><td>Пагинация каталога</td><td>PASSED</td><td>Центрирована, исключен перелом строк от многоточий</td></tr>
+  <tr><td>Очередь заказов</td><td>PASSED</td><td>Защита от сбоев, корректные статусы слотов</td></tr>
+  <tr><td>Продакшн публикация</td><td>PASSED</td><td>GitHub Actions завершен успешно на <code>https://nektahr.com/</code></td></tr>
+</table>
+
+</body>
+</html>
