@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
   <script src="/assets/portfolio-data.js?v=65cd7e93fb89"></script>
   <script src="/assets/queue-manager.js?v=d5a27c4cb711" defer></script>
-  <link rel="stylesheet" href="/assets/utilities.css?v=91ebaadb62c7">
+  <link rel="stylesheet" href="/assets/utilities.css?v=5bcd83d7f7e8">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
@@ -47,7 +47,7 @@
 <link rel="stylesheet" href="/assets/compact-calculator.css?v=b719dfe1a0b4">
 <link rel="stylesheet" href="/assets/contact-actions.css?v=e57e8e3f414b">
 <link rel="stylesheet" href="/assets/thumbnail-mats.css?v=f633d43cfe84">
-<link rel="stylesheet" href="/assets/review-batch.css?v=a4ebf1c9fd2e">
+<link rel="stylesheet" href="/assets/review-batch.css?v=92ee89474705">
 </head>
 <body data-page="gallery" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
   <a href="#main-content" id="skip-content" class="skip-content">Skip to content</a>
@@ -597,35 +597,41 @@
          PAGE 3: GALLERY (WITH 'OTHER WORKS' & 18+ CONFIRMATION MODAL)
     ==================================================================== -->
     <section id="page-gallery" class="page-section space-y-8">
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b hairline pb-6">
-        <div>
-          <div id="gal-eyebrow" class="mono text-xs uppercase text-accent">CURATED ARCHIVE</div>
-          <h1 id="gal-title" class="serif text-4xl sm:text-5xl mt-1">Art Gallery</h1>
-          <p id="gal-sub" class="text-sm text-textMuted mt-1">Browse the gallery by category. 18+ artwork stays blurred until you confirm your age.</p>
+      <div class="gallery-header-shell border-b hairline pb-6">
+        <div class="gallery-header-top">
+          <div class="gallery-title-group">
+            <div id="gal-eyebrow" class="mono text-xs uppercase text-accent">CURATED ARCHIVE</div>
+            <h1 id="gal-title" class="serif text-4xl sm:text-5xl mt-1">Art Gallery</h1>
+            <p id="gal-sub" class="text-sm text-textMuted mt-1">Browse the gallery by category. 18+ artwork stays blurred until you confirm your age.</p>
+          </div>
+
+          <label class="gallery-search-wrap">
+            <span id="gallery-search-label" class="sr-only">Search gallery by title, category, or tags</span>
+            <svg class="gallery-search-icon" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.75">
+              <circle cx="9" cy="9" r="5.75"></circle>
+              <path d="M13.25 13.25L17 17" stroke-linecap="round"></path>
+            </svg>
+            <input type="search" id="gallery-search" oninput="setGallerySearch(this.value)" placeholder="Search by title, category, or tags…" aria-label="Search gallery by title, category, or tags" autocomplete="off" />
+          </label>
         </div>
 
-        <div class="flex flex-wrap items-center gap-3">
-          <!-- Keyword Search + Category Filters + 18+ Toggle -->
-          <div class="flex flex-wrap items-center gap-3">
-            <label class="gallery-search-wrap">
-              <span id="gallery-search-label" class="sr-only">Search gallery by title, category, or tags</span>
-              <input type="search" id="gallery-search" oninput="setGallerySearch(this.value)" placeholder="Search by title, category, or tags…" aria-label="Search gallery by title, category, or tags" autocomplete="off" />
-            </label>
-            <div id="gallery-category-filters" class="flex flex-wrap gap-1.5 mono text-xs" role="group" aria-label="Gallery filters">
-              <button type="button" onclick="setGalleryCat('all')" data-c="all" id="gf-all" aria-pressed="true" class="gal-filter-btn px-3 py-1.5 bg-accent text-bg font-medium transition cursor-pointer">All Works</button>
-              <button type="button" onclick="setGalleryCat('comm')" data-c="comm" id="gf-comm" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Commissions</button>
-              <button type="button" onclick="setGalleryCat('adopt')" data-c="adopt" id="gf-adopt" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Adopts</button>
-              <button type="button" onclick="setGalleryCat('ych')" data-c="ych" id="gf-ych" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">YCH</button>
-              <button type="button" onclick="setGalleryCat('fanart')" data-c="fanart" id="gf-fanart" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Fan art</button>
-              <button type="button" onclick="setGalleryCat('other')" data-c="other" id="gf-other" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Other works</button>
-              <button type="button" id="gallery-adult-only" onclick="toggleGalleryAdultOnly()" aria-pressed="false" class="adult-only-filter">Only 18+</button>
-            </div>
+        <div class="gallery-toolbar">
+          <div id="gallery-category-filters" class="flex flex-wrap gap-1.5 mono text-xs" role="group" aria-label="Gallery filters">
+            <button type="button" onclick="setGalleryCat('all')" data-c="all" id="gf-all" aria-pressed="true" class="gal-filter-btn px-3 py-1.5 bg-accent text-bg font-medium transition cursor-pointer">All Works</button>
+            <button type="button" onclick="setGalleryCat('comm')" data-c="comm" id="gf-comm" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Commissions</button>
+            <button type="button" onclick="setGalleryCat('adopt')" data-c="adopt" id="gf-adopt" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Adopts</button>
+            <button type="button" onclick="setGalleryCat('ych')" data-c="ych" id="gf-ych" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">YCH</button>
+            <button type="button" onclick="setGalleryCat('fanart')" data-c="fanart" id="gf-fanart" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Fan art</button>
+            <button type="button" onclick="setGalleryCat('other')" data-c="other" id="gf-other" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Other works</button>
+          </div>
+
+          <div class="gallery-adult-controls">
+            <button type="button" id="gallery-adult-only" onclick="toggleGalleryAdultOnly()" aria-pressed="false" class="adult-only-filter">Only 18+</button>
             <label class="flex items-center gap-2 px-3 py-1.5 border border-error/40 bg-error/5 mono text-xs text-error cursor-pointer select-none whitespace-nowrap">
               <input type="checkbox" id="nsfw-switch" onchange="handleNsfwToggle(this)" class="accent-[#D48A94] w-3.5 h-3.5">
               <span id="gal-nsfw-label">Show 18+ Content</span>
             </label>
           </div>
-
         </div>
       </div>
 
