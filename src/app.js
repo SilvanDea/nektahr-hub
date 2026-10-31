@@ -589,6 +589,7 @@
       });
       document.getElementById('footer-rights').textContent = uiText('footerRights');
       document.getElementById('footer-telegram').textContent = uiText('footerTelegram');
+      if (document.getElementById('calc-share-btn-text')) document.getElementById('calc-share-btn-text').textContent = uiText('calcShareBtn');
       document.getElementById('lb-pricing-link').textContent = uiText('pricingLink');
       document.getElementById('toast').textContent = uiText('copied');
 
@@ -859,9 +860,76 @@
       document.documentElement.classList.remove('language-loading');
     }
 
+    function applyUrlQuoteParams() {
+      if (document.body.dataset.page !== 'pricing' && location.pathname !== '/pricing/') return;
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const tab = params.get('tab') || params.get('type') || params.get('mode');
+        const normalizedTab = tab === 'commissions' || tab === 'commission' ? 'custom' : tab === 'adopts' ? 'adopt' : tab;
+        if (['custom', 'adopt', 'ych'].includes(normalizedTab)) {
+          switchPricingTab(normalizedTab);
+        }
+        const pkg = params.get('package') || params.get('pkg');
+        if (pkg === 'duo' || pkg === 'single') {
+          quickPickCustom(pkg);
+        }
+        const chars = parseInt(params.get('chars') || params.get('characters'), 10);
+        if (chars >= 1 && chars <= 5) {
+          const range = document.getElementById('quote-character-count');
+          const out = document.getElementById('quote-character-output');
+          if (range) range.value = String(chars);
+          if (out) out.textContent = String(chars);
+          if (window.CALC_MODE_STATE?.custom) window.CALC_MODE_STATE.custom.characters = chars;
+        }
+        const bg = params.get('bg') || params.get('background');
+        if (bg) {
+          const sel = document.getElementById('calc-bg-sel');
+          if (sel && [...sel.options].some(o => o.value === bg)) sel.value = bg;
+        }
+        ['nsfw', 'furry', 'futa', 'rush', 'nda'].forEach(key => {
+          const val = params.get(key);
+          if (val === '1' || val === 'true') {
+            const chk = document.querySelector(`.calc-addon-check[data-id="${key}"], .calc-mult-check[data-id="${key}"]`);
+            if (chk) chk.checked = true;
+          }
+        });
+        recalcTotal();
+      } catch (_) {}
+    }
+
+    function getShareableQuoteUrl() {
+      const url = new URL('/pricing/', window.location.origin);
+      url.searchParams.set('tab', currentPricingTab);
+      if (currentPricingTab === 'custom') {
+        const chars = document.getElementById('quote-character-count')?.value;
+        if (chars && chars !== '1') url.searchParams.set('chars', chars);
+        const sel = document.getElementById('calc-stage-sel');
+        if (sel?.value) url.searchParams.set('package', sel.value);
+        const bg = document.getElementById('calc-bg-sel')?.value;
+        if (bg && bg !== 'simple') url.searchParams.set('bg', bg);
+      }
+      document.querySelectorAll('.calc-addon-check:checked, .calc-mult-check:checked').forEach(el => {
+        if (el.dataset.id) url.searchParams.set(el.dataset.id, '1');
+      });
+      return url.toString();
+    }
+    window.getShareableQuoteUrl = getShareableQuoteUrl;
+
+    async function copyQuoteLink() {
+      const url = getShareableQuoteUrl();
+      try {
+        await navigator.clipboard.writeText(url);
+        showToast(uiText('quoteLinkCopied'));
+      } catch (_) {
+        prompt('Copy quote link:', url);
+      }
+    }
+    window.copyQuoteLink = copyQuoteLink;
+
     window.onload = function() {
       let initialPricingTab='custom';try{const saved=sessionStorage.getItem('nektahr-pricing-tab');if(['custom','adopt','ych'].includes(saved))initialPricingTab=saved;sessionStorage.removeItem('nektahr-pricing-tab')}catch{}
       switchPricingTab(initialPricingTab);
+      applyUrlQuoteParams();
       if(!window.queueManagerReady)loadLiveQueue();
     };
   

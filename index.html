@@ -24,6 +24,36 @@
   <meta name="twitter:description" content="Character art, commissions, YCH and adoptable designs by Nek&#x27;tahr. Browse the gallery and prices, view available designs, and contact me on Discord or email." />
   <meta name="twitter:image" content="https://nektahr.com/assets/social-preview-v4.jpg?rev=20261029-hold-min10" />
   <meta name="twitter:image:alt" content="Nek&#x27;tahr — character art, commissions, YCH, adopts, ToS and FAQ" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://nektahr.com/#artist",
+        "name": "Nek'tahr",
+        "alternateName": ["Nektahr", "nek_tahr"],
+        "url": "https://nektahr.com/",
+        "image": "https://nektahr.com/assets/social-preview-v4.jpg",
+        "description": "Digital 2D character artist specializing in dark fantasy, anthro/furry illustrations, OC commissions, adoptables, and YCH.",
+        "sameAs": [
+          "https://discord.com/users/361511957129461781",
+          "https://t.me/nek_tahr",
+          "https://www.deviantart.com/nektahr",
+          "https://twitter.com/nektahr"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://nektahr.com/#website",
+        "url": "https://nektahr.com/",
+        "name": "Nek'tahr Hub",
+        "description": "Official art portfolio, live commission queue, adoptable showcase and interactive quote builder for Nek'tahr.",
+        "publisher": { "@id": "https://nektahr.com/#artist" }
+      }
+    ]
+  }
+  </script>
   <meta name="theme-color" content="#0B0A0E" />
   <link rel="dns-prefetch" href="https://fonts.googleapis.com">
   <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -51,7 +81,7 @@
 <link rel="stylesheet" href="/assets/compact-calculator.css?v=b719dfe1a0b4">
 <link rel="stylesheet" href="/assets/contact-actions.css?v=e57e8e3f414b">
 <link rel="stylesheet" href="/assets/thumbnail-mats.css?v=f633d43cfe84">
-<link rel="stylesheet" href="/assets/review-batch.css?v=5b1bca213acc">
+<link rel="stylesheet" href="/assets/review-batch.css?v=483a9e6ed599">
 </head>
 <body data-page="board" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
   <a href="#main-content" id="skip-content" class="skip-content">Skip to content</a>
@@ -59,7 +89,7 @@
   <!-- =====================================================================
        CENTRAL CONFIGURATION & LOCALIZATION (EN main · ES · RU)
   ====================================================================== -->
-  <script src="/assets/translations.js?v=33dac65aab65"></script>
+  <script src="/assets/translations.js?v=ad8742e1b406"></script>
 <script src="/assets/app-state.js?v=37c0078c8ab3"></script>
 
   <!-- =====================================================================
@@ -578,6 +608,10 @@
             <div id="calc-dynamic-body" class="space-y-4"></div>
 
             <button onclick="copyCalcRequest()" id="calc-copy-btn" class="quote-cta w-full py-3 bg-accent text-bg mono text-xs uppercase font-medium hover:bg-textMain transition cursor-pointer">Copy Ready DM Request</button>
+            <button type="button" onclick="copyQuoteLink()" id="calc-share-btn" class="w-full py-2.5 border hairline mono text-[11px] uppercase text-textDim hover:text-accent hover:border-accent transition cursor-pointer flex items-center justify-center gap-2">
+              <span aria-hidden="true">🔗</span>
+              <span id="calc-share-btn-text">Share configuration</span>
+            </button>
 
             <!-- Order brief -->
             <details class="quote-brief" id="calc-brief-panel"><summary id="calc-brief-summary">Add references & brief (optional)</summary><div class="space-y-3">
@@ -1124,7 +1158,7 @@
   <!-- =====================================================================
        APPLICATION LOGIC
   ====================================================================== -->
-  <script src="/assets/app.js?v=765a2583fc2e"></script>
+  <script src="/assets/app.js?v=0b0afbd72738"></script>
 <script src="/assets/process-viewer.js?v=e39c9751d584"></script>
 <script src="/assets/artwork-interactions.js?v=97b89cb2e8ce"></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
@@ -1135,6 +1169,6 @@
 <script src="/assets/compact-calculator.js?v=3c78ec45d022"></script>
 <script src="/assets/contact-actions.js?v=00b3f7224a7a"></script>
 <script src="/assets/thumbnail-mats.js?v=b39f58205f4f"></script>
-<script src="/assets/review-batch.js?v=99d7af72380d"></script>
+<script src="/assets/review-batch.js?v=a8ba7abad27a"></script>
 </body>
 </html>

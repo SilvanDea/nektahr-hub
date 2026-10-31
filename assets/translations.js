@@ -1551,7 +1551,7 @@
         loadedTier: "Loaded into Quote Builder ($VALUE)", noSamples: "No portfolio samples in this category yet.", confirmAvailability: "Confirm availability",
         headerTagline: "Character Art & Commissions", quoteGreeting: "Hi Nek'tahr! I'd like to request:", quoteCategory: "Category", quoteAddons: "Add-ons", quoteNone: "None",
         quoteTotal: "Estimated starting total", quoteReferences: "References / Notes", quotePlaceholder: "[Will attach references in DM]", quoteTos: "ToS",
-        quoteAccepted: "Accepted (confirmed by checkbox)", quoteNotConfirmed: "Not confirmed", closePreview: "Close artwork preview", pricingLink: "Pricing →", footerRights: "NEK'TAHR © 2026 · ALL RIGHTS RESERVED · NO AI / NO NFT", footerTelegram: "Telegram DM"
+        quoteAccepted: "Accepted (confirmed by checkbox)", quoteNotConfirmed: "Not confirmed", closePreview: "Close artwork preview", pricingLink: "Pricing →", footerRights: "NEK'TAHR © 2026 · ALL RIGHTS RESERVED · NO AI / NO NFT", footerTelegram: "Telegram DM", quoteLinkCopied: "Direct link to this quote copied to clipboard!", calcShareBtn: "Share configuration"
       },
       es: {
         copy: "Copiar", copied: "Copiado", copyFailed: "No se pudo copiar. Selecciona y copia el texto manualmente.",
@@ -1561,7 +1561,7 @@
         loadedTier: "Cargado en la solicitud ($VALUE)", noSamples: "Todavía no hay muestras de portafolio en esta categoría.", confirmAvailability: "Confirma disponibilidad",
         headerTagline: "Arte de personajes y comisiones", quoteGreeting: "¡Hola, Nek'tahr! Me gustaría solicitar:", quoteCategory: "Categoría", quoteAddons: "Extras", quoteNone: "Ninguno",
         quoteTotal: "Precio inicial estimado", quoteReferences: "Referencias / notas", quotePlaceholder: "[Adjuntaré las referencias por mensaje]", quoteTos: "Términos (ToS)",
-        quoteAccepted: "Aceptado (confirmado con la casilla)", quoteNotConfirmed: "Sin confirmar", closePreview: "Cerrar vista previa de la obra", pricingLink: "Precios →", footerRights: "NEK'TAHR © 2026 · TODOS LOS DERECHOS RESERVADOS · SIN IA / SIN NFT", footerTelegram: "Mensaje por Telegram"
+        quoteAccepted: "Aceptado (confirmado con la casilla)", quoteNotConfirmed: "Sin confirmar", closePreview: "Cerrar vista previa de la obra", pricingLink: "Precios →", footerRights: "NEK'TAHR © 2026 · TODOS LOS DERECHOS RESERVADOS · SIN IA / SIN NFT", footerTelegram: "Mensaje por Telegram", quoteLinkCopied: "¡Enlace directo a esta cotización copiado al portapapeles!", calcShareBtn: "Compartir cotización"
       },
       ru: {
         copy: "Скопировать", copied: "Скопировано", copyFailed: "Не удалось скопировать. Выделите и скопируйте текст вручную.",
@@ -1571,7 +1571,7 @@
         loadedTier: "Добавлено в заявку ($VALUE)", noSamples: "В этой категории пока нет примеров портфолио.", confirmAvailability: "Уточнить доступность",
         headerTagline: "Арт персонажей и заказы", quoteGreeting: "Привет, Nek'tahr! Хочу заказать:", quoteCategory: "Категория", quoteAddons: "Дополнения", quoteNone: "Нет",
         quoteTotal: "Ориентировочная стартовая цена", quoteReferences: "Референсы / примечания", quotePlaceholder: "[Пришлю референсы в личные сообщения]", quoteTos: "Правила (ToS)",
-        quoteAccepted: "Согласие подтверждено галочкой", quoteNotConfirmed: "Не подтверждено", closePreview: "Закрыть предпросмотр работы", pricingLink: "Прайс →", footerRights: "NEK'TAHR © 2026 · ВСЕ ПРАВА ЗАЩИЩЕНЫ · ЗАПРЕТ ИИ / NFT", footerTelegram: "Написать в Telegram"
+        quoteAccepted: "Согласие подтверждено галочкой", quoteNotConfirmed: "Не подтверждено", closePreview: "Закрыть предпросмотр работы", pricingLink: "Прайс →", footerRights: "NEK'TAHR © 2026 · ВСЕ ПРАВА ЗАЩИЩЕНЫ · ЗАПРЕТ ИИ / NFT", footerTelegram: "Написать в Telegram", quoteLinkCopied: "Прямая ссылка на эту конфигурацию скопирована!", calcShareBtn: "Поделиться расчётом"
       }
     };
     function uiText(key) {

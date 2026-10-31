@@ -38,6 +38,20 @@ header.sticky {
   content-visibility: auto;
   contain-intrinsic-size: 0 350px;
 }
+
+/* Skeleton shimmer animation for media and artwork placeholders */
+@keyframes cardShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+#gallery-cards-grid > button > div:first-child,
+#catalog-grid .catalog-art,
+.sample-thumb {
+  background: linear-gradient(90deg, #16121b 0%, #241c2c 50%, #16121b 100%) !important;
+  background-size: 200% 100% !important;
+  animation: cardShimmer 2.6s infinite ease-in-out;
+}
 .catalog-art>.catalog-status,.catalog-art>.media-adult-badge,.catalog-art>.catalog-demo-badge,.media-adult-badge,.adult-tag{border-radius:4px!important;min-height:25px!important;box-sizing:border-box;display:inline-flex;align-items:center;padding:4px 7px!important;font:500 10px/15px Inter,system-ui!important}
 #commission-intake,#contacts-intake{color:var(--status-green)!important;border-color:var(--status-green-border)!important;background:var(--status-green-bg)!important}
 .catalog-status.available,.catalog-status.status-open{color:var(--status-green);border-color:var(--status-green-border)}
