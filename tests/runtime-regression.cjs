@@ -47,4 +47,9 @@ console.log(JSON.stringify({suite:'runtime-regression',checks,passed:true}));
  check(!ctx.isValidQuoteEmail('bad-email')&&!ctx.isValidQuoteEmail('user@domain')&&!ctx.isValidQuoteEmail('user..name@example.com'),'Invalid emails fail');
  check(ctx.isValidQuoteDiscord('drintrava')&&ctx.isValidQuoteDiscord('@drin_trava.art')&&ctx.isValidQuoteDiscord('NekTahr#1234'),'Valid Discord handles pass');
  check(!ctx.isValidQuoteDiscord('a')&&!ctx.isValidQuoteDiscord('bad handle!')&&!ctx.isValidQuoteDiscord('user..name')&&!ctx.isValidQuoteDiscord('user#12'),'Invalid Discord handles fail');
+ const mobileCss=fs.readFileSync(__dirname+'/../assets/review-batch.css','utf8');
+ check(/\.gal-filter-btn[\s\S]*?min-width:\s*44px\s*!important[\s\S]*?min-height:\s*44px\s*!important/.test(mobileCss),'Gallery filter buttons enforce 44x44px touch target on mobile');
+ check(/#nav-links\s+\.nav-link[\s\S]*?min-width:\s*44px\s*!important[\s\S]*?min-height:\s*4[468]px\s*!important/.test(mobileCss)&&/\.bnav-item[\s\S]*?min-width:\s*44px\s*!important[\s\S]*?min-height:\s*48px\s*!important/.test(mobileCss)&&/\.lang-btn[\s\S]*?min-width:\s*44px\s*!important[\s\S]*?min-height:\s*44px\s*!important/.test(mobileCss)&&/\.mobile-nav-toggle[\s\S]*?min-width:\s*44px\s*!important[\s\S]*?min-height:\s*44px\s*!important/.test(mobileCss),'Navigation links and header controls enforce 44x44px touch target on mobile');
+ check(/\.quote-stepper\s+button[\s\S]*?min-width:\s*44px\s*!important[\s\S]*?min-height:\s*44px\s*!important/.test(mobileCss)&&/#calc-reset-btn[\s\S]*?min-width:\s*44px\s*!important[\s\S]*?min-height:\s*44px\s*!important/.test(mobileCss)&&/#page-pricing\s+\.ptab-btn[\s\S]*?min-width:\s*44px\s*!important[\s\S]*?min-height:\s*46px\s*!important/.test(mobileCss)&&/#page-pricing\s+#calc-copy-btn[\s\S]*?min-width:\s*44px\s*!important[\s\S]*?min-height:\s*48px\s*!important/.test(mobileCss),'Calculator buttons enforce 44x44px touch target on mobile');
 }
+
