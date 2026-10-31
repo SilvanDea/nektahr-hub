@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
   <script src="/assets/portfolio-data.js?v=65cd7e93fb89"></script>
   <script src="/assets/queue-manager.js?v=d5a27c4cb711" defer></script>
-  <link rel="stylesheet" href="/assets/utilities.css?v=5bcd83d7f7e8">
+  <link rel="stylesheet" href="/assets/utilities.css?v=2beb17528561">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
@@ -47,7 +47,7 @@
 <link rel="stylesheet" href="/assets/compact-calculator.css?v=b719dfe1a0b4">
 <link rel="stylesheet" href="/assets/contact-actions.css?v=e57e8e3f414b">
 <link rel="stylesheet" href="/assets/thumbnail-mats.css?v=f633d43cfe84">
-<link rel="stylesheet" href="/assets/review-batch.css?v=c3e2f22e4c9d">
+<link rel="stylesheet" href="/assets/review-batch.css?v=8404f933d307">
 </head>
 <body data-page="catalog" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
   <a href="#main-content" id="skip-content" class="skip-content">Skip to content</a>
@@ -78,11 +78,32 @@
     </nav>
 
     <div class="flex items-center gap-3">
-      <!-- Language Switcher: EN (main) · ES · RU -->
-      <div class="flex items-center border hairline bg-surface p-0.5 mono text-[11px]">
-        <button onclick="setLang('en')" data-l="en" class="lang-btn px-2 py-0.5 bg-accent text-bg font-medium transition cursor-pointer">EN</button>
-        <button onclick="setLang('es')" data-l="es" class="lang-btn px-2 py-0.5 text-textDim hover:text-textMain transition cursor-pointer">ES</button>
-        <button onclick="setLang('ru')" data-l="ru" class="lang-btn px-2 py-0.5 text-textDim hover:text-textMain transition cursor-pointer">RU</button>
+      <!-- Language Switcher: EN (main) · RU · ES -->
+      <div class="lang-switcher" id="lang-switcher">
+        <button type="button" id="lang-trigger-btn" class="lang-trigger-btn" aria-haspopup="menu" aria-expanded="false" aria-controls="lang-menu" aria-label="Change language">
+          <svg class="lang-globe-icon" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.65">
+            <circle cx="10" cy="10" r="7.25"></circle>
+            <path d="M2.9 10h14.2M10 2.75c2 2.1 3.1 4.65 3.1 7.25S12 15.15 10 17.25c-2-2.1-3.1-4.65-3.1-7.25S8 4.85 10 2.75z" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span id="lang-active-code" class="lang-active-code">EN</span>
+          <svg class="lang-chevron-icon" aria-hidden="true" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.65">
+            <path d="M3 4.5L6 7.5L9 4.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+        <div id="lang-menu" class="lang-menu" role="menu" aria-label="Select language">
+          <button type="button" role="menuitemradio" aria-checked="true" onclick="setLang('en')" data-l="en" class="lang-btn px-2 py-0.5 bg-accent text-bg font-medium transition cursor-pointer">
+            <span class="lang-btn-code">EN</span>
+            <span class="lang-btn-name">English</span>
+          </button>
+          <button type="button" role="menuitemradio" aria-checked="false" onclick="setLang('ru')" data-l="ru" class="lang-btn px-2 py-0.5 text-textDim hover:text-textMain transition cursor-pointer">
+            <span class="lang-btn-code">RU</span>
+            <span class="lang-btn-name">Русский</span>
+          </button>
+          <button type="button" role="menuitemradio" aria-checked="false" onclick="setLang('es')" data-l="es" class="lang-btn px-2 py-0.5 text-textDim hover:text-textMain transition cursor-pointer">
+            <span class="lang-btn-code">ES</span>
+            <span class="lang-btn-name">Español</span>
+          </button>
+        </div>
       </div>
 
       <a href="/queue/" title="Active commission queue" aria-label="Open active commission queue" class="flex items-center gap-1.5 px-2 py-1 border border-accent/30 bg-accent/5 text-accent mono text-[10px] uppercase cursor-pointer hover:bg-accent/10 transition whitespace-nowrap">
@@ -1099,7 +1120,7 @@
   <!-- =====================================================================
        APPLICATION LOGIC
   ====================================================================== -->
-  <script src="/assets/app.js?v=ac0e59ea382d"></script>
+  <script src="/assets/app.js?v=7a94027916cb"></script>
 <script src="/assets/process-viewer.js?v=e39c9751d584"></script>
 <script src="/assets/artwork-interactions.js?v=97b89cb2e8ce"></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
@@ -1110,6 +1131,6 @@
 <script src="/assets/compact-calculator.js?v=3c78ec45d022"></script>
 <script src="/assets/contact-actions.js?v=00b3f7224a7a"></script>
 <script src="/assets/thumbnail-mats.js?v=b39f58205f4f"></script>
-<script src="/assets/review-batch.js?v=7d0df8385139"></script>
+<script src="/assets/review-batch.js?v=99d7af72380d"></script>
 </body>
 </html>

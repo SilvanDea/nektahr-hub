@@ -77,11 +77,32 @@
     </nav>
 
     <div class="flex items-center gap-3">
-      <!-- Language Switcher: EN (main) · ES · RU -->
-      <div class="flex items-center border hairline bg-surface p-0.5 mono text-[11px]">
-        <button onclick="setLang('en')" data-l="en" class="lang-btn px-2 py-0.5 bg-accent text-bg font-medium transition cursor-pointer">EN</button>
-        <button onclick="setLang('es')" data-l="es" class="lang-btn px-2 py-0.5 text-textDim hover:text-textMain transition cursor-pointer">ES</button>
-        <button onclick="setLang('ru')" data-l="ru" class="lang-btn px-2 py-0.5 text-textDim hover:text-textMain transition cursor-pointer">RU</button>
+      <!-- Language Switcher: EN (main) · RU · ES -->
+      <div class="lang-switcher" id="lang-switcher">
+        <button type="button" id="lang-trigger-btn" class="lang-trigger-btn" aria-haspopup="menu" aria-expanded="false" aria-controls="lang-menu" aria-label="Change language">
+          <svg class="lang-globe-icon" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.65">
+            <circle cx="10" cy="10" r="7.25"></circle>
+            <path d="M2.9 10h14.2M10 2.75c2 2.1 3.1 4.65 3.1 7.25S12 15.15 10 17.25c-2-2.1-3.1-4.65-3.1-7.25S8 4.85 10 2.75z" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+          <span id="lang-active-code" class="lang-active-code">EN</span>
+          <svg class="lang-chevron-icon" aria-hidden="true" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.65">
+            <path d="M3 4.5L6 7.5L9 4.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </button>
+        <div id="lang-menu" class="lang-menu" role="menu" aria-label="Select language">
+          <button type="button" role="menuitemradio" aria-checked="true" onclick="setLang('en')" data-l="en" class="lang-btn px-2 py-0.5 bg-accent text-bg font-medium transition cursor-pointer">
+            <span class="lang-btn-code">EN</span>
+            <span class="lang-btn-name">English</span>
+          </button>
+          <button type="button" role="menuitemradio" aria-checked="false" onclick="setLang('ru')" data-l="ru" class="lang-btn px-2 py-0.5 text-textDim hover:text-textMain transition cursor-pointer">
+            <span class="lang-btn-code">RU</span>
+            <span class="lang-btn-name">Русский</span>
+          </button>
+          <button type="button" role="menuitemradio" aria-checked="false" onclick="setLang('es')" data-l="es" class="lang-btn px-2 py-0.5 text-textDim hover:text-textMain transition cursor-pointer">
+            <span class="lang-btn-code">ES</span>
+            <span class="lang-btn-name">Español</span>
+          </button>
+        </div>
       </div>
 
       <a href="/queue/" title="Active commission queue" aria-label="Open active commission queue" class="flex items-center gap-1.5 px-2 py-1 border border-accent/30 bg-accent/5 text-accent mono text-[10px] uppercase cursor-pointer hover:bg-accent/10 transition whitespace-nowrap">

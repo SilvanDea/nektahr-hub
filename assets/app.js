@@ -116,12 +116,17 @@
       document.querySelector('meta[property="og:description"]').content = activeMeta[1];
       document.querySelector('meta[name="twitter:title"]')?.setAttribute('content',activeMeta[0]);
       document.querySelector('meta[name="twitter:description"]')?.setAttribute('content',activeMeta[1]);
+      const activeCodeEl = document.getElementById('lang-active-code');
+      if (activeCodeEl) activeCodeEl.textContent = lang.toUpperCase();
       document.querySelectorAll('.lang-btn').forEach(btn => {
         const active = btn.dataset.l === lang;
+        btn.setAttribute?.('aria-checked', String(active));
         btn.className = active
           ? "lang-btn px-2 py-0.5 bg-accent text-bg font-medium transition cursor-pointer"
           : "lang-btn px-2 py-0.5 text-textDim hover:text-textMain transition cursor-pointer";
       });
+      document.getElementById('lang-switcher')?.classList?.remove?.('is-open');
+      document.getElementById('lang-trigger-btn')?.setAttribute?.('aria-expanded', 'false');
       renderAllText();
     }
 

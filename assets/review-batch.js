@@ -22,6 +22,23 @@
  function openConditions(){if(document.body.dataset.page!=='pricing'||location.hash!=='#order-conditions')return;switchPricingTab('custom');const group=document.querySelector('details[data-compact-group="more"]');if(group){group.id='order-conditions';group.open=true;group.scrollIntoView({block:'center'})}}
  window.addEventListener('load',openConditions);
 
+ // Language switcher popover toggle and click-away
+ const langSwitcher=$('lang-switcher'),langTrigger=$('lang-trigger-btn'),langActiveCode=$('lang-active-code');
+ function toggleLangMenu(force){
+  if(!langSwitcher||!langTrigger)return;
+  const open=typeof force==='boolean'?force:!langSwitcher.classList.contains('is-open');
+  langSwitcher.classList.toggle('is-open',open);
+  langTrigger.setAttribute('aria-expanded',String(open));
+ }
+ function syncLangSwitcher(){
+  const code=(lang()||'en').toUpperCase();
+  if(langActiveCode)langActiveCode.textContent=code;
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+   btn.setAttribute('aria-checked',String(btn.dataset.l===(lang()||'en')));
+  });
+ }
+ if(langTrigger)langTrigger.onclick=e=>{e.stopPropagation();toggleLangMenu();};
+
  // Mobile navigation drawer toggle and click-away
  const navToggle=$('mobile-nav-toggle'),navLinks=$('nav-links'),header=document.querySelector('header.sticky'),bnavMore=$('bnav-more');
  function toggleMobileMenu(force){
@@ -44,24 +61,51 @@
  }
  document.addEventListener('click',e=>{
   if(navLinks&&!navLinks.contains(e.target)&&(!bnavMore||!bnavMore.contains(e.target))&&(!navToggle||!navToggle.contains(e.target)))toggleMobileMenu(false);
+  if(langSwitcher&&!langSwitcher.contains(e.target))toggleLangMenu(false);
  });
  document.addEventListener('keydown',e=>{
-  if(e.key==='Escape')toggleMobileMenu(false);
+  if(e.key==='Escape'){
+   toggleMobileMenu(false);
+   toggleLangMenu(false);
+  }
  });
 
- // Mobile floating quote bar sync & visibility
+ // Mobile floating quote bar sync, tier card quick-jump badge & visibility
  const quoteLabels={
-  en:{label:'Estimated Total',btn:'To Quote'},
-  ru:{label:'Ориентировочно',btn:'К расчёту'},
-  es:{label:'Total estimado',btn:'Al cálculo'}
+  en:{label:'Estimated Total',btn:'Configure ↓',cardJump:'Configure in calculator ↓'},
+  ru:{label:'Ориентировочно',btn:'К калькулятору ↓',cardJump:'Настроить в калькуляторе ↓'},
+  es:{label:'Total estimado',btn:'Configurar ↓',cardJump:'Configurar en calculadora ↓'}
  };
+ function syncTierCardBadges(){
+  if(document.body.dataset.page!=='pricing')return;
+  const l=quoteLabels[lang()]||quoteLabels.en;
+  document.querySelectorAll('#custom-stages-grid [data-quote-value],#adopt-tiers-grid [data-quote-value],#ych-slots-grid [data-quote-value]').forEach(card=>{
+   let jump=card.querySelector('.tier-calc-jump');
+   if(!jump){
+    jump=document.createElement('span');
+    jump.className='tier-calc-jump';
+    jump.addEventListener('click',e=>{
+     if(card.classList.contains('quote-selected')){
+      e.stopPropagation();
+      document.querySelector('.quote-panel')?.scrollIntoView({behavior:'smooth',block:'start'});
+     }
+    });
+    const target=card.querySelector('.p-5')||card;
+    target.append(jump);
+   }
+   jump.textContent=l.cardJump;
+  });
+ }
  function syncMobileQuote(){
   const total=$('calc-total-value')?.textContent;
   const amount=$('mobile-quote-amount');
   if(amount&&total)amount.textContent=total;
   const l=quoteLabels[lang()]||quoteLabels.en;
-  if($('mobile-quote-label'))$('mobile-quote-label').textContent=l.label;
-  if($('mobile-quote-btn-text'))$('mobile-quote-btn-text').textContent=l.btn;
+  const sel=$('calc-stage-sel');
+  const selText=sel?.selectedOptions?.[0]?.textContent?.split('—')?.[0]?.trim();
+  if($('mobile-quote-label'))$('mobile-quote-label').textContent=selText||l.label;
+  if($('mobile-quote-btn-text'))$('mobile-quote-btn-text').textContent=l.btn.replace(' ↓','');
+  syncTierCardBadges();
  }
  const calcTotal=$('calc-total-value');
  if(calcTotal){
@@ -84,6 +128,7 @@
   es:{board:'Inicio',pricing:'Precios',catalog:'Catálogo',gallery:'Galería',more:'Más'}
  };
  function syncBottomNav(){
+  syncLangSwitcher();
   const l=bnavLabels[lang()]||bnavLabels.en;
   const page=document.body.dataset.page||'board';
   for(const[k,v]of Object.entries(l)){
