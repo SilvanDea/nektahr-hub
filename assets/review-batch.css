@@ -213,6 +213,107 @@ header a[title*="queue"] span:first-child {
   transform: scale(1.1);
   transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
+
+/* 10. Hero atmospheric breathing aura */
+.hero-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 96%;
+  height: 96%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(226, 180, 120, 0.22) 0%, rgba(168, 85, 247, 0.12) 45%, transparent 75%);
+  filter: blur(48px);
+  pointer-events: none;
+  z-index: 0;
+  animation: heroAuraBreathe 9s infinite alternate ease-in-out;
+}
+@keyframes heroAuraBreathe {
+  0% { transform: translate(-52%, -48%) scale(0.92); opacity: 0.65; }
+  50% { transform: translate(-48%, -52%) scale(1.08); opacity: 0.95; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 0.75; }
+}
+
+/* 11. Live price number spring pop */
+@keyframes pricePop {
+  0% { transform: scale(1); }
+  40% { transform: scale(1.14); color: #ffd166; text-shadow: 0 0 16px rgba(226, 180, 120, 0.45); }
+  100% { transform: scale(1); }
+}
+.price-pop {
+  display: inline-block;
+  animation: pricePop 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 12. Comparison curtain glowing energy divider */
+#art-process .divider {
+  width: 2px !important;
+  background: #e2b478 !important;
+  box-shadow: 0 0 10px rgba(226, 180, 120, 0.8), 0 0 20px rgba(226, 180, 120, 0.35) !important;
+}
+#art-process .divider span {
+  background: #e2b478 !important;
+  color: #0b0a0e !important;
+  box-shadow: 0 0 12px rgba(226, 180, 120, 0.85) !important;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+}
+#art-process .curtain:hover .divider span,
+#art-process .curtain:active .divider span {
+  transform: translate(-50%, -50%) scale(1.22) !important;
+}
+
+/* 13. Dialog & Lightbox cinematic entrance with backdrop blur */
+dialog[open]:not(#catalog-dialog) {
+  animation: dialogZoomIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes dialogZoomIn {
+  from { opacity: 0; transform: scale(0.94) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+dialog::backdrop {
+  background: rgba(8, 6, 11, 0.88) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  animation: backdropFade 0.25s ease forwards;
+}
+@keyframes backdropFade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 14. Luxury slim custom scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #0b0a0e;
+}
+::-webkit-scrollbar-thumb {
+  background: #251e2c;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #e2b478;
+}
+
+/* 15. Queue Active Item Animated Pulse */
+.queue-status {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.queue-status:hover {
+  transform: scale(1.04);
+}
+
+/* 16. FAQ accordion chevron rotation and hover */
+#faq-items-list details summary span.mono {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+#faq-items-list details[open] summary span.mono {
+  transform: rotate(45deg);
+}
 .catalog-art>.catalog-status,.catalog-art>.media-adult-badge,.catalog-art>.catalog-demo-badge,.media-adult-badge,.adult-tag{border-radius:4px!important;min-height:25px!important;box-sizing:border-box;display:inline-flex;align-items:center;padding:4px 7px!important;font:500 10px/15px Inter,system-ui!important}
 #commission-intake,#contacts-intake{color:var(--status-green)!important;border-color:var(--status-green-border)!important;background:var(--status-green-bg)!important}
 .catalog-status.available,.catalog-status.status-open{color:var(--status-green);border-color:var(--status-green-border)}

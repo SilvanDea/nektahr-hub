@@ -125,7 +125,12 @@
  }
  const calcTotal=$('calc-total-value');
  if(calcTotal){
-  new MutationObserver(syncMobileQuote).observe(calcTotal,{childList:true,characterData:true,subtree:true});
+  new MutationObserver(()=>{
+   syncMobileQuote();
+   calcTotal.classList.remove('price-pop');
+   void calcTotal.offsetWidth;
+   calcTotal.classList.add('price-pop');
+  }).observe(calcTotal,{childList:true,characterData:true,subtree:true});
   syncMobileQuote();
  }
  const quotePanel=document.querySelector('.quote-panel'),quoteBar=$('mobile-quote-bar');

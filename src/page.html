@@ -200,8 +200,9 @@
         </div>
 
         <!-- Featured Cover Artwork -->
-        <div class="lg:col-span-5">
-          <button type="button" onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group text-left w-full">
+        <div class="lg:col-span-5 relative">
+          <div class="hero-ambient-glow" aria-hidden="true"></div>
+          <button type="button" onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group text-left w-full relative z-10">
             <div class="aspect-[4/5] overflow-hidden relative bg-bg">
               <img src="/assets/gallery/gal-adopt-cdg-v1bg.webp" alt="Featured character artwork" fetchpriority="high" decoding="async" width="400" height="500" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#0B0A0E] via-transparent to-transparent"></div>

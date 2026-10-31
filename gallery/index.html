@@ -62,7 +62,7 @@
   <link rel="preload" as="image" href="/assets/gallery/gal-adopt-cdg-v1bg.webp" type="image/webp" fetchpriority="high">
   <script src="/assets/portfolio-data.js?v=65cd7e93fb89"></script>
   <script src="/assets/queue-manager.js?v=d5a27c4cb711" defer></script>
-  <link rel="stylesheet" href="/assets/utilities.css?v=2beb17528561">
+  <link rel="stylesheet" href="/assets/utilities.css?v=62e7ef3c2fc6">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
@@ -81,7 +81,7 @@
 <link rel="stylesheet" href="/assets/compact-calculator.css?v=b719dfe1a0b4">
 <link rel="stylesheet" href="/assets/contact-actions.css?v=e57e8e3f414b">
 <link rel="stylesheet" href="/assets/thumbnail-mats.css?v=f633d43cfe84">
-<link rel="stylesheet" href="/assets/review-batch.css?v=045dacb04911">
+<link rel="stylesheet" href="/assets/review-batch.css?v=4e49af33b949">
 </head>
 <body data-page="gallery" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
   <a href="#main-content" id="skip-content" class="skip-content">Skip to content</a>
@@ -199,8 +199,9 @@
         </div>
 
         <!-- Featured Cover Artwork -->
-        <div class="lg:col-span-5">
-          <button type="button" onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group text-left w-full">
+        <div class="lg:col-span-5 relative">
+          <div class="hero-ambient-glow" aria-hidden="true"></div>
+          <button type="button" onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group text-left w-full relative z-10">
             <div class="aspect-[4/5] overflow-hidden relative bg-bg">
               <img src="/assets/gallery/gal-adopt-cdg-v1bg.webp" alt="Featured character artwork" fetchpriority="high" decoding="async" width="400" height="500" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#0B0A0E] via-transparent to-transparent"></div>
@@ -1169,6 +1170,6 @@
 <script src="/assets/compact-calculator.js?v=3c78ec45d022"></script>
 <script src="/assets/contact-actions.js?v=00b3f7224a7a"></script>
 <script src="/assets/thumbnail-mats.js?v=b39f58205f4f"></script>
-<script src="/assets/review-batch.js?v=a8ba7abad27a"></script>
+<script src="/assets/review-batch.js?v=e5df169facdc"></script>
 </body>
 </html>
