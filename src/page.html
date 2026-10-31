@@ -65,7 +65,8 @@
   <link rel="stylesheet" href="/assets/utilities.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet"></noscript>
   
   
 <link rel="stylesheet" href="/assets/styles.css">
@@ -200,7 +201,7 @@
         </div>
 
         <!-- Featured Cover Artwork -->
-        <div class="lg:col-span-5 relative">
+        <div class="lg:col-span-5 relative overflow-hidden">
           <div class="hero-ambient-glow" aria-hidden="true"></div>
           <button type="button" onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group text-left w-full relative z-10">
             <div class="aspect-[4/5] overflow-hidden relative bg-bg">
@@ -640,17 +641,17 @@
        APPLICATION LOGIC
   ====================================================================== -->
   <!-- APP_LOGIC -->
-<script src="/assets/process-viewer.js?v=20261030-artwork-names1"></script>
-<script src="/assets/artwork-interactions.js?v=20261029-image-guard"></script>
+<script src="/assets/process-viewer.js?v=20261030-artwork-names1" defer></script>
+<script src="/assets/artwork-interactions.js?v=20261029-image-guard" defer></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
-<script src="/assets/gallery-viewer.js?v=20261030-gallery-adult2"></script>
-<script src="/assets/pricing-samples.js?v=20261030-commission-options1"></script>
-<script src="/assets/quote-builder.js?v=20261030-commission-options1"></script>
-<script src="/assets/catalog.js?v=20261030-gallery-adult2"></script>
-<script src="/assets/compact-calculator.js?v=20261030-commission-options1"></script>
-<script src="/assets/contact-actions.js?v=20261030-tier-bonuses2"></script>
-<script src="/assets/thumbnail-mats.js?v=20261029-frames1"></script>
-<script src="/assets/review-batch.js"></script>
+<script src="/assets/gallery-viewer.js?v=20261030-gallery-adult2" defer></script>
+<script src="/assets/pricing-samples.js?v=20261030-commission-options1" defer></script>
+<script src="/assets/quote-builder.js?v=20261030-commission-options1" defer></script>
+<script src="/assets/catalog.js?v=20261030-gallery-adult2" defer></script>
+<script src="/assets/compact-calculator.js?v=20261030-commission-options1" defer></script>
+<script src="/assets/contact-actions.js?v=20261030-tier-bonuses2" defer></script>
+<script src="/assets/thumbnail-mats.js?v=20261029-frames1" defer></script>
+<script src="/assets/review-batch.js" defer></script>
 </body>
 </html>
 

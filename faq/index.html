@@ -65,7 +65,8 @@
   <link rel="stylesheet" href="/assets/utilities.css?v=62e7ef3c2fc6">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet"></noscript>
 
 
 <link rel="stylesheet" href="/assets/styles.css?v=5b1a5b2fa063">
@@ -81,7 +82,7 @@
 <link rel="stylesheet" href="/assets/compact-calculator.css?v=b719dfe1a0b4">
 <link rel="stylesheet" href="/assets/contact-actions.css?v=e57e8e3f414b">
 <link rel="stylesheet" href="/assets/thumbnail-mats.css?v=f633d43cfe84">
-<link rel="stylesheet" href="/assets/review-batch.css?v=4e49af33b949">
+<link rel="stylesheet" href="/assets/review-batch.css?v=f136e57aac20">
 </head>
 <body data-page="faq" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
   <a href="#main-content" id="skip-content" class="skip-content">Skip to content</a>
@@ -199,7 +200,7 @@
         </div>
 
         <!-- Featured Cover Artwork -->
-        <div class="lg:col-span-5 relative">
+        <div class="lg:col-span-5 relative overflow-hidden">
           <div class="hero-ambient-glow" aria-hidden="true"></div>
           <button type="button" onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group text-left w-full relative z-10">
             <div class="aspect-[4/5] overflow-hidden relative bg-bg">
@@ -1160,16 +1161,16 @@
        APPLICATION LOGIC
   ====================================================================== -->
   <script src="/assets/app.js?v=0b0afbd72738"></script>
-<script src="/assets/process-viewer.js?v=e39c9751d584"></script>
-<script src="/assets/artwork-interactions.js?v=97b89cb2e8ce"></script>
+<script src="/assets/process-viewer.js?v=e39c9751d584" defer></script>
+<script src="/assets/artwork-interactions.js?v=97b89cb2e8ce" defer></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
-<script src="/assets/gallery-viewer.js?v=75d34e6e0803"></script>
-<script src="/assets/pricing-samples.js?v=4f1d6c9d08d4"></script>
-<script src="/assets/quote-builder.js?v=dff1c1517491"></script>
-<script src="/assets/catalog.js?v=133dc632ac11"></script>
-<script src="/assets/compact-calculator.js?v=3c78ec45d022"></script>
-<script src="/assets/contact-actions.js?v=00b3f7224a7a"></script>
-<script src="/assets/thumbnail-mats.js?v=b39f58205f4f"></script>
-<script src="/assets/review-batch.js?v=e5df169facdc"></script>
+<script src="/assets/gallery-viewer.js?v=75d34e6e0803" defer></script>
+<script src="/assets/pricing-samples.js?v=4f1d6c9d08d4" defer></script>
+<script src="/assets/quote-builder.js?v=dff1c1517491" defer></script>
+<script src="/assets/catalog.js?v=133dc632ac11" defer></script>
+<script src="/assets/compact-calculator.js?v=3c78ec45d022" defer></script>
+<script src="/assets/contact-actions.js?v=00b3f7224a7a" defer></script>
+<script src="/assets/thumbnail-mats.js?v=b39f58205f4f" defer></script>
+<script src="/assets/review-batch.js?v=2cedfb3abbaf" defer></script>
 </body>
 </html>

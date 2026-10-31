@@ -8,7 +8,6 @@
    try{navigator.vibrate(pattern);}catch(_){}
   }
  }
- window.triggerHaptic=haptic;
 
  document.addEventListener('click',e=>{
   const t=e.target?.closest?.('button, a, .ptab-btn, .lang-btn, .bnav-item, .quote-stepper button, .tier-calc-jump, #calc-copy-btn, #gallery-adult-toggle, .gal-filter-btn, [role="button"], [role="switch"]');
@@ -17,6 +16,21 @@
    else haptic(8);
   }
  },{passive:true});
+ // Stop skeleton shimmer once images have loaded
+ function stopShimmerOnLoad(){
+  document.querySelectorAll('#gallery-cards-grid>button>div:first-child,#catalog-grid .catalog-art,.sample-thumb').forEach(frame=>{
+   const img=frame.querySelector('img');
+   if(!img)return;
+   function done(){frame.classList.add('shimmer-done');}
+   if(img.complete&&img.naturalWidth>0)done();
+   else img.addEventListener('load',done,{once:true});
+  });
+ }
+ stopShimmerOnLoad();
+ // Re-run after dynamic renders
+ const _origDecorate=window.__batchDecorate;
+ document.addEventListener('animationend',e=>{if(e.animationName==='cardCascade')stopShimmerOnLoad();},{passive:true});
+
  const rules={en:[['Free hold','48 hours.'],['Paid hold','From 7 days; longer terms can be agreed.'],['Advance','At least $10, credited toward the price. The hold starts when it arrives; pay the balance before the hold expires.'],['Auction listings','Only unsold listings after bidding ends and more than 14 days after listing. A confirmed hold closes new offers. For YCH, this reserves a slot; the template stays reusable.'],['Please note','A reservation does not mean drawing has started.']],ru:[['Бесплатная бронь','48 часов.'],['Платная бронь','От 7 дней; более долгий срок обсудим.'],['Предоплата','От $10 в счёт покупки. Срок брони начинается после её получения; остаток нужно оплатить до окончания брони.'],['Аукционы','Бронь доступна непроданным работам после завершения торгов и спустя более 14 дней с публикации. Подтверждённая бронь закрывает новые предложения. У YCH бронируется слот; шаблон остаётся доступным для повторных заказов.'],['Важно','Бронь ещё не означает начало рисования.']],es:[['Reserva gratuita','48 horas.'],['Reserva pagada','Desde 7 días; podemos acordar más tiempo.'],['Anticipo','Al menos $10, descontados del precio. La reserva empieza al recibirlo; el resto se paga antes de que termine.'],['Subastas','Solo obras sin vender, tras cerrar las pujas y más de 14 días después de publicarse. La reserva confirmada cierra nuevas ofertas. En YCH se reserva una plaza; la plantilla sigue disponible para otros pedidos.'],['Importante','Reservar no significa que haya empezado a dibujar.']]};
  const lock='<span class="media-lock-icon"><svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="6" y="10" width="12" height="11" rx="3"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/><circle cx="12" cy="15" r="1"/><path d="M12 16v2"/></svg></span><span>NSFW · 18+</span>';
  let busy=false;function decorate(){if(busy)return;busy=true;observer.disconnect();
@@ -125,11 +139,15 @@
  }
  const calcTotal=$('calc-total-value');
  if(calcTotal){
+  let popRaf=0;
   new MutationObserver(()=>{
    syncMobileQuote();
-   calcTotal.classList.remove('price-pop');
-   void calcTotal.offsetWidth;
-   calcTotal.classList.add('price-pop');
+   cancelAnimationFrame(popRaf);
+   popRaf=requestAnimationFrame(()=>{
+    calcTotal.classList.remove('price-pop');
+    void calcTotal.offsetWidth;
+    calcTotal.classList.add('price-pop');
+   });
   }).observe(calcTotal,{childList:true,characterData:true,subtree:true});
   syncMobileQuote();
  }
