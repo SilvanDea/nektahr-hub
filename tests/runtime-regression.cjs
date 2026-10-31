@@ -34,3 +34,13 @@ function consent(store,blocked=false){const c={sessionStorage:{getItem:k=>{if(bl
 console.log(JSON.stringify({suite:'runtime-regression',checks,passed:true}));
 // Comparison pairs follow explicit variant relationships instead of adjacent files.
 {const code=fs.readFileSync(__dirname+'/../assets/process-viewer.js','utf8');const pairCode=code.slice(code.indexOf('function pair()'),code.indexOf('function moveCurtain()'));const c={work:{labels:['template','blonde1','blonde2','blue1','blue2','nsfw'],comparisonPairs:[[0,1],[0,1],[1,2],[0,3],[3,4],[3,5]]},phase:3};vm.createContext(c);vm.runInContext(pairCode,c);assert.deepEqual(Array.from(c.pair()),[0,3]);c.phase=5;assert.deepEqual(Array.from(c.pair()),[3,5]);c.work={labels:['base','render','alt'],compareFromBase:true};c.phase=2;assert.deepEqual(Array.from(c.pair()),[0,2]);console.log('Comparison pair regressions passed (3)');}
+// Gallery keyword search filters in real time by title, category, and tags.
+{const pdata=fs.readFileSync(__dirname+'/../assets/portfolio-data.js','utf8');const grid={innerHTML:''};const adultBtn={textContent:'',setAttribute(){}};const searchInput={value:''};
+ const ctx={window:{},document:{body:{dataset:{page:'gallery'}},getElementById:id=>id==='gallery-cards-grid'?grid:id==='gallery-adult-only'?adultBtn:id==='gallery-search'?searchInput:{textContent:'',setAttribute(){}},addEventListener(){}},sessionStorage:{getItem:()=>null,setItem(){}},uiText:k=>k};ctx.window=ctx;
+ vm.createContext(ctx);vm.runInContext(pdata+'\n'+html.slice(0,html.indexOf('function openLightbox(')),ctx);
+ ctx.setGallerySearch('frieren');check(grid.innerHTML.includes('Frieren')&&!grid.innerHTML.includes('Wriothesley'),'Gallery search filters by title');
+ ctx.setGallerySearch('adopt twin');check(grid.innerHTML.includes('Moonlit Rose')&&grid.innerHTML.includes('Chinese Dragon Girl')&&!grid.innerHTML.includes('Alistair'),'Gallery search filters by category and twin design tag');
+ ctx.setGallerySearch('genshin fanart');check(grid.innerHTML.includes('Furina')&&grid.innerHTML.includes('Wriothesley'),'Gallery search filters by series tag and category');
+ ctx.setGallerySearch('nonexistent-xyz-token');check(grid.innerHTML.includes('role="status"'),'Gallery search shows empty state when no items match');
+ ctx.setGallerySearch('');check(grid.innerHTML.includes('Frieren')&&grid.innerHTML.includes('Wriothesley'),'Clearing gallery search restores full gallery');
+}

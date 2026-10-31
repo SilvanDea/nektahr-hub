@@ -669,6 +669,18 @@
       document.getElementById('gal-eyebrow').textContent = t.gallery.eyebrow;
       document.getElementById('gal-title').textContent = t.gallery.title;
       document.getElementById('gal-sub').textContent = t.gallery.sub;
+      const galSearchCopy = ({
+        en: { placeholder: 'Search by title, category, or tags…', label: 'Search gallery by title, category, or tags' },
+        ru: { placeholder: 'Поиск по названию, категории или тегам…', label: 'Поиск по галерее: название, категория или теги' },
+        es: { placeholder: 'Buscar por título, categoría o etiquetas…', label: 'Buscar en la galería por título, categoría o etiquetas' }
+      })[currentLang] || { placeholder: 'Search by title, category, or tags…', label: 'Search gallery by title, category, or tags' };
+      const galSearchLabel = document.getElementById('gallery-search-label');
+      if (galSearchLabel) galSearchLabel.textContent = galSearchCopy.label;
+      const galSearchInput = document.getElementById('gallery-search');
+      if (galSearchInput) {
+        galSearchInput.placeholder = galSearchCopy.placeholder;
+        galSearchInput.setAttribute('aria-label', galSearchCopy.label);
+      }
       Object.entries(t.gallery.filters).forEach(([key, label]) => {
         const button = document.getElementById(`gf-${key}`);
         if (button) button.textContent = label;

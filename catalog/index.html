@@ -46,7 +46,7 @@
 <link rel="stylesheet" href="/assets/compact-calculator.css?v=b719dfe1a0b4">
 <link rel="stylesheet" href="/assets/contact-actions.css?v=e57e8e3f414b">
 <link rel="stylesheet" href="/assets/thumbnail-mats.css?v=f633d43cfe84">
-<link rel="stylesheet" href="/assets/review-batch.css?v=4393b281dfc4">
+<link rel="stylesheet" href="/assets/review-batch.css?v=530edd944e95">
 </head>
 <body data-page="catalog" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
   <a href="#main-content" id="skip-content" class="skip-content">Skip to content</a>
@@ -55,7 +55,7 @@
        CENTRAL CONFIGURATION & LOCALIZATION (EN main · ES · RU)
   ====================================================================== -->
   <script src="/assets/translations.js?v=33dac65aab65"></script>
-<script src="/assets/app-state.js?v=ba3a1faacfcc"></script>
+<script src="/assets/app-state.js?v=37c0078c8ab3"></script>
 
   <!-- =====================================================================
        STICKY HEADER
@@ -600,8 +600,12 @@
         </div>
 
         <div class="flex flex-wrap items-center gap-3">
-          <!-- Category Filters + 18+ Toggle -->
+          <!-- Keyword Search + Category Filters + 18+ Toggle -->
           <div class="flex flex-wrap items-center gap-3">
+            <label class="gallery-search-wrap">
+              <span id="gallery-search-label" class="sr-only">Search gallery by title, category, or tags</span>
+              <input type="search" id="gallery-search" oninput="setGallerySearch(this.value)" placeholder="Search by title, category, or tags…" aria-label="Search gallery by title, category, or tags" autocomplete="off" />
+            </label>
             <div id="gallery-category-filters" class="flex flex-wrap gap-1.5 mono text-xs" role="group" aria-label="Gallery filters">
               <button type="button" onclick="setGalleryCat('all')" data-c="all" id="gf-all" aria-pressed="true" class="gal-filter-btn px-3 py-1.5 bg-accent text-bg font-medium transition cursor-pointer">All Works</button>
               <button type="button" onclick="setGalleryCat('comm')" data-c="comm" id="gf-comm" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Commissions</button>
@@ -1072,7 +1076,7 @@
   <!-- =====================================================================
        APPLICATION LOGIC
   ====================================================================== -->
-  <script src="/assets/app.js?v=2faac0fc07f0"></script>
+  <script src="/assets/app.js?v=448419d5b577"></script>
 <script src="/assets/process-viewer.js?v=e39c9751d584"></script>
 <script src="/assets/artwork-interactions.js?v=97b89cb2e8ce"></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>

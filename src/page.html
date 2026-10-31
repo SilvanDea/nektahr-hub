@@ -342,8 +342,12 @@
         </div>
 
         <div class="flex flex-wrap items-center gap-3">
-          <!-- Category Filters + 18+ Toggle -->
+          <!-- Keyword Search + Category Filters + 18+ Toggle -->
           <div class="flex flex-wrap items-center gap-3">
+            <label class="gallery-search-wrap">
+              <span id="gallery-search-label" class="sr-only">Search gallery by title, category, or tags</span>
+              <input type="search" id="gallery-search" oninput="setGallerySearch(this.value)" placeholder="Search by title, category, or tags…" aria-label="Search gallery by title, category, or tags" autocomplete="off" />
+            </label>
             <div id="gallery-category-filters" class="flex flex-wrap gap-1.5 mono text-xs" role="group" aria-label="Gallery filters">
               <button type="button" onclick="setGalleryCat('all')" data-c="all" id="gf-all" aria-pressed="true" class="gal-filter-btn px-3 py-1.5 bg-accent text-bg font-medium transition cursor-pointer">All Works</button>
               <button type="button" onclick="setGalleryCat('comm')" data-c="comm" id="gf-comm" aria-pressed="false" class="gal-filter-btn px-3 py-1.5 border hairline text-textMuted hover:text-textMain transition cursor-pointer">Commissions</button>

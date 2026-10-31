@@ -236,8 +236,69 @@
     const CALC_MODE_STATE = { custom: { value: 'single', addons: [], mults: [] }, adopt: { value: '100', addons: [], mults: [] }, ych: { value: '30', addons: [], mults: [] } };
     let currentGalCat = 'all';
     let galleryAdultOnly = false;
+    let gallerySearchQuery = '';
     function hasAdultArtwork(item) { return Boolean(item.nsfw || item.hasAdultVersion || [3,4].includes(item.processWork) || (window.PORTFOLIO_WORKS||[]).find(w=>w.id===item.processWork)?.nsfw.some(Boolean)); }
-    function matchesGalleryFilters(item) { return item.gallery!==false && (currentGalCat==='all'||item.cat===currentGalCat) && (!galleryAdultOnly||hasAdultArtwork(item)); }
+    function getGallerySearchHaystack(item) {
+      const model = (window.PORTFOLIO_WORKS || []).find(w => w.id === item.processWork);
+      const catTags = {
+        comm: 'commission commissions коммишен коммишки заказ encargo encargos',
+        adopt: 'adopt adopts adoptable adoptables адопт адопты',
+        ych: 'ych your character here слот',
+        fanart: 'fanart fan art фан-арт фанарт',
+        other: 'other other works illustration illustrations иллюстрация другие работы ilustración otros trabajos'
+      }[item.cat] || '';
+      const parts = [
+        item.title,
+        getGalleryTitle(item),
+        item.localizedTitles?.en,
+        item.localizedTitles?.ru,
+        item.localizedTitles?.es,
+        item.id === 6 ? 'Frieren Фрирен' : '',
+        item.processWork === 3 ? 'Wriothesley Ризли' : '',
+        item.cat,
+        getGalleryKind(item),
+        catTags,
+        getGallerySeries(item),
+        item.processWork ? getProcessLabel(item) : getGalleryStage(item),
+        item.id === 3 ? 'Color Sketch Цветной скетч Boceto a color' : '',
+        Array.isArray(item.tags) ? item.tags.join(' ') : (item.tags || ''),
+        model?.series,
+        model?.character?.en,
+        model?.character?.ru,
+        model?.character?.es,
+        model?.titles?.en,
+        model?.titles?.ru,
+        model?.titles?.es,
+        model?.type,
+        model?.designKind === 'twin' ? 'twin twins близнецы двойной gemelas' : model?.designKind,
+        model?.historicalTier,
+        model?.year,
+        model?.historicalNote?.en,
+        model?.historicalNote?.ru,
+        model?.historicalNote?.es,
+        ...(model?.labels?.en || []),
+        ...(model?.labels?.ru || []),
+        ...(model?.labels?.es || []),
+        ...(Array.isArray(model?.tags) ? model.tags : []),
+        hasAdultArtwork(item) ? '18+ nsfw mature adult' : 'sfw safe'
+      ];
+      return parts.filter(Boolean).join(' ').toLowerCase();
+    }
+    function matchesGalleryFilters(item) {
+      if (item.gallery === false) return false;
+      if (currentGalCat !== 'all' && item.cat !== currentGalCat) return false;
+      if (galleryAdultOnly && !hasAdultArtwork(item)) return false;
+      const q = gallerySearchQuery.trim().toLowerCase();
+      if (!q) return true;
+      const haystack = getGallerySearchHaystack(item);
+      return q.split(/\s+/).every(token => haystack.includes(token));
+    }
+    function setGallerySearch(val) {
+      gallerySearchQuery = String(val ?? '');
+      const input = document.getElementById('gallery-search');
+      if (input && 'value' in input && input.value !== gallerySearchQuery) input.value = gallerySearchQuery;
+      renderGalleryGrid();
+    }
     function toggleGalleryAdultOnly() { galleryAdultOnly=!galleryAdultOnly; renderGalleryGrid(); }
     let currentFaqCat = 'all';
     let isAdultVerified = false;try{isAdultVerified=sessionStorage.getItem('nektahr-demo-age-verified')==='yes'}catch{}
