@@ -722,7 +722,7 @@
           <div>
             ${tr.hasSample ? `
               <div class="h-48 bg-bg overflow-hidden relative border-b hairline">
-                <img src="${tr.img}" alt="${tr.title}" class="w-full h-full object-cover" />
+                <img src="${tr.img}" alt="${tr.title}" loading="lazy" decoding="async" class="w-full h-full object-cover" />
                 <span class="absolute top-3 left-3 px-2.5 py-0.5 bg-bg/85 border hairline mono text-[10px] text-accent">${tr.badge}</span>
               </div>
             ` : `

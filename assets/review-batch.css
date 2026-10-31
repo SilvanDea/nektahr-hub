@@ -18,6 +18,26 @@
 
 /* Shared palette and compact rectangular badges. */
 :root{--status-green:#bad0bd;--status-green-border:#8dab9455;--status-green-bg:#8dab9408;--status-gold:#e2b478;--status-pink:#d9acbe}
+
+/* --- PERFORMANCE & FLUID TOUCH OPTIMIZATIONS --- */
+button, a, select, input, [role="button"], [role="switch"] {
+  touch-action: manipulation;
+}
+
+.mobile-bottom-nav,
+.mobile-quote-bar,
+header.sticky {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+#gallery-cards-grid > button,
+#catalog-grid > div {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 350px;
+}
 .catalog-art>.catalog-status,.catalog-art>.media-adult-badge,.catalog-art>.catalog-demo-badge,.media-adult-badge,.adult-tag{border-radius:4px!important;min-height:25px!important;box-sizing:border-box;display:inline-flex;align-items:center;padding:4px 7px!important;font:500 10px/15px Inter,system-ui!important}
 #commission-intake,#contacts-intake{color:var(--status-green)!important;border-color:var(--status-green-border)!important;background:var(--status-green-bg)!important}
 .catalog-status.available,.catalog-status.status-open{color:var(--status-green);border-color:var(--status-green-border)}

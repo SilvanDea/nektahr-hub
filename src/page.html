@@ -25,7 +25,11 @@
   <meta name="twitter:image" content="https://nektahr.com/assets/social-preview-v4.jpg?rev=20261029-hold-min10" />
   <meta name="twitter:image:alt" content="Nek&#x27;tahr — character art, commissions, YCH, adopts, ToS and FAQ" />
   <meta name="theme-color" content="#0B0A0E" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://cloud.umami.is">
   <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
+  <link rel="preload" as="image" href="/assets/gallery/gal-adopt-cdg-v1bg.webp" type="image/webp" fetchpriority="high">
   <script src="/assets/portfolio-data.js?v=20261030-gallery-repair4"></script>
   <script src="/assets/queue-manager.js?v=20261030-policy1" defer></script>
   <link rel="stylesheet" href="/assets/utilities.css">
@@ -169,7 +173,7 @@
         <div class="lg:col-span-5">
           <button type="button" onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group text-left w-full">
             <div class="aspect-[4/5] overflow-hidden relative bg-bg">
-              <img src="/assets/gallery/gal-adopt-cdg-v1bg.webp" alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+              <img src="/assets/gallery/gal-adopt-cdg-v1bg.webp" alt="Featured character artwork" fetchpriority="high" decoding="async" width="400" height="500" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#0B0A0E] via-transparent to-transparent"></div>
               <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                 <div>

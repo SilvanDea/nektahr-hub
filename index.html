@@ -25,7 +25,11 @@
   <meta name="twitter:image" content="https://nektahr.com/assets/social-preview-v4.jpg?rev=20261029-hold-min10" />
   <meta name="twitter:image:alt" content="Nek&#x27;tahr — character art, commissions, YCH, adopts, ToS and FAQ" />
   <meta name="theme-color" content="#0B0A0E" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+  <link rel="dns-prefetch" href="https://cloud.umami.is">
   <link rel="preconnect" href="https://script.google.com"><link rel="preconnect" href="https://script.googleusercontent.com">
+  <link rel="preload" as="image" href="/assets/gallery/gal-adopt-cdg-v1bg.webp" type="image/webp" fetchpriority="high">
   <script src="/assets/portfolio-data.js?v=65cd7e93fb89"></script>
   <script src="/assets/queue-manager.js?v=d5a27c4cb711" defer></script>
   <link rel="stylesheet" href="/assets/utilities.css?v=2beb17528561">
@@ -47,7 +51,7 @@
 <link rel="stylesheet" href="/assets/compact-calculator.css?v=b719dfe1a0b4">
 <link rel="stylesheet" href="/assets/contact-actions.css?v=e57e8e3f414b">
 <link rel="stylesheet" href="/assets/thumbnail-mats.css?v=f633d43cfe84">
-<link rel="stylesheet" href="/assets/review-batch.css?v=8404f933d307">
+<link rel="stylesheet" href="/assets/review-batch.css?v=5b1bca213acc">
 </head>
 <body data-page="board" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
   <a href="#main-content" id="skip-content" class="skip-content">Skip to content</a>
@@ -168,7 +172,7 @@
         <div class="lg:col-span-5">
           <button type="button" onclick="switchPage('gallery')" class="card card-interactive overflow-hidden cursor-pointer group text-left w-full">
             <div class="aspect-[4/5] overflow-hidden relative bg-bg">
-              <img src="/assets/gallery/gal-adopt-cdg-v1bg.webp" alt="" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
+              <img src="/assets/gallery/gal-adopt-cdg-v1bg.webp" alt="Featured character artwork" fetchpriority="high" decoding="async" width="400" height="500" class="w-full h-full object-cover group-hover:scale-105 transition duration-700" />
               <div class="absolute inset-0 bg-gradient-to-t from-[#0B0A0E] via-transparent to-transparent"></div>
               <div class="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                 <div>
@@ -1120,7 +1124,7 @@
   <!-- =====================================================================
        APPLICATION LOGIC
   ====================================================================== -->
-  <script src="/assets/app.js?v=7a94027916cb"></script>
+  <script src="/assets/app.js?v=765a2583fc2e"></script>
 <script src="/assets/process-viewer.js?v=e39c9751d584"></script>
 <script src="/assets/artwork-interactions.js?v=97b89cb2e8ce"></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
