@@ -349,7 +349,49 @@ dialog:not(#catalog-dialog)::backdrop {
 #tos-detailed-sections{max-width:none;grid-template-columns:minmax(0,1fr);gap:20px;align-items:stretch}.tos-detail{scroll-margin-top:90px}.tos-detail ul{font-size:14px!important;line-height:1.8!important;color:#ded4ca!important}.tos-detail li{padding:10px 0;border-bottom:1px solid #e2b47818}.tos-detail li:last-child{border:0}.tos-detail h3{font-size:24px;line-height:1.35}
 @media(min-width:900px){#tos-detailed-sections{grid-template-columns:repeat(2,minmax(0,1fr))}}
 #reservation-terms{display:none!important}
-.catalog-status.open,.queue-status:not(.reserved){color:var(--status-green)!important;border-color:var(--status-green-border)!important;background:var(--status-green-bg)!important}.catalog-status.reserved,.queue-status.reserved{color:var(--status-gold)!important;border-color:#e2b47855!important;background:#e2b4780a!important}.catalog-status.sold{color:#b7aabd!important}
+.catalog-status.open {
+  color: #0b0a0e !important;
+  background: #bad0bd !important;
+  border-color: #bad0bd !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.04em !important;
+  box-shadow: 0 0 12px rgba(186, 208, 189, 0.45) !important;
+}
+.catalog-status.reserved {
+  color: #ffd166 !important;
+  background: rgba(226, 180, 120, 0.22) !important;
+  border-color: #e2b478 !important;
+  font-weight: 600 !important;
+  box-shadow: 0 0 10px rgba(226, 180, 120, 0.3) !important;
+}
+.catalog-status.sold {
+  color: #9d92a3 !important;
+  background: rgba(20, 17, 25, 0.9) !important;
+  border-color: rgba(157, 146, 163, 0.35) !important;
+}
+.queue-status:not(.reserved) {
+  color: var(--status-green) !important;
+  border-color: var(--status-green-border) !important;
+  background: var(--status-green-bg) !important;
+}
+.queue-status.reserved {
+  color: var(--status-gold) !important;
+  border-color: #e2b47855 !important;
+  background: #e2b4780a !important;
+}
+
+/* Dim closed / sold lots by default so available lots stand out immediately */
+.catalog-card.status-sold,
+.catalog-card:has(.catalog-status.sold) {
+  opacity: 0.62;
+  filter: grayscale(0.55);
+  transition: opacity 0.25s ease, filter 0.25s ease;
+}
+.catalog-card.status-sold:hover,
+.catalog-card:has(.catalog-status.sold):hover {
+  opacity: 1;
+  filter: none;
+}
 
 /* Balanced ToS cards and continuous rows. */
 #tos-cards-grid{gap:16px;align-items:stretch}#tos-cards-grid>.card{padding:22px 24px;background:linear-gradient(145deg,#1c1720,#141017 65%);border-color:#e2b47830;display:flex;flex-direction:column;gap:0}

@@ -62,7 +62,148 @@ for route in json.loads(Path('src/routes.json').read_text()):
   return m[1]+p+'?v='+hashlib.sha256(raw).hexdigest()[:12]+m[3]
  s=re.sub(r'((?:src|href)=")(/assets/[^"?]+\.(?:js|css))(?:\?[^\"]*)?(\")',version,s)
  emit(route['file'],s)
-emit('404.html','''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Page not found | Nek’tahr</title><style>body{background:#0b0a0e;color:#f2ece4;font:18px system-ui;padding:10vh 8vw}a{color:#e2b478}</style></head><body><h1>Page not found</h1><p>This address does not exist.</p><nav><a href="/">Home</a> · <a href="/gallery/">Gallery</a> · <a href="/pricing/">Pricing</a></nav></body></html>\n''')
+emit('404.html','''<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Page not found | Nek’tahr</title>
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="/assets/favicon-32.png" sizes="32x32">
+  <style>
+    :root {
+      --bg: #0B0A0E;
+      --card-bg: #141119;
+      --accent: #E2B478;
+      --text: #F2ECE4;
+      --text-muted: #B7AABD;
+      --border: rgba(226, 180, 120, 0.2);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      line-height: 1.5;
+    }
+    .card-404 {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 48px 36px;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6), 0 0 24px rgba(226,180,120,0.12);
+      position: relative;
+      overflow: hidden;
+    }
+    .card-404::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    }
+    .badge-404 {
+      display: inline-block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: rgba(226, 180, 120, 0.1);
+      border: 1px solid rgba(226, 180, 120, 0.3);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 38px;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 12px;
+      letter-spacing: 0.02em;
+    }
+    p {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 32px;
+    }
+    .actions {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+    .btn-catalog {
+      background: var(--accent);
+      color: #0B0A0E;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 12px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      box-shadow: 0 4px 20px rgba(226,180,120,0.3);
+    }
+    .btn-catalog:hover {
+      background: #f0caa0;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(226,180,120,0.45);
+    }
+    nav.secondary-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      font-size: 13px;
+      margin-top: 18px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      width: 100%;
+    }
+    nav.secondary-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    nav.secondary-links a:hover {
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <div class="card-404">
+    <div class="badge-404">Error 404</div>
+    <h1>Lost in the Sanctuary</h1>
+    <p>The artwork or page you are looking for does not exist, has been archived, or was moved to another gallery.</p>
+    <div class="actions">
+      <a href="/catalog/" class="btn-catalog">Back to Catalog →</a>
+      <nav class="secondary-links">
+        <a href="/">Home</a>
+        <span>·</span>
+        <a href="/pricing/">Pricing</a>
+        <span>·</span>
+        <a href="/gallery/">Gallery</a>
+        <span>·</span>
+        <a href="/queue/">Queue</a>
+        <span>·</span>
+        <a href="/terms/">ToS</a>
+      </nav>
+    </div>
+  </div>
+</body>
+</html>\n''')
 failed=[]
 for p,s in outputs.items():
  if check:

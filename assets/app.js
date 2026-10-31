@@ -860,6 +860,41 @@
       document.documentElement.classList.remove('language-loading');
     }
 
+    function handleGlobalDeepLinks() {
+      try {
+        const path = window.location.pathname.replace(/\/+$/, "") || "/";
+        const params = new URLSearchParams(window.location.search);
+        const hash = window.location.hash || "";
+        const tab = params.get('tab') || params.get('type') || params.get('page');
+        if (path === "/") {
+          if (['pricing', 'catalog', 'gallery', 'queue', 'faq'].includes(tab)) {
+            window.location.replace('/' + tab + '/');
+            return;
+          }
+          if (tab === 'tos' || tab === 'terms') {
+            window.location.replace('/terms/');
+            return;
+          }
+          if (tab === 'ych' || tab === 'adopt') {
+            window.location.replace('/catalog/?tab=' + tab);
+            return;
+          }
+          if (params.get('item') || hash.startsWith('#item=')) {
+            window.location.replace('/catalog/' + (params.get('item') ? '?item=' + encodeURIComponent(params.get('item')) : hash));
+            return;
+          }
+          if (hash === '#tos' || hash === '#terms') {
+            window.location.replace('/terms/');
+            return;
+          }
+          if (['#pricing', '#catalog', '#gallery', '#queue', '#faq'].includes(hash)) {
+            window.location.replace('/' + hash.slice(1) + '/');
+            return;
+          }
+        }
+      } catch (_) {}
+    }
+
     function applyUrlQuoteParams() {
       if (document.body.dataset.page !== 'pricing' && location.pathname !== '/pricing/') return;
       try {
@@ -927,6 +962,7 @@
     window.copyQuoteLink = copyQuoteLink;
 
     window.onload = function() {
+      handleGlobalDeepLinks();
       let initialPricingTab='custom';try{const saved=sessionStorage.getItem('nektahr-pricing-tab');if(['custom','adopt','ych'].includes(saved))initialPricingTab=saved;sessionStorage.removeItem('nektahr-pricing-tab')}catch{}
       switchPricingTab(initialPricingTab);
       applyUrlQuoteParams();
