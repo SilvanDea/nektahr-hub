@@ -577,6 +577,11 @@
       document.getElementById('nav-faq').textContent = t.nav.faq;
       document.getElementById('header-status-badge').textContent = t.statusBadge;
       document.getElementById('header-tagline').textContent = uiText('headerTagline');
+      if (document.getElementById('footer-copy')) document.getElementById('footer-copy').textContent = uiText('headerTagline');
+      document.querySelectorAll('[data-footer-nav]').forEach(el => {
+        const key = el.getAttribute('data-footer-nav');
+        if (key && t.nav[key]) el.textContent = t.nav[key];
+      });
       document.getElementById('footer-rights').textContent = uiText('footerRights');
       document.getElementById('footer-telegram').textContent = uiText('footerTelegram');
       document.getElementById('lb-pricing-link').textContent = uiText('pricingLink');
@@ -637,22 +642,22 @@
         const note = p.note[currentLang] || p.note.en;
         if (p.soon) {
           return `
-            <div class="card p-4 opacity-55 flex flex-col justify-between gap-2 select-none">
-              <div class="flex items-center justify-between">
+            <div class="card p-4 flex flex-col justify-between gap-2 select-none platform-card platform-card-soon">
+              <div class="platform-card-head flex items-center justify-between gap-2">
                 <span class="serif text-xl text-textMuted">${p.name}</span>
-                <span class="mono text-[10px] uppercase px-2 py-0.5 border hairline text-textDim">${({en:'Coming soon',ru:'Скоро',es:'Próximamente'})[currentLang]}</span>
+                <span class="platform-soon-badge mono text-[10px] uppercase px-2 py-0.5 border hairline text-textDim shrink-0">${({en:'Coming soon',ru:'Скоро',es:'Próximamente'})[currentLang]}</span>
               </div>
-              <div class="text-xs text-textDim">${note}</div>
+              <div class="platform-card-note text-xs text-textDim">${note}</div>
             </div>
           `;
         }
         return `
-          <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="card card-interactive p-4 flex flex-col justify-between gap-2 group">
-            <div class="flex items-center justify-between">
+          <a href="${p.url}" target="_blank" rel="noopener noreferrer" class="card card-interactive p-4 flex flex-col justify-between gap-2 group platform-card">
+            <div class="platform-card-head flex items-center justify-between gap-2">
               <span class="serif text-xl text-textMain group-hover:text-accent transition">${p.name}</span>
-              <span class="mono text-xs text-textDim group-hover:text-accent transition">↗</span>
+              <span class="platform-card-arrow mono text-xs text-textDim group-hover:text-accent transition shrink-0">↗</span>
             </div>
-            <div class="text-xs text-textDim">${note}</div>
+            <div class="platform-card-note text-xs text-textDim">${note}</div>
           </a>
         `;
       }).join('');

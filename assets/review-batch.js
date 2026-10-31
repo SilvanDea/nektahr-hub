@@ -43,7 +43,7 @@
   });
  }
  document.addEventListener('click',e=>{
-  if(header&&!header.contains(e.target)&&(!bnavMore||!bnavMore.contains(e.target)))toggleMobileMenu(false);
+  if(navLinks&&!navLinks.contains(e.target)&&(!bnavMore||!bnavMore.contains(e.target))&&(!navToggle||!navToggle.contains(e.target)))toggleMobileMenu(false);
  });
  document.addEventListener('keydown',e=>{
   if(e.key==='Escape')toggleMobileMenu(false);

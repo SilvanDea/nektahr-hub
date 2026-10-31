@@ -60,6 +60,196 @@
 .gallery-search-wrap{display:inline-flex;align-items:center}
 #gallery-search{width:240px;max-width:100%;height:34px;padding:0 12px;border:1px solid #e2b47833;background:#141018;color:#f2ece4;font:400 12px/1.4 var(--mono-font,monospace);transition:border-color .15s ease,box-shadow .15s ease}#gallery-search::placeholder{color:#8e8880}#gallery-search:focus{outline:none;border-color:#e2b478;box-shadow:0 0 0 2px #e2b47822}
 .quote-input-invalid{border-color:#d48a94!important;box-shadow:0 0 0 2px #d48a9433!important}#calc-discord-error,#calc-email-error{color:#d48a94;font-size:11px;line-height:1.45;margin-top:4px}
+
+/* Refined Art Platforms & Galleries cards (prevent title truncation and badge overlap) */
+#platforms-grid > .card {
+  padding: 16px 18px !important;
+  border-radius: 12px !important;
+  background: linear-gradient(160deg, #17131d 0%, #110e16 100%) !important;
+  border: 1px solid rgba(226, 180, 120, 0.22) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  gap: 8px !important;
+  min-height: 98px !important;
+}
+
+#platforms-grid > .card.platform-card-soon {
+  opacity: 0.82 !important;
+  background: #110e15 !important;
+  border: 1px dashed rgba(226, 180, 120, 0.25) !important;
+}
+
+#platforms-grid .platform-card-head,
+#platforms-grid > .card > div:first-of-type {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 8px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+#platforms-grid .contact-brand-title {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  line-height: 1.3 !important;
+  gap: 10px !important;
+  min-width: 0 !important;
+  flex: 1 1 auto !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+#platforms-grid .contact-site-icon {
+  flex: 0 0 28px !important;
+  width: 28px !important;
+  height: 28px !important;
+  border-radius: 7px !important;
+  background: rgba(226, 180, 120, 0.08) !important;
+  border: 1px solid rgba(226, 180, 120, 0.16) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+#platforms-grid .contact-site-icon svg,
+#platforms-grid .contact-site-icon img {
+  width: 16px !important;
+  height: 16px !important;
+}
+
+#platforms-grid .platform-soon-badge {
+  flex-shrink: 0 !important;
+  white-space: nowrap !important;
+  font-size: 9.5px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.05em !important;
+  line-height: 1 !important;
+  padding: 4px 7px !important;
+  border-radius: 5px !important;
+  background: rgba(226, 180, 120, 0.1) !important;
+  border: 1px solid rgba(226, 180, 120, 0.28) !important;
+  color: #d3c8bc !important;
+}
+
+#platforms-grid .platform-card-note,
+#platforms-grid > .card > div:last-of-type {
+  font-size: 12.5px !important;
+  line-height: 1.5 !important;
+  color: #b7ae9f !important;
+}
+
+/* Redesigned Studio Footer across all pages */
+.site-footer {
+  margin-top: 64px !important;
+  padding: 36px 24px 32px !important;
+  background: linear-gradient(180deg, rgba(18, 14, 23, 0.72) 0%, #0b0a0e 100%) !important;
+  border-top: 1px solid rgba(226, 180, 120, 0.22) !important;
+  text-align: left !important;
+}
+
+.site-footer-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.site-footer-top {
+  display: grid;
+  grid-template-columns: minmax(180px, 1.1fr) minmax(240px, 1.5fr) auto;
+  align-items: center;
+  gap: 24px;
+}
+
+.site-footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.site-footer-logo {
+  font-size: 26px !important;
+  line-height: 1.1 !important;
+  color: #f2ece4 !important;
+  text-decoration: none !important;
+  width: fit-content;
+}
+
+.site-footer-tagline {
+  margin: 0 !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+  color: #9d9286 !important;
+}
+
+.site-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px 14px;
+}
+
+.site-footer-nav a {
+  color: #c9bfb4;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 6px;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.site-footer-nav a:hover {
+  color: #e2b478;
+  background: rgba(226, 180, 120, 0.08);
+}
+
+.site-footer-contacts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.site-footer-contact-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 38px;
+  padding: 7px 13px;
+  border-radius: 8px;
+  border: 1px solid rgba(226, 180, 120, 0.26);
+  background: #141019;
+  color: #e2b478;
+  font-size: 12px;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.site-footer-contact-pill:hover {
+  border-color: #e2b478;
+  background: rgba(226, 180, 120, 0.14);
+  color: #f2ece4;
+}
+
+.site-footer-bottom {
+  padding-top: 18px;
+  border-top: 1px solid rgba(226, 180, 120, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #8e8880;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}}
 
 /* ==========================================================================
@@ -116,7 +306,7 @@
     font-size: 16px !important;
   }
 
-  /* --- STICKY HEADER (1-ROW CONTRACT: LOGO · LANG · COMPACT STATUS · MENU) --- */
+  /* --- STICKY HEADER (CLEAN 1-ROW: LOGO · LANG · STATUS; NO DUPLICATE BURGER) --- */
   header.sticky {
     height: auto !important;
     min-height: 54px !important;
@@ -125,12 +315,10 @@
     align-items: center !important;
     justify-content: space-between !important;
     gap: 6px !important;
+    background: rgba(11, 10, 14, 0.96) !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
     transition: background-color 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  header.sticky.mobile-menu-active {
-    background: #0b0a0efb !important;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.88) !important;
   }
 
   header.sticky > a:first-child {
@@ -194,72 +382,46 @@
     justify-content: center !important;
   }
 
+  /* Hide redundant top burger button on mobile: bottom dock 'More' handles extra pages */
   .mobile-nav-toggle {
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    width: 44px !important;
-    height: 44px !important;
-    min-width: 44px !important;
-    min-height: 44px !important;
-    gap: 5px !important;
-    border: 1px solid var(--site-border) !important;
-    border-radius: 8px !important;
-    background: #141018 !important;
-    cursor: pointer !important;
-    flex-shrink: 0 !important;
-    transition: border-color 0.18s, background-color 0.18s, transform 0.12s !important;
-  }
-
-  .mobile-nav-toggle:active {
-    background: #1d1622 !important;
-    transform: scale(0.96) !important;
-  }
-
-  .menu-bar {
-    display: block !important;
-    width: 18px !important;
-    height: 2px !important;
-    background: #e2b478 !important;
-    border-radius: 2px !important;
-    transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.18s ease !important;
-    transform-origin: center !important;
-  }
-
-  .mobile-nav-toggle[aria-expanded="true"] .menu-bar-1 {
-    transform: translateY(7px) rotate(45deg) !important;
-  }
-  .mobile-nav-toggle[aria-expanded="true"] .menu-bar-2 {
-    opacity: 0 !important;
-    transform: scaleX(0) !important;
-  }
-  .mobile-nav-toggle[aria-expanded="true"] .menu-bar-3 {
-    transform: translateY(-7px) rotate(-45deg) !important;
-  }
-
-  header.sticky #nav-links {
-    order: 3 !important;
     display: none !important;
   }
 
+  header.sticky #nav-links {
+    display: none !important;
+  }
+
+  /* Bottom 'More' Popover Sheet right above the bottom dock (Queue, ToS, FAQ) */
   header.sticky.mobile-menu-active #nav-links,
   header.sticky #nav-links.is-open {
     display: flex !important;
     flex-direction: column !important;
-    width: 100% !important;
-    flex-basis: 100% !important;
-    max-height: calc(100dvh - 130px) !important;
-    overflow-y: auto !important;
+    position: fixed !important;
+    bottom: calc(64px + var(--sab)) !important;
+    left: 12px !important;
+    right: 12px !important;
+    width: auto !important;
+    z-index: 120 !important;
     gap: 6px !important;
-    padding: 10px 0 12px !important;
-    margin-top: 6px !important;
-    border-top: 1px solid #e2b47822 !important;
-    animation: mobileNavDown 0.2s ease-out !important;
+    padding: 10px !important;
+    margin: 0 !important;
+    background: rgba(19, 15, 24, 0.98) !important;
+    border: 1px solid rgba(226, 180, 120, 0.35) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 -10px 36px rgba(0, 0, 0, 0.85) !important;
+    animation: mobileMoreSheetUp 0.18s cubic-bezier(0.22, 1, 0.36, 1) !important;
   }
 
-  @keyframes mobileNavDown {
-    from { opacity: 0; transform: translateY(-6px); }
+  /* Hide the 4 primary tabs that are already permanently visible in the bottom bar */
+  #nav-links #nav-board,
+  #nav-links #nav-pricing,
+  #nav-links #nav-catalog,
+  #nav-links #nav-gallery {
+    display: none !important;
+  }
+
+  @keyframes mobileMoreSheetUp {
+    from { opacity: 0; transform: translateY(8px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
@@ -528,14 +690,14 @@
 
   #platforms-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 8px !important;
+    gap: 10px !important;
   }
 
   #platforms-grid > * {
     min-width: 44px !important;
-    min-height: 44px !important;
-    padding: 12px 14px !important;
-    border-radius: 10px !important;
+    min-height: 0 !important;
+    padding: 14px 16px !important;
+    border-radius: 12px !important;
   }
 
   #feat-view-all {
@@ -560,6 +722,68 @@
   #board-highlights-grid .highlight-caption {
     padding: 10px 12px !important;
     min-height: 88px !important;
+  }
+
+  /* Redesigned Footer on Mobile */
+  .site-footer {
+    margin-top: 40px !important;
+    padding: 28px 16px calc(86px + var(--sab)) !important;
+  }
+
+  .site-footer-inner {
+    gap: 20px !important;
+  }
+
+  .site-footer-top {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    align-items: stretch !important;
+  }
+
+  .site-footer-brand {
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+
+  .site-footer-nav {
+    justify-content: flex-start !important;
+    gap: 6px !important;
+  }
+
+  .site-footer-nav a {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    padding: 8px 12px !important;
+    background: #131018 !important;
+    border: 1px solid rgba(226, 180, 120, 0.16) !important;
+    border-radius: 8px !important;
+    font-size: 12.5px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .site-footer-contacts {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+
+  .site-footer-contact-pill {
+    width: 100% !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    padding: 10px 14px !important;
+    font-size: 13px !important;
+    justify-content: center !important;
+  }
+
+  .site-footer-bottom {
+    padding-top: 14px !important;
+    text-align: left !important;
+    font-size: 10.5px !important;
+    line-height: 1.5 !important;
   }
 
   footer a {
@@ -1707,8 +1931,16 @@
   }
 }
 
+@media (max-width: 600px) {
+  /* Single-column platform cards on phones so names like YCH.Commishes and Patreon + Coming soon never truncate or collide */
+  #platforms-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+}
+
 @media (max-width: 520px) {
-  /* Hide status pill in compact mobile header so 44x44px language buttons + menu toggle never crowd */
+  /* Hide status pill in compact mobile header so 44x44px language buttons never crowd */
   header.sticky a.intake-link {
     display: none !important;
   }
@@ -1727,12 +1959,6 @@
     padding: 4px 6px !important;
     font-size: 10.5px !important;
   }
-  .mobile-nav-toggle {
-    width: 44px !important;
-    height: 44px !important;
-    min-width: 44px !important;
-    min-height: 44px !important;
-  }
   #page-pricing .ptab-btn {
     min-width: 44px !important;
     min-height: 46px !important;
@@ -1740,4 +1966,5 @@
     padding: 7px 4px !important;
   }
 }
+
 

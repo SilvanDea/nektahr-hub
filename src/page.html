@@ -543,13 +543,35 @@
   <!-- =====================================================================
        FOOTER & TOAST NOTIFICATION
   ====================================================================== -->
-  <footer class="border-t hairline mt-20 py-8 px-4 sm:px-8 text-center mono text-xs text-textDim">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div id="footer-rights">NEK'TAHR © 2026 · ALL RIGHTS RESERVED · NO AI / NO NFT</div>
-      <div class="flex gap-4">
-        <a href="https://discord.com/users/361511957129461781" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition cursor-pointer">Discord: drintrava</a>
-        <a id="footer-telegram" href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" class="hover:text-accent transition">Telegram DM</a>
-        <a href="mailto:nektahr@gmail.com" class="hover:text-accent transition">nektahr@gmail.com</a>
+  <footer class="site-footer border-t hairline mt-20 px-4 sm:px-8 text-xs text-textDim">
+    <div class="site-footer-inner max-w-6xl mx-auto">
+      <div class="site-footer-top">
+        <div class="site-footer-brand">
+          <a href="/" class="site-footer-logo serif text-2xl text-textMain hover:text-accent transition">Nek'tahr</a>
+          <p id="footer-copy" class="site-footer-tagline">Character Art &amp; Commissions · 18+ Portfolio</p>
+        </div>
+
+        <nav class="site-footer-nav" aria-label="Footer navigation">
+          <a href="/" data-footer-nav="board">Board</a>
+          <a href="/pricing/" data-footer-nav="pricing">Pricing</a>
+          <a href="/catalog/" data-footer-nav="catalog">Catalog</a>
+          <a href="/gallery/" data-footer-nav="gallery">Gallery</a>
+          <a href="/queue/" data-footer-nav="queue">Queue</a>
+          <a href="/terms/" data-footer-nav="tos">ToS</a>
+          <a href="/faq/" data-footer-nav="faq">FAQ</a>
+        </nav>
+
+        <div class="site-footer-contacts">
+          <a href="https://discord.com/users/361511957129461781" target="_blank" rel="noopener noreferrer" class="site-footer-contact-pill cursor-pointer">
+            <span>Discord: drintrava</span>
+          </a>
+          <a id="footer-telegram" href="https://t.me/nek_tahr" target="_blank" rel="noopener noreferrer" class="site-footer-contact-pill">Telegram DM</a>
+          <a href="mailto:nektahr@gmail.com" class="site-footer-contact-pill">nektahr@gmail.com</a>
+        </div>
+      </div>
+
+      <div class="site-footer-bottom">
+        <div id="footer-rights" class="mono">NEK'TAHR © 2026 · ALL RIGHTS RESERVED · NO AI / NO NFT</div>
       </div>
     </div>
   </footer>
