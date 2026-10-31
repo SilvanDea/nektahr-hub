@@ -235,7 +235,14 @@
       const notes = document.getElementById('calc-notes').value.trim() || uiText('quotePlaceholder');
       const refs = document.getElementById('calc-refs').value.trim() || uiText('quoteNotProvided');
       const deadline = document.getElementById('calc-deadline').value.trim() || uiText('quoteNotProvided');
-      const contact = document.getElementById('calc-contact').value || 'Telegram';
+      const contactMethod = document.getElementById('calc-contact').value || 'Telegram';
+      const discordVal = document.getElementById('calc-discord')?.value?.trim() || '';
+      const emailVal = document.getElementById('calc-email')?.value?.trim() || '';
+      const contactExtras = [
+        discordVal && isValidQuoteDiscord(discordVal) ? `Discord: ${discordVal}` : '',
+        emailVal && isValidQuoteEmail(emailVal) ? `Email: ${emailVal}` : ''
+      ].filter(Boolean);
+      const contact = contactExtras.length ? `${contactMethod} (${contactExtras.join(' · ')})` : contactMethod;
       const tosStatus = tosAgreed ? uiText('quoteAccepted') : uiText('quoteNotConfirmed');
       const msg = `${uiText('quoteGreeting')}
 • ${uiText('quoteCategory')}: ${itemSummary}
@@ -249,12 +256,91 @@
       document.getElementById('calc-preview-text').textContent = msg;
     }
 
+    function isValidQuoteEmail(val) {
+      const s = String(val ?? '').trim();
+      if (!s) return true;
+      if (s.length > 254 || s.includes('..')) return false;
+      const match = s.match(/^([^\s@]+)@([^\s@]+)\.([^\s@]{2,})$/);
+      if (!match) return false;
+      const domain = match[2];
+      return !domain.startsWith('.') && !domain.endsWith('.') && !domain.startsWith('-') && !domain.endsWith('-');
+    }
+
+    function isValidQuoteDiscord(val) {
+      const s = String(val ?? '').trim();
+      if (!s) return true;
+      if (s.includes('..')) return false;
+      return /^@?(?:[a-zA-Z0-9_.]{2,32}|[^#@:\s]{2,32}#\d{4})$/.test(s);
+    }
+
+    function validateQuoteContactFields(focusInvalid = false) {
+      const errCopy = ({
+        en: {
+          discord: 'Enter a valid Discord handle (2–32 characters: letters, numbers, _ or ., or user#1234).',
+          email: 'Enter a valid email address (for example, name@example.com).'
+        },
+        ru: {
+          discord: 'Укажи корректный ник Discord (2–32 символа: буквы, цифры, _ или ., либо user#1234).',
+          email: 'Укажи корректный email-адрес (например, name@example.com).'
+        },
+        es: {
+          discord: 'Introduce un usuario de Discord válido (2–32 caracteres: letras, números, _ o ., o user#1234).',
+          email: 'Introduce un correo electrónico válido (por ejemplo, nombre@ejemplo.com).'
+        }
+      })[currentLang] || {
+        discord: 'Enter a valid Discord handle (2–32 characters: letters, numbers, _ or ., or user#1234).',
+        email: 'Enter a valid email address (for example, name@example.com).'
+      };
+      const discordInput = document.getElementById('calc-discord');
+      const discordError = document.getElementById('calc-discord-error');
+      const emailInput = document.getElementById('calc-email');
+      const emailError = document.getElementById('calc-email-error');
+      const discordVal = discordInput?.value?.trim() || '';
+      const emailVal = emailInput?.value?.trim() || '';
+      const discordOk = isValidQuoteDiscord(discordVal);
+      const emailOk = isValidQuoteEmail(emailVal);
+
+      if (discordInput) {
+        discordInput.setAttribute?.('aria-invalid', String(!discordOk));
+        discordInput.classList?.toggle?.('quote-input-invalid', !discordOk);
+      }
+      if (discordError) {
+        discordError.textContent = discordOk ? '' : errCopy.discord;
+        discordError.hidden = discordOk;
+      }
+      if (emailInput) {
+        emailInput.setAttribute?.('aria-invalid', String(!emailOk));
+        emailInput.classList?.toggle?.('quote-input-invalid', !emailOk);
+      }
+      if (emailError) {
+        emailError.textContent = emailOk ? '' : errCopy.email;
+        emailError.hidden = emailOk;
+      }
+
+      if (!discordOk || !emailOk) {
+        if (focusInvalid) {
+          const briefPanel = document.getElementById('calc-brief-panel');
+          if (briefPanel) briefPanel.open = true;
+          const firstInvalid = !discordOk ? discordInput : emailInput;
+          firstInvalid?.focus?.();
+        }
+        return { valid: false, discordOk, emailOk, message: !discordOk ? errCopy.discord : errCopy.email };
+      }
+      return { valid: true, discordOk: true, emailOk: true, message: '' };
+    }
+    window.isValidQuoteEmail = isValidQuoteEmail;
+    window.isValidQuoteDiscord = isValidQuoteDiscord;
+    window.validateQuoteContactFields = validateQuoteContactFields;
+
     function resetCalculator() {
       CALC_MODE_STATE[currentPricingTab] = { value: currentPricingTab==='custom'?'single':CALC_CONFIG[currentPricingTab].options[0].value, addons: [], mults: [] };
       document.getElementById('calc-notes').value = '';
       document.getElementById('calc-refs').value = '';
       document.getElementById('calc-deadline').value = '';
       document.getElementById('calc-contact').value = 'Telegram';
+      if (document.getElementById('calc-discord')) document.getElementById('calc-discord').value = '';
+      if (document.getElementById('calc-email')) document.getElementById('calc-email').value = '';
+      if (typeof validateQuoteContactFields === 'function') validateQuoteContactFields(false);
       buildIndividualCalculator();
     }
 
@@ -284,6 +370,11 @@
     }
 
     async function copyCalcRequest() {
+      const validation = validateQuoteContactFields(true);
+      if (!validation.valid) {
+        showToast(validation.message);
+        return false;
+      }
       recalcTotal();
       const txt = document.getElementById('calc-preview-text').textContent;
       const copied = await copyToClipboard(txt, 'DM Order Request');
@@ -293,6 +384,7 @@
         btn.textContent = t.copiedBtn;
         setTimeout(() => { btn.textContent = t.copyBtn; }, 2000);
       }
+      return copied;
     }
 
 

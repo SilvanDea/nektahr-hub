@@ -43,4 +43,8 @@ console.log(JSON.stringify({suite:'runtime-regression',checks,passed:true}));
  ctx.setGallerySearch('genshin fanart');check(grid.innerHTML.includes('Furina')&&grid.innerHTML.includes('Wriothesley'),'Gallery search filters by series tag and category');
  ctx.setGallerySearch('nonexistent-xyz-token');check(grid.innerHTML.includes('role="status"'),'Gallery search shows empty state when no items match');
  ctx.setGallerySearch('');check(grid.innerHTML.includes('Frieren')&&grid.innerHTML.includes('Wriothesley'),'Clearing gallery search restores full gallery');
+ check(ctx.isValidQuoteEmail('artist@example.com')&&ctx.isValidQuoteEmail('user.name+tag@sub.domain.org'),'Valid emails pass');
+ check(!ctx.isValidQuoteEmail('bad-email')&&!ctx.isValidQuoteEmail('user@domain')&&!ctx.isValidQuoteEmail('user..name@example.com'),'Invalid emails fail');
+ check(ctx.isValidQuoteDiscord('drintrava')&&ctx.isValidQuoteDiscord('@drin_trava.art')&&ctx.isValidQuoteDiscord('NekTahr#1234'),'Valid Discord handles pass');
+ check(!ctx.isValidQuoteDiscord('a')&&!ctx.isValidQuoteDiscord('bad handle!')&&!ctx.isValidQuoteDiscord('user..name')&&!ctx.isValidQuoteDiscord('user#12'),'Invalid Discord handles fail');
 }

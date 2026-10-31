@@ -46,7 +46,7 @@
 <link rel="stylesheet" href="/assets/compact-calculator.css?v=b719dfe1a0b4">
 <link rel="stylesheet" href="/assets/contact-actions.css?v=e57e8e3f414b">
 <link rel="stylesheet" href="/assets/thumbnail-mats.css?v=f633d43cfe84">
-<link rel="stylesheet" href="/assets/review-batch.css?v=530edd944e95">
+<link rel="stylesheet" href="/assets/review-batch.css?v=f04eba5bdda0">
 </head>
 <body data-page="board" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
   <a href="#main-content" id="skip-content" class="skip-content">Skip to content</a>
@@ -559,7 +559,11 @@
               <div><label for="calc-refs" id="calc-refs-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Reference links</label><input id="calc-refs" oninput="recalcTotal()" type="text" placeholder="Paste character sheets, moodboards or image links" class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent" /></div>
               <div class="grid sm:grid-cols-2 gap-3">
                 <div><label for="calc-deadline" id="calc-deadline-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Preferred deadline</label><input id="calc-deadline" oninput="recalcTotal()" type="text" placeholder="Flexible / add a date" class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent" /></div>
-                <div><label for="calc-contact" id="calc-contact-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Preferred contact</label><select id="calc-contact" onchange="recalcTotal()" class="w-full bg-bg border hairline p-3 text-sm text-textMain focus:outline-none focus:border-accent"><option value="Discord">Discord</option><option value="Email">Email</option><option value="Telegram">Telegram</option></select></div>
+                <div><label for="calc-contact" id="calc-contact-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Preferred contact</label><select id="calc-contact" onchange="validateQuoteContactFields(false); recalcTotal()" class="w-full bg-bg border hairline p-3 text-sm text-textMain focus:outline-none focus:border-accent"><option value="Discord">Discord</option><option value="Email">Email</option><option value="Telegram">Telegram</option></select></div>
+              </div>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div><label for="calc-discord" id="calc-discord-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Discord handle (optional)</label><input id="calc-discord" oninput="validateQuoteContactFields(false); recalcTotal()" type="text" autocomplete="off" spellcheck="false" placeholder="e.g. username or user#1234" aria-describedby="calc-discord-error" class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent" /><p id="calc-discord-error" role="alert" aria-live="polite" hidden class="mt-1 text-xs text-error"></p></div>
+                <div><label for="calc-email" id="calc-email-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Email address (optional)</label><input id="calc-email" oninput="validateQuoteContactFields(false); recalcTotal()" type="email" autocomplete="email" spellcheck="false" placeholder="e.g. name@example.com" aria-describedby="calc-email-error" class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent" /><p id="calc-email-error" role="alert" aria-live="polite" hidden class="mt-1 text-xs text-error"></p></div>
               </div>
               <div><label for="calc-notes" id="calc-brief-label" class="block mono text-[10px] uppercase text-textDim mb-1.5">Brief & extra details</label><textarea id="calc-notes" oninput="recalcTotal()" rows="4" placeholder="Character details, pose, mood, SFW/NSFW, background..." class="w-full bg-bg border hairline p-3 text-sm text-textMain placeholder:text-textDim focus:outline-none focus:border-accent resize-y"></textarea></div>
             </div></details>
@@ -1076,16 +1080,16 @@
   <!-- =====================================================================
        APPLICATION LOGIC
   ====================================================================== -->
-  <script src="/assets/app.js?v=448419d5b577"></script>
+  <script src="/assets/app.js?v=f92983d13913"></script>
 <script src="/assets/process-viewer.js?v=e39c9751d584"></script>
 <script src="/assets/artwork-interactions.js?v=97b89cb2e8ce"></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
 <script src="/assets/gallery-viewer.js?v=75d34e6e0803"></script>
 <script src="/assets/pricing-samples.js?v=4f1d6c9d08d4"></script>
-<script src="/assets/quote-builder.js?v=c49894e4cc9b"></script>
+<script src="/assets/quote-builder.js?v=dff1c1517491"></script>
 <script src="/assets/catalog.js?v=654bd54728c9"></script>
 <script src="/assets/compact-calculator.js?v=3c78ec45d022"></script>
-<script src="/assets/contact-actions.js?v=174d03029ae1"></script>
+<script src="/assets/contact-actions.js?v=00b3f7224a7a"></script>
 <script src="/assets/thumbnail-mats.js?v=b39f58205f4f"></script>
 <script src="/assets/review-batch.js?v=a8bb48b2d8a0"></script>
 </body>

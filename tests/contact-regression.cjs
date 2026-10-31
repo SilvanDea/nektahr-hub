@@ -17,5 +17,8 @@ let checks=0;function check(x,msg){checks++;assert.ok(x,msg)}
  succeeds=true;ctx.currentLang='ru';ctx.renderAllText();check(nodes.get('quote-discord').textContent==='Открыть Discord'&&!nodes.get('quote-discord').onclick,'Discord navigation no longer overwrites the copied request');
  ctx.currentLang='es';ctx.renderAllText();check(nodes.get('quote-email').textContent==='Escribir por email','Spanish contact action');
  check(nodes.get('quote-contact-actions').children.length===3,'Rendering does not duplicate the contact panel');
+ ctx.validateQuoteContactFields=()=>({valid:false,message:'Enter a valid email address (for example, name@example.com).'});
+ copied=[];const blocked=await ctx.copyCalcRequest();
+ check(blocked===false&&copied.length===0&&nodes.get('quote-copy-status').textContent.includes('valid email'),'Invalid contact format blocks Copy Ready DM action');
  console.log(JSON.stringify({suite:'contact-regression',checks,passed:true}));
 })().catch(err=>{console.error(err);process.exitCode=1});
