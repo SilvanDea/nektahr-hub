@@ -43,8 +43,8 @@ base=static_content(Path('src/page.html').read_text())
 for route in json.loads(Path('src/routes.json').read_text()):
  s=base
  for key,value in route.items():s=s.replace('{{'+key+'}}',value)
- s=s.replace('<!-- APP_CONFIG -->','<script src="/assets/translations.js"></script>\n<script src="/assets/app-state.js"></script>')
- s=s.replace('<!-- APP_LOGIC -->','<script src="/assets/app.js"></script>')
+ s=s.replace('<!-- APP_CONFIG -->','<script src="/assets/translations.js" defer></script>\n<script src="/assets/app-state.js" defer></script>')
+ s=s.replace('<!-- APP_LOGIC -->','<script src="/assets/app.js" defer></script>')
  def section(m):
   classes=m[2].split();classes=[x for x in classes if x!='hidden']
   if m[1]!=route['page']:classes.append('hidden')
