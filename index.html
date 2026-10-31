@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <script src="/assets/language-init.js?v=2244c7a6090d"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Nek&#x27;tahr | Character Art &amp; Commissions</title>
   <meta name="description" content="Character art, commissions, YCH and adoptable designs by Nek&#x27;tahr. Browse the gallery and prices, view available designs, and contact me on Discord or email." />
   <link rel="canonical" href="https://nektahr.com/" />
@@ -46,7 +46,7 @@
 <link rel="stylesheet" href="/assets/compact-calculator.css?v=b719dfe1a0b4">
 <link rel="stylesheet" href="/assets/contact-actions.css?v=e57e8e3f414b">
 <link rel="stylesheet" href="/assets/thumbnail-mats.css?v=f633d43cfe84">
-<link rel="stylesheet" href="/assets/review-batch.css?v=73c2569ae1d9">
+<link rel="stylesheet" href="/assets/review-batch.css?v=93097bffbb0e">
 </head>
 <body data-page="board" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
   <a href="#main-content" id="skip-content" class="skip-content">Skip to content</a>
@@ -93,6 +93,13 @@
         <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
         <span id="header-status-badge">Check Current Availability</span>
       </a>
+
+      <!-- Mobile Navigation Hamburger Button -->
+      <button type="button" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="menu-bar menu-bar-1"></span>
+        <span class="menu-bar menu-bar-2"></span>
+        <span class="menu-bar menu-bar-3"></span>
+      </button>
     </div>
   </header>
 
@@ -566,6 +573,17 @@
         </div>
 
       </div>
+      <!-- Floating Mobile Quote Bar -->
+      <div id="mobile-quote-bar" class="mobile-quote-bar" aria-label="Quote summary">
+        <div class="mobile-quote-info">
+          <span class="mobile-quote-label" id="mobile-quote-label">Estimated Total</span>
+          <span class="mobile-quote-amount" id="mobile-quote-amount">$120</span>
+        </div>
+        <button type="button" id="mobile-quote-jump-btn" class="mobile-quote-btn" onclick="document.querySelector('.quote-panel')?.scrollIntoView({behavior:'smooth',block:'start'})">
+          <span id="mobile-quote-btn-text">View DM Request</span>
+          <span aria-hidden="true">↓</span>
+        </button>
+      </div>
       <div id="pricing-process-storage" hidden><section id="art-process" aria-label="Artwork process and versions"></section></div>
     </section>
 
@@ -1029,6 +1047,6 @@
 <script src="/assets/compact-calculator.js?v=3c78ec45d022"></script>
 <script src="/assets/contact-actions.js?v=174d03029ae1"></script>
 <script src="/assets/thumbnail-mats.js?v=b39f58205f4f"></script>
-<script src="/assets/review-batch.js?v=933bcdeaa72e"></script>
+<script src="/assets/review-batch.js?v=fc3d4e9cb81d"></script>
 </body>
 </html>

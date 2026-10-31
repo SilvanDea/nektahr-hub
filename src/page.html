@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <script src="/assets/language-init.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>{{title}}</title>
   <meta name="description" content="{{description}}" />
   <link rel="canonical" href="{{url}}" />
@@ -92,6 +92,13 @@
         <span class="w-1.5 h-1.5 rounded-full bg-accent animate-pulse"></span>
         <span id="header-status-badge">Commissions open</span>
       </a>
+
+      <!-- Mobile Navigation Hamburger Button -->
+      <button type="button" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="menu-bar menu-bar-1"></span>
+        <span class="menu-bar menu-bar-2"></span>
+        <span class="menu-bar menu-bar-3"></span>
+      </button>
     </div>
   </header>
 
@@ -307,6 +314,17 @@
           </div>
         </div>
 
+      </div>
+      <!-- Floating Mobile Quote Bar -->
+      <div id="mobile-quote-bar" class="mobile-quote-bar" aria-label="Quote summary">
+        <div class="mobile-quote-info">
+          <span class="mobile-quote-label" id="mobile-quote-label">Estimated Total</span>
+          <span class="mobile-quote-amount" id="mobile-quote-amount">$120</span>
+        </div>
+        <button type="button" id="mobile-quote-jump-btn" class="mobile-quote-btn" onclick="document.querySelector('.quote-panel')?.scrollIntoView({behavior:'smooth',block:'start'})">
+          <span id="mobile-quote-btn-text">View DM Request</span>
+          <span aria-hidden="true">↓</span>
+        </button>
       </div>
       <div id="pricing-process-storage" hidden><section id="art-process" aria-label="Artwork process and versions"></section></div>
     </section>
