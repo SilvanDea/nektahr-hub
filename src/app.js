@@ -261,7 +261,13 @@
     function quickPickCustom(packageKey) {
       if (currentPricingTab !== 'custom') switchPricingTab('custom');
       const sel = document.getElementById('calc-stage-sel');
-      if (sel && ['single', 'duo'].includes(packageKey)) sel.value = packageKey;
+      if (sel) sel.value = 'single';
+      const range = document.getElementById('quote-character-count');
+      const out = document.getElementById('quote-character-output');
+      const chars = packageKey === 'duo' ? 2 : 1;
+      if (range) range.value = String(chars);
+      if (out) out.textContent = String(chars);
+      if (window.CALC_MODE_STATE?.custom) window.CALC_MODE_STATE.custom.characters = chars;
       recalcTotal();
       if (['single', 'duo'].includes(packageKey)) showToast(uiText(packageKey === 'single' ? 'loadedOne' : 'loadedTwo'));
     }
@@ -591,9 +597,13 @@
       document.getElementById('stage-sec-hint').textContent = t.pricing.stageSectionHint;
 
       document.getElementById('custom-stages-grid').innerHTML = t.pricing.stages.map(st => {
-        const selectable = ['sketch', 'color', 'single'].includes(st.key);
+        const selectable = ['single', 'duo'].includes(st.key);
+        const isExtras = st.key === 'extras';
+        const action = selectable
+          ? `onclick="quickPickCustom('${st.key}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();quickPickCustom('${st.key}');}"`
+          : (isExtras ? `onclick="document.getElementById('calc-dynamic-body')?.scrollIntoView({behavior:'smooth',block:'start'})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();document.getElementById('calc-dynamic-body')?.scrollIntoView({behavior:'smooth',block:'start'});}"` : '');
         return `
-          <div ${selectable ? `role="button" tabindex="0" data-quote-mode="custom" data-quote-value="${st.key}" onclick="quickPickCustom('${st.key}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();quickPickCustom('${st.key}');}"` : ''} class="card ${selectable ? 'card-interactive cursor-pointer' : 'price-extras-note'} p-5 flex flex-col gap-3">
+          <div ${selectable ? `role="button" tabindex="0" data-quote-mode="custom" data-quote-value="${st.key}" ${action}` : (isExtras ? `role="button" tabindex="0" ${action}` : '')} class="card ${selectable || isExtras ? 'card-interactive cursor-pointer' : 'price-extras-note'} p-5 flex flex-col gap-3">
             <div class="mono text-[10px] uppercase text-accent">${st.time}</div>
             <h3 class="serif text-2xl text-textMain">${st.name}</h3>
             <div class="serif text-3xl text-accent">${st.range}</div>

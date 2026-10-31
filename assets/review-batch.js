@@ -45,7 +45,7 @@
   if(e.key==='Escape')toggleMobileMenu(false);
  });
 
- // Mobile floating quote bar sync
+ // Mobile floating quote bar sync & visibility
  const quoteLabels={
   en:{label:'Estimated Total',btn:'View DM Request'},
   ru:{label:'Ориентировочно',btn:'К заявке'},
@@ -64,6 +64,14 @@
   new MutationObserver(syncMobileQuote).observe(calcTotal,{childList:true,characterData:true,subtree:true});
   syncMobileQuote();
  }
+ const quotePanel=document.querySelector('.quote-panel'),quoteBar=$('mobile-quote-bar');
+ if(quotePanel&&quoteBar&&window.IntersectionObserver){
+  new IntersectionObserver(entries=>{
+   entries.forEach(entry=>{
+    quoteBar.classList.toggle('quote-bar-hidden',entry.isIntersecting);
+   });
+  },{threshold:0.15}).observe(quotePanel);
+ }
 
  // Mobile bottom dock localization and active state sync
  const bnavLabels={
@@ -73,9 +81,13 @@
  };
  function syncBottomNav(){
   const l=bnavLabels[lang()]||bnavLabels.en;
+  const page=document.body.dataset.page||'board';
   for(const[k,v]of Object.entries(l)){
-   const el=document.querySelector('#bnav-'+k+' .bnav-label');
+   const item=document.getElementById('bnav-'+k);
+   if(!item)continue;
+   const el=item.querySelector('.bnav-label');
    if(el)el.textContent=v;
+   item.classList.toggle('bnav-active',k===page);
   }
  }
  syncBottomNav();

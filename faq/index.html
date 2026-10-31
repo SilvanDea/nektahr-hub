@@ -41,12 +41,12 @@
 <link rel="stylesheet" href="/assets/pricing-layout.css?v=373b3a98b83d">
 <link rel="stylesheet" href="/assets/site-polish.css?v=9a3ebeaebcda">
 <link rel="stylesheet" href="/assets/quote-controls.css?v=f02fe761952a">
-<link rel="stylesheet" href="/assets/catalog-queue.css?v=6344c220f97e">
+<link rel="stylesheet" href="/assets/catalog-queue.css?v=09aef1f3a0e0">
 <link rel="stylesheet" href="/assets/readability.css?v=741de951a576">
 <link rel="stylesheet" href="/assets/compact-calculator.css?v=b719dfe1a0b4">
 <link rel="stylesheet" href="/assets/contact-actions.css?v=e57e8e3f414b">
 <link rel="stylesheet" href="/assets/thumbnail-mats.css?v=f633d43cfe84">
-<link rel="stylesheet" href="/assets/review-batch.css?v=a67db8126f41">
+<link rel="stylesheet" href="/assets/review-batch.css?v=ca2303507e0f">
 </head>
 <body data-page="faq" class="min-h-screen selection:bg-[#E2B478] selection:text-[#0B0A0E]">
   <a href="#main-content" id="skip-content" class="skip-content">Skip to content</a>
@@ -373,13 +373,13 @@
             <div class="serif text-3xl text-accent">From $200</div>
             <p class="text-xs text-textMuted leading-relaxed">One character with a white or simple background. Final quote depends on the brief and complexity.</p>
           </div>
-          <div  class="card price-extras-note p-5 flex flex-col gap-3">
+          <div role="button" tabindex="0" data-quote-mode="custom" data-quote-value="duo" onclick="quickPickCustom('duo')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();quickPickCustom('duo');}" class="card card-interactive cursor-pointer p-5 flex flex-col gap-3">
             <div class="mono text-[10px] uppercase text-accent">14–30 business days</div>
             <h3 class="serif text-2xl text-textMain">Two characters + simple background</h3>
             <div class="serif text-3xl text-accent">From $300</div>
             <p class="text-xs text-textMuted leading-relaxed">Second character +$100; each subsequent character +$80.</p>
           </div>
-          <div  class="card price-extras-note p-5 flex flex-col gap-3">
+          <div role="button" tabindex="0" onclick="document.getElementById('calc-dynamic-body')?.scrollIntoView({behavior:'smooth',block:'start'})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();document.getElementById('calc-dynamic-body')?.scrollIntoView({behavior:'smooth',block:'start'});}" class="card card-interactive cursor-pointer p-5 flex flex-col gap-3">
             <div class="mono text-[10px] uppercase text-accent">Quoted separately</div>
             <h3 class="serif text-2xl text-textMain">Optional extras</h3>
             <div class="serif text-3xl text-accent">From $50</div>
@@ -1072,17 +1072,17 @@
   <!-- =====================================================================
        APPLICATION LOGIC
   ====================================================================== -->
-  <script src="/assets/app.js?v=1cd5ac357efd"></script>
+  <script src="/assets/app.js?v=5eccc99cc066"></script>
 <script src="/assets/process-viewer.js?v=e39c9751d584"></script>
 <script src="/assets/artwork-interactions.js?v=97b89cb2e8ce"></script>
 <dialog id="artwork-dialog" aria-labelledby="artwork-dialog-title"><div class="artwork-modal-header"><div><h2 id="artwork-dialog-title"></h2><p id="artwork-dialog-counter" class="artwork-modal-counter"></p></div><div class="artwork-modal-buttons"><button type="button" id="artwork-dialog-prev" aria-label="Previous artwork">←</button><button type="button" id="artwork-dialog-next" aria-label="Next artwork">→</button><button type="button" id="artwork-dialog-close" aria-label="Close preview">×</button></div></div><div id="artwork-dialog-body"><img id="artwork-dialog-image" alt="" hidden><p id="artwork-dialog-error" class="modal-error" hidden></p></div><div id="artwork-work-strip" class="artwork-work-strip"></div><div class="artwork-modal-footer"><p id="artwork-dialog-hint"></p><button type="button" id="artwork-dialog-prices">Pricing →</button></div></dialog>
 <script src="/assets/gallery-viewer.js?v=75d34e6e0803"></script>
 <script src="/assets/pricing-samples.js?v=4f1d6c9d08d4"></script>
-<script src="/assets/quote-builder.js?v=786c7dff1bed"></script>
+<script src="/assets/quote-builder.js?v=6702dcf1e623"></script>
 <script src="/assets/catalog.js?v=654bd54728c9"></script>
 <script src="/assets/compact-calculator.js?v=3c78ec45d022"></script>
 <script src="/assets/contact-actions.js?v=174d03029ae1"></script>
 <script src="/assets/thumbnail-mats.js?v=b39f58205f4f"></script>
-<script src="/assets/review-batch.js?v=15ba6a08c35f"></script>
+<script src="/assets/review-batch.js?v=8e4542cc59a9"></script>
 </body>
 </html>

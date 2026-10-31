@@ -79,7 +79,16 @@
     definitions.filter(id=>id!=='outfit'&&(mode!=='custom'||!['weapon','complexWeapon','armour','minorEdit','background'].includes(id))).forEach(id=>{if(baseAdopt&&['nsfw','furry','futa','expression'].includes(id))return;const free=id===includedVariant||(id==='nsfw'&&includedNsfw)||(id==='expression'&&mode==='adopt'&&Number(sel.value)>=200);const allowance=free?(id==='expression'&&mode==='adopt'&&Number(sel.value)>=450?3:1):0;const count=Math.max(allowance,number(s.quantities[id]));if(!count)return;const extraCount=Math.max(0,count-allowance);if(allowance&&extraCount){rows.push([text(id)+' × '+allowance,t().included]);picked.push(text(id)+' × '+allowance+' — '+t().included);}const rate=variantRate(id,s);if(extraCount&&rate===null){pending.push(text(id)+' × '+extraCount);picked.push(text(id)+' × '+count+' — '+t().separate);rows.push([text(id)+' × '+extraCount,t().unpriced]);}else if(extraCount){extras+=rate*extraCount;picked.push(text(id)+' × '+count);rows.push([text(id)+' × '+extraCount,`+$${rate*extraCount}`]);}else{picked.push(text(id)+' × '+count+' — '+t().included);rows.push([text(id),t().included]);}});if(s.baseNsfw)picked.push(t().existing);if(s.discountRequested)picked.push(t().discountRequest);
     document.querySelectorAll('.calc-mult-check:checked').forEach(chk=>{mult*=Number(chk.value)||1;picked.push(chk.dataset.label);});const total=Math.round((base+extras)*mult);if(mult>1)rows.push([t().privacy,`+$${total-base-extras}`]);
     document.querySelectorAll('input[name="quote-package"]').forEach(input=>input.checked=String(input.value)===String(sel.value));
-    document.querySelectorAll('[data-quote-value]').forEach(card=>{const value=sel.value;const active=card.dataset.quoteMode===mode&&String(card.dataset.quoteValue)===String(value);card.classList.toggle('quote-selected',active);card.setAttribute('aria-pressed',String(active));});
+    document.querySelectorAll('[data-quote-value]').forEach(card=>{
+      const value=sel.value;
+      const active=card.dataset.quoteMode===mode&&(
+        mode==='custom'
+          ? (card.dataset.quoteValue==='duo' ? (Number(s.characters||1)>=2) : (card.dataset.quoteValue==='single' ? (Number(s.characters||1)===1 && value==='single') : String(card.dataset.quoteValue)===String(value)))
+          : String(card.dataset.quoteValue)===String(value)
+      );
+      card.classList.toggle('quote-selected',active);
+      card.setAttribute('aria-pressed',String(active));
+    });
     if($('calc-breakdown-summary'))$('calc-breakdown-summary').textContent=({en:'Price breakdown',ru:'Расчёт стоимости',es:'Desglose del precio'})[currentLang];
     const list=$('calc-breakdown-list');list.replaceChildren();rows.forEach(([label,value])=>{const row=document.createElement('div');row.className='quote-line';const name=document.createElement('span'),cost=document.createElement('span');name.textContent=label;cost.textContent=value;row.append(name,cost);list.append(row);});
     $('calc-total-value').textContent=`$${total}${mode==='custom'||mode==='adopt'||pending.length?'+':''}`;$('calc-formula').textContent=`$${base} + $${extras}`;

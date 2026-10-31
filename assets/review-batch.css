@@ -73,7 +73,7 @@
 .mobile-bottom-nav { display: none !important; }
 .mobile-quote-bar { display: none !important; }
 
-@media (max-width: 767px) {
+@media (max-width: 860px) {
   html, body {
     overflow-x: hidden;
     max-width: 100vw;
@@ -83,11 +83,15 @@
     padding-left: max(14px, var(--sal)) !important;
     padding-right: max(14px, var(--sar)) !important;
     padding-top: 16px !important;
-    padding-bottom: calc(76px + var(--sab)) !important;
+    padding-bottom: calc(88px + var(--sab)) !important;
+  }
+
+  body[data-page="pricing"] > main {
+    padding-bottom: calc(144px + var(--sab)) !important;
   }
 
   footer {
-    padding-bottom: calc(84px + var(--sab)) !important;
+    padding-bottom: calc(96px + var(--sab)) !important;
   }
 
   input:not([type=checkbox]):not([type=radio]):not([type=range]),
@@ -248,16 +252,17 @@
     bottom: 0 !important;
     left: 0 !important;
     right: 0 !important;
-    z-index: 48 !important;
+    z-index: 100 !important;
     height: calc(56px + var(--sab)) !important;
     padding-bottom: var(--sab) !important;
-    background: rgba(11, 10, 14, 0.94) !important;
-    backdrop-filter: blur(16px) !important;
-    -webkit-backdrop-filter: blur(16px) !important;
-    border-top: 1px solid rgba(226, 180, 120, 0.22) !important;
+    background: rgba(13, 11, 16, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-top: 1px solid rgba(226, 180, 120, 0.28) !important;
     align-items: center !important;
     justify-content: space-around !important;
-    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.6) !important;
+    box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.85) !important;
+    transform: translateZ(0);
   }
 
   .bnav-item {
@@ -268,12 +273,14 @@
     gap: 3px !important;
     flex: 1 !important;
     height: 100% !important;
+    min-height: 48px !important;
     color: #9d9286 !important;
     text-decoration: none !important;
     background: transparent !important;
     border: 0 !important;
     cursor: pointer !important;
     padding: 0 !important;
+    -webkit-tap-highlight-color: transparent !important;
     transition: color 0.15s ease, transform 0.12s ease !important;
   }
 
@@ -309,7 +316,7 @@
   body[data-page="pricing"] #bnav-pricing .bnav-label,
   body[data-page="catalog"] #bnav-catalog .bnav-label,
   body[data-page="gallery"] #bnav-gallery .bnav-label {
-    font-weight: 600 !important;
+    font-weight: 700 !important;
     color: #e2b478 !important;
   }
 
@@ -442,25 +449,31 @@
     overflow: hidden !important;
   }
 
-  /* --- PRICING & CALCULATOR --- */
+  /* --- PRICING & CALCULATOR (RETHOUGHT APP-LIKE MOBILE LAYOUT) --- */
+  #page-pricing {
+    margin-top: 0 !important;
+    gap: 20px !important;
+  }
+
   #page-pricing [role="tablist"] {
     display: grid !important;
     grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-    gap: 4px !important;
-    padding: 4px !important;
+    gap: 6px !important;
+    padding: 6px !important;
     background: #141018 !important;
-    border: 1px solid rgba(226, 180, 120, 0.25) !important;
-    border-radius: 10px !important;
+    border: 1px solid rgba(226, 180, 120, 0.28) !important;
+    border-radius: 12px !important;
     width: 100% !important;
     min-width: 0 !important;
   }
 
   #page-pricing .ptab-btn {
-    min-height: 40px !important;
-    padding: 8px 2px !important;
-    font-size: 11px !important;
+    min-height: 44px !important;
+    padding: 10px 4px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
     line-height: 1.25 !important;
-    border-radius: 7px !important;
+    border-radius: 8px !important;
     border: 0 !important;
     color: #b7ae9f !important;
     background: transparent !important;
@@ -468,88 +481,210 @@
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
+    cursor: pointer !important;
     white-space: normal !important;
     overflow: visible !important;
+    -webkit-tap-highlight-color: transparent !important;
+    transition: all 0.15s ease !important;
   }
 
   #page-pricing .ptab-btn[aria-selected="true"] {
     background: #e2b478 !important;
     color: #0b0a0e !important;
-    font-weight: 600 !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important;
+    font-weight: 700 !important;
+    box-shadow: 0 3px 12px rgba(226, 180, 120, 0.35) !important;
   }
 
   #page-pricing .pricing-workspace {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
     grid-template-columns: 1fr !important;
-    gap: 20px !important;
   }
 
+  /* Interactive Stage & Tier Cards on Mobile */
+  #custom-stages-grid, #ych-slots-grid, #adopt-tiers-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  #custom-stages-grid .card,
+  #ych-slots-grid .card,
+  #adopt-tiers-grid .card {
+    border-radius: 14px !important;
+    padding: 18px !important;
+    border: 1.5px solid rgba(226, 180, 120, 0.25) !important;
+    background: #130f19 !important;
+    transition: all 0.18s ease !important;
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+  }
+
+  #custom-stages-grid .card:active,
+  #ych-slots-grid .card:active,
+  #adopt-tiers-grid .card:active {
+    transform: scale(0.985) !important;
+  }
+
+  #custom-stages-grid .card.quote-selected,
+  #ych-slots-grid .card.quote-selected,
+  #adopt-tiers-grid .card.quote-selected,
+  #page-pricing .quote-selected {
+    border-color: #e2b478 !important;
+    background: rgba(226, 180, 120, 0.1) !important;
+    box-shadow: 0 4px 20px rgba(226, 180, 120, 0.25), inset 4px 0 #e2b478 !important;
+  }
+
+  /* Quote Panel on Mobile: App-like configuration card */
   #page-pricing .quote-panel {
     position: static !important;
     max-height: none !important;
     overflow: visible !important;
-    padding: 18px !important;
-    border-radius: 12px !important;
+    padding: 20px !important;
+    border-radius: 16px !important;
+    background: #15111b !important;
+    border: 1px solid rgba(226, 180, 120, 0.35) !important;
+    box-shadow: 0 10px 36px rgba(0, 0, 0, 0.75) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
   }
 
-  #custom-stages-grid, #ych-slots-grid, #adopt-tiers-grid {
-    grid-template-columns: 1fr !important;
-    gap: 12px !important;
+  #page-pricing #calc-total-value {
+    font-size: 38px !important;
+    color: #e2b478 !important;
+  }
+
+  /* Steppers: Large 44px tactile touch buttons */
+  .quote-stepper {
+    display: inline-flex !important;
+    align-items: center !important;
+    background: #0b0a0e !important;
+    border: 1px solid rgba(226, 180, 120, 0.35) !important;
+    border-radius: 10px !important;
+    overflow: hidden !important;
   }
 
   .quote-stepper button {
-    width: 42px !important;
-    height: 42px !important;
-    font-size: 20px !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    font-size: 22px !important;
+    line-height: 1 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: #1c1624 !important;
+    color: #e2b478 !important;
+    border: 0 !important;
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+    transition: background 0.12s ease !important;
+  }
+
+  .quote-stepper button:active {
+    background: #e2b478 !important;
+    color: #0b0a0e !important;
   }
 
   .quote-stepper input {
-    width: 42px !important;
-    height: 42px !important;
-    font-size: 16px !important;
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 17px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    background: transparent !important;
+    border: 0 !important;
+    color: #f2ece4 !important;
   }
 
-  /* Floating Mobile Quote Bar */
-  body[data-page="pricing"] .mobile-quote-bar {
+  /* Full-row touch toggles in calculator */
+  #page-pricing .addon-pill,
+  #page-pricing .quote-existing-label {
+    min-height: 48px !important;
+    padding: 12px 14px !important;
+    border-radius: 10px !important;
+    border: 1px solid rgba(226, 180, 120, 0.25) !important;
+    background: #0e0c13 !important;
+    cursor: pointer !important;
     display: flex !important;
-    position: fixed !important;
-    bottom: calc(58px + var(--sab) + 8px) !important;
-    left: 12px !important;
-    right: 12px !important;
-    z-index: 45 !important;
     align-items: center !important;
     justify-content: space-between !important;
     gap: 12px !important;
-    padding: 10px 16px !important;
-    background: #141119f4 !important;
-    backdrop-filter: blur(14px) !important;
-    -webkit-backdrop-filter: blur(14px) !important;
-    border: 1px solid #e2b47855 !important;
-    border-radius: 12px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.75) !important;
-    animation: quoteBarFloat 0.25s ease-out !important;
+    -webkit-tap-highlight-color: transparent !important;
+    transition: all 0.15s ease !important;
   }
 
-  @keyframes quoteBarFloat {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+  #page-pricing .addon-pill:active,
+  #page-pricing .quote-existing-label:active {
+    background: rgba(226, 180, 120, 0.08) !important;
+  }
+
+  /* Big Primary CTA Button: Copy DM Request */
+  #page-pricing #calc-copy-btn {
+    min-height: 48px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.03em !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 18px rgba(226, 180, 120, 0.35) !important;
+    transition: transform 0.12s ease, background 0.15s ease !important;
+  }
+
+  #page-pricing #calc-copy-btn:active {
+    transform: scale(0.98) !important;
+  }
+
+  /* Docked Mobile Quote Bar: connects seamlessly above bottom nav */
+  body[data-page="pricing"] .mobile-quote-bar {
+    display: flex !important;
+    position: fixed !important;
+    bottom: calc(56px + var(--sab)) !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 99 !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 12px !important;
+    padding: 8px 16px !important;
+    background: rgba(18, 14, 23, 0.98) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-top: 1px solid rgba(226, 180, 120, 0.35) !important;
+    border-bottom: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: 0 -4px 18px rgba(0, 0, 0, 0.7) !important;
+    transform: translateZ(0);
+    transition: opacity 0.25s ease, transform 0.25s ease !important;
+  }
+
+  body[data-page="pricing"] .mobile-quote-bar.quote-bar-hidden {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: translateY(20px) !important;
   }
 
   .mobile-quote-info {
     display: flex !important;
-    flex-direction: column !important;
-    gap: 2px !important;
+    align-items: baseline !important;
+    gap: 8px !important;
   }
 
   .mobile-quote-label {
-    font-size: 10px !important;
+    font-size: 11px !important;
     text-transform: uppercase !important;
-    letter-spacing: 0.05em !important;
+    letter-spacing: 0.04em !important;
     color: #b7ae9f !important;
   }
 
   .mobile-quote-amount {
-    font: 600 24px/1 var(--ui-font) !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
     color: #e2b478 !important;
   }
 
@@ -557,13 +692,14 @@
     display: inline-flex !important;
     align-items: center !important;
     gap: 6px !important;
-    padding: 10px 16px !important;
-    min-height: 40px !important;
+    padding: 8px 14px !important;
+    min-height: 38px !important;
     border-radius: 8px !important;
     background: #e2b478 !important;
     color: #0b0a0e !important;
-    font-size: 12px !important;
-    font-weight: 600 !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
     cursor: pointer !important;
     border: 0 !important;
     white-space: nowrap !important;
@@ -571,6 +707,8 @@
   }
 
   .mobile-quote-btn:active {
+    transform: scale(0.96) !important;
+  }
     transform: scale(0.96) !important;
   }
 
@@ -659,6 +797,80 @@
   .catalog-card h2 {
     font-size: 19px !important;
     margin: 8px 0 4px !important;
+  }
+
+  /* --- CATALOG PAGINATION (CLEAN, TOUCH-FRIENDLY, NON-WRAPPING) --- */
+  #catalog-pagination {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    padding: 20px 0 !important;
+    margin-top: 16px !important;
+    border-top: 1px solid rgba(226, 180, 120, 0.2) !important;
+  }
+
+  #catalog-pagination span {
+    order: 0 !important;
+    width: auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 4px !important;
+    color: #8e8880 !important;
+    font-size: 14px !important;
+    user-select: none !important;
+  }
+
+  #catalog-pagination button {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 38px !important;
+    height: 38px !important;
+    padding: 0 8px !important;
+    border-radius: 8px !important;
+    border: 1px solid rgba(226, 180, 120, 0.28) !important;
+    background: #141119 !important;
+    color: #f2ece4 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    -webkit-tap-highlight-color: transparent !important;
+    transition: all 0.15s ease !important;
+  }
+
+  #catalog-pagination button:hover:not(:disabled) {
+    border-color: #e2b478 !important;
+    color: #e2b478 !important;
+    background: rgba(226, 180, 120, 0.12) !important;
+  }
+
+  #catalog-pagination button[aria-current="page"] {
+    background: #e2b478 !important;
+    border-color: #e2b478 !important;
+    color: #0b0a0e !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 10px rgba(226, 180, 120, 0.35) !important;
+    opacity: 1 !important;
+  }
+
+  #catalog-pagination button:disabled:not([aria-current="page"]) {
+    opacity: 0.28 !important;
+    cursor: not-allowed !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  #catalog-pagination small {
+    flex-basis: 100% !important;
+    order: 10 !important;
+    text-align: center !important;
+    padding-top: 10px !important;
+    font-size: 11px !important;
+    color: #8e8880 !important;
+    font-family: var(--mono-font, monospace) !important;
+    letter-spacing: 0.04em !important;
   }
 
   #catalog-dialog {
